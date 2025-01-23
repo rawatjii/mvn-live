@@ -167,7 +167,7 @@ const PeacockSection = ({ data, onLoadComplete }) => {
 
               {/* Desktop Image */}
               {!isMobile && (
-                <img src={CONFIG.IMAGE_URL + 'peacock/peacock.webp'} className="img-fluid peacock_img" />
+                <img src={CONFIG.IMAGE_URL + 'peacock/peacock.webp'} alt="Peacock image" className="img-fluid peacock_img" />
               )}
             </div>
 

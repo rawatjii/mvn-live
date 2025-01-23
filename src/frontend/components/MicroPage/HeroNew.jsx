@@ -166,7 +166,7 @@ const MicroHero = ({ data, onLoadComplete }) => {
       )}
 
       {!loading && !data.micro_hero_section.isVdo && (
-        <img src={data.micro_hero_section.images.desktop} className="img-fluid" />
+        <img src={data.micro_hero_section.images.desktop} className="img-fluid" alt="Hero section image"/>
       )}
     </section>
   );

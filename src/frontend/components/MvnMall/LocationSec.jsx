@@ -20,10 +20,6 @@ const LocationSec = () => {
         <div className="row">
           <div className="col-md-6">
             <div className="map-image-section">
-              {/* <div className="map-top-content">
-                <p>AT THE FIRST AND ONLY DROP OF</p>
-                <h4>The 22 km Stone Elevated Dwarka Expressway</h4>
-              </div> */}
               <img className="img-fluid w-100" src={MapImg} alt="mvn location image" />
               <div className="map-bottom-content">
                 <p>Location Advantage</p>

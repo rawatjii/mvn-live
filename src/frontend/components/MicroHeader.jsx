@@ -308,14 +308,6 @@ const MicroHeader = ({ scrollToSection }) => {
                                 </a>
                               </li>
 
-                              {/* <li>
-                                <a
-                                  className="new-launch"
-                                  onClick={() => {scrollToSection("Enuqiry");toggleMenu("close");}}
-                                >
-                                  Contact
-                                </a>
-                              </li> */}
 
                               <li>
                                 <NavLink to={import.meta.env.VITE_APP_URL + 'contact-us'} onClick={() => toggleMenu("close")}>
@@ -324,35 +316,6 @@ const MicroHeader = ({ scrollToSection }) => {
                               </li>
 
                             </ul>
-                            {/* <ul>
-                            <h4>Gallery</h4>
-                            <li>
-                                <a
-                                  className="new-launch"
-                                  onClick={() => {scrollToSection("MicroLandscape");toggleMenu("close");}}
-                                >
-                                  Landscape
-                                </a>
-                              </li>
-
-                              <li>
-                                <a
-                                  className="new-launch"
-                                  onClick={() => {scrollToSection("MicroElevation");toggleMenu("close");}}
-                                >
-                                  Elevation
-                                </a>
-                              </li>
-
-                              <li>
-                                <a
-                                  className="new-launch"
-                                  onClick={() => {scrollToSection("MicroApartment");toggleMenu("close");}}
-                                >
-                                  Apartment
-                                </a>
-                              </li>
-                            </ul> */}
                           </div>
                           <div className="left">
                 
@@ -420,11 +383,6 @@ const MicroHeader = ({ scrollToSection }) => {
                                     Career
                                     </NavLink>
                                   </li>
-                                  {/* <li>
-                                    <NavLink to={import.meta.env.VITE_APP_URL + 'contact-us'} onClick={() => toggleMenu("close")}>
-                                    Contact Us
-                                    </NavLink>
-                                  </li> */}
                                 </>
                               ) : null}
                             </ul>
@@ -452,11 +410,6 @@ const MicroHeader = ({ scrollToSection }) => {
                               Career
                               </NavLink>
                             </li>
-                            {/* <li>
-                              <NavLink to={import.meta.env.VITE_APP_URL + 'contact-us'} onClick={() => toggleMenu("close")}>
-                              Contact Us
-                              </NavLink>
-                            </li> */}
                             </ul>
                           </div>
                         </div>
@@ -477,7 +430,7 @@ const MicroHeader = ({ scrollToSection }) => {
                                   <Link to="https://www.facebook.com/officialmvninfra/" target="_blank" onClick={() => toggleMenu("close")}>
                                     <img
                                       src={`${CONFIG.IMAGE_URL + "social/fb.png"}`}
-                                      alt="mvn-fb-icon"
+                                      alt="mvn-facebook-icon"
                                     />
                                   </Link>
                                 </li>
@@ -485,7 +438,7 @@ const MicroHeader = ({ scrollToSection }) => {
                                   <Link to="https://www.instagram.com/mvn_infrastructure/" target="_blank" onClick={() => toggleMenu("close")}>
                                     <img
                                       src={`${CONFIG.IMAGE_URL + "social/instagram.png"}`}
-                                      alt="mvn-insta-icon"
+                                      alt="mvn-instagram-icon"
                                     />
                                   </Link>
                                 </li>
@@ -519,7 +472,13 @@ const MicroHeader = ({ scrollToSection }) => {
 
 
                 <div className="closebtn-area d-none d-md-grid" onClick={() => toggleMenu("close")}>
-                  <a href="javascript:void(0)" className="closebtn" onclick="closeNav()"> <img src={CloseBtnimg} alt="mvn close icon"  className="img-fluid close-img"/>  Close</a>
+                  <a 
+    href="#"
+    className="closebtn"
+    onClick={(e) => {
+      e.stopPropagation(); 
+      toggleMenu("close");
+    }}> <img src={CloseBtnimg} alt="mvn close icon"  className="img-fluid close-img"/>  Close</a>
                 </div>
               </div>
             </div>

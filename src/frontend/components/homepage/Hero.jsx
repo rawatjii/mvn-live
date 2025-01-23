@@ -67,21 +67,12 @@ const Hero = ()=>{
         
         <div className="hero_content">
           <Container>
-            {/* <div className="logo">
-              <img src={CONFIG.IMAGE_URL + 'logo_dark.webp'} alt="mvn-logo" className='img-fluid' fetchpriority='high' />
-            </div> */}
-            
             <div className="center">
               <h1 className="hero_title" ref={titleRef}>40+ years of delivering trust and projects on time</h1>
               <h4 className="hero_desc" ref={desRef}>MVN Group is one of the best entities focused on Education and Real Estate. As per The Hindustan Times-C Fore Top Schools Survey, the leading newspaper of India, MVN is known as the first educational group to be Ranked no.1 for Eight years in Academic Performance.</h4>
 
               <Link to={`${import.meta.env.VITE_APP_URL}about-us`} ref={btnRef} className="btn btn_style2">Know More</Link>
             </div>
-
-            {/* <div className="bottom">
-              <small>Scroll Down</small>
-            </div> */}
-
           </Container>
         </div>
       </section>

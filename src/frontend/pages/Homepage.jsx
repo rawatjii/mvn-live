@@ -75,17 +75,6 @@ const Homepage = () => {
     Number(localStorage.getItem("count"))
   );
 
-  {/*useEffect(() => {
-    if (newLoadingCount >= 100) {
-      const timer = setTimeout(() => {
-        setNewLoadingCount(101);
-        setIsPageLoaded(true); // Mark page as loaded
-      }, 500); // 1 seconds delay before removing InitialLoading
-
-      return () => clearTimeout(timer);
-    }
-  }, [newLoadingCount]);*/}
-
   useEffect(() => {
     localStorage.removeItem('count');
     setNewLoadingCount(Number(localStorage.getItem("count")));
@@ -112,23 +101,9 @@ const Homepage = () => {
         start: "top center",
         end: "bottom center",
         onEnter: () => gsap.to(scrollTopEl, { opacity: 1, pointerEvents: "auto", duration: 0.3 }),
-        // onLeave: () => gsap.to(scrollTopEl, { opacity: 0, pointerEvents: "none", duration: 0.3 }),
-        // onEnterBack: () => gsap.to(scrollTopEl, { opacity: 1, pointerEvents: "auto", duration: 0.3 }),
-        // onLeaveBack: () => gsap.to(scrollTopEl, { opacity: 0, pointerEvents: "none", duration: 0.3 }),
       });
     }
   }, []);
-
-  // if (!isPageLoaded) {
-  //   return (
-  //     <InitialLoading
-  //       loadingCount={newLoadingCount}
-  //       setLoadingCount={setNewLoadingCount}
-  //       fast="true"
-  //       second="true"
-  //     />
-  //   );
-  // }
 
   return (
     <Layout >
@@ -158,29 +133,9 @@ const Homepage = () => {
             >
               Click Here
             </Link>
-            {/* <button
-              className="enquire_btn"
-              onClick={() => setIsShowModal(true)}
-              style={{ marginLeft: "27px" }}
-            >
-              enquire now
-            </button> */}
           </div>
         </div>
       </div>
-
-      {/* <ModalSelectBox
-        hide={isHideModal}
-        show={isShowModal}
-        type="enquire"
-        offer={isOffer ? true:false}
-        // projectNameOptions={[
-        //   "MVN Aero One Gurugram",
-        //   "MVN Mall Gurugram",
-        //   "MVN Aero One Bangalore",
-        // ]}
-      /> */}
-
       <div className="mobile-view-box" ref={fixScrollSectionRef}>
         <Container>
           <img
@@ -225,17 +180,7 @@ const Homepage = () => {
           <video src={CONFIG.IMAGE_URL + "offer/offer1.mp4"} muted autoPlay className="img-fluid d-none d-md-block" playsInline />
           <video src={CONFIG.IMAGE_URL + "offer/offer1_sm.mp4"} muted autoPlay className="img-fluid d-md-none" playsInline />
         </div>
-
-        {/* <div className="single" style={{cursor:'pointer'}} onClick={()=>showCustomModal(true)}>
-          <img
-            src={isMobile ? CONFIG.IMAGE_URL + 'offer/offer2_sm.webp' : CONFIG.IMAGE_URL + 'offer/offer2.webp'}
-            alt="Hero Banner"
-            className="img-fluid hero-banner"
-          />
-        </div> */}
       </div>
-
-      {/* {isMobile ? <Projectsmobile /> : <Projects />} */}
       <Projects />
       <OtherProjects />
       <OurJourney />

@@ -10,14 +10,22 @@ const GoogleMapsAutocomplete = ({ handlePlaceSelect }) => {
       googleMapsApiKey="AIzaSyD2mbxXISLWkdRVrm12QkliQYvAHurBrsk"
       libraries={['places']}
     >
-      <Autocomplete
-        onLoad={(autocomplete) => {
-          autocompleteRef.current = autocomplete;
-        }}
-        onPlaceChanged={() => handlePlaceSelect(autocompleteRef.current.getPlace())}
-      >
-        <Form.Control type="text" placeholder="Enter project Location" />
-      </Autocomplete>
+      <Form.Group>
+  <Form.Label htmlFor="location" className='visually-hidden'>Project Location*</Form.Label>
+  <Autocomplete
+    onLoad={(autocomplete) => {
+      autocompleteRef.current = autocomplete;
+    }}
+    onPlaceChanged={() => handlePlaceSelect(autocompleteRef.current.getPlace())}
+  >
+    <Form.Control
+      id="location"
+      type="text"
+      placeholder="Enter project Location"
+    />
+  </Autocomplete>
+</Form.Group>
+
     </LoadScript>
   );
 };

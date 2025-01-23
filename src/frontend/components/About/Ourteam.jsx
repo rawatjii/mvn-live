@@ -47,13 +47,6 @@ const OurTeam = () => {
       Person_Photo: Saurabh_Kaushik,
       Person_content: `Mr. Saurabh Kaushik holds a bachelor's degree in Engineering from the National Institute of Technology, Kurukshetra, with a total experience of 16 years, including 5 years in construction and real estate. He has been associated with MVN Infrastructure since 2016.`,
     },
-    // {
-    //   id: 5,
-    //   Person_Name: "Mr. Vinod Kumar",
-    //   Person_Post: "Head Billing Engineer, MVN Infrastructure",
-    //   Person_Photo: Vinod_Kumar,
-    //   Person_content: `Mr. Vinod Kumar is a dedicated professional who has contributed immensely to the operational success of MVN Infrastructure, ensuring efficiency and excellence in billing and engineering processes.`,
-    // },
   ];
 
   return (
@@ -69,13 +62,6 @@ const OurTeam = () => {
         </div>
 
         <Row>
-          {/*<Col xs={12}>
-            /~ <SecTitle className="text-center color style1 mb_30">
-              <img src={headingIconImg} alt="mvn timeline icon" className="img-fluid headingIcon"/>
-              <h4 className="sec_title title">People Behind</h4>
-            </SecTitle> ~/
-            
-          </Col>*/}
           {OurTeamData.slice(0, 3).map((member) => (
             <Col xs={12} md={4} lg={4} key={member.id}>
               <div className="ourteamCard">
@@ -133,9 +119,6 @@ const OurTeam = () => {
 
       {/* Modal */}
       <Modal show={show} onHide={handleClose}>
-        {/* <Modal.Header closeButton>
-          <Modal.Title>{selectedPerson?.Person_Name}</Modal.Title>
-        </Modal.Header> */}
         <Modal.Body>
           <h4 className="modal_name">{selectedPerson?.Person_Name}</h4>
           <p>{selectedPerson?.Person_content}</p>

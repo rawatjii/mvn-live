@@ -47,32 +47,11 @@ function BlogDetails() {
   useEffect(() => {
     setNewLoadingCount(Number(localStorage.getItem('count')));
   }, [localStorage.getItem('count')]);
-
-  // useEffect(() => {
-  //   if (newLoadingCount === 100) {
-  //     const timer = setTimeout(() => {
-  //       setNewLoadingCount(101);
-  //     }, 500); // 1 seconds delay before removing InitialLoading
-
-  //     return () => clearTimeout(timer);
-  //   }
-  // }, [newLoadingCount]);
-
-  // if (newLoadingCount <= 100) {
-  //   return <InitialLoading loadingCount={newLoadingCount} setLoadingCount={setNewLoadingCount} fast="true" second="true" />;
-  // }
-
-
   return (
     <Layout>
       <div className="blog_page">
         <MicroBanner bg={Desktopmicro_bg} data={breadcrumbs} />
         <Container className="text-center py-5">
-          {/* <img src={BlogIcon} alt="mvn-support-icon" className="img-fluid supportIcon mb-4" /> */}
-
-          {/* <SecTitle className="text-center color style1 mb_30">
-                  <h4 className="title">Perspectives That Redefine: Welcome to Our Blogs</h4>
-              </SecTitle> */}
         </Container>
         <div className="container">
           <div className="row row-gap-3">
@@ -86,33 +65,6 @@ function BlogDetails() {
               />
             </div>
             <div>
-              {/* <h3 style={{ color: "#c9b047" }}>
-                {selectedBlog?.title}
-              </h3> */}
-          
-  {/*                
-              {selectedBlog?.content?.map(
-                (item) =>
-                  item?.type === "li" ? (
-                    <ul className="my-2">
-                      {item.list.map((li) => (
-                        <li
-                          style={{
-                            listStyleType: "disc",
-                            paddingLeft: 2,
-                            fontSize: 14,
-                          }}
-                        >
-                          {li}
-                        </li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <p style={{ fontSize: 16 }}>{item}</p>
-                  )
-              )} */}
-
-
                   {selectedBlog?.description?.map((item)=>{
                     return <>
                     <div className="mb-2">
@@ -163,18 +115,6 @@ function BlogDetails() {
 
 
             </div>
-
-
-
-            {/* <div className="col-sm-12">
-              <div className="text-center py-5">
-                <a href="" className="btn btn_style2">
-                  View More
-                </a>
-              </div>
-            </div> */}
-
-
           </div>
         </div>
       </div>

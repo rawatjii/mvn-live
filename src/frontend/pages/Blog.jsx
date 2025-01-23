@@ -41,22 +41,6 @@ function Blog() {
       },
     ],
   };
-
-  // useEffect(() => {
-  //   if (newLoadingCount === 100) {
-  //     const timer = setTimeout(() => {
-  //       setNewLoadingCount(101);
-  //     }, 500); // 1 seconds delay before removing InitialLoading
-
-  //     return () => clearTimeout(timer);
-  //   }
-  // }, [newLoadingCount]);
-
-  // if (newLoadingCount <= 100) {
-  //   return <InitialLoading loadingCount={newLoadingCount} setLoadingCount={setNewLoadingCount} fast="true" second="true" />;
-  // }
-  
-
   return (
     <Layout>
       <div className="blog_page inner_section" ref={containerRef} >
@@ -71,26 +55,6 @@ function Blog() {
                   Perspectives That Redefine: Welcome to Our Blogs
                   </h4>
                 </div>
-
-                {/* <SecTitle className="text-center color style1 mb_30">
-                  <img
-                    src={headingIconImg}
-                    alt="mvn blog image"
-                    className="img-fluid headpage-icon"
-                  />
-                  <h4 ref={titleRef} className="title">
-                    Perspectives That Redefine: Welcome to Our Blogs
-                  </h4>
-                </SecTitle> */}
-                {/* <p
-                className="text-center career_para"
-                ref={(el) => (desRefs.current[0] = el)}
-              >
-                Our Human Resource team is dedicated to attracting, nurturing, and
-                retaining top talent, ensuring the right people are in the right
-                roles to drive the company forward. We prioritize skill, passion,
-                and commitment to our shared goals.
-              </p> */}
               </Container>
             </div>
           </div>
@@ -125,14 +89,6 @@ function Blog() {
                   </div>
                 ))
               }
-
-              {/* <div className="col-sm-12">
-                <div className="text-center py-5">
-                  <a href="" className="btn btn_style2">
-                    View More
-                  </a>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>

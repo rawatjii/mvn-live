@@ -5,9 +5,8 @@ import Modal from "react-bootstrap/Modal";
 import SecTitle from "./SecTitle/Index";
 // import headingIconImg from "./../frontend/assets/images/icons/heading-icon-img.webp";
 import Formlogo from "../../public/assets/images/logo_white.webp";
-import * as CONFIG from '../config/config'
+import * as CONFIG from "../config/config";
 import Loader from "./Loader/loader";
-
 
 const CustomModal = ({ show, hide, projectName, isOffer }) => {
   const [formDetails, setFormDetails] = useState({});
@@ -31,7 +30,7 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
       !formDetails.message
     ) {
       alert("Please fill all details!");
-    }else{
+    } else {
       setLoading(true);
       fetch(apiUrl, {
         method: "GET", // HTTP method
@@ -59,7 +58,6 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
           setLoading(false);
         });
     }
-    
   };
 
   const modalRef = useRef();
@@ -67,7 +65,7 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
   useEffect(() => {
     const close = (e) => {
       if (!modalRef.current.contains(e.target)) {
-        console.log('closed')
+        console.log("closed");
         hide();
       }
     };
@@ -75,27 +73,38 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
     return () => document.removeEventListener("mousedown", close);
   }, []);
 
-  if(isOffer){
-    return(
-
-      <Modal show={show} className="enquire_form custom_modal offer_modal " aria-labelledby="contained-modal-title-vcenter" centered>
+  if (isOffer) {
+    return (
+      <Modal
+        show={show}
+        className="enquire_form custom_modal offer_modal "
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
         <div ref={modalRef}>
           <Modal.Body>
             <div className="left">
-              <img src={CONFIG.IMAGE_URL + 'offer/1.webp'} className="img-fluid offer_img" />
+              <img
+                src={CONFIG.IMAGE_URL + "offer/1.webp"}
+                className="img-fluid offer_img"
+                alt="offer image"
+              />
             </div>
 
             <div className="right">
               <SecTitle className="text-center color style1">
-                {/* <img src={Formlogo} alt="mvn modal logo" className="img-fluid headingIcon" /> */}
                 <h4 className="title">Grab The Offer</h4>
               </SecTitle>
-
 
               <span
                 className="close"
                 onClick={hide}
-                style={{ position: "absolute", top: 0, right: 10, fontSize: 30 }}
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  right: 10,
+                  fontSize: 30,
+                }}
               >
                 &times;
               </span>
@@ -103,7 +112,9 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
               <Form onSubmit={loading ? () => null : handleSubmit}>
                 <Row>
                   <Form.Group className="form-group" as={Col} xs="12">
+                    <Form.Label className='visually-hidden' htmlFor="name">Name</Form.Label>
                     <Form.Control
+                      id="name"
                       type="text"
                       name="name"
                       placeholder="Name:"
@@ -113,7 +124,9 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
                   </Form.Group>
 
                   <Form.Group className="form-group" as={Col} xs="12">
+                    <Form.Label className='visually-hidden' htmlFor="email">E-Mail</Form.Label>
                     <Form.Control
+                      id="email"
                       type="email"
                       name="email"
                       placeholder="E-Mail:"
@@ -123,7 +136,9 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
                   </Form.Group>
 
                   <Form.Group className="form-group" as={Col} xs="12">
+                    <Form.Label className='visually-hidden' htmlFor="number">Phone</Form.Label>
                     <Form.Control
+                      id="number"
                       type="number"
                       name="number"
                       placeholder="Phone:"
@@ -133,7 +148,9 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
                   </Form.Group>
 
                   <Form.Group className="form-group" as={Col} xs="12">
+                    <Form.Label className='visually-hidden' htmlFor="message">Message</Form.Label>
                     <Form.Control
+                      id="message"
                       type="text"
                       name="message"
                       placeholder="Message:"
@@ -143,17 +160,19 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
                   </Form.Group>
                 </Row>
 
-                <Button type="submit" className="btn_style3" disabled={loading ? true:false}>
+                <Button
+                  type="submit"
+                  className="btn_style3"
+                  disabled={loading ? true : false}
+                >
                   {loading ? "Sending..." : "Submit"}
                 </Button>
               </Form>
             </div>
-
-              
           </Modal.Body>
         </div>
       </Modal>
-    )
+    );
   }
   return (
     <Modal show={show} className="enquire_form custom_modal floor_plan_popup">
@@ -166,7 +185,6 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
                 alt="mvn modal logo"
                 className="img-fluid headingIcon"
               />
-
 
               <h4 className="title">Get In Touch With Us</h4>
             </SecTitle>
@@ -181,7 +199,9 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
             <Form onSubmit={loading ? () => null : handleSubmit}>
               <Row>
                 <Form.Group className="form-group" as={Col} xs="12">
+                  <Form.Label className='visually-hidden' htmlFor="name">Name</Form.Label>
                   <Form.Control
+                    id="name"
                     type="text"
                     name="name"
                     placeholder="Name:"
@@ -191,7 +211,9 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
                 </Form.Group>
 
                 <Form.Group className="form-group" as={Col} xs="12">
+                  <Form.Label className='visually-hidden' htmlFor="email">E-Mail</Form.Label>
                   <Form.Control
+                    id="email"
                     type="email"
                     name="email"
                     placeholder="E-Mail:"
@@ -201,7 +223,9 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
                 </Form.Group>
 
                 <Form.Group className="form-group" as={Col} xs="12">
+                  <Form.Label className='visually-hidden' htmlFor="number">Phone</Form.Label>
                   <Form.Control
+                    id="number"
                     type="number"
                     name="number"
                     placeholder="Phone:"
@@ -211,7 +235,9 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
                 </Form.Group>
 
                 <Form.Group className="form-group" as={Col} xs="12">
+                  <Form.Label className='visually-hidden' htmlFor="message">Message</Form.Label>
                   <Form.Control
+                    id="message"
                     type="text"
                     name="message"
                     placeholder="Message:"
@@ -221,7 +247,11 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
                 </Form.Group>
               </Row>
 
-              <Button type="submit" className="btn_style3" disabled={loading ? true:false}>
+              <Button
+                type="submit"
+                className="btn_style3"
+                disabled={loading ? true : false}
+              >
                 {loading ? "Sending..." : "Submit"}
               </Button>
             </Form>
@@ -233,52 +263,3 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
 };
 
 export default CustomModal;
-
-{
-  /* <Modal.Header>
-        <Modal.Title>Enquire Now</Modal.Title>
-        <span className="close" onClick={hide}>
-          &times;
-        </span>
-      </Modal.Header>
-      <Modal.Body>
-        <Form onSubmit={handleSubmit}>
-          <Row>
-            <Form.Group className="form-group" as={Col} xs="12">
-              <Form.Control type="text" name="name" placeholder="Your Name:" onChange={handleFormChange}/>
-            </Form.Group>
-
-            <Form.Group className="form-group" as={Col} xs="12">
-              <Form.Control
-                type="email"
-                name="email"
-                placeholder="Your E-Mail:"
-                onChange={handleFormChange}
-              />
-            </Form.Group>
-
-            <Form.Group className="form-group" as={Col} xs="12">
-              <Form.Control
-                type="number"
-                name="number"
-                placeholder="Your Phone:"
-                onChange={handleFormChange}
-              />
-            </Form.Group>
-
-            <Form.Group className="form-group" as={Col} xs="12">
-              <Form.Control
-                type="text"
-                name="message"
-                placeholder="Your Message:"
-                onChange={handleFormChange}
-              />
-            </Form.Group>
-          </Row>
-
-          <Button type="submit" className="btn_style3">
-            Submit
-          </Button>
-        </Form>
-      </Modal.Body> */
-}

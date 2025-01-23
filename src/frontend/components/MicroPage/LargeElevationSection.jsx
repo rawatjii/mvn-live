@@ -22,15 +22,6 @@ export default function LargeElevation({ data }) {
 
 
     useEffect(() => {
-        // gsap.to(".bottom_img_div", {
-        //     // y: -80,
-        //     scrollTrigger: {
-        //         trigger: ".large-elevation",
-        //         start: "top bottom",
-        //         end: "bottom top",
-        //         scrub: true,
-        //     },
-        // });
         gsap.from(".abs_img_m", {
             y: -200,
             scrollTrigger: {

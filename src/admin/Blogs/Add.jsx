@@ -1,19 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import CustomDropdown from 'common/Custom_Dropdown/CustomDropdown';
-import SidebarPortal from "common/Portal/Sidebar";
-import BackdropPortal from 'common/Portal/Backdrop'
-import SideModal from "admin/components/Modal/SideModal/Index";
 import Form from 'react-bootstrap/Form';
 import Loader from "common/Loader/loader";
 import {  toast } from 'react-toastify';
-import Pagination from 'common/Pagination/Pagination';
 import {useNavigate } from 'react-router-dom';
 import Request from 'root/config/Request';
 import ReactQuill from 'react-quill';
 import Button from 'common/Button/Button'
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import { useAsyncError } from "react-router-dom";
  
 import * as CONFIG from 'root/config/config';
 
@@ -24,17 +16,10 @@ const statusOptions = [
 
 const AddBlog = ()=>{
     const [isLoading, setIsLoading] = useState(false);
-    const [data, setData] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [lastPage, setLastPage] = useState(1);
     const [showSidebar, setShowSidebar] = useState(false);
-    const [enableEdit, setenableEdit] = useState(false);
     const [errors, setErrors] = useState({});
-    const [editId, setEditId] = useState(false);
     const [blogCategory, setBlogCategory] = useState(null);
-    const [selectedStatus, setSelectedStatus] = useState(null);
     const [showEditEnableImage, setShowEditEnableImage] = useState(null);
-    const [blogData, setBlogData] = useState(null)
     const titleRef = useRef(null);
     const shortDescriptionRef = useRef(null);
     const descriptionRef = useRef(null);
@@ -116,27 +101,27 @@ const AddBlog = ()=>{
                 
                 <Form onSubmit={addSubmitHandler} className="mt_40">
                     <Form.Group className="mb_15 form-group">
-                        <Form.Label>Title*</Form.Label>
-                        <Form.Control ref={titleRef} className="" type="text" placeholder="Enter Blog Title" />
+                        <Form.Label htmlFor="title">Title*</Form.Label>
+                        <Form.Control id="title" ref={titleRef} className="" type="text" placeholder="Enter Blog Title" />
                         {errors.heading && <div className="errMsg text-danger">{errors.heading}</div>}
                     </Form.Group>
 
                     <Form.Group className="mb_15 form-group">
-                        <Form.Label>Short Description*</Form.Label>
-                        <textarea ref={shortDescriptionRef} className="form-control" required type="text" placeholder="Enter Short Description" />
+                        <Form.Label htmlFor="short-description">Short Description*</Form.Label>
+                        <textarea id="short-description" ref={shortDescriptionRef} className="form-control" required type="text" placeholder="Enter Short Description" />
                         {errors.short_description && <div className="errMsg text-danger">{errors.short_description}</div>}
                     </Form.Group>
 
                     <Form.Group className="mb_15 form-group">
-                        <Form.Label>Description*</Form.Label>
-                        <ReactQuill ref={descriptionRef} placeholder="Enter Description"   />
+                        <Form.Label htmlFor="Description">Description*</Form.Label>
+                        <ReactQuill id="Description" ref={descriptionRef} placeholder="Enter Description"   />
                         {/* <textarea className="form-control" required type="text"  name="description"  /> */}
                         {errors.description && <div className="errMsg text-danger">{errors.description}</div>}
                     </Form.Group>
 
                     <Form.Group className="mb_15 form-group">
-                        <Form.Label>Blog Category*</Form.Label>
-                        <select ref={blogCategoryRef} className="form-control">
+                        <Form.Label htmlFor="blog-category">Blog Category*</Form.Label>
+                        <select ref={blogCategoryRef} className="form-control" id="blog-category">
                             <option defaultValue={true} disabled>Select Blog Category</option>
                             {blogCategory?.map((category, index)=>(
                                 <option key={index} value={category.id}>{category.name}</option>
@@ -146,12 +131,12 @@ const AddBlog = ()=>{
                     </Form.Group>
 
                     <Form.Group className="mb_15 form-group">
-                        <Form.Label>Image*
+                        <Form.Label htmlFor="image">Image*
                             <small className="size">(Size 1200px x 750px)</small>
                         </Form.Label>
-                        <Form.Control ref={imageRef} className="form-control" required type="file" />
+                        <Form.Control id="image" ref={imageRef} className="form-control" required type="file" />
                         {errors.image && <div className="errMsg text-danger">{errors.image}</div>}
-                        {showEditEnableImage ? <img width="100" src={showEditEnableImage}/> : null }
+                        {showEditEnableImage ? <img width="100" alt="edit image" src={showEditEnableImage}/> : null }
                     </Form.Group>
 
                     <Button className="btn btn_primary">Add</Button>

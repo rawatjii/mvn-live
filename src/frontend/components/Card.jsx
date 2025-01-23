@@ -5,7 +5,7 @@ const CustomCard = ({ className, title, location, extra, desc, extraTxt, type })
   return (
     <div className={`overview_card ${className}`}>
       <div className="diamond_img_strip">
-        <img src={planeIMG} className="img-fluid" alt="image" />
+        <img src={planeIMG} className="img-fluid" alt="plane image" />
       </div>
       {title && (
         <div className="title">

@@ -99,15 +99,6 @@ const Overview = () => {
               Building spaces <span>that help you grow</span>
             </h4>
           </div>
-
-
-          {/* <SecTitle className="text-center color style1 mb_30">
-            <img src={OverviewIcon} alt="mvn overview image" className="img-fluid headpage-icon"/>
-            <h4 ref={titleRef} className="title">
-              Building spaces <span>that help you grow</span>
-            </h4>
-          </SecTitle> */}
-
           <p ref={(el) => (desRefs.current[0] = el)} className="des_style1 text-center">
             At MVN, we are fired by an indomitable will to shape the future.
             We commenced our corporate journey in 1983 and have since evolved into a

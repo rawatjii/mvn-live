@@ -7,7 +7,6 @@ import Desktopmicro_bg from '../assets/images/privacy-policy.webp';
 
 const PrPolcy = ()=>{
     window.scrollTo(0, 0);
-
     // State to manage background image
     const [microBg, setMicroBg] = useState(Desktopmicro_bg);
 

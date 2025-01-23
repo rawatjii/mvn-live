@@ -79,59 +79,10 @@ const Sidebar = (props)=>{
     };
   }, [currentPage]);
 
-  // useEffect(()=>{
-  //   switch(currentMenuCount){
-  //     case 0:
-  //       setMenuClasses('')
-  //     break;
-  
-  //     case 1:
-  //       setMenuClasses('test');
-  //     break;
-      
-  //     case 2:
-  //       setMenuClasses('test test1')
-  //     break;
-  
-  //     default:
-  //       setMenuClasses('')
-  //   }
-  // }, [currentMenuCount]);
-
-  // const toggleMenuHandler = ()=>{
-  //   if(currentMenuCount === toggleCount.length - 1){
-  //     setCurrentMenuCount((state)=>state - 1);
-  //     setIsAscending(!isAscending);
-  //   }
-    
-  //   else if(currentMenuCount === 0){
-  //     setCurrentMenuCount(state=>state + 1)
-  //     setIsAscending(!isAscending)
-  //   }
-
-  //   else{
-  //     setCurrentMenuCount(state=>{
-  //       if(isAscending){
-  //         return state + 1
-  //       }else{
-  //         return state - 1
-  //       }
-  //     })
-  //   }
-    
-  // }
-
-  // const toggleSubMenusHandler = (e, menu)=>{
-  //   e.stopPropagation();
-  //   setMenuClasses('test test1')
-  //   setMenusCounts(menu);
-  // }
 
   return(
     <>
-      {/* <button className={`ms-auto float-right ${menuClasses}`} onClick={toggleMenuHandler} style={{position:'absolute', right:'10px', zIndex:'9999', top:'100px'}}>
-        testing
-      </button> */}
+
 
       <div className={`sidebar`}>
         <div className="main-menu" ref={containerRef}>
@@ -387,14 +338,6 @@ const Sidebar = (props)=>{
         )}
         
       </div>
-
-      {/* <button
-        className="btn btn-secondary float-right"
-        onClick={toggleMenuHandler}
-        style={{marginLeft:'auto', display:'table'}}>
-          test
-      </button> */}
-
     </>
   )
 }

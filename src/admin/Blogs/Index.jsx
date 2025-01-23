@@ -224,20 +224,18 @@ const Blogs = () => {
           <h5 className="mb-0">All Blogs </h5>
 
           <div className="searchInput ms-auto">
+            <label htmlFor="search" className="visually-hidden">
+              Search by name
+            </label>
             <input
               type="text"
+              id="search"
               className="form-control"
               placeholder="Search by name"
               onChange={findHandler}
             />
           </div>
         </div>
-
-        {/* <form >
-                    <input ref={fileRef} type="file" className="form-control" />
-                    <input type="text" className="form-control" placeholder="Enter Amenity Name" />
-                    <button type="submit" className="btn btn_primary">Save</button>
-                </form> */}
 
         <table className="mt_40">
           <thead>

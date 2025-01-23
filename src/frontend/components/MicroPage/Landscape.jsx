@@ -18,10 +18,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Original landscape data array
 const landscapeData = [
-  // {
-  //   asset: CONFIG.IMAGE_URL + 'renders/landscape/4.webp',
-  //   watermark: 'left'
-  // },
   {
     thumbnail_desktop: CONFIG.IMAGE_URL + 'renders/landscape/1.webp',
     thumbnail_mobile: CONFIG.IMAGE_URL + 'renders/landscape/1_sm.webp',
@@ -115,9 +111,6 @@ export default function MicroLandscape({ data = landscapeData, title, subTitle, 
 
   return (
     <div className="section renders1_section wrapper center pb-0 Landscape-section">
-      {/* <div className="sec_title text-center color style1" ref={sectionsRef}>
-        <h4 className="title">{title || "Landscape"}</h4>
-      </div> */}
       <div className="heading_div mb_60 mb_sm_30" ref={sectionsRef}>
         <h4 className="title title_style1 text-center">{title || "Landscape"}</h4>
       </div>

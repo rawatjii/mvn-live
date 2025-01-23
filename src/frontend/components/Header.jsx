@@ -149,8 +149,6 @@ const Header = () => {
             <div className="overlay-content">
               <div className="inner-overlay">
                 <div className="video-area d-none d-md-block">
-
-                  {/* <img src={CONFIG.IMAGE_URL + 'renders/elevation/2.webp'} alt="mvn elevation image" /> */}
                   <video autoPlay muted  loop>
                     <source src={MenuSideVideo} type="video/mp4" className="img-fluid videoMenu"/>
                   </video>
@@ -306,7 +304,7 @@ const Header = () => {
                                   <Link to="https://www.facebook.com/officialmvninfra/" target="_blank" onClick={() => toggleMenu("close")}>
                                     <img
                                       src={`${CONFIG.IMAGE_URL + "social/fb.png"}`}
-                                      alt="mvn-fb-icon"
+                                      alt="mvn-facebook-icon"
                                     />
                                   </Link>
                                 </li>
@@ -314,7 +312,7 @@ const Header = () => {
                                   <Link to="https://www.instagram.com/mvn_infrastructure/" target="_blank" onClick={() => toggleMenu("close")}>
                                     <img
                                       src={`${CONFIG.IMAGE_URL + "social/instagram.png"}`}
-                                      alt="mvn-insta-icon"
+                                      alt="mvn-instagram-icon"
                                     />
                                   </Link>
                                 </li>
@@ -347,7 +345,13 @@ const Header = () => {
 
 
                 <div className="closebtn-area d-none d-md-grid" onClick={() => toggleMenu("close")}>
-                  <a className="closebtn" onclick="closeNav()"><img src={CloseBtnimg} alt="mvn close icon"  className="img-fluid close-img"/>  Close</a>
+                <a 
+    href="#"
+    className="closebtn"
+    onClick={(e) => {
+      e.stopPropagation(); 
+      toggleMenu("close");
+    }}><img src={CloseBtnimg} alt="mvn close icon"  className="img-fluid close-img"/>  Close</a>
                 </div>
               </div>
             </div>

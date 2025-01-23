@@ -72,14 +72,7 @@ const Enquire = () => {
 
       <Container>
         <h4 ref={titleRef} className="title_style1 text-center">Excited To Meet Us?</h4>
-        {/* <SecTitle className="text-center color style1 excited-to-meet-us">
-       
-          <h4 ref={titleRef} className="title title_style1 text-center">Excited To Meet Us?</h4>
-        </SecTitle> */}
-
         <p ref={contentRef}>Every query gets answered. You got questions, we got answers.</p>
-
-        {/* <Link ref={btnRef} className="btn btn_style2">Know More</Link> */}
       </Container>
     </section>
   );

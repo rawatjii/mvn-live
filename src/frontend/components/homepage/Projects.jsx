@@ -127,15 +127,6 @@ const Projects = () => {
     : [projectsData[2]]
 
 
-
-  // const leftColProjects = isDesktop
-  //   ? [projectsData[0], projectsData[2]] // "Mvn Mall" and "Mvn"
-  //   : [projectsData[0]]; // Desktop: "Mvn Mall" only
-  // const rightColProjects = isDesktop
-  //   ? [projectsData[1]] // "Mvn Aeroone Residency"
-  //   : projectsData.slice(1); // Desktop: Rest of the projects
-
-
   return (
     <>
       <section className="section projects_section_new pb-0">
@@ -160,12 +151,12 @@ const Projects = () => {
                 <div className="box_with_overlay_in">
                   <img
                     src={CONFIG.IMAGE_URL + "gurgaon-project-map.webp"}
-                    alt="bg img"
+                    alt="project map image"
                     className="img-fluid img_bg d-lg-block d-none"
                   />
                   <img
                     src={CONFIG.IMAGE_URL + "gurgaon-project-map-sm.webp"}
-                    alt="bg img"
+                    alt="project map image"
                     className="img-fluid img_bg d-lg-none d-block"
                   />
                   <div className="abs_div">
@@ -188,7 +179,6 @@ const Projects = () => {
                         <span className="new-launch-patch">
                           New Launch
                         </span>
-                        {/* <img src={NewLaunchIcon} alt="mvn new launch image" className="img-fluid new-launch-patch" /> */}
                         <Link to={item.otherPage ? item.link : import.meta.env.VITE_APP_URL + item.link}>
                           <img
                             src={isDesktop ? item.mobile : item.desktop}
@@ -220,12 +210,12 @@ const Projects = () => {
                 <div className="box_with_overlay_in">
                   <img
                     src={CONFIG.IMAGE_URL + "bangalore-project-map.webp"}
-                    alt="bg img"
+                    alt="Bangalore project map image"
                     className="img-fluid img_bg d-lg-block d-none"
                   />
                   <img
                     src={CONFIG.IMAGE_URL + "bangalore-project-map-sm.webp"}
-                    alt="bg img"
+                    alt="Bangalore project map image"
                     className="img-fluid img_bg d-lg-none d-block"
                   />
                   <div className="abs_div">
@@ -245,7 +235,6 @@ const Projects = () => {
                         className="pro_img"
                         height={100}
                       >
-                        {/* <img src={NewLaunchIcon} alt="mvn new launch image" className="img-fluid new-launch-patch" /> */}
                         <Link to={item.otherPage ? item.link : import.meta.env.VITE_APP_URL + item.link}>
                           <img
                             src={isDesktop ? item.mobile : item.desktop}
@@ -272,89 +261,6 @@ const Projects = () => {
               </div>
             </div>
 
-            {/* Left Column */}
-            {/* <Col xs={6} className="px_8 left_col">
-         
-              <h3 className="sec_title">
-                Explore <span>Our Projects</span>
-              </h3>
-              {leftColProjects.map((item, index) => (
-                <div key={index} className="single">
-                  
-                  <AnImage
-                    ref={(el) => (imageDivRefs.current[index] = el)}
-                    height={100}
-                  >   <img src={NewLaunchIcon} alt="mvn new launch image" className="img-fluid new-launch-patch"/>
-                    <Link to={item.otherPage ? item.link : import.meta.env.VITE_APP_URL + item.link}>
-
-                      <img
-                        src={isDesktop ? item.mobile : item.desktop}
-                        alt={item.name}
-                        className="img-fluid thumbnail"
-                        onLoad={handleImageLoad}
-                      />
-                    </Link>
-                  </AnImage>
-                  <div className="content">
-                    <div className="left">
-                      <h4 className="project_name">{item.name}</h4>
-                      <p className="location">{item.location}</p>
-                    </div>
-
-                    <div className="right">
-                      <Link to={item.link}>
-                        <img
-                          src={arrowIcon}
-                          alt="mvn-arrow-icon"
-                          className="img-fluid icon"
-                        />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </Col> */}
-
-            {/* Right Column */}
-            {/* <Col xs={6} className="px_8 right_col">
-
-              {rightColProjects.map((item, index) => (
-                <div key={index} className="single">
-                        <img src={NewLaunchIcon} alt="mvn new launch image" className="img-fluid new-launch-patch"/>
-                  <AnImage
-                    ref={(el) =>
-                      (imageDivRefs.current[leftColProjects.length + index] = el)
-                    }
-                    height={100}
-                  >
-                    <Link to={item.link} target="_blank">
-                      <img
-                        src={isDesktop ? item.mobile : item.desktop}
-                        alt={item.name}
-                        className="img-fluid thumbnail"
-                        onLoad={handleImageLoad}
-                      />
-                    </Link>
-                  </AnImage>
-                  <div className="content">
-                    <div className="left">
-                      <h4 className="project_name">{item.name}</h4>
-                      <p className="location">{item.location}</p>
-                    </div>
-
-                    <div className="right">
-                      <Link to={item.link} target="_blank">
-                        <img
-                          src={arrowIcon}
-                          alt="mvn-arrow-icon"
-                          className="img-fluid icon"
-                        />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </Col> */}
           </Row>
         </Container>
       </section>

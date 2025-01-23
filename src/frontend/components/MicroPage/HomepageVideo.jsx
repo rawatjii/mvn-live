@@ -5,9 +5,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ImgMail from "../../assets/images/icons/email.png";
 import GurgaonLoader from "../../../common/Loader/Homepage/Index";
 
-
-
-
 gsap.registerPlugin(ScrollTrigger);
 
 const HomepageVideo = ({ data }) => {
@@ -18,7 +15,7 @@ const HomepageVideo = ({ data }) => {
   const [totalFrames, setTotalFrames] = useState(0);
   const containerRef = useRef(null);
   const frameRefs = useRef([]);
-  const mouseScrollRef = useRef()
+  const mouseScrollRef = useRef();
 
   useEffect(() => {
     if (loading) {
@@ -28,7 +25,7 @@ const HomepageVideo = ({ data }) => {
       // Remove overflow: hidden when heroLoaded is true
       document.body.style.overflow = "";
     }
-  
+
     // Cleanup function to reset the body overflow if the component unmounts
     return () => {
       document.body.style.overflow = "";
@@ -38,7 +35,7 @@ const HomepageVideo = ({ data }) => {
   useEffect(() => {
     // Determine if it's mobile or desktop
     const isMobile = window.innerWidth <= 768;
-    if(isMobile){
+    if (isMobile) {
       setMobile(true);
     }
 
@@ -53,8 +50,8 @@ const HomepageVideo = ({ data }) => {
 
     const isMobile = window.innerWidth <= 768;
     let folderPath = isMobile
-    ? "assets/images/micro/hero/mobile/"
-    : "assets/images/micro/hero/desktop/";
+      ? "assets/images/micro/hero/mobile/"
+      : "assets/images/micro/hero/desktop/";
 
     // Preload images
     const loadedImages = [];
@@ -99,7 +96,8 @@ const HomepageVideo = ({ data }) => {
       onLeave: () => {
         // Ensure the last frame stays visible when scrolling ends
         frameRefs.current.forEach((img, index) => {
-          if (img) img.style.display = index === totalFrames - 1 ? "block" : "none";
+          if (img)
+            img.style.display = index === totalFrames - 1 ? "block" : "none";
         });
       },
       onLeaveBack: () => {
@@ -117,47 +115,32 @@ const HomepageVideo = ({ data }) => {
 
   return (
     <>
-    
+      <section className="section micro_hero_section p-0">
+        {/* Show Loader */}
+        {loading && <GurgaonLoader mobile={mobile} />}
 
-    <section className="section micro_hero_section p-0">
-      {/* Show Loader */}
-      {loading && (
-        <GurgaonLoader  mobile={mobile} />
-      )}
+        {!loading && (
+          <div ref={containerRef} className="frames_content">
+            {images?.map((img, index) => (
+              <img
+                key={index}
+                ref={(el) => (frameRefs.current[index] = el)}
+                src={img.src}
+                alt={`Frame ${index}`}
+                className="frame"
+                style={{ display: index === 0 ? "block" : "none" }}
+              />
+            ))}
 
-      {!loading && (
-        <div ref={containerRef} className="frames_content">
-          {images?.map((img, index) => (
-            <img
-              key={index}
-              ref={(el) => (frameRefs.current[index] = el)}
-              src={img.src}
-              alt={`Frame ${index}`}
-              className="frame"
-              style={{ display: index === 0 ? "block" : "none" }}
-            />
-          ))}
-
-
-
-<div id="scroll-wrapper">
-        <div id="scroll-wrapper-inner">
-          <div id="scroll-title">
-            Scroll Down
+            <div id="scroll-wrapper">
+              <div id="scroll-wrapper-inner">
+                <div id="scroll-title">Scroll Down</div>
+                <div class="scroll-down-dude"></div>
+              </div>
+            </div>
           </div>
-          <div class="scroll-down-dude"></div>
-        </div>
-      </div>
-
-
-        </div>
-      )}
-
-
-    </section>
-
-
-
+        )}
+      </section>
     </>
   );
 };

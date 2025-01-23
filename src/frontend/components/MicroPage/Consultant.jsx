@@ -12,8 +12,6 @@ const Consultant = ()=>{
           <CustomCard
             className="pt-0 px-0"
             title="About Architect" 
-            // desc="consultant description." 
-            // extraTxt="Exclusive entrance and exit for the residents."
           />
 
           <Row className="mx_-40">

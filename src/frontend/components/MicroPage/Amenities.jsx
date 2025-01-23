@@ -125,26 +125,17 @@ export default function Amenities({ data }) {
         <div className="heading_div mb_60 mb_sm_30">
           <h4 className="title title_style1 text-center">Amenities</h4>
         </div>
-
-        {/* <div className="sec_title text-center color style1">
-          <h4 className="title">Amenities</h4>
-        </div> */}
-
         {data.map((single, index) => (
           <div key={index} className="col-sm-12 col-md-4 col-lg-4">
             <div className="card center">
               <img
                 src={`${CONFIG.IMAGE_URL}amenities/${single.imgSrc.mobile}`}
                 alt={`mvn amenities ${index}`}
-                // src={CONFIG.IMAGE_URL + 'amenities/' + single.imgSrc.mobile}
-                // alt={`mvn amenities ${index}`}
                 className="img-fluid d-md-none"
               />
               <img
                 src={`${CONFIG.IMAGE_URL}amenities/${single.imgSrc.desktop}`}
                 alt={`mvn amenities ${index}`}
-                // src={CONFIG.IMAGE_URL + 'amenities/' + single.imgSrc.desktop}
-                // alt={`mvn amenities ${index}`}
                 className="img-fluid d-none d-md-block"
               />
               <Watermark />

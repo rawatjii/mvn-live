@@ -6,7 +6,7 @@ import Button from "../../../common/Button/Button";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import headingIconImg from "../../assets/images/icons/heading-icon-img.webp";
-import Loader from '../../../common/Loader/loader';
+import Loader from "../../../common/Loader/loader";
 gsap.registerPlugin(ScrollTrigger);
 
 const EnquireForm = ({ career, projectName }) => {
@@ -74,15 +74,14 @@ const EnquireForm = ({ career, projectName }) => {
           setFormDetails({});
           setLoading(false);
           alert("Enquiry Details Sent Successfully!");
-       
+
           const newTab = window.open("/thanks", "_blank");
 
-// Close the current tab
-if (newTab) {
-  // If the new tab opened successfully, close the current tab
-  window.close();
-}
-
+          // Close the current tab
+          if (newTab) {
+            // If the new tab opened successfully, close the current tab
+            window.close();
+          }
         })
         .catch((error) => {
           console.error("Error:", error); // Handle any errors
@@ -95,18 +94,26 @@ if (newTab) {
     <section className="section enquire_form">
       <Container>
         <div className="heading_div mb_60 mb_sm_30">
-          <img src={headingIconImg} alt="mvn heading icon" className="img-fluid title_plane1" />
+          <img
+            src={headingIconImg}
+            alt="mvn heading icon"
+            className="img-fluid title_plane1"
+          />
           <h4 ref={titleRef} className="title title_style1 text-center">
             Get In Touch With Us
           </h4>
         </div>
 
         {/* {loading  ? <Loader  /> : '' } */}
-   
+
         <Form ref={formRef} onSubmit={loading ? () => null : handleSubmit}>
           <Row>
             <Form.Group className="form-group" as={Col} xs="12">
+              <Form.Label className="visually-hidden" htmlFor="name">
+                Your Name:
+              </Form.Label>
               <Form.Control
+                id="name"
                 type="text"
                 name="name"
                 placeholder="Your Name:"
@@ -116,7 +123,11 @@ if (newTab) {
             </Form.Group>
 
             <Form.Group className="form-group" as={Col} xs="12">
+              <Form.Label className="visually-hidden" htmlFor="email">
+                Your E-Mail:
+              </Form.Label>
               <Form.Control
+                id="email"
                 type="email"
                 name="email"
                 placeholder="Your E-Mail:"
@@ -126,7 +137,11 @@ if (newTab) {
             </Form.Group>
 
             <Form.Group className="form-group" as={Col} xs="12">
+              <Form.Label className="visually-hidden" htmlFor="number">
+                Your Phone:
+              </Form.Label>
               <Form.Control
+                id="number"
                 type="number"
                 name="number"
                 placeholder="Your Phone:"
@@ -134,10 +149,15 @@ if (newTab) {
                 onChange={handleFormChange}
               />
             </Form.Group>
+
             {career && career === true && (
               <>
                 <Form.Group className="form-group" as={Col} xs="12">
+                  <Form.Label className="visually-hidden" htmlFor="designation">
+                    Designation:
+                  </Form.Label>
                   <Form.Control
+                    id="designation"
                     type="text"
                     name="designation"
                     placeholder="Designation"
@@ -145,7 +165,11 @@ if (newTab) {
                   />
                 </Form.Group>
                 <Form.Group className="form-group" as={Col} xs="12">
+                  <Form.Label className="visually-hidden" htmlFor="experience">
+                    Experience:
+                  </Form.Label>
                   <Form.Control
+                    id="experience"
                     type="text"
                     name="experience"
                     placeholder="Experience"
@@ -156,7 +180,11 @@ if (newTab) {
             )}
 
             <Form.Group className="form-group" as={Col} xs="12">
+              <Form.Label className="visually-hidden" htmlFor="message">
+                Your Message:
+              </Form.Label>
               <Form.Control
+                id="message"
                 type="text"
                 name="message"
                 placeholder="Your Message:"
@@ -164,10 +192,15 @@ if (newTab) {
                 onChange={handleFormChange}
               />
             </Form.Group>
+
             {career && career === true && (
               <>
                 <Form.Group className="form-group" as={Col} xs="12">
+                  <Form.Label className="visually-hidden" htmlFor="resume">
+                    Your Resume:
+                  </Form.Label>
                   <Form.Control
+                    id="resume"
                     type="file"
                     name="resume"
                     placeholder="Your Resume"
@@ -178,7 +211,11 @@ if (newTab) {
             )}
           </Row>
 
-          <Button type="submit" className="btn_style3" disabled={loading ? true:false}>
+          <Button
+            type="submit"
+            className="btn_style3"
+            disabled={loading ? true : false}
+          >
             {loading ? "Sending..." : "Submit"}
           </Button>
         </Form>
