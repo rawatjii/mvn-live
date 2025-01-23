@@ -56,6 +56,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const smootherRef = useRef(null);
   const sectionRefs = useRef({});
+  const {pageSections, projectName} = data;
 
   useEffect(() => {
     const handleResize = () => {
@@ -221,7 +222,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
       </Helmet>
 
-      <MicroHeader scrollToSection={scrollToSection} />
+      <MicroHeader scrollToSection={scrollToSection} sectionsMenus={pageSections} projectName={projectName} />
       <div id="smooth-wrapper">
         <div id="smooth-content">
           
