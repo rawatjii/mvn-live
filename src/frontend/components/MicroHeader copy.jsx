@@ -444,7 +444,7 @@ const MicroHeader = ({ scrollToSection }) => {
                     </li>
                     <li className="nav-link">
                       <NavLink
-                        to={`${import.meta.env.VITE_APP_URL}media-center`}
+                        to={`${import.meta.env.VITE_APP_URL}media-centre`}
                         onClick={() => toggleMenu("close")}
                       >
                         Media Centre

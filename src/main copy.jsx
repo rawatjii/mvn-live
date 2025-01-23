@@ -169,7 +169,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "media-center",
+        path: "media-centre",
         element: (
           <Suspense fallback={<InitialLoading onComplete={()=>console.log('Loading complete')} />}>
             <Layout>
