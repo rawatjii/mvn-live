@@ -1,0 +1,63 @@
+.custom_radio{cursor: pointer;}
+.radio_design .radioItem label{position: relative; padding-left: 24px; cursor: pointer; line-height: 20px; display: inline-block; color: #42526e; font-size: 15px; font-weight: 500;}
+.radio_design .radioItem label:before{content: ""; position: absolute; left: 0; top: 2px; width: 14px; height: 14px; border: 1px solid #6f85ad; border-radius: 50%; -webkit-border-radius: 50%; -moz-border-radius: 50%; background: #fff;}
+.radio_design .radioItem input:checked + label:after{content: "";
+    width: 8px;
+    height: 8px;
+    background: var(--theme_secondary_color);
+    position: absolute;
+    top: 5px;
+    left: 3px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    transition: all .2s ease;
+}
+.radio_design1 .optionItem{
+    display: inline-flex;
+    margin-right: 8px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.radio_design1 .optionItem label{
+    border-radius: 24px;
+    -webkit-border-radius: 24px;
+    -moz-border-radius: 24px;
+    outline: none;
+    margin: 0;
+    cursor: pointer;
+    border: 1px solid #dfdfdf;
+    padding: 3px 14px;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    color: #42526e;
+    display: inline-flex;
+    text-align: center;
+    vertical-align: middle;
+    align-items: center;
+}
+
+.radio_design1 .optionItem input:checked + label{
+    border: 1px solid var(--theme_primary_color);
+    color: var(--theme_secondary_color);
+    background: #eaf9ff;
+}
+
+.radio_design1.design2 .optionItem .icon{
+    height: 14px;
+    width: 14px;
+    background: url(../../../../public/backend/images/icons/plus2.svg) center center;
+    display: flex;
+    background-size: contain;
+    margin-right: 4px;
+    filter: contrast(0.2);
+}
+
+.radio_design1.design2 .optionItem input:checked + label .icon{
+    background: url(../../../../public/backend/images/icons/check_dark.svg) center center;
+    background-size: contain;
+    filter: contrast(1);
+}
+

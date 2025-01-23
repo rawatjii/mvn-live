@@ -1,0 +1,42 @@
+.logomark{
+
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  z-index: 1;
+
+  img{
+
+    max-width: 120px;
+  }
+
+  &.left{
+    left:10px;
+    right:unset;
+  }
+
+  &.sm{
+
+    img{
+      max-width: 60px;
+    }
+  }
+
+  &.style1{
+    bottom: 150px;
+  }
+
+  &.style2{
+    bottom: 50px;
+  }
+
+  &.style3{
+    bottom: 70px;
+
+  }
+
+  &.style4{
+    bottom: 100px;
+
+  }
+}

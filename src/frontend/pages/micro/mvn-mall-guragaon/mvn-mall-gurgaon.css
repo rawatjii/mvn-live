@@ -1,0 +1,23 @@
+.large-elevation{position: relative; overflow: hidden;}
+/* .large-elevation .container_elevation{padding: 0;} */
+.large-elevation .top_div{padding: 70px 15px 24px 15px;}
+.large-elevation .abs_img{position: relative; z-index: 1; right: 0; bottom: 0; display: flex; justify-content: end; width: 80%; margin-left:auto;}
+/* .large-elevation .abs_img .abs_img_in{width: 80%;} */
+.large-elevation .about{
+    position: relative;
+    z-index: 1;
+}
+
+.large-elevation .about .extra{
+    text-align: center;
+    margin: 0;
+    /* font-family: var(--tinos_font); */
+    line-height: 26px;
+    letter-spacing: 2px;
+    font-size: 14px;
+    color:var(--color3)
+}
+
+@media (min-width:768px) {
+    .large-elevation .top_div{padding: 105px 0 139px 116px;}
+}

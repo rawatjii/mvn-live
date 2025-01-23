@@ -1,0 +1,32 @@
+.form-control.custom_dropdown{
+    /* background:url('../../../assets/frontend/images/icons/chevron_down.svg') no-repeat calc(100% - 10px) center; */
+    background:#fff url('../../../public/frontend/images/icons/chevron_down.svg') no-repeat calc(100% - 10px) center;
+    padding-right:40px;
+    background-size: 22px;
+}
+
+.custom_dropdown{
+    position:relative;
+    cursor: pointer;    
+    display:flex!important;
+    align-items: center;
+}
+
+.custom_dropdown .options{
+    position:absolute;
+    display:block;
+    border-radius: 3px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    box-shadow: 0px 0px 4px rgba(72 12 168 / 16%);
+    width: 100%;
+    left: 0;
+    z-index: 1051;
+    background: #fff;
+    top: 100%;
+}
+
+.custom_dropdown .option{
+    padding: 4px 12px;
+    border-bottom: 1px solid #e8e8ff;
+}

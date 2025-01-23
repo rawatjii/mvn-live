@@ -1,0 +1,58 @@
+.custom_modal .modal-header{
+    padding: 40px 30px 20px;
+    text-align: center;
+    border:none;
+}
+
+.custom_modal .modal-header .modal-title{
+    width:100%;
+    font-size: 24px;
+}
+
+.custom_modal .modal-header .modal-title small{
+    display: block;
+    font-size: 14px;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.custom_modal .modal-header .close{
+    position: absolute;
+    right: 15px;
+    top: 5px;
+    line-height: initial;
+    font-size: 30px;
+    text-shadow: none;
+    color: #777;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.custom_modal .modal-body{
+    padding:10px 40px 40px;
+}
+
+.custom_modal .form-group{
+    margin-bottom:15px;
+}
+
+.custom_modal textarea.form-control{
+    height:70px;
+}
+
+.custom_modal .close{
+    cursor: pointer;
+}
+
+.custom_modal .submit_btn{
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+}
+
+.enquire_form  .container {
+    background-color: #161616;
+}

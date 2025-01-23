@@ -1,0 +1,18 @@
+.gurgaon_loader{
+  position:relative;
+
+  .bar{
+    /* width:500px; */
+    margin:auto;
+    margin-bottom:10px;
+  }
+
+  .loaderTxt{
+    position:absolute;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}

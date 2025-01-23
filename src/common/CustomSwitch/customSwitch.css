@@ -1,0 +1,33 @@
+.customSwitch{
+    width: 50px;
+    height: 28px;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    position: relative;
+    background: #dedede;
+    cursor: pointer;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+
+.customSwitch .slider{
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    background: #fff;
+    border-radius: 50%;
+    left: 4px;
+    bottom: 4px;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+
+input:checked + .customSwitch{
+    background:var(--theme_primary_dark_color);
+    border-color:var(--theme_primary_dark_color)
+}
+
+input:checked + .customSwitch .slider{
+    left:25px;
+}

@@ -1,0 +1,451 @@
+.admin_body{
+    background: #f8f8f8;
+}
+
+.admin_body .container-fluid{
+    padding-left:60px;
+    padding-right:60px;
+}
+
+.admin_body .content_layout{
+    padding-top:90px;
+    position:relative;
+}
+
+/* login page */
+
+.admin_body .login_page .left_col{
+    background:url('../images/login_bg.webp') no-repeat center;
+    background-size:cover;
+    min-height:100vh;
+}
+
+.admin_body .login_page .right_col{
+    padding:30px 80px;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin_body .login_page .logo{
+    max-width: 70px;
+}
+
+.admin_body .login_page .form_data{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.admin_body .login_page .title{
+    margin-bottom: 30px;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.admin_body .login_page .form-label{
+    font-weight: 500;
+    font-size: 15px;
+    color: #737373;
+    letter-spacing: 0.4px;
+}
+
+.admin_body .login_page .form-control{
+    height:50px;
+    border:none;
+    background-color: #efefef;
+    color:#4c4d4d;
+    padding:5px 20px;
+}
+
+.admin_body .login_page .form-control::placeholder{
+    font-size:15px;
+    color:#999;
+    font-weight: 400;
+}
+
+.admin_body .login_page .submit_btn{
+    height: 48px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+
+/* end of login page */
+
+.admin_body .title_col{
+    border-bottom: 1px solid #d7d7d7;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.admin_body .page_title{
+    font-size: 26px;
+    font-weight: 500;
+    margin:0;
+}
+
+.admin_body .card{
+    box-shadow: 0 1px 15px rgba(0,0,0,.04), 0 1px 6px rgba(0,0,0,.04);
+}
+
+.admin_body .card_style1{
+    padding:30px;
+    border-radius: 10px;
+    border:none;
+}
+
+.admin_body .card_style1.color_card{
+    background-color:var(--theme_primary_dark_color);
+    border-color:var(--theme_primary_dark_color);
+    color:#fff;
+}
+
+.admin_body .card_style1.card_sm .count{
+    color:var(--theme_primary_dark_color);
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.admin_body .card_style1 .icon{
+    width: 50px;
+    margin-bottom: 20px;
+}
+
+.admin_body .card_style1.color_card .icon{
+    filter:invert(1)
+}
+
+.admin_body .card_style1 .count{
+    font-size: 30px;
+}
+
+.admin_body .card_style1 .title{
+    margin:0;
+    font-size:16px;
+    color: #8f8f8f;
+}
+
+.admin_body .card_style1.color_card .title{
+    color:#fff;
+}
+
+.admin_body .card_style1.card_sm  p{
+    font-size:16px;
+    font-weight: 500;
+    color: #666;
+    margin-bottom: 6px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.admin_body .card_style1.card_sm .btn{
+    padding:0;
+    border:none;
+    outline:none;
+    width: fit-content;
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: underline;
+    color:#333;
+}
+
+.admin_body .no_record{
+    margin: 0;
+    text-align: center;
+    font-size: 16px;
+    color: #898989;
+    letter-spacing: 0.5px;
+    margin-top: 20px;
+}
+
+.admin_body table thead{
+    background:#f8f8f8;
+}
+
+.admin_body table thead th{
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding:20px;
+}
+
+.admin_body table td{
+    padding:15px;
+    font-size: 14px;
+}
+
+.admin_body table .thumb{
+    background: #f8f8f8;
+    padding: 4px;
+    display: inline-block;
+}
+
+.admin_body table .thumb img{
+    object-fit: contain;
+    height: 100px;
+    width: 100px;
+}
+
+.admin_body table .thumb.icon{
+    width:initial;
+}
+
+.admin_body table .thumb.icon img{
+    width:50px;
+    height:50px;
+}
+
+.admin_body table tbody tr:not(:last-child){
+    border-bottom: 1px solid #f3f3f3;
+}
+
+.admin_body table select.form-control{
+    cursor: pointer;
+    min-width: 130px;
+}
+
+.admin_body .table_pr {
+    display: flex;
+    align-items: center;
+}
+
+.admin_body .table_pr .thumb{
+    width: 90px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.admin_body .table_pr .content{
+    margin-left:15px;
+}
+
+.admin_body .table_pr .pr_name{
+    margin-bottom:2px;
+}
+
+.admin_body .table_pr .location{
+    color: #909090;
+}
+
+.admin_body .table_pr .price{
+    margin: 6px 0 0;
+    color:var(--theme_primary_dark_color);
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.admin_body .table_pr .price small{
+    font-weight: 400;
+    font-size: 16px;
+    margin-right: 3px;
+    color: #555;
+}
+
+.admin_body .btn.action_btn{
+    padding:0;
+}
+
+.admin_body .action_btn:not(:last-child){
+    margin-right:20px;
+}
+
+.admin_body .action_btn .icon{
+    margin:0;
+    width: 18px;
+    filter:contrast(0.5);
+}
+
+.admin_body table .view_icon{
+    width: 16px;
+    filter: contrast(0.2);
+}
+
+.admin_body .btn{
+    text-transform: uppercase;
+    font-size:13px;
+    font-weight: 500;
+    padding-left: 15px;
+    padding-right:15px;
+}
+
+.admin_body .btn.btn_sm{
+    font-size:11px;
+    padding:6px 10px
+}
+
+.admin_body .steps_area{
+    width: 300px;
+    position: sticky;
+    top: 130px;
+    /* position: relative; */
+    height: fit-content;
+}
+
+.admin_body .steps_col{
+    background: #e9e9e9;
+    border-radius: 10px;
+    padding: 40px 30px;
+}
+
+.admin_body .step{
+    position: relative;
+}
+
+.admin_body .step:not(:last-child){
+    padding-bottom: 40px;
+}
+
+.admin_body .step:not(:last-child):before{
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 4px;
+    background: #ddd;
+    left: 7px;
+}
+
+.admin_body .step.filled:before{
+    background:#b0c5cd;
+}
+
+.admin_body .step .step-trigger{
+    display:flex;
+    text-decoration: none;
+    color: #333;
+}
+
+.admin_body .steps_col .circle{
+    width: 16px;
+    height: 16px;
+    position: relative;
+    background: #ddd;
+    display: inline-block;
+    border-radius: 100%;
+    z-index: 1;
+    left: 2
+}
+
+.admin_body .steps_col .active .circle,
+.admin_body .steps_col .filled .circle{
+    width: 20px;
+    height: 20px;
+    left: 0;
+}
+
+.admin_body .steps_col .active .circle{
+    background:var(--theme_secondary_color)
+}
+
+.admin_body .steps_col .filled .circle:before{
+    height: 9px;
+    width: 5px;
+    background: transparent;
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
+    border-radius: 0;
+    transform: rotate(45deg) translate(-100%, -20%);
+    -webkit-transform: rotate(45deg) translate(-100%, -20%);
+    -ms-transform: rotate(45deg) translate(-100%, -20%);
+}
+
+.admin_body .steps_col .circle:before{
+    position: absolute;
+    content: '';
+    height: 7px;
+    width: 7px;
+    background: #fff;
+    border-radius: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+.admin_body .steps_col .content{
+    width: calc(100% - 20px);
+    padding-left: 15px;
+    line-height: initial;
+}
+
+.admin_body .steps_col .title{
+    display: block;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: initial;
+}
+
+.admin_body .steps_col .subtitle{
+    font-size: 13px;
+    color: #555;
+    font-weight: 500;
+}
+
+.admin_body .form_col{
+    width: calc(100% - 300px);
+    padding-right:0;
+    padding-left: 80px;
+}
+
+.admin_body .form_col .labelTitle{
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.admin_body .form_col .form-label{
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #555;
+    letter-spacing: 0.3px;
+}
+
+.admin_body .form_col .input-group-text{
+    padding: 0;
+    border: none;
+}
+
+.admin_body .location_filter_row{
+    display:flex;
+}
+
+.admin_body .location_filter_row .form-group{
+    flex:1;
+    align-items: end;
+}
+
+.admin_body .location_filter_row .filter_group{
+    align-items: flex-end;
+    display: flex;
+    max-width: 200px;
+}
+
+.admin_body .location_filter_row .filter_btn{
+    height:50px;
+    width:100%;
+}
+
+ .quill {
+    background:#fff;
+}
+
+.quill .ql-snow,
+.quill.ql-snow{
+    border-color:#dee2e6;
+}
+
+.quill .ql-editor{
+    height:200px;
+}
+
+.admin_modal_right .quill .ql-editor{
+    height:100px;
+}
+
+.mr-1{
+    margin-left: 1rem;
+}
+.min_height_600{
+    min-height: 600px;
+}
