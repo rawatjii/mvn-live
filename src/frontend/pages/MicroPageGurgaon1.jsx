@@ -90,7 +90,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
     };
   }, [heroLoaded]);
 
-  useEffect(() => {
+  {/*useEffect(() => {
     if (newLoadingCount >= 100 && peacockLoaded && livingRoomLoaded && partyLoaded) {
       const timer = setTimeout(() => {
         setNewLoadingCount(101);
@@ -99,11 +99,11 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
       return () => clearTimeout(timer);
     }
-  }, [newLoadingCount]);
+  }, [newLoadingCount]);*/}
 
   return (
     <>
-      {(!peacockLoaded || !livingRoomLoaded || !partyLoaded) && (
+      {/*{(!peacockLoaded || !livingRoomLoaded || !partyLoaded) && (
         <>
           <InitialLoading
             fast="false"
@@ -111,9 +111,9 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             loadingCount={newLoadingCount}
             setLoadingCount={setNewLoadingCount}
           />
-          {/* <GurgaonLoader1 /> */}
+          /~ <GurgaonLoader1 /> ~/
         </>
-      )}
+      )}*/}
 
       
       <Helmet>

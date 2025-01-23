@@ -11,6 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const MvnMall = () => {
   const imageRef = useRef(null);
+  const secRef = useRef(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
@@ -29,8 +30,8 @@ const MvnMall = () => {
         x: "-50%", // Moves the image 50% to the left
         ease: "none",
         scrollTrigger: {
-          trigger: image,
-          start: "top 20%",
+          trigger: secRef.current,
+          start: "top -150",
           pin: true,
           scrub: 1,
           end: "+=1000", // Adjust this value based on desired scroll distance
@@ -47,7 +48,7 @@ const MvnMall = () => {
 
   return (
     <>
-      <section className="section mvn_mall_section micro_design1 pb-0">
+      <section className="section mvn_mall_section micro_design1 pb-0" ref={secRef}>
         {window.innerWidth < 768 ? (
           <>
             <Container>
@@ -75,10 +76,10 @@ const MvnMall = () => {
 
               <div className="row">
                 <div className="col-sm-12 col-md-6 col-lg-6">
-                  <img src={mvnMallBannerImg1} alt="mvn mall icon" className="img-fluid"loading="lazy"  />
+                  <img src={mvnMallBannerImg1} alt="mvn mall icon" className="img-fluid" />
                 </div>
                 <div className="col-sm-12 col-md-6 col-lg-6">
-                  <img src={mvnMallBannerImg2} alt="mvn mall icon" className="img-fluid"loading="lazy"  />
+                  <img src={mvnMallBannerImg2} alt="mvn mall icon" className="img-fluid" />
                 </div>
               </div>
           </Container>

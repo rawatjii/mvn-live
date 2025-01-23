@@ -1,6 +1,7 @@
 import React, { StrictMode, Suspense, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
+import * as CONFIG from './config/config.js'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/store.js";
@@ -8,12 +9,6 @@ import store from "./store/store.js";
 import Layout from "./frontend/components/Layout.jsx";
 const Homepage = React.lazy(() => import("./frontend/pages/Homepage.jsx"));
 import MvnMall  from "./frontend/pages/MvnMallGurgaon.jsx";
-
-// const Homepage = React.lazy(() =>
-//   new Promise((resolve) =>
-//     setTimeout(() => resolve(import("./frontend/pages/Homepage.jsx")), 5000)
-//   )
-// );
 const AboutUs = React.lazy(() => import("./frontend/pages/AboutUs.jsx"));
 const MicroPage = React.lazy(() => import("./frontend/pages/Micro.jsx"));
 const AeroOneGurgaon = React.lazy(() => import("./frontend/pages/micro/mvn-aeroone-gurgaon/Index.jsx"));
@@ -25,6 +20,7 @@ import Career from "./frontend/pages/Career.jsx";
 
 const ThankYou = React.lazy(() => import("./frontend/pages/ThankYou.jsx"));
 import MediaCenter from "./frontend/pages/MediaCenter.jsx";
+
 import Blog from "./frontend/pages/Blog.jsx"; 
 import BlogDetails from "./frontend/pages/BlogDetails.jsx"; 
 
@@ -52,7 +48,6 @@ import Csr from './frontend/pages/Csr.jsx';
 import PrPolcy from './frontend/pages/PrPolcy.jsx';
 import Disclaimer from "./frontend/pages/Disclaimer.jsx";
 const MicroPageGurgaon1 = React.lazy(()=>import("./frontend/pages/MicroPageGurgaon1.jsx"));
-
 // const MicroPageGurgaon1 = React.lazy(() =>
 //   new Promise((resolve) =>
 //     setTimeout(() => resolve(import("./frontend/pages/MicroPageGurgaon1.jsx")), 100000)
@@ -63,12 +58,11 @@ import { data } from "./frontend/pages/micro/mvn-aeroone-gurgaon1/Index.jsx";
 import {dataMvnMall} from "./frontend/pages/micro/mvn-mall-guragaon/Index.jsx";
 import FrontendRoute from "./common/FrontendRoute.jsx";
 
+
+
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import "./index.css";
-
 import "./awaneesh.css";
-
 import "./savan.css";
 import './adarsh.css'
 
@@ -81,7 +75,7 @@ const router = createBrowserRouter([
       {
         path: "",
         element: (
-          <FrontendRoute>
+          <FrontendRoute loaderType="homepage">
             <Homepage />
           </FrontendRoute>
         ), 
@@ -89,7 +83,7 @@ const router = createBrowserRouter([
       {
         path: "about-us",
         element: (
-          <FrontendRoute >
+          <FrontendRoute loaderType="about-us" >
             <AboutUs />
           </FrontendRoute>
         ),
@@ -97,7 +91,7 @@ const router = createBrowserRouter([
       {
         path: "aeroone-gurgaon",
         element: (
-          <FrontendRoute >
+          <FrontendRoute  loaderType="aeroone-gurgaon">
             <MicroPageGurgaon1 data={data} />
           </FrontendRoute>
         ),
@@ -143,7 +137,7 @@ const router = createBrowserRouter([
       {
         path: "contact-us",
         element: (
-          <FrontendRoute >
+          <FrontendRoute loaderType="contact-us">
             <ContactPage />
           </FrontendRoute>
         ),
@@ -151,7 +145,7 @@ const router = createBrowserRouter([
       {
         path: "career",
         element: (
-          <FrontendRoute >
+          <FrontendRoute loaderType="career">
             <Career />
           </FrontendRoute>
         ),
@@ -165,9 +159,9 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "media-center",
+        path: "media-centre",
         element: (
-          <FrontendRoute>
+          <FrontendRoute loaderType="media-centre">
               <MediaCenter />
           </FrontendRoute>
         ),
@@ -175,7 +169,7 @@ const router = createBrowserRouter([
       {
         path: "blogs",
         element: (
-          <FrontendRoute>
+          <FrontendRoute loaderType="blogs">
             <Blog />
           </FrontendRoute>
         ),
@@ -183,7 +177,7 @@ const router = createBrowserRouter([
       {
         path: "blogs/details/:slug",
         element: (
-          <FrontendRoute>
+          <FrontendRoute loaderType="blog-detail">
             <BlogDetails />
           </FrontendRoute>
         ),
