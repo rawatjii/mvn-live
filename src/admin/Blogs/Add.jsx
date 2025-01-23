@@ -91,7 +91,7 @@ const AddBlog = ()=>{
         <>
             <div className="d-flex title_col justify-content-between align-items-center">
                 <h4 className="page_title">Add Blog</h4>
-                <button className="btn ms-auto btn_primary btn-sm" onClick={addCategoryHandler}>Add Blog</button>
+                <button type="button" className="btn ms-auto btn_primary btn-sm" onClick={addCategoryHandler}>Add Blog</button>
             </div>
 
             <div className="card mt-4 card_style1">
@@ -139,7 +139,7 @@ const AddBlog = ()=>{
                         {showEditEnableImage ? <img width="100" alt="edit image" src={showEditEnableImage}/> : null }
                     </Form.Group>
 
-                    <Button className="btn btn_primary">Add</Button>
+                    <Button type="submit" className="btn btn_primary">Add</Button>
 
                 </Form>
             </div>

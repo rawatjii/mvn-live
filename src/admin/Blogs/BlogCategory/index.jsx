@@ -165,6 +165,7 @@ const BlogCategory = () => {
       <div className="d-flex title_col justify-content-between align-items-center">
         <h4 className="page_title">Blogs Categories</h4>
         <button
+          type="button"
           className="btn ms-auto btn_primary btn-sm"
           onClick={addCategoryHandler}
         >
@@ -205,6 +206,7 @@ const BlogCategory = () => {
 
                     <td>
                       <button
+                      type="button"
                         className="btn action_btn"
                         onClick={() => editHandler(item.id)}
                       >
@@ -216,6 +218,7 @@ const BlogCategory = () => {
                       </button>
 
                       <button
+                      type="button"
                         className="btn action_btn"
                         onClick={() => deleteHandler(item.id)}
                       >

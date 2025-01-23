@@ -28,14 +28,6 @@ const CustomModal = forwardRef((props, ref)=>{
                     <Modal.Body>
                         {props.children}
                     </Modal.Body>
-                    {/* <Modal.Footer>
-                        <Button variant="secondary">
-                            Close
-                        </Button>
-                        <Button variant="primary">
-                            Save Changes
-                        </Button>
-                    </Modal.Footer> */}
                 </Modal>
             )
 

@@ -114,7 +114,7 @@ const MicroLocationMap = ({data})=>{
           <div className="col-sm-9">
             <div className="thumbnail">
 
-              <button className="location_btn"  onClick={handleShow}>
+              <button type="button" className="location_btn"  onClick={handleShow}>
                 <img src={CONFIG.IMAGE_URL + 'icons/yt_color.png'} alt="youtube icon" className="img-fluid yt_icon"  />
                 Location Video
               </button>

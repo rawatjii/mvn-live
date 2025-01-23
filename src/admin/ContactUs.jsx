@@ -136,7 +136,7 @@ const ContactUs = ()=>{
                         </Form.Group>
                     </Row>
 
-                    <Button className="btn btn_primary mt-3">Save Changes</Button>
+                    <Button type="submit" className="btn btn_primary mt-3">Save Changes</Button>
 
                 </Form>
             </div>
