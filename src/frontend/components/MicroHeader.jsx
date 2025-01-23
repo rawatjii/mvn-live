@@ -369,7 +369,7 @@ const MicroHeader = ({ scrollToSection }) => {
                                     </NavLink>
                                   </li>
                                   <li>
-                                    <NavLink to={import.meta.env.VITE_APP_URL + 'media-center'} onClick={() => toggleMenu("close")}>
+                                    <NavLink to={import.meta.env.VITE_APP_URL + 'media-centre'} onClick={() => toggleMenu("close")}>
                                     Media Centre
                                     </NavLink>
                                   </li>
@@ -396,7 +396,7 @@ const MicroHeader = ({ scrollToSection }) => {
                               </NavLink>
                             </li>
                             <li>
-                              <NavLink to={import.meta.env.VITE_APP_URL + 'media-center'} onClick={() => toggleMenu("close")}>
+                              <NavLink to={import.meta.env.VITE_APP_URL + 'media-centre'} onClick={() => toggleMenu("close")}>
                               Media Centre
                               </NavLink>
                             </li>
