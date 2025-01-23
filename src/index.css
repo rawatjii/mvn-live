@@ -2571,6 +2571,8 @@ footer {
 /* micro page */
 
 .micro_hero_section {
+  min-height:100vh;
+
   .frames_content{
     overflow: hidden;
     position:relative;
@@ -4077,6 +4079,10 @@ footer {
   }
 }
 
+.parent-box-div{
+  min-height:100vh;
+}
+
 /* start responsive */
 /* by bhupendra */
 @media(min-width:768px) {
@@ -4561,6 +4567,7 @@ footer {
 
   .micro_hero_section {
     overflow: hidden;
+    min-height:750px;
 
     .frames_content {
 
@@ -5203,6 +5210,11 @@ footer {
         max-width: 100px;
       }
     }
+  }
+
+  .parent-box-div{
+
+    min-height: 600px;
   }
 
 }
