@@ -42,8 +42,20 @@ const InitialLoading = ({ loadingCount, setLoadingCount, onComplete, fast, secon
 
     return (
         <div className="initial_loading">
-            <img src={loadingImg.desktop} alt="loader-desktop-image" className="img-fluid loading_img d-none d-md-block" />
-            <img src={loadingImg.mobile} alt="loader-desktop-image" className="img-fluid loading_img d-md-none" />
+            <div className="custom_load">
+                <div className="building">
+                    <img src={CONFIG.IMAGE_URL + 'loader_building.webp'} alt="loader building" className="img-fluid building_icon" />
+                    <div className="overlay" style={{ bottom: Math.floor(loadingCount) + '%' }}></div>
+                </div>
+
+                <img src={CONFIG.IMAGE_URL + 'loader.gif'} alt="mvn loader" className="img-fluid" />
+                {/* <video src={CONFIG.IMAGE_URL + 'loader.mp4'} muted autoPlay loop playsInline /> */}
+                
+                <div className="bar">
+                    <span className="fill" style={{ width: Math.floor(loadingCount) + '%' }}></span>
+                </div>
+                <p className="count1">{Math.floor(loadingCount)} % {test === 'true' ? 'testing' : ''}</p>
+            </div>
         </div>
     );
 };

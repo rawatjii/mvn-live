@@ -112,7 +112,7 @@ const Footer = () => {
                       </NavLink>
                     </li> */}
                     <li>
-                      <NavLink to={`${import.meta.env.VITE_APP_URL}media-center`}>Media Centre</NavLink>
+                      <NavLink to={`${import.meta.env.VITE_APP_URL}media-centre`}>Media Centre</NavLink>
                     </li>
                     <li>
                       <NavLink to={`${import.meta.env.VITE_APP_URL}blogs`}>Blogs</NavLink>
