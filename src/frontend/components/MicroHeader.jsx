@@ -12,10 +12,106 @@ import "./Header.css";
 
 import { gsap } from "gsap";
 
-const MicroHeader = ({ scrollToSection }) => {
+
+const otherPages = [
+  {
+    name:'About Us',
+    link:'about-us',
+  },
+  {
+    name:'Media Centre',
+    link:'media-centre',
+  },
+  {
+    name:'Blogs',
+    link:'blogs',
+  },
+  {
+    name:'Career',
+    link:'career',
+  },
+];
+
+const otherProjects = [
+  {
+    location:'Gurugram',
+    projects:[
+      {
+        name:'MVN Mall',
+        link:'https://mvnmall.com/',
+        status:'new Launch',
+      }
+    ]
+  },
+  {
+    location:'Bangalore',
+    projects:[
+      {
+        name:'MVN',
+        link:'https://www.mvnaeroone.com/',
+        status:'',
+      }
+    ]
+  },
+  {
+    location:'Faridabad',
+    projects:[
+      {
+        name:'MVN Athens',
+        link:'https://www.mvn.in/athens-faridabad/',
+        status:'',
+      }
+    ]
+  },
+  {
+    location:'Sohna',
+    projects:[
+      {
+        name:'MVN Athens',
+        link:'https://www.mvn.in/athens-gurugram/',
+        status:'',
+      },
+      {
+        name:'MVN Athens PH-2',
+        link:'https://www.mvninfrastructure.com/athens-gurugram-phase2/',
+        status:'',
+      },
+    ]
+  },
+];
+
+const otherDetails = {
+  contact: '+91 79960 00196',
+  email: 'info@mvn.in',
+  address: 'MVN AERO ONE, C/o Awfis, 7th Floor, Gate No. 3 &4 Ambience Mall, Ambience Island, NH-8, DLF Phase-3, Sector-24, Gurugram',
+}
+
+const socialMedia = [
+  {
+    imgUrl:'social/fb.png',
+    alt:'mvn-facebook-icon',
+    link:'https://www.facebook.com/officialmvninfra/',
+  },
+  {
+    imgUrl:'social/instagram.png',
+    alt:'mvn-instagram-icon',
+    link:'https://www.instagram.com/mvn_infrastructure/',
+  },
+  {
+    imgUrl:'social/linkedin.png',
+    alt:'mvn-linkedin-icon',
+    link:'https://www.linkedin.com/company/mvn-infrastructure/',
+  },
+  {
+    imgUrl:'social/youtube.png',
+    alt:'mvn-youtube-icon',
+    link:'https://www.youtube.com/@MVNInfrastructures',
+  },
+];
+
+const MicroHeader = ({ scrollToSection, sectionsMenus, projectName }) => {
   const [scrolled, setScrolled] = useState(false);
   const [isMicro, setIsMicro] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
 
   const channelUrl = "https://www.youtube.com/@MVNInfrastructures?sub_confirmation=1";
 
@@ -31,20 +127,6 @@ const MicroHeader = ({ scrollToSection }) => {
   const { pathname } = useLocation();
 
   let navbarScroll = localStorage.getItem('navbar_scroll_height');
-
-  useEffect(()=>{
-    const updateIsMobile = () => {
-      setIsMobile(window.innerWidth <= 767);
-    };
-
-    updateIsMobile();
-    window.addEventListener("resize", updateIsMobile); // Update on resize
-
-    return () => {
-      window.removeEventListener("resize", updateIsMobile);
-    };
-    
-  }, [])
 
   useEffect(() => {
     if (pathname.includes("aeroone-gurgaon") || pathname.includes("mvn-mall")) {
@@ -67,7 +149,7 @@ const MicroHeader = ({ scrollToSection }) => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [isMobile, navbarScroll]);
+  }, [navbarScroll]);
 
   useEffect(() => {
     // logo animation
@@ -112,6 +194,7 @@ const MicroHeader = ({ scrollToSection }) => {
         ref={headerRef}
         expand="false"
         className={`${scrolled ? "fixed" : ""} ${isMicro ? "micro_nav" : null}`}
+        role="navbar"
       >
         <Container>
           <Navbar.Brand ref={logoRef} className="logo">
@@ -132,7 +215,7 @@ const MicroHeader = ({ scrollToSection }) => {
           </Navbar.Brand>
 
           <div className="right">
-            <a href="tel:+917996000196" className="call_btn" ref={callBtnRef}>
+            <a href={`tel:${otherDetails.contact}`} className="call_btn" ref={callBtnRef}>
               <img src={CONFIG.IMAGE_URL + 'icons/call.png'} alt="mvn call icon" />
             </a>
             <Navbar.Toggle
@@ -169,145 +252,25 @@ const MicroHeader = ({ scrollToSection }) => {
                       <div className="bottom-area">
                         <div className="inner-bottom-area">
                           <div className="microsite">
-                        
-
-                          <ul>
-                          <li>
+                            <ul>
+                              <li>
                                 <NavLink to={import.meta.env.VITE_APP_URL} onClick={() => toggleMenu("close")}>
                                   Home
                                 </NavLink>
                               </li>
-                              </ul>
-                            <h4>MVN AeroOne, Gurugram</h4>
+                            </ul>
+                            <h4>{projectName}</h4>
                             <ul>
-                              <li>
-                                <a
-                                  
-                                  className="new-launch"
-                                  onClick={() => {scrollToSection('microOverview');toggleMenu("close");}}
-                                >
-                                  Overview
-                                </a>
-                              </li>
-
-                              <li>
-                                <a
-                                  className="new-launch"
-                                  onClick={() => {scrollToSection("Walkthrough");toggleMenu("close");}}
-                                >
-                                  Walkthrough
-                                </a>
-                              </li>
-
-                              <li>
-                                <a
-                                  className="new-launch"
-                                  onClick={() => {scrollToSection("downloadBrochure");toggleMenu("close");}}
-                                >
-                                  MVN ID Brochure
-                                </a>
-                              </li>
-
-                              <li>
-                                <a
-                                  className="new-launch"
-                                  onClick={() => {scrollToSection("LIVINGROOM");toggleMenu("close");}}
-                                >
-                                The Living Room
-                                </a>
-                              </li>
-
-                              <li>
-                                <a
-                                  className="new-launch"
-                                  onClick={() => {scrollToSection("MicroLandscape");toggleMenu("close");}}
-                                >
-                                  Landscape
-                                </a>
-                              </li>
-
-                              <li>
-                                <a
-                                  className="new-launch"
-                                  onClick={() => {scrollToSection("MicroElevation");toggleMenu("close");}}
-                                >
-                                  Elevation
-                                </a>
-                              </li>
-
-                              <li>
-                                <a
-                                  className="new-launch"
-                                  onClick={() => {scrollToSection("MicroApartment");toggleMenu("close");}}
-                                >
-                                  Apartment
-                                </a>
-                              </li>
-
-                              <li>
-                                <a
-                                  className="new-launch"
-                                  onClick={() => {scrollToSection("constructionTechnology");toggleMenu("close");}}
-                                >
-                                  Construction Technology
-                                </a>
-                              </li>
-
-
-                              <li>
-                                <a
-                                  className="new-launch"
-                                  onClick={() => {scrollToSection("MicroAmenities");toggleMenu("close");}}
-                                >
-                                  Amenities
-                                </a>
-                              </li>
-
-                              <li>
-                                <a
-                                  className="new-launch"
-                                  onClick={() => {scrollToSection("MicroTypology");toggleMenu("close");}}
-                                >
-                                  Typology
-                               </a>
-                              </li>
-
-                              <li>
-                                <a
-                                  className="new-launch"
-                                  onClick={() => {scrollToSection("MicroFloorPlan");toggleMenu("close");}}
-                                >
-                                  Floor Plans
-                                </a>
-                              </li>
-
-                              <li>
-                                <a
-                                  className="new-launch"
-                                  onClick={() => {scrollToSection("MicroLocationMap");toggleMenu("close");}}
-                                >
-                                  Location Map
-                                </a>
-                              </li>
-
-                              <li>
-                                <a
-                                 className="new-launch"
-                                 onClick={() => {scrollToSection("MVNMALL");toggleMenu("close");}}
-                               >
-                                MVN Mall
-                               </a>
-                              </li>
-
-                              <li>
-                                <a
-                                  className="new-launch"
-                                  onClick={() => {scrollToSection("NoPolutionZone");toggleMenu("close");}}
-                                >
-                                  Connections MVN Mall
-                                </a>
-                              </li>
-
+                              {sectionsMenus && sectionsMenus.map(section =>(
+                                <li>
+                                  <NavLink
+                                    className="new-launch"
+                                    onClick={() => {scrollToSection(section.link);toggleMenu("close");}}
+                                  >
+                                    {section.page}
+                                  </NavLink>
+                                </li>
+                              ))}
 
                               <li>
                                 <NavLink to={import.meta.env.VITE_APP_URL + 'contact-us'} onClick={() => toggleMenu("close")}>
@@ -317,147 +280,64 @@ const MicroHeader = ({ scrollToSection }) => {
 
                             </ul>
                           </div>
+
                           <div className="left">
-                
 
-                          <h4 className="pt-0">Gurugram</h4>
-                          <ul>
-                            <li className="new_launch">
-                              <NavLink to="https://mvnmall.com/" target="_blank" onClick={() => toggleMenu("close")}>
-                                MVN Mall
-                              </NavLink>
-                                <span>New Launch</span>
-                            </li>
-                          </ul>
-                          <h4>Bangalore</h4>
-                          <ul>
-                            <li>
-                              <NavLink to="https://www.mvnaeroone.com/" target="_blank" onClick={() => toggleMenu("close")}>MVN</NavLink>
-                            </li>
-                          </ul>
-
-                          <h4>Faridabad</h4>
-                          <ul>
-                            <li>
-                              <NavLink to="https://www.mvn.in/athens-faridabad/" target="_blank" onClick={() => toggleMenu("close")}>MVN Athens</NavLink>
-                            </li>
-                          </ul>
-
-
-                          <h4>Sohna</h4>
-                          <ul>
-                            <li>
-                              <NavLink to="https://www.mvn.in/athens-gurugram/" target="_blank" onClick={() => toggleMenu("close")}>
-                                MVN Athens
-                              </NavLink>
-                            </li>
-                            <li>
-                              <NavLink to="https://www.mvninfrastructure.com/athens-gurugram-phase2/" target="_blank" onClick={() => toggleMenu("close")}>MVN Athens PH-2</NavLink>
-                            </li>
-                          </ul>
+                            {otherProjects && otherProjects.map((singleProject, index) => (
+                              <>
+                                <h4 className={index === 0 && 'pt-0'}>{singleProject.location}</h4>
+                                <ul>
+                                  {singleProject.projects && singleProject.projects.map(project=>(
+                                    <li className={project.status && 'new_launch'}>
+                                      <NavLink to={project.link} target="_blank" onClick={() => toggleMenu("close")}>
+                                        {project.name}
+                                      </NavLink>
+                                      {project.status && <span>{project.status}</span>}
+                                    </li>
+                                  ))}
+                                  
+                                </ul>
+                              </>
+                            ))}
 
                           </div>
 
-                          <div className="right top">
+                          <div className={`right ${window.innerWidth > 768 ? 'top' : 'bottom'}`}>
                             <ul>
-                             
-                              {window.innerWidth > 768 ? (
-                                <>
-                                  <li>
-                                    <NavLink to={import.meta.env.VITE_APP_URL + 'about-us'} onClick={() => toggleMenu("close")}>
-                                      About Us
-                                    </NavLink>
-                                  </li>
-                                  <li>
-                                    <NavLink to={import.meta.env.VITE_APP_URL + 'media-centre'} onClick={() => toggleMenu("close")}>
-                                    Media Centre
-                                    </NavLink>
-                                  </li>
-                                  <li>
-                                    <NavLink to={import.meta.env.VITE_APP_URL + 'blogs'} onClick={() => toggleMenu("close")}>
-                                    Blogs
-                                    </NavLink>
-                                  </li>
-                                  <li>
-                                    <NavLink to={import.meta.env.VITE_APP_URL + 'career'} onClick={() => toggleMenu("close")}>
-                                    Career
-                                    </NavLink>
-                                  </li>
-                                </>
-                              ) : null}
+                              {otherPages && otherPages.map(singleLink=>(
+                                <li>
+                                  <NavLink to={import.meta.env.VITE_APP_URL + singleLink.link} onClick={() => toggleMenu("close")}>
+                                    {singleLink.name}
+                                  </NavLink>
+                                </li>
+                              ))}
                             </ul>
                           </div>
 
-                          <div className="right bottom d-md-none">
-                            <ul>
-                            <li>
-                              <NavLink to={import.meta.env.VITE_APP_URL + 'about-us'} onClick={() => toggleMenu("close")}>
-                                About Us
-                              </NavLink>
-                            </li>
-                            <li>
-                              <NavLink to={import.meta.env.VITE_APP_URL + 'media-centre'} onClick={() => toggleMenu("close")}>
-                              Media Centre
-                              </NavLink>
-                            </li>
-                            <li>
-                              <NavLink to={import.meta.env.VITE_APP_URL + 'blogs'} onClick={() => toggleMenu("close")}>
-                              Blogs
-                              </NavLink>
-                            </li>
-                            <li>
-                              <NavLink to={import.meta.env.VITE_APP_URL + 'career'} onClick={() => toggleMenu("close")}>
-                              Career
-                              </NavLink>
-                            </li>
-                            </ul>
-                          </div>
                         </div>
                       </div>
 
                       <div className="top-area">
                         
                         <div className="inner-logo d-none d-md-block">
-                          <p><span>Office:</span> MVN AERO ONE, C/o Awfis, 7th Floor, Gate No. 3 &4 Ambience Mall, Ambience Island, NH-8, DLF Phase-3, Sector-24, Gurugram</p>
-                          <p><span>Talk:</span> +91 79960 00196</p>
+                          <p><span>Office:</span> {otherDetails.address}</p>
+                          <p><span>Talk:</span> {otherDetails.contact}</p>
                         </div>
 
                         <ul className="sub_menu">
                             <li>
                               <label htmlFor="school" className=" d-block w-100">Social Media</label>
                               <ul className="social_links ">
-                                <li>
-                                  <Link to="https://www.facebook.com/officialmvninfra/" target="_blank" onClick={() => toggleMenu("close")}>
-                                    <img
-                                      src={`${CONFIG.IMAGE_URL + "social/fb.png"}`}
-                                      alt="mvn-facebook-icon"
-                                    />
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="https://www.instagram.com/mvn_infrastructure/" target="_blank" onClick={() => toggleMenu("close")}>
-                                    <img
-                                      src={`${CONFIG.IMAGE_URL + "social/instagram.png"}`}
-                                      alt="mvn-instagram-icon"
-                                    />
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="https://www.linkedin.com/company/mvn-infrastructure/" target="_blank" onClick={() => toggleMenu("close")}>
-                                    <img
-                                      src={`${CONFIG.IMAGE_URL + "social/linkedin.png"}`}
-                                      alt="mvn-linkedin-icon"
-                                    />
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link to="https://www.youtube.com/@MVNInfrastructures" target="_blank" onClick={() => toggleMenu("close")}>
-                                    <img
-                                      src={`${CONFIG.IMAGE_URL + "social/youtube.png"}`}
-                                      alt="mvn-youtube-icon"
-                                    />
-                                  </Link>
-                                </li>
+                                {socialMedia && socialMedia.map(socialIcon => (
+                                  <li>
+                                    <Link to={socialIcon.link} target="_blank" onClick={() => toggleMenu("close")}>
+                                      <img
+                                        src={`${CONFIG.IMAGE_URL + socialIcon.imgUrl}`}
+                                        alt={socialIcon.alt}
+                                      />
+                                    </Link>
+                                  </li>
+                                ))}
                               </ul>
                             </li>
                             <li>
@@ -470,15 +350,16 @@ const MicroHeader = ({ scrollToSection }) => {
                   </div>
                 </div>
 
-
                 <div className="closebtn-area d-none d-md-grid" onClick={() => toggleMenu("close")}>
                   <a 
-    href="#"
-    className="closebtn"
-    onClick={(e) => {
-      e.stopPropagation(); 
-      toggleMenu("close");
-    }}> <img src={CloseBtnimg} alt="mvn close icon"  className="img-fluid close-img"/>  Close</a>
+                    href="#"
+                    className="closebtn"
+                    onClick={(e) => {
+                      e.stopPropagation(); 
+                      toggleMenu("close");
+                    }}>
+                      <img src={CloseBtnimg} alt="mvn close icon"  className="img-fluid close-img"/>  Close
+                  </a>
                 </div>
               </div>
             </div>
