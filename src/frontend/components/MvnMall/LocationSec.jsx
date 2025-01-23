@@ -29,8 +29,8 @@ const LocationSec = () => {
           </div>
           <div className="col-md-6">
           <ul className="location_points">
-            <span className="left_road"></span>
-            <span className="top_road"></span>
+            <li className="left_road"></li>
+            <li className="top_road"></li>
             {thumbnails.map((item,index)=>(
               <li key={index}>
                 <h3 className="distance">1 Km</h3>

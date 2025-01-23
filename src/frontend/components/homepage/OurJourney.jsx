@@ -134,13 +134,13 @@ const OurJourney = () => {
         </div>
 
         <ul ref={journeyRef} className="journey_content">
-          <div className="plane">
+          <li className="plane">
             <img
               src={diamondIcon}
               alt="mvn plan icon"
               className="img-fluid diamond_icon"
             />
-          </div>
+          </li>
           {journeyData?.map((item, index) => (
             <li
               className={"single " + (index % 2 !== 0 ? "right" : "")}
