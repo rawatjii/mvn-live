@@ -1,0 +1,11 @@
+.peacock_loader{
+
+  min-height:100vh;
+}
+
+@media(max-width:767px){
+  .peacock_loader{
+
+    min-height:150vh;
+  }
+}

@@ -1,0 +1,16 @@
+.hero_loading{
+
+    .hero_img{
+
+        min-height: 1000px;
+    }
+
+    .hero_title{
+        height:102px;
+    }
+
+    .hero_desc{
+        height:100px;
+    }
+    
+}

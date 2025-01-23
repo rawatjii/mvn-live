@@ -1,0 +1,17 @@
+# Enable mod_rewrite
+RewriteEngine On
+
+# Ensure requests are directed correctly for the React app
+RewriteBase /
+
+# Exclude existing files and directories
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Redirect all other requests to index.html (React app entry point)
+RewriteCond %{REQUEST_URI} !^/api/api
+RewriteRule ^ index.html [L]
+
+# Specific rule for "admin/" routes
+RewriteRule ^admin/?$ index.html [L]

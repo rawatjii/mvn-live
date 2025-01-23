@@ -1,0 +1,13 @@
+.journey_loading{
+
+    .title{
+        height:50px;
+    }
+
+    .journey_content{
+
+        li{
+            height:50px;
+        }
+    }
+}

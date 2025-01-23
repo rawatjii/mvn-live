@@ -1,0 +1,25 @@
+.gurgaon_loader{
+  position:relative;
+
+  .micro_thumbnail{
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .bar{
+    /* width:500px; */
+    margin:auto;
+    margin-bottom:10px;
+  }
+
+  .loaderTxt{
+    position:absolute;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color:var(--theme_primary_color)
+  }
+}

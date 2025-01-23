@@ -1,0 +1,15 @@
+.content_layout .layout_content{
+    padding: 30px 30px;
+    transition: all .3s;
+}
+
+.content_layout.test .layout_content{
+    padding-left: 150px;
+    min-height:calc(100vh - 90px);
+}
+
+
+.content_layout.test1 .layout_content{
+    padding-left: calc(150px + 230px);
+}
+
