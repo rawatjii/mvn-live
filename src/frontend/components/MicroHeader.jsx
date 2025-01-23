@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import * as CONFIG from "root/config/config";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import subscribeBtn from '../assets/images/icons/subscribe_btn.webp';
 import CloseBtnimg from '../assets/images/icons/close.png';
@@ -261,8 +261,8 @@ const MicroHeader = ({ scrollToSection, sectionsMenus, projectName }) => {
                             </ul>
                             <h4>{projectName}</h4>
                             <ul>
-                              {sectionsMenus && sectionsMenus.map(section =>(
-                                <li>
+                              {sectionsMenus && sectionsMenus.map((section, index) =>(
+                                <li key={index}>
                                   <NavLink
                                     className="new-launch"
                                     onClick={() => {scrollToSection(section.link);toggleMenu("close");}}
@@ -284,11 +284,11 @@ const MicroHeader = ({ scrollToSection, sectionsMenus, projectName }) => {
                           <div className="left">
 
                             {otherProjects && otherProjects.map((singleProject, index) => (
-                              <>
+                              <React.Fragment key={index}>
                                 <h4 className={index === 0 && 'pt-0'}>{singleProject.location}</h4>
                                 <ul>
-                                  {singleProject.projects && singleProject.projects.map(project=>(
-                                    <li className={project.status && 'new_launch'}>
+                                  {singleProject.projects && singleProject.projects.map((project, index)=>(
+                                    <li className={project.status && 'new_launch'} key={project.name+index}>
                                       <NavLink to={project.link} target="_blank" onClick={() => toggleMenu("close")}>
                                         {project.name}
                                       </NavLink>
@@ -297,15 +297,15 @@ const MicroHeader = ({ scrollToSection, sectionsMenus, projectName }) => {
                                   ))}
                                   
                                 </ul>
-                              </>
+                              </React.Fragment>
                             ))}
 
                           </div>
 
                           <div className={`right ${window.innerWidth > 768 ? 'top' : 'bottom'}`}>
                             <ul>
-                              {otherPages && otherPages.map(singleLink=>(
-                                <li>
+                              {otherPages && otherPages.map((singleLink, index)=>(
+                                <li key={index}>
                                   <NavLink to={import.meta.env.VITE_APP_URL + singleLink.link} onClick={() => toggleMenu("close")}>
                                     {singleLink.name}
                                   </NavLink>
@@ -328,8 +328,8 @@ const MicroHeader = ({ scrollToSection, sectionsMenus, projectName }) => {
                             <li>
                               <label htmlFor="school" className=" d-block w-100">Social Media</label>
                               <ul className="social_links ">
-                                {socialMedia && socialMedia.map(socialIcon => (
-                                  <li>
+                                {socialMedia && socialMedia.map((socialIcon, index) => (
+                                  <li key={index}>
                                     <Link to={socialIcon.link} target="_blank" onClick={() => toggleMenu("close")}>
                                       <img
                                         src={`${CONFIG.IMAGE_URL + socialIcon.imgUrl}`}
