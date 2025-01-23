@@ -89,7 +89,9 @@ const LocationSearch = () => {
           }}
           onPlaceChanged={handlePlaceSelect}
         >
+          <label htmlFor="location-input" className="visually-hidden">Enter a location</label>
           <input
+          id='location-input'
             type="text"
             placeholder="Enter a location"
             style={{

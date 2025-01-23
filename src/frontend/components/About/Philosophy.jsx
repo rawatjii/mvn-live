@@ -89,7 +89,7 @@ const Philosophy = () => {
           <div className="flex-li-row-1">
           <li>
             <h4 ref={(el) => miniTitleRefs.current[0] = el} className="title">
-              <img src={planeIcon} alt="mvn-plan-icn" className="img-fluid icon" />
+              <img src={planeIcon} alt="mvn-plan-icon" className="img-fluid icon" />
               Our Vision
             </h4>
             <p ref={(el) => desRefs.current[0] = el}>
@@ -99,7 +99,7 @@ const Philosophy = () => {
 
           <li>
             <h4 ref={(el) => miniTitleRefs.current[1] = el} className="title">
-              <img src={planeIcon} alt="mvn-plan-icn" className="img-fluid icon" />
+              <img src={planeIcon} alt="mvn-plan-icon" className="img-fluid icon" />
               Our Mission
             </h4>
             <p ref={(el) => desRefs.current[1] = el}>
@@ -110,25 +110,25 @@ const Philosophy = () => {
           <div className="flex-li-row-2">
           <li>
             <h4 ref={(el) => miniTitleRefs.current[2] = el} className="title">
-              <img src={planeIcon} alt="mvn-plan-icn" className="img-fluid icon" />
+              <img src={planeIcon} alt="mvn-plan-icon" className="img-fluid icon" />
               Our Values
             </h4>
             <ul ref={(el) => desRefs.current[2] = el} className="our-values-ul-icon">
               <li>
-                <img src={ourValueIcon1} alt="mvn values icon 1" className="img-fluid values-ul-icon" />                
+                <img src={ourValueIcon1} alt="mvn Enrich lives" className="img-fluid values-ul-icon" />                
                 Enrich lives
                 </li>
               <li>
-              <img src={ourValueIcon2} alt="mvn values icon 2" className="img-fluid values-ul-icon" />   
+              <img src={ourValueIcon2} alt="mvn Empower ambitions" className="img-fluid values-ul-icon" />   
                 Empower ambitions
                 </li>
               <li>
-              <img src={ourValueIcon3} alt="mvn values icon 3" className="img-fluid values-ul-icon" />   
+              <img src={ourValueIcon3} alt="mvn Drive innovation" className="img-fluid values-ul-icon" />   
                 Drive innovation
                 
                 </li>
               <li>
-              <img src={ourValueIcon4} alt="mvn values icon 4" className="img-fluid values-ul-icon" />   
+              <img src={ourValueIcon4} alt="mvn Inspire quality" className="img-fluid values-ul-icon" />   
                 Inspire quality
                 </li>
             </ul>

@@ -51,21 +51,6 @@ function Career() {
     useEffect(() => {
         setNewLoadingCount(Number(localStorage.getItem('count')));
     }, [localStorage.getItem('count')]);
-
-    // useEffect(() => {
-    //     if (newLoadingCount === 100) {
-    //       const timer = setTimeout(() => {
-    //         setNewLoadingCount(101);
-    //       }, 500); // 1 seconds delay before removing InitialLoading
-    
-    //       return () => clearTimeout(timer);
-    //     }
-    //   }, [newLoadingCount]);
-
-    // if (newLoadingCount <= 100) {
-    //     return <InitialLoading loadingCount={newLoadingCount} setLoadingCount={setNewLoadingCount} fast="true" second="true" />;
-    // }
-    
     return (
         <Layout>
             <div className='career_page inner_section'>
@@ -85,42 +70,12 @@ function Career() {
                                     Talent Management
                                     </h4>
                                 </div>
-
-                                {/* <SecTitle className="text-center color style1 mb_30">
-                                    <img src={headingIconImg} alt="mvn career image" className="img-fluid headpage-icon" />
-                                    <h4 ref={titleRef} className="title">
-                                        Talent Management
-                                    </h4>
-                                </SecTitle> */}
                                 <p className='des_style1 text-center' ref={(el) => (desRefs.current[0] = el)}>
                                 Our Human Resources team is dedicated to attracting, nurturing, and retaining top talent, ensuring the right individuals are in the right roles to drive the company forward. We prioritize skills, passion, and commitment to achieving our shared goals.
                                 </p>
 
                             </Container>
                         </div>
-
-
-
-                        {/* <div className="container py-5">
-                <div className="row align-items-center justify-content-center row_gap">
-                    <div className="col-sm-8">
-                        <div className='job_description_img'>
-                            <img src={careerIMG} className='img-fluid' alt="mvn career image" />
-                        </div>
-                    </div>
-                    <div className="col-sm-8">
-                        <div className="job_description_content">
-                        <SecTitle className="color style1 mb-3  text-center">
-                            <h4 className="title  mb-4">Why Work With Us?</h4>
-                            <p className='extra mb-0'>Our purpose is to ‘Enhance quality of life through the spaces we create’. The well-being of all our stakeholders, is thus at the core of our operating philosophy.</p>
-                        </SecTitle>
-                            <p className='text-center'>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            */}
         </Suspense>
             </div>
 
@@ -134,7 +89,7 @@ function Career() {
                             <div className="inner-sec">
                                 <div className="half">
                                     <div className="img-in-left">
-                                        <img src={CultureImg} width="100%;" />
+                                        <img src={CultureImg} width="100%;" alt='Culture image'/>
                                     </div>
                                 </div>
                                 <div className="half">
@@ -146,9 +101,6 @@ function Career() {
                                         </div>
 
                                     </div>
-                                    {/* <div className="arrow-g">
-                                        <img src={leftArrow} />
-                                    </div> */}
                                 </div>
                             </div>
                         </div>
@@ -156,7 +108,7 @@ function Career() {
                         <div className="grid-left-right">
                             <div className="img-left-right">
                                 <div className="item ">
-                                    <img className="blank-img" src={BlankIMG} width="100%" />
+                                    <img className="blank-img" src={BlankIMG} alt='Blank image' width="100%" />
                                     <div className="content-right-img">
                                         <div className="gd-inner h-100 d-grid align-items-center">
                                             <div>
@@ -168,7 +120,7 @@ function Career() {
                                     </div>
                                     <div className="overlay right-overlay">
                                         <div className="img-hov">
-                                            <img src={peopleDevelopmentImg} width="100%" />
+                                            <img src={peopleDevelopmentImg} alt='Development image' width="100%" />
                                         </div>
                                     </div>
                                 </div>
@@ -182,7 +134,7 @@ function Career() {
                         <div className="grid-left-right">
                             <div className="img-left-right">
                                 <div className="item ">
-                                    <img className="blank-img" src={BlankIMG} width="100%" />
+                                    <img className="blank-img" src={BlankIMG} alt='Blank image' width="100%" />
                                     <div className="content-right-img">
                                         <div className="gd-inner h-100 d-grid align-items-center">
                                             <div>
@@ -194,7 +146,7 @@ function Career() {
                                     </div>
                                     <div className="overlay right-overlay">
                                         <div className="img-hov">
-                                            <img src={RewardsImg} width="100%" />
+                                            <img src={RewardsImg} alt='Rewards image' width="100%" />
                                         </div>
                                     </div>
                                 </div>
@@ -206,7 +158,7 @@ function Career() {
                             <div className="inner-sec">
                                 <div className="half">
                                     <div className="img-in-left">
-                                        <img src={ligemvnImg} width="100%;" />
+                                        <img src={ligemvnImg} alt='life at mvn image' width="100%;" />
                                     </div>
                                 </div>
                                 <div className="half">
@@ -216,9 +168,6 @@ function Career() {
                                             <p className='des_style1'>Life at MVN is all about balance, collaboration, and growth. We offer a supportive and vibrant workplace where employees thrive, enjoy meaningful work, and are encouraged to achieve both professional success and personal well-being.</p>
                                         </div>
                                     </div>
-                                    {/* <div className="arrow-g">
-                                        <img src={leftArrow} />
-                                    </div> */}
                                 </div>
                             </div>
                         </div>
@@ -244,31 +193,9 @@ function Career() {
                                 </div>
                             </div>
                         </div>
-                        {/* <div className="right">
-                            
-                        </div> */}
                     </div>
                 </div>
             </section>
-
-            {/* <div className="JobForm">
-                <div className='container-fluid'>
-                    <div className="row align-items-center">
-                        <div className="col-sm-6">
-                            <div className="job_description">
-                                <SecTitle className="text-center color mb_30">
-                                    <h4 className="title  mb-4">Apply Here for Jobs</h4>
-                                    <p>Join MVN Group for exciting career opportunities. We value excellence, innovation, and dedication, and we provide a dynamic, inclusive work environment for your growth. Apply now to make a meaningful impact and contribute to a future defined by quality and innovation.</p>
-                                </SecTitle>
-
-                            </div>
-                        </div>
-                        <div className="col-sm-6">
-                            <EnquireForm career={true} />
-                        </div>
-                    </div>
-                </div>
-            </div> */}
         </div>
         </div>
         </Layout>

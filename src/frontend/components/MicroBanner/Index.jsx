@@ -13,24 +13,6 @@ const MicroBanner = ({bg, data})=>{
   const linksRef = useRef();
 
   useEffect(()=>{
-    // title animation
-    // const titleTimeline = gsap.timeline({
-    //   scrollTrigger:{
-    //     trigger: titleRef.current,
-    //     start: "top 95%",
-    //   }
-    // })
-
-    // Add animation to the timeline with a delay
-
-    // titleTimeline.from(titleRef.current, {
-    //   y: 20,    
-    //   opacity: 0, 
-    //   duration: 1, 
-    // }, "+=0.4")
-
-
-
     // breadcrumb animation
     const breadcrumbTimeline = gsap.timeline({
       scrollTrigger:{

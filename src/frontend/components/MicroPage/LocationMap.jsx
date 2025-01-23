@@ -20,36 +20,6 @@ import Button from "../../../common/Button/Button";
 import CustomCard from "../Card";
 
 gsap.registerPlugin(ScrollTrigger);
-
-
-
-// const locationData = [
-//   {
-//     distance:'15 Min',
-//     title:'Kempegowda Intl. Airport',
-//   },
-//   {
-//     distance:'12 Min',
-//     title:'Devanahalli Trumpet Flyover',
-//   },
-//   {
-//     distance:'06 Min',
-//     title:'Mini Vidhana Soudha',
-//   },
-//   {
-//     distance:'12 Min',
-//     title:'K.I.Airport Halt',
-//   },
-//   {
-//     distance:'13 Min',
-//     title:'Proposed Metro Line',
-//   },
-//   {
-//     distance:'05 Min',
-//     title:'Sports Village',
-//   },
-// ]
-
 const MicroLocationMap = ({data})=>{
   const titleRef = useRef();
   const typoRefs = useRef([]);
@@ -136,10 +106,6 @@ const MicroLocationMap = ({data})=>{
         <div className="heading_div mb_60 mb_sm_30">
           <h4 className="title title_style1 text-center">Location Map</h4>
         </div>
-
-        {/* <SecTitle className="text-center color style1">
-          <h4 ref={titleRef} className="title">Location Map</h4>
-        </SecTitle> */}
       </Container>
 
       <div className="locationMapContent">

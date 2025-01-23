@@ -41,7 +41,7 @@ function ImageSlider() {
                         {
                             images.map((image, index) => (
                                 <SwiperSlide key={index}>
-                                    <img src={image} className='img-fluid' />
+                                    <img src={image} className='img-fluid'  alt='slider image'/>
                                 </SwiperSlide>
                             ))
                         }
@@ -63,7 +63,7 @@ function ImageSlider() {
                         {
                             images.map((image, index) => (
                                 <SwiperSlide key={index}>
-                                    <img src={image} className='img-fluid w-100' />
+                                    <img src={image} className='img-fluid w-100' alt='slider image'/>
                                 </SwiperSlide>
                             ))
                         }

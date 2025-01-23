@@ -3,11 +3,6 @@ import { Container } from "react-bootstrap";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import * as CONFIG from "../../../config/config";
-
-// import renderImg1 from '../../assets/images/render-images/1.png'
-// import renderImg2 from '../../assets/images/render-images/2.png'
-// import renderImg3 from '../../assets/images/render-images/3.png'
-
 gsap.registerPlugin(ScrollTrigger);
 
 const Renders = () => {

@@ -128,10 +128,6 @@ function MediaCenter() {
         src: mediaGalleryImg4,
         alt: "Image 4",
       },
-      // {
-      //   src: mediaGalleryImg5,
-      //   alt: "Image 5",
-      // },
       {
         src: mediaGalleryImg1,
         alt: "Image 4",
@@ -148,10 +144,6 @@ function MediaCenter() {
         src: mediaGalleryImg4,
         alt: "Image 7",
       },
-      // {
-      //   src: mediaGalleryImg5,
-      //   alt: "Image 6",
-      // },
     ],
   };
 
@@ -230,30 +222,11 @@ function MediaCenter() {
         "MVN Infrastructure Celebrates Navratri with a Joyous Mata Ki Chowki",
       EventDate: "10 October, 2024",
     },
-    // {
-    //     thumbnail: pressReleaseImg4,
-    //     pdf: pressReleasePdf4,
-    //     title: "Press Release 4",
-    // },
   ];
 
   useEffect(() => {
     setNewLoadingCount(Number(localStorage.getItem('count')));
   }, [localStorage.getItem('count')]);
-
-  // useEffect(() => {
-  //   if (newLoadingCount === 100) {
-  //     const timer = setTimeout(() => {
-  //       setNewLoadingCount(101);
-  //     }, 500); // 1 seconds delay before removing InitialLoading
-
-  //     return () => clearTimeout(timer);
-  //   }
-  // }, [newLoadingCount]);
-
-  // if (newLoadingCount <= 100) {
-  //   return <InitialLoading loadingCount={newLoadingCount} setLoadingCount={setNewLoadingCount} fast="true" second="true" />;
-  // }
 
   return (
     <Layout>
@@ -270,17 +243,6 @@ function MediaCenter() {
                     Latest News
                     </h4>
                   </div>
-
-                  {/* <SecTitle className="text-center color style1 mb_30">
-                    <img
-                      src={headingIconImg}
-                      alt="mvn Media Centre image"
-                      className="img-fluid headpage-icon"
-                    />
-                    <h4 ref={titleRef} className="title">
-                      Latest News
-                    </h4>
-                  </SecTitle> */}
     
                 </Container>
               </div>
@@ -296,18 +258,6 @@ function MediaCenter() {
                   Offline Media News
                   </h4>
                 </div>
-
-              {/* <SecTitle className="text-center color style1">
-                    <img
-                      src={headingIconImg}
-                      alt="mvn plane icon"
-                      className="img-fluid headingIcon"
-                    />
-                    <h4 className="title">Offline Media News</h4>
-                  </SecTitle> */}
-
-
-
                 <div className="media-news_offline">
                 
 
@@ -316,38 +266,6 @@ function MediaCenter() {
                     slidesPerView={2}
                     navigation={true}
                   />
-
-                  {/* <div className="row">
-
-                                      <div className="col-md-6">
-                                          <div className="media-news-page ">
-                                              <div className="media-news-page-box">
-                                                  <div className="media-news-page-img">
-                                                      <img src={newsIMG} alt="mvn news image" />
-                                                  </div>
-                                                  <div className="news-page-content">
-                                                      <p className="news-date">25 September, 2025</p>
-                                                      <p className="news-title">MVN Infrastructure Celebrates MVN Mall’s New Office Opening</p>
-                                                      <a className="btn btn_style-news" href="">View Details <img className="img-fluid" src={rightArrow} alt="mvn arrow icon" /></a>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <div className="col-md-6 ">
-                                          <div className="media-news-page ">
-                                              <div className="media-news-page-box">
-                                                  <div className="media-news-page-img">
-                                                      <img src={newsIMG} alt="mvn news image" />
-                                                  </div>
-                                                  <div className="news-page-content">
-                                                      <p className="news-date">25 September, 2025</p>
-                                                      <p className="news-title">MVN Infrastructure Celebrates MVN Mall’s New Office Opening</p>
-                                                      <a className="btn btn_style-news" href="">View Details <img className="img-fluid" src={rightArrow} alt="mvn arrow icon" /></a>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div> */}
                 </div>
               </div>
 
@@ -359,16 +277,6 @@ function MediaCenter() {
                     Online Media News
                     </h4>
                   </div>
-                  
-                  {/* <SecTitle className="text-center color style1">
-                    <img
-                      src={headingIconImg}
-                      alt="mvn heading image"
-                      className="img-fluid headingIcon"
-                    />
-                    <h4 className="title">Online Media News</h4>
-                  </SecTitle> */}
-
                   {onlineNews &&
                     onlineNews.map((item, index) => (
                       <article
@@ -402,107 +310,6 @@ function MediaCenter() {
             </div>
           </div>
         </section>
-        {/* <section className="section media-press-release pb-0">
-          <div className="container">
-            <div className="sec_title text-center color style1 mb_30">
-              <img
-                src={headingIconImg}
-                alt="mvn heading image"
-                className="img-fluid headingIcon"
-              />
-              <h4 className="title">Press Center</h4>
-              <p>
-                Welcome to the Press Release section of MVN, where innovation,
-                milestones, and achievements take center stage. Stay informed
-                about our latest ventures, industry contributions, and community
-                impact, as we continue to redefine the future. From pioneering in
-                real estate to shaping the future of education, we’re committed to
-                excellence every step of the way.
-              </p>
-            </div>
-            <section className="press-release" id="press-center">
-              <div className="">
-                <div className="press-rel-sec">
-                  <div className="inner-press-re">
-                    <div className="logo-sec">
-                      <div className="inner-logo-sec">
-                        <div className="box box-g">
-                          <h4>MVN Group Logo with Tagline</h4>
-                          <div className="inner-box">
-                            <div className="logo">
-                              <img src={mvnLOGO} alt="logo" width="100%" />
-                            </div>
-                            <div className="type">
-                              <ul>
-                                <li>
-                                  <a href="javascript:void(0);">Jpeg</a>
-                                </li>
-                                <li>
-                                  <a href="javascript:void(0);">png</a>
-                                </li>
-                                <li>
-                                  <a href="javascript:void(0);">Eps</a>
-                                </li>
-                                <li>
-                                  <a href="javscript:void(0);">Ai</a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="content-sec">
-                      <div className="inner-content-sec">
-                        <div className="document-list">
-                          <ul id="presslistitem">
-                            {pressCenter &&
-                              pressCenter.map((item, index) => (
-                                <li key={`press-${index}`}>
-                                  <a href={item.PDF} download="">
-                                    <span>{item.title}</span>
-                                    <span>
-                                      <img
-                                        src={pdfICON}
-                                        className="img-fluid"
-                                        alt="pdf"
-                                      />
-                                    </span>
-                                  </a>
-                                </li>
-                              ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <div className="row">
-                          <div className="col-sm-4">
-                              <div className="press-release-content ">
-                                  <h4>Simply Dummy Text</h4>
-                                  <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                              </div>
-                          </div>
-                          <div className="col-sm-8">
-                              <div className="press-release-content ">
-                                  <h4>Simply Dummy Text</h4>
-                                  <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                              </div>
-                          </div>
-                          <div className="col-sm-4">
-                              <div className="press-release-content ">
-                                  <h4>Simply Dummy Text</h4>
-                                  <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                              </div>
-                          </div>
-                      </div>
-          </div>
-        </section> */}
 
         <section className="section press-releases-container">
           <div className="container">
@@ -512,15 +319,6 @@ function MediaCenter() {
               Press Releases
               </h4>
             </div>
-
-            {/* <SecTitle className="text-center color style1 mb_30">
-              <img
-                src={headingIconImg}
-                alt="mvn press heading image"
-                className="img-fluid headingIcon"
-              />
-              <h4 className="title">Press Releases</h4>
-            </SecTitle> */}
 
             <PressRelease
               data={pressReleaseData}
@@ -537,10 +335,6 @@ function MediaCenter() {
                 Gallery
               </h4>
             </div>
-
-            {/* <SecTitle className="text-center color style1 mb_30">
-              <h4 className="title">GALLERY</h4>
-            </SecTitle> */}
             <GallerySlider
               data={ourGallery}
               slidesPerView={3}
@@ -557,10 +351,6 @@ function MediaCenter() {
               OUR EVENTS
               </h4>
             </div>
-
-            {/* <div className="sec_title text-center color style1 mb_30">
-              <h4 className="title">OUR EVENTS</h4>
-            </div> */}
             
             <div className="row">
               {ourEvents &&

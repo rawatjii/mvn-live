@@ -10,7 +10,6 @@ import fbIcon from '../assets/images/icons/social/fb.png';
 import instaIcon from '../assets/images/icons/social/instagram.png';
 import YoutubeIcon from '../assets/images/icons/social/youtube.png';
 import BtnIcon from '../assets/images/icons/send.png';
-// import FormBgImg from '../assets/images/icons/form-bg.png';
 import FooterMiddleLogo from '../assets/images/logomvn.png';
 import subscribeBtn from '../assets/images/icons/subscribe_btn.webp';
 
@@ -19,11 +18,6 @@ const Footer = () => {
 
   return (
     <footer>
-
-      {/* <LazyLoad >
-        <img src={FooterBgImg} alt="mvn-about-bg" className="img-fluid about_bg" />
-      </LazyLoad> */}
-
       <Container >
         <div class="footer-mid">
           <div class="inner-mid">
@@ -115,17 +109,17 @@ const Footer = () => {
                         </li>
                         <li>
                           <Link to="https://www.facebook.com/officialmvninfra/" target="_blank" className="icon">
-                            <img src={fbIcon} alt="mvn-fb-icon" className="img-fluid" />
+                            <img src={fbIcon} alt="mvn-facebook-icon" className="img-fluid" />
                           </Link>
                         </li>
                         <li>
                           <Link to="https://www.instagram.com/mvn_infrastructure/" target="_blank" className="icon">
-                            <img src={instaIcon} alt="mvn-insta-icon" className="img-fluid" />
+                            <img src={instaIcon} alt="mvn-instagram-icon" className="img-fluid" />
                           </Link>
                         </li>
                         <li>
                           <Link to="https://www.youtube.com/@MVNInfrastructures" target="_blank" className="icon">
-                            <img src={YoutubeIcon} alt="mvn-insta-icon" className="img-fluid" />
+                            <img src={YoutubeIcon} alt="mvn-youtube-icon" className="img-fluid" />
                           </Link>
                         </li>
                       </ul>
