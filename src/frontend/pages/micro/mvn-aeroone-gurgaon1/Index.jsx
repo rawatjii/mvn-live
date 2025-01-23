@@ -8,6 +8,65 @@ import "./aeroGuragaon.css";
 import MicroPageGurgaon1 from "../../MicroPageGurgaon1";
 
 export const data = {
+  projectName:'MVN AeroOne, Gurugram',
+  pageSections:[
+    {
+      page:'Overview',
+      link:'microOverview'
+    },
+    {
+      page:'Walkthrough',
+      link:'Walkthrough'
+    },
+    {
+      page:'MVN ID Brochure',
+      link:'downloadBrochure'
+    },
+    {
+      page:'The Living Room',
+      link:'LIVINGROOM'
+    },
+    {
+      page:'Landscape',
+      link:'MicroLandscape'
+    },
+    {
+      page:'Elevation',
+      link:'MicroElevation'
+    },
+    {
+      page:'Apartment',
+      link:'MicroApartment'
+    },
+    {
+      page:'Construction Technology',
+      link:'constructionTechnology'
+    },
+    {
+      page:'Amenities',
+      link:'MicroAmenities'
+    },
+    {
+      page:'Typology',
+      link:'MicroTypology'
+    },
+    {
+      page:'Floor Plans',
+      link:'MicroFloorPlan'
+    },
+    {
+      page:'Location Map',
+      link:'MicroLocationMap'
+    },
+    {
+      page:'MVN Mall',
+      link:'MVNMALL'
+    },
+    {
+      page:'Connections MVN Mall',
+      link:'NoPolutionZone'
+    },
+  ],
   micro_hero_section:
   {
     isVdo: true,
