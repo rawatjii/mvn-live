@@ -144,7 +144,7 @@ const MicroPrice = ()=>{
                         }
                         <div className="sizes">
                           <p className="size"><span>Size:</span> {item.size}</p>
-                          <Button className="btn_style1">Enquire Now</Button>
+                          <Button type="button" className="btn_style1">Enquire Now</Button>
                         </div>
                       </div>
                     </div>
@@ -164,7 +164,7 @@ const MicroPrice = ()=>{
               <h3 ref={(el)=>(priceRefs.current[index]=el)} className="price"><span>₹</span> {item.price}</h3>
               <div ref={(el)=>(sizeRefs.current[index]=el)} className="sizes">
                 <p className="size"><span>Size:</span> {item.size}</p>
-                <Button className="btn_style1">Enquire Now</Button>
+                <Button type="button" className="btn_style1">Enquire Now</Button>
               </div>
             </li>
           ))}

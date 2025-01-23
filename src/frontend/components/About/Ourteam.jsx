@@ -76,6 +76,7 @@ const OurTeam = () => {
                   <h4 className="person-name">{member.Person_Name}</h4>
                   <h4 className="person-post">{member.Person_Post}</h4>
                   <Button
+                  type="button"
                     variant="primary"
                     onClick={() => handleShow(member)}
                     className="view-details-btn"
@@ -104,6 +105,7 @@ const OurTeam = () => {
                   <h4 className="person-name">{member.Person_Name}</h4>
                   <h4 className="person-post">{member.Person_Post}</h4>
                   <Button
+                  type="button"
                     variant="primary"
                     onClick={() => handleShow(member)}
                     className="view-details-btn"
@@ -122,7 +124,7 @@ const OurTeam = () => {
         <Modal.Body>
           <h4 className="modal_name">{selectedPerson?.Person_Name}</h4>
           <p>{selectedPerson?.Person_content}</p>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button type="button" variant="secondary" onClick={handleClose}>
             Close
           </Button>
         </Modal.Body>

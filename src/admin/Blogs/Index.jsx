@@ -210,7 +210,7 @@ const Blogs = () => {
     <>
       <div className="d-flex title_col justify-content-between align-items-center">
         <h4 className="page_title">Blogs</h4>
-        {/* <button className="btn ms-auto btn_primary btn-sm" onClick={addCategoryHandler}>Add Blog</button> */}
+
         <Link
           className="btn ms-auto btn_primary btn-sm"
           to={`${CONFIG.ADMIN_ROOT}blogs/add`}
@@ -287,6 +287,7 @@ const Blogs = () => {
                       </Link>
 
                       <button
+                      type="button"
                         className="btn action_btn"
                         onClick={() => deleteHandler(item.id)}
                       >

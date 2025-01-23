@@ -91,30 +91,8 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
     };
   }, [heroLoaded]);
 
-  {/*useEffect(() => {
-    if (newLoadingCount >= 100 && peacockLoaded && livingRoomLoaded && partyLoaded) {
-      const timer = setTimeout(() => {
-        setNewLoadingCount(101);
-        setIsPageLoaded(true); // Mark page as loaded
-      }, 500); // 1 seconds delay before removing InitialLoading
-
-      return () => clearTimeout(timer);
-    }
-  }, [newLoadingCount]);*/}
-
   return (
     <>
-      {/*{(!peacockLoaded || !livingRoomLoaded || !partyLoaded) && (
-        <>
-          <InitialLoading
-            fast="false"
-            second="true"
-            loadingCount={newLoadingCount}
-            setLoadingCount={setNewLoadingCount}
-          />
-          /~ <GurgaonLoader1 /> ~/
-        </>
-      )}*/}
 
       
       <Helmet>
