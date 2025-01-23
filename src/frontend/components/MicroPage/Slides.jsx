@@ -11,7 +11,7 @@ function Slides() {
             <h4 className="title">Brochure</h4>
             </SecTitle>
         </Container>
-        <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vS3JcNTzsbHj9wl3NpYbgKh-fiaJz5kLB0QWBBc7h2cX4VVb4y4om0ITjHTDolohI2sn76ktLrzOmdJ/embed?start=true&loop=true&delayms=3000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" className='slide_iframe'></iframe>
+        <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vS3JcNTzsbHj9wl3NpYbgKh-fiaJz5kLB0QWBBc7h2cX4VVb4y4om0ITjHTDolohI2sn76ktLrzOmdJ/embed?start=true&loop=true&delayms=3000" title="slide" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" className='slide_iframe'></iframe>
     </div>
 
   )

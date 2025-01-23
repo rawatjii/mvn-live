@@ -121,7 +121,7 @@ const AddBlog = ()=>{
 
                     <Form.Group className="mb_15 form-group">
                         <Form.Label htmlFor="blog-category">Blog Category*</Form.Label>
-                        <select ref={blogCategoryRef} className="form-control" id="blog-category">
+                        <select ref={blogCategoryRef} className="form-control" id="blog-category" name="category">
                             <option defaultValue={true} disabled>Select Blog Category</option>
                             {blogCategory?.map((category, index)=>(
                                 <option key={index} value={category.id}>{category.name}</option>

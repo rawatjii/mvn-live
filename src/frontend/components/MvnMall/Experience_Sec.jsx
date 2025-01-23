@@ -60,24 +60,27 @@ const Experience_Sec = () => {
 
   return (
     <section className="section experience-section">
+      <h2 id="carouselTitle" className="visually-hidden">Featured Products</h2>
       <Carousel
         activeIndex={index}
         onSelect={handleSelect}
         controls={false}
         indicators={false}
+        aria-labelledby="carouselTitle"
+        role="region"
       >
         {imgSlid?.map((item, i) => (
-          <Carousel.Item key={i}>
+          <Carousel.Item key={i} role="group" aria-labelledby={`carouselItem-${i}`}>
             <div class="image-exp">
               <img
                 className="img-fluid w-100 d-view"
                 src={item.imgSlide}
-                alt="First slide"
+                alt={`First slide-${i}`}
               />
               <img
                 className="img-fluid w-100 m-view"
                 src={item.mimgSlide}
-                alt="First slide"
+                alt={`First slide-2-${i}`}
               />
             </div>
             <div class="exp-content">

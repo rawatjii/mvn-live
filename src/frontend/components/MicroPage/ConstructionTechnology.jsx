@@ -74,7 +74,7 @@ export default function ConstructionTechnology({ data }) {
 
         <video src={CONFIG.VIDEO_URL + 'construction-technology.mp4'} autoPlay muted playsInline loop controls className='img-fluid' />
 
-        {/* <iframe src="https://www.youtube.com/embed/9CHcJAveejU?si=Sr3K9ETfhxeyjrOW" title="YouTube video player" frameborder="0" allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" ></iframe> */}
+       
 
         <div className='about'>
           <CustomCard
@@ -131,78 +131,6 @@ export default function ConstructionTechnology({ data }) {
 
         </Row>
 
-        {/*<Row className='mx_-60'>
-
-          <Col md={6} className='mt-2 mt-md-0 px_60'>
-            <h4 className='title_style2 mb_30 mb_sm_20 text-center'>Features Of Aluminum Formwork</h4>
-
-            <ul className=''>
-              <li>
-                <h6 className='name_style1'>Strength Beyond Limits</h6>
-                <p className='des_style1 mt-2'>With a load capacity of 7-8 tons per square meter, this formwork ensures unrivaled structural integrity.</p>
-              </li>
-
-              <li>
-                <h6 className='name_style1'>Fast-Track to Perfection</h6>
-                <p className='des_style1 mt-2'>Achieve record-breaking construction cycles with a striking time of just 12-36 hours.</p>
-              </li>
-
-              <li>
-                <h6 className='name_style1'>Durability That Defies Time</h6>
-                <p className='des_style1 mt-2'>Built with structural-grade aluminum alloy, each panel lasts for up to 200 reuse cycles.</p>
-              </li>
-
-              <li>
-                <h6 className='name_style1'>Precision-Crafted Excellence</h6>
-                <p className='des_style1 mt-2'>Custom-designed to deliver flawless concrete finishes and accurate tolerances.</p>
-              </li>
-
-              <li>
-                <h6 className='name_style1'>Green Innovation in Action</h6>
-                <p className='des_style1 mt-2'>Lightweight, reusable, and efficient, reducing waste and optimizing resources.</p>
-              </li>
-
-              <li>
-                <h6 className='name_style1'>Empowering Effortless Assembly</h6>
-                <p className='des_style1 mt-2'>Designed for simplicity, enabling even unskilled labor to construct with ease.</p>
-              </li>
-
-            </ul>
-          </Col>
-
-          /~ <Col md={6} className='mt-5 mt-md-0 px_60'>
-            <h4 className='title_style2 mb_30 mb_sm_20 text-center'>Advantages Of Aluminum Formwork</h4>
-
-            <ul>
-              <li>
-                <h6 className='name_style1'>Consistency You Can Trust</h6>
-                <p className='des_style1 mt-2'>Delivers uniform dimensions and high-quality concrete finishes every time.</p>
-              </li>
-
-              <li>
-                <h6 className='name_style1'>Unmatched Speed and Efficiency</h6>
-                <p className='des_style1 mt-2'>Speeds up construction without sacrificing precision or quality.</p>
-              </li>
-
-              <li>
-                <h6 className='name_style1'>Eco-Friendly Excellence</h6>
-                <p className='des_style1 mt-2'>Panels can be reused up to 250 times, reducing overall construction costs.</p>
-              </li>
-
-              <li>
-                <h6 className='name_style1'>Tailored for Your Needs</h6>
-                <p className='des_style1 mt-2'>Fully customizable system designed to meet specific project requirements.</p>
-              </li>
-
-              <li>
-                <h6 className='name_style1'>Simplifying Complex Construction</h6>
-                <p className='des_style1 mt-2'>Enables unskilled labor to execute projects efficiently with minimal training.</p>
-              </li>
-
-            </ul>
-          </Col> ~/
-
-        </Row>*/}
       </Container>
     </section>
   );

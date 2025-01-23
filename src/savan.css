@@ -311,11 +311,11 @@ section.section.journey_section.pb-0 { padding-bottom: 60px!important;}
   
 }
 
-.philosophy_section ul.content li {
+.philosophy_section div.content li {
   width: 44%!important;
 }
 
-.philosophy_section ul.content {
+.philosophy_section div.content {
   flex-wrap: wrap!important;
   gap: 0px 20px;
 }
@@ -323,10 +323,10 @@ section.section.journey_section.pb-0 { padding-bottom: 60px!important;}
 .philosophy_section .content li {width: 50%!important;max-width: 50%!important;}
 .flex-li-row-1{width:50%;max-width:50%;display:grid;gap:45px 0}
 ul.content{align-items:center}
-.philosophy_section ul.content .flex-li-row-2{width:35%;max-width:35%}
-.philosophy_section ul.content li {width: 70% !important; max-width: 70% !important;}
+.philosophy_section div.content .flex-li-row-2{width:35%;max-width:35%}
+.philosophy_section div.content li {width: 70% !important; max-width: 70% !important;}
 .philosophy_section .content li p {text-align: justify;}
-.philosophy_section ul.content .flex-li-row-2 ul.our-values-ul-icon li { text-align: center;color: #fff;}
+.philosophy_section div.content .flex-li-row-2 ul.our-values-ul-icon li { text-align: center;color: #fff;}
 
 .navbar .right {display: flex;}
 
@@ -1269,7 +1269,7 @@ a.closebtn {
     .philosophy_section  .content li li {max-width: 100%!important;width: 100%!important;}
     .philosophy_section .content h4.title { margin-bottom: 22px !important; letter-spacing: 1.2px;}
     .philosophy_section {.content {border-radius: 8px; padding: 50px 60px;  border: 1px solid rgb(244 217 102 / 15%);}}
-    .philosophy_section ul.content{justify-content:space-between;width:100%;display:flex}
+    .philosophy_section div.content{justify-content:space-between;width:100%;display:flex}
     .philosophy_section .content li:last-child{margin:unset}
     .philosophy_section .content li li{max-width:100%!important;width:100%!important}
     .philosophy_section .content li p { color: #d5d5d5;}
@@ -1335,16 +1335,16 @@ a.closebtn {
 .philosophy_section.pb-0 .container { padding-top: 30px;}
 
 .philosophy_section ul.our-values-ul-icon {display: flex; flex-wrap: wrap;}
-.philosophy_section ul.content .flex-li-row-2 ul.our-values-ul-icon li {width: 50%!important;max-width: 50%!important;}
-.philosophy_section ul.content {justify-content: space-between;width: 100%; display: flex;gap: unset !important;}
+.philosophy_section div.content .flex-li-row-2 ul.our-values-ul-icon li {width: 50%!important;max-width: 50%!important;}
+.philosophy_section div.content {justify-content: space-between;width: 100%; display: flex;gap: unset !important;}
 .philosophy_section .content li:last-child {margin: unset; max-width: 100% !important;width: 100% !important;}
 .philosophy_section ul.our-values-ul-icon {display: flex;flex-wrap: wrap;justify-content: space-between;width: 100%;gap: 10px 0px;}
-.philosophy_section ul.content li {width: unset !important; max-width: unset !important;}
+.philosophy_section div.content li {width: unset !important; max-width: unset !important;}
 .philosophy_section {.content { padding: 0;}}
-.philosophy_section ul.content .flex-li-row-2 ul.our-values-ul-icon li{text-align:center;justify-content:center;color:#fff}
+.philosophy_section div.content .flex-li-row-2 ul.our-values-ul-icon li{text-align:center;justify-content:center;color:#fff}
 ul.our-values-ul-icon{margin-top:30px;gap:30px 0!important}
-.philosophy_section ul.content .values-ul-icon{width:auto;height:60px;margin:0 auto;margin-bottom:30px;}
-.philosophy_section ul.content .flex-li-row-2 ul.our-values-ul-icon li{display:grid;justify-content:center;text-align:center}
+.philosophy_section div.content .values-ul-icon{width:auto;height:60px;margin:0 auto;margin-bottom:30px;}
+.philosophy_section div.content .flex-li-row-2 ul.our-values-ul-icon li{display:grid;justify-content:center;text-align:center}
 
 .testimonial_section .swiper-button-prev {bottom: 60px; left: 44%;}
 .testimonial_section .swiper-button-next { bottom: 60px; left: 53%; top: unset;}
@@ -2342,12 +2342,12 @@ h4.hero_title {
   padding-bottom: 40px;
 }
 .lazyload-wrapper.timeline_bg ul.timeline_content li.single .content { padding-top: 37px;  position: relative; top: 20px;}
-.philosophy_section ul.content .flex-li-row-2 {width: 100%; max-width: 100%;}
+.philosophy_section div.content .flex-li-row-2 {width: 100%; max-width: 100%;}
 .flex-li-row-1 { width: 100%; max-width: 100%; display: grid;gap: 45px 0;}
-.philosophy_section ul.content li {width: 100% !important; max-width: 100% !important;}
+.philosophy_section div.content li {width: 100% !important; max-width: 100% !important;}
 .lazyload-wrapper.timeline_bg ul.timeline_content li.single .content{padding-top:37px;position:relative;top:20px}
-.philosophy_section ul.content .values-ul-icon{width:auto;height:70px; margin:0px auto; margin-bottom:20px;}
-.philosophy_section ul.content .flex-li-row-2 ul.our-values-ul-icon li{width:50%!important;max-width:50%!important;text-align:center;justify-content:center;display:grid;}
+.philosophy_section div.content .values-ul-icon{width:auto;height:70px; margin:0px auto; margin-bottom:20px;}
+.philosophy_section div.content .flex-li-row-2 ul.our-values-ul-icon li{width:50%!important;max-width:50%!important;text-align:center;justify-content:center;display:grid;}
 ul.our-values-ul-icon{display:flex!important;flex-wrap:wrap}
 .philosophy_section .flex-li-row-2 { margin-top: 50px;}
 .philosophy_section {.content ul {  display: grid;justify-content: center;gap: 34px 0px;}}
