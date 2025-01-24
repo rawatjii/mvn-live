@@ -16,6 +16,7 @@ import typo8 from "../../assets/images/typologies/penthouse/2.webp";
 import typo9 from "../../assets/images/typologies/penthouse/3.webp";
 
 import Watermark from '../../../common/watermark/Index';
+import { useMatches } from "../../../theme/theme";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,7 +29,7 @@ const Typology = ({ onLoadComplete }) => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true); // Loader state
   const [loadingComplete, setLoadingComplete] = useState(false); // State to track when all images are loaded
-  const isMobile = window.innerWidth <= 768;
+  const { isMobile } = useMatches();
   const isLaptop = window.innerWidth <= 1400;
 
   let totalFrames = isMobile ? 327 : 327;

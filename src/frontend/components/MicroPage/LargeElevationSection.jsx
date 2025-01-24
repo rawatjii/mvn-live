@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Container } from 'react-bootstrap'
 // import LazyLoad from 'react-lazyload'
 import bgImgMB from '../../assets/images/aero-gurgaon/largeBg1Sm.webp'
@@ -8,8 +8,7 @@ import building_sm from '../../assets/images/aero-gurgaon/building_sm.webp'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CustomCard from '../Card'
-// import CustomCard from '../../components/Card'
-
+import { useMatches } from '../../../theme/theme'
 gsap.registerPlugin(ScrollTrigger);
 
 
@@ -18,8 +17,7 @@ export default function LargeElevation({ data }) {
     const sectionRef = React.useRef(null);
     const desktopRef = React.useRef();
 
-    // console.log(data.images);
-
+    const { isMobile } = useMatches(); 
 
     useEffect(() => {
         gsap.from(".abs_img_m", {
@@ -46,38 +44,33 @@ export default function LargeElevation({ data }) {
             ScrollTrigger.addEventListener("refresh", () => console.log("Triggers refreshed"));
             ScrollTrigger.refresh();
     }, []);
+        
     return (
         <div className='large-elevation' ref={sectionRef} id='largeElevationSection'>
             <Container>
                 <div className='container_elevation'>
                     <div className='top_div'>
                         <h3 className='title elevation_title text-uppercase'>{data.title.map((item, index)=>(
-                            <span>{item}</span>
+                            <span key={index}>{item}</span>
                         ))}</h3>
                     </div>
                 </div>
             </Container>
 
-            {/* mb view */}
-            <div className='bottom_img_div d_sm_block'>
+            {/* view start */}
+
+            <div className={`bottom_img_div ${isMobile ? "d_sm_block" : "d_lg_block"}`}  ref={!isMobile ? desktopRef : null}>
                 <div className='full_img'>
-                    <img src={bgImgMB} alt={data.title} className="img-fluid img_in" />
+                    <img src={isMobile ? bgImgMB : bgImgDesk} alt={data.title} className={`img-fluid img_in ${isMobile ? " " : "d_lg_block"}`} />
                 </div>
-                <div className='abs_img abs_img_m'>
-                    <img src={building_sm} alt={data.title} className="img-fluid abs_img_in" />
+                <div className={`abs_img ${isMobile ? "abs_img_m" : "abs_img1"}`}>
+                    <img src={isMobile ? building_sm : absDesk} alt={data.title} className={`img-fluid abs_img_in ${isMobile ? " " : "d_lg_block"}`} />
                 </div>
             </div>
 
+             {/* view end */}
 
-            {/* desk view */}
-            <div className='bottom_img_div d_lg_block' ref={desktopRef}>
-                <div className='full_img'>
-                    <img src={bgImgDesk} alt={data.title} className="img-fluid img_in d_lg_block" />
-                </div>
-                <div className={`abs_img abs_img1 ${data.position}`}>
-                    <img src={absDesk} alt={data.title} className="img-fluid abs_img_in d_lg_block" />
-                </div>
-            </div>
+
 
             <div className='content_section'>
                 <Container>

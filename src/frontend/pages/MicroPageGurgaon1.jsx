@@ -27,6 +27,7 @@ import { Helmet } from "react-helmet";
 import MicroHeader from "../components/MicroHeader";
 import CustomCard from "../components/Card";
 import LivingRoomVideoGurugram from "../components/MicroPage/LivingRoomVideoGurugram";
+import ScrollTriggerFrames from "../components/MicroPage/ScrollTriggerFrames";
 import PartyVideo from "../components/MicroPage/PartyVideo";
 import PartyVideo1 from "../components/MicroPage/PartyVideo1";
 import MasterBedroom from "../components/MicroPage/MasterBedroom";
@@ -39,6 +40,7 @@ import * as CONFIG from '../../config/config';
 import Consultant from "../components/MicroPage/Consultant";
 import ConstructionTechnology from "../components/MicroPage/ConstructionTechnology";
 import ScrollTop from "../../common/ScrollToTop/Index";
+import ImagesGallery from "../components/MicroPage/ImagesGallery";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -53,18 +55,11 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
   const [partyLoaded, setPartyLoaded] = useState(false);
   const [masterBedroomLoaded, setMasterBedroomLoaded] = useState(false);
   const [typologyLoaded, setTypologyLoaded] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const smootherRef = useRef(null);
   const sectionRefs = useRef({});
   const {pageSections, projectName} = data;
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    // window.addEventListener("resize", handleResize);
-    // return () => window.removeEventListener("resize", handleResize);
-  }, []);
+
 
   const scrollToSection = (sectionKey) => {
     const target = sectionRefs.current[sectionKey];
@@ -200,13 +195,13 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
       </Helmet>
 
-      <MicroHeader scrollToSection={scrollToSection} sectionsMenus={pageSections} projectName={projectName} />
+      <MicroHeader scrollToSection={scrollToSection} data={data.header} />
       <div id="smooth-wrapper">
         <div id="smooth-content">
           
 
           <div ref={(el) => (sectionRefs.current.microOverview = el)}>
-            <MicroHero isMobile={isMobile} data={data} onLoadComplete={() => setHeroLoaded(true)} />
+            <MicroHero  data={data} onLoadComplete={() => setHeroLoaded(true)} />
           </div>
 
           {/* Render other components only after Hero Section is loaded */}
@@ -234,27 +229,27 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             <PeacockSection
               data={data}
               onLoadComplete={() => setPeacockLoaded(true)}
-              isMobile={isMobile}
             />
           </div>
-          <div>
+          {/* <div>
             <LivingRoomVideoGurugram
               data={data}
               onLoadComplete={() => setLivingRoomLoaded(true)}
-              isMobile={isMobile}
             />
+          </div> */}
+          <div><ScrollTriggerFrames data={data.ScrollFramesData}
+              onLoadComplete={() => setLivingRoomLoaded(true)}
+              />
           </div>
           <div>
             <PartyVideo
               data={data}
               onLoadComplete={() => setPartyLoaded(true)}
-              isMobile={isMobile}
             />
           </div>
           <div>
             <MasterBedroom
               data={data}
-              isMobile={isMobile}
               onLoadComplete={() =>
                 setMasterBedroomLoaded(true)
               }
@@ -274,7 +269,8 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
               (sectionRefs.current.MicroLandscape = el)
             }
           >
-            <MicroLandscape />
+            {/* <MicroLandscape  data={data.landscape}/> */}
+            <ImagesGallery data={data.landscape}/>
           </div>
 
           <div
@@ -282,7 +278,8 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
               (sectionRefs.current.MicroElevation = el)
             }
           >
-            <MicroElevation />
+            {/* <MicroElevation /> */}
+            <ImagesGallery data={data.microElevation}/>
           </div>
 
          <div
@@ -290,7 +287,8 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
               (sectionRefs.current.MicroApartment = el)
             }
           >
-            <MicroApartment />
+            {/* <MicroApartment /> */}
+            <ImagesGallery data={data.microApartment}/>
           </div>
 
           <div

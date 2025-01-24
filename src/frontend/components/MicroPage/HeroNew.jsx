@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useMatches } from "../../../theme/theme";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,7 +15,7 @@ const MicroHero = ({ data, onLoadComplete }) => {
   const isImagesLoaded = useRef(false);
   const scrollDownRef = useRef(null);
 
-  const isMobile = window.innerWidth <= 768;
+  const { isMobile } = useMatches();
   
   useEffect(() => {
     if (!data.micro_hero_section.isVdo) return;

@@ -9,6 +9,7 @@ import Watermark from "../../../common/watermark/Index";
 import * as CONFIG from '../../../config/config';
 import ScrollDown from "../../../common/scrollDown/Index";
 import Logomark from "../../../common/logomark/Index";
+import { useMatches } from "../../../theme/theme";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,7 +17,7 @@ const PeacockSection = ({ data, onLoadComplete }) => {
   const canvasRef = useRef(null); // Ref for the canvas
   const containerRef = useRef(null); // Ref for the scrollable container
   const [images, setImages] = useState([]); // Array to store loaded images
-  const [isMobile, setIsMobile] = useState(false); // Track if it's mobile
+  const { isMobile } = useMatches();
   const [loading, setLoading] = useState(true); // Loader state
 
   const totalFramesMobile = 256; // Total frames for mobile
@@ -52,17 +53,7 @@ const PeacockSection = ({ data, onLoadComplete }) => {
     ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight); // Draw the current frame
   };
 
-  // Detect screen size
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768); // Adjust breakpoint as needed
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => {
-      window.removeEventListener("resize", checkMobile);
-    };
-  }, []);
+
 
   // Load images for mobile
   useEffect(() => {
