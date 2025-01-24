@@ -148,18 +148,6 @@ const Header = () => {
     }, []);
   
     useEffect(() => {
-      // Preload images
-      const loadedImages = [];
-  
-      for (let i = 1; i <= totalFrames; i++) {
-        const img = new Image();
-        img.src = `assets/videos/party/mobile/${i}.jpg`; // Update with the correct path for your frames
-        loadedImages.push(img);
-      }
-      setImages(loadedImages);
-    }, []);
-  
-    useEffect(() => {
       if (images.length !== totalFrames) return; // Wait until all images are loaded
   
       // Image sequence animation

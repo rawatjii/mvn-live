@@ -25,13 +25,13 @@ const Consultant = ()=>{
 
               <ul className="logos justify-content-center">
                 <li>
-                <img src={CONFIG.IMAGE_URL + 'micro/consultant/logo2.png'} alt="mvn consultant logo" className="img-fluid logo" loading="lazy" />
+                <img src={CONFIG.IMAGE_URL + 'micro/consultant/logo2.webp'} alt="mvn consultant logo" className="img-fluid logo" loading="lazy" />
                 </li>
                 <li>
                   <img src={CONFIG.IMAGE_URL + 'micro/consultant/logo1.png'} alt="mvn consultant logo" className="img-fluid logo" loading="lazy" />
                 </li>
                 <li>
-                  <img src={CONFIG.IMAGE_URL + 'micro/consultant/logo3.jpg'} alt="mvn consultant logo" className="img-fluid logo"  loading="lazy"/>
+                  <img src={CONFIG.IMAGE_URL + 'micro/consultant/logo3.webp'} alt="mvn consultant logo" className="img-fluid logo"  loading="lazy"/>
                 </li>
               </ul>
             </Col>
