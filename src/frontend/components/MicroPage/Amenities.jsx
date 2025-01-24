@@ -12,6 +12,7 @@ import mvnSportsAcademyMobile from "../../assets/images/other-projects/mvn-sport
 import mvnSchoolDesktop from "../../assets/images/other-projects/mvn-school-desktop.webp";
 import mvnUniversityDesktop from "../../assets/images/other-projects/mvn-university-desktop.webp";
 import mvnSportsAcademyDesktop from "../../assets/images/other-projects/mvn-sports-academy-desktop.webp";
+import { useMatches } from "../../../theme/theme";
 
 const amenityData = [
   {
@@ -34,27 +35,11 @@ const amenityData = [
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Amenities({ data }) {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const { isMobile } = useMatches();
   const sectionsRef = useRef([]);
   const triggers = useRef([]);
 
-  // Debounced window resize listener to update isMobile
-  useEffect(() => {
-    const debounce = (func, delay) => {
-      let timeout;
-      return () => {
-        clearTimeout(timeout);
-        timeout = setTimeout(func, delay);
-      };
-    };
 
-    const handleResize = debounce(() => {
-      setIsMobile(window.innerWidth <= 768);
-    }, 200);
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   // Set up GSAP ScrollTrigger for desktop view
   useEffect(() => {

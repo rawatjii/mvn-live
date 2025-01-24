@@ -3,22 +3,13 @@ import * as CONFIG from '../../../../config/config';
 import BarLoader from "react-spinners/BarLoader";
 
 import './gurgaon1-loader.css';
+import { useMatches } from "../../../../theme/theme";
 
 const GurgaonLoader1 = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    // Check if the screen width is less than or equal to 768px
-    const checkIsMobile = () => setIsMobile(window.innerWidth <= 768);
-
-    checkIsMobile(); // Initial check
-    window.addEventListener("resize", checkIsMobile); // Listen for window resizing
-
-    return () => window.removeEventListener("resize", checkIsMobile); // Cleanup
-  }, []);
+  const { isMobile } = useMatches(); 
 
   // Set the image URL based on the device type
-  const imageUrl = window.innerWidth <= 768
+  const imageUrl = isMobile
     ? `${CONFIG.IMAGE_URL}micro/hero/client/mobile-new/1.webp`
     : `${CONFIG.IMAGE_URL}micro/hero/client/desktop-new/1.webp`;
 

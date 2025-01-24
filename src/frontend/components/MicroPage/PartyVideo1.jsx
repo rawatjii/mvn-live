@@ -7,16 +7,18 @@ import PartyLoader from "../../../common/Loader/micro/partyLoader/Index";
 import Watermark from "../../../common/watermark/Index";
 import lottie from "lottie-web";
 import InitialLoading from "../../skeleton/Initial/Index";
+import { useMatches } from "../../../theme/theme";
 
 // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-const PartyVideo1 = ({ isMobile, data, onLoadComplete }) => {
+const PartyVideo1 = ({  data, onLoadComplete }) => {
   const containerRef = useRef(null);
   const titleRef = useRef();
   const lottieContainerRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const [animationData, setAnimationData] = useState(null);
+  const { isMobile } = useMatches();
 
   const { title, desc } = data.video3;
 

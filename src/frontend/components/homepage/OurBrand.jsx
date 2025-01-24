@@ -13,6 +13,7 @@ import MobilebrandBG from '../../assets/images/icons/brand/our-brand-ethos-bg.we
 import DesktopbrandBG from '../../assets/images/icons/brand/our-brand-ethos-bg.webp';
 import headingIconImg from "../../assets/images/icons/heading-icon-img.webp";
 import LeftSideBanner from "../../assets/images/icons/brand/our-brand-ethos-bg-2.webp";
+import { useMatches } from "../../../theme/theme";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -36,21 +37,7 @@ const brandData = [
 ];
 
 const OurBrand = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-
-  const updateView = () => {
-    setIsMobile(window.innerWidth <= 768);
-  };
-
-  useEffect(() => {
-    // Listen for window resize to update the image
-    window.addEventListener("resize", updateView);
-
-    // Cleanup event listener on component unmount
-    return () => {
-      window.removeEventListener("resize", updateView);
-    };
-  }, []);
+  const { isMobile } = useMatches();
 
   const titleRef = useRef();
   const dataRefs = useRef([]);

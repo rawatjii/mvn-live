@@ -19,6 +19,7 @@ import mvnSchoolDesktop from "../../assets/images/other-projects/mvn-school-desk
 import mvnUniversityDesktop from "../../assets/images/other-projects/mvn-university-desktop.webp";
 import mvnSportsAcademyDesktop from "../../assets/images/other-projects/mvn-sports-academy-desktop-2.webp";
 import headingIconImg from "../../assets/images/icons/heading-icon-img.webp";
+import { useMatches } from "../../../theme/theme";
 
 const otherProjects = [
   {
@@ -68,7 +69,7 @@ gsap.registerPlugin(ScrollTrigger);
 const OtherProjects = ({ data, title, subTitle, mobContent=12 }) => {
   const titleRef = useRef();
   const imageDivRefs = useRef([]);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const { isMobile } = useMatches(); 
   const [imagesLoaded, setImagesLoaded] = useState(0);
 
   const initializeAnimations = () => {
@@ -100,7 +101,6 @@ const OtherProjects = ({ data, title, subTitle, mobContent=12 }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
       ScrollTrigger.refresh();
     };
 

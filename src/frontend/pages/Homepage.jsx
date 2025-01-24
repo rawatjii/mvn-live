@@ -42,6 +42,7 @@ import 'swiper/css/navigation';
 import CustomModal from "../../common/Modal";
 import { Link } from "react-router-dom";
 import ScrollTop from "../../common/ScrollToTop/Index";
+import { useMatches } from "../../theme/theme";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -70,7 +71,7 @@ const Homepage = () => {
   }
 
   const smootherRef = useRef(null);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const { isMobile } = useMatches();
   const [newLoadingCount, setNewLoadingCount] = useState(
     Number(localStorage.getItem("count"))
   );
@@ -80,16 +81,7 @@ const Homepage = () => {
     setNewLoadingCount(Number(localStorage.getItem("count")));
   }, []);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    window.addEventListener("resize", handleResize);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   useEffect(() => {
     if (fixScrollSectionRef.current && scrollTopRef.current) {

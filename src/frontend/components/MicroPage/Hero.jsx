@@ -5,17 +5,8 @@ import * as CONFIG from '../../../config/config';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const MicroHero = ({ data, onLoadComplete }) => {
-  const [loading, setLoading] = useState(true);
-  const [totalFrames, setTotalFrames] = useState(0);
-  const [loadingComplete, setLoadingComplete] = useState(false);
-
-  const canvasRef = useRef(null);
-  const imageRefs = useRef([]);
-  const isImagesLoaded = useRef(false);
+const MicroHero = () => {
   const scrollDownRef = useRef(null);
-
-  const isMobile = window.innerWidth <= 768;
 
   return (
     <section className="section micro_hero_section p-0">

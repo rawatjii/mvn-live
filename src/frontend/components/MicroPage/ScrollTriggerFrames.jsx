@@ -2,27 +2,25 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container } from "react-bootstrap";
-import SecTitle from "../../../common/SecTitle/Index";
 import CustomCard from "../Card";
 import PeacockLoader from "../../../common/Loader/micro/peacockLoader/Index";
 import Watermark from "../../../common/watermark/Index";
-import * as CONFIG from "../../../config/config";
 import ScrollDown from "../../../common/scrollDown/Index";
 import Logomark from "../../../common/logomark/Index";
 import { useMatches } from "../../../theme/theme";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const LivingRoomVideoGurugram = ({ data, onLoadComplete }) => {
+const LivingRoomVideoGurugram = ({ data ,onLoadComplete}) => {
   const canvasRef = useRef(null);
   const sectionRef = useRef(null);
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0); // Loading progress
   const { isMobile } = useMatches();
-  const totalFramesMobile = 133;
+  const { title, desc, path , frameCounts } = data;
+  const totalFramesMobile = isMobile ? frameCounts.mobileFrameCounts : frameCounts.desktopFrameCounts;
 
-  const { title, desc } = data.living_room_video;
 
   // Optimized `drawFrame` function
   const drawFrame = (frameIndex, ctx, canvas, images) => {
@@ -54,7 +52,7 @@ const LivingRoomVideoGurugram = ({ data, onLoadComplete }) => {
   // Image loading with progress tracking
   useEffect(() => {
     const totalFrames = totalFramesMobile;
-    const imagePath = "assets/videos/living-room/desktop/";
+    const imagePath = path.desktopPath;
 
     const loadImages = async () => {
       const promises = Array.from({ length: totalFrames }, (_, i) => {
@@ -105,6 +103,7 @@ const LivingRoomVideoGurugram = ({ data, onLoadComplete }) => {
       scrollAnimation.kill();
     };
   }, [images, loading]);
+
 
   // Adjust canvas size on load
   useEffect(() => {

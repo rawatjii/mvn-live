@@ -8,82 +8,72 @@ import "./aeroGuragaon.css";
 import MicroPageGurgaon1 from "../../MicroPageGurgaon1";
 
 export const data = {
-  projectName:'MVN AeroOne, Gurugram',
-  pageSections:[
-    {
-      page:'Overview',
-      link:'microOverview'
-    },
-    {
-      page:'Walkthrough',
-      link:'Walkthrough'
-    },
-    {
-      page:'MVN ID Brochure',
-      link:'downloadBrochure'
-    },
-    {
-      page:'The Living Room',
-      link:'LIVINGROOM'
-    },
-    {
-      page:'Landscape',
-      link:'MicroLandscape'
-    },
-    {
-      page:'Elevation',
-      link:'MicroElevation'
-    },
-    {
-      page:'Apartment',
-      link:'MicroApartment'
-    },
-    {
-      page:'Construction Technology',
-      link:'constructionTechnology'
-    },
-    {
-      page:'Amenities',
-      link:'MicroAmenities'
-    },
-    {
-      page:'Typology',
-      link:'MicroTypology'
-    },
-    {
-      page:'Floor Plans',
-      link:'MicroFloorPlan'
-    },
-    {
-      page:'Location Map',
-      link:'MicroLocationMap'
-    },
-    {
-      page:'MVN Mall',
-      link:'MVNMALL'
-    },
-    {
-      page:'Connections MVN Mall',
-      link:'NoPolutionZone'
-    },
-  ],
-  micro_hero_section:
-  {
-    isVdo: true,
-    images: false,
-    bannerHighLight: false,
-    enquiryBTN: false,
-    client:true,
+  header:{
+    title:'MVN AeroOne, Gurugram',
+    sidebar_section:[
+      {
+        section_title:'Overview',
+        link:'microOverview'
+      },
+      {
+        section_title:'Walkthrough',
+        link:'Walkthrough'
+      },
+      {
+        section_title:'MVN ID Brochure',
+        link:'downloadBrochure'
+      },
+      {
+        section_title:'The Living Room',
+        link:'LIVINGROOM'
+      },
+      {
+        section_title:'Landscape',
+        link:'MicroLandscape'
+      },
+      {
+        section_title:'Elevation',
+        link:'MicroElevation'
+      },
+      {
+        section_title:'Apartment',
+        link:'MicroApartment'
+      },
+      {
+        section_title:'Construction Technology',
+        link:'constructionTechnology'
+      },
+      {
+        section_title:'Amenities',
+        link:'MicroAmenities'
+      },
+      {
+        section_title:'Typology',
+        link:'MicroTypology'
+      },
+      {
+        section_title:'Floor Plans',
+        link:'MicroFloorPlan'
+      },
+      {
+        section_title:'Location Map',
+        link:'MicroLocationMap'
+      },
+      {
+        section_title:'MVN Mall',
+        link:'MVNMALL'
+      },
+      {
+        section_title:'Connections MVN Mall',
+        link:'NoPolutionZone'
+      },
+    ],
   },
   overview: {
     title: "MVN AEROONE LUXURY RESIDENCES",
-    // location: "Gurugram",
     extra: "AN EPITOME OF GLOBAL LUXURY NOW IN GURUGRAM",
     desc: "Gurugram is set to redefine luxury living with the launch  of MVN ultra-luxurious 5.5 BHK apartments, offering unmatched opulence. Combining the grandeur of Dubai and New York, these residences feature cutting-edge designs, premium amenities, and breathtaking views. Experience an elite lifestyle with sophistication and comfort at its pinnacle, like never before!",
-    // desc: [
-    //   'Luxury Reimagined. Elegance Reborn.',
-    //   'Step into a world of unparalleled luxury, where every detail blends sophistication with style. Relish in tailored interiors, exceptional amenities, and panoramic views. Transform your lifestyle with an extraordinary living experience beyond compare.',
-    // ],
+
   },
   LargeElevationSection: {
     title: ['Unseen', 'Unheard', 'Unimagined'],
@@ -104,6 +94,18 @@ export const data = {
     desc: "Glide your way through the floor-to-ceiling sliding doors, and step on to the sprawling deck with breathtaking vistas and an air of tranquility.",
     isVdo: true,
   },
+  ScrollFramesData:{
+    title:'OPEN THE DOORS TO EXPANSIVE ELEGANCE AND SPACIOUS LUXURY',
+    desc: "Glide your way through the floor-to-ceiling sliding doors, and step on to the sprawling deck with breathtaking vistas and an air of tranquility.",
+    path:{
+      mobilePath:`${CONFIG.VIDEO_URL}living-room/desktop/`,
+      desktopPath:`${CONFIG.VIDEO_URL}living-room/desktop/`,
+    },
+    frameCounts:{
+      mobileFrameCounts:133,
+      desktopFrameCounts:133,
+    },
+  },
   video3: {
     title: "LIVE. LAUGH. LOUNGE",
     desc: "Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambiance, perfect for hosting unforgettable soirees and extravagant gatherings.",
@@ -113,6 +115,115 @@ export const data = {
     title: "BEDROOM Platinum",
     desc: "Your own sphere of serenity crafted artfully for the ultimate retreat into blissful moments of privacy.",
     isVdo: true,
+  },
+  landscape:{
+    title:'Landscape',
+    secondTitle:'REDEFINING ECO-LUXURY WITH ELEVATED LANDSCAPING',
+    desc:'Expansive lush green gardens landscaped for beauty and sustainability. Revel in this oasis of freshness and serenity exclusively for the residents.',
+    images:[
+      {
+        desktop: CONFIG.IMAGE_URL + "renders/landscape/1.webp",
+        mobile: CONFIG.IMAGE_URL + "renders/landscape/1_sm.webp",
+        watermark: "right",
+        title: "Yoga Deck",
+      },
+      {
+        desktop: CONFIG.IMAGE_URL + "renders/landscape/2.webp",
+        mobile: CONFIG.IMAGE_URL + "renders/landscape/2_sm.webp",
+        watermark: "right",
+        title: "Swimming Pool",
+      },
+      {
+        desktop: CONFIG.IMAGE_URL + "renders/landscape/3.webp",
+        mobile: CONFIG.IMAGE_URL + "renders/landscape/3_sm.webp",
+        watermark: "right",
+        title: "Pergola View",
+      },
+    ],
+  },
+  microElevation:{
+    title:'Elevation',
+    secondTitle:'Pinnacle of Sophisticated Luxury',
+    desc:'This architectural masterpiece seamlessly blends cutting-edge design with new-age sophistication. Every curve, every detail, is meticulously crafted to elevate your living experience. Embrace a residence where innovation meets beauty, creating a landmark of luxurious urban living. Your new home awaits.',
+    images:[
+      {
+        desktop:CONFIG.IMAGE_URL + 'renders/elevation/1.webp',
+        mobile:CONFIG.IMAGE_URL + 'renders/elevation/1_sm.webp',
+        watermark: 'right'
+      },
+      {
+        desktop:CONFIG.IMAGE_URL + 'renders/elevation/2.webp',
+        mobile:CONFIG.IMAGE_URL + 'renders/elevation/2_sm.webp',
+        watermark: 'right'
+      },
+      {
+        desktop:CONFIG.IMAGE_URL + 'renders/elevation/3.webp',
+        mobile:CONFIG.IMAGE_URL + 'renders/elevation/3_sm.webp',
+        watermark: 'right'
+      }
+    ],
+  },
+  microApartment:{
+    title:'Apartment',
+    secondTitle:'Every corner a symphony of style & opulence',
+    desc:`Experience ultra-luxury living in this exclusive apartment boasting plush interiors and bespoke design. The spacious layout includes a designer bathroom with premium fittings, a modern Cucina kitchen for culinary excellence, and a state-of-the-art home theatre for entertainment. A thoughtfully designed kids' room ensures comfort and fun, completing a perfect sanctuary for a sophisticated, family-friendly lifestyle.`,
+    images:[
+      {
+        desktop:CONFIG.IMAGE_URL + 'renders/apartment/5.webp',
+        mobile:CONFIG.IMAGE_URL + 'renders/apartment/5_sm.webp',
+        watermark:'right',
+        title:'Panaromic Living Room',
+      },
+      {
+        desktop:CONFIG.IMAGE_URL + 'renders/apartment/7.webp',
+        mobile:CONFIG.IMAGE_URL + 'renders/apartment/7_sm.webp',
+        watermark:'right',
+        title:'Living Room',
+      },
+      {
+        desktop:CONFIG.IMAGE_URL + 'renders/apartment/8.webp',
+        mobile:CONFIG.IMAGE_URL + 'renders/apartment/8_sm.webp',
+        watermark:'right',
+        title:'Cucina Kitchen',
+      },  
+      {
+        desktop:CONFIG.IMAGE_URL + 'renders/apartment/6.webp',
+        mobile:CONFIG.IMAGE_URL + 'renders/apartment/6_sm.webp',
+        watermark:'right',
+        title:'Master Bedroom – Platinum',
+      },  
+      {
+        desktop:CONFIG.IMAGE_URL + 'renders/apartment/9.webp',
+        mobile:CONFIG.IMAGE_URL + 'renders/apartment/9_sm.webp',
+        watermark:'right',
+        title:'Master Bedroom – Platinum',
+      },
+      {
+        desktop:CONFIG.IMAGE_URL + 'renders/apartment/2.webp',
+        mobile:CONFIG.IMAGE_URL + 'renders/apartment/2_sm.webp',
+        watermark:'right',
+        title:'Bathroom',
+      },
+      {
+        desktop:CONFIG.IMAGE_URL + 'renders/apartment/1.webp',
+        mobile:CONFIG.IMAGE_URL + 'renders/apartment/1_sm.webp',
+        watermark:'right',
+        title:'Master Bedroom – Royale',
+      },
+      {
+        desktop:CONFIG.IMAGE_URL + 'renders/apartment/3.webp',
+        mobile:CONFIG.IMAGE_URL + 'renders/apartment/3_sm.webp',
+        watermark:'right',
+        title:'Study Room',
+      },
+      {
+        desktop:CONFIG.IMAGE_URL + 'renders/apartment/4.webp',
+        mobile:CONFIG.IMAGE_URL + 'renders/apartment/4_sm.webp',
+        watermark:'right',
+        title:'Kids\' Room',
+      },
+    ],
+    imageClassName:'apartment-section-img',
   },
   highlights: [
     "Power backup for common facilities.",

@@ -6,6 +6,7 @@ import * as CONFIG from "../../../config/config";
 
 
 import Watermark from "../../../common/watermark/Index";
+import { useMatches } from "../../../theme/theme";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,7 +16,7 @@ export default function NoPolutionZone({ data }) {
 
   const noPollutionZone = data;
   const sectionsRef = useRef([]);
-  const isMobile = window.innerWidth <= 768;
+  const { isMobile } = useMatches();
 
   const imgICON = CONFIG.IMAGE_URL
 
