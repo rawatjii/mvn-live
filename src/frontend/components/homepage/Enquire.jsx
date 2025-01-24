@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import SecTitle from "../../../common/SecTitle/Index";
-import { Link } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -15,7 +13,6 @@ gsap.registerPlugin(ScrollTrigger);
 const Enquire = () => {
   const titleRef = useRef();
   const contentRef = useRef();
-  const btnRef = useRef();
   const [imageSrc, setImageSrc] = useState(DesktopenquireBg);
 
   useEffect(() => {
@@ -53,15 +50,6 @@ const Enquire = () => {
       },
     });
 
-    gsap.from(btnRef.current, {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      scrollTrigger: {
-        trigger: btnRef.current,
-        start: "top 95%",
-      },
-    });
   }, []);
 
   return (

@@ -1,10 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import SecTitle from "../../../common/SecTitle/Index";
 
 import arrowIcon from "../../assets/images/icons/arrow.png";
 import { Link } from "react-router-dom";
-import LazyLoad from "react-lazyload";
 
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -44,22 +42,6 @@ const otherProjects = [
       desktop: mvnSportsAcademyDesktop,
     },
     link: "https://www.mvn88.com/exercise-sports-academy/",
-  },
-];
-
-// Separate the `content` array for clarity
-const additionalContent = [
-  {
-    fname: "Lorem klsdjfskldfjsd",
-    con: "klsdjfklsdjfs",
-  },
-  {
-    fname: "sdkfjskldfjsdklfjsdklfj",
-    con: "zdskjfsjdfkl",
-  },
-  {
-    fname: "Lorem klsdjfskldfjsd",
-    con: "klsdjfklsdjfs",
   },
 ];
 
@@ -145,9 +127,9 @@ const OtherProjects = ({ data, title, subTitle, mobContent=12 }) => {
                   </Link>
                 </div>
                 {title && (
-                  <div class="content">
-                    <span class="am-name">{title}</span>
-                    <p class="desc">{subTitle}</p>
+                  <div className="content">
+                    <span className="am-name">{title}</span>
+                    <p className="desc">{subTitle}</p>
                   </div>
                 )}
 

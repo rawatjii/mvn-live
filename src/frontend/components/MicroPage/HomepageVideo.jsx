@@ -135,7 +135,7 @@ const HomepageVideo = ({ data }) => {
             <div id="scroll-wrapper">
               <div id="scroll-wrapper-inner">
                 <div id="scroll-title">Scroll Down</div>
-                <div class="scroll-down-dude"></div>
+                <div className="scroll-down-dude"></div>
               </div>
             </div>
           </div>

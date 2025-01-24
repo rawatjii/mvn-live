@@ -24,15 +24,15 @@ const Consultant = ()=>{
             <Col md={12} className="px_40 mt-4 mt-md-4">
               <p className="des_style1 text-center">MVN Aero One is designed by one of the most celebrated architects in the world. Renowned for their innovative and iconic designs, this architecture company has crafted some of the world's most celebrated malls, blending aesthetic brilliance with functional excellence to create unparalleled shopping destinations globally.</p>
 
-              <ul class="logos justify-content-center">
+              <ul className="logos justify-content-center">
                 <li>
-                <img src={CONFIG.IMAGE_URL + 'micro/consultant/logo2.png'} alt="mvn consultant logo" class="img-fluid logo" />
+                <img src={CONFIG.IMAGE_URL + 'micro/consultant/logo2.png'} alt="mvn consultant logo" className="img-fluid logo" />
                 </li>
                 <li>
-                  <img src={CONFIG.IMAGE_URL + 'micro/consultant/logo1.png'} alt="mvn consultant logo" class="img-fluid logo" />
+                  <img src={CONFIG.IMAGE_URL + 'micro/consultant/logo1.png'} alt="mvn consultant logo" className="img-fluid logo" />
                 </li>
                 <li>
-                  <img src={CONFIG.IMAGE_URL + 'micro/consultant/logo3.jpg'} alt="mvn consultant logo" class="img-fluid logo" />
+                  <img src={CONFIG.IMAGE_URL + 'micro/consultant/logo3.jpg'} alt="mvn consultant logo" className="img-fluid logo" />
                 </li>
               </ul>
             </Col>

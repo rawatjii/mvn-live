@@ -82,7 +82,7 @@ const Testimonial = () => {
     <section className="section testimonial_section">
       <Container>
         <div className="heading_div mb_60 mb_sm_30">
-          <img src={headingIconImg} alt="mvn heading image" className="img-fluid title_plane1" />
+          <img src={headingIconImg} alt="mvn heading image" className="img-fluid title_plane1" loading="lazy" />
           <h4 ref={titleRef} className="title title_style1 text-center">What Client Says!</h4>
         </div>
 
@@ -114,13 +114,13 @@ const Testimonial = () => {
                 <div className="content">
                  <div className="flex-content-box">
                    <div className="flex-heading-row">
-                   <img src={quoteIcon} alt="mvn quotes icon" className="img-fluid quote_icon" />
+                   <img src={quoteIcon} alt="mvn quotes icon" className="img-fluid quote_icon" loading="lazy" />
                    <h5 className="title">{item.title}</h5>
                    </div>
                   <p className="msg">{item.msg}</p>
                  </div>
                   <div className="flex-name-pic">
-                    <img src={item.image} alt="mvn quotes icon" className="img-fluid testimonial-pic" />
+                    <img src={item.image} alt="mvn quotes icon" className="img-fluid testimonial-pic" loading="lazy" />
                     <p className="testimonial-name">{item.name}</p>
                   </div>
                 </div>

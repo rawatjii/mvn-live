@@ -1,12 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import SecTitle from "../../../common/SecTitle/Index";
 import { Form } from "react-bootstrap";
 import Button from "../../../common/Button/Button";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import headingIconImg from "../../assets/images/icons/heading-icon-img.webp";
-import Loader from "../../../common/Loader/loader";
 gsap.registerPlugin(ScrollTrigger);
 
 const EnquireForm = ({ career, projectName }) => {
@@ -98,6 +96,7 @@ const EnquireForm = ({ career, projectName }) => {
             src={headingIconImg}
             alt="mvn heading icon"
             className="img-fluid title_plane1"
+            loading="lazy"
           />
           <h4 ref={titleRef} className="title title_style1 text-center">
             Get In Touch With Us

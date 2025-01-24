@@ -71,7 +71,7 @@ const Experience_Sec = () => {
       >
         {imgSlid?.map((item, i) => (
           <Carousel.Item key={i} role="group" aria-labelledby={`carouselItem-${i}`}>
-            <div class="image-exp">
+            <div className="image-exp">
               <img
                 className="img-fluid w-100 d-view"
                 src={item.imgSlide}
@@ -83,7 +83,7 @@ const Experience_Sec = () => {
                 alt={`First slide-2-${i}`}
               />
             </div>
-            <div class="exp-content">
+            <div className="exp-content">
               <h4>{item.content}</h4>
             </div>
           </Carousel.Item>

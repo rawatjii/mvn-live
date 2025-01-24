@@ -170,7 +170,7 @@ const MicroLocationMap = ({data})=>{
 
 
       <Modal className="location_modal" show={showModal} onHide={handleClose}>
-        <span type="button" class="close" onClick={handleClose}>×</span>
+        <span type="button" className="close" onClick={handleClose}>×</span>
         <iframe src="https://www.youtube.com/embed/p4ArtUtsj-A?si=VsbM3Dvdk969-OHv" title="MVN Location Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
       </Modal>
     </section>

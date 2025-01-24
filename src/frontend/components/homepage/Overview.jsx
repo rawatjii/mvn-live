@@ -1,23 +1,40 @@
 import React, { useEffect, useRef } from "react";
-import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
+import { Container } from "react-bootstrap";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import bg from '../../assets/images/overview/bg.webp';
 import buildingImg from '../../assets/images/overview/building.webp';
 import buildingImgBanner from '../../assets/images/overview/home-about.webp';
 import headingIconImg from "../../assets/images/icons/heading-icon-img.webp";
+import homeMobileLogo from "../../../frontend/assets/mvn-aeroone-logo-img.webp";
 
-
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Overview = ({className}) => {
-  const imageRef = useRef();
-  const secRef = useRef();
 
   return (
     <>
+      <div className="mobile-view-box">
+        <Container>
+          <img
+            src={homeMobileLogo}
+            alt="mvn aeroone logo"
+            className="img-fluid mobile-img-logo"
+            loading="lazy"
+          />
+          <h2 className="logo_title">Gurugram</h2>
+          <span className="status">New Launch</span>
+          <h3 className="slogan-heading">
+            Behold to Experience the complete view!
+          </h3>
+          <a
+            href={import.meta.env.VITE_APP_URL + "aeroone-gurgaon"}
+            className="btn btn_style3 r_100 mt-3 mt-md-4"
+          >
+            Click Here
+          </a>
+        </Container>
+      </div>
+
       <section className={`${className} overview_section`}> 
         <Row>
           <Col xs={12} md={12} className="about-content">
