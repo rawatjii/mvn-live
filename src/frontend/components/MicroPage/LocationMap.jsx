@@ -1,13 +1,12 @@
 import React, { useEffect, useRef, useState } from "react"
-import { Container } from "react-bootstrap"
-import SecTitle from "../../../common/SecTitle/Index"
 import { gsap } from 'gsap';
+import { Container } from "react-bootstrap"
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import Modal from 'react-bootstrap/Modal';
 
-
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import CustomCard from "../Card";
 
 import * as CONFIG from '../../../config/config'
 
@@ -15,21 +14,12 @@ import * as CONFIG from '../../../config/config'
 import 'swiper/css';
 import "yet-another-react-lightbox/styles.css";
 
-import location_map_sm from '../../assets/images/location-advantage/location_map_sm.webp'
-import Button from "../../../common/Button/Button";
-import CustomCard from "../Card";
 
 gsap.registerPlugin(ScrollTrigger);
 const MicroLocationMap = ({data})=>{
   const titleRef = useRef();
-  const typoRefs = useRef([]);
-  const priceRefs = useRef([]);
-  const sizeRefs = useRef([]);
   const [isLocationMapOpen, setIsLocationMapOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
-
-  console.log("location map img", data.mapIMG);
-  
 
   const locationMapImg = [{src: data.mapIMG.desktop, asset:data.mapIMG.desktop}]
   
@@ -51,52 +41,6 @@ const MicroLocationMap = ({data})=>{
         start: "top 95%",
       }
     })
-
-
-    typoRefs.current.forEach((singleRef, index) => {
-      if (singleRef) {
-        gsap.from(singleRef, {
-          y: 20,  
-          opacity: 0,
-          duration: 0.5,  
-
-          scrollTrigger: {
-            trigger: singleRef,
-            start: "top 95%", // When the top of the element reaches 80% of the viewport
-          }
-        });
-      }
-    })
-
-    priceRefs.current.forEach((singleRef, index) => {
-      if (singleRef) {
-        gsap.from(singleRef, {
-          y: 20,  
-          opacity: 0,
-          duration: 0.5,  
-
-          scrollTrigger: {
-            trigger: singleRef,
-            start: "top 95%", // When the top of the element reaches 80% of the viewport
-          }
-        });
-      }
-    })
-
-    sizeRefs.current.forEach((singleRef, index) => {
-      if (singleRef) {
-        gsap.from(singleRef, {
-          y: 10,  
-          opacity: 0,
-          duration: 0.5,  
-
-          scrollTrigger: {
-            trigger: singleRef,
-            start: "top 95%", // When the top of the element reaches 80% of the viewport
-          }
-        });
-      }
-    })
   }, [])
 
 
@@ -104,7 +48,7 @@ const MicroLocationMap = ({data})=>{
     <section className="section location_map_section pb-0">
       <Container>
         <div className="heading_div mb_60 mb_sm_30">
-          <h4 className="title title_style1 text-center">Location Map</h4>
+          <h4 className="title title_style1 text-center" ref={titleRef}>Location Map</h4>
         </div>
       </Container>
 
@@ -115,7 +59,7 @@ const MicroLocationMap = ({data})=>{
             <div className="thumbnail">
 
               <button className="location_btn"  onClick={handleShow}>
-                <img src={CONFIG.IMAGE_URL + 'icons/yt_color.png'} alt="youtube icon" className="img-fluid yt_icon"  />
+                <img src={CONFIG.IMAGE_URL + 'icons/yt_color.png'} alt="youtube icon" className="img-fluid yt_icon" loading="lazy"  />
                 Location Video
               </button>
 
@@ -171,7 +115,7 @@ const MicroLocationMap = ({data})=>{
 
       <Modal className="location_modal" show={showModal} onHide={handleClose}>
         <span type="button" className="close" onClick={handleClose}>×</span>
-        <iframe src="https://www.youtube.com/embed/p4ArtUtsj-A?si=VsbM3Dvdk969-OHv" title="MVN Location Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+        <iframe src="https://www.youtube.com/embed/p4ArtUtsj-A?si=VsbM3Dvdk969-OHv" title="MVN Location Video" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen=""></iframe>
       </Modal>
     </section>
   )

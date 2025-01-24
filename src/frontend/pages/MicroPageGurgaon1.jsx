@@ -1,52 +1,37 @@
-import React, { useEffect, useState, useRef } from "react";
-import { Container } from "react-bootstrap";
-import MicroHero from "../components/MicroPage/Hero";
-import MicroOverview from "../components/MicroPage/Overview";
-import LargeElevationSection from "../components/MicroPage/LargeElevationSection";
-import MicroHighlights from "../components/MicroPage/Highlights";
-import MicroPrice from "../components/MicroPage/Price";
-import MicroAmenities from "../components/MicroPage/Amenities";
-import MicroAmenitiesDesktop from "../components/MicroPage/AmenitiesDesktop";
-import MicroMasterPlan from "../components/MicroPage/MasterPlan";
-import MicroFloorPlan from "../components/MicroPage/FloorPlan";
-import MicroLocationMap from "../components/MicroPage/LocationMap";
-import Enquire from "../components/homepage/Enquire";
-import EnquireForm from "../components/homepage/EnquireForm";
-import PeacockSection from "../components/MicroPage/PeacockSection";
-import Walkthrough from "../components/MicroPage/Walkthrough";
-import MvnMall from "../components/MicroPage/MvnMall";
-import Footer from "../components/Footer";
-import Typology from "../components/homepage/Typology";
-import DownloadBrochure from "../components/MicroPage/DownloadBrochure";
-import InitialLoading from "../skeleton/Initial/Index";
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import ScrollSmoother from "gsap/ScrollSmoother";
-import GurgaonLoader1 from "../../common/Loader/micro/gurgaon1/Index";
+import React, { useEffect, useState, useRef, Suspense } from "react";
 import { Helmet } from "react-helmet";
-import MicroHeader from "../components/MicroHeader";
-import CustomCard from "../components/Card";
-import LivingRoomVideoGurugram from "../components/MicroPage/LivingRoomVideoGurugram";
-import PartyVideo from "../components/MicroPage/PartyVideo";
-import PartyVideo1 from "../components/MicroPage/PartyVideo1";
-import MasterBedroom from "../components/MicroPage/MasterBedroom";
-import MicroLandscape from "../components/MicroPage/Landscape";
-import MicroElevation from "../components/MicroPage/MicroElevation";
-import MicroApartment from "../components/MicroPage/MicroApartment";
-import NoPolutionZone from "../components/MicroPage/NoPolutionZone";
+import ScrollSmoother from "gsap/ScrollSmoother";
 
-import * as CONFIG from '../../config/config';
-import Consultant from "../components/MicroPage/Consultant";
-import ConstructionTechnology from "../components/MicroPage/ConstructionTechnology";
-import ScrollTop from "../../common/ScrollToTop/Index";
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+const MicroHeader = React.lazy(()=>import("../components/MicroHeader"));
+const MicroHero = React.lazy(()=>import("../components/MicroPage/Hero"));
+const MicroOverview = React.lazy(()=>import("../components/MicroPage/Overview"));
+const LargeElevationSection = React.lazy(()=>import("../components/MicroPage/LargeElevationSection"));
+const Walkthrough = React.lazy(()=>import("../components/MicroPage/Walkthrough"));
+const DownloadBrochure = React.lazy(()=>import("../components/MicroPage/DownloadBrochure"));
+const PeacockSection = React.lazy(()=>import("../components/MicroPage/PeacockSection"));
+const LivingRoomVideoGurugram = React.lazy(()=>import("../components/MicroPage/LivingRoomVideoGurugram"));
+const PartyVideo = React.lazy(()=>import("../components/MicroPage/PartyVideo"));
+const MasterBedroom = React.lazy(()=>import("../components/MicroPage/MasterBedroom"));
+const Consultant = React.lazy(()=>import("../components/MicroPage/Consultant"));
+const MicroLandscape = React.lazy(()=>import("../components/MicroPage/Landscape"));
+const MicroElevation = React.lazy(()=>import("../components/MicroPage/MicroElevation"));
+const MicroApartment = React.lazy(()=>import("../components/MicroPage/MicroApartment"));
+const ConstructionTechnology = React.lazy(()=>import("../components/MicroPage/ConstructionTechnology"));
+const MicroAmenities = React.lazy(()=>import("../components/MicroPage/Amenities"));
+const Typology = React.lazy(()=>import("../components/homepage/Typology"));
+const MicroFloorPlan = React.lazy(()=>import("../components/MicroPage/FloorPlan"));
+const MicroLocationMap = React.lazy(()=>import("../components/MicroPage/LocationMap"));
+const MvnMall = React.lazy(()=>import("../components/MicroPage/MvnMall"));
+const NoPolutionZone = React.lazy(()=>import("../components/MicroPage/NoPolutionZone"));
+const Enquire = React.lazy(()=>import("../components/homepage/Enquire"));
+const EnquireForm = React.lazy(()=>import("../components/homepage/EnquireForm"));
+const Footer = React.lazy(()=>import("../components/Footer"));
+
 
 const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
   const [heroLoaded, setHeroLoaded] = useState(true);
-  const [newLoadingCount, setNewLoadingCount] = useState(
-    Math.floor(localStorage.getItem('count') || 0)
-  );
+  
   const [isPageLoaded, setIsPageLoaded] = useState(false);
   const [peacockLoaded, setPeacockLoaded] = useState(false);
   const [livingRoomLoaded, setLivingRoomLoaded] = useState(false);
@@ -58,13 +43,6 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
   const sectionRefs = useRef({});
   const {pageSections, projectName} = data;
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    // window.addEventListener("resize", handleResize);
-    // return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   const scrollToSection = (sectionKey) => {
     const target = sectionRefs.current[sectionKey];
@@ -91,31 +69,9 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
     };
   }, [heroLoaded]);
 
-  {/*useEffect(() => {
-    if (newLoadingCount >= 100 && peacockLoaded && livingRoomLoaded && partyLoaded) {
-      const timer = setTimeout(() => {
-        setNewLoadingCount(101);
-        setIsPageLoaded(true); // Mark page as loaded
-      }, 500); // 1 seconds delay before removing InitialLoading
-
-      return () => clearTimeout(timer);
-    }
-  }, [newLoadingCount]);*/}
 
   return (
     <>
-      {/*{(!peacockLoaded || !livingRoomLoaded || !partyLoaded) && (
-        <>
-          <InitialLoading
-            fast="false"
-            second="true"
-            loadingCount={newLoadingCount}
-            setLoadingCount={setNewLoadingCount}
-          />
-          /~ <GurgaonLoader1 /> ~/
-        </>
-      )}*/}
-
       
       <Helmet>
         <script>
@@ -137,7 +93,6 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
           `}
         </script>
 
-        {/* Google tag (gtag.js) */}
 
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-T7YNXS59XR"></script>
 
@@ -149,7 +104,6 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
           `}
         </script>
 
-        {/* conversion code */}
 
         <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11490416244"></script>
 
@@ -162,8 +116,6 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             gtag('config', 'AW-11490416244');
           `}
         </script>
-
-        {/* Meta Pixel Code */}
 
         <script>
           {`
@@ -222,27 +174,36 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
       </Helmet>
 
-      <MicroHeader scrollToSection={scrollToSection} sectionsMenus={pageSections} projectName={projectName} />
+      <Suspense fallback="">
+        <MicroHeader scrollToSection={scrollToSection} sectionsMenus={pageSections} projectName={projectName} />
+      </Suspense>
+      
       <div id="smooth-wrapper">
         <div id="smooth-content">
           
 
           <div ref={(el) => (sectionRefs.current.microOverview = el)}>
-            <MicroHero isMobile={isMobile} data={data} onLoadComplete={() => setHeroLoaded(true)} />
+            <Suspense fallback="">
+              <MicroHero />
+            </Suspense>
           </div>
 
-          {/* Render other components only after Hero Section is loaded */}
-
-          <MicroOverview data={data} heroLoadedStatus={heroLoaded} /> {/*no isssue*/}
-          <LargeElevationSection data={data.LargeElevationSection} />
-
+          <Suspense fallback="">
+            <MicroOverview data={data} /> 
+          </Suspense>
+          
+          <Suspense fallback="">
+            <LargeElevationSection data={data.LargeElevationSection} />
+          </Suspense>
           
           <div
             ref={(el) =>
               (sectionRefs.current.Walkthrough = el)
             }
           >
-            <Walkthrough data={data.Walkthrough} />
+            <Suspense fallback="">
+              <Walkthrough data={data.Walkthrough} />
+            </Suspense>
           </div>
 
           <div
@@ -250,125 +211,163 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
               (sectionRefs.current.downloadBrochure = el)
             }
           >
-            <DownloadBrochure />
+            <Suspense fallback="">
+              <DownloadBrochure />
+            </Suspense>
           </div>
+
+
           <div ref={(el) => (sectionRefs.current.LIVINGROOM = el)}>
-            <PeacockSection
-              data={data}
-              onLoadComplete={() => setPeacockLoaded(true)}
-              isMobile={isMobile}
-            />
+            <Suspense fallback="">
+              <PeacockSection
+                data={data}
+                onLoadComplete={() => setPeacockLoaded(true)}
+                isMobile={isMobile}
+              />
+            </Suspense>
           </div>
-          <div>
-            <LivingRoomVideoGurugram
-              data={data}
-              onLoadComplete={() => setLivingRoomLoaded(true)}
-              isMobile={isMobile}
-            />
-          </div>
-          <div>
-            <PartyVideo
-              data={data}
-              onLoadComplete={() => setPartyLoaded(true)}
-              isMobile={isMobile}
-            />
-          </div>
-          <div>
-            <MasterBedroom
-              data={data}
-              isMobile={isMobile}
-              onLoadComplete={() =>
-                setMasterBedroomLoaded(true)
+
+
+          <Suspense fallback="">
+            <div>
+              <LivingRoomVideoGurugram
+                data={data}
+                onLoadComplete={() => setLivingRoomLoaded(true)}
+                isMobile={isMobile}
+              />
+            </div>
+          </Suspense>
+
+          <Suspense fallback="">
+            <div>
+              <PartyVideo
+                data={data}
+                onLoadComplete={() => setPartyLoaded(true)}
+                isMobile={isMobile}
+              />
+            </div>
+          </Suspense>
+          
+          <Suspense fallback="">
+            <div>
+              <MasterBedroom
+                data={data}
+                isMobile={isMobile}
+                onLoadComplete={() =>
+                  setMasterBedroomLoaded(true)
+                }
+              />
+            </div>
+          </Suspense>
+
+          <Suspense fallback="">
+            <div
+              ref={(el) =>
+                (sectionRefs.current.consultant = el)
               }
-            />
-          </div>
+            >
+              <Consultant data={data.consultant} />
+            </div>
+          </Suspense>
+          
+          <Suspense fallback="">
+            <div
+              ref={(el) =>
+                (sectionRefs.current.MicroLandscape = el)
+              }
+            >
+              <MicroLandscape />
+            </div>
+          </Suspense>
+          
+          <Suspense fallback="">
+            <div
+              ref={(el) =>
+                (sectionRefs.current.MicroElevation = el)
+              }
+            >
+              <MicroElevation />
+            </div>
+          </Suspense>
+          
+          <Suspense fallback="">
+            <div
+              ref={(el) =>
+                (sectionRefs.current.MicroApartment = el)
+              }
+            >
+              <MicroApartment />
+            </div>
+          </Suspense>
+         
+          <Suspense fallback="">
+            <div
+              ref={(el) =>
+                (sectionRefs.current.constructionTechnology = el)
+              }
+            >
+              <ConstructionTechnology />
+            </div>
+          </Suspense>
+          
+          <Suspense fallback="">
+            <div
+              ref={(el) =>
+                (sectionRefs.current.MicroAmenities = el)
+              }>
+              <MicroAmenities data={data.amenities} />
+            </div>
+          </Suspense>
 
-          <div
-            ref={(el) =>
-              (sectionRefs.current.consultant = el)
-            }
-          >
-            <Consultant data={data.consultant} />
-          </div>
-
-          <div
-            ref={(el) =>
-              (sectionRefs.current.MicroLandscape = el)
-            }
-          >
-            <MicroLandscape />
-          </div>
-
-          <div
-            ref={(el) =>
-              (sectionRefs.current.MicroElevation = el)
-            }
-          >
-            <MicroElevation />
-          </div>
-
-         <div
-            ref={(el) =>
-              (sectionRefs.current.MicroApartment = el)
-            }
-          >
-            <MicroApartment />
-          </div>
-
-          <div
-            ref={(el) =>
-              (sectionRefs.current.constructionTechnology = el)
-            }
-          >
-            <ConstructionTechnology />
-          </div>
-
-          <div
-            ref={(el) =>
-              (sectionRefs.current.MicroAmenities = el)
-            }>
-            <MicroAmenities data={data.amenities} />
-          </div>
-
-          <div
-            ref={(el) =>
-              (sectionRefs.current.MicroTypology = el)
-            }
-          >
-            <Typology onLoadComplete={() => setTypologyLoaded(true)} />
-          </div>
-
-          <div
-            ref={(el) =>
-              (sectionRefs.current.MicroFloorPlan = el)
-            }
-          >
-            <MicroFloorPlan data={data.floorPlan} />
-          </div>
-
-          <div
-            ref={(el) =>
-              (sectionRefs.current.MicroLocationMap = el)
-            }
-          >
-            <MicroLocationMap
-              data={data.locationAdvantage}
-            />
-          </div>
-
-          <div
-            ref={(el) => (sectionRefs.current.MVNMALL = el)}
-          >
-            <MvnMall />
-          </div>
-
-          <div
-            ref={(el) =>
-              (sectionRefs.current.NoPolutionZone = el)
-            }
-          >
-            <NoPolutionZone data={data.noPollutionZone} />
-          </div>
+          <Suspense fallback="">
+            <div
+              ref={(el) =>
+                (sectionRefs.current.MicroTypology = el)
+              }
+            >
+              <Typology onLoadComplete={() => setTypologyLoaded(true)} />
+            </div>
+          </Suspense>
+          
+          <Suspense fallback="">
+            <div
+              ref={(el) =>
+                (sectionRefs.current.MicroFloorPlan = el)
+              }
+            >
+              <MicroFloorPlan data={data.floorPlan} />
+            </div>
+          </Suspense>
+          
+          <Suspense fallback="">
+            <div
+              ref={(el) =>
+                (sectionRefs.current.MicroLocationMap = el)
+              }
+            >
+              <MicroLocationMap
+                data={data.locationAdvantage}
+              />
+            </div>  
+          </Suspense>
+          
+          <Suspense fallback="">
+            <div
+              ref={(el) => (sectionRefs.current.MVNMALL = el)}
+            >
+              <MvnMall />
+            </div>
+          </Suspense>
+          
+          <Suspense fallback="">
+            <div
+              ref={(el) =>
+                (sectionRefs.current.NoPolutionZone = el)
+              }
+            >
+              <NoPolutionZone data={data.noPollutionZone} />
+            </div>
+          </Suspense>
 
           <div
             className="container-fluid micro_footer"
@@ -376,17 +375,23 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
           >
             <div className="row ">
               <div className="col-sm-6 px-0">
-                <Enquire />
+                <Suspense fallback="">
+                  <Enquire />
+                </Suspense>
               </div>
               <div className="col-sm-6 px-0">
-                <EnquireForm
-                  projectName={"MVN Aeroone"}
-                />
+                <Suspense fallback="">
+                  <EnquireForm
+                    projectName={"MVN Aeroone"}
+                  />
+                </Suspense>
               </div>
             </div>
           </div>
 
-          <Footer />
+          <Suspense fallback="">
+            <Footer />
+          </Suspense>
         </div>
       </div>
 

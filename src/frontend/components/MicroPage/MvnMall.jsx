@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import SecTitle from "../../../common/SecTitle/Index";
 import mvnMallImg from "../../assets/images/mvn_mall.webp";
 import mvnMallBannerImg1 from "../../assets/images/mall-banner-1.webp"
 import mvnMallBannerImg2 from "../../assets/images/mall-banner-2.webp"
@@ -12,15 +11,6 @@ gsap.registerPlugin(ScrollTrigger);
 const MvnMall = () => {
   const imageRef = useRef(null);
   const secRef = useRef(null);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   useEffect(() => {
     const image = imageRef.current;

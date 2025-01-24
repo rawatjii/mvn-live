@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import CustomCard from "../Card";
-import { Button, Col, Container, Row } from "react-bootstrap";
-import CustomModal from "../../../common/Modal";
+import {  Col, Container, Row } from "react-bootstrap";
 import * as CONFIG from '../../../config/config'
 
 const Consultant = ()=>{
@@ -17,7 +16,7 @@ const Consultant = ()=>{
           <Row className="mx_-40">
             <Col md={12} className="px_40">
               <div className="user_img">
-                <img src={CONFIG.IMAGE_URL + 'hafeez_user.webp'} className="img-fluid w-100" alt="mvn hafeez " />
+                <img src={CONFIG.IMAGE_URL + 'hafeez_user.webp'} className="img-fluid w-100" alt="mvn hafeez " loading="lazy" />
               </div>
             </Col>
 
@@ -26,13 +25,13 @@ const Consultant = ()=>{
 
               <ul className="logos justify-content-center">
                 <li>
-                <img src={CONFIG.IMAGE_URL + 'micro/consultant/logo2.png'} alt="mvn consultant logo" className="img-fluid logo" />
+                <img src={CONFIG.IMAGE_URL + 'micro/consultant/logo2.png'} alt="mvn consultant logo" className="img-fluid logo" loading="lazy" />
                 </li>
                 <li>
-                  <img src={CONFIG.IMAGE_URL + 'micro/consultant/logo1.png'} alt="mvn consultant logo" className="img-fluid logo" />
+                  <img src={CONFIG.IMAGE_URL + 'micro/consultant/logo1.png'} alt="mvn consultant logo" className="img-fluid logo" loading="lazy" />
                 </li>
                 <li>
-                  <img src={CONFIG.IMAGE_URL + 'micro/consultant/logo3.jpg'} alt="mvn consultant logo" className="img-fluid logo" />
+                  <img src={CONFIG.IMAGE_URL + 'micro/consultant/logo3.jpg'} alt="mvn consultant logo" className="img-fluid logo"  loading="lazy"/>
                 </li>
               </ul>
             </Col>

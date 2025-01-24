@@ -3,10 +3,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container } from "react-bootstrap";
 import CustomCard from "../Card";
-import PartyLoader from "../../../common/Loader/micro/partyLoader/Index";
 import Watermark from "../../../common/watermark/Index";
 import lottie from "lottie-web";
-import InitialLoading from "../../skeleton/Initial/Index";
 import Logomark from "../../../common/logomark/Index";
 import ScrollDown from "../../../common/scrollDown/Index";
 
@@ -17,18 +15,21 @@ const PartyVideo = ({ isMobile, data, onLoadComplete }) => {
   const containerRef = useRef(null);
   const titleRef = useRef();
   const lottieContainerRef = useRef(null);
-  const [loading, setLoading] = useState(false);
   const [animationData, setAnimationData] = useState(null);
 
   const { title, desc } = data.video3;
- 
+
   // Dynamically import the correct JSON animation data
   useEffect(() => {
     const loadAnimationData = async () => {
       try {
         const importedData = isMobile
-          ? await import("../../../../public/assets/json-frame/aeroone-gurgaon1/PartyVideo/Mobile/data.json")
-          : await import("../../../../public/assets/json-frame/aeroone-gurgaon1/PartyVideo/Desktop/data.json");
+          ? await import(
+              "../../../../public/assets/json-frame/aeroone-gurgaon1/PartyVideo/Mobile/data.json"
+            )
+          : await import(
+              "../../../../public/assets/json-frame/aeroone-gurgaon1/PartyVideo/Desktop/data.json"
+            );
 
         setAnimationData(importedData.default);
       } catch (error) {
@@ -41,7 +42,8 @@ const PartyVideo = ({ isMobile, data, onLoadComplete }) => {
 
   // Initialize Lottie and ScrollTrigger
   useEffect(() => {
-    if (!animationData || !lottieContainerRef.current || !containerRef.current) return;
+    if (!animationData || !lottieContainerRef.current || !containerRef.current)
+      return;
 
     const lottieAnimation = lottie.loadAnimation({
       container: lottieContainerRef.current,
@@ -87,8 +89,6 @@ const PartyVideo = ({ isMobile, data, onLoadComplete }) => {
 
     // Event listener for when Lottie is fully initialized
     lottieAnimation.addEventListener("DOMLoaded", () => {
-      console.log("Lottie animation is fully loaded.");
-      setLoading(false);
       onLoadComplete && onLoadComplete();
     });
 
@@ -115,35 +115,26 @@ const PartyVideo = ({ isMobile, data, onLoadComplete }) => {
 
   return (
     <div className="section peacock_section party_section pb-0">
-      {loading ? (
-        <PartyLoader />
-        // <InitialLoading className="style1" />
-      ) : (
-        <>
-          <div ref={containerRef} className="frames_content">
-            <div className="position-relative h_sm_100">
-              <div className="position-relative h_sm_100">
-                <Watermark />
-                <Logomark className={`${isMobile ? 'left sm' : 'left'}`} />
-                <div ref={lottieContainerRef} style={{ width: "100%", height: "100%" }}></div>
-              </div>
-
-              <ScrollDown className="color-black" />
-            </div>
+      <div ref={containerRef} className="frames_content">
+        <div className="position-relative h_sm_100">
+          <div className="position-relative h_sm_100">
+            <Watermark />
+            <Logomark className={`${isMobile ? "left sm" : "left"}`} />
+            <div
+              ref={lottieContainerRef}
+              style={{ width: "100%", height: "100%" }}
+            ></div>
           </div>
-          {/* <div id="scroll-wrapper" className="microsite-scrolldown">
-              <div id="scroll-wrapper-inner">
-                <div id="scroll-title">Scroll Down</div>
-                <div className="scroll-down-dude"></div>
-              </div>
-            </div> */}
-          <Container>
-            <div className="about">
-              <CustomCard className="px-0 pb-0" title={title} desc={desc} />
-            </div>
-          </Container>
-        </>
-      )}
+
+          <ScrollDown className="color-black" />
+        </div>
+      </div>
+      
+      <Container>
+        <div className="about">
+          <CustomCard className="px-0 pb-0" title={title} desc={desc} />
+        </div>
+      </Container>
     </div>
   );
 };

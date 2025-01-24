@@ -2,9 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import diamondIMG from "../../assets/images/icons/plane1.png";
 
-
-
-const MicroOverview = ({ data, heroLoadedStatus }) => {
+const MicroOverview = ({ data }) => {
   const [count1, setCount1] = useState(0);
   const [count2, setCount2] = useState(0);
   const [count3, setCount3] = useState(0);
@@ -50,7 +48,7 @@ const MicroOverview = ({ data, heroLoadedStatus }) => {
   useEffect(()=>{
     const offsetValue = document.querySelector('#overview_section').offsetTop;
     localStorage.setItem('navbar_scroll_height',  offsetValue);
-  }, [heroLoadedStatus])
+  }, [])
 
 
   useEffect(() => {
@@ -82,7 +80,7 @@ const MicroOverview = ({ data, heroLoadedStatus }) => {
         <div className="overview_card px-0">
           <div className="aboutUs-card_heading">
             <div className="diamond_img_strip">
-              <img src={diamondIMG} className="img-fluid" alt="diamond image" />
+              <img src={diamondIMG} className="img-fluid" alt="diamond image" loading="lazy" />
             </div>
             <div className="title">
               {title && <h1 className="pr_name">{title}</h1>}

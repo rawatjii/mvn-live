@@ -2,13 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container } from "react-bootstrap";
-import SecTitle from "../../../common/SecTitle/Index";
 import CustomCard from "../Card";
 import PeacockLoader from "../../../common/Loader/micro/peacockLoader/Index";
 import Watermark from "../../../common/watermark/Index";
-import * as CONFIG from '../../../config/config';
 import ScrollDown from "../../../common/scrollDown/Index";
 import Logomark from "../../../common/logomark/Index";
+
+import * as CONFIG from '../../../config/config';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -167,7 +167,7 @@ const PeacockSection = ({ data, onLoadComplete }) => {
 
               {/* Desktop Image */}
               {!isMobile && (
-                <img src={CONFIG.IMAGE_URL + 'peacock/peacock.webp'} alt="Peacock image" className="img-fluid peacock_img" />
+                <img src={CONFIG.IMAGE_URL + 'peacock/peacock.webp'} alt="Peacock image" className="img-fluid peacock_img" loading="lazy" />
               )}
             </div>
 

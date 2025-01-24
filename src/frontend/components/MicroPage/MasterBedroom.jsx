@@ -6,7 +6,6 @@ import CustomCard from "../Card";
 import MasterBedroomLoader from "../../../common/Loader/micro/masterBedroomLoader/Index";
 import Watermark from "../../../common/watermark/Index";
 import lottie from "lottie-web";
-import InitialLoading from "../../skeleton/Initial/Index";
 import Logomark from "../../../common/logomark/Index";
 
 // Register the ScrollTrigger plugin
@@ -16,7 +15,6 @@ const MasterBedroom = ({ isMobile, data, onLoadComplete }) => {
   const containerRef = useRef(null);
   const titleRef = useRef();
   const lottieContainerRef = useRef(null);
-  const [loading, setLoading] = useState(false);
   const [animationData, setAnimationData] = useState(null);
   const { title, desc } = data.masterBedroom;
 
@@ -25,8 +23,12 @@ const MasterBedroom = ({ isMobile, data, onLoadComplete }) => {
     const loadAnimationData = async () => {
       try {
         const importedData = isMobile
-          ? await import("../../../../public/assets/json-frame/aeroone-gurgaon1/Panther/Mobile/data.json")
-          : await import("../../../../public/assets/json-frame/aeroone-gurgaon1/Panther/Desktop/data.json");
+          ? await import(
+              "../../../../public/assets/json-frame/aeroone-gurgaon1/Panther/Mobile/data.json"
+            )
+          : await import(
+              "../../../../public/assets/json-frame/aeroone-gurgaon1/Panther/Desktop/data.json"
+            );
 
         setAnimationData(importedData.default);
       } catch (error) {
@@ -39,7 +41,8 @@ const MasterBedroom = ({ isMobile, data, onLoadComplete }) => {
 
   // Initialize Lottie and ScrollTrigger
   useEffect(() => {
-    if (!animationData || !lottieContainerRef.current || !containerRef.current) return;
+    if (!animationData || !lottieContainerRef.current || !containerRef.current)
+      return;
 
     const lottieAnimation = lottie.loadAnimation({
       container: lottieContainerRef.current,
@@ -74,7 +77,6 @@ const MasterBedroom = ({ isMobile, data, onLoadComplete }) => {
     });
 
     // Set loading to false after both the animation and Lottie are ready
-    lottieAnimation.addEventListener("DOMLoaded", () => setLoading(false));
     onLoadComplete();
 
     return () => {
@@ -100,29 +102,26 @@ const MasterBedroom = ({ isMobile, data, onLoadComplete }) => {
 
   return (
     <div className="section peacock_section pb-0 master-bed-room">
-      {loading && <MasterBedroomLoader />}
-      {!loading && (
-        <>
-          <div ref={containerRef} className="frames_content">
-            <Watermark className="style3" />
-            <Logomark className={`${isMobile ? 'left sm style3' : 'left'}`} />
-            <div ref={lottieContainerRef} style={{ width: "100%", height: "100%" }}></div>
+      <div ref={containerRef} className="frames_content">
+        <Watermark className="style3" />
+        <Logomark className={`${isMobile ? "left sm style3" : "left"}`} />
+        <div
+          ref={lottieContainerRef}
+          style={{ width: "100%", height: "100%" }}
+        ></div>
+      </div>
+      <div id="scroll-wrapper" className="microsite-scrolldown">
+        <div id="scroll-wrapper-inner ">
+          <div id="scroll-title">Scroll Down</div>
+          <div className="scroll-down-dude"></div>
+        </div>
+      </div>
 
-          </div>
-            <div id="scroll-wrapper" className="microsite-scrolldown">
-              <div id="scroll-wrapper-inner ">
-                <div id="scroll-title">Scroll Down</div>
-                <div className="scroll-down-dude"></div>
-              </div>
-            </div>
-
-          <Container>
-            <div className="about">
-              <CustomCard className="px_sm_0 pb-0" title={title} desc={desc} />
-            </div>
-          </Container>
-        </>
-      )}
+      <Container>
+        <div className="about">
+          <CustomCard className="px_sm_0 pb-0" title={title} desc={desc} />
+        </div>
+      </Container>
     </div>
   );
 };

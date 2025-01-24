@@ -3,33 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import * as CONFIG from "../../../config/config";
 import Watermark from "../../../common/watermark/Index";
-import OtherProjects from "../../components/homepage/OtheProjects"; // Assuming this is used for displaying other projects
 
-import mvnSchoolMobile from "../../assets/images/other-projects/mvn-school.webp";
-import mvnUniversityMobile from "../../assets/images/other-projects/mvn-university.webp";
-import mvnSportsAcademyMobile from "../../assets/images/other-projects/mvn-sports-academy.webp";
-
-import mvnSchoolDesktop from "../../assets/images/other-projects/mvn-school-desktop.webp";
-import mvnUniversityDesktop from "../../assets/images/other-projects/mvn-university-desktop.webp";
-import mvnSportsAcademyDesktop from "../../assets/images/other-projects/mvn-sports-academy-desktop.webp";
-
-const amenityData = [
-  {
-    name: "MVN School",
-    Mobilethumbnail: mvnSchoolMobile,
-    Desktophumbnail: mvnSchoolDesktop,
-  },
-  {
-    name: "MVN University",
-    Mobilethumbnail: mvnUniversityMobile,
-    Desktophumbnail: mvnUniversityDesktop,
-  },
-  {
-    name: "MVN Sports Academy",
-    Mobilethumbnail: mvnSportsAcademyMobile,
-    Desktophumbnail: mvnSportsAcademyDesktop,
-  },
-];
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -132,11 +106,13 @@ export default function Amenities({ data }) {
                 src={`${CONFIG.IMAGE_URL}amenities/${single.imgSrc.mobile}`}
                 alt={`mvn amenities ${index}`}
                 className="img-fluid d-md-none"
+                loading="lazy"
               />
               <img
                 src={`${CONFIG.IMAGE_URL}amenities/${single.imgSrc.desktop}`}
                 alt={`mvn amenities ${index}`}
                 className="img-fluid d-none d-md-block"
+                loading="lazy"
               />
               <Watermark />
             </div>

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react'
 import { Container } from 'react-bootstrap'
-// import LazyLoad from 'react-lazyload'
 import bgImgMB from '../../assets/images/aero-gurgaon/largeBg1Sm.webp'
 import bgImgDesk from '../../assets/images/aero-gurgaon/largeBg1.png'
 import absDesk from '../../assets/images/aero-gurgaon/building_sm.webp'
@@ -8,18 +7,13 @@ import building_sm from '../../assets/images/aero-gurgaon/building_sm.webp'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CustomCard from '../Card'
-// import CustomCard from '../../components/Card'
 
 gsap.registerPlugin(ScrollTrigger);
 
 
 export default function LargeElevation({ data }) {
-
     const sectionRef = React.useRef(null);
     const desktopRef = React.useRef();
-
-    // console.log(data.images);
-
 
     useEffect(() => {
         gsap.from(".abs_img_m", {
@@ -43,7 +37,6 @@ export default function LargeElevation({ data }) {
         });
 
          // Ensure triggers refresh
-            ScrollTrigger.addEventListener("refresh", () => console.log("Triggers refreshed"));
             ScrollTrigger.refresh();
     }, []);
     return (
@@ -52,7 +45,7 @@ export default function LargeElevation({ data }) {
                 <div className='container_elevation'>
                     <div className='top_div'>
                         <h3 className='title elevation_title text-uppercase'>{data.title.map((item, index)=>(
-                            <span>{item}</span>
+                            <span key={index}>{item}</span>
                         ))}</h3>
                     </div>
                 </div>
@@ -61,10 +54,10 @@ export default function LargeElevation({ data }) {
             {/* mb view */}
             <div className='bottom_img_div d_sm_block'>
                 <div className='full_img'>
-                    <img src={bgImgMB} alt={data.title} className="img-fluid img_in" />
+                    <img src={bgImgMB} alt={data.title} className="img-fluid img_in" loading='lazy' />
                 </div>
                 <div className='abs_img abs_img_m'>
-                    <img src={building_sm} alt={data.title} className="img-fluid abs_img_in" />
+                    <img src={building_sm} alt={data.title} className="img-fluid abs_img_in" loading='lazy' />
                 </div>
             </div>
 
@@ -72,10 +65,10 @@ export default function LargeElevation({ data }) {
             {/* desk view */}
             <div className='bottom_img_div d_lg_block' ref={desktopRef}>
                 <div className='full_img'>
-                    <img src={bgImgDesk} alt={data.title} className="img-fluid img_in d_lg_block" />
+                    <img src={bgImgDesk} alt={data.title} className="img-fluid img_in d_lg_block" loading='lazy' />
                 </div>
                 <div className={`abs_img abs_img1 ${data.position}`}>
-                    <img src={absDesk} alt={data.title} className="img-fluid abs_img_in d_lg_block" />
+                    <img src={absDesk} alt={data.title} className="img-fluid abs_img_in d_lg_block" loading='lazy' />
                 </div>
             </div>
 

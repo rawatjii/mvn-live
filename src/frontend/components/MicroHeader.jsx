@@ -285,10 +285,10 @@ const MicroHeader = ({ scrollToSection, sectionsMenus, projectName }) => {
 
                             {otherProjects && otherProjects.map((singleProject, index) => (
                               <React.Fragment key={index}>
-                                <h4 className={index === 0 && 'pt-0'}>{singleProject.location}</h4>
+                                <h4 className={index === 0 ? 'pt-0' : null}>{singleProject.location}</h4>
                                 <ul>
                                   {singleProject.projects && singleProject.projects.map((project, index)=>(
-                                    <li className={project.status && 'new_launch'} key={project.name+index}>
+                                    <li className={project.status ? 'new_launch' : null} key={project.name+index}>
                                       <NavLink to={project.link} target="_blank" onClick={() => toggleMenu("close")}>
                                         {project.name}
                                       </NavLink>
