@@ -1,22 +1,21 @@
-import React, { useState, useEffect } from "react";
-import MicroBanner from "../components/MicroBanner/Index";
-import AboutOverview from '../components/About/Overview';
-import Philosophy from "../components/About/Philosophy";
-import Timeline from "../components/About/Timeline";
-import Enquire from "../components/homepage/Enquire";
-import EnquireForm from "../components/homepage/EnquireForm";
+import React, { useState, useEffect, Suspense } from "react";
+const MicroBanner = React.lazy(()=>import("../components/MicroBanner/Index"));
+const AboutOverview = React.lazy(()=>import('../components/About/Overview'));
+const Philosophy = React.lazy(()=>import("../components/About/Philosophy"));
+const Timeline = React.lazy(()=>import("../components/About/Timeline"));
+const OurTeam = React.lazy(()=>import("../components/About/Ourteam"));
+const Enquire = React.lazy(()=>import("../components/homepage/Enquire"));
+const EnquireForm = React.lazy(()=>import("../components/homepage/EnquireForm"));
+
+import Layout from "../components/Layout";
+
 import Mobilemicro_bg from '../assets/images/about/about-head-bg-desktop.webp';
 import Desktopmicro_bg from '../assets/images/about/about-head-bg-desktop.webp';
-import OurTeam from "../components/About/Ourteam";
-import ScrollToTop from "../../common/ScrollToTop";
-import Layout from "../components/Layout";
-import InitialLoading from "../skeleton/Initial/Index";
 
 const AboutUs = () => {
   window.scrollTo(0, 0);
   
   const [microBg, setMicroBg] = useState(Desktopmicro_bg);
-  const [newLoadingCount, setNewLoadingCount] = useState(Number(localStorage.getItem('count1')));
   
   const breadcrumbs = {
     title: 'About Us',
@@ -26,10 +25,6 @@ const AboutUs = () => {
       { name: 'About Us' }
     ]
   };
-
-  useEffect(() => {
-    setNewLoadingCount(Number(localStorage.getItem('count1')));
-  }, [localStorage.getItem('count1')]);
 
   // Update background image based on window width
   useEffect(() => {
@@ -53,34 +48,41 @@ const AboutUs = () => {
     };
   }, []);
 
-  // useEffect(() => {
-  //   if (newLoadingCount === 100) {
-  //     const timer = setTimeout(() => {
-  //       setNewLoadingCount(101);
-  //     }, 500); // 1 seconds delay before removing InitialLoading
-
-  //     return () => clearTimeout(timer);
-  //   }
-  // }, [newLoadingCount]);
-
-  // if (newLoadingCount <= 100) {
-  //   return <InitialLoading loadingCount={newLoadingCount} setLoadingCount={setNewLoadingCount} fast="true" second="true"/>;
-  // }
-
   return (
     <>
       <Layout>
-        <MicroBanner bg={microBg} data={breadcrumbs} />
+        <Suspense fallback="">
+          <MicroBanner bg={microBg} data={breadcrumbs} />
+        </Suspense>
+
         <div className="micro_content">
           <div className="micro_data">
-            <AboutOverview />
-            <Philosophy />
-            <Timeline />
-            <OurTeam />
+            <Suspense fallback="">
+              <AboutOverview />
+            </Suspense>
+
+            <Suspense fallback="">
+              <Philosophy />
+            </Suspense>
+
+            <Suspense fallback="">
+              <Timeline />
+            </Suspense>
+
+            <Suspense fallback="">
+              <OurTeam />
+            </Suspense>
+
             <div className="flex-footer-form">
-              <Enquire />
-              <EnquireForm projectName={'MVN Infrastructure'}/>
+              <Suspense fallback="">
+                <Enquire />
+              </Suspense>
+
+              <Suspense fallback="">
+                <EnquireForm projectName={"MVN Infrastructure"} />
+              </Suspense>
             </div>
+
           </div>
         </div>
       </Layout>

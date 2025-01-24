@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import { Container, Breadcrumb } from "react-bootstrap";
-import LazyLoad from "react-lazyload";
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
@@ -35,7 +34,7 @@ const MicroBanner = ({bg, data})=>{
     <>
       <section className="section micro_banner">
         <Container>
-        <img src={bg} alt="mvn-microbanner-bg" className="img-fluid microbanner_bg" />
+          <img src={bg} alt="mvn-microbanner-bg" className="img-fluid microbanner_bg" loading="lazy" />
           <h2 ref={titleRef} className="microTitle" >{data.title}</h2>
           <p className="microContent">{data.content}</p>
         </Container>

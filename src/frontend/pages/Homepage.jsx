@@ -19,8 +19,8 @@ const OurTeam = React.lazy(()=>import("../components/homepage/OurTeam"));
 const OurBrand = React.lazy(()=>import("../components/homepage/OurBrand"));
 const Testimonial = React.lazy(()=>import("../components/homepage/Testimonial"));
 const Enquire = React.lazy(()=>import("../components/homepage/Enquire"));
+const CustomModal = React.lazy(()=>import("../../common/Modal"));
 
-import CustomModal from "../../common/Modal";
 import Hero from "../components/homepage/Hero";
 
 import 'swiper/css';
@@ -98,7 +98,10 @@ const Homepage = () => {
         </Suspense>
       </div>
 
-      <CustomModal hide={isHideModal} show={isShowModal} type="enquire" projectName="MVN Aeroone" isOffer={isOffer}  />
+      <Suspense fallback={<div>Loading...</div>}>
+        <CustomModal hide={isHideModal} show={isShowModal} type="enquire" projectName="MVN Aeroone" isOffer={isOffer}  />
+      </Suspense>
+
     </Layout>
   );
 };

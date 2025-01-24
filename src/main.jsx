@@ -5,15 +5,15 @@ import * as CONFIG from './config/config.js'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/store.js";
-
 import Layout from "./frontend/components/Layout.jsx";
+
 const Homepage = React.lazy(() => import("./frontend/pages/Homepage.jsx"));
-import MvnMall  from "./frontend/pages/MvnMallGurgaon.jsx";
 const AboutUs = React.lazy(() => import("./frontend/pages/AboutUs.jsx"));
 const MicroPage = React.lazy(() => import("./frontend/pages/Micro.jsx"));
 const AeroOneGurgaon = React.lazy(() => import("./frontend/pages/micro/mvn-aeroone-gurgaon/Index.jsx"));
 const AeroOneGurgaon1 = React.lazy(() => import("./frontend/pages/micro/mvn-aeroone-gurgaon1/Index.jsx"));
 const Athens = React.lazy(() => import("./frontend/pages/micro/Athens/Index.jsx"));
+const MvnMall = React.lazy(()=>import("./frontend/pages/MvnMallGurgaon.jsx"));
 
 const ContactPage = React.lazy(() => import("./frontend/pages/ContactUs.jsx"));
 import Career from "./frontend/pages/Career.jsx";
