@@ -1,14 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 
 import MobileenquireBg from "../../assets/images/enquire/form-bg.webp";
 import DesktopenquireBg from "../../assets/images/enquire/form-bg.webp";
 
 import LazyLoad from "react-lazyload";
 
-gsap.registerPlugin(ScrollTrigger);
 
 const Enquire = () => {
   const titleRef = useRef();
@@ -27,29 +24,6 @@ const Enquire = () => {
     return () => {
       window.removeEventListener("resize", updateImageSrc); // Cleanup on unmount
     };
-  }, []);
-
-  useEffect(() => {
-    gsap.from(titleRef.current, {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      scrollTrigger: {
-        trigger: titleRef.current,
-        start: "top 95%",
-      },
-    });
-
-    gsap.from(contentRef.current, {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      scrollTrigger: {
-        trigger: contentRef.current,
-        start: "top 95%",
-      },
-    });
-
   }, []);
 
   return (

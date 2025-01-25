@@ -1,49 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
-import * as CONFIG from "../../../config/config";
+import React from "react";
 import "./initialLoading.css";
-import { useLocation } from "react-router-dom";
 
-const InitialLoading = ({ loadingCount, setLoadingCount, onComplete, fast, second, videoUrl, test, loadingImg}) => {
-    const intervalRef = useRef(null);
-    const onCompleteRef = useRef(onComplete);
-    const { pathname } = useLocation();
-
-    useEffect(() => {
-        // Update the onCompleteRef to ensure it references the latest function
-        onCompleteRef.current = onComplete;
-    }, [onComplete]);
-
-    useEffect(() => {
-        // const intervalDuration = fast == "true" ? 20 : 300;
-        const intervalDuration = fast == "true" ? 20 : 0;
-    
-        intervalRef.current = setInterval(() => {
-            setLoadingCount((prevState) => {
-                const nextCount = Math.min(100, Math.floor(prevState + 1)); // Ensure integer and cap at 100
-                if (nextCount >= 100) {
-                    clearInterval(intervalRef.current);
-                    localStorage.setItem('count', 100); // Ensure integer in localStorage
-                    onCompleteRef.current?.();
-                } else {
-                    localStorage.setItem('count', nextCount); // Ensure integer in localStorage
-                }
-                return nextCount; // Ensure return is an integer
-            });
-        }, intervalDuration);
-    
-        return () => {
-            if (second === 'true') {
-                localStorage.removeItem('count');
-            }
-            clearInterval(intervalRef.current);
-        };
-    }, []);
-    
-
+const InitialLoading = ({loadingImg}) => {
     return (
         <div className="initial_loading">
-            <img src={loadingImg.desktop} alt="loader-desktop-image" className="img-fluid loading_img d-none d-md-block" />
-            <img src={loadingImg.mobile} alt="loader-desktop-image" className="img-fluid loading_img d-md-none" />
+            <img src={loadingImg.desktop} alt="loader-desktop-image" className="img-fluid loading_img d_sm_none" />
+            <img src={loadingImg.mobile} alt="loader-desktop-image" className="img-fluid loading_img d_none d_sm_block" />
         </div>
     );
 };

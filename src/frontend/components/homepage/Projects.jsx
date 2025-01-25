@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 import AnImage from "../../../common/animations/Image/Index";
 
 import mvnMallImg from "../../assets/images/projects/mvn-mall.webp";
@@ -12,8 +10,6 @@ import mvnMallImgDesktop from "../../assets/images/projects/project-img-3.webp";
 import mvnAerooneImgDesktop from "../../assets/images/projects/mvn-aeroone.webp";
 import mvnAerooneBangaloreImgDesktop from "../../assets/images/projects/mvn-bangalore-project.webp";
 import arrowIcon from "../../assets/images/icons/arrow.png";
-import btn_arrow from "../../assets/images/icons/btn_arrow.png";
-// import planeIcon from "../../assets/images/icons/plane.jpg";
 import planeIcon from "../../assets/images/icons/heading-icon-img.webp";
 
 
@@ -21,7 +17,6 @@ import * as CONFIG from '../../../config/config'
 
 import { Link } from "react-router-dom";
 
-gsap.registerPlugin(ScrollTrigger);
 
 const projectsData = [
   {
@@ -68,60 +63,6 @@ const Projects = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  const initializeAnimations = () => {
-    gsap.from(titleRef.current, {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      scrollTrigger: {
-        trigger: titleRef.current,
-        start: "top 95%",
-        once: true,
-      },
-    });
-
-    gsap.from(desRef.current, {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      scrollTrigger: {
-        trigger: desRef.current,
-        start: "top 95%",
-        once: true,
-      },
-    });
-
-    imageDivRefs.current.forEach((imagediv) => {
-
-      if (imagediv) {
-        gsap.to(imagediv, {
-          scrollTrigger: {
-            trigger: imagediv,
-            start: "top 95%",
-            once: true,
-            onEnter: () => {
-              imagediv.classList.add("active")
-              // console.log(imagediv.classList);
-            },
-          },
-          clearProps: "all",
-        });
-      }
-    });
-  };
-
-  useEffect(() => {
-    if (imagesLoaded === projectsData.length) {
-      setTimeout(() => {
-        initializeAnimations();
-        ScrollTrigger.refresh();
-      }, 300);
-    }
-
-    window.addEventListener("resize", ScrollTrigger.refresh);
-    return () => window.removeEventListener("resize", ScrollTrigger.refresh);
-  }, [imagesLoaded]);
 
   const handleImageLoad = () => {
     setImagesLoaded((prev) => prev + 1);

@@ -4,9 +4,6 @@ import { Col, Container, Row } from "react-bootstrap";
 import arrowIcon from "../../assets/images/icons/arrow.png";
 import { Link } from "react-router-dom";
 
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-
 import AnImage from "../../../common/animations/Image/Index";
 
 import mvnSchoolMobile from "../../assets/images/other-projects/mvn-school.webp";
@@ -45,57 +42,11 @@ const otherProjects = [
   },
 ];
 
-gsap.registerPlugin(ScrollTrigger);
-
 const OtherProjects = ({ data, title, subTitle, mobContent=12 }) => {
   const titleRef = useRef();
   const imageDivRefs = useRef([]);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [imagesLoaded, setImagesLoaded] = useState(0);
-
-  const initializeAnimations = () => {
-    if (otherProjects.length > 0) {
-      gsap.from(titleRef.current, {
-        y: 50,
-        opacity: 1,
-        duration: 1,
-        scrollTrigger: {
-          trigger: titleRef.current,
-          start: "top 95%",
-        },
-      });
-
-      imageDivRefs.current.forEach((imagediv, index) => {
-        if (imagediv) {
-          gsap.to(imagediv, {
-            scrollTrigger: {
-              trigger: imagediv,
-              start: "top 95%",
-              onEnter: () => imagediv.classList.add("active"),
-              once: true,
-            },
-          });
-        }
-      });
-    }
-  };
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-      ScrollTrigger.refresh();
-    };
-
-    if (imagesLoaded === otherProjects.length) {
-      setTimeout(() => {
-        initializeAnimations();
-        ScrollTrigger.refresh();
-      }, 300);
-    }
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [imagesLoaded]);
 
   const handleImageLoad = () => {
     setImagesLoaded((prev) => prev + 1);
@@ -133,14 +84,16 @@ const OtherProjects = ({ data, title, subTitle, mobContent=12 }) => {
                   </div>
                 )}
 
-                <AnImage ref={(el) => (imageDivRefs.current[index] = el)}>
-                  <img
+<img
                     src={isMobile ? item.thumbnails.mobile : item.thumbnails.desktop}
                     alt="mvn projects image"
                     className="img-fluid other-project-img"
                     onLoad={handleImageLoad}
                   />
-                </AnImage>
+
+                {/* <AnImage ref={(el) => (imageDivRefs.current[index] = el)}>
+                  
+                </AnImage> */}
               </div>
             </Col>
           ))}

@@ -1,5 +1,4 @@
 import React from "react";
-import MicroPage from "../../Micro";
 import * as CONFIG from '../../../../config/config';
 import hero_img_mb from "../../../../frontend/assets/images/micro_hero/hero_img.webp";
 import hero_img_desk from "../../../../frontend/assets/images/micro_hero/hero_img.webp";

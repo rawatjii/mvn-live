@@ -1,10 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { Container } from "react-bootstrap";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import bg from '../../assets/images/overview/bg.webp';
-import buildingImg from '../../assets/images/overview/building.webp';
-import buildingImgBanner from '../../assets/images/overview/home-about.webp';
 import headingIconImg from "../../assets/images/icons/heading-icon-img.webp";
 import homeMobileLogo from "../../../frontend/assets/mvn-aeroone-logo-img.webp";
 

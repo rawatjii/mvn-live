@@ -10,8 +10,6 @@ import CloseBtnimg from '../assets/images/icons/close.png';
 
 import "./Header.css";
 
-import { gsap } from "gsap";
-
 
 const otherPages = [
   {
@@ -120,9 +118,6 @@ const MicroHeader = ({ scrollToSection, sectionsMenus, projectName }) => {
 
   const menusRef = useRef();
   const headerRef = useRef();
-  const logoRef = useRef();
-  const toggleRef = useRef();
-  const callBtnRef = useRef();
 
   const { pathname } = useLocation();
 
@@ -151,26 +146,6 @@ const MicroHeader = ({ scrollToSection, sectionsMenus, projectName }) => {
     };
   }, [navbarScroll]);
 
-  useEffect(() => {
-    // logo animation
-
-    gsap.from(logoRef.current, {
-      y: 30, // Move 50px from the bottom
-      opacity: 0, // Start with 0 opacity (invisible)
-      duration: 1, // Animation duration in seconds
-      // ease: "power2" // Easing function for a smooth effect
-    });
-
-    // menu toggle animation
-    gsap.from(toggleRef.current, {
-      y: 15, // Move 50px from the bottom
-      opacity: 0, // Start with 0 opacity (invisible)
-      duration: 0.6, // Animation duration in seconds
-      delay: 0.4,
-      // ease: "power2" // Easing function for a smooth effect
-    });
-  }, []);
-
   const toggleMenu = (value) => {
     if (value == "show") {
       document.querySelector(".navbar_collapse").classList.add("show");
@@ -187,7 +162,6 @@ const MicroHeader = ({ scrollToSection, sectionsMenus, projectName }) => {
     return () => window.removeEventListener("resize", () => null);
   }, []);
 
-  const pathnamesToHideMiddleMenu = ["/aeroone-gurgaon"];
   return (
     <>
       <Navbar
@@ -197,7 +171,7 @@ const MicroHeader = ({ scrollToSection, sectionsMenus, projectName }) => {
         role="navbar"
       >
         <Container>
-          <Navbar.Brand ref={logoRef} className="logo">
+          <Navbar.Brand  className="logo">
             <Link onClick={() => toggleMenu("close")}>
               <img
                 src={CONFIG.IMAGE_URL + "logo_white.webp"}
@@ -215,11 +189,10 @@ const MicroHeader = ({ scrollToSection, sectionsMenus, projectName }) => {
           </Navbar.Brand>
 
           <div className="right">
-            <a href={`tel:${otherDetails.contact}`} className="call_btn" ref={callBtnRef}>
+            <a href={`tel:${otherDetails.contact}`} className="call_btn" >
               <img src={CONFIG.IMAGE_URL + 'icons/call.png'} alt="mvn call icon" />
             </a>
             <Navbar.Toggle
-              ref={toggleRef}
               aria-controls="basic-navbar-nav"
               onClick={() => toggleMenu("show")}
             >

@@ -1,64 +1,34 @@
-import React, { StrictMode, Suspense, useEffect } from "react";
+import React, {  Suspense} from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
-import * as CONFIG from './config/config.js'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/store.js";
-import Layout from "./frontend/components/Layout.jsx";
+// import Layout from "./frontend/components/Layout.jsx";
+
+// import InitialLoading from "./frontend/skeleton/Initial/Index.jsx";
+// import { data } from "./frontend/pages/micro/mvn-aeroone-gurgaon1/Index.jsx";
+import FrontendRoute from "./common/FrontendRoute.jsx";
 
 const Homepage = React.lazy(() => import("./frontend/pages/Homepage.jsx"));
-const AboutUs = React.lazy(() => import("./frontend/pages/AboutUs.jsx"));
-const MicroPage = React.lazy(() => import("./frontend/pages/Micro.jsx"));
-const AeroOneGurgaon = React.lazy(() => import("./frontend/pages/micro/mvn-aeroone-gurgaon/Index.jsx"));
-const AeroOneGurgaon1 = React.lazy(() => import("./frontend/pages/micro/mvn-aeroone-gurgaon1/Index.jsx"));
-const Athens = React.lazy(() => import("./frontend/pages/micro/Athens/Index.jsx"));
-const MvnMall = React.lazy(()=>import("./frontend/pages/MvnMallGurgaon.jsx"));
-
-const ContactPage = React.lazy(() => import("./frontend/pages/ContactUs.jsx"));
-import Career from "./frontend/pages/Career.jsx";
-
-const ThankYou = React.lazy(() => import("./frontend/pages/ThankYou.jsx"));
-import MediaCenter from "./frontend/pages/MediaCenter.jsx";
-
-import Blog from "./frontend/pages/Blog.jsx"; 
-import BlogDetails from "./frontend/pages/BlogDetails.jsx"; 
-
-// admin
-
-import AdminLayout from "./admin/Layout.jsx";
-import Dashboard from "./admin/Dashboard.jsx";
-import Login from "./admin/Login.jsx";
-import JobApplications from "./admin/JobApplications.jsx";
-
-import ContactQuery from "./admin/ContactQuery.jsx";
-import ContactUs from "./admin/Contactus.jsx";
-import InitialLoading from "./frontend/skeleton/Initial/Index.jsx";
-
-import PageNotFound from "./common/PageNotFound/Index.jsx";
-
-import AeroOneBangalore from "./frontend/pages/micro/mvn-aeroone-bangalore/Index.jsx";
-import MvnMallGurgaon from "./frontend/pages/MvnMallGurgaon1.jsx";
-import MvnAthensSohna from "./frontend/pages/MvnAthensSohna.jsx";
-import MvnAthensPh2Sohna from "./frontend/pages/MvnAthensPh2Sohna.jsx";
-import MvnAthensFaridabad from "./frontend/pages/MvnAthensFaridabad.jsx";
-import MvnUniversityHaryana from "./frontend/pages/MvnUniversityHaryana.jsx";
-import Gallery from './frontend/pages/Gallery.jsx';
-import Csr from './frontend/pages/Csr.jsx';
-import PrPolcy from './frontend/pages/PrPolcy.jsx';
-import Disclaimer from "./frontend/pages/Disclaimer.jsx";
-const MicroPageGurgaon1 = React.lazy(()=>import("./frontend/pages/MicroPageGurgaon1.jsx"));
+// const AboutUs = React.lazy(() => import("./frontend/pages/AboutUs.jsx"));
+// const ContactPage = React.lazy(() => import("./frontend/pages/ContactUs.jsx"));
+// const Career = React.lazy(() => import("./frontend/pages/Career.jsx"));
+// const ThankYou = React.lazy(() => import("./frontend/pages/ThankYou.jsx"));
+// const MediaCenter = React.lazy(() => import("./frontend/pages/MediaCenter.jsx"));
+// const Blog = React.lazy(() => import("./frontend/pages/Blog.jsx")); 
+// const BlogDetails = React.lazy(() => import("./frontend/pages/BlogDetails.jsx")); 
+// const PageNotFound = React.lazy(() => import("./common/PageNotFound/Index.jsx"));
+// const Gallery = React.lazy(() => import('./frontend/pages/Gallery.jsx'));
+// const Csr = React.lazy(() => import('./frontend/pages/Csr.jsx'));
+// const PrPolcy = React.lazy(() => import('./frontend/pages/PrPolcy.jsx'));
+// const Disclaimer = React.lazy(() => import("./frontend/pages/Disclaimer.jsx"));
+// const MicroPageGurgaon1 = React.lazy(()=>import("./frontend/pages/MicroPageGurgaon1.jsx"));
 // const MicroPageGurgaon1 = React.lazy(() =>
 //   new Promise((resolve) =>
 //     setTimeout(() => resolve(import("./frontend/pages/MicroPageGurgaon1.jsx")), 100000)
 //   )
 // );
-
-import { data } from "./frontend/pages/micro/mvn-aeroone-gurgaon1/Index.jsx";
-import {dataMvnMall} from "./frontend/pages/micro/mvn-mall-guragaon/Index.jsx";
-import FrontendRoute from "./common/FrontendRoute.jsx";
-
-
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
@@ -80,7 +50,7 @@ const router = createBrowserRouter([
           </FrontendRoute>
         ), 
       },
-      {
+      {/*{
         path: "about-us",
         element: (
           <FrontendRoute loaderType="about-us" >
@@ -96,44 +66,7 @@ const router = createBrowserRouter([
           </FrontendRoute>
         ),
       },
-      {
-        path: "mvn-mall",
-        element: (
-          <FrontendRoute loaderType="aeroone-gurgaon">
-            <MvnMall data={dataMvnMall} />
-          </FrontendRoute>
-        ),
-      },
-      {
-        path: "aeroone-bangalore",
-        element: (
-          <Suspense fallback={<InitialLoading onComplete={()=>console.log('Loading complete')} />}>
-            <Layout>
-              <AeroOneBangalore />
-            </Layout>
-          </Suspense>
-        ),
-      },
-      {
-        path: "athens",
-        element: (
-          <Suspense fallback={<InitialLoading onComplete={()=>console.log('Loading complete')} />}>
-            <Layout>
-              <Athens />
-            </Layout>
-          </Suspense>
-        ),
-      },
-      {
-        path: "micro",
-        element: (
-          <Suspense fallback={<InitialLoading onComplete={()=>console.log('Loading complete')} />}>
-            <Layout>
-              <MicroPage projectName={'MVN-Micro'}/>
-            </Layout>
-          </Suspense>
-        ),
-      },
+      
       {
         path: "contact-us",
         element: (
@@ -183,56 +116,6 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "mvn-mall-gurgaon",
-        element: (
-          <Suspense fallback={<InitialLoading onComplete={()=>console.log('Loading complete')} />}>
-            <Layout>
-              <MvnMallGurgaon />
-            </Layout>
-          </Suspense>
-        ),
-      },
-      {
-        path: "mvn-athens-sohna",
-        element: (
-          <Suspense fallback={<InitialLoading onComplete={()=>console.log('Loading complete')} />}>
-            <Layout>
-              <MvnAthensSohna />
-            </Layout>
-          </Suspense>
-        ),
-      },
-      {
-        path: "mvn-athens-ph2-sohna",
-        element: (
-          <Suspense fallback={<InitialLoading onComplete={()=>console.log('Loading complete')} />}>
-            <Layout>
-              <MvnAthensPh2Sohna />
-            </Layout>
-          </Suspense>
-        ),
-      },
-      {
-        path: "mvn-athens-faridabad",
-        element: (
-          <Suspense fallback={<InitialLoading onComplete={()=>console.log('Loading complete')} />}>
-            <Layout>
-              <MvnAthensFaridabad />
-            </Layout>
-          </Suspense>
-        ),
-      },
-      {
-        path: "mvn-university-haryana",
-        element: (
-          <Suspense fallback={<InitialLoading onComplete={()=>console.log('Loading complete')} />}>
-            <Layout>
-              <MvnUniversityHaryana />
-            </Layout>
-          </Suspense>
-        ),
-      },
-      {
         path: "gallery",
         element: (
           <Suspense fallback={<InitialLoading onComplete={()=>console.log('Loading complete')} />}>
@@ -274,38 +157,12 @@ const router = createBrowserRouter([
       },
       {
         path: "*",
-        element: <PageNotFound />,
-      },
-    ],
-  },
-  {
-    path: "/admin",
-    element: <AdminLayout />,
-    children: [
-      {
-        path: "",
-        element: <Dashboard />,
-      },
-      {
-        path: "login",
-        element: <Login />,
-      },
-      {
-        path: "job-application",
-        element: <JobApplications />,
-      },
-      {
-        path: "contact-query",
-        element: <ContactQuery />,
-      },
-      {
-        path: "contact-us",
-        element: <ContactUs />,
-      },
-      // {
-      //   path: "blogs",
-      //   element: <Blogs />,
-      // },
+        element: (
+          <Suspense fallback="">
+            <PageNotFound />
+          </Suspense>
+        ),
+      },*/}
     ],
   },
 ]);

@@ -1,13 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 import * as CONFIG from 'root/config/config'
-
-import DeskopheronormalImg from "../../../frontend/assets/images/hero/hero_img.webp";
-import MobileheronormalImg from "../../../frontend/assets/images/hero/hero_img_sm.webp";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Hero = ()=>{
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -22,7 +15,7 @@ const Hero = ()=>{
           rel="noopener noreferrer"
         >
           <img
-            src={isMobile ? MobileheronormalImg : DeskopheronormalImg}
+            src={isMobile ? CONFIG.IMAGE_URL + 'homepage/hero/hero_img_sm.webp' : CONFIG.IMAGE_URL + 'homepage/hero/hero_img.webp'}
             alt="Hero Banner"
             className="img-fluid hero-banner"
           />

@@ -1,11 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { Container } from "react-bootstrap";
-import SecTitle from "../../../common/SecTitle/Index";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper/modules';
-import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -46,37 +43,9 @@ const testimonialData = [
   }
 ];
 
-gsap.registerPlugin(ScrollTrigger);
-
 const Testimonial = () => {
   const titleRef = useRef();
   const contentRef = useRef();
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(titleRef.current, {
-        y: 50,  
-        opacity: 0,
-        duration: 1, 
-        scrollTrigger: {
-          trigger: titleRef.current,
-          start: "top 95%",
-        },
-      });
-
-      gsap.from(contentRef.current, {
-        y: 50,  
-        opacity: 0,
-        duration: 1, 
-        scrollTrigger: {
-          trigger: contentRef.current,
-          start: "top 95%",
-        },
-      });
-    });
-
-    return () => ctx.revert();
-  }, []);
 
   return (
     <section className="section testimonial_section">

@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import LazyLoad from "react-lazyload";
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 
 import commitmentIcon from "../../assets/images/icons/brand/handshake.gif";
 import excellenceIcon from "../../assets/images/icons/brand/growth.gif";
@@ -11,8 +9,6 @@ import MobilebrandBG from "../../assets/images/icons/brand/our-brand-ethos-bg.we
 import DesktopbrandBG from "../../assets/images/icons/brand/our-brand-ethos-bg.webp";
 import headingIconImg from "../../assets/images/icons/heading-icon-img.webp";
 import LeftSideBanner from "../../assets/images/icons/brand/our-brand-ethos-bg-2.webp";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const brandData = [
   {
@@ -51,36 +47,6 @@ const OurBrand = () => {
 
   const titleRef = useRef();
   const dataRefs = useRef([]);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(titleRef.current, {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        scrollTrigger: {
-          trigger: titleRef.current,
-          start: "top 95%",
-        },
-      });
-
-      dataRefs.current.forEach((singleRef, index) => {
-        if (singleRef) {
-          gsap.from(singleRef, {
-            y: 20,
-            opacity: 0,
-            duration: 0.6,
-            scrollTrigger: {
-              trigger: singleRef,
-              start: "top 95%",
-            },
-          });
-        }
-      });
-    });
-
-    return () => ctx.revert();
-  }, []);
 
   return (
     <section className="section our_brand_section">
