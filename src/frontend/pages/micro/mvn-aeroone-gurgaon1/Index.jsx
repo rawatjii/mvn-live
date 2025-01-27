@@ -1,8 +1,9 @@
 import React from "react";
-import MicroPage from "../../Micro";
 import * as CONFIG from '../../../../config/config';
-import hero_img_mb from "../../../../frontend/assets/images/micro_hero/hero_img.webp";
-import hero_img_desk from "../../../../frontend/assets/images/micro_hero/hero_img.webp";
+import bgImgMB from '../../../assets/images/aero-gurgaon/largeBg1Sm.webp'
+import bgImgDesk from '../../../assets/images/aero-gurgaon/largeBg1.png'
+import absDesk from '../../../assets/images/aero-gurgaon/building_sm.webp'
+import building_sm from '../../../assets/images/aero-gurgaon/building_sm.webp'
 
 import "./aeroGuragaon.css";
 import MicroPageGurgaon1 from "../../MicroPageGurgaon1";
@@ -78,6 +79,18 @@ export const data = {
   LargeElevationSection: {
     title: ['Unseen', 'Unheard', 'Unimagined'],
     isAllow: true,
+    path:{
+      Mobile:{
+        bgImg:bgImgMB,
+        frontImg:building_sm,
+      },
+      desktop:{
+        bgImg:bgImgDesk,
+        frontImg:absDesk,
+      }
+    },
+    second_title:'ΑΝ ΕΡΙΤOME OF CONTEMPORARY ELEGANCE',
+    desc:'This architectural masterpiece seamlessly blends cutting-edge design with new-age sophistication. Every curve, every detail, is meticulously crafted to elevate your living experience. Embrace a  residence where innovation meets beauty, creating a landmark of luxurious urban living. Your new home awaits.',
   },
   video1: {
     title: "EXPERIENCE THE BLISS OF ENDLESS VISTAS",
@@ -262,13 +275,11 @@ export const data = {
     "Premium emulsion paint finish.",
   ],
   walkthrough: {
-    isshow: false,
-    desc: "IF YOU THINK YOU'VE EXPERIENCED TRUE LUXURY IT'S TIME TO RAISE YOUR EXPECTATION",
-    masterBedroom: {
-      title: "MASTER BEDROOM",
-      desc: "If You Think You Know What Lavishness Means It's Time You Got A New Perspective",
-      isVdo: false,
-    },
+    src: "https://www.youtube.com/embed/9CHcJAveejU?si=Sr3K9ETfhxeyjrOW",
+    // title: "Virtual Tour",
+    // title: "Walkthrough",
+    second_title:'A GLIMPSE INTO A LIFE EXTRAORDINARY',
+    desc: "Take a guided virtual tour through our stunning spaces with a walkthrough video that brings your future home to life. Every detail is showcased, allowing you to experience the design, luxury, and lifestyle that await you.",
   },
   // LargeElevationSection: {
   //   title: "an epitome of contemporary elegance",

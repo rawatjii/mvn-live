@@ -1732,12 +1732,12 @@ section.overview_section {padding-bottom: 25px;}
   width: fit-content;
   height: auto;
   position: relative;
-  top: 0;
+  top: -70px;
   color: #dbc275;
   text-align: right;
   margin-left: auto;
   margin-right: auto;
-  margin-top:20px;
+  margin-top:0px;
 }
 .projects_section {
   & .single {

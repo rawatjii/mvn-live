@@ -50,6 +50,11 @@ const otherProjects = [
         name:'MVN',
         link:'https://www.mvnaeroone.com/',
         status:'',
+      },
+      {
+        name:'MVN Bangalore',
+        link:'/aeroone-bangalore1',
+        status:'',
       }
     ]
   },
@@ -130,7 +135,7 @@ const MicroHeader = ({ scrollToSection, data}) => {
   let navbarScroll = localStorage.getItem('navbar_scroll_height');
 
   useEffect(() => {
-    if (pathname.includes("aeroone-gurgaon") || pathname.includes("mvn-mall")) {
+    if (pathname.includes("aeroone-gurgaon") || pathname.includes("mvn-mall") || pathname.includes("aeroone-bangalore1"))  {
       setIsMicro(true);
     }
 

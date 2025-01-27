@@ -58,6 +58,8 @@ import { data } from "./frontend/pages/micro/mvn-aeroone-gurgaon1/Index.jsx";
 import {dataMvnMall} from "./frontend/pages/micro/mvn-mall-guragaon/Index.jsx";
 import FrontendRoute from "./common/FrontendRoute.jsx";
 
+import {bangaloreData} from './frontend/pages/micro/mvn-aeroone-bangalore/Index.jsx'
+
 
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -65,6 +67,7 @@ import "./index.css";
 import "./awaneesh.css";
 import "./savan.css";
 import './adarsh.css'
+import MicroPageBangalore from "./frontend/pages/MicroPageBangalore.jsx";
 
 
 const router = createBrowserRouter([
@@ -112,6 +115,14 @@ const router = createBrowserRouter([
               <AeroOneBangalore />
             </Layout>
           </Suspense>
+        ),
+      },
+      {
+        path: "aeroone-bangalore1",
+        element: (
+          <FrontendRoute  loaderType="aeroone-bangalore1">
+            <MicroPageBangalore data={bangaloreData} />
+          </FrontendRoute>
         ),
       },
       {

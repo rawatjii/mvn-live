@@ -1,208 +1,738 @@
 import React from "react";
 import MicroPage from "../../Micro";
 import * as CONFIG from '../../../../config/config';
-import hero_img_mb from "../../../../frontend/assets/images/micro/aeroone_bangalore/hero_mobile.jpg";
-import hero_img_desk from "../../../../frontend/assets/images/micro/aeroone_bangalore/hero_desk.jpg";
-import highlightbgIMG from '../../../assets/images/bg/112.jpg'
+import MicroPageBangalore from "../../MicroPageBangalore";
+import bgImgMB from '../../../assets/images/aero-gurgaon/largeBg1Sm.webp'
+import bgImgDesk from '../../../assets/images/aero-gurgaon/largeBg1.png'
+import absDesk from '../../../assets/images/aero-gurgaon/building_sm.webp'
+import building_sm from '../../../assets/images/aero-gurgaon/building_sm.webp'
 
-
-const data = {
-  micro_hero_section: 
-  {
-    isVdo: false,
-    images:[{ imgMb: hero_img_mb, imgDesk: hero_img_desk, }],
-    bannerHighLight:true,
-    enquiryBTN:{
-      isshow: true,
-      mail: `info@example.com`
-    } 
+export const bangaloreData = {
+  header:{
+    title:'MVN AeroOne, Gurugram',
+    sidebar_section:[
+      {
+        section_title:'Overview',
+        link:'microOverview'
+      },
+      {
+        section_title:'Walkthrough',
+        link:'Walkthrough'
+      },
+      {
+        section_title:'MVN ID Brochure',
+        link:'downloadBrochure'
+      },
+      {
+        section_title:'The Living Room',
+        link:'LIVINGROOM'
+      },
+      {
+        section_title:'Landscape',
+        link:'MicroLandscape'
+      },
+      {
+        section_title:'Elevation',
+        link:'MicroElevation'
+      },
+      {
+        section_title:'Apartment',
+        link:'MicroApartment'
+      },
+      {
+        section_title:'Construction Technology',
+        link:'constructionTechnology'
+      },
+      {
+        section_title:'Amenities',
+        link:'MicroAmenities'
+      },
+      {
+        section_title:'Typology',
+        link:'MicroTypology'
+      },
+      {
+        section_title:'Floor Plans',
+        link:'MicroFloorPlan'
+      },
+      {
+        section_title:'Location Map',
+        link:'MicroLocationMap'
+      },
+      {
+        section_title:'MVN Mall',
+        link:'MVNMALL'
+      },
+      {
+        section_title:'Connections MVN Mall',
+        link:'NoPolutionZone'
+      },
+    ],
   },
-  bannerHighLight: {
-    isshow: true,
+  micro_hero_section: {
+       path:{
+         mobilePath:`${CONFIG.IMAGE_URL_BANGALORE}banner/desktop/`,
+         desktopPath:`${CONFIG.IMAGE_URL_BANGALORE}banner/desktop/`,
+       },
+       frameCounts:{
+         mobileFrameCounts:198,
+         desktopFrameCounts:198,
+       },
+       classCustomCard:'d-none',
+       classMain:'micro_hero_section p-0',
+
   },
   overview: {
-    title: "MVN Aero One",
-    location: "BANGALORE",
-    extra: "",
-    desc:[
-      'There’s a lot to look forward to with MVN Aero One. When we conceptualized the project, we asked ourselves what the urban resident was missing. And rather than merely fill up the blanks in his/her life, we chose to enhance our offerings. Aero One offers luxury apartments in Bangalore at the best location, with ample living space, and delight-a-moment amenities that makes a complete life within.',
-      'Aero One is taking shape in pristine Devanahalli, which has benefited from the presence of the Kempegowda International Airport. The airport has spurred numerous infrastructural auxiliary developments. Coupled with connectivity to NH 44, Hebbal, and access to the Central Business District of Bangalore, this is one location that offers more potential for growth.',
-      'Aero One gives you an option to opt for 2 & 3 BHK luxury apartments in Banglore that suits the need of every family member. The project, being close to the Special Agricultural Zone, abuts the International Airport, offering scenic views that last a lifetime.'
-    ]
+    title: "MVN RESIDENCE",
+    extra: "Where Prestige Meets Unparalleled Elegance",
+    desc: "Discover an architectural masterpiece that transforms Bangalore's skyline. The breathtaking elevation of the MVN Aero One perfectly merges modern sophistication and timeless splendor, creating a visual delight that captures the spirit of opulent living.",
+    rera: "RERA Registration no : PRM/KA/RERA/1250/303/PR/201222/003761",
   },
-  video1: {
-    title: "EXPERIENCE THE BLISS OF ENDLESS VISTAS",
-    // desc:'Our 13.5ft High Ceilings Will Set A Higher Standard Of Space Utilisation In Harmony With Design Aesthetics & Sophistication.',
-    isVdo: false,
+  LargeElevationSection: {
+        path:{
+          Mobile:{
+            bgImg:bgImgMB,
+            frontImg:building_sm,
+          },
+          desktop:{
+            bgImg:bgImgDesk,
+            frontImg:absDesk,
+          }
+        },
+      // class_name:'center',
+      second_title:'Timeless Fusion of Elegance',
+      desc:'Designed to inspire awe at first glance, the static elevation of MVN Aero One showcases a perfect fusion of form and function. Each detail is meticulously crafted to embody a harmonious balance of contemporary aesthetics and architectural innovation.',
   },
-  video2: {
-    title: "ESCAPE TO EXCLUSIVITY",
-    desc: "Dive into your own private pool with a grand view, just a few steps away from your living room",
-    isVdo: false,
+  walkthrough: {
+    src: "https://www.youtube.com/embed/gJqfXn7vR9M",
+    // title: "Virtual Tour",
+    // title: "Walkthrough",
+    second_title:'Walkthrough',
+    desc: "Experience MVN Aero One through a captivating virtual journey that unveils its every nuance. From awe-inspiring entrances to serene interiors, immerse yourself in spaces designed for a life of unparalleled opulence.",
   },
-  living_room_video:{
-    title: "ESCAPE TO EXCLUSIVITY",
-    desc: "Experience the elegance of a sliding door that seamlessly connects your living space to the outdoors, transforming the ambiance with every glide.",
-    isVdo: false,
-  },
-  video3: {
-    title: "ELEVATED LIVING",
-    desc: "OUR 13.5FT HIGH CEILINGS WILL SET A HIGHER STANDARD OF SPACE UTILISATION IN HARMONY WITH DESIGN AESTHETICS & SOPHISTICATION",
-    isVdo: false,
-  },
-  masterBedroom: {
-    title: "MASTER BEDROOM",
-    desc: "If You Think You Know What Lavishness Means It's Time You Got A New Perspective",
-    isVdo: false,
-  },
-  Slides: {
-    isshow: true,
-  },
-  enquiryBTN:{
-    isshow:true,
-    mail: "info@example.in",
-  },
-  amenities : [
-    { name: 'infinity pool', imgSrc: 'aero-bangalore/amenities/infinity_pool.png' },
-    { name: 'Yoga', imgSrc: 'aero-bangalore/amenities/Yoga.png' },
-    { name: 'Billiards', imgSrc: 'aero-bangalore/amenities/Billiards.png' },
-    { name: 'Gym', imgSrc: 'aero-bangalore/amenities/Gym.png' },
-    { name: 'Party lawn', imgSrc: 'aero-bangalore/amenities/Party_lawn.png' },
-    { name: 'Croquet view', imgSrc: 'aero-bangalore/amenities/Croquet_View.png' },
-    { name: 'Outdoor cinema', imgSrc: 'aero-bangalore/amenities/Outdoor_cinema.png' },
-    { name: 'Hot Tub', imgSrc: 'aero-bangalore/amenities/Hot_Tub.png' },  
-  ],
-  menities_section: [
-    {
-      title: 'Billiards',
-      images: {
-        lg: CONFIG.IMAGE_URL + 'aero-bangalore/amenities/Billiards.webp',
-        mb: CONFIG.IMAGE_URL + 'aero-bangalore/amenities/BilliardsSm.webp',
-      }
+  living_room:{
+    path:{
+      mobilePath:`${CONFIG.IMAGE_URL_BANGALORE}living-room/desktop/`,
+      desktopPath:`${CONFIG.IMAGE_URL_BANGALORE}living-room/desktop/`,
     },
-    {
-      title: 'Gym',
-      images: {
-        lg: CONFIG.IMAGE_URL + 'aero-bangalore/amenities/Gym.webp',
-        mb: CONFIG.IMAGE_URL + 'aero-bangalore/amenities/GymSm.webp',
-      }
+    frameCounts:{
+      mobileFrameCounts:972,
+      desktopFrameCounts:972,
     },
-    {
-      title: 'Hot Tub Lake View',
-      images: {
-        lg: CONFIG.IMAGE_URL + 'aero-bangalore/amenities/HotTubLakeView.webp',
-        mb: CONFIG.IMAGE_URL + 'aero-bangalore/amenities/HotTubLakeViewSm.webp',
-      }
-    },
-    {
-      title: 'Party lawn',
-      images: {
-        lg: CONFIG.IMAGE_URL + 'aero-bangalore/amenities/Partylawn.webp',
-        mb: CONFIG.IMAGE_URL + 'aero-bangalore/amenities/PartylawnSm.webp',
-      }
-    },
-    {
-      title: 'Croquet view',
-      images: {
-        lg: CONFIG.IMAGE_URL + 'aero-bangalore/amenities/Croquetview.webp',
-        mb: CONFIG.IMAGE_URL + 'aero-bangalore/amenities/CroquetviewSm.webp',
-      }
-    },
-    {
-      title: 'Outdoor cinema',
-      images: {
-        lg: CONFIG.IMAGE_URL + 'aero-bangalore/amenities/Outdoorcinema.webp',
-        mb: CONFIG.IMAGE_URL + 'aero-bangalore/amenities/OutdoorcinemaSm.webp',
-      }
-    },
-    
-  ],
-  highlightbg: {
-    isshow: true,
-    img: highlightbgIMG
+    second_title:'OPEN THE DOORS TO EXPANSIVE ELEGANCE AND SPACIOUS LUXURY',
+    desc:'Glide your way through the floor-to-ceiling sliding doors, and step on to the sprawling deck with breathtaking vistas and an air of tranquility.'
   },
-  highlight:{
-    isshow: true,
-    title: "Specifications",
-    desc: [
-      `MVN Aero One is advancing with the motto of No compromise with quality, integrating premium-quality materials around every inch of the facility making it rank among the top apartments in Bangalore. The perfect balance of open and enclosed spaces in the apartments of MVN Aero One has made its place among the best residential projects in Bangalore, offering luxurious flats in Devanahalli.`,
-    ],
-    point:[
-      "RCC Structure with Aluminum shuttering.",
-      "Two Basements, Ground Floor/ Stilt Floor, 13 Full Upper Floors & Partial 14th Floor.",
-      "Compliance to seismic zone II.",
-      "Walls – RCC / Block work/ Brick work.",
-    ]
-  },
-  locationAdvantage: {
-    isshow: true,
-    title: "Location Advantage",
-    mapIMG:  CONFIG.IMAGE_URL + 'aero-bangalore/location.webp',
-    locationData : [
-      {
-        distance:'03 Min',
-        title:'Anjaneya Temple Devanahalli ',
-      },
-      {
-        distance:'04 Min',
-        title:'Mar Thoma Church Devanahalli ',
-      },
-      {
-        distance:'06 Min',
-        title:'Mini Vidhana Soudha Devanahalli',
-      },
-      {
-        distance:'11 Min',
-        title:'Timbre Drive-In Cinema Bellary Road ',
-      },
-      {
-        distance:'15 Min',
-        title:'Kempegowda Intl. Airport Devanahalli ',
-      },
-      {
-        distance:'40 Min',
-        title:'Nandi hills Nandi Hills Road ',
-      },
-    ]
-  },
-  floorPlan:{
-    title: "Typology",
+  masterBedroom:{
+    path:{
+      mobilePath:`${CONFIG.IMAGE_URL_BANGALORE}master_bedroom/mobile/`,
+      desktopPath:`${CONFIG.IMAGE_URL_BANGALORE}master_bedroom/desktop/`,
+    },
+    frameCounts:{
+      mobileFrameCounts:255,
+      desktopFrameCounts:162,
+    },
+    second_title:'A Haven of Luxury and Repose',
+    desc:"Enter a master bedroom where grandeur meets tranquility. This retreat is your ultimate haven, epitomizing luxurious living at its finest, with bespoke interiors, expansive layouts, and an ambiance of refined elegance."
 
-    floorPlanData : [
-      {
-        title:'1 BHK',
-        thumbnail:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/new/1BHK.webp',
-      },
-      {
-        title:'2 BHK Panoramic ',
-        thumbnail:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/new/2bhk_para.webp',
-      },
-      {
-        title:'2 BHK Luxury ',
-        thumbnail:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/new/2BHK.webp',
-      },
-      {
-        title:'3 BHK Luxury',
-        thumbnail:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/new/3BHK.jpg',
-      },
-      
-    ]
   },
-  rera:{
-    isshow: true,
-    raraDetails:[
-      `RERA Registration no : PRM/KA/RERA/1250/303/PR/201222/003761`,
-      `Tower no 4 RERA Registration no : PRM/KA/RERA/1250/303/PR/140923/006259`,
-      `Tower no 5 and Tower 6 RERA Registration No : PRM/KA/RERA/1250/303/PR/141223/006472`
-    ]    
+  landscape:{
+    title:'Landscape',
+    desc:'Revel in the serenity of nature with verdant landscapes that elevate outdoor living. MVN Aero One offers lush greenery and thoughtfully designed open spaces, offering a tranquil escape amidst urban vibrancy.',
+    images:[
+      {
+        desktop: `${CONFIG.IMAGE_URL_BANGALORE}landscape/2.jpg`,
+        mobile: `${CONFIG.IMAGE_URL_BANGALORE}landscape/2.jpg`,
+        watermark: "right",
+        title: "Sunken Court Hires",
+      },
+      {
+        desktop: `${CONFIG.IMAGE_URL_BANGALORE}landscape/3.jpg`,
+        mobile: `${CONFIG.IMAGE_URL_BANGALORE}landscape/3.jpg`,
+        watermark: "right",
+        title: "Swimming Pool",
+      },
+      {
+        desktop: `${CONFIG.IMAGE_URL_BANGALORE}landscape/1.jpg`,
+        mobile: `${CONFIG.IMAGE_URL_BANGALORE}landscape/1.jpg`,
+        watermark: "right",
+        title: "oga Deck",
+      },
+    ],
   },
-  noPluutionZone:{
-    isAllow:false
+  microElevation:{
+    title:'Elevation',
+    desc:'A landmark rising majestically above the city, MVN Aero One embodies architectural excellence. Its striking facade signifies a commitment to superior living and luxurious distinction.',
+    images:[
+      {
+        desktop:`${CONFIG.IMAGE_URL_BANGALORE}elevation/1lg.jpg`,
+        mobile:`${CONFIG.IMAGE_URL_BANGALORE}elevation/1.jpg`,
+        watermark: 'right'
+      },
+      {
+        desktop:`${CONFIG.IMAGE_URL_BANGALORE}elevation/2lg.jpg`,
+        mobile:`${CONFIG.IMAGE_URL_BANGALORE}elevation/2.jpg`,
+        watermark: 'right'
+      },
+      {
+        desktop:`${CONFIG.IMAGE_URL_BANGALORE}elevation/3lg.jpg`,
+        mobile:`${CONFIG.IMAGE_URL_BANGALORE}elevation/3.jpg`,
+        watermark: 'right'
+      },
+    ],
   },
-  walkthrough:{
-    isshow:false
-  }
+  microApartment:{
+    title:'Apartment',
+    desc:`Your residence at MVN Aero One transcends the notion of a home as it epitomises elegance. With expansive layouts, sophisticated interiors, and meticulous attention to detail, every space celebrates the art of fine living.`,
+    images:[
+      {
+        desktop:`${CONFIG.IMAGE_URL_BANGALORE}apartments/1.jpg`,
+        mobile:`${CONFIG.IMAGE_URL_BANGALORE}apartments/1m.jpg`,
+        watermark:'right',
+        title:'Master Bedroom',
+      },
+      {
+        desktop:`${CONFIG.IMAGE_URL_BANGALORE}apartments/2.jpg`,
+        mobile:`${CONFIG.IMAGE_URL_BANGALORE}apartments/2m.jpg`,
+        watermark:'right',
+        title:'Master Bedroom Closet',
+      },
+      {
+        desktop:`${CONFIG.IMAGE_URL_BANGALORE}apartments/3.jpg`,
+        mobile:`${CONFIG.IMAGE_URL_BANGALORE}apartments/3m.jpg`,
+        watermark:'right',
+        title:'Kitchen',
+      },  
+      {
+        desktop:`${CONFIG.IMAGE_URL_BANGALORE}apartments/4.jpg`,
+        mobile:`${CONFIG.IMAGE_URL_BANGALORE}apartments/4m.jpg`,
+        watermark:'right',
+        title:"KIDS' ROOM",
+      },  
+      {
+        desktop:`${CONFIG.IMAGE_URL_BANGALORE}apartments/5.jpg`,
+        mobile:`${CONFIG.IMAGE_URL_BANGALORE}apartments/5m.jpg`,
+        watermark:'right',
+        title:'Guest Bedroom',
+      },
+      {
+        desktop:`${CONFIG.IMAGE_URL_BANGALORE}apartments/6.jpg`,
+        mobile:`${CONFIG.IMAGE_URL_BANGALORE}apartments/6m.jpg`,
+        watermark:'right',
+        title:'Foyer',
+      },
+      {
+        desktop:`${CONFIG.IMAGE_URL_BANGALORE}apartments/7.jpg`,
+        mobile:`${CONFIG.IMAGE_URL_BANGALORE}apartments/7m.jpg`,
+        watermark:'right',
+        title:'Entry Foyer',
+      },
+      {
+        desktop:`${CONFIG.IMAGE_URL_BANGALORE}apartments/8.jpg`,
+        mobile:`${CONFIG.IMAGE_URL_BANGALORE}apartments/8m.jpg`,
+        watermark:'right',
+        title:'Balcony',
+      },
+      {
+        desktop:`${CONFIG.IMAGE_URL_BANGALORE}apartments/9.jpg`,
+        mobile:`${CONFIG.IMAGE_URL_BANGALORE}apartments/9m.jpg`,
+        watermark:'right',
+        title:'Bedroom',
+      },
+    ],
+    imageClassName:'apartment-section-img',
+  },
   
+  amenities : {
+    title:'Amenities',
+    desc: "Indulge in a range of world-class amenities tailored to meet your every desire. From wellness and leisure to relaxation and convenience, MVN Aero One offers a lifestyle perfectly aligned with your aspirations. ",
+    data:[
+      { 
+        name: 'Hot Tub',
+        path:{
+          desktop:`${CONFIG.IMAGE_URL_BANGALORE}amenities/Hot-tub--Hires.jpg`,
+          mobile:`${CONFIG.IMAGE_URL_BANGALORE}amenities/Hot-tub--Hires-sm.jpg`,
+        },
+        desc:'Immerse yourself in ultimate relaxation with a luxurious hot tub. Bask in the warmth as you de-stress and let go of the world’s cares, rejuvenating your mind and body.' 
+      },  
+      {
+        name: 'Billiards',
+        path: {
+          desktop:`${CONFIG.IMAGE_URL_BANGALORE}amenities/Biiliards.jpg`,
+          mobile:`${CONFIG.IMAGE_URL_BANGALORE}amenities/Biiliards-sm.jpg`,
+        },
+        desc:'Engage in a refined game of billiards with friends and neighbors. The well-appointed space ensures a seamless and enjoyable experience for every enthusiast.'
+      },
+      {
+        name: 'Gym',
+        path: {
+          desktop:`${CONFIG.IMAGE_URL_BANGALORE}amenities/gym.jpg`,
+          mobile:`${CONFIG.IMAGE_URL_BANGALORE}amenities/gym-sm.jpg`,
+        },
+        desc:'Achieve your fitness goals with cutting-edge equipment in a panoramic terrace gym, where every session is infused with motivation and stunning views.'
+      },
+      {
+        name: 'Party Lawn',
+        path: {
+          desktop:`${CONFIG.IMAGE_URL_BANGALORE}amenities/Party-Lawn.jpg`,
+          mobile:`${CONFIG.IMAGE_URL_BANGALORE}amenities/Party-Lawn-sm.jpg`,
+        },
+        desc:'Celebrate life’s cherished moments on the rooftop party lawn, a haven for heartfelt conversations and unforgettable memories. '
+      },
+      {
+        name: `Infinity Pool`,
+        path: {
+          desktop:`${CONFIG.IMAGE_URL_BANGALORE}amenities/Infinity-pool.jpg`,
+          mobile:`${CONFIG.IMAGE_URL_BANGALORE}amenities/Infinity-pool-sm.jpg`,
+        },
+        desc:'Swim towards the horizon in the exquisite infinity pool. With its vanishing edge, enjoy breathtaking vistas of the runway, lush greenery, and the shimmering Bettakotta Lake.'
+      },
+      {
+        name: 'Table-Tennis',
+        path: {
+          desktop:`${CONFIG.IMAGE_URL_BANGALORE}amenities/Table-Tennis.jpg`,
+          mobile:`${CONFIG.IMAGE_URL_BANGALORE}amenities/Table-Tennis-sm.jpg`,
+        },
+        desc:'Refine your game in the dedicated table tennis zone. This vibrant space is designed to inspire focus and friendly competition, ensuring endless enjoyment.'
+      },
+      {
+        name: 'Outdoor Cinema',
+        path: {
+          desktop:`${CONFIG.IMAGE_URL_BANGALORE}amenities/Outdoor-Cinema.jpg`,
+          mobile:`${CONFIG.IMAGE_URL_BANGALORE}amenities/Outdoor-Cinema-sm.jpg`,
+        },
+        desc:'Experience the enchantment of cinema beneath a canopy of stars. The outdoor theatre offers an exceptional blend of entertainment and natural splendor.'
+      },
+    ],
+     
+  },
+    video1: {
+      title: "EXPERIENCE THE BLISS OF ENDLESS VISTAS",
+      desc:'Step into a living room where nature’s vibrant splendor enchants, blending elegance and serenity for both relaxation and gatherings.',
+      isVdo: true,
+    },
+    video2: {
+      title: "ESCAPE TO EXCLUSIVITY",
+      desc: "Dive into your own private pool with a grand view, just a few steps away from your living room",
+      isVdo: true,
+    },
+    peacock_section:{
+      second_title:'EXPERIENCE THE GRANDEUR OF THE LIVING ROOM WITH 360° PANORAMIC VIEWS',
+      desc:'Step into a living room where nature’s vibrant splendor enchants, blending elegance and serenity for both relaxation and gatherings.',
+      path:{
+        mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/Peacock/Mobile/data.json`,
+        desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/Peacock/Mobile/data.json`,
+      }
+  },
+    living_room_video:{
+      title: "OPEN THE DOORS TO EXPANSIVE ELEGANCE AND SPACIOUS LUXURY",
+      desc: "Glide your way through the floor-to-ceiling sliding doors, and step on to the sprawling deck with breathtaking vistas and an air of tranquility.",
+      isVdo: true,
+    },
+    ScrollFramesData:{
+      title:'OPEN THE DOORS TO EXPANSIVE ELEGANCE AND SPACIOUS LUXURY',
+      desc: "Glide your way through the floor-to-ceiling sliding doors, and step on to the sprawling deck with breathtaking vistas and an air of tranquility.",
+      path:{
+        mobilePath:`${CONFIG.VIDEO_URL}living-room/desktop/`,
+        desktopPath:`${CONFIG.VIDEO_URL}living-room/desktop/`,
+      },
+      frameCounts:{
+        mobileFrameCounts:133,
+        desktopFrameCounts:133,
+      },
+    },
+    // living_room:{
+    //   second_title:'OPEN THE DOORS TO EXPANSIVE ELEGANCE AND SPACIOUS LUXURY',
+    //   desc:'Glide your way through the floor-to-ceiling sliding doors, and step on to the sprawling deck with breathtaking vistas and an air of tranquility.',
+    //   path:{
+    //     mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/livingRoom/desktop.json`,
+    //     desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/livingRoom/desktop.json`,
+    //   }
+  
+    // },
+    video3: {
+      title: "LIVE. LAUGH. LOUNGE",
+      desc: "Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambiance, perfect for hosting unforgettable soirees and extravagant gatherings.",
+      isVdo: true,
+    },
+    party_video:{
+      second_title:'LIVE. LAUGH. LOUNGE',
+      desc:'Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambiance, perfect for hosting unforgettable soirees and extravagant gatherings.',
+      path:{
+        mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/PartyVideo/Mobile/data.json`,
+        desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/PartyVideo/Desktop/data.json`,
+      }
+    },
+    highlights: [
+      "Power backup for common facilities.",
+      "Italian/Imported Marble flooring.",
+      "Television points in living room and bedrooms.",
+      "Telephone points in living room and master bedroom.",
+      "Split AC provision in living room and bedrooms.",
+      "Premium emulsion paint finish.",
+    ],
+    // LargeElevationSection: {
+    //   title: "an epitome of contemporary elegance",
+    //   isAllow: true,
+    // },
+    // renders: [
+    //   {
+    //     src: CONFIG.IMAGE_URL + 'renders/1_desktop.webp',
+    //     mobile_thumb: CONFIG.IMAGE_URL + 'renders/1_mobile.webp',
+    //   },
+    //   {
+    //     src: CONFIG.IMAGE_URL + 'renders/2_desktop.webp',
+    //     mobile_thumb: CONFIG.IMAGE_URL + 'renders/2_mobile.webp',
+    //   },
+    //   {
+    //     src: CONFIG.IMAGE_URL + 'renders/3_desktop.webp',
+    //     mobile_thumb: CONFIG.IMAGE_URL + 'renders/3_mobile.webp',
+    //   },
+    //   {
+    //     src: CONFIG.IMAGE_URL + 'renders/4_desktop.webp',
+    //     mobile_thumb: CONFIG.IMAGE_URL + 'renders/4_mobile.webp',
+    //   },
+    //   {
+    //     src: CONFIG.IMAGE_URL + 'renders/5_desktop.webp',
+    //     mobile_thumb: CONFIG.IMAGE_URL + 'renders/5_mobile.webp',
+    //   }
+    // ],
+    renders: [
+      {
+        title: 'Apartment',
+        data:[
+          {
+            content:{},
+            lg: `${CONFIG.IMAGE_URL}renders/apartment/1.webp`,
+            md: `${CONFIG.IMAGE_URL}renders/apartment/1_sm.webp`,
+          },
+          {
+            content:{},
+            lg: `${CONFIG.IMAGE_URL}renders/apartment/2.webp`,
+            md: `${CONFIG.IMAGE_URL}renders/apartment/2_sm.webp`,
+          },
+          {
+            content:{},
+            lg: `${CONFIG.IMAGE_URL}renders/apartment/3.webp`,
+            md: `${CONFIG.IMAGE_URL}renders/apartment/3_sm.webp`,
+          },
+          {
+            content:{},
+            lg: `${CONFIG.IMAGE_URL}renders/apartment/3.webp`,
+            md: `${CONFIG.IMAGE_URL}renders/apartment/4_sm.webp`,
+          },
+          {
+            content:{},
+            lg: `${CONFIG.IMAGE_URL}renders/apartment/3.webp`,
+            md: `${CONFIG.IMAGE_URL}renders/apartment/5_sm.webp`,
+          },
+          {
+            content:{},
+            lg: `${CONFIG.IMAGE_URL}renders/apartment/3.webp`,
+            md: `${CONFIG.IMAGE_URL}renders/apartment/6_sm.webp`,
+          },
+          {
+            content:{},
+            lg: `${CONFIG.IMAGE_URL}renders/apartment/3.webp`,
+            md: `${CONFIG.IMAGE_URL}renders/apartment/7_sm.webp`,
+          },
+          {
+            content:{},
+            lg: `${CONFIG.IMAGE_URL}renders/apartment/3.webp`,
+            md: `${CONFIG.IMAGE_URL}renders/apartment/8_sm.webp`,
+          },
+          {
+            content:{},
+            lg: `${CONFIG.IMAGE_URL}renders/apartment/3.webp`,
+            md: `${CONFIG.IMAGE_URL}renders/apartment/9_sm.webp`,
+          }
+        ],
+      },
+      {
+        title: 'Elevation',
+        data:[
+          {
+            content:{},
+            lg: `${CONFIG.IMAGE_URL}renders/elevation/1Lg.jpg`,
+            md: `${CONFIG.IMAGE_URL}renders/elevation/1.jpg`,
+          },
+          {
+            content:{},
+            lg: `${CONFIG.IMAGE_URL}renders/elevation/2Lg.jpg`,
+            md: `${CONFIG.IMAGE_URL}renders/elevation/2.jpg`,
+          },
+          {
+            content:{},
+            lg: `${CONFIG.IMAGE_URL}renders/elevation/3Lg.jpg`,
+            md: `${CONFIG.IMAGE_URL}renders/elevation/3.jpg`,
+          }
+        ],
+      },  
+      {
+        title: 'Landscape',
+        data:[
+          {
+            content:{},
+            lg: `${CONFIG.IMAGE_URL}renders/landscape/1Lg.jpg`,
+            md: `${CONFIG.IMAGE_URL}renders/landscape/1.jpg`,
+          },
+        ],
+        
+      },  
+    ],
+    amenities_section: [
+      {
+        title: 'Spa',
+        data:{
+          content:{},
+          images: [
+            {
+              lg: CONFIG.IMAGE_URL + 'amenities/spa.webp',
+              mb: CONFIG.IMAGE_URL + 'amenities/spaSm.webp',
+            },
+            {
+              lg: CONFIG.IMAGE_URL + 'amenities/spa.webp',
+              mb: CONFIG.IMAGE_URL + 'amenities/spaSm.webp',
+            },
+            {
+              lg: CONFIG.IMAGE_URL + 'amenities/spa.webp',
+              mb: CONFIG.IMAGE_URL + 'amenities/spaSm.webp',
+            },
+            {
+              lg: CONFIG.IMAGE_URL + 'amenities/spa.webp',
+              mb: CONFIG.IMAGE_URL + 'amenities/spaSm.webp',
+            }
+          ]
+        }
+        
+      },
+      {
+        title: 'Library',
+        data:{
+          content:{},
+          images: [
+            {
+              lg: CONFIG.IMAGE_URL + 'amenities/library.webp',
+              mb: CONFIG.IMAGE_URL + 'amenities/librarySm.webp',
+            },
+            {
+              lg: CONFIG.IMAGE_URL + 'amenities/library.webp',
+              mb: CONFIG.IMAGE_URL + 'amenities/librarySm.webp',
+            },
+            {
+              lg: CONFIG.IMAGE_URL + 'amenities/library.webp',
+              mb: CONFIG.IMAGE_URL + 'amenities/librarySm.webp',
+            }
+          ]
+        }
+      },
+      {
+        title: 'Gym Area',
+        data:{
+          content:{},
+          images: [
+            {
+              lg: CONFIG.IMAGE_URL + 'amenities/gym.webp',
+              mb: CONFIG.IMAGE_URL + 'amenities/gymSm.webp',
+            },
+            {
+              lg: CONFIG.IMAGE_URL + 'amenities/gym.webp',
+              mb: CONFIG.IMAGE_URL + 'amenities/gymSm.webp',
+            },
+            {
+              lg: CONFIG.IMAGE_URL + 'amenities/gym.webp',
+              mb: CONFIG.IMAGE_URL + 'amenities/gymSm.webp',
+            }
+          ]
+        }
+      },
+      {
+        title: 'Mini Theatre',
+        data:{
+          content:{},
+          images: [
+            {
+              lg: CONFIG.IMAGE_URL + 'amenities/theater.webp',
+              mb: CONFIG.IMAGE_URL + 'amenities/theaterSm.webp',
+            },
+            {
+              lg: CONFIG.IMAGE_URL + 'amenities/theater.webp',
+              mb: CONFIG.IMAGE_URL + 'amenities/theaterSm.webp',
+            },
+            {
+              lg: CONFIG.IMAGE_URL + 'amenities/theater.webp',
+              mb: CONFIG.IMAGE_URL + 'amenities/theaterSm.webp',
+            }
+          ]
+        }
+      },    
+      {
+        title: 'Business Centre',
+        data:{
+          content:{},
+          images: [
+            {
+              lg: CONFIG.IMAGE_URL + 'amenities/business.webp',
+              mb: CONFIG.IMAGE_URL + 'amenities/businessSm.webp',
+            },
+            {
+              lg: CONFIG.IMAGE_URL + 'amenities/business.webp',
+              mb: CONFIG.IMAGE_URL + 'amenities/businessSm.webp',
+            },
+            {
+              lg: CONFIG.IMAGE_URL + 'amenities/business.webp',
+              mb: CONFIG.IMAGE_URL + 'amenities/businessSm.webp',
+            }
+          ]
+        }
+      },   
+    ],
+    noPollutionZone:{
+      title:'Connections with MVN Mall',
+      data:[
+        { 
+          name: '0 km from all the urban needs 0km from your office',
+          path:{
+            desktop:`${CONFIG.IMAGE_URL}no-pollution/desktop/office.webp`,
+            mobile:`${CONFIG.IMAGE_URL}no-pollution/office.webp`,
+          },
+          desc:'Now you don’t have to even walk to work. Take a ride on your exclusive elevator to work' 
+        },  
+        {
+          name: '0 km from luxury Shopping',
+          path:{
+            desktop:`${CONFIG.IMAGE_URL}no-pollution/desktop/shopping.webp`,
+            mobile:`${CONFIG.IMAGE_URL}no-pollution/shopping.webp`,
+          },
+          desc:'When it comes to best of entertainment, you won’t have to look far. Just step into your exclusive elevator and enter a whole world of global entertainment in the MVN mall.'
+        },
+        {
+          name: '0 km from Global Entertainment',
+          path:{
+            desktop:`${CONFIG.IMAGE_URL}no-pollution/desktop/entertainment.webp`,
+            mobile:`${CONFIG.IMAGE_URL}no-pollution/entertainment.webp`,
+          },
+          desc:'When it comes to best of entertainment, you won’t have to look far. Just step into your exclusive elevator and enter a whole world of global entertainment in the MVN mall.n'
+        },
+        {
+          name: '0 km from the Sports Club & Lounge',
+          path:{
+            desktop:`${CONFIG.IMAGE_URL}no-pollution/desktop/sports.webp`,
+            mobile:`${CONFIG.IMAGE_URL}no-pollution/sports.webp`,
+          },
+          desc:'Make sports a regular part of your life. Participate in sports events and also follow your passion to play your favourite sports, at the exclusive Sports Lounge and Sports Club.'
+        },
+        {
+          name: `0 km cinema`,
+          path:{
+            desktop:`${CONFIG.IMAGE_URL}no-pollution/desktop/cinema.webp`,
+            mobile:`${CONFIG.IMAGE_URL}no-pollution/cinema.webp`,
+          },
+          desc:'Have a blockbuster of a time, without ever missing a show due to traffic. Catch up with all the superhits at the theatres below in the MVN mall.'
+        },
+      ],
+       
+    },
+    highlight:{
+      isshow: true,
+      title: "Highlight",
+      point:[
+        'Power backup for common facilities.',
+      'Italian/Imported Marble flooring.',
+      'Television points in living and bedrooms.',
+      'Telephone points in living and master bedroom.',
+      'Split AC provision in living and bedrooms.',
+      'Premium emulsion paint finish.',
+      ]
+    },
+    locationAdvantage: {
+      isshow: true,
+      title: "Location Advantages",
+      mapIMG: {
+        desktop:CONFIG.IMAGE_URL + 'gurgaon-micro/location_map.webp',
+        mobile:CONFIG.IMAGE_URL + 'gurgaon-micro/location-map_sm.webp'
+      },
+      //     yasho bhoomi
+      // indira gandhi international airport
+      // diplomatic enclave
+      // palam vihar 
+      // gurgaon railway station
+      // dlf cyber city 
+      // world global city
+      locationData: [
+        {
+          distance: '0 km',
+          title: 'MVN Mall',
+        },
+        {
+          distance: '2.9 kms',
+          title: 'World global city',
+        },
+        {
+          distance: '10.5 kms',
+          title: 'Cyber City 2',
+        },
+        {
+          distance: '10.5 kms',
+          title: 'Gurgaon Railway station',
+        },
+        {
+          distance: '18 kms',
+          title: 'Yasho Bhoomi',
+        },
+        {
+          distance: '20 kms',
+          title: 'Diplomatic enclave 2',
+        },
+        {
+          distance: '29.7 kms',
+          title: 'IGI Airport',
+        },
+      ]
+    },
+    floorPlan:{
+      title:'Floor Plan',
+      floorPlanData : [
+        {
+          title:'Penthouse',
+          thumbnail:[
+            {
+              src:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/penthouse/1.webp',
+              mobile:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/penthouse/1.webp',
+            },
+            {
+              src:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/penthouse/2.webp',
+              mobile:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/penthouse/2.webp',
+            }
+          ]
+        },
+        {
+          title:'360 Panoramic Apartment (12420 sq.ft.)',
+          thumbnail:[
+            {
+              src:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/360/1.webp',
+              mobile:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/360/1.webp',
+            }
+          ]
+        },
+        {
+          title:'270 Panoramic Apartment (6210 sq.ft.)',
+          thumbnail:[
+            {
+              src:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/270/1.webp',
+              mobile:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/270/1.webp',
+            },
+            {
+              src:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/270/2.webp',
+              mobile:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/270/2.webp',
+            },
+            {
+              src:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/270/3.webp',
+              mobile:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/270/3.webp',
+            }
+          ]
+        },
+      ]
+    }
 };
 
 
@@ -210,7 +740,7 @@ const data = {
 const AeroOneBangalore = () => {
   window.scrollTo(0,0)
   return (
-    <MicroPage data={data}  projectName={'MVN-AeroOne-Bangalore'}/>
+    <MicroPageBangalore data={bangaloreData}  projectName={'MVN-AeroOne-Bangalore'}/>
   )
 };
 
