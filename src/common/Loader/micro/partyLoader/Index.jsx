@@ -12,9 +12,9 @@ const PartyLoader = ()=>{
     <div className="loader_section gurgaon_loader party_loader">
       <div className="position-relative">
         {isMobile ? (
-          <img src={CONFIG.VIDEO_URL + 'party/mobile/1.webp'} alt="mvn-micro-loader" className="img-fluid micro_thumbnail" />
+          <img src={CONFIG.VIDEO_URL + 'party/mobile/1.webp'} alt="loader image" className="img-fluid micro_thumbnail" />
         ) : (
-          <img src={CONFIG.VIDEO_URL + 'party/desktop/1.webp'} alt="mvn-micro-loader" className="img-fluid micro_thumbnail" />
+          <img src={CONFIG.VIDEO_URL + 'party/desktop/1.webp'} alt="loader image" className="img-fluid micro_thumbnail" />
         )}
         
 

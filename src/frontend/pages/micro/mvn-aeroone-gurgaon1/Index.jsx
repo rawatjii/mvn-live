@@ -89,6 +89,14 @@ export const data = {
     desc: "Dive into your own private pool with a grand view, just a few steps away from your living room",
     isVdo: true,
   },
+  peacock_section:{
+    second_title:'EXPERIENCE THE GRANDEUR OF THE LIVING ROOM WITH 360° PANORAMIC VIEWS',
+    desc:'Step into a living room where nature’s vibrant splendor enchants, blending elegance and serenity for both relaxation and gatherings.',
+    path:{
+      mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/Peacock/Mobile/data.json`,
+      desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/Peacock/Mobile/data.json`,
+    }
+},
   living_room_video:{
     title: "OPEN THE DOORS TO EXPANSIVE ELEGANCE AND SPACIOUS LUXURY",
     desc: "Glide your way through the floor-to-ceiling sliding doors, and step on to the sprawling deck with breathtaking vistas and an air of tranquility.",
@@ -106,15 +114,35 @@ export const data = {
       desktopFrameCounts:133,
     },
   },
+  living_room:{
+    second_title:'OPEN THE DOORS TO EXPANSIVE ELEGANCE AND SPACIOUS LUXURY',
+    desc:'Glide your way through the floor-to-ceiling sliding doors, and step on to the sprawling deck with breathtaking vistas and an air of tranquility.',
+    path:{
+      mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/livingRoom/desktop.json`,
+      desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/livingRoom/desktop.json`,
+    }
+
+  },
   video3: {
     title: "LIVE. LAUGH. LOUNGE",
     desc: "Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambiance, perfect for hosting unforgettable soirees and extravagant gatherings.",
     isVdo: true,
   },
+  party_video:{
+    second_title:'LIVE. LAUGH. LOUNGE',
+    desc:'Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambiance, perfect for hosting unforgettable soirees and extravagant gatherings.',
+    path:{
+      mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/PartyVideo/Mobile/data.json`,
+      desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/PartyVideo/Desktop/data.json`,
+    }
+  },
   masterBedroom: {
     title: "BEDROOM Platinum",
     desc: "Your own sphere of serenity crafted artfully for the ultimate retreat into blissful moments of privacy.",
-    isVdo: true,
+    path:{
+      mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/Panther/Mobile/data.json`,
+      desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/Panther/Desktop/data.json`,
+    }
   },
   landscape:{
     title:'Landscape',
@@ -351,88 +379,92 @@ export const data = {
       
     },  
   ],
-  amenities : [
-    { 
-      name: 'Elevate Your Family Time At The Exclusive Clubhouse',
-      imgSrc:{
-        desktop:'clubhouse.webp',
-        mobile:'clubhouseSm.webp'
+  amenities : {
+    title:'Amenities',
+    data:[
+      { 
+        name: 'Elevate Your Family Time At The Exclusive Clubhouse',
+        path:{
+          desktop:`${CONFIG.IMAGE_URL}amenities/clubhouse.webp`,
+          mobile:`${CONFIG.IMAGE_URL}amenities/clubhouseSm.webp`,
+        },
+        desc:'The ultra-luxury clubhouse offers residents an opulent retreat, featuring state-of-the-art amenities, a lavish spa, infinity pools, gourmet dining, private lounges, and exquisite interiors for unparalleled leisure and comfort for the whole family.' 
+      },  
+      {
+        name: 'Business Centre',
+        path: {
+          desktop:`${CONFIG.IMAGE_URL}amenities/business.webp`,
+          mobile:`${CONFIG.IMAGE_URL}amenities/businessSm.webp`,
+        },
+        desc:'A sophisticated workspace designed for productivity and collaboration'
       },
-      desc:'The ultra-luxury clubhouse offers residents an opulent retreat, featuring state-of-the-art amenities, a lavish spa, infinity pools, gourmet dining, private lounges, and exquisite interiors for unparalleled leisure and comfort for the whole family.' 
-    },  
-    {
-      name: 'Business Centre',
-      imgSrc: {
-        desktop:'business.webp',
-        mobile:'businessSm.webp'
+      {
+        name: 'Library',
+        path: {
+          desktop:`${CONFIG.IMAGE_URL}amenities/library.webp`,
+          mobile:`${CONFIG.IMAGE_URL}amenities/librarySm.webp`,
+        },
+        desc:'A tranquil haven for literary exploration and quiet contemplation'
       },
-      desc:'A sophisticated workspace designed for productivity and collaboration'
-    },
-    {
-      name: 'Library',
-      imgSrc: {
-        desktop:'library.webp',
-        mobile:'librarySm.webp'
+      {
+        name: 'Sports Lounge',
+        path: {
+          desktop:`${CONFIG.IMAGE_URL}amenities/lounge.webp`,
+          mobile:`${CONFIG.IMAGE_URL}amenities/loungeSm.webp`,
+        },
+        desc:'An upscale space to unwind and enjoy sports events'
       },
-      desc:'A tranquil haven for literary exploration and quiet contemplation'
-    },
-    {
-      name: 'Sports Lounge',
-      imgSrc: {
-        desktop:'lounge.webp',
-        mobile:'loungeSm.webp'
+      {
+        name: `Kids' Play Area`,
+        path: {
+          desktop:`${CONFIG.IMAGE_URL}amenities/kids.webp`,
+          mobile:`${CONFIG.IMAGE_URL}amenities/kidsSm.webp`,
+        },
+        desc:'A safe and imaginative space for children to explore'
       },
-      desc:'An upscale space to unwind and enjoy sports events'
-    },
-    {
-      name: `Kids' Play Area`,
-      imgSrc: {
-        desktop:'kids.webp',
-        mobile:'kidsSm.webp'
+      {
+        name: 'Fitness Centre',
+        path: {
+          desktop:`${CONFIG.IMAGE_URL}amenities/gym.webp`,
+          mobile:`${CONFIG.IMAGE_URL}amenities/gymSm.webp`,
+        },
+        desc:'State-of-the-art fitness facilities for ultimate wellness'
       },
-      desc:'A safe and imaginative space for children to explore'
-    },
-    {
-      name: 'Fitness Centre',
-      imgSrc: {
-        desktop:'gym.webp',
-        mobile:'gymSm.webp'
+      {
+        name: 'Spa',
+        path: {
+          desktop:`${CONFIG.IMAGE_URL}amenities/spa.webp`,
+          mobile:`${CONFIG.IMAGE_URL}amenities/spaSm.webp`,
+        },
+        desc:'A luxurious retreat offering rejuvenation and tranquility'
       },
-      desc:'State-of-the-art fitness facilities for ultimate wellness'
-    },
-    {
-      name: 'Spa',
-      imgSrc: {
-        desktop:'spa.webp',
-        mobile:'spaSm.webp'
+      {
+        name: `Mini Theatre`,
+        path: {
+          desktop:`${CONFIG.IMAGE_URL}amenities/theater.webp`,
+          mobile:`${CONFIG.IMAGE_URL}amenities/theaterSm.webp`,
+        },
+        desc:'Intimate screenings for cinematic experiences with friends'
       },
-      desc:'A luxurious retreat offering rejuvenation and tranquility'
-    },
-    {
-      name: `Mini Theatre`,
-      imgSrc: {
-        desktop:'theater.webp',
-        mobile:'theaterSm.webp'
+      {
+        name: `Central Green`,
+        path: {
+          desktop:`${CONFIG.IMAGE_URL}amenities/central-green.webp`,
+          mobile:`${CONFIG.IMAGE_URL}amenities/central-green_sm.webp`,
+        },
+        desc:['An oasis of clean air and pure living. ','Advanced air purification systems create pollution-free zones, ensuring residents breathe clean, fresh air, promoting healthier living and well-being.']
       },
-      desc:'Intimate screenings for cinematic experiences with friends'
-    },
-    {
-      name: `Central Green`,
-      imgSrc: {
-        desktop:'central-green.webp',
-        mobile:'central-green_sm.webp'
+      {
+        name: 'Exclusive entrance and exit for the residents',
+        path: {
+          desktop:`${CONFIG.IMAGE_URL}amenities/entryexit.webp`,
+          mobile:`${CONFIG.IMAGE_URL}amenities/entryexit_sm.webp`,
+        },
+        desc:'Experience unparalleled privacy and convenience with exclusive entry and exit points designed for residents of MVN, ensuring seamless access and an elite living experience.'
       },
-      desc:['An oasis of clean air and pure living. ','Advanced air purification systems create pollution-free zones, ensuring residents breathe clean, fresh air, promoting healthier living and well-being.']
-    },
-    {
-      name: 'Exclusive entrance and exit for the residents',
-      imgSrc: {
-        desktop:'entryexit.webp',
-        mobile:'entryexit_sm.webp'
-      },
-      desc:'Experience unparalleled privacy and convenience with exclusive entry and exit points designed for residents of MVN, ensuring seamless access and an elite living experience.'
-    },
-  ],
+    ],
+     
+  },
   amenities_section: [
     {
       title: 'Spa',
@@ -540,38 +572,52 @@ export const data = {
       }
     },   
   ],
-  noPollutionZone: [
-    // {
-    //   title: 'An oasis of clean air and pure living',
-    //   desc:'Advanced air purification systems create pollution-free zones, ensuring residents breathe clean, fresh air, promoting healthier living and well-being.',
-    //   imgSrc: window.innerWidth <= 768 ? 'central-green.webp' : 'central-green.webp'
-    // },
-    {
-      title: '0 km from all the urban needs 0km from your office',
-      desc:'Now you don’t have to even walk to work. Take a ride on your exclusive elevator to work',
-      imgSrc: window.innerWidth <= 768 ? 'office.webp' : 'desktop/office.webp'
-    },
-    {
-      title: '0 km from luxury Shopping',
-      desc:'All the best of luxury shopping and brands from the world over, right at your doorstep at MVN Mall',
-      imgSrc: window.innerWidth <= 768 ? 'shopping.webp' : 'desktop/shopping.webp'
-    },
-    {
-      title: '0 km from Global Entertainment',
-      desc:'When it comes to best of entertainment, you won’t have to look far. Just step into your exclusive elevator and enter a whole world of global entertainment in the MVN mall.',
-      imgSrc: window.innerWidth <= 768 ? 'entertainment.webp' : 'desktop/entertainment.webp'
-    },
-    {
-      title: '0 km from the Sports Club & Lounge',
-      desc:'Make sports a regular part of your life. Participate in sports events and also follow your passion to play your favourite sports, at the exclusive Sports Lounge and Sports Club.',
-      imgSrc: window.innerWidth <= 768 ? 'sports.webp' : 'desktop/sports.webp'
-    },
-    {
-      title: '0 km cinema',
-      desc:'Have a blockbuster of a time, without ever missing a show due to traffic. Catch up with all the superhits at the theatres below in the MVN mall.',
-      imgSrc: window.innerWidth <= 768 ? 'cinema.webp' : 'desktop/cinema.webp'
-    },
-  ],
+  noPollutionZone:{
+    title:'Connections with MVN Mall',
+    data:[
+      { 
+        name: '0 km from all the urban needs 0km from your office',
+        path:{
+          desktop:`${CONFIG.IMAGE_URL}no-pollution/desktop/office.webp`,
+          mobile:`${CONFIG.IMAGE_URL}no-pollution/office.webp`,
+        },
+        desc:'Now you don’t have to even walk to work. Take a ride on your exclusive elevator to work' 
+      },  
+      {
+        name: '0 km from luxury Shopping',
+        path:{
+          desktop:`${CONFIG.IMAGE_URL}no-pollution/desktop/shopping.webp`,
+          mobile:`${CONFIG.IMAGE_URL}no-pollution/shopping.webp`,
+        },
+        desc:'When it comes to best of entertainment, you won’t have to look far. Just step into your exclusive elevator and enter a whole world of global entertainment in the MVN mall.'
+      },
+      {
+        name: '0 km from Global Entertainment',
+        path:{
+          desktop:`${CONFIG.IMAGE_URL}no-pollution/desktop/entertainment.webp`,
+          mobile:`${CONFIG.IMAGE_URL}no-pollution/entertainment.webp`,
+        },
+        desc:'When it comes to best of entertainment, you won’t have to look far. Just step into your exclusive elevator and enter a whole world of global entertainment in the MVN mall.n'
+      },
+      {
+        name: '0 km from the Sports Club & Lounge',
+        path:{
+          desktop:`${CONFIG.IMAGE_URL}no-pollution/desktop/sports.webp`,
+          mobile:`${CONFIG.IMAGE_URL}no-pollution/sports.webp`,
+        },
+        desc:'Make sports a regular part of your life. Participate in sports events and also follow your passion to play your favourite sports, at the exclusive Sports Lounge and Sports Club.'
+      },
+      {
+        name: `0 km cinema`,
+        path:{
+          desktop:`${CONFIG.IMAGE_URL}no-pollution/desktop/cinema.webp`,
+          mobile:`${CONFIG.IMAGE_URL}no-pollution/cinema.webp`,
+        },
+        desc:'Have a blockbuster of a time, without ever missing a show due to traffic. Catch up with all the superhits at the theatres below in the MVN mall.'
+      },
+    ],
+     
+  },
   highlight:{
     isshow: true,
     title: "Highlight",

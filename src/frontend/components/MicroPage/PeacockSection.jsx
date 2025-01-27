@@ -10,6 +10,7 @@ import * as CONFIG from '../../../config/config';
 import ScrollDown from "../../../common/scrollDown/Index";
 import Logomark from "../../../common/logomark/Index";
 import { useMatches } from "../../../theme/theme";
+import LottieAnimationSection from "./LottieAnimationSection";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -130,42 +131,17 @@ const PeacockSection = ({ data, onLoadComplete }) => {
     };
   }, [images, isMobile, loading]); // Re-run when images or loading state changes
 
-  const { title, desc } = data.video1;
+
 
   return (
     <div className="section peacock_section pb-0" id="peacockSection">
       {/* Show loader only on mobile */}
       {isMobile && loading && <PeacockLoader />}
-
-      {/* Main content once loading is complete */}
-      {!loading && (
-        <>
-          <div ref={containerRef} className="frames_content">
-            <div className="image_col position-relative">
-              <Watermark className={isMobile ? 'style4' : 'style2'} />
-              {isMobile && <Logomark className={isMobile ? `left sm style4` : `left sm`} />}
-              
-
-              {/* Mobile Canvas */}
-              {isMobile && (
-                <canvas
-                  ref={canvasRef}
-                  width={window.innerWidth}
-                  height={window.innerHeight}
-                  style={{ display: "block", margin: "auto" }}
-                />
-              )}
-
-              {/* Desktop Image */}
-              {!isMobile && (
-                <img src={CONFIG.IMAGE_URL + 'peacock/peacock.webp'} alt="Peacock image" className="img-fluid peacock_img" />
-              )}
-            </div>
-
-            <ScrollDown className="color-black" />
-          </div>
-
-          <Container>
+      {isMobile ? 
+      <LottieAnimationSection data={data}/>
+      : <>
+      <img src={CONFIG.IMAGE_URL + 'peacock/peacock.webp'} alt="Peacock image" className="img-fluid peacock_img" />
+      <Container>
             <div className="about">
               <CustomCard
                 className="px_sm_0 pb-0"
@@ -174,8 +150,10 @@ const PeacockSection = ({ data, onLoadComplete }) => {
               />
             </div>
           </Container>
-        </>
-      )}
+      </>
+      }
+
+     
     </div>
   );
 };

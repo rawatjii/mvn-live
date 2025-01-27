@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container } from "react-bootstrap";
 import Watermark from "../../../common/watermark/Index";
 import Lightbox from "yet-another-react-lightbox";
@@ -11,17 +9,19 @@ import "yet-another-react-lightbox/styles.css";
 import CustomCard from "../Card";
 import Logomark from "../../../common/logomark/Index";
 
-gsap.registerPlugin(ScrollTrigger);
-
-
-export default function ImagesGallery({data}) {
+export default function ImagesGallery({ data }) {
   const sectionsRef = useRef(null);
   const [index, setIndex] = useState(-1);
   const imageDivRefs = useRef([]);
   const [imagesLoaded, setImagesLoaded] = useState(0);
-  const {title,images,desc,secondTitle,imageClassName} = data;
+  const { title, images, desc, secondTitle, imageClassName } = data;
 
-  const initializeAnimations = () => {
+  const initializeAnimations = async () => {
+    const { gsap } = await import("gsap");
+    const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Heading Animation
     gsap.from(sectionsRef.current, {
       y: 50,
       opacity: 0,
@@ -29,20 +29,18 @@ export default function ImagesGallery({data}) {
       scrollTrigger: {
         trigger: sectionsRef.current,
         start: "top 95%",
+        once: true,
       },
     });
 
-    imageDivRefs.current.forEach((imageDiv) => {
-      if (imageDiv) {
-        gsap.to(imageDiv, {
-          scrollTrigger: {
-            trigger: imageDiv,
-            start: "top 95%",
-            onEnter: () => imageDiv.classList.add("active"),
-            once: true,
-          },
-        });
-      }
+    // Batched Image Animations
+    ScrollTrigger.batch(imageDivRefs.current, {
+      start: "top 95%",
+      onEnter: (batch) => {
+        gsap.to(batch, { opacity: 1, scale: 1, stagger: 0.2 });
+        batch.forEach((el) => el.classList.add("active"));
+      },
+      once: true,
     });
   };
 
@@ -57,11 +55,11 @@ export default function ImagesGallery({data}) {
   return (
     <div className="section renders1_section wrapper center pb-0 Landscape-section">
       {/* Title */}
-      {title && 
-      <div className="heading_div mb-60" ref={sectionsRef}>
-        <h4 className="title title_style1 text-center">{title}</h4>
-      </div>
-      }
+      {title && (
+        <div className="heading_div mb-60" ref={sectionsRef}>
+          <h4 className="title title_style1 text-center">{title}</h4>
+        </div>
+      )}
 
       {/* Cards */}
       <div className="cards-container">
@@ -77,32 +75,32 @@ export default function ImagesGallery({data}) {
                       src={image.mobile}
                       alt={image.title || `${title} ${idx + 1}`}
                       onLoad={handleImageLoad}
-                      className={imageClassName}
+                      className={`${imageClassName} lazy-image`}
                     />
                   </AnImage>
                 </div>
-                {image.title && 
-                <div className="content">
-                  <h4 className="title_style1">{image.title}</h4>
-                </div>
-                }
+                {image.title && (
+                  <div className="content">
+                    <h4 className="title_style1">{image.title}</h4>
+                  </div>
+                )}
               </div>
             </div>
           ))}
         </div>
 
         {/* Description */}
-        {secondTitle || desc ?
-        <Container>
-          <div className="about">
-            <CustomCard
-              className="px-0 pb-0"
-              title={secondTitle || ''}
-              desc={desc || ''}
-            />
-          </div>
-        </Container>
-        : null}
+        {(secondTitle || desc) && (
+          <Container>
+            <div className="about">
+              <CustomCard
+                className="px-0 pb-0"
+                title={secondTitle || ""}
+                desc={desc || ""}
+              />
+            </div>
+          </Container>
+        )}
       </div>
 
       {/* Lightbox */}
