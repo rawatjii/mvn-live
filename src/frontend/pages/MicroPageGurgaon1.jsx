@@ -3,11 +3,7 @@ import { Container } from "react-bootstrap";
 import MicroHero from "../components/MicroPage/Hero";
 import MicroOverview from "../components/MicroPage/Overview";
 import LargeElevationSection from "../components/MicroPage/LargeElevationSection";
-import MicroHighlights from "../components/MicroPage/Highlights";
-import MicroPrice from "../components/MicroPage/Price";
 import MicroAmenities from "../components/MicroPage/Amenities";
-import MicroAmenitiesDesktop from "../components/MicroPage/AmenitiesDesktop";
-import MicroMasterPlan from "../components/MicroPage/MasterPlan";
 import MicroFloorPlan from "../components/MicroPage/FloorPlan";
 import MicroLocationMap from "../components/MicroPage/LocationMap";
 import Enquire from "../components/homepage/Enquire";
@@ -18,28 +14,13 @@ import MvnMall from "../components/MicroPage/MvnMall";
 import Footer from "../components/Footer";
 import Typology from "../components/homepage/Typology";
 import DownloadBrochure from "../components/MicroPage/DownloadBrochure";
-import InitialLoading from "../skeleton/Initial/Index";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import ScrollSmoother from "gsap/ScrollSmoother";
-import GurgaonLoader1 from "../../common/Loader/micro/gurgaon1/Index";
 import { Helmet } from "react-helmet";
 import MicroHeader from "../components/MicroHeader";
-import CustomCard from "../components/Card";
-import LivingRoomVideoGurugram from "../components/MicroPage/LivingRoomVideoGurugram";
-import ScrollTriggerFrames from "../components/MicroPage/ScrollTriggerFrames";
-import PartyVideo from "../components/MicroPage/PartyVideo";
-import PartyVideo1 from "../components/MicroPage/PartyVideo1";
-import MasterBedroom from "../components/MicroPage/MasterBedroom";
-import MicroLandscape from "../components/MicroPage/Landscape";
-import MicroElevation from "../components/MicroPage/MicroElevation";
-import MicroApartment from "../components/MicroPage/MicroApartment";
-import NoPolutionZone from "../components/MicroPage/NoPolutionZone";
-
-import * as CONFIG from '../../config/config';
 import Consultant from "../components/MicroPage/Consultant";
 import ConstructionTechnology from "../components/MicroPage/ConstructionTechnology";
-import ScrollTop from "../../common/ScrollToTop/Index";
 import ImagesGallery from "../components/MicroPage/ImagesGallery";
 import LottieAnimationSection from "../components/MicroPage/LottieAnimationSection";
 
@@ -233,38 +214,19 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
               onLoadComplete={() => setPeacockLoaded(true)}
             />
           </div>
-          {/* <div>
-            <LivingRoomVideoGurugram
-              data={data}
-              onLoadComplete={() => setLivingRoomLoaded(true)}
-            />
-          </div> */}
           <div>
-            {/* <ScrollTriggerFrames data={data.ScrollFramesData}
-              onLoadComplete={() => setLivingRoomLoaded(true)}
-              /> */}
             <LottieAnimationSection
             data={data.living_room}
             onLoadComplete={() => setLivingRoomLoaded(true)}
             />
           </div>
           <div>
-            {/* <PartyVideo
-              data={data}
-              onLoadComplete={() => setPartyLoaded(true)}
-            /> */}
             <LottieAnimationSection
             data={data.party_video}
             onLoadComplete={() => setPartyLoaded(true)}
             />
           </div>
           <div>
-            {/* <MasterBedroom
-              data={data}
-              onLoadComplete={() =>
-                setMasterBedroomLoaded(true)
-              }
-            /> */}
             <LottieAnimationSection
               data={data.masterBedroom}
               onLoadComplete={() =>
@@ -286,7 +248,6 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
               (sectionRefs.current.MicroLandscape = el)
             }
           >
-            {/* <MicroLandscape  data={data.landscape}/> */}
             <ImagesGallery data={data.landscape}/>
           </div>
 
@@ -295,7 +256,6 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
               (sectionRefs.current.MicroElevation = el)
             }
           >
-            {/* <MicroElevation /> */}
             <ImagesGallery data={data.microElevation}/>
           </div>
 
@@ -304,7 +264,6 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
               (sectionRefs.current.MicroApartment = el)
             }
           >
-            {/* <MicroApartment /> */}
             <ImagesGallery data={data.microApartment}/>
           </div>
 
@@ -355,13 +314,6 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             <MvnMall />
           </div>
 
-          {/* <div
-            ref={(el) =>
-              (sectionRefs.current.NoPolutionZone = el)
-            }
-          >
-            <NoPolutionZone data={data.noPollutionZone} />
-          </div> */}
           <div
             ref={(el) =>
               (sectionRefs.current.NoPolutionZone = el)
