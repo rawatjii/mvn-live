@@ -1,0 +1,114 @@
+.lg_elevation_section {
+    padding: 70px 0;
+    padding-top: 0;
+    color: #ffff;
+    position: relative;
+}
+
+.lg_elevation_section .inner_div {
+    text-align: center;
+}
+
+.lg_elevation_section .wrap {
+    padding-top: 33px;
+    text-align: center;
+}
+
+.lg_elevation_section .inner_div .main-pera {
+    padding: 40px 80px 0 80px;
+}
+
+.lg_elevation_section .animate_img {
+    position: relative;
+    margin-top: 58px;
+    display: flex;
+    justify-content: center;
+    background: url(../../../assets/images/aero-bangalore/lg_elevation-bg.png) no-repeat;
+    background-size: 100% 98%;
+    background-position: bottom;
+}
+
+.lg_elevation_section .abs_img {
+    max-width: 721px;
+    margin-bottom: 2px;
+}
+
+:root {
+    --golden: #d9c072;
+}
+
+.BangaloreElevation {
+    padding-top: 40px;
+    color: #ffff;
+    position: relative;
+}
+
+.BangaloreMainTitle {
+    padding-top: 33px;
+    text-align: center;
+    width: fit-content;
+    margin: auto;
+    margin-bottom: 73px;
+}
+
+.BangaloreMainTitle .Title {
+    font-family: "Tinos-Regular";
+    font-size: 24px;
+    color: var(--golden);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.BangaloreMainTitle .Title:before {
+    position: absolute;
+    content: "";
+    left: -29px;
+    bottom: 0;
+    top: -23px;
+    width: 70px;
+    height: 70px;
+    background-color: rgba(244, 217, 102, 0.15);
+    right: 0;
+    border-radius: 100px;
+}
+
+@media (max-width: 1368px) {
+    .main-title {
+        font-size: 24px;
+        letter-spacing: 1px;
+    }
+}
+
+.BangaloreImgs {
+    position: relative;
+    margin-top: 58px;
+    display: flex;
+    justify-content: center;
+    background: url(/public/assets/bangalore/lg_elevation-bg.png) no-repeat;
+    background-size: 100% 98%;
+    background-position: bottom;
+    height: calc(100vh - 79px);
+}
+
+.BangaloreFrontImg {
+    width: 721px;
+    margin-bottom: 2px;
+}
+
+.BangaloreImgs .WaterMark {
+    position: absolute;
+    bottom: 15px;
+    right: 5%;
+    width: 50px;
+}
+
+.BangaloreImgs .WaterMark2 {
+    position: absolute;
+    bottom: 0px;
+    left: 5%;
+    font-size: 11px;
+    user-select: none;
+    color: #fff;
+}

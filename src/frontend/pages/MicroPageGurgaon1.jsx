@@ -208,7 +208,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
           {/* Render other components only after Hero Section is loaded */}
 
-          <MicroOverview data={data} heroLoadedStatus={heroLoaded} /> {/*no isssue*/}
+          <MicroOverview data={data.overview} heroLoadedStatus={heroLoaded} /> {/*no isssue*/}
           <LargeElevationSection data={data.LargeElevationSection} />
 
           
@@ -217,7 +217,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
               (sectionRefs.current.Walkthrough = el)
             }
           >
-            <Walkthrough data={data.Walkthrough}/>
+            <Walkthrough data={data.walkthrough}/>
           </div>
 
           <div

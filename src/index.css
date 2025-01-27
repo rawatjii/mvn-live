@@ -308,7 +308,7 @@ fieldset:disabled {
 
 .section {
   position: relative;
-  padding: 100px 0;
+  padding-top: 74px ;
 }
 
 .main_title {
@@ -4069,6 +4069,9 @@ footer {
       width: 30%;
       margin-left:auto;
     }
+    .abs_img_in.center{
+      margin: auto;
+    }
 
     &.center{
       .abs_img_in{
@@ -5551,3 +5554,63 @@ footer {
   .media-event-content a {display: block;}
 
 }
+
+/* hero section style start */
+
+.section.Scroll_Height{
+  padding-top: 74px;
+}
+/* .frames_content.h_100,.frames_content.h_100 .image_col, .frames_content.h_100 .image_col canvas{
+  height: 100vh;
+} */
+.Scroll_Height .frames_content, .Scroll_Height .image_col, .Scroll_Height .image_col canvas {
+  height:calc(100vh - 74px);
+}
+.Scroll_Height .image_col canvas{
+  width: 100vw;
+}
+/* hero section style end */
+
+
+/* walkthrough youtube video style start */
+.Walkthrough_video{
+  position: relative;
+}
+.Walkthrough_video .Close_video{
+  position: absolute;
+  right: 28px;
+  top: 70px;
+  background: #000;
+  border: none;
+  color: #fff;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  z-index: 111;
+}
+
+.Walkthrough_video .Close_video img{
+  width: 18px;
+
+}
+.Walkthrough_video .Close_video span{
+  margin-top: 5px;
+  font-size: 15px;
+  color: #ebe8e8;
+  display: none;
+}
+@media (max-width:620px){
+  .Walkthrough_video .Close_video{
+    right: 10px;
+    top: 50px;
+  }
+  .Walkthrough_video .Close_video span{
+    display: none;
+  }
+}
+@media (min-width: 767px) {
+  section.walkthrough_section.new_height iframe {
+    height: 500px !important;
+  }
+}
+/* walkthrough youtube video style end */

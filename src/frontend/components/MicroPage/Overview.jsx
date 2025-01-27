@@ -2,9 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import diamondIMG from "../../assets/images/icons/plane1.png";
 
-
-
-const MicroOverview = ({ data, heroLoadedStatus }) => {
+const MicroOverview = ({ data }) => {
   const [count1, setCount1] = useState(0);
   const [count2, setCount2] = useState(0);
   const [count3, setCount3] = useState(0);
@@ -47,22 +45,16 @@ const MicroOverview = ({ data, heroLoadedStatus }) => {
     animate();
   };
 
-  useEffect(()=>{
-    const offsetValue = document.querySelector('#overview_section').offsetTop;
-    localStorage.setItem('navbar_scroll_height',  offsetValue);
-  }, [heroLoadedStatus])
-
-
   useEffect(() => {
     const handleScroll = () => {
       if (!ended1 && isScrolledIntoView(ref1)) {
         countUp(13500, setCount1, setEnded1);
       }
       if (!ended2 && isScrolledIntoView(ref2)) {
-        countUp(12420, setCount2, setEnded2);
+        countUp(11700, setCount2, setEnded2);
       }
       if (!ended3 && isScrolledIntoView(ref3)) {
-        countUp(6210, setCount3, setEnded3);
+        countUp(5850, setCount3, setEnded3);
       }
     };
 
@@ -74,15 +66,15 @@ const MicroOverview = ({ data, heroLoadedStatus }) => {
     };
   }, [ended1, ended2, ended3]);
 
-  const { title, location, extra, desc ,rera ,counterHeading } = data.overview;
+  const { title, location, extra, desc ,rera ,counterHeading } = data;
 
   return (
-    <section className="section micro_overview text-center pb-0" id="overview_section">
+    <section className="section micro_overview text-center pb-0">
       <Container>
         <div className="overview_card px-0">
           <div className="aboutUs-card_heading">
             <div className="diamond_img_strip">
-              <img src={diamondIMG} className="img-fluid" alt="diamond image" />
+              <img src={diamondIMG} className="img-fluid" alt="image" />
             </div>
             <div className="title">
               {title && <h1 className="pr_name">{title}</h1>}
@@ -105,29 +97,29 @@ const MicroOverview = ({ data, heroLoadedStatus }) => {
           </div>
           {counterHeading && 
             <>
-              <p className="counter-heading">5.5 BHK One of the Largest Apartments in Gurugram</p>
+          <p className="counter-heading">5.5 BHK One of the Largest Apartments in Gurugram</p>
 
-              <div className="counter-flex-box">
-                <div className="flex-box" ref={ref1}>
-                  <h4>
-                    <span className="counter">{count1}</span> <span className="sqft">sq.ft.</span>
-                  </h4>
-                </div>
-                <div className="flex-box" ref={ref2}>
-                  <h4>
-                    <span className="counter">{count2}</span> <span className="sqft">sq.ft.</span>
-                  </h4>
-                </div>
-                <div className="flex-box" ref={ref3}>
-                  <h4>
-                    <span className="counter">{count3}</span> <span className="sqft">sq.ft.</span>
-                  </h4>
-                </div>
-              </div>
-
-              <span className="bar"></span>
-            </>}
+          <div className="counter-flex-box">
+            <div className="flex-box" ref={ref1}>
+              <h4>
+                <span className="counter">{count1}</span> <span className="sqft">sqft</span>
+              </h4>
+            </div>
+            <div className="flex-box" ref={ref2}>
+              <h4>
+                <span className="counter">{count2}</span> <span className="sqft">sqft</span>
+              </h4>
+            </div>
+            <div className="flex-box" ref={ref3}>
+              <h4>
+                <span className="counter">{count3}</span> <span className="sqft">sqft</span>
+              </h4>
+            </div>
           </div>
+
+          <span className="bar"></span>
+          </>}
+        </div>
           {rera && <p className="rera-number des_style1 text-center">{rera}</p>}
       </Container>
     </section>

@@ -3,6 +3,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Watermark from "../../../common/watermark/Index";
 import { useMatches } from "../../../theme/theme";
+import { Container } from "react-bootstrap";
+import CustomCard from "../Card";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,7 +12,7 @@ export default function Amenities({ section_data }) {
   const { isMobile } = useMatches();
   const sectionsRef = useRef([]);
   const triggers = useRef([]);
-  const { data, title } = section_data;
+  const { title , data, second_title,desc } = section_data;
 
   const getRatio = (el) => window.innerHeight / (window.innerHeight + el.offsetHeight);
 
@@ -79,7 +81,7 @@ export default function Amenities({ section_data }) {
 
   // Render Mobile View
   const renderMobileView = () => (
-    <div className="section amenities_section main_am pb-0">
+    <div className="section amenities_section main_am bottom_content pb-0">
       <div className="cards-container">
         <div className="heading_div mb_60 mb_sm_30">
           <h4 className="title title_style1 text-center">{title}</h4>
@@ -142,6 +144,20 @@ export default function Amenities({ section_data }) {
   return (
     <>
       {isMobile ? renderMobileView() : renderDesktopView()}
+      
+       {/* Description */}
+       {(second_title || desc) && (
+          <Container>
+            <div className="about">
+              <CustomCard
+                className="px-0 pb-0"
+                title={second_title || ""}
+                desc={desc || ""}
+              />
+            </div>
+          </Container>
+        )}
+
     </>
   );
 }

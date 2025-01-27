@@ -11,18 +11,18 @@ import { useMatches } from "../../../theme/theme";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const LivingRoomVideoGurugram = ({ data ,onLoadComplete}) => {
+const ScrollTriggerFrames = ({ data, onLoadComplete }) => {
   const canvasRef = useRef(null);
   const sectionRef = useRef(null);
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [progress, setProgress] = useState(0); // Loading progress
+  const [progress, setProgress] = useState(0);
   const { isMobile } = useMatches();
-  const { title, desc, path , frameCounts } = data;
-  const totalFramesMobile = isMobile ? frameCounts.mobileFrameCounts : frameCounts.desktopFrameCounts;
+  const {  second_title, desc, path, frameCounts, classMain, classCustomCard } = data;
+  const totalFramesMobile = isMobile
+    ? frameCounts.mobileFrameCounts
+    : frameCounts.desktopFrameCounts;
 
-
-  // Optimized `drawFrame` function
   const drawFrame = (frameIndex, ctx, canvas, images) => {
     if (!images || !images[frameIndex]) return;
 
@@ -49,8 +49,8 @@ const LivingRoomVideoGurugram = ({ data ,onLoadComplete}) => {
     ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
   };
 
-  // Image loading with progress tracking
   useEffect(() => {
+    const isMounted = { current: true }; // Flag to track component mount status
     const totalFrames = totalFramesMobile;
     const imagePath = path.desktopPath;
 
@@ -60,22 +60,29 @@ const LivingRoomVideoGurugram = ({ data ,onLoadComplete}) => {
           const img = new Image();
           img.src = `${imagePath}${i + 1}.webp`;
           img.onload = () => {
-            setProgress(((i + 1) / totalFrames) * 100); // Update progress
-            resolve(img);
+            if (isMounted.current) {
+              setProgress(((i + 1) / totalFrames) * 100); // Update progress
+              resolve(img);
+            }
           };
         });
       });
 
       const loadedImages = await Promise.all(promises);
-      setImages(loadedImages);
-      setLoading(false); // Hide loader after all images are loaded
-      onLoadComplete(); // Trigger callback
+      if (isMounted.current) {
+        setImages(loadedImages);
+        setLoading(false);
+        onLoadComplete();
+      }
     };
 
     loadImages();
-  }, [onLoadComplete]);
 
-  // Scroll-triggered canvas animation
+    return () => {
+      isMounted.current = false; // Prevent further state updates
+    };
+  }, [path.desktopPath, totalFramesMobile, onLoadComplete]);
+
   useEffect(() => {
     if (images.length === 0 || loading) return;
 
@@ -83,7 +90,16 @@ const LivingRoomVideoGurugram = ({ data ,onLoadComplete}) => {
     const ctx = canvas.getContext("2d");
     const totalFrames = totalFramesMobile;
 
-    drawFrame(0, ctx, canvas, images); // Draw the first frame immediately
+    drawFrame(0, ctx, canvas, images);
+
+    let requestId;
+    const throttledDrawFrame = (frameIndex) => {
+      if (requestId) return;
+      requestId = requestAnimationFrame(() => {
+        drawFrame(frameIndex, ctx, canvas, images);
+        requestId = null;
+      });
+    };
 
     const scrollAnimation = ScrollTrigger.create({
       trigger: sectionRef.current,
@@ -93,40 +109,46 @@ const LivingRoomVideoGurugram = ({ data ,onLoadComplete}) => {
       scrub: 0.1,
       onUpdate: (self) => {
         const frameIndex = Math.floor(self.progress * (totalFrames - 1));
-        drawFrame(frameIndex, ctx, canvas, images);
+        throttledDrawFrame(frameIndex);
       },
     });
 
-    ScrollTrigger.refresh();
-
     return () => {
       scrollAnimation.kill();
+      if (requestId) cancelAnimationFrame(requestId);
     };
-  }, [images, loading]);
+  }, [images, loading, totalFramesMobile]);
 
-
-  // Adjust canvas size on load
   useEffect(() => {
-    if (images.length > 0) {
-      const img = images[0];
-      const aspectRatio = img.width / img.height;
-      const canvas = canvasRef.current;
+    const handleResize = () => {
+      if (images.length > 0) {
+        const img = images[0];
+        const aspectRatio = img.width / img.height;
+        const canvas = canvasRef.current;
 
-      canvas.width = window.innerWidth;
-      canvas.height = canvas.width / aspectRatio;
-    }
+        canvas.width = window.innerWidth;
+        canvas.height = canvas.width / aspectRatio;
+
+        const ctx = canvas.getContext("2d");
+        drawFrame(0, ctx, canvas, images);
+      }
+    };
+
+    handleResize(); // Initialize canvas size
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, [images]);
 
   return (
-    <div className="section sliding_door_section pb-0" ref={sectionRef} id="peacockSection">
-      {/* Loading progress */}
+    <section className={`section ${classMain ? classMain: "Scroll_Height pb-0"} `} ref={sectionRef}>
       {loading && <PeacockLoader progress={progress} />}
-
-      {/* Main content */}
       <div className="frames_content">
         <div className="image_col position-relative">
-          <Watermark className={isMobile ? "" : ""} />
-          <Logomark className={isMobile ? `left sm` : `left`} />
+          <Watermark />
+          <Logomark className={isMobile ? "left sm" : "left"} />
           <canvas
             ref={canvasRef}
             width={window.innerWidth}
@@ -136,14 +158,13 @@ const LivingRoomVideoGurugram = ({ data ,onLoadComplete}) => {
         </div>
         <ScrollDown className="color-black" />
       </div>
-
-      <Container>
+      <Container className={classCustomCard}>
         <div className="about">
-          <CustomCard title={title} desc={desc} className="px_sm_0 pb-0" />
+          <CustomCard title={second_title} desc={desc} className="px_sm_0 pb-0" />
         </div>
       </Container>
-    </div>
+    </section>
   );
 };
 
-export default LivingRoomVideoGurugram;
+export default ScrollTriggerFrames;

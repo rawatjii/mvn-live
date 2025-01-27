@@ -56,7 +56,7 @@ export default function ImagesGallery({ data }) {
     <div className="section renders1_section wrapper center pb-0 Landscape-section">
       {/* Title */}
       {title && (
-        <div className="heading_div mb-60" ref={sectionsRef}>
+        <div className="heading_div mb_60 mb_sm_30" ref={sectionsRef}>
           <h4 className="title title_style1 text-center">{title}</h4>
         </div>
       )}

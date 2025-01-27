@@ -1,38 +1,122 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import CustomCard from "../Card";
 import { Button, Container } from "react-bootstrap";
 import CustomModal from "../../../common/Modal";
+import * as CONFIG from "../../../config/config";
 
-const Walkthrough = ()=>{
+const Walkthrough = ({ data }) => {
+  const { src, second_title, desc } = data;
 
-  return(
-    <section className="section walkthrough_section pb-0">
- 
-      <iframe src="https://www.youtube.com/embed/9CHcJAveejU?si=Sr3K9ETfhxeyjrOW" 
-        title="YouTube video player"
-        frameborder="0"
-        allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
-        width="100"
-        height="100"
-      ></iframe>
-   
+  const [videoSrc, setVideoSrc] = useState(src);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false); // Track video state
+  const playerRef = useRef(null);
+
+  useEffect(() => {
+    const initializePlayer = () => {
+      if (playerRef.current) {
+        playerRef.current.destroy(); // Clean up the old player
+      }
+      playerRef.current = new window.YT.Player("youtube-player", {
+        videoId: getVideoIdFromUrl(videoSrc),
+        events: {
+          onStateChange: handleStateChange,
+        },
+      });
+    };
+  
+    // Load the YouTube IFrame Player API if not already loaded
+    if (!window.YT) {
+      const tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      const firstScriptTag = document.getElementsByTagName("script")[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  
+      // Wait for API to be ready
+      window.onYouTubeIframeAPIReady = initializePlayer;
+    } else {
+      initializePlayer();
+    }
+  
+    return () => {
+      // Cleanup YouTube Player instance
+      if (playerRef.current) {
+        playerRef.current.destroy();
+        playerRef.current = null;
+      }
+    };
+  }, [videoSrc]); // Reinitialize player when videoSrc changes
+  
+
+  const getVideoIdFromUrl = (url) => {
+    const match = url.match(/(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+    return match ? match[1] : null;
+  };
+
+  const handleStateChange = (event) => {
+    if (event.data === window.YT.PlayerState.PLAYING) {
+      setIsVideoPlaying(true); // Mark video as playing
+    } else if ( event.data === window.YT.PlayerState.ENDED) {
+      setIsVideoPlaying(false); // Mark video as not playing
+    }
+  };
+
+  const handleRefresh = () => {
+    // Temporarily reset the videoSrc to an empty string to stop the video
+    setVideoSrc("");
+    
+    // Reset videoSrc after 100ms to force iframe reload
+    setTimeout(() => {
+      setVideoSrc(src);
+      setIsVideoPlaying(false);
+    }, 10);
+  };
+
+
+
+
+  return (
+    <section className="section walkthrough_section new_height">
+      <div className="Walkthrough_video">
+        {/* YouTube Video IFrame */}
+        {src && (
+          <div id="youtube-player">
+            <iframe
+              src={videoSrc}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              width="560"
+              height="315"
+            ></iframe>
+          </div>
+        )}
+
+        {/* Close Button */}
+        {isVideoPlaying && (
+          <button onClick={handleRefresh} className="Close_video">
+            <img
+              src={`${CONFIG.IMAGE_URL}icons/close.png`}
+              alt="Close video button"
+            />
+            <span>Close</span>
+          </button>
+        )}
+      </div>
+
       <Container>
-        <div className='about'>
+        <div className="about">
+          {/* Custom Card Component */}
           <CustomCard
-          className="px-0"
-            title="A GLIMPSE INTO A LIFE EXTRAORDINARY" 
-            desc="Take a guided virtual tour through our stunning spaces with a walkthrough video that brings your future home to life. Every detail is showcased, allowing you to experience the design, luxury, and lifestyle that await you." 
-            // extraTxt="Exclusive entrance and exit for the residents."
+            className="px-0"
+            title={second_title || " "} // Fallback text
+            desc={desc || " "} // Fallback text
           />
         </div>
-
-        
       </Container>
     </section>
-    
-  )
-}
+  );
+};
 
-export default Walkthrough
+export default Walkthrough;

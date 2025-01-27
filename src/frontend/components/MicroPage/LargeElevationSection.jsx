@@ -16,6 +16,7 @@ export default function LargeElevation({ data }) {
 
     const sectionRef = React.useRef(null);
     const desktopRef = React.useRef();
+    const {title, class_name, path,second_title,desc} = data;
 
     const { isMobile } = useMatches(); 
 
@@ -47,24 +48,27 @@ export default function LargeElevation({ data }) {
         
     return (
         <div className='large-elevation' ref={sectionRef} id='largeElevationSection'>
+            {title &&
             <Container>
-                <div className='container_elevation'>
-                    <div className='top_div'>
-                        <h3 className='title elevation_title text-uppercase'>{data.title.map((item, index)=>(
-                            <span key={index}>{item}</span>
-                        ))}</h3>
-                    </div>
+            <div className='container_elevation'>
+                <div className='top_div'>
+                    <h3 className='title elevation_title text-uppercase'>{title.map((item, index)=>(
+                        <span key={index}>{item}</span>
+                    ))}</h3>
                 </div>
-            </Container>
+            </div>
+        </Container>
+            }
+            
 
             {/* view start */}
 
             <div className={`bottom_img_div ${isMobile ? "d_sm_block" : "d_lg_block"}`}  ref={!isMobile ? desktopRef : null}>
                 <div className='full_img'>
-                    <img src={isMobile ? bgImgMB : bgImgDesk} alt={data.title} className={`img-fluid img_in ${isMobile ? " " : "d_lg_block"}`} />
+                    <img src={isMobile ? path.mobile.bgImg : path.desktop.bgImg} alt={title} className={`img-fluid img_in ${isMobile ? " " : "d_lg_block"}`} />
                 </div>
-                <div className={`abs_img ${isMobile ? "abs_img_m" : "abs_img1"}`}>
-                    <img src={isMobile ? building_sm : absDesk} alt={data.title} className={`img-fluid abs_img_in ${isMobile ? " " : "d_lg_block"}`} />
+                <div className={`abs_img ${isMobile ? "abs_img_m" : "abs_img1"} ${class_name}`}>
+                    <img src={isMobile ? path.mobile.frontImg : path.desktop.frontImg} alt={title} className={`img-fluid abs_img_in ${isMobile ? " " : "d_lg_block"}`} />
                 </div>
             </div>
 
@@ -75,7 +79,7 @@ export default function LargeElevation({ data }) {
             <div className='content_section'>
                 <Container>
                     <div className="about">
-                        <CustomCard className="px-0 pb-0" title="ΑΝ ΕΡΙΤOME OF CONTEMPORARY ELEGANCE" desc="This architectural masterpiece seamlessly blends cutting-edge design with new-age sophistication. Every curve, every detail, is meticulously crafted to elevate your living experience. Embrace a  residence where innovation meets beauty, creating a landmark of luxurious urban living. Your new home awaits." type="style1"  />
+                        <CustomCard className="px-0 pb-0" title={second_title} desc={desc} type="style1"  />
                     </div>
                 </Container>
             </div>
