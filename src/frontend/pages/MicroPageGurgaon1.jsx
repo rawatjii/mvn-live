@@ -41,6 +41,7 @@ import Consultant from "../components/MicroPage/Consultant";
 import ConstructionTechnology from "../components/MicroPage/ConstructionTechnology";
 import ScrollTop from "../../common/ScrollToTop/Index";
 import ImagesGallery from "../components/MicroPage/ImagesGallery";
+import LottieAnimationSection from "../components/MicroPage/LottieAnimationSection";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -58,6 +59,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
   const smootherRef = useRef(null);
   const sectionRefs = useRef({});
   const {pageSections, projectName} = data;
+
 
 
 
@@ -215,7 +217,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
               (sectionRefs.current.Walkthrough = el)
             }
           >
-            <Walkthrough data={data.Walkthrough} />
+            <Walkthrough data={data.Walkthrough}/>
           </div>
 
           <div
@@ -227,7 +229,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
           </div>
           <div ref={(el) => (sectionRefs.current.LIVINGROOM = el)}>
             <PeacockSection
-              data={data}
+              data={data.peacock_section}
               onLoadComplete={() => setPeacockLoaded(true)}
             />
           </div>
@@ -237,19 +239,34 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
               onLoadComplete={() => setLivingRoomLoaded(true)}
             />
           </div> */}
-          <div><ScrollTriggerFrames data={data.ScrollFramesData}
-              onLoadComplete={() => setLivingRoomLoaded(true)}
-              />
-          </div>
           <div>
-            <PartyVideo
-              data={data}
-              onLoadComplete={() => setPartyLoaded(true)}
+            {/* <ScrollTriggerFrames data={data.ScrollFramesData}
+              onLoadComplete={() => setLivingRoomLoaded(true)}
+              /> */}
+            <LottieAnimationSection
+            data={data.living_room}
+            onLoadComplete={() => setLivingRoomLoaded(true)}
             />
           </div>
           <div>
-            <MasterBedroom
+            {/* <PartyVideo
               data={data}
+              onLoadComplete={() => setPartyLoaded(true)}
+            /> */}
+            <LottieAnimationSection
+            data={data.party_video}
+            onLoadComplete={() => setPartyLoaded(true)}
+            />
+          </div>
+          <div>
+            {/* <MasterBedroom
+              data={data}
+              onLoadComplete={() =>
+                setMasterBedroomLoaded(true)
+              }
+            /> */}
+            <LottieAnimationSection
+              data={data.masterBedroom}
               onLoadComplete={() =>
                 setMasterBedroomLoaded(true)
               }
@@ -303,7 +320,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             ref={(el) =>
               (sectionRefs.current.MicroAmenities = el)
             }>
-            <MicroAmenities data={data.amenities} />
+            <MicroAmenities section_data={data.amenities} />
           </div>
 
           <div
@@ -338,12 +355,19 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             <MvnMall />
           </div>
 
-          <div
+          {/* <div
             ref={(el) =>
               (sectionRefs.current.NoPolutionZone = el)
             }
           >
             <NoPolutionZone data={data.noPollutionZone} />
+          </div> */}
+          <div
+            ref={(el) =>
+              (sectionRefs.current.NoPolutionZone = el)
+            }
+          >
+            <MicroAmenities section_data={data.noPollutionZone} />
           </div>
 
           <div
