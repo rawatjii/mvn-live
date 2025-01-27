@@ -7,23 +7,23 @@ import store from "./store/store.js";
 // import Layout from "./frontend/components/Layout.jsx";
 
 // import InitialLoading from "./frontend/skeleton/Initial/Index.jsx";
-// import { data } from "./frontend/pages/micro/mvn-aeroone-gurgaon1/Index.jsx";
+import { data } from "./frontend/pages/micro/mvn-aeroone-gurgaon1/Index.jsx";
 import FrontendRoute from "./common/FrontendRoute.jsx";
 
 const Homepage = React.lazy(() => import("./frontend/pages/Homepage.jsx"));
-// const AboutUs = React.lazy(() => import("./frontend/pages/AboutUs.jsx"));
-// const ContactPage = React.lazy(() => import("./frontend/pages/ContactUs.jsx"));
-// const Career = React.lazy(() => import("./frontend/pages/Career.jsx"));
-// const ThankYou = React.lazy(() => import("./frontend/pages/ThankYou.jsx"));
-// const MediaCenter = React.lazy(() => import("./frontend/pages/MediaCenter.jsx"));
-// const Blog = React.lazy(() => import("./frontend/pages/Blog.jsx")); 
-// const BlogDetails = React.lazy(() => import("./frontend/pages/BlogDetails.jsx")); 
-// const PageNotFound = React.lazy(() => import("./common/PageNotFound/Index.jsx"));
+const AboutUs = React.lazy(() => import("./frontend/pages/AboutUs.jsx"));
+const MediaCenter = React.lazy(() => import("./frontend/pages/MediaCenter.jsx"));
+const Blog = React.lazy(() => import("./frontend/pages/Blog.jsx")); 
+const BlogDetails = React.lazy(() => import("./frontend/pages/BlogDetails.jsx")); 
+const Career = React.lazy(() => import("./frontend/pages/Career.jsx"));
+const ContactPage = React.lazy(() => import("./frontend/pages/ContactUs.jsx"));
+const PrPolcy = React.lazy(() => import('./frontend/pages/PrPolcy.jsx'));
+const Disclaimer = React.lazy(() => import("./frontend/pages/Disclaimer.jsx"));
+const PageNotFound = React.lazy(() => import("./common/PageNotFound/Index.jsx"));
+const ThankYou = React.lazy(() => import("./frontend/pages/ThankYou.jsx"));
 // const Gallery = React.lazy(() => import('./frontend/pages/Gallery.jsx'));
 // const Csr = React.lazy(() => import('./frontend/pages/Csr.jsx'));
-// const PrPolcy = React.lazy(() => import('./frontend/pages/PrPolcy.jsx'));
-// const Disclaimer = React.lazy(() => import("./frontend/pages/Disclaimer.jsx"));
-// const MicroPageGurgaon1 = React.lazy(()=>import("./frontend/pages/MicroPageGurgaon1.jsx"));
+const MicroPageGurgaon1 = React.lazy(()=>import("./frontend/pages/MicroPageGurgaon1.jsx"));
 // const MicroPageGurgaon1 = React.lazy(() =>
 //   new Promise((resolve) =>
 //     setTimeout(() => resolve(import("./frontend/pages/MicroPageGurgaon1.jsx")), 100000)
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
           </FrontendRoute>
         ), 
       },
-      {/*{
+      {
         path: "about-us",
         element: (
           <FrontendRoute loaderType="about-us" >
@@ -63,31 +63,6 @@ const router = createBrowserRouter([
         element: (
           <FrontendRoute loaderType="aeroone-gurgaon">
             <MicroPageGurgaon1 data={data} />
-          </FrontendRoute>
-        ),
-      },
-      
-      {
-        path: "contact-us",
-        element: (
-          <FrontendRoute loaderType="contact-us">
-            <ContactPage />
-          </FrontendRoute>
-        ),
-      },
-      {
-        path: "career",
-        element: (
-          <FrontendRoute loaderType="career">
-            <Career />
-          </FrontendRoute>
-        ),
-      },
-      {
-        path: "thanks",
-        element: (
-          <FrontendRoute loaderType="">
-              <ThankYou />
           </FrontendRoute>
         ),
       },
@@ -116,6 +91,55 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "career",
+        element: (
+          <FrontendRoute loaderType="career">
+            <Career />
+          </FrontendRoute>
+        ),
+      },
+      
+      {
+        path: "contact-us",
+        element: (
+          <FrontendRoute loaderType="contact-us">
+            <ContactPage />
+          </FrontendRoute>
+        ),
+      },
+      {
+        path: "thanks",
+        element: (
+          <FrontendRoute loaderType="">
+              <ThankYou />
+          </FrontendRoute>
+        ),
+      },
+      {
+        path: "privacy-policy",
+        element: (
+          <FrontendRoute loaderType="">
+            <PrPolcy />
+          </FrontendRoute>
+        ),
+      },
+      {
+        path: "disclaimer",
+        element: (
+          <FrontendRoute loaderType="">
+            <Disclaimer />
+          </FrontendRoute>
+        ),
+      },
+      {
+        path: "*",
+        element: (
+          <Suspense fallback="">
+            <PageNotFound />
+          </Suspense>
+        ),
+      },
+      {/*{
         path: "gallery",
         element: (
           <Suspense fallback={<InitialLoading onComplete={()=>console.log('Loading complete')} />}>
@@ -132,34 +156,6 @@ const router = createBrowserRouter([
             <Layout>
               <Csr />
             </Layout>
-          </Suspense>
-        ),
-      },
-      {
-        path: "privacy-policy",
-        element: (
-          <Suspense fallback={<InitialLoading onComplete={()=>console.log('Loading complete')} />}>
-            <Layout>
-              <PrPolcy />
-            </Layout>
-          </Suspense>
-        ),
-      },
-      {
-        path: "disclaimer",
-        element: (
-          <Suspense fallback={<InitialLoading onComplete={()=>console.log('Loading complete')} />}>
-            <Layout>
-              <Disclaimer />
-            </Layout>
-          </Suspense>
-        ),
-      },
-      {
-        path: "*",
-        element: (
-          <Suspense fallback="">
-            <PageNotFound />
           </Suspense>
         ),
       },*/}

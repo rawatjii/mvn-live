@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Suspense } from "react";
-const MicroBanner = React.lazy(()=>import("../components/MicroBanner/Index"));
-const AboutOverview = React.lazy(()=>import('../components/About/Overview'));
+import MicroBanner from "../components/MicroBanner/Index";
+import AboutOverview from '../components/About/Overview';
+
 const Philosophy = React.lazy(()=>import("../components/About/Philosophy"));
 const Timeline = React.lazy(()=>import("../components/About/Timeline"));
 const OurTeam = React.lazy(()=>import("../components/About/Ourteam"));
@@ -51,15 +52,11 @@ const AboutUs = () => {
   return (
     <>
       <Layout>
-        <Suspense fallback="">
-          <MicroBanner bg={microBg} data={breadcrumbs} />
-        </Suspense>
+        <MicroBanner bg={microBg} data={breadcrumbs} />
 
         <div className="micro_content">
           <div className="micro_data">
-            <Suspense fallback="">
-              <AboutOverview />
-            </Suspense>
+            <AboutOverview />
 
             <Suspense fallback="">
               <Philosophy />

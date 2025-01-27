@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import AnImage from "../../../common/animations/Image/Index";
@@ -12,11 +13,7 @@ import mvnAerooneBangaloreImgDesktop from "../../assets/images/projects/mvn-bang
 import arrowIcon from "../../assets/images/icons/arrow.png";
 import planeIcon from "../../assets/images/icons/heading-icon-img.webp";
 
-
 import * as CONFIG from '../../../config/config'
-
-import { Link } from "react-router-dom";
-
 
 const projectsData = [
   {

@@ -7,6 +7,8 @@ import * as CONFIG from "root/config/config";
 
 import subscribeBtn from '../assets/images/icons/subscribe_btn.webp';
 
+import MenuSideVideo from '../assets/images/hero/tiger.mp4';
+
 import "./Header.css";
 
 
@@ -102,9 +104,9 @@ const Header = () => {
             <div className="overlay-content">
               <div className="inner-overlay">
                 <div className="video-area d-none d-md-block">
-                  {/* <video autoPlay muted  loop>
+                  <video autoPlay muted  loop>
                     <source src={MenuSideVideo} type="video/mp4" className="img-fluid videoMenu"/>
-                  </video> */}
+                  </video>
 
                 </div>
 

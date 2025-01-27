@@ -5,17 +5,17 @@ import Skeleton from "../../common/Loader/skeleton/Index";
 
 import Hero from "../components/homepage/Hero";
 import Overview from "../components/homepage/Overview";
-// const Banner1 = React.lazy(()=>import("../components/homepage/Banner1"));
-// const Offer = React.lazy(()=>import("../components/homepage/Offer"));
-// const Projects = React.lazy(()=>import("../components/homepage/Projects"));
-// const OtherProjects = React.lazy(()=>import("../components/homepage/OtheProjects"));
-// const OurJourney = React.lazy(()=>import("../components/homepage/OurJourney"));
-// const OurTeam = React.lazy(()=>import("../components/homepage/OurTeam"));
-// const OurBrand = React.lazy(()=>import("../components/homepage/OurBrand"));
-// const Testimonial = React.lazy(()=>import("../components/homepage/Testimonial"));
-// const Enquire = React.lazy(()=>import("../components/homepage/Enquire"));
-// const EnquireForm = React.lazy(()=>import("../components/homepage/EnquireForm"));
-// const CustomModal = React.lazy(()=>import("../../common/Modal"));
+const Banner1 = React.lazy(()=>import("../components/homepage/Banner1"));
+const Offer = React.lazy(()=>import("../components/homepage/Offer"));
+const Projects = React.lazy(()=>import("../components/homepage/Projects"));
+const OtherProjects = React.lazy(()=>import("../components/homepage/OtheProjects"));
+const OurJourney = React.lazy(()=>import("../components/homepage/OurJourney"));
+const OurTeam = React.lazy(()=>import("../components/homepage/OurTeam"));
+const OurBrand = React.lazy(()=>import("../components/homepage/OurBrand"));
+const Testimonial = React.lazy(()=>import("../components/homepage/Testimonial"));
+const Enquire = React.lazy(()=>import("../components/homepage/Enquire"));
+const EnquireForm = React.lazy(()=>import("../components/homepage/EnquireForm"));
+const CustomModal = React.lazy(()=>import("../../common/Modal"));
 // const Enquire = React.lazy(() =>
 //   new Promise((resolve) =>
 //     setTimeout(() => resolve(import("../components/homepage/Enquire")), 100000)
@@ -47,10 +47,9 @@ const Homepage = () => {
   return (
     <Layout >
         <Hero />
-
         <Overview  />
 
-      {/*<Suspense fallback={<Skeleton height="h_70vh" />}>
+      <Suspense fallback={<Skeleton height="h_70vh" />}>
         <Banner1 />
       </Suspense>
 
@@ -95,7 +94,7 @@ const Homepage = () => {
 
       <Suspense fallback={<div>Loading...</div>}>
         <CustomModal hide={isHideModal} show={isShowModal} type="enquire" projectName="MVN Aeroone" isOffer={isOffer}  />
-      </Suspense>*/}
+      </Suspense>
 
     </Layout>
   );
