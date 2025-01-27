@@ -1,5 +1,4 @@
 import React from "react";
-import MicroPage from "../../Micro";
 import * as CONFIG from '../../../../config/config';
 import hero_img_mb from "../../../../frontend/assets/images/micro_hero/hero_img.webp";
 import hero_img_desk from "../../../../frontend/assets/images/micro_hero/hero_img.webp";
@@ -97,11 +96,11 @@ export const data = {
       desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/Peacock/Mobile/data.json`,
     }
 },
-  living_room_video:{
-    title: "OPEN THE DOORS TO EXPANSIVE ELEGANCE AND SPACIOUS LUXURY",
-    desc: "Glide your way through the floor-to-ceiling sliding doors, and step on to the sprawling deck with breathtaking vistas and an air of tranquility.",
-    isVdo: true,
-  },
+  // living_room_video:{
+  //   title: "OPEN THE DOORS TO EXPANSIVE ELEGANCE AND SPACIOUS LUXURY",
+  //   desc: "Glide your way through the floor-to-ceiling sliding doors, and step on to the sprawling deck with breathtaking vistas and an air of tranquility.",
+  //   isVdo: true,
+  // },
   ScrollFramesData:{
     title:'OPEN THE DOORS TO EXPANSIVE ELEGANCE AND SPACIOUS LUXURY',
     desc: "Glide your way through the floor-to-ceiling sliding doors, and step on to the sprawling deck with breathtaking vistas and an air of tranquility.",
@@ -572,52 +571,84 @@ export const data = {
       }
     },   
   ],
-  noPollutionZone:{
-    title:'Connections with MVN Mall',
-    data:[
-      { 
-        name: '0 km from all the urban needs 0km from your office',
-        path:{
-          desktop:`${CONFIG.IMAGE_URL}no-pollution/desktop/office.webp`,
-          mobile:`${CONFIG.IMAGE_URL}no-pollution/office.webp`,
-        },
-        desc:'Now you don’t have to even walk to work. Take a ride on your exclusive elevator to work' 
-      },  
-      {
-        name: '0 km from luxury Shopping',
-        path:{
-          desktop:`${CONFIG.IMAGE_URL}no-pollution/desktop/shopping.webp`,
-          mobile:`${CONFIG.IMAGE_URL}no-pollution/shopping.webp`,
-        },
-        desc:'When it comes to best of entertainment, you won’t have to look far. Just step into your exclusive elevator and enter a whole world of global entertainment in the MVN mall.'
-      },
-      {
-        name: '0 km from Global Entertainment',
-        path:{
-          desktop:`${CONFIG.IMAGE_URL}no-pollution/desktop/entertainment.webp`,
-          mobile:`${CONFIG.IMAGE_URL}no-pollution/entertainment.webp`,
-        },
-        desc:'When it comes to best of entertainment, you won’t have to look far. Just step into your exclusive elevator and enter a whole world of global entertainment in the MVN mall.n'
-      },
-      {
-        name: '0 km from the Sports Club & Lounge',
-        path:{
-          desktop:`${CONFIG.IMAGE_URL}no-pollution/desktop/sports.webp`,
-          mobile:`${CONFIG.IMAGE_URL}no-pollution/sports.webp`,
-        },
-        desc:'Make sports a regular part of your life. Participate in sports events and also follow your passion to play your favourite sports, at the exclusive Sports Lounge and Sports Club.'
-      },
-      {
-        name: `0 km cinema`,
-        path:{
-          desktop:`${CONFIG.IMAGE_URL}no-pollution/desktop/cinema.webp`,
-          mobile:`${CONFIG.IMAGE_URL}no-pollution/cinema.webp`,
-        },
-        desc:'Have a blockbuster of a time, without ever missing a show due to traffic. Catch up with all the superhits at the theatres below in the MVN mall.'
-      },
-    ],
+  // noPollutionZone:{
+  //   title:'Connections with MVN Mall',
+  //   images:[
+  //     { 
+  //       name: '0 km from all the urban needs 0km from your office',
+  //       path:{
+  //         desktop:`${CONFIG.IMAGE_URL}no-pollution/desktop/office.webp`,
+  //         mobile:`${CONFIG.IMAGE_URL}no-pollution/office.webp`,
+  //       },
+  //       desc:'Now you don’t have to even walk to work. Take a ride on your exclusive elevator to work' 
+  //     },  
+  //     {
+  //       name: '0 km from luxury Shopping',
+  //       path:{
+  //         desktop:`${CONFIG.IMAGE_URL}no-pollution/desktop/shopping.webp`,
+  //         mobile:`${CONFIG.IMAGE_URL}no-pollution/shopping.webp`,
+  //       },
+  //       desc:'When it comes to best of entertainment, you won’t have to look far. Just step into your exclusive elevator and enter a whole world of global entertainment in the MVN mall.'
+  //     },
+  //     {
+  //       name: '0 km from Global Entertainment',
+  //       path:{
+  //         desktop:`${CONFIG.IMAGE_URL}no-pollution/desktop/entertainment.webp`,
+  //         mobile:`${CONFIG.IMAGE_URL}no-pollution/entertainment.webp`,
+  //       },
+  //       desc:'When it comes to best of entertainment, you won’t have to look far. Just step into your exclusive elevator and enter a whole world of global entertainment in the MVN mall.n'
+  //     },
+  //     {
+  //       name: '0 km from the Sports Club & Lounge',
+  //       path:{
+  //         desktop:`${CONFIG.IMAGE_URL}no-pollution/desktop/sports.webp`,
+  //         mobile:`${CONFIG.IMAGE_URL}no-pollution/sports.webp`,
+  //       },
+  //       desc:'Make sports a regular part of your life. Participate in sports events and also follow your passion to play your favourite sports, at the exclusive Sports Lounge and Sports Club.'
+  //     },
+  //     {
+  //       name: `0 km cinema`,
+  //       path:{
+  //         desktop:`${CONFIG.IMAGE_URL}no-pollution/desktop/cinema.webp`,
+  //         mobile:`${CONFIG.IMAGE_URL}no-pollution/cinema.webp`,
+  //       },
+  //       desc:'Have a blockbuster of a time, without ever missing a show due to traffic. Catch up with all the superhits at the theatres below in the MVN mall.'
+  //     },
+  //   ],
      
-  },
+  // },
+  noPollutionZone: [
+    // {
+    //   title: 'An oasis of clean air and pure living',
+    //   desc:'Advanced air purification systems create pollution-free zones, ensuring residents breathe clean, fresh air, promoting healthier living and well-being.',
+    //   imgSrc: window.innerWidth <= 768 ? 'central-green.webp' : 'central-green.webp'
+    // },
+    {
+      title: '0 km from all the urban needs 0km from your office',
+      desc:'Now you don’t have to even walk to work. Take a ride on your exclusive elevator to work',
+      imgSrc: window.innerWidth <= 768 ? 'office.webp' : 'desktop/office.webp'
+    },
+    {
+      title: '0 km from luxury Shopping',
+      desc:'All the best of luxury shopping and brands from the world over, right at your doorstep at MVN Mall',
+      imgSrc: window.innerWidth <= 768 ? 'shopping.webp' : 'desktop/shopping.webp'
+    },
+    {
+      title: '0 km from Global Entertainment',
+      desc:'When it comes to best of entertainment, you won’t have to look far. Just step into your exclusive elevator and enter a whole world of global entertainment in the MVN mall.',
+      imgSrc: window.innerWidth <= 768 ? 'entertainment.webp' : 'desktop/entertainment.webp'
+    },
+    {
+      title: '0 km from the Sports Club & Lounge',
+      desc:'Make sports a regular part of your life. Participate in sports events and also follow your passion to play your favourite sports, at the exclusive Sports Lounge and Sports Club.',
+      imgSrc: window.innerWidth <= 768 ? 'sports.webp' : 'desktop/sports.webp'
+    },
+    {
+      title: '0 km cinema',
+      desc:'Have a blockbuster of a time, without ever missing a show due to traffic. Catch up with all the superhits at the theatres below in the MVN mall.',
+      imgSrc: window.innerWidth <= 768 ? 'cinema.webp' : 'desktop/cinema.webp'
+    },
+  ],
   highlight:{
     isshow: true,
     title: "Highlight",

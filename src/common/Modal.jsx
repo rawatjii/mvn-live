@@ -64,7 +64,7 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
 
   useEffect(() => {
     const close = (e) => {
-      if (!modalRef.current.contains(e.target)) {
+      if (!modalRef.current?.contains(e.target)) {
         console.log("closed");
         hide();
       }

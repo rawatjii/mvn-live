@@ -1,32 +1,24 @@
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import * as CONFIG from "root/config/config";
 import { useEffect, useRef, useState } from "react";
 import CloseBtnimg from '../assets/images/icons/close.png';
+import * as CONFIG from "root/config/config";
+
+import subscribeBtn from '../assets/images/icons/subscribe_btn.webp';
 
 import MenuSideVideo from '../assets/images/hero/tiger.mp4';
 
 import "./Header.css";
 
-import { gsap } from "gsap";
-import Button from "../../common/Button/Button";
-import subscribeBtn from '../assets/images/icons/subscribe_btn.webp';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isMicro, setIsMicro] = useState(false);
   const channelUrl = "https://www.youtube.com/@MVNInfrastructures?sub_confirmation=1";
 
-  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
-  const [otherProjectsOpen, setOtherProjectsOpen] = useState(false);
-
   const menusRef = useRef();
   const headerRef = useRef();
-  const logoRef = useRef();
-  const toggleRef = useRef();
-  const callBtnRef = useRef();
 
   const { pathname } = useLocation();
 
@@ -61,34 +53,6 @@ const Header = () => {
     };
   }, []);
 
-  useEffect(() => {
-    // logo animation
-
-    gsap.from(logoRef.current, {
-      y: 30, // Move 50px from the bottom
-      opacity: 0, // Start with 0 opacity (invisible)
-      duration: 1, // Animation duration in seconds
-      // ease: "power2" // Easing function for a smooth effect
-    });
-
-    // menu toggle animation
-    gsap.from(toggleRef.current, {
-      y: 15, // Move 50px from the bottom
-      opacity: 0, // Start with 0 opacity (invisible)
-      duration: 0.6, // Animation duration in seconds
-      delay: 0.4,
-      // ease: "power2" // Easing function for a smooth effect
-    });
-
-    // menu toggle animation
-    gsap.from(callBtnRef.current, {
-      y: 15, // Move 50px from the bottom
-      opacity: 0, // Start with 0 opacity (invisible)
-      duration: 0.6, // Animation duration in seconds
-      delay: 0.4,
-      // ease: "power2" // Easing function for a smooth effect
-    });
-  }, []);
 
   const toggleMenu = (value) => {
     if (value == "show") {
@@ -98,15 +62,7 @@ const Header = () => {
     }
   };
 
-  useEffect(() => {
-    window.addEventListener("resize", () => {
-      // console.log(window.innerWidth);
-      setInnerWidth(window.innerWidth);
-    });
-    return () => window.removeEventListener("resize", () => null);
-  }, []);
 
-  const pathnamesToHideMiddleMenu = ["/aeroone-gurgaon"];
   return (
     <>
       <Navbar
@@ -115,7 +71,7 @@ const Header = () => {
         className={`${scrolled ? "fixed" : ""} ${isMicro ? "micro_nav" : null}`}
       >
         <Container>
-          <Navbar.Brand ref={logoRef} className="logo">
+          <Navbar.Brand className="logo">
             <Link onClick={() => toggleMenu("close")} to={import.meta.env.VITE_APP_URL}>
               <img
                 src={CONFIG.IMAGE_URL + "logo_white.webp"}
@@ -133,11 +89,10 @@ const Header = () => {
           </Navbar.Brand>
 
           <div className="right">
-            <a href="tel:+917996000196" className="call_btn" ref={callBtnRef}>
+            <a href="tel:+917996000196" className="call_btn" >
               <img src={CONFIG.IMAGE_URL + 'icons/call.png'} alt="mvn call icon" />
             </a>
             <Navbar.Toggle
-              ref={toggleRef}
               aria-controls="basic-navbar-nav"
               onClick={() => toggleMenu("show")}
             >

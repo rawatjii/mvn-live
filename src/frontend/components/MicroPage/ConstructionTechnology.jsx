@@ -1,69 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React from 'react';
 import * as CONFIG from "../../../config/config";
 import { Col, Container, Row } from 'react-bootstrap';
-import Watermark from '../../../common/watermark/Index';
-import Lightbox from "yet-another-react-lightbox";
-import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
-import Zoom from "yet-another-react-lightbox/plugins/zoom";
 
-import "yet-another-react-lightbox/styles.css";
 import CustomCard from '../Card';
 
-gsap.registerPlugin(ScrollTrigger);
-
-const images= [
-  {
-    asset:CONFIG.IMAGE_URL + 'renders/apartment/5_sm.webp',
-    watermark:'left',
-    title:'Panaromic Living Room',
-  },
-  {
-    asset:CONFIG.IMAGE_URL + 'renders/apartment/7_sm.webp',
-    watermark:'right',
-    title:'Living Room',
-  },
-  {
-    asset:CONFIG.IMAGE_URL + 'renders/apartment/8_sm.webp',
-    watermark:'left',
-    title:'Cucina Kitchen',
-  },  
-  {
-    asset:CONFIG.IMAGE_URL + 'renders/apartment/6_sm.webp',
-    watermark:'right',
-    title:'Master Bedroom – Platinum',
-  },  
-  {
-    asset:CONFIG.IMAGE_URL + 'renders/apartment/9_sm.webp',
-    watermark:'right',
-    title:'Master Bedroom – Platinum',
-  },
-  {
-    asset:CONFIG.IMAGE_URL + 'renders/apartment/2.webp',
-    watermark:'right',
-    title:'Bathroom',
-  },
-  {
-    asset:CONFIG.IMAGE_URL + 'renders/apartment/1.webp',
-    watermark:'right',
-    title:'Master Bedroom – Royale',
-  },
-  {
-    asset:CONFIG.IMAGE_URL + 'renders/apartment/3.webp',
-    watermark:'left',
-    title:'Study Room',
-  },
-  {
-    asset:CONFIG.IMAGE_URL + 'renders/apartment/4_sm.webp',
-    watermark:'right',
-    title:'Kids\' Room',
-  },
-]
-
 export default function ConstructionTechnology({ data }) {
-  const sectionsRef = useRef([]);
-  const [index, setIndex] = useState(-1);
 
   return (
     <section className='section constructionTech_section pb-0'>
@@ -71,10 +12,8 @@ export default function ConstructionTechnology({ data }) {
         <div className="heading_div mb_60 mb_sm_30">
           <h4 className="title title_style1 text-center">Construction Technology</h4>
         </div>
-
+        
         <video src={CONFIG.VIDEO_URL + 'construction-technology.mp4'} autoPlay muted playsInline loop controls className='img-fluid' />
-
-       
 
         <div className='about'>
           <CustomCard

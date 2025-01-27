@@ -1,19 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import CustomCard from "../Card";
-import { Button, Container } from "react-bootstrap";
-import CustomModal from "../../../common/Modal";
+import {Container } from "react-bootstrap";
 
 const Walkthrough = ()=>{
 
   return(
     <section className="section walkthrough_section pb-0">
- 
       <iframe src="https://www.youtube.com/embed/9CHcJAveejU?si=Sr3K9ETfhxeyjrOW" 
         title="YouTube video player"
-        frameborder="0"
+        frameBorder="0"
         allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
         width="100"
         height="100"
       ></iframe>
@@ -24,7 +22,6 @@ const Walkthrough = ()=>{
           className="px-0"
             title="A GLIMPSE INTO A LIFE EXTRAORDINARY" 
             desc="Take a guided virtual tour through our stunning spaces with a walkthrough video that brings your future home to life. Every detail is showcased, allowing you to experience the design, luxury, and lifestyle that await you." 
-            // extraTxt="Exclusive entrance and exit for the residents."
           />
         </div>
 

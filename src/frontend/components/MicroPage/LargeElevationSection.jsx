@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Container } from 'react-bootstrap'
-// import LazyLoad from 'react-lazyload'
 import bgImgMB from '../../assets/images/aero-gurgaon/largeBg1Sm.webp'
 import bgImgDesk from '../../assets/images/aero-gurgaon/largeBg1.png'
 import absDesk from '../../assets/images/aero-gurgaon/building_sm.webp'
@@ -13,7 +12,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 
 export default function LargeElevation({ data }) {
-
     const sectionRef = React.useRef(null);
     const desktopRef = React.useRef();
 
@@ -41,7 +39,6 @@ export default function LargeElevation({ data }) {
         });
 
          // Ensure triggers refresh
-            ScrollTrigger.addEventListener("refresh", () => console.log("Triggers refreshed"));
             ScrollTrigger.refresh();
     }, []);
         

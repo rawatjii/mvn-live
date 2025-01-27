@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
-import SecTitle from "../../../common/SecTitle/Index";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import LazyLoad from "react-lazyload";
@@ -77,13 +76,11 @@ const Overview = () => {
 
     <section className="section about_overview pb-0">
       <div className="content_col position-relative page-header-main-heading">
-        <LazyLoad>
-          <img src={bg} alt="mvn-about-bg" className="img-fluid about_bg" />
-        </LazyLoad>
+        <img src={bg} alt="mvn-about-bg" className="img-fluid about_bg" />
 
         <Container>
           <div className="heading_div mb_60 mb_sm_30">
-            <img src={OverviewIcon} alt="mvn overview image" className="img-fluid title_plane1"/>
+            <img src={OverviewIcon} alt="mvn overview image" className="img-fluid title_plane1" />
             <h4 ref={titleRef} className="title title_style1 text-center">
               Building spaces <span>that help you grow</span>
             </h4>

@@ -44,7 +44,6 @@
 }
 
 @media screen and (min-width: 1430px) and (max-width: 1500px){
-    .typology_section {padding: 100px 0 !important;}
     .typology_section .images img { height: 100%; object-fit: cover; object-fit: contain;}
     /* .typology_section .images{max-height: 520px;height: 520px;} */
     /* .typology_section .typology_content{position: absolute;right: 7%;top: 40%;width: 23%;padding: 70px 30px 40px; transform: translateY(-50%);min-height: 330px;} */

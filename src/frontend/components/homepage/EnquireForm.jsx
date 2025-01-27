@@ -1,13 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import SecTitle from "../../../common/SecTitle/Index";
 import { Form } from "react-bootstrap";
 import Button from "../../../common/Button/Button";
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 import headingIconImg from "../../assets/images/icons/heading-icon-img.webp";
-import Loader from "../../../common/Loader/loader";
-gsap.registerPlugin(ScrollTrigger);
 
 const EnquireForm = ({ career, projectName }) => {
   const titleRef = useRef();
@@ -22,30 +17,6 @@ const EnquireForm = ({ career, projectName }) => {
       [e.target.name]: e.target.value,
     });
   };
-
-  useEffect(() => {
-    gsap.from(titleRef.current, {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-
-      scrollTrigger: {
-        trigger: titleRef.current,
-        start: "top 95%",
-      },
-    });
-
-    gsap.from(formRef.current, {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-
-      scrollTrigger: {
-        trigger: formRef.current,
-        start: "top 95%",
-      },
-    });
-  }, []);
 
   // `https://api2.gtftech.com/AjaxHelper/AgentInstantQuerySetter.aspx?qAgentID=4804&qSenderName=${formDetails.name}"&qMobileNo=${formDetails.number}&qEmailID=${formDetails.email}&qQueryMessage=${formDetails.message}&qProjectName=&qIP=".getUserIP().`
 
@@ -98,6 +69,7 @@ const EnquireForm = ({ career, projectName }) => {
             src={headingIconImg}
             alt="mvn heading icon"
             className="img-fluid title_plane1"
+            loading="lazy"
           />
           <h4 ref={titleRef} className="title title_style1 text-center">
             Get In Touch With Us

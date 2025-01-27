@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
+import * as CONFIG from '../../../config/config';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import * as CONFIG from '../../../config/config';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,7 +14,6 @@ const MicroHero = () => {
       <img src={CONFIG.IMAGE_URL + 'micro/hero/aeroone-gurgaon/mobile.webp'} alt="aeroone-gurgaon-hero-image" className="img-fluid d-md-none" />
       <div
         className="microsite-scrolldown microsite-scrolldown_1 micro_scroll"
-        ref={scrollDownRef}
       >
         <div id="scroll-wrapper-inner">
           <div id="scroll-title">Scroll Down</div>

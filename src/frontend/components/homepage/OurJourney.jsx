@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import SecTitle from "../../../common/SecTitle/Index";
 import { Container } from "react-bootstrap";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";

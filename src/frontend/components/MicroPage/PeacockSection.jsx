@@ -2,15 +2,15 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container } from "react-bootstrap";
-import SecTitle from "../../../common/SecTitle/Index";
 import CustomCard from "../Card";
 import PeacockLoader from "../../../common/Loader/micro/peacockLoader/Index";
 import Watermark from "../../../common/watermark/Index";
-import * as CONFIG from '../../../config/config';
 import ScrollDown from "../../../common/scrollDown/Index";
 import Logomark from "../../../common/logomark/Index";
 import { useMatches } from "../../../theme/theme";
 import LottieAnimationSection from "./LottieAnimationSection";
+
+import * as CONFIG from '../../../config/config';
 
 gsap.registerPlugin(ScrollTrigger);
 

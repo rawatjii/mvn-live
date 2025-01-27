@@ -1,17 +1,9 @@
 import React, { Suspense, useEffect, useState } from "react";
 import InitialLoading from "../frontend/skeleton/Initial/Index";
-import Layout from "../frontend/components/Layout";
 import PropTypes from "prop-types";
 import * as CONFIG from '../config/config';
-// const Homepage = React.lazy(() => import("../frontend/pages/Homepage"));
-// const Homepage = React.lazy(() =>
-//   new Promise((resolve) =>
-//     setTimeout(() => resolve(import("../frontend/pages/Homepage")), 1000)
-//   )
-// );
 
 const FrontendRoute = ({children, loaderType})=>{
-  const [loadingCount, setLoadingCount] = useState(0);
   const [loaderImage, setLoaderImage] = useState({
     desktop:null,
     mobile:null,
@@ -65,9 +57,8 @@ const FrontendRoute = ({children, loaderType})=>{
   }, [loaderType])
 
   return(
-    <Suspense fallback={<InitialLoading loadingCount={loadingCount} loadingImg={loaderImage} setLoadingCount={setLoadingCount} onComplete={()=>console.log('Loading complete')}/>}>
+    <Suspense fallback={<InitialLoading loadingImg={loaderImage} />}>
       {children}
-        {/* <Homepage loadingCount={loadingCount} setLoadingCount={setLoadingCount} /> */}
     </Suspense>
   )
 }

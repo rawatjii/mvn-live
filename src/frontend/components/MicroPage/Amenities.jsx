@@ -91,11 +91,13 @@ export default function Amenities({ section_data }) {
                 src={single.path.mobile} // Use the mobile path directly
                 alt={`mvn amenities ${index}`}
                 className="img-fluid d-md-none"
+                loading="lazy"
               />
               <img
                 src={single.path.desktop} // Use the desktop path directly
                 alt={`mvn amenities ${index}`}
                 className="img-fluid d-none d-md-block"
+                loading="lazy"
               />
               <Watermark />
             </div>

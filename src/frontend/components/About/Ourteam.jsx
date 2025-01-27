@@ -4,9 +4,7 @@ import Gopal_Sharma from '../../assets/images/our-team/mvnschool-founder-shri-go
 import Varun_Sharma from '../../assets/images/our-team/mvngroup-founder-md-varun-sharma.png';
 import Kanta_Sharma from '../../assets/images/our-team/mvngroup-founder-ceo-kantasharma.jpg';
 import Saurabh_Kaushik from '../../assets/images/our-team/mvn-infrastructure-director-saurabh-kaushik.jpeg';
-import Vinod_Kumar from '../../assets/images/our-team/Vinod-Kumar_adobespark.jpg';
 import headingIconImg from "../../assets/images/icons/heading-icon-img.webp";
-import SecTitle from "../../../common/SecTitle/Index";
 
 const OurTeam = () => {
   const [show, setShow] = useState(false);
@@ -55,7 +53,7 @@ const OurTeam = () => {
         {/* Row for the first three members */}
 
         <div className="heading_div ">
-          <img src={headingIconImg} alt="mvn overview image" className="img-fluid title_plane1"/>
+          <img src={headingIconImg} alt="mvn overview image" className="img-fluid title_plane1" loading="lazy" />
           <h4 className="title title_style1 text-center">
             People Behind
           </h4>
@@ -70,6 +68,7 @@ const OurTeam = () => {
                     src={member.Person_Photo}
                     alt={member.Person_Name}
                     className="img-fluid"
+                    loading="lazy"
                   />
                 </div>
                 <div className="cardContent">
@@ -99,6 +98,7 @@ const OurTeam = () => {
                     src={member.Person_Photo}
                     alt={member.Person_Name}
                     className="img-fluid"
+                     loading="lazy"
                   />
                 </div>
                 <div className="cardContent">
