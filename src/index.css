@@ -647,6 +647,7 @@ a {
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
 
   &:after{
     position: absolute;
@@ -660,6 +661,14 @@ a {
     z-index: 0;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
+  }
+
+  &.hide_after{
+
+    &:after{
+
+      display: none;
+    }
   }
 }
 

@@ -130,7 +130,7 @@ export default function MicroLandscape({ data = landscapeData, title, subTitle, 
                   {/* <Watermark className={image.watermark} /> */}
                 </div>
                 <div className="content">
-                    <h4 className='title_style1'>{image.title}</h4>
+                    <h4 className='title_style1 hide_after'>{image.title}</h4>
                   </div>
               </div>
             </div>

@@ -17,7 +17,7 @@ const LivingRoomVideoGurugram = ({ data, onLoadComplete }) => {
   const [images, setImages] = useState([]); // Array to store loaded images
   const [isMobile, setIsMobile] = useState(false); // Track if it's mobile
   const [loading, setLoading] = useState(true); // Loader state
-  const totalFramesMobile = 133; // Total frames for mobile
+  const totalFramesMobile = 43; // Total frames for mobile
 
   const { title, desc } = data.living_room_video;
 

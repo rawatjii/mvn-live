@@ -19,7 +19,7 @@ const images = [
     thumbnail_desktop: CONFIG.IMAGE_URL + "renders/apartment/5.webp",
     thumbnail_mobile: CONFIG.IMAGE_URL + "renders/apartment/5_sm.webp",
     watermark: "right",
-    title: "Panaromic Living Room",
+    title: "Panoramic Living Room",
   },
   {
     thumbnail_desktop: CONFIG.IMAGE_URL + "renders/apartment/7.webp",
@@ -97,7 +97,7 @@ export default function MicroApartment({ data }) {
                   <Logomark className="left sm" />
                 </div>
                 <div className="content">
-                  <h4 className="title_style1">{image.title}</h4>
+                  <h4 className="title_style1 hide_after">{image.title}</h4>
                 </div>
               </div>
             </div>
