@@ -172,18 +172,21 @@ const MicroPageFaridabad = ({ data, loadingCount, setLoadingCount }) => {
       <MicroHeader scrollToSection={scrollToSection} data={data.header} />
       <div id="smooth-wrapper">
         <div id="smooth-content">
-
+        <div
+            ref={(el) =>
+              (sectionRefs.current.banner = el)
+            }
+          >
           <AthensBanner data={data.banner}/>
-          
+          </div>
 
-          {/* <div ref={(el) => (sectionRefs.current.microOverview = el)}>
-            <ScrollTriggerFrames  data={data.micro_hero_section} onLoadComplete={() => setHeroLoaded(true)}/>
-          </div> */}
-
-          {/* Render other components only after Hero Section is loaded */}
-
+          <div
+            ref={(el) =>
+              (sectionRefs.current.microOverview = el)
+            }
+          >
           <MicroOverview data={data.overview} heroLoadedStatus={heroLoaded} /> {/*no isssue*/}
-
+          </div>
           <div
             ref={(el) =>
               (sectionRefs.current.downloadBrochure = el)
@@ -193,7 +196,7 @@ const MicroPageFaridabad = ({ data, loadingCount, setLoadingCount }) => {
           </div>
           <div
             ref={(el) =>
-              (sectionRefs.current.MicroLandscape = el)
+              (sectionRefs.current.gallery = el)
             }
           >
             <ImagesGallery data={data.gallery}/>

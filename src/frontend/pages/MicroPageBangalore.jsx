@@ -176,13 +176,15 @@ const MicroPageBangalore = ({ data, loadingCount, setLoadingCount }) => {
         <div id="smooth-content">
           
 
-          <div ref={(el) => (sectionRefs.current.microOverview = el)}>
+          {/* <div ref={(el) => (sectionRefs.current.microOverview = el)}> */}
             <ScrollTriggerFrames  data={data.micro_hero_section} onLoadComplete={() => setHeroLoaded(true)}/>
-          </div>
+          {/* </div> */}
 
           {/* Render other components only after Hero Section is loaded */}
 
+          <div ref={(el) => (sectionRefs.current.microOverview = el)}>
           <MicroOverview data={data.overview} heroLoadedStatus={heroLoaded} /> {/*no isssue*/}
+          </div>
           <BangaloreElevationSection/>
 
           
@@ -201,13 +203,19 @@ const MicroPageBangalore = ({ data, loadingCount, setLoadingCount }) => {
           >
             <DownloadBrochure />
           </div>
-          <div>
+          <div
+            ref={(el) =>
+              (sectionRefs.current.livingRoom = el)
+            }>
             <ScrollTriggerFrames 
             data={data.living_room}
             onLoadComplete={() => setLivingRoomLoaded(true)}
             />
           </div>
-          <div data={data.masterBedroom}>
+          <div 
+            ref={(el) =>
+              (sectionRefs.current.masterBedroom = el)
+            }>
             <ScrollTriggerFrames 
             data={data.masterBedroom}
             onLoadComplete={() => setMasterBedroomLoaded(true)}

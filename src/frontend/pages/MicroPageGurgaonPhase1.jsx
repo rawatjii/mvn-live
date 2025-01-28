@@ -173,11 +173,20 @@ const MicroPageGurgaonPhase1 = ({ data, loadingCount, setLoadingCount }) => {
       <MicroHeader scrollToSection={scrollToSection} data={data.header} />
       <div id="smooth-wrapper">
         <div id="smooth-content">
-
+        <div
+            ref={(el) =>
+              (sectionRefs.current.banner = el)
+            }
+          >
           <AthensBanner data={data.banner}/>
-          {/* Render other components only after Hero Section is loaded */}
-
+          </div>
+          <div
+            ref={(el) =>
+              (sectionRefs.current.microOverview = el)
+            }
+          >
           <MicroOverview data={data.overview} heroLoadedStatus={heroLoaded} /> {/*no isssue*/}
+          </div>
 
           <div
             ref={(el) =>
@@ -188,13 +197,19 @@ const MicroPageGurgaonPhase1 = ({ data, loadingCount, setLoadingCount }) => {
           </div>
           <div
             ref={(el) =>
-              (sectionRefs.current.MicroLandscape = el)
+              (sectionRefs.current.gallery = el)
             }
           >
             <ImagesGallery data={data.gallery}/>
           </div>
+          <div
+            ref={(el) =>
+              (sectionRefs.current.features = el)
+            }
+          >
           
           <FeatureSection data={data.features}/>
+          </div>
 
           <div
             ref={(el) =>

@@ -9,36 +9,24 @@ export const athensGurgaonPhase1Data = {
     title:'MVN Athens Gurgaon Phase 1',
     sidebar_section:[
       {
-        section_title:'Overview',
-        link:'microOverview'
+        section_title:'Banner',
+        link:'banner'
       },
       {
-        section_title:'Walkthrough',
-        link:'Walkthrough'
+        section_title:'Overview',
+        link:'microOverview'
       },
       {
         section_title:'MVN ID Brochure',
         link:'downloadBrochure'
       },
       {
-        section_title:'The Living Room',
-        link:'LIVINGROOM'
+        section_title:'Gallery',
+        link:'gallery'
       },
       {
-        section_title:'Landscape',
-        link:'MicroLandscape'
-      },
-      {
-        section_title:'Elevation',
-        link:'MicroElevation'
-      },
-      {
-        section_title:'Apartment',
-        link:'MicroApartment'
-      },
-      {
-        section_title:'Construction Technology',
-        link:'constructionTechnology'
+        section_title:'Features',
+        link:'features'
       },
       {
         section_title:'Amenities',
@@ -49,20 +37,8 @@ export const athensGurgaonPhase1Data = {
         link:'MicroTypology'
       },
       {
-        section_title:'Floor Plans',
-        link:'MicroFloorPlan'
-      },
-      {
         section_title:'Location Map',
         link:'MicroLocationMap'
-      },
-      {
-        section_title:'MVN Mall',
-        link:'MVNMALL'
-      },
-      {
-        section_title:'Connections MVN Mall',
-        link:'NoPolutionZone'
       },
     ],
   },

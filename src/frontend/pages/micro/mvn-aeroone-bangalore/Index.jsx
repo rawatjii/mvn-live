@@ -25,7 +25,11 @@ export const bangaloreData = {
       },
       {
         section_title:'The Living Room',
-        link:'LIVINGROOM'
+        link:'livingRoom'
+      },
+      {
+        section_title:'Master Bedroom',
+        link:'masterBedroom'
       },
       {
         section_title:'Landscape',
