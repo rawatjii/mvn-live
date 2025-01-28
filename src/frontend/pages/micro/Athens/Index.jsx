@@ -5,7 +5,7 @@ import MicroPageFaridabad from "../../MicroPageFaridabad";
 export const faridabadData = {
   header:{
     athens_header:'Athens_nav',
-    title:'MVN AeroOne, Gurugram',
+    title:'MVN Athens, Faridabad',
     sidebar_section:[
       {
         section_title:'Banner',

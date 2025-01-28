@@ -6,7 +6,7 @@ import MicroPageGurgaonPhase2 from "../../MicroPageGurgaonPhase2";
 export const athensGurgaonPhase2Data = {
   header:{
     athens_header:'Athens_nav',
-    title:'MVN AeroOne, Gurugram',
+    title:'MVN Athens, Gurgaon Phase 2',
     sidebar_section:[
       {
         section_title:'Banner',

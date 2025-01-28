@@ -9,7 +9,7 @@ import building_sm from '../../../assets/images/aero-gurgaon/building_sm.webp'
 
 export const bangaloreData = {
   header:{
-    title:'MVN AeroOne, Gurugram',
+    title:'MVN AeroOne, Bangalore',
     sidebar_section:[
       {
         section_title:'Overview',
