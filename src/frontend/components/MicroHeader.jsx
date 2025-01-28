@@ -40,6 +40,12 @@ const otherProjects = [
         name:'MVN Mall',
         link:'https://mvnmall.com/',
         status:'new Launch',
+      },
+      {
+        name:'MVN AeroOne',
+        link:'/aeroone-gurgaon',
+        status:'new Launch',
+        target_blank:false,
       }
     ]
   },
