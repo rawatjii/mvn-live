@@ -83,7 +83,7 @@ export const bangaloreData = {
          desktopFrameCounts:198,
        },
        classCustomCard:'d-none',
-       classMain:'micro_hero_section p-0',
+      //  classMain:'micro_hero_section p-0',
 
   },
   overview: {

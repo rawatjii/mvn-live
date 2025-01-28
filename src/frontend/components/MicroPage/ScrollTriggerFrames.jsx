@@ -25,7 +25,10 @@ const ScrollTriggerFrames = ({ data, onLoadComplete }) => {
     [isMobile, data.frameCounts]
   );
 
-  const imagePath = useMemo(() => data.path.desktopPath, [data.path.desktopPath]);
+  const imagePath = useMemo(
+    () => (isMobile ? data.path.mobilePath : data.path.desktopPath),
+    [isMobile, data.path]
+  );
 
   const cardData = useMemo(
     () => ({
