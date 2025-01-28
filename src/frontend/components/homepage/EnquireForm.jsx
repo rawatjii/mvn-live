@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import Button from "../../../common/Button/Button";
@@ -11,16 +11,16 @@ const EnquireForm = ({ career, projectName }) => {
   const [formDetails, setFormDetails] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const handleFormChange = (e) => {
-    setFormDetails({
-      ...formDetails,
+  const handleFormChange = useCallback((e) => {
+    setFormDetails((prevDetails)=>({
+      ...prevDetails,
       [e.target.name]: e.target.value,
-    });
-  };
+    }));
+  }, []);
 
   // `https://api2.gtftech.com/AjaxHelper/AgentInstantQuerySetter.aspx?qAgentID=4804&qSenderName=${formDetails.name}"&qMobileNo=${formDetails.number}&qEmailID=${formDetails.email}&qQueryMessage=${formDetails.message}&qProjectName=&qIP=".getUserIP().`
 
-  const handleSubmit = (e) => {
+  const handleSubmit = useCallback((e) => {
     e.preventDefault();
 
     const apiUrl = `https://api2.gtftech.com/AjaxHelper/AgentInstantQuerySetter.aspx?qAgentID=4804&qSenderName=${formDetails.name}"&qMobileNo=${formDetails.number}&qEmailID=${formDetails.email}&qQueryMessage=${formDetails.message}&qProjectName=${projectName}`;
@@ -59,7 +59,7 @@ const EnquireForm = ({ career, projectName }) => {
           setLoading(false);
         });
     }
-  };
+  }, [formDetails, projectName]);
 
   return (
     <section className="section enquire_form">

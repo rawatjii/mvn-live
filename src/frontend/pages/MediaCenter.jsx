@@ -12,6 +12,10 @@ import newsIMG from "../assets/images/mediacenter/newsdrum-logo.jpg";
 // import newsIMG from '../assets/images/mediacenter/news-1.png'
 import aninewsIMG from "../assets/images/mediacenter/aninews.png";
 import webindiaIMG from "../assets/images/mediacenter/webindia-logo.png";
+import financialExpIMG from "../assets/images/mediacenter/financialexp_logo.webp";
+
+// news images
+
 import newsIMG1 from "../assets/images/mediacenter/news-img-1.jpeg";
 import newsIMG2 from "../assets/images/mediacenter/news-img-2.jpeg";
 import newsIMG3 from "../assets/images/mediacenter/news-img-3.jpeg";
@@ -167,6 +171,20 @@ function MediaCenter() {
 
   const onlineNews = [
     {
+      id: 6,
+      title: `Average flat sizes in top 7 cities rise by 7% in 2024, NCR records highest growth`,
+      img: financialExpIMG,
+      postedDate: "January 22, 2025",
+      url: "https://www.financialexpress.com/money/average-flat-sizes-in-top-7-cities-rise-by-7-in-2024-ncr-records-highest-growth-3723080/",
+    },
+    {
+      id: 5,
+      title: `Buying vs Renting: Residential demand in metros sees strong growth amid rising rental yields`,
+      img: financialExpIMG,
+      postedDate: "January 20, 2025",
+      url: "https://www.financialexpress.com/money/buying-vs-renting-residential-demand-in-metros-sees-strong-growth-amid-rising-rental-yields-3720460/",
+    },
+    {
       id: 4,
       title: `MVN Infrastructure Celebrates MVN Mall's New Office Opening with Traditional Hawan Ceremony`,
       img: aninewsIMG,
@@ -180,13 +198,6 @@ function MediaCenter() {
       img: newsIMG,
       postedDate: "29 Jun 2024   ",
       url: "https://www.newsdrum.in/business/mvn-aero-one-pre-leases-3-lakh-sq-ft-to-co-working-operator-spring-house-in-gurugram-4786427",
-    },
-    {
-      id: 2,
-      title: `MVN Infrastructure Celebrates MVN Mall's New Office Opening with Traditional Hawan Ceremony`,
-      img: aninewsIMG,
-      postedDate: "11 Sep 2024",
-      url: "https://www.aninews.in/news/business/mvn-infrastructure-celebrates-mvn-malls-new-office-opening-with-traditional-hawan-ceremony20240911182559/",
     },
     {
       id: 3,

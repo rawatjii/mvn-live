@@ -1,7 +1,8 @@
 import React from "react";
 import * as CONFIG from '../../../config/config'
 
-const Offer = ({clickHandler})=>{
+
+const Offer = React.memo(({clickHandler})=>{
   return(
     <div className="offers_section">
       <div className="single" style={{cursor:'pointer'}} onClick={()=>clickHandler(false)}>
@@ -10,6 +11,6 @@ const Offer = ({clickHandler})=>{
       </div>
     </div>
   )
-}
+})
 
 export default Offer;

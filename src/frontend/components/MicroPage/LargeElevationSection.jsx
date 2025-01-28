@@ -11,7 +11,7 @@ import CustomCard from '../Card'
 gsap.registerPlugin(ScrollTrigger);
 
 
-export default function LargeElevation({ data }) {
+ function LargeElevation({ data }) {
     const sectionRef = React.useRef(null);
     const desktopRef = React.useRef();
 
@@ -54,10 +54,10 @@ export default function LargeElevation({ data }) {
             {/* mb view */}
             <div className='bottom_img_div d_sm_block'>
                 <div className='full_img'>
-                    <img src={bgImgMB} alt={data.title} className="img-fluid img_in" loading='lazy' />
+                    <img src={bgImgMB} alt={data.title} className="img-fluid img_in" />
                 </div>
                 <div className='abs_img abs_img_m'>
-                    <img src={building_sm} alt={data.title} className="img-fluid abs_img_in" loading='lazy' />
+                    <img src={building_sm} alt={data.title} className="img-fluid abs_img_in" />
                 </div>
             </div>
 
@@ -65,10 +65,10 @@ export default function LargeElevation({ data }) {
             {/* desk view */}
             <div className='bottom_img_div d_lg_block' ref={desktopRef}>
                 <div className='full_img'>
-                    <img src={bgImgDesk} alt={data.title} className="img-fluid img_in d_lg_block" loading='lazy' />
+                    <img src={bgImgDesk} alt={data.title} className="img-fluid img_in d_lg_block" />
                 </div>
                 <div className={`abs_img abs_img1 ${data.position}`}>
-                    <img src={absDesk} alt={data.title} className="img-fluid abs_img_in d_lg_block" loading='lazy' />
+                    <img src={absDesk} alt={data.title} className="img-fluid abs_img_in d_lg_block" />
                 </div>
             </div>
 
@@ -82,3 +82,5 @@ export default function LargeElevation({ data }) {
         </div>
     )
 }
+
+export default React.memo(LargeElevation);
