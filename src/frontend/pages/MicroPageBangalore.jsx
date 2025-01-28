@@ -1,29 +1,21 @@
 import React, { useEffect, useState, useRef } from "react";
-import MicroHero from "../components/MicroPage/Hero";
 import MicroOverview from "../components/MicroPage/Overview";
-import LargeElevationSection from "../components/MicroPage/LargeElevationSection";
 import MicroAmenities from "../components/MicroPage/Amenities";
-import MicroFloorPlan from "../components/MicroPage/FloorPlan";
 import MicroLocationMap from "../components/MicroPage/LocationMap";
 import Enquire from "../components/homepage/Enquire";
 import EnquireForm from "../components/homepage/EnquireForm";
-import PeacockSection from "../components/MicroPage/PeacockSection";
 import Walkthrough from "../components/MicroPage/Walkthrough";
-import MvnMall from "../components/MicroPage/MvnMall";
 import Footer from "../components/Footer";
-import Typology from "../components/homepage/Typology";
 import DownloadBrochure from "../components/MicroPage/DownloadBrochure";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import ScrollSmoother from "gsap/ScrollSmoother";
 import { Helmet } from "react-helmet";
 import MicroHeader from "../components/MicroHeader";
-import Consultant from "../components/MicroPage/Consultant";
-import ConstructionTechnology from "../components/MicroPage/ConstructionTechnology";
 import ImagesGallery from "../components/MicroPage/ImagesGallery";
-import LottieAnimationSection from "../components/MicroPage/LottieAnimationSection";
 import ScrollTriggerFrames from "../components/MicroPage/ScrollTriggerFrames";
 import BangaloreElevationSection from "../components/MicroPage/bangalore/BangaloreElevationSection";
+import SliderTypology from "../components/MicroPage/bangalore/SliderTypology";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -185,14 +177,12 @@ const MicroPageBangalore = ({ data, loadingCount, setLoadingCount }) => {
           
 
           <div ref={(el) => (sectionRefs.current.microOverview = el)}>
-          {/* <MicroHero  data={data} onLoadComplete={() => setHeroLoaded(true)} /> */}
             <ScrollTriggerFrames  data={data.micro_hero_section} onLoadComplete={() => setHeroLoaded(true)}/>
           </div>
 
           {/* Render other components only after Hero Section is loaded */}
 
           <MicroOverview data={data.overview} heroLoadedStatus={heroLoaded} /> {/*no isssue*/}
-          {/* <LargeElevationSection data={data.LargeElevationSection} /> */}
           <BangaloreElevationSection/>
 
           
@@ -211,12 +201,6 @@ const MicroPageBangalore = ({ data, loadingCount, setLoadingCount }) => {
           >
             <DownloadBrochure />
           </div>
-          {/* <div>
-            <LivingRoomVideoGurugram
-              data={data}
-              onLoadComplete={() => setLivingRoomLoaded(true)}
-            />
-          </div> */}
           <div>
             <ScrollTriggerFrames 
             data={data.living_room}
@@ -242,7 +226,6 @@ const MicroPageBangalore = ({ data, loadingCount, setLoadingCount }) => {
               (sectionRefs.current.MicroElevation = el)
             }
           >
-            {/* <MicroElevation /> */}
             <ImagesGallery data={data.microElevation}/>
           </div>
 
@@ -251,7 +234,6 @@ const MicroPageBangalore = ({ data, loadingCount, setLoadingCount }) => {
               (sectionRefs.current.MicroApartment = el)
             }
           >
-            {/* <MicroApartment /> */}
             <ImagesGallery data={data.microApartment}/>
           </div>
 
@@ -267,15 +249,7 @@ const MicroPageBangalore = ({ data, loadingCount, setLoadingCount }) => {
               (sectionRefs.current.MicroTypology = el)
             }
           >
-            <Typology onLoadComplete={() => setTypologyLoaded(true)} />
-          </div>
-
-          <div
-            ref={(el) =>
-              (sectionRefs.current.MicroFloorPlan = el)
-            }
-          >
-            <MicroFloorPlan data={data.floorPlan} />
+            <SliderTypology data={data.typologies} onLoadComplete={() => setTypologyLoaded(true)} />
           </div>
 
           <div
@@ -286,27 +260,6 @@ const MicroPageBangalore = ({ data, loadingCount, setLoadingCount }) => {
             <MicroLocationMap
               data={data.locationAdvantage}
             />
-          </div>
-
-          <div
-            ref={(el) => (sectionRefs.current.MVNMALL = el)}
-          >
-            <MvnMall />
-          </div>
-
-          {/* <div
-            ref={(el) =>
-              (sectionRefs.current.NoPolutionZone = el)
-            }
-          >
-            <NoPolutionZone data={data.noPollutionZone} />
-          </div> */}
-          <div
-            ref={(el) =>
-              (sectionRefs.current.NoPolutionZone = el)
-            }
-          >
-            <MicroAmenities section_data={data.noPollutionZone} />
           </div>
 
           <div

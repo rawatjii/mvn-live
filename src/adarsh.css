@@ -44,7 +44,7 @@
 }
 
 @media screen and (min-width: 1430px) and (max-width: 1500px){
-    .typology_section {padding: 100px 0 !important;}
+    /* .typology_section {padding: 100px 0 !important;} */
     .typology_section .images img { height: 100%; object-fit: cover; object-fit: contain;}
     /* .typology_section .images{max-height: 520px;height: 520px;} */
     /* .typology_section .typology_content{position: absolute;right: 7%;top: 40%;width: 23%;padding: 70px 30px 40px; transform: translateY(-50%);min-height: 330px;} */
@@ -87,13 +87,13 @@
 
 /* Location Section Desktop Responsive */
 
-@media(min-width:1280px){
+/* @media(min-width:1280px){ */
     
     .location_map_section .locationMapContent .thumbnail{position: relative;}
     .location_map_section .locationMapContent .thumbnail .location_btn {position: absolute;right: 2%;top: 2%;padding: 6px 10px;display: flex;justify-content: center;align-items: center;gap: 10px;background: transparent;color: #fff;letter-spacing: 1px;font-weight: 300;font-size: 15px;box-shadow: none;border: 1px solid #4343439e;}
     .location_map_section .locationMapContent .thumbnail .location_btn img{width: 25px;}
     .location_map_section .locationMapContent .title { margin-top: 0px; }
-}
+/* } */
 
 
 

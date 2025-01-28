@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import { Container } from "react-bootstrap";
 import Watermark from "../../../common/watermark/Index";
 import Lightbox from "yet-another-react-lightbox";
@@ -15,6 +15,41 @@ export default function ImagesGallery({ data }) {
   const imageDivRefs = useRef([]);
   const [imagesLoaded, setImagesLoaded] = useState(0);
   const { title, images, desc, secondTitle, imageClassName } = data;
+
+  // Memoized mapped slides for Lightbox
+  const slides = useMemo(
+    () => images.map((img) => ({ src: img.desktop })),
+    [images]
+  );
+
+  const handleImageLoad = () => setImagesLoaded((prev) => prev + 1);
+  // Memoized images map for rendering cards
+  const imageCards = useMemo(
+    () =>
+      images.map((image, idx) => (
+        <div className="col-sm-12 col-md-4 col-lg-4" key={idx}>
+          <div className="card center" onClick={() => setIndex(idx)}>
+            <div className="img">
+              <Watermark className={image.watermark} />
+              <AnImage ref={(el) => (imageDivRefs.current[idx] = el)}>
+                <img
+                  src={image.mobile}
+                  alt={image.title || `${title} ${idx + 1}`}
+                  onLoad={handleImageLoad}
+                  className={`${imageClassName} lazy-image`}
+                />
+              </AnImage>
+            </div>
+            {image.title && (
+              <div className="content">
+                <h4 className="title_style1">{image.title}</h4>
+              </div>
+            )}
+          </div>
+        </div>
+      )),
+    [images, title, imageClassName, handleImageLoad]
+  );
 
   const initializeAnimations = async () => {
     const { gsap } = await import("gsap");
@@ -50,8 +85,7 @@ export default function ImagesGallery({ data }) {
     }
   }, [imagesLoaded, images.length]);
 
-  const handleImageLoad = () => setImagesLoaded((prev) => prev + 1);
-
+  const lightbox_watermark = "lightbox_watermark";
   return (
     <div className="section renders1_section wrapper center pb-0 Landscape-section">
       {/* Title */}
@@ -63,31 +97,7 @@ export default function ImagesGallery({ data }) {
 
       {/* Cards */}
       <div className="cards-container">
-        <div className="row">
-          {images.map((image, idx) => (
-            <div className="col-sm-12 col-md-4 col-lg-4" key={idx}>
-              <div className="card center" onClick={() => setIndex(idx)}>
-                <div className="img">
-                  <Watermark className={image.watermark} />
-                  <Logomark className="left sm" />
-                  <AnImage ref={(el) => (imageDivRefs.current[idx] = el)}>
-                    <img
-                      src={image.mobile}
-                      alt={image.title || `${title} ${idx + 1}`}
-                      onLoad={handleImageLoad}
-                      className={`${imageClassName} lazy-image`}
-                    />
-                  </AnImage>
-                </div>
-                {image.title && (
-                  <div className="content">
-                    <h4 className="title_style1">{image.title}</h4>
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
+        <div className="row">{imageCards}</div>
 
         {/* Description */}
         {(secondTitle || desc) && (
@@ -106,10 +116,22 @@ export default function ImagesGallery({ data }) {
       {/* Lightbox */}
       <Lightbox
         index={index}
-        slides={images.map((img) => ({ src: img.desktop }))}
+        slides={slides}
         open={index >= 0}
         close={() => setIndex(-1)}
         plugins={[Fullscreen, Zoom]}
+        render={{
+          slide: ({ slide }) => (
+            <div className='Img_Container'>
+              <img
+                src={slide.src}
+                alt="landscape image"
+                className='LightBox_image'
+              />
+              <Watermark className={lightbox_watermark}/>
+              </div>
+          ),
+        }}
       />
     </div>
   );

@@ -15,9 +15,8 @@ import * as CONFIG from '../../../config/config'
 import 'swiper/css';
 import "yet-another-react-lightbox/styles.css";
 
-import location_map_sm from '../../assets/images/location-advantage/location_map_sm.webp'
-import Button from "../../../common/Button/Button";
 import CustomCard from "../Card";
+import LocationSlider from "./bangalore/LocationSlider";
 
 gsap.registerPlugin(ScrollTrigger);
 const MicroLocationMap = ({data})=>{
@@ -27,7 +26,7 @@ const MicroLocationMap = ({data})=>{
   const sizeRefs = useRef([]);
   const [isLocationMapOpen, setIsLocationMapOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  
+  const {mapIMG,title,second_title,desc,locationSlider,modalIframe}= data;
 
   const locationMapImg = [{src: data.mapIMG.desktop, asset:data.mapIMG.desktop}]
   
@@ -119,35 +118,35 @@ const MicroLocationMap = ({data})=>{
 
               
               <div onClick={()=>setIsLocationMapOpen(true)}>
-                <img src={data.mapIMG.desktop} alt="mvn-master-plan" className="img-fluid d-none d-md-block" loading="lazy" />
-                <img src={data.mapIMG.mobile} alt="mvn-master-plan" className="img-fluid d-md-none" loading="lazy" />
+                <img src={mapIMG.desktop} alt="desktop map" className="img-fluid d-none d-md-block" loading="lazy" />
+                <img src={mapIMG.mobile} alt="mobile map" className="img-fluid d-md-none" loading="lazy" />
               </div>
             </div>
           </div>
         </div>
 
         <Container className="desktop_fluid_container">
-          <h4 className="title style2">{data.title}</h4>
-
-          <ul className="location_points">
-            <li className="left_road"></li>
-            <li className="top_road"></li>
+          <h4 className="title style2">{title}</h4>
+          {data.locationData &&<ul className="location_points">
+            <span className="left_road"></span>
+            <span className="top_road"></span>
             {data.locationData.map((item,index)=>(
               <li key={index}>
                 <h3 className="distance">{item.distance}</h3>
                 <p>{item.title}</p>
               </li>
             ))}
-          </ul>
+          </ul>}
         </Container>
       </div>
+      {locationSlider && <LocationSlider data={data}/>}
 
       <Container>
         <div className='about'>
           <CustomCard
-            className="px-0 pb-0"
-            title="THE LOCATION AS INVITING AS ITS ALLURE" 
-            desc="Located at the prime 22km stone on Dwarka Expressway, Gurugram, MVN Aero One sits on the growth corridor at the first and only drop of the 23km elevated expressway. Strategically positioned at downtown Gurugram." 
+            className="px-0 "
+            title={second_title || ''} 
+            desc={desc || ''} 
           />
         </div>
       </Container>
@@ -169,7 +168,7 @@ const MicroLocationMap = ({data})=>{
 
       <Modal className="location_modal" show={showModal} onHide={handleClose}>
         <span type="button" class="close" onClick={handleClose}>×</span>
-        <iframe src="https://www.youtube.com/embed/p4ArtUtsj-A?si=VsbM3Dvdk969-OHv" title="MVN Location Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+        <iframe src={modalIframe || "https://www.youtube.com/embed/p4ArtUtsj-A?si=VsbM3Dvdk969-OHv"} title="MVN Location Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
       </Modal>
     </section>
   )

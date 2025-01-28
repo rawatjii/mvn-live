@@ -80,7 +80,7 @@ export const data = {
     title: ['Unseen', 'Unheard', 'Unimagined'],
     isAllow: true,
     path:{
-      Mobile:{
+      mobile:{
         bgImg:bgImgMB,
         frontImg:building_sm,
       },

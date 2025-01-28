@@ -1,0 +1,7 @@
+.AthensBanner{
+    position: relative;
+}
+.AthensBanner img{
+    max-height: 100vh;
+    width: 100%;
+}

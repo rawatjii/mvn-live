@@ -1,0 +1,128 @@
+:root {
+    --golden: #d9c072;
+}
+.typology_section{position: relative;}
+.typology_section:before{position: absolute;content: '';height: 100%;width: 100%;opacity: 18%;
+background: url(../images/bg/bg1.webp) no-repeat right center;left: 0px;bottom:0px;right: 0;z-index: -1;
+background-size: 100%;transition: 0.5s;}
+
+.typology_section ul.nav.nav-tabs{justify-content: center;}
+.typology_section ul li{padding: 0px 25px;}
+.typology_section ul li a{color: #fff;font-family: "Tinos-Regular";font-size: 18px;letter-spacing: 1px;}
+.typology_section ul li .active{background-color: var(--golden);padding: 10px 25px;border-top-left-radius: 5px;border-top-right-radius: 5px;
+color: #131313;text-decoration: none;font-family: "Tinos-Regular";font-size: 18px;letter-spacing: 1px;text-transform: uppercase;}
+
+.typology_section .carousel-inner .carousel-item img{ width: 350px;display: block;}
+.typology_section .nav-tabs {padding-bottom: 6px;border-bottom: 1px solid var(--golden);}
+.typology_section .carousel-inner .carousel-caption{position: unset; left: 0;justify-content: start;right: unset;top: 25%;}
+.typology_section .carousel-inner .carousel-caption h1:before{display: none;}
+.typology_section .carousel-inner .carousel-caption span{font-family: "Roboto-light";color: #fff;border-top: 1px solid #fff;border-bottom: 1px solid #fff;font-size: 18px;padding: 10px 0px;letter-spacing: 2px;}
+.typology_section .carousel-inner .carousel-caption .link{padding-top: 20px;}
+.typology_section .carousel-inner .carousel-caption .link a{font-family: "Roboto-light";color: #fff;}
+.typology_section .carousel-item_in{display: flex; flex-direction: row-reverse; justify-content: center; align-items: center; padding-bottom: 10px; gap: 0 110px; min-height: 445px;}
+
+/* .typology_section .arrow {position: absolute;width: 120px;right: 0%;height: 50px;display: flex;z-index: 9;bottom: 63%;} */
+.typology_section .arrowContainer {position: absolute;width: 120px;left: 0; right: 0; bottom: -15px; margin: 0 auto;}
+
+.typology_section .arrowContainer .arrow-box img{padding: 2px; height: 12px;}
+.typology_section .arrowContainer .carousel-control-next, .carousel-control-prev{opacity: 1;width: 45px;}
+
+.typology_section .arrowContainer .carousel-control-prev,
+.typology_section .arrowContainer .carousel-control-next {height: 40px; background: #000; width: 40px;border: 1px solid var(--golden);border-radius: 100px;display: flex;justify-content: center;align-items: center;}
+.typology_section .main-title{
+    color: #d9c072;
+}
+.typology_section .nav-tabs li{
+    margin: 0 10px;
+}
+.typology_section .nav-tabs li button{
+    border: 0; 
+    background-color: transparent;
+    color: #fff;
+    height: 37px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-family: "Tinos-Regular";font-size: 18px;
+}
+.typology_section .nav-tabs li button.active{
+    background-color: #d9c072;
+    color: #131313;text-decoration: none;
+    padding: 0 25px;
+}
+
+.typology_section .swiper-button-prev{
+    left: 45%;
+}
+.typology_section .swiper-button-next{
+    right: 45%;
+}
+.typology_section .swiper-button-prev, .typology_section .swiper-button-next{
+    top: var(--swiper-navigation-top-offset, 95%);
+    color: #d9c072;
+    border-radius: 50%;
+    border: 1px solid #d9c072;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 11;
+}
+.typology_section .swiper-button-prev:after,.typology_section .swiper-button-next:after{
+    font-size: 13px;
+}
+/* typology slider start */
+.Typologies_Modal{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Typologies_Modal .Typologies_details{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.Typologies_Modal .Typologies_details div{
+    text-align: start;
+}
+.Typologies_Modal .SlideImg{
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+/* typology slider end */
+@media (max-width: 1100px) {
+    .typology_section .swiper-button-prev{
+        left: 40%;
+    }
+    .typology_section .swiper-button-next{
+        right: 40%;
+    }
+  }
+  @media (max-width: 768px){
+    .typology_section .carousel-item_in{
+        flex-direction: column;
+    }
+    .typology_section .carousel-inner .carousel-item img{
+        width: 100%;
+    }
+    .Typologies_Modal .SlideImg{
+        height: auto;
+        width: 100%;
+    }
+  }
+  @media (max-width: 520px) {
+    .typology_section .swiper-button-prev{
+        left: 30%;
+    }
+    .typology_section .swiper-button-next{
+        right: 30%;
+    }
+  }

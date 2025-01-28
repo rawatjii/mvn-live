@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container } from "react-bootstrap";
@@ -18,10 +18,22 @@ const ScrollTriggerFrames = ({ data, onLoadComplete }) => {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const { isMobile } = useMatches();
-  const {  second_title, desc, path, frameCounts, classMain, classCustomCard } = data;
-  const totalFramesMobile = isMobile
-    ? frameCounts.mobileFrameCounts
-    : frameCounts.desktopFrameCounts;
+
+  // Memoize derived values to avoid unnecessary recalculations
+  const totalFramesMobile = useMemo(
+    () => (isMobile ? data.frameCounts.mobileFrameCounts : data.frameCounts.desktopFrameCounts),
+    [isMobile, data.frameCounts]
+  );
+
+  const imagePath = useMemo(() => data.path.desktopPath, [data.path.desktopPath]);
+
+  const cardData = useMemo(
+    () => ({
+      title: data.second_title,
+      desc: data.desc,
+    }),
+    [data.second_title, data.desc]
+  );
 
   const drawFrame = (frameIndex, ctx, canvas, images) => {
     if (!images || !images[frameIndex]) return;
@@ -51,17 +63,15 @@ const ScrollTriggerFrames = ({ data, onLoadComplete }) => {
 
   useEffect(() => {
     const isMounted = { current: true }; // Flag to track component mount status
-    const totalFrames = totalFramesMobile;
-    const imagePath = path.desktopPath;
 
     const loadImages = async () => {
-      const promises = Array.from({ length: totalFrames }, (_, i) => {
+      const promises = Array.from({ length: totalFramesMobile }, (_, i) => {
         return new Promise((resolve) => {
           const img = new Image();
           img.src = `${imagePath}${i + 1}.webp`;
           img.onload = () => {
             if (isMounted.current) {
-              setProgress(((i + 1) / totalFrames) * 100); // Update progress
+              setProgress(((i + 1) / totalFramesMobile) * 100); // Update progress
               resolve(img);
             }
           };
@@ -81,14 +91,13 @@ const ScrollTriggerFrames = ({ data, onLoadComplete }) => {
     return () => {
       isMounted.current = false; // Prevent further state updates
     };
-  }, [path.desktopPath, totalFramesMobile, onLoadComplete]);
+  }, [imagePath, totalFramesMobile, onLoadComplete]);
 
   useEffect(() => {
     if (images.length === 0 || loading) return;
 
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
-    const totalFrames = totalFramesMobile;
 
     drawFrame(0, ctx, canvas, images);
 
@@ -108,7 +117,7 @@ const ScrollTriggerFrames = ({ data, onLoadComplete }) => {
       pin: true,
       scrub: 0.1,
       onUpdate: (self) => {
-        const frameIndex = Math.floor(self.progress * (totalFrames - 1));
+        const frameIndex = Math.floor(self.progress * (totalFramesMobile - 1));
         throttledDrawFrame(frameIndex);
       },
     });
@@ -143,12 +152,11 @@ const ScrollTriggerFrames = ({ data, onLoadComplete }) => {
   }, [images]);
 
   return (
-    <section className={`section ${classMain ? classMain: "Scroll_Height pb-0"} `} ref={sectionRef}>
-      {loading && <PeacockLoader progress={progress} />}
+    <section className={`section ${data.classMain ? data.classMain : "Scroll_Height pb-0"}`} ref={sectionRef}>
+      {/* {loading && <PeacockLoader progress={progress} />} */}
       <div className="frames_content">
         <div className="image_col position-relative">
           <Watermark />
-          <Logomark className={isMobile ? "left sm" : "left"} />
           <canvas
             ref={canvasRef}
             width={window.innerWidth}
@@ -158,9 +166,13 @@ const ScrollTriggerFrames = ({ data, onLoadComplete }) => {
         </div>
         <ScrollDown className="color-black" />
       </div>
-      <Container className={classCustomCard}>
+      <Container className={data.classCustomCard}>
         <div className="about">
-          <CustomCard title={second_title} desc={desc} className="px_sm_0 pb-0" />
+          <CustomCard
+            title={cardData.title}
+            desc={cardData.desc}
+            className="px_sm_0 pb-0"
+          />
         </div>
       </Container>
     </section>

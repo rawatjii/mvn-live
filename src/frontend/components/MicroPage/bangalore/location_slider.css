@@ -1,0 +1,102 @@
+
+@font-face {font-family: "Roboto-Light";font-display: swap;src: url("../fonts/Roboto-Light.ttf");}
+.LocationSlider .SliderContain{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    background-color: #131313;
+    border-radius: 8px;
+    padding: 10px 10px;
+    padding-top: 20px;
+    min-height: 385px;
+    width: 100%;
+}
+/* .LocationSlider .swiper{
+    padding-bottom: 50px;
+} */
+/* .LocationSlider .swiper-button-prev.swiper-button-lock,.LocationSlider .swiper-button-next.swiper-button-lock{
+    display: block;
+} */
+.LocationSlider .swiper-button-prev, .LocationSlider .swiper-button-next{
+    top: var(--swiper-navigation-top-offset, 97%);
+    color: #d9c072;
+    border-radius: 50%;
+    border: 1px solid #d9c072;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 11;
+}
+.LocationSlider .swiper-button-prev:after,.LocationSlider .swiper-button-next:after{
+    font-size: 13px;
+}
+.LocationSlider .swiper-button-prev{
+    left: 0;
+}
+.LocationSlider .swiper-button-next{
+    right: 0;
+}
+.LocationSlider .swiper-slide .LocationImg{
+    width: 14px;
+    margin-right: 6px;
+    height: 14px;
+}
+.LocationSlider .SliderContain .Heading{
+    font-size: 13px;
+    letter-spacing: 0.2px;
+    color: #d8d8d8;
+    /* font-family: "Roboto-light"; */
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 0;
+    margin: 0;
+}
+.LocationSlider .SliderContain p{
+    color: #d9c072;
+    /* font-family: "Roboto-light"; */
+    font-size: 14px;
+    padding-left: 21px;
+    text-align: start;
+    margin-bottom: 5px;
+}
+.LocationSlider .SliderContain.height_183{
+    min-height: 186px;
+}
+.LocationSlider .SliderContain.fit_height{
+    min-height: auto;
+}
+
+/* .LocationSlider .swiper-button-prev{
+    left: 45%;
+}
+.LocationSlider .swiper-button-next{
+    right: 45%;
+}
+@media (max-width: 1100px) {
+    .LocationSlider .swiper-button-prev{
+        left: 40%;
+    }
+    .LocationSlider .swiper-button-next{
+        right: 40%;
+    }
+  }
+  @media (max-width: 768px){
+    .LocationSlider .carousel-item_in{
+        flex-direction: column;
+    }
+    .LocationSlider .carousel-inner .carousel-item img{
+        width: 100%;
+    }
+  }
+  @media (max-width: 520px) {
+    .LocationSlider .swiper-button-prev{
+        left: 30%;
+    }
+    .LocationSlider .swiper-button-next{
+        right: 30%;
+    }
+  } */

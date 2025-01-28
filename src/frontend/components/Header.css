@@ -1,3 +1,6 @@
 .height-transition{
     transition: height 0.4s ease-in-out;
 }
+.Athens_nav{
+    background: linear-gradient(to bottom, #000, #ede7e710);
+}

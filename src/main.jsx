@@ -58,7 +58,6 @@ import { data } from "./frontend/pages/micro/mvn-aeroone-gurgaon1/Index.jsx";
 import {dataMvnMall} from "./frontend/pages/micro/mvn-mall-guragaon/Index.jsx";
 import FrontendRoute from "./common/FrontendRoute.jsx";
 
-import {bangaloreData} from './frontend/pages/micro/mvn-aeroone-bangalore/Index.jsx'
 
 
 
@@ -68,6 +67,14 @@ import "./awaneesh.css";
 import "./savan.css";
 import './adarsh.css'
 import MicroPageBangalore from "./frontend/pages/MicroPageBangalore.jsx";
+import MicroPageFaridabad from "./frontend/pages/MicroPageFaridabad.jsx";
+import MicroPageGurgaonPhase1 from "./frontend/pages/MicroPageGurgaonPhase1.jsx";
+import MicroPageGurgaonPhase2 from "./frontend/pages/MicroPageGurgaonPhase2.jsx";
+
+import {bangaloreData} from './frontend/pages/micro/mvn-aeroone-bangalore/Index.jsx';
+import { faridabadData } from "./frontend/pages/micro/Athens/Index.jsx";
+import { athensGurgaonPhase1Data } from "./frontend/pages/micro/athens-gurgaon-phase-1/Index.jsx";
+import { athensGurgaonPhase2Data } from "./frontend/pages/micro/athens-gurgaon-phase-2/Index.jsx";
 
 
 const router = createBrowserRouter([
@@ -224,13 +231,37 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "mvn-athens-faridabad",
+        path: "mvn-athens-faridabad-old",
         element: (
           <Suspense fallback={<InitialLoading onComplete={()=>console.log('Loading complete')} />}>
             <Layout>
               <MvnAthensFaridabad />
             </Layout>
           </Suspense>
+        ),
+      },
+      {
+        path: "mvn-athens-faridabad",
+        element: (
+          <FrontendRoute  loaderType="mvn-athens-faridabad">
+          <MicroPageFaridabad data={faridabadData}/>
+          </FrontendRoute>
+        ),
+      },
+      {
+        path: "mvn-athens-gurgaon-phase-1",
+        element: (
+          <FrontendRoute  loaderType="mvn-athens-gurgaon-phase-1">
+          <MicroPageGurgaonPhase1 data={athensGurgaonPhase1Data}/>
+          </FrontendRoute>
+        ),
+      },
+      {
+        path: "mvn-athens-gurgaon-phase-2",
+        element: (
+          <FrontendRoute  loaderType="mvn-athens-gurgaon-phase-2">
+          <MicroPageGurgaonPhase2 data={athensGurgaonPhase2Data}/>
+          </FrontendRoute>
         ),
       },
       {

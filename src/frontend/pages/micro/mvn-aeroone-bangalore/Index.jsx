@@ -90,7 +90,7 @@ export const bangaloreData = {
   },
   LargeElevationSection: {
         path:{
-          Mobile:{
+          mobile:{
             bgImg:bgImgMB,
             frontImg:building_sm,
           },
@@ -241,7 +241,6 @@ export const bangaloreData = {
     ],
     imageClassName:'apartment-section-img',
   },
-  
   amenities : {
     title:'Amenities',
     desc: "Indulge in a range of world-class amenities tailored to meet your every desire. From wellness and leisure to relaxation and convenience, MVN Aero One offers a lifestyle perfectly aligned with your aspirations. ",
@@ -304,6 +303,186 @@ export const bangaloreData = {
       },
     ],
      
+  },
+  typologies: {
+    title:'Typologies',
+    desc:"Explore intricately designed floor plans catering to diverse preferences while maximizing space efficiency. Each layout is an architectural triumph, suffused with natural light and effortless elegance.",
+    tabs_name:['1 BHK','2 BHK','3 BHK'],
+    tabs:{   
+      bhk_1: [
+      {
+        title: "1 BHK",
+        area: "440 sq.ft.",
+        link: "#",
+        src: `${CONFIG.IMAGE_URL_BANGALORE}floor-plan/1bhk/1.png`
+      },
+      {
+        title: "1 BHK",
+        area: "600 sq.ft.",
+        link: "#",
+        src: `${CONFIG.IMAGE_URL_BANGALORE}floor-plan/1bhk/2.png`
+      }
+    ],  
+    bhk_2: [
+    {
+      title: "2 BHK",
+      area: "725 sq.ft.",
+      link: "#",
+      src: `${CONFIG.IMAGE_URL_BANGALORE}floor-plan/2bhk/1.png`
+    },
+    {
+      title: "2 BHK",
+      area: "725 sq.ft.",
+      link: "#",
+      src: `${CONFIG.IMAGE_URL_BANGALORE}floor-plan/2bhk/2.png`
+    },
+    {
+      title: "2 BHK",
+      area: "725 sq.ft.",
+      link: "#",
+      src: `${CONFIG.IMAGE_URL_BANGALORE}floor-plan/2bhk/3.png`
+    },
+    {
+      title: "2 BHK",
+      area: "725 sq.ft.",
+      link: "#",
+      src: `${CONFIG.IMAGE_URL_BANGALORE}floor-plan/2bhk/4.png`
+    },
+    {
+      title: "2 BHK",
+      area: "725 sq.ft.",
+      link: "#",
+      src: `${CONFIG.IMAGE_URL_BANGALORE}floor-plan/2bhk/5.png`
+    },
+    {
+      title: "2 BHK",
+      area: "726 sq.ft.",
+      link: "#",
+      src: `${CONFIG.IMAGE_URL_BANGALORE}floor-plan/2bhk/6.png`
+    },
+    {
+      title: "2 BHK",
+      area: "726 sq.ft.",
+      link: "#",
+      src: `${CONFIG.IMAGE_URL_BANGALORE}floor-plan/2bhk/7.png`
+    },
+    {
+      title: "2 BHK",
+      area: "730 sq.ft.",
+      link: "#",
+      src: `${CONFIG.IMAGE_URL_BANGALORE}floor-plan/2bhk/8.png`
+    },
+    {
+      title: "2 BHK",
+      area: "730 sq.ft.",
+      link: "#",
+      src: `${CONFIG.IMAGE_URL_BANGALORE}floor-plan/2bhk/9.png`
+    },
+    {
+      title: "2 BHK",
+      area: "755 sq.ft.",
+      link: "#",
+      src: `${CONFIG.IMAGE_URL_BANGALORE}floor-plan/2bhk/10.png`
+    },
+    {
+      title: "2 BHK",
+      area: "804 sq.ft.",
+      link: "#",
+      src: `${CONFIG.IMAGE_URL_BANGALORE}floor-plan/2bhk/11.png`
+    },
+    {
+      title: "2 BHK",
+      area: "804 sq.ft.",
+      link: "#",
+      src: `${CONFIG.IMAGE_URL_BANGALORE}floor-plan/2bhk/12.png`
+    },
+    {
+      title: "2 BHK",
+      area: "807 sq.ft.",
+      link: "#",
+      src: `${CONFIG.IMAGE_URL_BANGALORE}floor-plan/2bhk/13.png`
+    },
+    {
+      title: "2 BHK",
+      area: "807 sq.ft.",
+      link: "#",
+      src: `${CONFIG.IMAGE_URL_BANGALORE}floor-plan/2bhk/14.png`
+    },
+    {
+      title: "2 BHK",
+      area: "834 sq.ft.",
+      link: "#",
+      src: `${CONFIG.IMAGE_URL_BANGALORE}floor-plan/2bhk/15.png`
+    },
+    {
+      title: "2 BHK",
+      area: "834 sq.ft.",
+      link: "#",
+      src: `${CONFIG.IMAGE_URL_BANGALORE}floor-plan/2bhk/16.png`
+    },
+  ],
+  bhk_3:[
+    {
+      title: "3 BHK",
+      area: "1099 sq.ft.",
+      link: "#",
+      src: `${CONFIG.IMAGE_URL_BANGALORE}floor-plan/3bhk/1.png`
+    },
+    {
+      title: "3 BHK",
+      area: "1099 sq.ft.",
+      link: "#",
+      src: `${CONFIG.IMAGE_URL_BANGALORE}floor-plan/3bhk/2.png`
+    },
+    {
+      title: "3 BHK",
+      area: "1099 sq.ft.",
+      link: "#",
+      src: `${CONFIG.IMAGE_URL_BANGALORE}floor-plan/3bhk/3.png`
+    },
+    {
+      title: "3 BHK",
+      area: "1099 sq.ft.",
+      link: "#",
+      src: `${CONFIG.IMAGE_URL_BANGALORE}floor-plan/3bhk/4.png`
+    },
+  ],
+  }
+  },
+  locationAdvantage: {
+    isshow: true,
+    title: "Location Advantages",
+    second_title:"THE LOCATION AS INVITING AS ITS ALLURE",
+    desc:"In the heart of Bangalore’s dynamic landscape, MVN Aero One offers an address that seamlessly combines connectivity and tranquility.",
+    mapIMG: {
+      desktop: `${CONFIG.IMAGE_URL_BANGALORE}location-map.jpg`,
+      mobile: `${CONFIG.IMAGE_URL_BANGALORE}location-mapm.jpg`,
+    },
+    locationSlider: true,
+    chunks:5,
+    sliderItems : [
+      { title: "Mini Vidhana Soudha, Devanahalli", desc: "3.4 Km | 06 Min" },
+      { title: "Nandi Hills, Nandi Hills Road", desc: "27 Km | 40 Min" },
+      { title: "Timbre Drive-In Cinema, Bellary Road ", desc: "6.5 Km | 11 Min" },
+      { title: "Anjaneya Temple, Devanahalli", desc: "02 Km | 03 Min" },
+      { title: "Mar Thama Church, Devanahalli", desc: "2.6 Km | 04 Min" },
+      { title: "Kempegowda Intl. Airport", desc: "14 Km | 15 Min" },
+      { title: "K.I. Airport  Halt (Railway Station)", desc: "11 Km | 12 Min" },
+      { title: "Proposed Metro  line", desc: "13 Km | 13 Min" },
+      { title: "Devanahalli Trumpet Flyover Bellary Road", desc: "11 Km | 12 Min" },
+      { title: " Sports Village Bellary Road", desc: "05 Km | 05 Min" },
+      { title: "Clarks Exotica, Sadahalli", desc: "16 Km | 18 Min" },
+      { title: "Taj Hotel K Intl. Airport", desc: "16 Km | 15 Min" },
+      { title: "Sai Mart,  Devanahalli", desc: "3.4 Km | 03 Min" },
+      { title: "Esteem Mall, Hebbal", desc: "29 Km | 30 Min" },
+      { title: "Nalanda  Collage, Bellary Road", desc: "4 Km | 08 Min" },
+      { title: "Global Minds, Brigade Orchards", desc: "0.5 Km | 02 Min" },
+      { title: "Delhi Public  School, Sathanur", desc: "23 Km | 26 Min" },
+      { title: "IT tech Park KIADB, Devanahalli ", desc: "09 Km | 11 Min" },
+      { title: "Aerospace Sez  KIABD, Devanhalli", desc: "09 Km | 11 Min" },
+      { title: "Hardware Park KIABD, Devanhalli", desc: "15 Km | 16 Min" },
+    ],
+    modalIframe:'https://www.youtube.com/embed/p4ArtUtsj-A?si=VsbM3Dvdk969-OHv',
   },
     video1: {
       title: "EXPERIENCE THE BLISS OF ENDLESS VISTAS",
@@ -644,51 +823,44 @@ export const bangaloreData = {
       'Premium emulsion paint finish.',
       ]
     },
-    locationAdvantage: {
-      isshow: true,
-      title: "Location Advantages",
-      mapIMG: {
-        desktop:CONFIG.IMAGE_URL + 'gurgaon-micro/location_map.webp',
-        mobile:CONFIG.IMAGE_URL + 'gurgaon-micro/location-map_sm.webp'
-      },
-      //     yasho bhoomi
-      // indira gandhi international airport
-      // diplomatic enclave
-      // palam vihar 
-      // gurgaon railway station
-      // dlf cyber city 
-      // world global city
-      locationData: [
-        {
-          distance: '0 km',
-          title: 'MVN Mall',
-        },
-        {
-          distance: '2.9 kms',
-          title: 'World global city',
-        },
-        {
-          distance: '10.5 kms',
-          title: 'Cyber City 2',
-        },
-        {
-          distance: '10.5 kms',
-          title: 'Gurgaon Railway station',
-        },
-        {
-          distance: '18 kms',
-          title: 'Yasho Bhoomi',
-        },
-        {
-          distance: '20 kms',
-          title: 'Diplomatic enclave 2',
-        },
-        {
-          distance: '29.7 kms',
-          title: 'IGI Airport',
-        },
-      ]
-    },
+    // locationAdvantage: {
+    //   isshow: true,
+    //   title: "Location Advantages",
+    //   mapIMG: {
+    //     desktop:CONFIG.IMAGE_URL + 'gurgaon-micro/location_map.webp',
+    //     mobile:CONFIG.IMAGE_URL + 'gurgaon-micro/location-map_sm.webp'
+    //   },
+    //   locationData: [
+    //     {
+    //       distance: '0 km',
+    //       title: 'MVN Mall',
+    //     },
+    //     {
+    //       distance: '2.9 kms',
+    //       title: 'World global city',
+    //     },
+    //     {
+    //       distance: '10.5 kms',
+    //       title: 'Cyber City 2',
+    //     },
+    //     {
+    //       distance: '10.5 kms',
+    //       title: 'Gurgaon Railway station',
+    //     },
+    //     {
+    //       distance: '18 kms',
+    //       title: 'Yasho Bhoomi',
+    //     },
+    //     {
+    //       distance: '20 kms',
+    //       title: 'Diplomatic enclave 2',
+    //     },
+    //     {
+    //       distance: '29.7 kms',
+    //       title: 'IGI Airport',
+    //     },
+    //   ]
+    // },
     floorPlan:{
       title:'Floor Plan',
       floorPlanData : [

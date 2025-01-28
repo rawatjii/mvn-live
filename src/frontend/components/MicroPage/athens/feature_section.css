@@ -1,0 +1,57 @@
+
+:root {--golden:#f4d966;}
+h1, h2, h3, h4, h5, h6, p, ul{margin: 0;padding: 0;letter-spacing: 0.5px;}
+.feature{padding-top: 75px;position: relative;}
+.feature:before{position: absolute;content: '';height: 100%;width: 100%;opacity:20%;
+background: url(/public//assets//athens-gurgaon-phase-2/bg/bg-b3.jpg) no-repeat right center;left: 0px;bottom:0px;right: 0;z-index: -1;
+background-size: 100%;transition: 0.5s;}
+.feature img.elevation{max-height: 585px;height: 100%;}
+.feature .elevation-content{width: 100%;right: 0;position: absolute;bottom: 0;background-color: #131313;z-index: -1;padding-left: 48%;padding-right: 8%;}
+.feature .elevation-content .inner-box{padding: 50px;}
+.feature .elevation-content .inner-box h1{margin-bottom: 10px;}
+.feature .elevation-content .inner-box h1:before{display: none;}
+.feature .elevation-content .inner-box p{padding-top: 0;border-bottom: 1px solid var(--golden);padding-bottom: 15px;margin-bottom: 15px;}
+.feature .elevation-content .inner-box ul{list-style-type: circle;padding-left: 18px;}
+.feature .elevation-content .inner-box ul li{color: #d8d8d8;font-family: "Roboto-light";font-size: 15px;line-height: 26px;padding-bottom: 5px;
+letter-spacing: 0.4px;}
+.main-title{font-family: "Tinos-Regular";font-size: 30px;color: var(--golden);text-transform: uppercase;letter-spacing: 2px;position: relative;margin-bottom: 25px;}
+.main-title:before{position: absolute;content: "";left: 0px;bottom: 0;top: -34px;width: 100px;height: 100px;background-color: rgba(244, 217, 102, 0.15);
+    margin: 0 auto;right: 0;border-radius: 100px;}
+@media (max-width: 1368px) {
+
+    .main-title{font-size: 24px;letter-spacing: 1px;}
+    .main-title:before {top: -20px;width: 70px;height: 70px;}
+.feature .elevation-content .inner-box ul li{font-size: 14px;letter-spacing: 0.2px;}
+
+}
+.m-v{display: none;}
+@media (max-width: 575px) {
+    .d-v{display: none;}
+    .m-v{display: block;}
+    .main-title:before {top: -12px;width: 60px;height: 60px;}
+    .main-title{font-size: 24px;letter-spacing: 1px;}
+.feature .elevation-content .inner-box{margin-top: 70px;}
+/*.amenities{display: none;}*/
+.feature .overlap{position: relative;}
+.feature .overlap .bg-elevation{width: 100%;}
+.feature .overlap .fr-elevation{position: absolute;width: 100%;left: 0%;bottom: -2%;}
+.feature .elevation-content {right: 0;position: unset;padding-left: 0;padding-right: 0;width: 100%;}
+.feature .elevation {width: 100%;}
+.feature .elevation-content .inner-box {padding: 35px 15px;background-color: #131313;margin-top: 50px;}
+.feature .elevation-content{background-color: unset;}
+.feature .elevation-content .inner-box ul li {font-size: 15px;line-height: 24px;padding-bottom: 12px;letter-spacing: 0.2px;}
+
+.feature .elevation-content .inner-box ul{list-style-type: circle;padding-left: 18px;}
+.feature .elevation-content .inner-box ul li{position: relative;padding-bottom: 15px;font-size: 14px;}
+.feature .elevation-content .inner-box ul li:before{position: absolute;content: "";width: 100%;height: 1px;background-color: #f4d96617;
+border-radius: 100%;display: block;justify-content: center;left: 0;right: 0;margin: 0 auto;top: -10px;}
+.feature .elevation-content .inner-box ul li:nth-of-type(1):before{display: none;}
+
+.feature .box-title{text-align: center;padding-bottom: 50px;}
+.feature .box-title h1{margin-bottom: 0;}
+.feature .box-title h1:before{display: none;}
+.feature img.m-v{width: 100%;}
+.feature:before {position: absolute;content: '';height: 100%;width: 200%;opacity: 15%;background: url(../images/bg/bg-b1.jpg) no-repeat top center;left: 0px;
+bottom: 0px;right: 0;z-index: -1;background-size: 100%;transition: 0.5s;}
+
+}  

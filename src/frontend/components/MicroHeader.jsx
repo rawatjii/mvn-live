@@ -55,6 +55,7 @@ const otherProjects = [
         name:'MVN Bangalore',
         link:'/aeroone-bangalore1',
         status:'',
+        target_blank:false,
       }
     ]
   },
@@ -65,6 +66,24 @@ const otherProjects = [
         name:'MVN Athens',
         link:'https://www.mvn.in/athens-faridabad/',
         status:'',
+      },
+      {
+        name:'MVN Athens Faridabad',
+        link:'/mvn-athens-faridabad',
+        status:'',
+        target_blank:false,
+      },
+      {
+        name:'MVN Athens Phase 1',
+        link:'/mvn-athens-gurgaon-phase-1',
+        status:'',
+        target_blank:false,
+      },
+      {
+        name:'MVN Athens Phase 2',
+        link:'/mvn-athens-gurgaon-phase-2',
+        status:'',
+        target_blank:false,
       }
     ]
   },
@@ -135,7 +154,7 @@ const MicroHeader = ({ scrollToSection, data}) => {
   let navbarScroll = localStorage.getItem('navbar_scroll_height');
 
   useEffect(() => {
-    if (pathname.includes("aeroone-gurgaon") || pathname.includes("mvn-mall") || pathname.includes("aeroone-bangalore1"))  {
+    if (pathname.includes("aeroone-gurgaon") || pathname.includes("mvn-mall") || pathname.includes("aeroone-bangalore1") || pathname.includes("mvn-athens-faridabad") || pathname.includes("/mvn-athens-gurgaon-phase-2")  || pathname.includes("/mvn-athens-gurgaon-phase-1"))  {
       setIsMicro(true);
     }
 
@@ -199,7 +218,7 @@ const MicroHeader = ({ scrollToSection, data}) => {
       <Navbar
         ref={headerRef}
         expand="false"
-        className={`${scrolled ? "fixed" : ""} ${isMicro ? "micro_nav" : null}`}
+        className={`${scrolled ? "fixed" : ""} ${isMicro ? "micro_nav" : null} ${data.athens_header}`}
         role="navbar"
       >
         <Container>
@@ -295,7 +314,7 @@ const MicroHeader = ({ scrollToSection, data}) => {
                                 <ul>
                                   {singleProject.projects && singleProject.projects.map((project, index)=>(
                                     <li className={project.status && 'new_launch'} key={project.name+index}>
-                                      <NavLink to={project.link} target="_blank" onClick={() => toggleMenu("close")}>
+                                      <NavLink to={project.link} target={project.target_blank === false ? "_self" : "_blank"} onClick={() => toggleMenu("close")}>
                                         {project.name}
                                       </NavLink>
                                       {project.status && <span>{project.status}</span>}
