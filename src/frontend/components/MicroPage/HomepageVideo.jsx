@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ImgMail from "../../assets/images/icons/email.png";
 import GurgaonLoader from "../../../common/Loader/Homepage/Index";
+import { useMatches } from "../../../theme/theme";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,6 +17,7 @@ const HomepageVideo = ({ data }) => {
   const containerRef = useRef(null);
   const frameRefs = useRef([]);
   const mouseScrollRef = useRef();
+  const { isMobile } = useMatches();
 
   useEffect(() => {
     if (loading) {
@@ -34,7 +36,6 @@ const HomepageVideo = ({ data }) => {
 
   useEffect(() => {
     // Determine if it's mobile or desktop
-    const isMobile = window.innerWidth <= 768;
     if (isMobile) {
       setMobile(true);
     }
@@ -48,7 +49,6 @@ const HomepageVideo = ({ data }) => {
     // Only preload images once totalFrames is set
     if (totalFrames === 0) return;
 
-    const isMobile = window.innerWidth <= 768;
     let folderPath = isMobile
       ? "assets/images/micro/hero/mobile/"
       : "assets/images/micro/hero/desktop/";

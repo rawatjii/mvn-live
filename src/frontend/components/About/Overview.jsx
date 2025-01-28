@@ -9,25 +9,16 @@ import Desktopabout_img from "../../assets/images/about/desktopabout_img.webp";
 import Mobileabout_img from "../../assets/images/about/desktopabout_img.webp";
 import AnImage from "../../../common/animations/Image/Index";
 import OverviewIcon from "../../assets/images/icons/heading-icon-img.webp";
+import { useMatches } from "../../../theme/theme";
+
+
 gsap.registerPlugin(ScrollTrigger);
 
 const Overview = () => {
   const titleRef = useRef();
   const desRefs = useRef([]);
   const imageRef = useRef();
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-
-  useEffect(() => {
-    // Handle screen resize for mobile detection
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+ const { isMobile } = useMatches(); 
 
   useEffect(() => {
     // Title animation

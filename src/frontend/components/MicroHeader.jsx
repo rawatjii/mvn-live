@@ -107,10 +107,11 @@ const socialMedia = [
   },
 ];
 
-const MicroHeader = ({ scrollToSection, sectionsMenus, projectName }) => {
+const MicroHeader = ({ scrollToSection, data}) => {
   const [scrolled, setScrolled] = useState(false);
   const [isMicro, setIsMicro] = useState(false);
 
+  const SidebarSection = data.sidebar_section;
   const channelUrl = "https://www.youtube.com/@MVNInfrastructures?sub_confirmation=1";
 
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
@@ -232,15 +233,15 @@ const MicroHeader = ({ scrollToSection, sectionsMenus, projectName }) => {
                                 </NavLink>
                               </li>
                             </ul>
-                            <h4>{projectName}</h4>
+                            <h4>{data.title}</h4>
                             <ul>
-                              {sectionsMenus && sectionsMenus.map((section, index) =>(
+                              {SidebarSection && SidebarSection.map((section, index) =>(
                                 <li key={index}>
                                   <NavLink
                                     className="new-launch"
                                     onClick={() => {scrollToSection(section.link);toggleMenu("close");}}
                                   >
-                                    {section.page}
+                                    {section.section_title}
                                   </NavLink>
                                 </li>
                               ))}

@@ -14,19 +14,19 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     <nav>
       <ul className="pagination">
         <li className='page-item'>
-          <button className={`page-link ${currentPage === 1 ? 'disabled': ''}`}>
+          <button type="button" className={`page-link ${currentPage === 1 ? 'disabled': ''}`}>
             <img src={chevronLeftIcon} alt="left icon" className='img-fluid' />
           </button>
         </li>
         {pages.map((page) => (
           <li key={page} className={`page-item ${currentPage === page ? 'active' : ''}`}>
-            <button className="page-link" onClick={() => onPageChange(page)}>
+            <button type="button" className="page-link" onClick={() => onPageChange(page)}>
               {page}
             </button>
           </li>
         ))}
         <li className='page-item'>
-          <button className={`page-link ${currentPage === totalPages ? 'disabled': ''}`}>
+          <button type="button" className={`page-link ${currentPage === totalPages ? 'disabled': ''}`}>
             <img src={chevronRightIcon} alt="right icon" className='img-fluid' />
           </button>
         </li>

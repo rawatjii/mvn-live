@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 
 import arrowIcon from "../../assets/images/icons/arrow.png";
@@ -14,6 +14,7 @@ import mvnSchoolDesktop from "../../assets/images/other-projects/mvn-school-desk
 import mvnUniversityDesktop from "../../assets/images/other-projects/mvn-university-desktop.webp";
 import mvnSportsAcademyDesktop from "../../assets/images/other-projects/mvn-sports-academy-desktop-2.webp";
 import headingIconImg from "../../assets/images/icons/heading-icon-img.webp";
+import { useMatches } from "../../../theme/theme";
 
 const otherProjects = [
   {
@@ -45,8 +46,51 @@ const otherProjects = [
 const OtherProjects = ({ data, title, subTitle, mobContent=12 }) => {
   const titleRef = useRef();
   const imageDivRefs = useRef([]);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const { isMobile } = useMatches(); 
   const [imagesLoaded, setImagesLoaded] = useState(0);
+
+  const initializeAnimations = () => {
+    if (otherProjects.length > 0) {
+      gsap.from(titleRef.current, {
+        y: 50,
+        opacity: 1,
+        duration: 1,
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top 95%",
+        },
+      });
+
+      imageDivRefs.current.forEach((imagediv, index) => {
+        if (imagediv) {
+          gsap.to(imagediv, {
+            scrollTrigger: {
+              trigger: imagediv,
+              start: "top 95%",
+              onEnter: () => imagediv.classList.add("active"),
+              once: true,
+            },
+          });
+        }
+      });
+    }
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      ScrollTrigger.refresh();
+    };
+
+    if (imagesLoaded === otherProjects.length) {
+      setTimeout(() => {
+        initializeAnimations();
+        ScrollTrigger.refresh();
+      }, 300);
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [imagesLoaded]);
 
   const handleImageLoad = () => {
     setImagesLoaded((prev) => prev + 1);

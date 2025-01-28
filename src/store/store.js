@@ -5,7 +5,7 @@ import blogsReducer from '../redux/blogsSlice';
 const store = configureStore({
   reducer:{
     adminSideMenu:sideMenuReducer,
-    blogs: blogsReducer
+    blogs: blogsReducer,
   }
 })
 

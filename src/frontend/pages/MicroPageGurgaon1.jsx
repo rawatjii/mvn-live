@@ -6,6 +6,9 @@ import { Helmet } from "react-helmet";
 
 import MicroHeader from "../components/MicroHeader";
 import MicroHero from "../components/MicroPage/Hero";
+import { useMatches } from "../../theme/theme";
+// import LottieAnimationSection from "../components/MicroPage/LottieAnimationSection";
+// import ImageGallery from "../components/MicroPage/ImagesGallery"
 const MicroOverview = React.lazy(()=>import("../components/MicroPage/Overview"));
 const LargeElevationSection = React.lazy(()=>import("../components/MicroPage/LargeElevationSection"));
 const Walkthrough = React.lazy(()=>import("../components/MicroPage/Walkthrough"));
@@ -14,26 +17,14 @@ const DownloadBrochure = React.lazy(()=>import("../components/MicroPage/Download
 const PeacockSection = React.lazy(() =>
   import("../components/MicroPage/PeacockSection")
 );
-const LivingRoomVideoGurugram = React.lazy(() =>
-  import("../components/MicroPage/LivingRoomVideoGurugram")
+const LottieAnimationSection = React.lazy(() =>
+  import("../components/MicroPage/LottieAnimationSection")
 );
-const PartyVideo = React.lazy(() =>
-  import("../components/MicroPage/PartyVideo"));
-
-const MasterBedroom = React.lazy(() =>
-  import("../components/MicroPage/MasterBedroom"));
-
 const Consultant = React.lazy(() =>
   import("../components/MicroPage/Consultant")
 );
-const MicroLandscape = React.lazy(() =>
-  import("../components/MicroPage/Landscape")
-);
-const MicroElevation = React.lazy(() =>
-  import("../components/MicroPage/MicroElevation")
-);
-const MicroApartment = React.lazy(() =>
-  import("../components/MicroPage/MicroApartment")
+const ImageGallery = React.lazy(() =>
+  import("../components/MicroPage/ImagesGallery")
 );
 const ConstructionTechnology = React.lazy(() =>
   import("../components/MicroPage/ConstructionTechnology")
@@ -69,10 +60,10 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
   const [partyLoaded, setPartyLoaded] = useState(false);
   const [masterBedroomLoaded, setMasterBedroomLoaded] = useState(false);
   const [typologyLoaded, setTypologyLoaded] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const smootherRef = useRef(null);
   const sectionRefs = useRef({});
   const { pageSections, projectName } = data;
+  const { isMobile } = useMatches(); 
 
   const scrollToSection = (sectionKey) => {
     const target = sectionRefs.current[sectionKey];
@@ -243,14 +234,13 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
       <MicroHeader
         scrollToSection={scrollToSection}
-        sectionsMenus={pageSections}
-        projectName={projectName}
+        data={data.header}
       />
 
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <div ref={(el) => (sectionRefs.current.microOverview = el)}>
-            <MicroHero />
+            <MicroHero  data={data} onLoadComplete={() => setHeroLoaded(true)} />
           </div>
 
           <Suspense fallback="">
@@ -285,8 +275,8 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
           <Suspense fallback="">
             <div>
-              <LivingRoomVideoGurugram
-                data={data}
+              <LottieAnimationSection
+                data={data.living_room}
                 onLoadComplete={() => setLivingRoomLoaded(true)}
                 isMobile={isMobile}
               />
@@ -295,8 +285,8 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
           <Suspense fallback="">
             <div>
-              <PartyVideo
-                data={data}
+              <LottieAnimationSection
+                data={data.party_video}
                 onLoadComplete={() => setPartyLoaded(true)}
                 isMobile={isMobile}
               />
@@ -305,8 +295,8 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
           <Suspense fallback="">
             <div>
-              <MasterBedroom
-                data={data}
+              <LottieAnimationSection
+                data={data.masterBedroom}
                 isMobile={isMobile}
                 onLoadComplete={() =>
                   setMasterBedroomLoaded(true)
@@ -324,19 +314,19 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
           <Suspense fallback="">
             <div ref={(el) => (sectionRefs.current.MicroLandscape = el)}>
-              <MicroLandscape />
+              <ImageGallery data={data.landscape} />
             </div>
           </Suspense>
 
           <Suspense fallback="">
             <div ref={(el) => (sectionRefs.current.MicroElevation = el)}>
-              <MicroElevation />
+              <ImageGallery  data={data.microElevation} />
             </div>
           </Suspense>
 
           <Suspense fallback="">
             <div ref={(el) => (sectionRefs.current.MicroApartment = el)}>
-              <MicroApartment />
+              <ImageGallery data={data.microApartment} />
             </div>
           </Suspense>
 
@@ -350,7 +340,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
           <Suspense fallback="">
             <div ref={(el) => (sectionRefs.current.MicroAmenities = el)}>
-              <MicroAmenities data={data.amenities} />
+              <MicroAmenities section_data={data.amenities} />
             </div>
           </Suspense>
 

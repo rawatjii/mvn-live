@@ -7,6 +7,8 @@ import PeacockLoader from "../../../common/Loader/micro/peacockLoader/Index";
 import Watermark from "../../../common/watermark/Index";
 import ScrollDown from "../../../common/scrollDown/Index";
 import Logomark from "../../../common/logomark/Index";
+import { useMatches } from "../../../theme/theme";
+import LottieAnimationSection from "./LottieAnimationSection";
 
 import * as CONFIG from '../../../config/config';
 
@@ -16,7 +18,7 @@ const PeacockSection = ({ data, onLoadComplete }) => {
   const canvasRef = useRef(null); // Ref for the canvas
   const containerRef = useRef(null); // Ref for the scrollable container
   const [images, setImages] = useState([]); // Array to store loaded images
-  const [isMobile, setIsMobile] = useState(false); // Track if it's mobile
+  const { isMobile } = useMatches();
   const [loading, setLoading] = useState(true); // Loader state
 
   const totalFramesMobile = 256; // Total frames for mobile
@@ -52,17 +54,7 @@ const PeacockSection = ({ data, onLoadComplete }) => {
     ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight); // Draw the current frame
   };
 
-  // Detect screen size
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768); // Adjust breakpoint as needed
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => {
-      window.removeEventListener("resize", checkMobile);
-    };
-  }, []);
+
 
   // Load images for mobile
   useEffect(() => {
@@ -139,42 +131,17 @@ const PeacockSection = ({ data, onLoadComplete }) => {
     };
   }, [images, isMobile, loading]); // Re-run when images or loading state changes
 
-  const { title, desc } = data.video1;
+
 
   return (
     <div className="section peacock_section pb-0" id="peacockSection">
       {/* Show loader only on mobile */}
       {isMobile && loading && <PeacockLoader />}
-
-      {/* Main content once loading is complete */}
-      {!loading && (
-        <>
-          <div ref={containerRef} className="frames_content">
-            <div className="image_col position-relative">
-              <Watermark className={isMobile ? 'style4' : 'style2'} />
-              {isMobile && <Logomark className={isMobile ? `left sm style4` : `left sm`} />}
-              
-
-              {/* Mobile Canvas */}
-              {isMobile && (
-                <canvas
-                  ref={canvasRef}
-                  width={window.innerWidth}
-                  height={window.innerHeight}
-                  style={{ display: "block", margin: "auto" }}
-                />
-              )}
-
-              {/* Desktop Image */}
-              {!isMobile && (
-                <img src={CONFIG.IMAGE_URL + 'peacock/peacock.webp'} alt="Peacock image" className="img-fluid peacock_img" loading="lazy" />
-              )}
-            </div>
-
-            <ScrollDown className="color-black" />
-          </div>
-
-          <Container>
+      {isMobile ? 
+      <LottieAnimationSection data={data}/>
+      : <>
+      <img src={CONFIG.IMAGE_URL + 'peacock/peacock.webp'} alt="Peacock image" className="img-fluid peacock_img" />
+      <Container>
             <div className="about">
               <CustomCard
                 className="px_sm_0 pb-0"
@@ -183,8 +150,10 @@ const PeacockSection = ({ data, onLoadComplete }) => {
               />
             </div>
           </Container>
-        </>
-      )}
+      </>
+      }
+
+     
     </div>
   );
 };

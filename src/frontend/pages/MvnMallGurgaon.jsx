@@ -53,17 +53,8 @@ const MvnMallGurgaon = ({ data}) => {
   const [partyLoaded, setPartyLoaded] = useState(true);
   const [masterBedroomLoaded, setMasterBedroomLoaded] = useState(true);
   const [typologyLoaded, setTypologyLoaded] = useState(true);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const smootherRef = useRef(null);
   const sectionRefs = useRef({});
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    // window.addEventListener("resize", handleResize);
-    // return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   const scrollToSection = (sectionKey) => {
     const target = sectionRefs.current[sectionKey];
@@ -228,7 +219,7 @@ const MvnMallGurgaon = ({ data}) => {
           
 
           <div ref={(el) => (sectionRefs.current.microOverview = el)}>
-            <MicroHero isMobile={isMobile} data={data} onLoadComplete={() => setHeroLoaded(true)} />
+            <MicroHero  data={data} onLoadComplete={() => setHeroLoaded(true)} />
           </div>
 
           {/* Render other components only after Hero Section is loaded */}

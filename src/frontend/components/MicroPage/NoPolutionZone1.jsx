@@ -11,7 +11,6 @@ export default function NoPollutionZone1({ data }) {
 
   const noPollutionZone = data;
   const sectionsRef = useRef([]);
-  const isMobile = window.innerWidth <= 768;
 
   const imgICON = CONFIG.IMAGE_URL
 

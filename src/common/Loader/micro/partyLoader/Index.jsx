@@ -3,25 +3,18 @@ import * as CONFIG from '../../../../config/config';
 import BarLoader from "react-spinners/BarLoader";
 
 import './peacock_loader.css';
+import { useMatches } from "../../../../theme/theme";
 
 const PartyLoader = ()=>{
-  const [isMobile, setIsMobile] = useState(null);
-
-  useEffect(()=>{
-    if(window.innerWidth < 767){
-      setIsMobile(true)
-    }else{
-      setIsMobile(false)
-    }
-  }, [])
+  const { isMobile } = useMatches(); 
 
   return(
     <div className="loader_section gurgaon_loader party_loader">
       <div className="position-relative">
         {isMobile ? (
-          <img src={CONFIG.VIDEO_URL + 'party/mobile/1.webp'} alt="mvn-micro-loader" className="img-fluid micro_thumbnail" />
+          <img src={CONFIG.VIDEO_URL + 'party/mobile/1.webp'} alt="loader image" className="img-fluid micro_thumbnail" />
         ) : (
-          <img src={CONFIG.VIDEO_URL + 'party/desktop/1.webp'} alt="mvn-micro-loader" className="img-fluid micro_thumbnail" />
+          <img src={CONFIG.VIDEO_URL + 'party/desktop/1.webp'} alt="loader image" className="img-fluid micro_thumbnail" />
         )}
         
 

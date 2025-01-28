@@ -75,7 +75,7 @@ function AmenitiesAthens() {
           </div>
 
           <div className="amemity-btn">
-            <button className="btn amenity-query-btn">View More Details</button>
+            <button type="button" className="btn amenity-query-btn">View More Details</button>
           </div>
         </div>
       </div>

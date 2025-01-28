@@ -56,7 +56,7 @@ function Video({videoSrc, videoPoster}) {
         poster={videoPoster}
       ></video>
       {showButton && (
-        <button className="play-pause-btn" onClick={handlePlayPause}>
+        <button type="button" className="play-pause-btn" onClick={handlePlayPause}>
           {isPlaying ? "❚❚" : "▶"}
         </button>
       )}

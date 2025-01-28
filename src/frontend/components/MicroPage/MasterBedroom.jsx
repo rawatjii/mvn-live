@@ -7,16 +7,18 @@ import MasterBedroomLoader from "../../../common/Loader/micro/masterBedroomLoade
 import Watermark from "../../../common/watermark/Index";
 import lottie from "lottie-web";
 import Logomark from "../../../common/logomark/Index";
+import { useMatches } from "../../../theme/theme";
 
 // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-const MasterBedroom = ({ isMobile, data, onLoadComplete }) => {
+const MasterBedroom = ({  data, onLoadComplete }) => {
   const containerRef = useRef(null);
   const titleRef = useRef();
   const lottieContainerRef = useRef(null);
   const [animationData, setAnimationData] = useState(null);
   const { title, desc } = data.masterBedroom;
+  const { isMobile } = useMatches();
 
   // Dynamically import the correct JSON animation data
   useEffect(() => {

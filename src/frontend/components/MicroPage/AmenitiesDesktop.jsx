@@ -15,7 +15,6 @@ export default function AmenitiesDesktop({ data }) {
 
   const amenities = data;
   const sectionsRef = useRef([]);
-  const isMobile = window.innerWidth <= 768;
 
   const imgICON = CONFIG.IMAGE_URL
 

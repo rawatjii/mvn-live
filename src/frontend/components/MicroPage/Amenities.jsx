@@ -1,49 +1,33 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import * as CONFIG from "../../../config/config";
 import Watermark from "../../../common/watermark/Index";
-
+import { useMatches } from "../../../theme/theme";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Amenities({ data }) {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+export default function Amenities({ section_data }) {
+  const { isMobile } = useMatches();
   const sectionsRef = useRef([]);
   const triggers = useRef([]);
+  const { data, title } = section_data;
 
-  // Debounced window resize listener to update isMobile
-  useEffect(() => {
-    const debounce = (func, delay) => {
-      let timeout;
-      return () => {
-        clearTimeout(timeout);
-        timeout = setTimeout(func, delay);
-      };
-    };
-
-    const handleResize = debounce(() => {
-      setIsMobile(window.innerWidth <= 768);
-    }, 200);
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const getRatio = (el) => window.innerHeight / (window.innerHeight + el.offsetHeight);
 
   // Set up GSAP ScrollTrigger for desktop view
   useEffect(() => {
     if (!isMobile) {
-      const getRatio = (el) => window.innerHeight / (window.innerHeight + el.offsetHeight);
-  
       triggers.current = [];
       sectionsRef.current.forEach((section, i) => {
         const bg = section.querySelector(".bg");
+
         if (bg) {
-          const imageUrl = `url(${CONFIG.IMAGE_URL}amenities/${data[i].imgSrc.desktop})`;
+          const imageUrl = `url(${data[i].path.desktop})`; // Dynamically using the desktop path
           bg.style.backgroundImage = imageUrl;
-  
+
           const defaultBgPos = i === 0 ? "50% 0" : `50% ${-window.innerHeight * getRatio(section)}px`;
-  
+          console.log(`Section ${i} Default Background Position:`, defaultBgPos);
+
           const trigger = gsap.fromTo(
             bg,
             { backgroundPosition: defaultBgPos },
@@ -54,19 +38,19 @@ export default function Amenities({ data }) {
                 trigger: section,
                 start: i === 0 ? "top top" : "top bottom",
                 end: "bottom top",
-                scrub: 0.5, // Use a small scrub time to control the speed of animation
+                scrub: 0.5, // Smoothness of animation
                 invalidateOnRefresh: true,
               },
             }
           );
-  
+
           triggers.current.push(trigger.scrollTrigger);
         }
       });
 
       ScrollTrigger.refresh();
     }
-  
+
     // Cleanup ScrollTriggers
     return () => {
       triggers.current.forEach((trigger) => trigger.kill());
@@ -85,6 +69,7 @@ export default function Amenities({ data }) {
         img.addEventListener("load", () => {
           loadedCount++;
           if (loadedCount === images.length) {
+            console.log("All images loaded. Refreshing ScrollTrigger...");
             ScrollTrigger.refresh();
           }
         });
@@ -92,24 +77,24 @@ export default function Amenities({ data }) {
     });
   }, []);
 
+  // Render Mobile View
   const renderMobileView = () => (
     <div className="section amenities_section main_am pb-0">
       <div className="cards-container">
-
         <div className="heading_div mb_60 mb_sm_30">
-          <h4 className="title title_style1 text-center">Amenities</h4>
+          <h4 className="title title_style1 text-center">{title}</h4>
         </div>
         {data.map((single, index) => (
           <div key={index} className="col-sm-12 col-md-4 col-lg-4">
             <div className="card center">
               <img
-                src={`${CONFIG.IMAGE_URL}amenities/${single.imgSrc.mobile}`}
+                src={single.path.mobile} // Use the mobile path directly
                 alt={`mvn amenities ${index}`}
                 className="img-fluid d-md-none"
                 loading="lazy"
               />
               <img
-                src={`${CONFIG.IMAGE_URL}amenities/${single.imgSrc.desktop}`}
+                src={single.path.desktop} // Use the desktop path directly
                 alt={`mvn amenities ${index}`}
                 className="img-fluid d-none d-md-block"
                 loading="lazy"
@@ -132,12 +117,12 @@ export default function Amenities({ data }) {
     </div>
   );
 
+  // Render Desktop View
   const renderDesktopView = () => (
     <div className="section main_am pb-0">
       <div className="heading_div mb_60 mb_sm_30">
-        <h4 className="title title_style1 text-center">Amenities</h4>
+        <h4 className="title title_style1 text-center">{title}</h4>
       </div>
-
       {data.map((amenity, i) => (
         <section
           key={i}
@@ -149,7 +134,7 @@ export default function Amenities({ data }) {
           </div>
           <div className="content">
             <span className="am-name">{amenity.name}</span>
-            <p className="desc des_style1 text-center mt-2">{amenity.desc}</p>
+            <p className="desc des_style1 text-center mt-2">{Array.isArray(amenity.desc) ? amenity.desc.join(' ') : amenity.desc}</p>
           </div>
         </section>
       ))}
@@ -159,7 +144,6 @@ export default function Amenities({ data }) {
   return (
     <>
       {isMobile ? renderMobileView() : renderDesktopView()}
-      
     </>
   );
 }

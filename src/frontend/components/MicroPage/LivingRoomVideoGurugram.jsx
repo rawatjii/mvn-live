@@ -7,173 +7,140 @@ import PeacockLoader from "../../../common/Loader/micro/peacockLoader/Index";
 import Watermark from "../../../common/watermark/Index";
 import ScrollDown from "../../../common/scrollDown/Index";
 import Logomark from "../../../common/logomark/Index";
+import { useMatches } from "../../../theme/theme";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const LivingRoomVideoGurugram = ({ data, onLoadComplete }) => {
-  const canvasRef = useRef(null); // Ref for the canvas
-  const containerRef = useRef(null); // Ref for the scrollable container
+  const canvasRef = useRef(null);
   const sectionRef = useRef(null);
-  const [images, setImages] = useState([]); // Array to store loaded images
-  const [isMobile, setIsMobile] = useState(false); // Track if it's mobile
-  const [loading, setLoading] = useState(true); // Loader state
-  const totalFramesMobile = 133; // Total frames for mobile
+  const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [progress, setProgress] = useState(0); // Loading progress
+  const { isMobile } = useMatches();
+  const totalFramesMobile = 133;
 
   const { title, desc } = data.living_room_video;
 
-  // Function to draw a frame on the canvas
+  // Optimized `drawFrame` function
   const drawFrame = (frameIndex, ctx, canvas, images) => {
-    if (!images || images.length === 0) return; // Guard against empty images array
+    if (!images || !images[frameIndex]) return;
 
     const img = images[frameIndex];
-    if (!img) return; // Ensure the image exists
-
     const canvasWidth = canvas.width;
     const canvasHeight = canvas.height;
 
     const imageAspectRatio = img.width / img.height;
     const canvasAspectRatio = canvasWidth / canvasHeight;
 
-    let drawWidth = canvasWidth;
-    let drawHeight = canvasHeight;
-
+    let drawWidth, drawHeight;
     if (canvasAspectRatio > imageAspectRatio) {
-      // Image is taller than the canvas, fit the width
       drawHeight = canvasWidth / imageAspectRatio;
+      drawWidth = canvasWidth;
     } else {
-      // Image is wider than the canvas, fit the height
       drawWidth = canvasHeight * imageAspectRatio;
+      drawHeight = canvasHeight;
     }
 
     const offsetX = (canvasWidth - drawWidth) / 2;
     const offsetY = (canvasHeight - drawHeight) / 2;
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear previous frame
-    ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight); // Draw the current frame
+    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+    ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
   };
 
-  // Detect screen size
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768); // Adjust breakpoint as needed
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => {
-      window.removeEventListener("resize", checkMobile);
-    };
-  }, []);
-
-  // Load images for mobile
+  // Image loading with progress tracking
   useEffect(() => {
     const totalFrames = totalFramesMobile;
     const imagePath = "assets/videos/living-room/desktop/";
-  
-    const loadedImages = [];
-    let loadedCount = 0;
-  
-    for (let i = 1; i <= totalFrames; i++) {
-      const img = new Image();
-      img.src = `${imagePath}${i}.webp`;
-  
-      img.onload = () => {
-        loadedCount++;
-        loadedImages.push(img);
-  
-        if (loadedCount === 1) {
-          // Set canvas dimensions based on the first image's aspect ratio
-          const canvas = canvasRef.current;
-          if (canvas) {
-            const aspectRatio = img.width / img.height;
-            canvas.width = window.innerWidth;
-            canvas.height = canvas.width / aspectRatio;
-          }
-        }
-  
-        if (loadedCount === totalFrames) {
-          setLoading(false); // All images loaded, hide loader
-          onLoadComplete(); // Call onLoadComplete when loading is done
-          drawFrame(0, loadedImages); // Immediately draw the first frame on the canvas
-        }
-      };
-    }
-    setImages(loadedImages);
-  }, [onLoadComplete]);
-  
 
-  // GSAP ScrollTrigger Animation for mobile
+    const loadImages = async () => {
+      const promises = Array.from({ length: totalFrames }, (_, i) => {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.src = `${imagePath}${i + 1}.webp`;
+          img.onload = () => {
+            setProgress(((i + 1) / totalFrames) * 100); // Update progress
+            resolve(img);
+          };
+        });
+      });
+
+      const loadedImages = await Promise.all(promises);
+      setImages(loadedImages);
+      setLoading(false); // Hide loader after all images are loaded
+      onLoadComplete(); // Trigger callback
+    };
+
+    loadImages();
+  }, [onLoadComplete]);
+
+  // Scroll-triggered canvas animation
   useEffect(() => {
-    if (images.length === 0 || loading) return; // Skip if not mobile, still loading, or no images
+    if (images.length === 0 || loading) return;
 
     const canvas = canvasRef.current;
-    if (!canvas) return; // Early exit if canvas is not available
-
     const ctx = canvas.getContext("2d");
-    if (!ctx) return; // Early exit if getContext fails
-
     const totalFrames = totalFramesMobile;
 
-    // Draw the first frame immediately after images are loaded
-    drawFrame(0, ctx, canvas, images);
+    drawFrame(0, ctx, canvas, images); // Draw the first frame immediately
 
     const scrollAnimation = ScrollTrigger.create({
       trigger: sectionRef.current,
       start: "top top",
       end: `+=${window.innerHeight * 2}`,
-      pin: true, // Pin the canvas while scrolling
-      scrub: 0.005,
+      pin: true,
+      scrub: 0.1,
       onUpdate: (self) => {
-        if (images.length === 0) return; // Guard against empty image array
-
         const frameIndex = Math.floor(self.progress * (totalFrames - 1));
         drawFrame(frameIndex, ctx, canvas, images);
       },
-      onLeaveBack: () => {
-        drawFrame(0, ctx, canvas, images); // Show the first frame when leaving back
-      },
-      onLeave: () => {
-        drawFrame(totalFrames - 1, ctx, canvas, images); // Show the last frame when leaving
-      },
     });
 
-    // Refresh ScrollTrigger to account for loaded content
     ScrollTrigger.refresh();
 
     return () => {
       scrollAnimation.kill();
     };
-  }, [images, loading]); // Re-run when images or loading state changes
+  }, [images, loading]);
+
+  // Adjust canvas size on load
+  useEffect(() => {
+    if (images.length > 0) {
+      const img = images[0];
+      const aspectRatio = img.width / img.height;
+      const canvas = canvasRef.current;
+
+      canvas.width = window.innerWidth;
+      canvas.height = canvas.width / aspectRatio;
+    }
+  }, [images]);
 
   return (
     <div className="section sliding_door_section pb-0" ref={sectionRef} id="peacockSection">
-      {/* Show loader only on mobile */}
-      {loading && <PeacockLoader />}
+      {/* Loading progress */}
+      {loading && <PeacockLoader progress={progress} />}
 
-      {/* Main content once loading is complete */}
-      <>
-          <div ref={containerRef} className="frames_content">
-            <div className="image_col position-relative">
-              {/* <Watermark className={isMobile ? 'style1' : 'style2'} /> */}
-              <Watermark className={isMobile ? '' : ''} />
-              <Logomark className={isMobile ? `left sm` : `left`} />
-              <canvas
-                ref={canvasRef}
-                width={window.innerWidth}
-                height={window.innerHeight}
-                style={{ display: "block", margin: "auto" }}
-              />
+      {/* Main content */}
+      <div className="frames_content">
+        <div className="image_col position-relative">
+          <Watermark className={isMobile ? "" : ""} />
+          <Logomark className={isMobile ? `left sm` : `left`} />
+          <canvas
+            ref={canvasRef}
+            width={window.innerWidth}
+            height={window.innerHeight}
+            style={{ display: "block", margin: "auto" }}
+          />
+        </div>
+        <ScrollDown className="color-black" />
+      </div>
 
-            </div>
-
-            <ScrollDown className="color-black" />
-          </div>
-
-          <Container>
-            <div className="about">
-            <CustomCard title={title} desc={desc} className="px_sm_0 pb-0" />
-            </div>
-          </Container>
-        </>
+      <Container>
+        <div className="about">
+          <CustomCard title={title} desc={desc} className="px_sm_0 pb-0" />
+        </div>
+      </Container>
     </div>
   );
 };

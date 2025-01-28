@@ -3,23 +3,10 @@ import * as CONFIG from '../../../../config/config';
 import BarLoader from "react-spinners/BarLoader";
 
 import classes from './peacock_loader.module.css';
+import { useMatches } from "../../../../theme/theme";
 
 const PeacockLoader = ()=>{
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(()=>{
-    const updateIsMobile = () => {
-      setIsMobile(window.innerWidth <= 767);
-    };
-
-    updateIsMobile(); // Set initial value
-    window.addEventListener("resize", updateIsMobile); // Update on resize
-
-    return () => {
-      window.removeEventListener("resize", updateIsMobile);
-    };
-
-  }, [])
+ const { isMobile } = useMatches(); 
 
   return(
     <div className={`loader_section gurgaon_loader ${classes.peacock_loader}`}>

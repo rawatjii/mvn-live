@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useRef } from "react";
 import * as CONFIG from '../../../config/config';
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const MicroHero = () => {
+  const scrollDownRef = useRef(null);
 
   return (
     <section className="section micro_hero_section p-0">

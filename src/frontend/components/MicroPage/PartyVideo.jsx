@@ -7,16 +7,17 @@ import Watermark from "../../../common/watermark/Index";
 import lottie from "lottie-web";
 import Logomark from "../../../common/logomark/Index";
 import ScrollDown from "../../../common/scrollDown/Index";
+import { useMatches } from "../../../theme/theme";
 
 // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-const PartyVideo = ({ isMobile, data, onLoadComplete }) => {
+const PartyVideo = ({ data, onLoadComplete }) => {
   const containerRef = useRef(null);
   const titleRef = useRef();
   const lottieContainerRef = useRef(null);
   const [animationData, setAnimationData] = useState(null);
-
+  const { isMobile } = useMatches();
   const { title, desc } = data.video3;
 
   // Dynamically import the correct JSON animation data
