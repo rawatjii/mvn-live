@@ -213,7 +213,7 @@ export const data = {
         desktop:CONFIG.IMAGE_URL + 'renders/apartment/5.webp',
         mobile:CONFIG.IMAGE_URL + 'renders/apartment/5_sm.webp',
         watermark:'right',
-        title:'Panaromic Living Room',
+        title:'Panoromic Living Room',
       },
       {
         desktop:CONFIG.IMAGE_URL + 'renders/apartment/7.webp',

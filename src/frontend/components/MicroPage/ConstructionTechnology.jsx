@@ -17,7 +17,7 @@ const images= [
   {
     asset:CONFIG.IMAGE_URL + 'renders/apartment/5_sm.webp',
     watermark:'left',
-    title:'Panaromic Living Room',
+    title:'Panoromic Living Room',
   },
   {
     asset:CONFIG.IMAGE_URL + 'renders/apartment/7_sm.webp',
