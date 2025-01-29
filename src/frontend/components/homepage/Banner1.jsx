@@ -18,7 +18,7 @@ const Banner1 = ()=>{
           src={isMobile ? MobileheronormalImg2 : DeskopheronormalImg2}
           alt="Hero Banner"
           className="img-fluid degree-img"
-          loading="lazy"
+          
         />
       </a>
     </section>

@@ -91,7 +91,7 @@ export default function MicroApartment({ data }) {
                     src={image.thumbnail_mobile}
                     alt={`mvn apartment ${index}`}
                     className="img-fluid apartment-section-img"
-                    loading="lazy"
+                    
                   />
                   <Watermark className={image.watermark} />
                   <Logomark className="left sm" />

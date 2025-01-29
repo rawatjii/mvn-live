@@ -55,7 +55,7 @@ const OurBrand = () => {
           src={isMobile ? MobilebrandBG : DesktopbrandBG}
           alt="mvn brand-bg"
           className="brand_bg"
-          loading="lazy"
+          
         />
       </LazyLoad>
 
@@ -64,7 +64,7 @@ const OurBrand = () => {
           src={LeftSideBanner}
           alt="mvn brand-bg"
           className="brand_bg brand_bg-2"
-          loading="lazy"
+          
         />
       </LazyLoad>
 
@@ -74,7 +74,7 @@ const OurBrand = () => {
             src={headingIconImg}
             alt="mvn brand heading icon"
             className="img-fluid title_plane1"
-            loading="lazy"
+            
           />
           <h4 ref={titleRef} className="title title_style1 text-center">
             Our Brand Ethos
@@ -95,7 +95,7 @@ const OurBrand = () => {
                         src={item.icon}
                         alt="mvn brand icon"
                         className="img-fluid"
-                        loading="lazy"
+                        
                       />
                     </div>
                     <div className="content">

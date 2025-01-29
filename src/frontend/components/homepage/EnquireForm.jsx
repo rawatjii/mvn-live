@@ -69,7 +69,7 @@ const EnquireForm = ({ career, projectName }) => {
             src={headingIconImg}
             alt="mvn heading icon"
             className="img-fluid title_plane1"
-            loading="lazy"
+            
           />
           <h4 ref={titleRef} className="title title_style1 text-center">
             Get In Touch With Us

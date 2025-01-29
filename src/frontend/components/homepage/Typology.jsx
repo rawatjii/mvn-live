@@ -161,7 +161,7 @@ const Typology = ({ onLoadComplete }) => {
                 src={PlaneIcon}
                 className="img-fluid"
                 alt="Plane image"
-                loading="lazy"
+                
               />
             </div>
 
@@ -221,7 +221,7 @@ const Typology = ({ onLoadComplete }) => {
                 className="img-fluid"
                 src={typo1}
                 alt="mvn typlogy 1"
-                loading="lazy"
+                
               />
               <Watermark />
             </span>
@@ -229,13 +229,13 @@ const Typology = ({ onLoadComplete }) => {
               className="image-2"
               src={typo2}
               alt="mvn typlogy 1"
-              loading="lazy"
+              
             />
             <img
               className="image-3"
               src={typo3}
               alt="mvn typlogy 1"
-              loading="lazy"
+              
             />
           </div>
 
@@ -248,19 +248,19 @@ const Typology = ({ onLoadComplete }) => {
               className="image-1"
               src={typo4}
               alt="mvn typlogy 2"
-              loading="lazy"
+              
             />
             <img
               className="image-2"
               src={typo5}
               alt="mvn typlogy 2"
-              loading="lazy"
+              
             />
             <img
               className="image-3"
               src={typo6}
               alt="mvn typlogy 2"
-              loading="lazy"
+              
             />
           </div>
 
@@ -273,14 +273,14 @@ const Typology = ({ onLoadComplete }) => {
               className="image-1 img-fluid"
               src={typo7}
               alt="mvn typlogy 3"
-              loading="lazy"
+              
             />
             <span className="image-2">
               <img
                 className="img-fluid"
                 src={typo8}
                 alt="mvn typlogy 3"
-                loading="lazy"
+                
               />
               <Watermark className="left" />
             </span>
@@ -288,7 +288,7 @@ const Typology = ({ onLoadComplete }) => {
               className="image-3"
               src={typo9}
               alt="mvn typlogy 3"
-              loading="lazy"
+              
             />
           </div>
         </div>

@@ -16,7 +16,7 @@ const Overview = ({className}) => {
             src={homeMobileLogo}
             alt="mvn aeroone logo"
             className="img-fluid mobile-img-logo"
-            loading="lazy"
+            
           />
           <h2 className="logo_title">Gurugram</h2>
           <span className="status">New Launch</span>

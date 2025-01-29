@@ -15,14 +15,14 @@ const OurTeam = ()=>{
     <Container>
       <Row className="mx_-8">
         <div className="col-md-12 col-12 heading_div  mb_60 mb_sm_30">
-          <img src={headingIconImg} alt="mvn heading image" className="img-fluid title_plane1" loading="lazy"/>
+          <img src={headingIconImg} alt="mvn heading image" className="img-fluid title_plane1" />
           <h4 ref={titleRef} className="title title_style1 text-center">People Behind</h4>
         </div>
       </Row>
       
     </Container>
 
-      <img src={teamImg} alt="mvn team image" className="img-fluid team_img" loading="lazy" />
+      <img src={teamImg} alt="mvn team image" className="img-fluid team_img"  />
     {/* <AnImage ref={imageRef}>
     </AnImage> */}
 

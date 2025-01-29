@@ -13,6 +13,7 @@ import newsIMG from "../assets/images/mediacenter/newsdrum-logo.jpg";
 import aninewsIMG from "../assets/images/mediacenter/aninews.png";
 import webindiaIMG from "../assets/images/mediacenter/webindia-logo.png";
 import financialExpIMG from "../assets/images/mediacenter/financialexp_logo.webp";
+import economicTimesImg from '../assets/images/mediacenter/economicTimes_logo.webp'
 
 // news images
 
@@ -23,6 +24,7 @@ import newsIMG4 from "../assets/images/mediacenter/news-img-4.jpeg";
 import newsIMG5 from "../assets/images/mediacenter/news-img-5.jpeg";
 import newsIMG6 from "../assets/images/mediacenter/news-img-6.jpeg";
 import newsIMG7 from "../assets/images/mediacenter/news-img-7.webp";
+import newsIMG8 from "../assets/images/mediacenter/news-img-8.webp";
 
 import mediaGalleryImg1 from "../assets/images/projects/gallery_img1.webp";
 import mediaGalleryImg2 from "../assets/images/projects/gallery_img2.webp";
@@ -103,6 +105,7 @@ function MediaCenter() {
   const newsImages = {
     isshow: true,
     galleryData: [
+      { src: newsIMG8, alt: "Image 8" },
       { src: newsIMG7, alt: "Image 7" },
       { src: newsIMG1, alt: "Image 1" },
       { src: newsIMG2, alt: "Image 2" },
@@ -170,6 +173,13 @@ function MediaCenter() {
   ];
 
   const onlineNews = [
+    {
+      id: 7,
+      title: `Ultra luxe, spacious homes arrive in Gurugram`,
+      img: economicTimesImg,
+      postedDate: "January 29, 2025",
+      url: "https://economictimes.indiatimes.com/epaper/delhicapital/2025/jan/29/et-panache/ultra-luxe-spacious-homes-arrive-in-gurugram/articleshow/117660416.cms",
+    },
     {
       id: 6,
       title: `Average flat sizes in top 7 cities rise by 7% in 2024, NCR records highest growth`,

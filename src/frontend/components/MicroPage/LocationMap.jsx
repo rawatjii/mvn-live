@@ -59,14 +59,14 @@ const MicroLocationMap = ({data})=>{
             <div className="thumbnail">
 
               <button className="location_btn"  onClick={handleShow}>
-                <img src={CONFIG.IMAGE_URL + 'icons/yt_color.png'} alt="youtube icon" className="img-fluid yt_icon" loading="lazy"  />
+                <img src={CONFIG.IMAGE_URL + 'icons/yt_color.png'} alt="youtube icon" className="img-fluid yt_icon"   />
                 Location Video
               </button>
 
               
               <div onClick={()=>setIsLocationMapOpen(true)}>
-                <img src={data.mapIMG.desktop} alt="mvn-master-plan" className="img-fluid d-none d-md-block" loading="lazy" />
-                <img src={data.mapIMG.mobile} alt="mvn-master-plan" className="img-fluid d-md-none" loading="lazy" />
+                <img src={data.mapIMG.desktop} alt="mvn-master-plan" className="img-fluid d-none d-md-block"  />
+                <img src={data.mapIMG.mobile} alt="mvn-master-plan" className="img-fluid d-md-none"  />
               </div>
             </div>
           </div>

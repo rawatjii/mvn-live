@@ -238,14 +238,14 @@ const Timeline = () => {
 
       <Container>
         <div className="heading_div mb_60 mb_sm_30">
-          <img src={headingIconImg} alt="mvn overview image" className="img-fluid title_plane1" loading="lazy" />
+          <img src={headingIconImg} alt="mvn overview image" className="img-fluid title_plane1"  />
           <h4 ref={titleRef} className="title title_style1 text-center">
           Our Timeline
           </h4>
         </div>
         <ul ref={timelineRef} className="timeline_content">
         <li ref={planeRef} className="plane">
-            <img src={diamondIcon} alt="mvn plan icon" className="img-fluid plan_icon" loading="lazy" />
+            <img src={diamondIcon} alt="mvn plan icon" className="img-fluid plan_icon"  />
           </li> 
           {data.map((item, index) => (
             <li key={index} className={`single ${index % 2 !== 0 ? 'right' : ''}`}>
@@ -255,7 +255,7 @@ const Timeline = () => {
                   alt="mvn-timeline-image"
                   className="img-fluid"
                   onLoad={handleImageLoad}
-                   loading="lazy"
+                   
                 />
               </div>
               <div ref={(el) => (contentRefs.current[index] = el)} className="content">

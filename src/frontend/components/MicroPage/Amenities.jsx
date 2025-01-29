@@ -106,13 +106,13 @@ export default function Amenities({ data }) {
                 src={`${CONFIG.IMAGE_URL}amenities/${single.imgSrc.mobile}`}
                 alt={`mvn amenities ${index}`}
                 className="img-fluid d-md-none"
-                loading="lazy"
+                
               />
               <img
                 src={`${CONFIG.IMAGE_URL}amenities/${single.imgSrc.desktop}`}
                 alt={`mvn amenities ${index}`}
                 className="img-fluid d-none d-md-block"
-                loading="lazy"
+                
               />
               <Watermark />
             </div>

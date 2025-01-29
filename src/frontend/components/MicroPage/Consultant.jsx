@@ -16,7 +16,7 @@ const Consultant = ()=>{
           <Row className="mx_-40">
             <Col md={12} className="px_40">
               <div className="user_img">
-                <img src={CONFIG.IMAGE_URL + 'hafeez_user.webp'} className="img-fluid w-100" alt="mvn hafeez " loading="lazy" />
+                <img src={CONFIG.IMAGE_URL + 'hafeez_user.webp'} className="img-fluid w-100" alt="mvn hafeez "  />
               </div>
             </Col>
 
@@ -25,13 +25,13 @@ const Consultant = ()=>{
 
               <ul className="logos justify-content-center">
                 <li>
-                <img src={CONFIG.IMAGE_URL + 'micro/consultant/logo2.webp'} alt="mvn consultant logo" className="img-fluid logo" loading="lazy" />
+                <img src={CONFIG.IMAGE_URL + 'micro/consultant/logo2.webp'} alt="mvn consultant logo" className="img-fluid logo"  />
                 </li>
                 <li>
-                  <img src={CONFIG.IMAGE_URL + 'micro/consultant/logo1.png'} alt="mvn consultant logo" className="img-fluid logo" loading="lazy" />
+                  <img src={CONFIG.IMAGE_URL + 'micro/consultant/logo1.png'} alt="mvn consultant logo" className="img-fluid logo"  />
                 </li>
                 <li>
-                  <img src={CONFIG.IMAGE_URL + 'micro/consultant/logo3.webp'} alt="mvn consultant logo" className="img-fluid logo"  loading="lazy"/>
+                  <img src={CONFIG.IMAGE_URL + 'micro/consultant/logo3.webp'} alt="mvn consultant logo" className="img-fluid logo"  />
                 </li>
               </ul>
             </Col>

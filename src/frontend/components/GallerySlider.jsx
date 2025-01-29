@@ -38,7 +38,7 @@ function GallerySlider({ data, slidesPerView, spaceBetween, navigation }) {
             >
                 {images?.map((image, index) => (
                     <SwiperSlide key={index}>
-                        <Watermark className="left" />
+                        {/* <Watermark className="left" /> */}
                         <img
                             src={image.src}
                             alt={image.alt}
