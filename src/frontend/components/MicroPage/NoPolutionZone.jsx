@@ -7,7 +7,7 @@ import { useMatches } from "../../../theme/theme";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function NoPollutionZone({ data }) {
+ function NoPollutionZone({ data }) {
   const sectionsRef = useRef([]);
   const { isMobile } = useMatches();
 
@@ -109,4 +109,6 @@ export default function NoPollutionZone({ data }) {
       </div>
     </div>
   );
-}
+};
+
+export default React.memo(NoPollutionZone)

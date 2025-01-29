@@ -9,7 +9,7 @@ import "yet-another-react-lightbox/styles.css";
 import CustomCard from "../Card";
 import Logomark from "../../../common/logomark/Index";
 
-export default function ImagesGallery({ data }) {
+ function ImagesGallery({ data }) {
   const sectionsRef = useRef(null);
   const [index, setIndex] = useState(-1);
   const imageDivRefs = useRef([]);
@@ -114,3 +114,5 @@ export default function ImagesGallery({ data }) {
     </div>
   );
 }
+
+export default React.memo(ImagesGallery);

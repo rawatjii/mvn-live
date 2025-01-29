@@ -8,7 +8,7 @@ import * as CONFIG from '../../../config/config';
 import Watermark from "../../../common/watermark/Index";
 import ScrollDown from "../../../common/scrollDown/Index";
 
-const PeacockSection = ({ data, onLoadComplete }) => {
+const PeacockSection = React.memo(({ data}) => {
   const { isMobile } = useMatches();
 
   const {second_title, desc} = data;
@@ -48,6 +48,6 @@ const PeacockSection = ({ data, onLoadComplete }) => {
      
     </div>
   );
-};
+});
 
 export default PeacockSection;

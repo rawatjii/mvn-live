@@ -2,7 +2,7 @@ import React from "react";
 import CustomCard from "../Card";
 import {Container } from "react-bootstrap";
 
-const Walkthrough = React.memo(()=>{
+const Walkthrough = ()=>{
 
   return(
     <section className="section walkthrough_section pb-0">
@@ -30,6 +30,6 @@ const Walkthrough = React.memo(()=>{
     </section>
     
   )
-})
+}
 
 export default Walkthrough

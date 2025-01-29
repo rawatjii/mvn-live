@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-
+import { gsap } from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import arrowIcon from "../../assets/images/icons/arrow.png";
 import { Link } from "react-router-dom";
 
@@ -15,6 +16,8 @@ import mvnUniversityDesktop from "../../assets/images/other-projects/mvn-univers
 import mvnSportsAcademyDesktop from "../../assets/images/other-projects/mvn-sports-academy-desktop-2.webp";
 import headingIconImg from "../../assets/images/icons/heading-icon-img.webp";
 import { useMatches } from "../../../theme/theme";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const otherProjects = [
   {
@@ -43,13 +46,13 @@ const otherProjects = [
   },
 ];
 
-const OtherProjects = ({ data, title, subTitle, mobContent=12 }) => {
+const OtherProjects = React.memo(({ data, title, subTitle, mobContent=12 }) => {
   const titleRef = useRef();
   const imageDivRefs = useRef([]);
   const { isMobile } = useMatches(); 
   const [imagesLoaded, setImagesLoaded] = useState(0);
 
-  const initializeAnimations = () => {
+  const initializeAnimations = useCallback(() => {
     if (otherProjects.length > 0) {
       gsap.from(titleRef.current, {
         y: 50,
@@ -74,7 +77,7 @@ const OtherProjects = ({ data, title, subTitle, mobContent=12 }) => {
         }
       });
     }
-  };
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -145,6 +148,6 @@ const OtherProjects = ({ data, title, subTitle, mobContent=12 }) => {
       </Container>
     </section>
   );
-};
+});
 
 export default OtherProjects;

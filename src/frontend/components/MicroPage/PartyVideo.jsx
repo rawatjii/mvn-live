@@ -2,7 +2,7 @@ import React from "react";
 import LottieAnimationSection from "./LottieAnimationSection";
 import { useMatches } from "../../../theme/theme";
 
-const PartyVideo = ({ data }) => {
+const PartyVideo = React.memo(({ data }) => {
   const { isMobile } = useMatches();
 
   return (
@@ -10,6 +10,6 @@ const PartyVideo = ({ data }) => {
       <LottieAnimationSection data={data} logomark={isMobile ? "left sm" : "left"} position="0" />
     </div>
   );
-};
+});
 
 export default PartyVideo;

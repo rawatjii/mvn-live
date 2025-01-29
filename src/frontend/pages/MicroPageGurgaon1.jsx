@@ -7,8 +7,6 @@ import { Helmet } from "react-helmet";
 import MicroHeader from "../components/MicroHeader";
 import MicroHero from "../components/MicroPage/Hero";
 import { useMatches } from "../../theme/theme";
-// import LottieAnimationSection from "../components/MicroPage/LottieAnimationSection";
-// import ImageGallery from "../components/MicroPage/ImagesGallery"
 const MicroOverview = React.lazy(()=>import("../components/MicroPage/Overview"));
 const LargeElevationSection = React.lazy(()=>import("../components/MicroPage/LargeElevationSection"));
 const Walkthrough = React.lazy(()=>import("../components/MicroPage/Walkthrough"));
@@ -26,9 +24,6 @@ const PartyVideo = React.lazy(() =>
 const MasterBedroom = React.lazy(() =>
   import("../components/MicroPage/MasterBedroom"));
 
-const LottieAnimationSection = React.lazy(() =>
-  import("../components/MicroPage/LottieAnimationSection")
-);
 const Consultant = React.lazy(() =>
   import("../components/MicroPage/Consultant")
 );
@@ -249,7 +244,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <div ref={(el) => (sectionRefs.current.microOverview = el)}>
-            <MicroHero  data={data} onLoadComplete={() => setHeroLoaded(true)} />
+            <MicroHero />
           </div>
 
           <Suspense fallback="">
@@ -262,7 +257,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
           <div ref={(el) => (sectionRefs.current.Walkthrough = el)}>
             <Suspense fallback="">
-              <Walkthrough data={data.Walkthrough} />
+              <Walkthrough  />
             </Suspense>
           </div>
 

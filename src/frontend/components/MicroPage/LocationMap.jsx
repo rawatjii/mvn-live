@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useCallback, useEffect, useRef, useState } from "react"
 import { gsap } from 'gsap';
 import { Container } from "react-bootstrap"
 import ScrollTrigger from 'gsap/ScrollTrigger';
@@ -16,7 +16,7 @@ import "yet-another-react-lightbox/styles.css";
 
 
 gsap.registerPlugin(ScrollTrigger);
-const MicroLocationMap = ({data})=>{
+const MicroLocationMap = React.memo(({data})=>{
   const titleRef = useRef();
   const [isLocationMapOpen, setIsLocationMapOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -24,10 +24,10 @@ const MicroLocationMap = ({data})=>{
 
   const locationMapImg = [{src: data.mapIMG.desktop, asset:data.mapIMG.desktop}]
   
-  const handleClose = () => setShowModal(false);
+  const handleClose = useCallback(() => setShowModal(false));
 
 
-  const handleShow = () => setShowModal(true);
+  const handleShow = useCallback(() => setShowModal(true));
 
   // for animation
 
@@ -120,6 +120,6 @@ const MicroLocationMap = ({data})=>{
       </Modal>
     </section>
   )
-}
+});
 
 export default MicroLocationMap

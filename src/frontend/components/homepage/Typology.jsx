@@ -20,7 +20,7 @@ import { useMatches } from "../../../theme/theme";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Typology = ({ onLoadComplete }) => {
+const Typology = React.memo(({ onLoadComplete }) => {
   const containerRef = useRef(null);
   const frameRefs = useRef([]);
   const isImagesLoaded = useRef(false);
@@ -296,6 +296,6 @@ const Typology = ({ onLoadComplete }) => {
       </section>
     </>
   );
-};
+});
 
 export default Typology;

@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import LottieAnimationSection from "./LottieAnimationSection";
 import { useMatches } from "../../../theme/theme";
 
-const LivingRoomVideoGurugram = ({ data, onLoadComplete }) => {
+const LivingRoomVideoGurugram = React.memo(({ data, onLoadComplete }) => {
   const sectionRef = useRef(null);
   const { isMobile } = useMatches();
 
@@ -15,6 +15,6 @@ const LivingRoomVideoGurugram = ({ data, onLoadComplete }) => {
       <LottieAnimationSection data={data} logomark={isMobile ? `left sm` : `left`} />
     </div>
   );
-};
+});
 
 export default LivingRoomVideoGurugram;

@@ -6,7 +6,7 @@ import { useMatches } from "../../../theme/theme";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Amenities({ section_data }) {
+function Amenities({ section_data }) {
   const { isMobile } = useMatches();
   const sectionsRef = useRef([]);
   const triggers = useRef([]);
@@ -147,3 +147,5 @@ export default function Amenities({ section_data }) {
     </>
   );
 }
+
+export default React.memo(Amenities)

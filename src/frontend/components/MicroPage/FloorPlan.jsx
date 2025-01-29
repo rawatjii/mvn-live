@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Button, Container } from "react-bootstrap";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -15,25 +15,21 @@ import CustomModal from "../../../common/Modal";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const MicroFloorPlan = ({ data }) => {
+const MicroFloorPlan = React.memo(({ data }) => {
   const titleRef = useRef();
-  const typoRefs = useRef([]);
-  const priceRefs = useRef([]);
-  const sizeRefs = useRef([]);
-  const [isMasterPlanOpen, setIsMasterPlanOpen] = useState(false);
   const [index, setIndex] = useState(-1);
   const [isShowModal, setIsShowModal] = useState(false);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
 
   const { floorPlanData, title } = data;
 
-  const showModal = () => {
+  const showModal = useCallback(() => {
     setIsShowModal(true);
-  };
+  });
 
-  const isHideModal = () => {
+  const isHideModal = useCallback(() => {
     setIsShowModal(false);
-  };
+  });
 
   // Detect screen size changes
   useEffect(() => {
@@ -168,6 +164,6 @@ const MicroFloorPlan = ({ data }) => {
       />
     </section>
   );
-};
+});
 
 export default MicroFloorPlan;

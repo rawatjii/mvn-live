@@ -13,7 +13,7 @@ import Logomark from "../../../common/logomark/Index";
 // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-const LottieAnimationSection = ({ data, onLoadComplete, position, watermark, logomark, type }) => {
+const LottieAnimationSection = React.memo(({ data, onLoadComplete, position, watermark, logomark, type }) => {
   const containerRef = useRef(null);
   const titleRef = useRef();
   const lottieContainerRef = useRef(null);
@@ -133,6 +133,6 @@ const LottieAnimationSection = ({ data, onLoadComplete, position, watermark, log
       )}
     </div>
   );
-};
+});
 
 export default LottieAnimationSection;

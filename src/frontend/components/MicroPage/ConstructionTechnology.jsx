@@ -4,7 +4,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 
 import CustomCard from '../Card';
 
-export default function ConstructionTechnology({ data }) {
+export default function ConstructionTechnology() {
 
   return (
     <section className='section constructionTech_section pb-0'>

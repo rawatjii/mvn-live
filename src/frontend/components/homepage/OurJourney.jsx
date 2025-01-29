@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -32,7 +32,7 @@ const OurJourney = () => {
   ]);
 
   // Function to initialize animations
-  const initializeAnimations = () => {
+  const initializeAnimations = useCallback(() => {
     // Title animation
     gsap.from(titleRef.current, {
       y: 50,
@@ -97,7 +97,7 @@ const OurJourney = () => {
         );
       },
     });
-  };
+  }, []);
 
   // Function to statically update values
   const updateStaticValues = () => {

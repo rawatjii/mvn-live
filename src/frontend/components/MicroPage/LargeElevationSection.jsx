@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Container } from 'react-bootstrap'
 import bgImgMB from '../../assets/images/aero-gurgaon/largeBg1Sm.webp'
 import bgImgDesk from '../../assets/images/aero-gurgaon/largeBg1.png'
@@ -7,7 +7,8 @@ import building_sm from '../../assets/images/aero-gurgaon/building_sm.webp'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CustomCard from '../Card'
-import { useMatches } from '../../../theme/theme'
+import { useMatches } from '../../../theme/theme';
+
 gsap.registerPlugin(ScrollTrigger);
 
 
