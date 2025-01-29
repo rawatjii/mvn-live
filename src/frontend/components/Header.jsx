@@ -335,7 +335,7 @@ const Header = () => {
                               </ul>
                             </li>
                             <li>
-                              <img src={subscribeBtn} alt="subscribe_btn" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} style={{cursor:'pointer'}} />
+                              <img src={subscribeBtn} alt="subscribe_btn" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} />
                             </li>
                         </ul>
                       </div>
@@ -345,13 +345,12 @@ const Header = () => {
 
 
                 <div className="closebtn-area d-none d-md-grid" onClick={() => toggleMenu("close")}>
-                <a 
-    href="#"
+                <button
     className="closebtn"
     onClick={(e) => {
       e.stopPropagation(); 
       toggleMenu("close");
-    }}><img src={CloseBtnimg} alt="mvn close icon"  className="img-fluid close-img"/>  Close</a>
+    }}><img src={CloseBtnimg} alt="mvn close icon"  className="img-fluid close-img"/>  Close</button>
                 </div>
               </div>
             </div>

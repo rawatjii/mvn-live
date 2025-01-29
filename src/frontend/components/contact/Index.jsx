@@ -20,7 +20,9 @@ const ContactPage = ()=>{
                             <img src={CONFIG.IMAGE_URL + 'icons/mail.png'} alt="mvn envelope icon" className="img-fluid" />
                         </span>
                         <span className="txt">
-                            <a href="#">info@mvngroup.in</a>
+                        <a href="mailto:info@mvngroup.in" aria-label="Email us at info@mvngroup.in">
+                                info@mvngroup.in
+                        </a>
                         </span>
                     </li>
                     <li>
@@ -28,7 +30,10 @@ const ContactPage = ()=>{
                             <img src={CONFIG.IMAGE_URL + 'icons/call.png'} alt="mvn envelope icon" className="img-fluid" />
                         </span>
                         <span  className="txt">
-                            <a href="#">(+91) 799 6000 196</a>
+                        <a href="tel:+917996000196" aria-label="Call us at (+91) 799 6000 196">
+                                 (+91) 799 6000 196
+                        </a>
+
                         </span>
                     </li>
                     <li>
