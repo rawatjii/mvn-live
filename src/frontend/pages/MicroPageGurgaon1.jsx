@@ -20,6 +20,12 @@ const PeacockSection = React.lazy(() =>
 const LivingRoomVideoGurugram = React.lazy(() =>
   import("../components/MicroPage/LivingRoomVideoGurugram")
 );
+const PartyVideo = React.lazy(() =>
+  import("../components/MicroPage/PartyVideo"));
+
+const MasterBedroom = React.lazy(() =>
+  import("../components/MicroPage/MasterBedroom"));
+
 const LottieAnimationSection = React.lazy(() =>
   import("../components/MicroPage/LottieAnimationSection")
 );
@@ -288,17 +294,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
           <Suspense fallback="">
             <div>
-              <LottieAnimationSection
-                data={data.living_room}
-                onLoadComplete={() => setLivingRoomLoaded(true)}
-                isMobile={isMobile}
-              />
-            </div>
-          </Suspense>
-
-          <Suspense fallback="">
-            <div>
-              <LottieAnimationSection
+              <PartyVideo
                 data={data.party_video}
                 onLoadComplete={() => setPartyLoaded(true)}
                 isMobile={isMobile}
@@ -308,12 +304,10 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
           <Suspense fallback="">
             <div>
-              <LottieAnimationSection
+              <MasterBedroom
                 data={data.masterBedroom}
+                onLoadComplete={() => setMasterBedroomLoaded(true)}
                 isMobile={isMobile}
-                onLoadComplete={() =>
-                  setMasterBedroomLoaded(true)
-                }
               />
             </div>
           </Suspense>

@@ -1,17 +1,17 @@
 import React from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container } from "react-bootstrap";
 import CustomCard from "../Card";
 import { useMatches } from "../../../theme/theme";
 import LottieAnimationSection from "./LottieAnimationSection";
 
 import * as CONFIG from '../../../config/config';
-
-gsap.registerPlugin(ScrollTrigger);
+import Watermark from "../../../common/watermark/Index";
+import ScrollDown from "../../../common/scrollDown/Index";
 
 const PeacockSection = ({ data, onLoadComplete }) => {
   const { isMobile } = useMatches();
+
+  const {second_title, desc} = data;
 
   return (
     <div className="section peacock_section pb-0" id="peacockSection">
@@ -19,20 +19,29 @@ const PeacockSection = ({ data, onLoadComplete }) => {
       {/* {isMobile && loading && <PeacockLoader />} */}
       {isMobile ? 
       <>
-        <LottieAnimationSection data={data} position="0"/>
+        <LottieAnimationSection data={data} position="0" logomark="sm style4" watermark="style4"/>
       </>
       
       : <>
-      <img src={CONFIG.IMAGE_URL + 'peacock/peacock.webp'} alt="Peacock image" className="img-fluid peacock_img" />
+      <div className="frames_content">
+        <div className="image_col position-relative">
+          <Watermark className={isMobile ? 'style4' : 'style2'} />
+          <img src={CONFIG.IMAGE_URL + 'peacock/peacock.webp'} alt="Peacock image" className="img-fluid peacock_img" />
+        </div>
+
+        <ScrollDown className="color-black" />
+      </div>
+      
+
       <Container>
-            <div className="about">
-              <CustomCard
-                className="px_sm_0 pb-0"
-                title="EXPERIENCE THE GRANDEUR OF THE LIVING ROOM WITH 360° PANORAMIC VIEWS"
-                desc="Step into a living room where nature’s vibrant splendor enchants, blending elegance and serenity for both relaxation and gatherings."
-              />
-            </div>
-          </Container>
+        <div className="about">
+          <CustomCard
+            className="px_sm_0 pb-0"
+            title={second_title}
+            desc={desc}
+          />
+        </div>
+      </Container>
       </>
       }
 

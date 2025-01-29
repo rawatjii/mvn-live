@@ -135,7 +135,7 @@ export const data = {
     }
   },
   masterBedroom: {
-    title: "BEDROOM Platinum",
+    second_title: "BEDROOM Platinum",
     desc: "Your own sphere of serenity crafted artfully for the ultimate retreat into blissful moments of privacy.",
     path:{
       mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/Panther/Mobile/data.json`,

@@ -1,13 +1,10 @@
 import React, { useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 import LottieAnimationSection from "./LottieAnimationSection";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useMatches } from "../../../theme/theme";
 
 const LivingRoomVideoGurugram = ({ data, onLoadComplete }) => {
   const sectionRef = useRef(null);
+  const { isMobile } = useMatches();
 
 
   return (
@@ -15,7 +12,7 @@ const LivingRoomVideoGurugram = ({ data, onLoadComplete }) => {
       {/* Loading progress */}
       {/* {loading && <PeacockLoader progress={progress} />} */}
 
-      <LottieAnimationSection data={data} />
+      <LottieAnimationSection data={data} logomark={isMobile ? `left sm` : `left`} />
     </div>
   );
 };
