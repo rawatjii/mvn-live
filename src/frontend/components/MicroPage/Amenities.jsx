@@ -12,7 +12,7 @@ export default function Amenities({ section_data }) {
   const { isMobile } = useMatches();
   const sectionsRef = useRef([]);
   const triggers = useRef([]);
-  const { title , data, second_title,desc } = section_data;
+  const { title , data, second_title, desc } = section_data;
 
   const getRatio = (el) => window.innerHeight / (window.innerHeight + el.offsetHeight);
 
@@ -93,11 +93,13 @@ export default function Amenities({ section_data }) {
                 src={single.path.mobile} // Use the mobile path directly
                 alt={`mvn amenities ${index}`}
                 className="img-fluid d-md-none"
+                loading="lazy" // Lazy load images
               />
               <img
                 src={single.path.desktop} // Use the desktop path directly
                 alt={`mvn amenities ${index}`}
                 className="img-fluid d-none d-md-block"
+                loading="lazy" // Lazy load images
               />
               <Watermark />
             </div>
@@ -145,19 +147,18 @@ export default function Amenities({ section_data }) {
     <>
       {isMobile ? renderMobileView() : renderDesktopView()}
       
-       {/* Description */}
-       {(second_title || desc) && (
-          <Container>
-            <div className="about">
-              <CustomCard
-                className="px-0 pb-0"
-                title={second_title || ""}
-                desc={desc || ""}
-              />
-            </div>
-          </Container>
-        )}
-
+      {/* Description */}
+      {(second_title || desc) && (
+        <Container>
+          <div className="about">
+            <CustomCard
+              className="px-0 pb-0"
+              title={second_title || ""}
+              desc={desc || ""}
+            />
+          </div>
+        </Container>
+      )}
     </>
   );
 }
