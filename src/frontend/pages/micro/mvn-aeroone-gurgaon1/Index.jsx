@@ -92,8 +92,8 @@ export const data = {
     second_title:'EXPERIENCE THE GRANDEUR OF THE LIVING ROOM WITH 360° PANORAMIC VIEWS',
     desc:'Step into a living room where nature’s vibrant splendor enchants, blending elegance and serenity for both relaxation and gatherings.',
     path:{
-      mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/Peacock/Mobile/data.json`,
-      desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/Peacock/Mobile/data.json`,
+      mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/Peacock/data.json`,
+      desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/Peacock/data.json`,
     }
 },
   // living_room_video:{
@@ -117,10 +117,9 @@ export const data = {
     second_title:'OPEN THE DOORS TO EXPANSIVE ELEGANCE AND SPACIOUS LUXURY',
     desc:'Glide your way through the floor-to-ceiling sliding doors, and step on to the sprawling deck with breathtaking vistas and an air of tranquility.',
     path:{
-      mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/livingRoom/desktop.json`,
-      desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/livingRoom/desktop.json`,
+      mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/livingRoom/data.json`,
+      desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/livingRoom/data.json`,
     }
-
   },
   video3: {
     title: "LIVE. LAUGH. LOUNGE",

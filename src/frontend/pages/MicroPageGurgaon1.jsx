@@ -17,6 +17,9 @@ const DownloadBrochure = React.lazy(()=>import("../components/MicroPage/Download
 const PeacockSection = React.lazy(() =>
   import("../components/MicroPage/PeacockSection")
 );
+const LivingRoomVideoGurugram = React.lazy(() =>
+  import("../components/MicroPage/LivingRoomVideoGurugram")
+);
 const LottieAnimationSection = React.lazy(() =>
   import("../components/MicroPage/LottieAnimationSection")
 );
@@ -266,12 +269,22 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
           <div ref={(el) => (sectionRefs.current.LIVINGROOM = el)}>
             <Suspense fallback="">
               <PeacockSection
-                data={data}
+                data={data.peacock_section}
                 onLoadComplete={() => setPeacockLoaded(true)}
                 isMobile={isMobile}
               />
             </Suspense>
           </div>
+
+          <Suspense fallback="">
+            <div>
+              <LivingRoomVideoGurugram
+                data={data.living_room}
+                onLoadComplete={() => setLivingRoomLoaded(true)}
+                isMobile={isMobile}
+              />
+            </div>
+          </Suspense>
 
           <Suspense fallback="">
             <div>

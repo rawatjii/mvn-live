@@ -11,7 +11,7 @@ import { useMatches } from "../../../theme/theme";
 // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-const LottieAnimationSection = ({ data, onLoadComplete }) => {
+const LottieAnimationSection = ({ data, onLoadComplete, position }) => {
   const containerRef = useRef(null);
   const titleRef = useRef();
   const lottieContainerRef = useRef(null);
@@ -56,7 +56,7 @@ const LottieAnimationSection = ({ data, onLoadComplete }) => {
 
     const scrollAnimation = ScrollTrigger.create({
       trigger: containerRef.current,
-      start: "top 95px",
+      start: `top ${position ? position : '95px'}`,
       end: `+=${window.innerHeight * 5}`,
       pin: true,
       scrub: 0.5,
@@ -105,7 +105,7 @@ const LottieAnimationSection = ({ data, onLoadComplete }) => {
   
 
   return (
-    <div className="section peacock_section party_section pb-0">
+    <div className="">
       {loading ? (
         <PartyLoader />
       ) : (
