@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useMemo } from "react";
+import React, { useEffect, useRef, useState, useMemo, useCallback } from "react";
 import { Container } from "react-bootstrap";
 import Watermark from "../../../common/watermark/Index";
 import Lightbox from "yet-another-react-lightbox";
@@ -22,16 +22,24 @@ export default function ImagesGallery({ data }) {
     [images]
   );
 
-  const handleImageLoad = () => setImagesLoaded((prev) => prev + 1);
+  const handleImageLoad = useCallback(() => {
+    setImagesLoaded((prev) => prev + 1);
+  }, []);
+
   // Memoized images map for rendering cards
-  const imageCards = useMemo(
-    () =>
-      images.map((image, idx) => (
+  const imageCards = useMemo(() => {
+    return images.map((image, idx) => {
+      const imageRef = (el) => {
+        // Assign the ref to the correct index in the refs array
+        imageDivRefs.current[idx] = el;
+      };
+      
+      return (
         <div className="col-sm-12 col-md-4 col-lg-4" key={idx}>
           <div className="card center" onClick={() => setIndex(idx)}>
             <div className="img">
               <Watermark className={image.watermark} />
-              <AnImage ref={(el) => (imageDivRefs.current[idx] = el)}>
+              <AnImage ref={imageRef}>
                 <img
                   src={image.mobile}
                   alt={image.title || `${title} ${idx + 1}`}
@@ -47,9 +55,9 @@ export default function ImagesGallery({ data }) {
             )}
           </div>
         </div>
-      )),
-    [images, title, imageClassName, handleImageLoad]
-  );
+      );
+    });
+  }, [images, title, imageClassName, handleImageLoad]);
 
   const initializeAnimations = async () => {
     const { gsap } = await import("gsap");
@@ -86,6 +94,7 @@ export default function ImagesGallery({ data }) {
   }, [imagesLoaded, images.length]);
 
   const lightbox_watermark = "lightbox_watermark";
+  
   return (
     <div className="section renders1_section wrapper center pb-0 Landscape-section">
       {/* Title */}
@@ -128,8 +137,8 @@ export default function ImagesGallery({ data }) {
                 alt="landscape image"
                 className='LightBox_image'
               />
-              <Watermark className={lightbox_watermark}/>
-              </div>
+              <Watermark className={lightbox_watermark} />
+            </div>
           ),
         }}
       />

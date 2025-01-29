@@ -5,11 +5,23 @@ import * as CONFIG from '../../../config/config';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const MicroHero = () => {
+const MicroHero = ({onBannerExit, isMainBanner}) => {
   const scrollDownRef = useRef(null);
+    const sectionRef = useRef(null);
+    useEffect(() => {
+      if (isMainBanner && sectionRef.current) {
+        ScrollTrigger.create({
+          trigger: sectionRef.current,
+          start: "bottom top",
+          toggleActions: "play none none reverse",
+          onEnterBack: () => onBannerExit(false),
+          onLeave: () => onBannerExit(true),
+        });
+      }
+    }, [isMainBanner, onBannerExit]);
 
   return (
-    <section className="section micro_hero_section p-0">
+    <section className="section micro_hero_section p-0" ref={sectionRef}>
       <img src={CONFIG.IMAGE_URL + 'micro/hero/aeroone-gurgaon/desktop.webp'} alt="aeroone-gurgaon-hero-image" className="img-fluid d-none d-md-block" />
       <img src={CONFIG.IMAGE_URL + 'micro/hero/aeroone-gurgaon/mobile.webp'} alt="aeroone-gurgaon-hero-image" className="img-fluid d-md-none" />
       <div

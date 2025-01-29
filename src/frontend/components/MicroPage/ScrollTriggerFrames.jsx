@@ -3,15 +3,14 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container } from "react-bootstrap";
 import CustomCard from "../Card";
-import PeacockLoader from "../../../common/Loader/micro/peacockLoader/Index";
 import Watermark from "../../../common/watermark/Index";
 import ScrollDown from "../../../common/scrollDown/Index";
-import Logomark from "../../../common/logomark/Index";
 import { useMatches } from "../../../theme/theme";
+import { debounce } from "lodash"; // Add lodash debounce for optimized resize
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ScrollTriggerFrames = ({ data, onLoadComplete ,onBannerExit, isMainBanner}) => {
+const ScrollTriggerFrames = ({ data, onLoadComplete, onBannerExit, isMainBanner }) => {
   const canvasRef = useRef(null);
   const sectionRef = useRef(null);
   const [images, setImages] = useState([]);
@@ -25,13 +24,12 @@ const ScrollTriggerFrames = ({ data, onLoadComplete ,onBannerExit, isMainBanner}
         trigger: sectionRef.current,
         start: "bottom top",
         toggleActions: "play none none reverse",
-        onEnterBack: () => onBannerExit(false), // Remove fixed class
-        onLeave: () => onBannerExit(true), // Add fixed class
+        onEnterBack: () => onBannerExit(false),
+        onLeave: () => onBannerExit(true),
       });
     }
   }, [isMainBanner, onBannerExit]);
 
-  // Memoize derived values to avoid unnecessary recalculations
   const totalFramesMobile = useMemo(
     () => (isMobile ? data.frameCounts.mobileFrameCounts : data.frameCounts.desktopFrameCounts),
     [isMobile, data.frameCounts]
@@ -49,6 +47,44 @@ const ScrollTriggerFrames = ({ data, onLoadComplete ,onBannerExit, isMainBanner}
     }),
     [data.second_title, data.desc]
   );
+
+  const loadImage = (index) => {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.src = `${imagePath}${index + 1}.webp`;
+      img.onload = () => resolve(img);
+    });
+  };
+
+  const lazyLoadImages = async () => {
+    const promises = [];
+    for (let i = 0; i < totalFramesMobile; i++) {
+      promises.push(loadImage(i));
+    }
+    const loadedImages = await Promise.all(promises);
+    setImages(loadedImages);
+    setLoading(false);
+    onLoadComplete();
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && loading) {
+          lazyLoadImages();
+        }
+      },
+      {
+        rootMargin: "100px", // Start loading before the image enters the viewport
+      }
+    );
+
+    observer.observe(sectionRef.current);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [loading, totalFramesMobile]);
 
   const drawFrame = (frameIndex, ctx, canvas, images) => {
     if (!images || !images[frameIndex]) return;
@@ -77,38 +113,6 @@ const ScrollTriggerFrames = ({ data, onLoadComplete ,onBannerExit, isMainBanner}
   };
 
   useEffect(() => {
-    const isMounted = { current: true }; // Flag to track component mount status
-
-    const loadImages = async () => {
-      const promises = Array.from({ length: totalFramesMobile }, (_, i) => {
-        return new Promise((resolve) => {
-          const img = new Image();
-          img.src = `${imagePath}${i + 1}.webp`;
-          img.onload = () => {
-            if (isMounted.current) {
-              setProgress(((i + 1) / totalFramesMobile) * 100); // Update progress
-              resolve(img);
-            }
-          };
-        });
-      });
-
-      const loadedImages = await Promise.all(promises);
-      if (isMounted.current) {
-        setImages(loadedImages);
-        setLoading(false);
-        onLoadComplete();
-      }
-    };
-
-    loadImages();
-
-    return () => {
-      isMounted.current = false; // Prevent further state updates
-    };
-  }, [imagePath, totalFramesMobile, onLoadComplete]);
-
-  useEffect(() => {
     if (images.length === 0 || loading) return;
 
     const canvas = canvasRef.current;
@@ -133,7 +137,10 @@ const ScrollTriggerFrames = ({ data, onLoadComplete ,onBannerExit, isMainBanner}
       scrub: 0.1,
       onUpdate: (self) => {
         const frameIndex = Math.floor(self.progress * (totalFramesMobile - 1));
-        throttledDrawFrame(frameIndex);
+        // Skip frames when scrolling fast (frame skipping)
+        if (self.progress > 0.05) {
+          throttledDrawFrame(frameIndex);
+        }
       },
     });
 
@@ -143,21 +150,21 @@ const ScrollTriggerFrames = ({ data, onLoadComplete ,onBannerExit, isMainBanner}
     };
   }, [images, loading, totalFramesMobile]);
 
+  const handleResize = debounce(() => {
+    if (images.length > 0) {
+      const img = images[0];
+      const aspectRatio = img.width / img.height;
+      const canvas = canvasRef.current;
+
+      canvas.width = window.innerWidth;
+      canvas.height = canvas.width / aspectRatio;
+
+      const ctx = canvas.getContext("2d");
+      drawFrame(0, ctx, canvas, images);
+    }
+  }, 300); // Debounced resize
+
   useEffect(() => {
-    const handleResize = () => {
-      if (images.length > 0) {
-        const img = images[0];
-        const aspectRatio = img.width / img.height;
-        const canvas = canvasRef.current;
-
-        canvas.width = window.innerWidth;
-        canvas.height = canvas.width / aspectRatio;
-
-        const ctx = canvas.getContext("2d");
-        drawFrame(0, ctx, canvas, images);
-      }
-    };
-
     handleResize(); // Initialize canvas size
     window.addEventListener("resize", handleResize);
 
@@ -168,7 +175,6 @@ const ScrollTriggerFrames = ({ data, onLoadComplete ,onBannerExit, isMainBanner}
 
   return (
     <section className={`section ${isMainBanner ? "banner p-0" : "Scroll_Height pb-0"}`} ref={sectionRef}>
-      {/* {loading && <PeacockLoader progress={progress} />} */}
       <div className="frames_content">
         <div className="image_col position-relative">
           <Watermark />
@@ -183,11 +189,7 @@ const ScrollTriggerFrames = ({ data, onLoadComplete ,onBannerExit, isMainBanner}
       </div>
       <Container className={data.classCustomCard}>
         <div className="about">
-          <CustomCard
-            title={cardData.title}
-            desc={cardData.desc}
-            className="px_sm_0 pb-0"
-          />
+          <CustomCard title={cardData.title} desc={cardData.desc} className="px_sm_0 pb-0" />
         </div>
       </Container>
     </section>

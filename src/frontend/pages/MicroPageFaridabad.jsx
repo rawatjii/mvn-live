@@ -32,7 +32,8 @@ const MicroPageFaridabad = ({ data, loadingCount, setLoadingCount }) => {
   const sectionRefs = useRef({});
   const {pageSections, projectName} = data;
 
-
+  const [isHeaderFixed, setIsHeaderFixed] = useState(false);
+  const bannerRef = useRef(null);
 
 
   const scrollToSection = (sectionKey) => {
@@ -169,15 +170,14 @@ const MicroPageFaridabad = ({ data, loadingCount, setLoadingCount }) => {
 
       </Helmet>
 
-      <MicroHeader scrollToSection={scrollToSection} data={data.header} />
+      <MicroHeader scrollToSection={scrollToSection} data={data.header} isFixed={ isHeaderFixed }/>
       <div id="smooth-wrapper">
         <div id="smooth-content">
-        <div
-            ref={(el) =>
-              (sectionRefs.current.banner = el)
-            }
+        <div ref={bannerRef}
           >
-          <AthensBanner data={data.banner}/>
+          <AthensBanner data={data.banner}
+            onBannerExit={setIsHeaderFixed} 
+            isMainBanner={true} />
           </div>
 
           <div
