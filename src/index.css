@@ -5569,6 +5569,9 @@ footer {
 .Scroll_Height .image_col canvas{
   width: 100vw;
 }
+.Scroll_Height.banner .frames_content, .Scroll_Height.banner .image_col, .Scroll_Height.banner .image_col canvas {
+  height:100vh;
+}
 /* hero section style end */
 
 

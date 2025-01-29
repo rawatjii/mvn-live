@@ -11,13 +11,25 @@ import { useMatches } from "../../../theme/theme";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ScrollTriggerFrames = ({ data, onLoadComplete }) => {
+const ScrollTriggerFrames = ({ data, onLoadComplete ,onBannerExit, isMainBanner}) => {
   const canvasRef = useRef(null);
   const sectionRef = useRef(null);
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const { isMobile } = useMatches();
+
+  useEffect(() => {
+    if (isMainBanner && sectionRef.current) {
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "bottom top",
+        toggleActions: "play none none reverse",
+        onEnterBack: () => onBannerExit(false), // Remove fixed class
+        onLeave: () => onBannerExit(true), // Add fixed class
+      });
+    }
+  }, [isMainBanner, onBannerExit]);
 
   // Memoize derived values to avoid unnecessary recalculations
   const totalFramesMobile = useMemo(
@@ -155,7 +167,7 @@ const ScrollTriggerFrames = ({ data, onLoadComplete }) => {
   }, [images]);
 
   return (
-    <section className={`section ${data.classMain ? data.classMain : "Scroll_Height pb-0"}`} ref={sectionRef}>
+    <section className={`section ${isMainBanner ? "banner p-0" : "Scroll_Height pb-0"}`} ref={sectionRef}>
       {/* {loading && <PeacockLoader progress={progress} />} */}
       <div className="frames_content">
         <div className="image_col position-relative">

@@ -34,7 +34,8 @@ const MicroPageBangalore = ({ data, loadingCount, setLoadingCount }) => {
   const sectionRefs = useRef({});
   const {pageSections, projectName} = data;
 
-
+  const [isHeaderFixed, setIsHeaderFixed] = useState(false);
+  const bannerRef = useRef(null);
 
 
   const scrollToSection = (sectionKey) => {
@@ -171,15 +172,18 @@ const MicroPageBangalore = ({ data, loadingCount, setLoadingCount }) => {
 
       </Helmet>
 
-      <MicroHeader scrollToSection={scrollToSection} data={data.header} />
+      <MicroHeader scrollToSection={scrollToSection} data={data.header} isFixed={ isHeaderFixed }/>
       <div id="smooth-wrapper">
         <div id="smooth-content">
           
-
-          {/* <div ref={(el) => (sectionRefs.current.microOverview = el)}> */}
-            <ScrollTriggerFrames  data={data.micro_hero_section} onLoadComplete={() => setHeroLoaded(true)}/>
-          {/* </div> */}
-
+          <div ref={bannerRef}>
+            <ScrollTriggerFrames 
+            data={data.micro_hero_section}
+            onLoadComplete={() => setHeroLoaded(true)}
+            onBannerExit={setIsHeaderFixed} 
+            isMainBanner={true} 
+            />
+          </div>
           {/* Render other components only after Hero Section is loaded */}
 
           <div ref={(el) => (sectionRefs.current.microOverview = el)}>

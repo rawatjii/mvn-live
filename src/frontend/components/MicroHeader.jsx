@@ -139,7 +139,7 @@ const socialMedia = [
   },
 ];
 
-const MicroHeader = ({ scrollToSection, data}) => {
+const MicroHeader = ({ scrollToSection, data,isFixed}) => {
   const [scrolled, setScrolled] = useState(false);
   const [isMicro, setIsMicro] = useState(false);
 
@@ -224,7 +224,7 @@ const MicroHeader = ({ scrollToSection, data}) => {
       <Navbar
         ref={headerRef}
         expand="false"
-        className={`${scrolled ? "fixed" : ""} ${isMicro ? "micro_nav" : null} ${data.athens_header}`}
+        className={`${isFixed ? "fixed" : ""} ${isMicro ? "micro_nav" : null} ${data.athens_header}`}
         role="navbar"
       >
         <Container>
