@@ -29,6 +29,7 @@ const Typology = React.memo(({ onLoadComplete }) => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true); // Loader state
   const [loadingComplete, setLoadingComplete] = useState(false); // State to track when all images are loaded
+  const [isInView, setIsInView] = useState(false); // State to track visibility in viewport
   const { isMobile } = useMatches();
   const isLaptop = window.innerWidth <= 1400;
 
@@ -40,8 +41,28 @@ const Typology = React.memo(({ onLoadComplete }) => {
   ];
 
   useEffect(() => {
+    // IntersectionObserver to track when the Typology section enters the viewport
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting); // Set to true when section is in view
+      },
+      { threshold: 0.1 } // Trigger when 10% of the element is visible
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
     // Only preload images once totalFrames is set
-    if (totalFrames === 0 || isImagesLoaded.current) return;
+    if (!isInView ||totalFrames === 0 || loadingComplete) return;
 
     // Preload images
     const loadedImages = [];
@@ -67,7 +88,7 @@ const Typology = React.memo(({ onLoadComplete }) => {
 
       loadedImages.push(img);
     }
-  }, []);
+  }, [isInView]);
 
   useEffect(() => {
     if (loading || !loadingComplete || images.length !== totalFrames) return;

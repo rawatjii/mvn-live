@@ -15,7 +15,7 @@ import "./Header.css";
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isMicro, setIsMicro] = useState(false);
-  const channelUrl = "https://www.youtube.com/@MVNInfrastructures?sub_confirmation=1";
+  // const channelUrl = "https://www.youtube.com/@MVNInfrastructures?sub_confirmation=1";
 
   const menusRef = useRef();
   const headerRef = useRef();
@@ -290,7 +290,7 @@ const Header = () => {
                               </ul>
                             </li>
                             <li>
-                              <img src={subscribeBtn} alt="subscribe_btn" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} style={{cursor:'pointer'}} />
+                              {/* <img src={subscribeBtn} alt="subscribe_btn" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} style={{cursor:'pointer'}} /> */}
                             </li>
                         </ul>
                       </div>

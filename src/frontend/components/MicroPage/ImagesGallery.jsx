@@ -5,9 +5,9 @@ import Lightbox from "yet-another-react-lightbox";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import AnImage from "../../../common/animations/Image/Index";
-import "yet-another-react-lightbox/styles.css";
 import CustomCard from "../Card";
 import Logomark from "../../../common/logomark/Index";
+import "yet-another-react-lightbox/styles.css";
 
  function ImagesGallery({ data }) {
   const sectionsRef = useRef(null);

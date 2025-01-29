@@ -6,7 +6,7 @@ const Walkthrough = ()=>{
 
   return(
     <section className="section walkthrough_section pb-0">
-      <iframe src="https://www.youtube.com/embed/9CHcJAveejU?si=Sr3K9ETfhxeyjrOW" 
+      {/* <iframe src="https://www.youtube.com/embed/9CHcJAveejU?si=Sr3K9ETfhxeyjrOW" 
         title="YouTube video player"
         frameBorder="0"
         allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -14,7 +14,7 @@ const Walkthrough = ()=>{
         allowFullScreen
         width="100"
         height="100"
-      ></iframe>
+      ></iframe> */}
    
       <Container>
         <div className='about'>

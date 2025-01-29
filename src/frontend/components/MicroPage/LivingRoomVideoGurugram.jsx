@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import LottieAnimationSection from "./LottieAnimationSection";
+import React, { Suspense, useRef } from "react";
+const LottieAnimationSection = React.lazy(()=>import("./LottieAnimationSection"));
 import { useMatches } from "../../../theme/theme";
 
 const LivingRoomVideoGurugram = React.memo(({ data, onLoadComplete }) => {
@@ -12,7 +12,9 @@ const LivingRoomVideoGurugram = React.memo(({ data, onLoadComplete }) => {
       {/* Loading progress */}
       {/* {loading && <PeacockLoader progress={progress} />} */}
 
+      <Suspense fallback="">
       <LottieAnimationSection data={data} logomark={isMobile ? `left sm` : `left`} />
+      </Suspense>
     </div>
   );
 });

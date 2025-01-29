@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Container } from "react-bootstrap";
 import CustomCard from "../Card";
 import { useMatches } from "../../../theme/theme";
-import LottieAnimationSection from "./LottieAnimationSection";
+const LottieAnimationSection = React.lazy(()=>import("./LottieAnimationSection")) ;
 
 import * as CONFIG from '../../../config/config';
 import Watermark from "../../../common/watermark/Index";
@@ -19,7 +19,9 @@ const PeacockSection = React.memo(({ data}) => {
       {/* {isMobile && loading && <PeacockLoader />} */}
       {isMobile ? 
       <>
+       <Suspense fallback="">
         <LottieAnimationSection data={data} position="0" logomark="sm style4" watermark="style4"/>
+       </Suspense>
       </>
       
       : <>

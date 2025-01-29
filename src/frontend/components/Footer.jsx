@@ -14,7 +14,7 @@ import FooterMiddleLogo from '../assets/images/logomvn.png';
 import subscribeBtn from '../assets/images/icons/subscribe_btn.webp';
 
 const Footer = () => {
-  const channelUrl = "https://www.youtube.com/@MVNInfrastructures?sub_confirmation=1";
+  // const channelUrl = "https://www.youtube.com/@MVNInfrastructures?sub_confirmation=1";
 
   return (
     <footer>
@@ -129,7 +129,7 @@ const Footer = () => {
                   <div className="right-b">
                     <div className="box">
                       <span>
-                        <img src={subscribeBtn} alt="subscribe_btn" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} />
+                        {/* <img src={subscribeBtn} alt="subscribe_btn" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} /> */}
                       </span>
                     </div>
                   </div>
