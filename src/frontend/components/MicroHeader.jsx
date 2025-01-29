@@ -3,401 +3,174 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import * as CONFIG from "root/config/config";
-import React, { useEffect, useRef, useState } from "react";
-
+import React, { useEffect, useState } from "react";
 import subscribeBtn from '../assets/images/icons/subscribe_btn.webp';
 import CloseBtnimg from '../assets/images/icons/close.png';
-
 import "./Header.css";
-
 import { gsap } from "gsap";
+import { otherPages, otherProjects, otherDetails, socialMedia } from '../../data/headerdata';
+import { useMatches } from "../../theme/theme";
 
 
-const otherPages = [
-  {
-    name:'About Us',
-    link:'about-us',
-  },
-  {
-    name:'Media Centre',
-    link:'media-centre',
-  },
-  {
-    name:'Blogs',
-    link:'blogs',
-  },
-  {
-    name:'Career',
-    link:'career',
-  },
-];
 
-const otherProjects = [
-  {
-    location:'Gurugram',
-    projects:[
-      {
-        name:'MVN Mall',
-        link:'https://mvnmall.com/',
-        status:'new Launch',
-      },
-      {
-        name:'MVN AeroOne',
-        link:'/aeroone-gurgaon',
-        status:'new Launch',
-        target_blank:false,
-      }
-    ]
-  },
-  {
-    location:'Bangalore',
-    projects:[
-      {
-        name:'MVN',
-        link:'https://www.mvnaeroone.com/',
-        status:'',
-      },
-      {
-        name:'MVN Bangalore',
-        link:'/aeroone-bangalore1',
-        status:'',
-        target_blank:false,
-      }
-    ]
-  },
-  {
-    location:'Faridabad',
-    projects:[
-      {
-        name:'MVN Athens',
-        link:'https://www.mvn.in/athens-faridabad/',
-        status:'',
-      },
-      {
-        name:'MVN Athens Faridabad',
-        link:'/mvn-athens-faridabad',
-        status:'',
-        target_blank:false,
-      },
-      {
-        name:'MVN Athens Phase 1',
-        link:'/mvn-athens-gurgaon-phase-1',
-        status:'',
-        target_blank:false,
-      },
-      {
-        name:'MVN Athens Phase 2',
-        link:'/mvn-athens-gurgaon-phase-2',
-        status:'',
-        target_blank:false,
-      }
-    ]
-  },
-  {
-    location:'Sohna',
-    projects:[
-      {
-        name:'MVN Athens',
-        link:'https://www.mvn.in/athens-gurugram/',
-        status:'',
-      },
-      {
-        name:'MVN Athens PH-2',
-        link:'https://www.mvninfrastructure.com/athens-gurugram-phase2/',
-        status:'',
-      },
-    ]
-  },
-];
-
-const otherDetails = {
-  contact: '+91 79960 00196',
-  email: 'info@mvn.in',
-  address: 'MVN AERO ONE, C/o Awfis, 7th Floor, Gate No. 3 &4 Ambience Mall, Ambience Island, NH-8, DLF Phase-3, Sector-24, Gurugram',
-}
-
-const socialMedia = [
-  {
-    imgUrl:'social/fb.png',
-    alt:'mvn-facebook-icon',
-    link:'https://www.facebook.com/officialmvninfra/',
-  },
-  {
-    imgUrl:'social/instagram.png',
-    alt:'mvn-instagram-icon',
-    link:'https://www.instagram.com/mvn_infrastructure/',
-  },
-  {
-    imgUrl:'social/linkedin.png',
-    alt:'mvn-linkedin-icon',
-    link:'https://www.linkedin.com/company/mvn-infrastructure/',
-  },
-  {
-    imgUrl:'social/youtube.png',
-    alt:'mvn-youtube-icon',
-    link:'https://www.youtube.com/@MVNInfrastructures',
-  },
-];
-
-const MicroHeader = ({ scrollToSection, data,isFixed}) => {
+const MicroHeader = ({ scrollToSection, data, isFixed }) => {
   const [scrolled, setScrolled] = useState(false);
   const [isMicro, setIsMicro] = useState(false);
 
   const SidebarSection = data.sidebar_section;
   const channelUrl = "https://www.youtube.com/@MVNInfrastructures?sub_confirmation=1";
-
-  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
-  const [otherProjectsOpen, setOtherProjectsOpen] = useState(false);
-
-  const menusRef = useRef();
-  const headerRef = useRef();
-  const logoRef = useRef();
-  const toggleRef = useRef();
-  const callBtnRef = useRef();
-
   const { pathname } = useLocation();
-
-  let navbarScroll = localStorage.getItem('navbar_scroll_height');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isMobile } = useMatches();
 
   useEffect(() => {
-    if (pathname.includes("aeroone-gurgaon") || pathname.includes("mvn-mall") || pathname.includes("aeroone-bangalore1") || pathname.includes("mvn-athens-faridabad") || pathname.includes("/mvn-athens-gurgaon-phase-2")  || pathname.includes("/mvn-athens-gurgaon-phase-1"))  {
+    if (pathname.includes("aeroone-gurgaon") || pathname.includes("mvn-mall") || pathname.includes("aeroone-bangalore1") || pathname.includes("mvn-athens-faridabad") || pathname.includes("/mvn-athens-gurgaon-phase-2") || pathname.includes("/mvn-athens-gurgaon-phase-1")) {
       setIsMicro(true);
     }
 
     const handleScroll = () => {
-      if(navbarScroll){
-        if (window.scrollY > navbarScroll){
-          setScrolled(true)
-        }else{
-          setScrolled(false);
-        }
+      const navbarScroll = localStorage.getItem('navbar_scroll_height');
+      if (navbarScroll && window.scrollY > navbarScroll) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
       }
-      
-      
-      
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [navbarScroll]);
+  }, [pathname]);
 
   useEffect(() => {
-    // logo animation
-
-    gsap.from(logoRef.current, {
-      y: 30, // Move 50px from the bottom
-      opacity: 0, // Start with 0 opacity (invisible)
-      duration: 1, // Animation duration in seconds
-      // ease: "power2" // Easing function for a smooth effect
-    });
-
-    // menu toggle animation
-    gsap.from(toggleRef.current, {
-      y: 15, // Move 50px from the bottom
-      opacity: 0, // Start with 0 opacity (invisible)
-      duration: 0.6, // Animation duration in seconds
-      delay: 0.4,
-      // ease: "power2" // Easing function for a smooth effect
-    });
+    gsap.from(".logo", { y: 30, opacity: 0, duration: 1 });
+    gsap.from(".navbar-toggle", { y: 15, opacity: 0, duration: 0.6, delay: 0.4 });
   }, []);
+
 
   const toggleMenu = (value) => {
-    if (value == "show") {
-      document.querySelector(".navbar_collapse").classList.add("show");
-    } else {
-      document.querySelector(".navbar_collapse").classList.remove("show");
-    }
+    setIsMenuOpen(value === "show");
   };
 
-  useEffect(() => {
-    window.addEventListener("resize", () => {
-      // console.log(window.innerWidth);
-      setInnerWidth(window.innerWidth);
-    });
-    return () => window.removeEventListener("resize", () => null);
-  }, []);
-
-  const pathnamesToHideMiddleMenu = ["/aeroone-gurgaon"];
   return (
-    <>
-      <Navbar
-        ref={headerRef}
-        expand="false"
-        className={`${isFixed ? "fixed" : ""} ${isMicro ? "micro_nav" : null} ${data.athens_header}`}
-        role="navbar"
-      >
-        <Container>
-          <Navbar.Brand ref={logoRef} className="logo">
-            <Link onClick={() => toggleMenu("close")}>
-              <img
-                src={CONFIG.IMAGE_URL + "logo_white.webp"}
-                alt="mvn-logo"
-                className="img-fluid d-none d-md-block"
-                fetchpriority="high"
-              />
-              <img
-                src={CONFIG.IMAGE_URL + "logo_white.webp"}
-                alt="mvn-logo"
-                className="img-fluid d-md-none"
-                fetchpriority="high"
-              />
-            </Link>
-          </Navbar.Brand>
-
-          <div className="right">
-            <a href={`tel:${otherDetails.contact}`} className="call_btn" ref={callBtnRef}>
-              <img src={CONFIG.IMAGE_URL + 'icons/call.png'} alt="mvn call icon" />
-            </a>
-            <Navbar.Toggle
-              ref={toggleRef}
-              aria-controls="basic-navbar-nav"
-              onClick={() => toggleMenu("show")}
-            >
-              <span className="icon"></span>
-            </Navbar.Toggle>
-          </div>
-
-          <div id="basic-navbar-nav" className="navbar_collapse" ref={menusRef}>
+    <Navbar expand="false" className={`${isFixed ? "fixed" : ""} ${isMicro ? "micro_nav" : ""} ${data.athens_header}`} role="navbar">
+      <Container>
+        <Navbar.Brand className="logo">
+          <Link onClick={() => toggleMenu("close")}>
+            <img src={CONFIG.IMAGE_URL + "logo_white.webp"} alt="mvn-logo" className="img-fluid d-none d-md-block" fetchpriority="high" />
+            <img src={CONFIG.IMAGE_URL + "logo_white.webp"} alt="mvn-logo" className="img-fluid d-md-none" fetchpriority="high" />
+          </Link>
+        </Navbar.Brand>
+        <div className="right">
+          <a href={`tel:${otherDetails.contact}`} className="call_btn">
+            <img src={CONFIG.IMAGE_URL + 'icons/call.png'} alt="mvn call icon" />
+          </a>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={() => toggleMenu("show")} className="navbar-toggle">
+            <span className="icon"></span>
+          </Navbar.Toggle>
+        </div>
+        <div id="basic-navbar-nav"  className={`navbar_collapse ${isMenuOpen ? "show" : ""}`}>
           <div className="overlay-content">
-              <div className="inner-overlay">
-                <div className="video-area d-none d-md-block">
-                  <img src={CONFIG.IMAGE_URL + 'renders/elevation/2.webp'} alt="mvn elevation image" />
+            <div className="inner-overlay">
+              <div className="video-area d-none d-md-block">
+                <img src={CONFIG.IMAGE_URL + 'renders/elevation/2.webp'} alt="mvn elevation image" />
+              </div>
+              <div className="menu-area">
+                <div className="top_head">
+                  <Link onClick={() => toggleMenu("close")}>
+                    <img src={CONFIG.IMAGE_URL + "logo_white.webp"} className="logo" alt="mvn logo" />
+                  </Link>
+                  <span className="close d-md-none" onClick={() => toggleMenu("close")}>&times;</span>
                 </div>
-
-                <div className="menu-area">
-                  <div>
-                    <div className="top_head">
-                    <Link
-                      onClick={() => toggleMenu("close")}
-                    >
-                      <img src={CONFIG.IMAGE_URL + "logo_white.webp"} className="logo" alt="mvn logo"/>
-                    </Link>
-                    
-
-                    <span className="close d-md-none"onClick={() => toggleMenu("close")}>&times;</span>
-                    </div>
-                    <div className="inner-menu">
-                      
-
-                      <div className="bottom-area">
-                        <div className="inner-bottom-area">
-                          <div className="microsite">
-                            <ul>
-                              <li>
-                                <NavLink to={import.meta.env.VITE_APP_URL} onClick={() => toggleMenu("close")}>
-                                  Home
-                                </NavLink>
-                              </li>
-                            </ul>
-                            <h4>{data.title}</h4>
-                            <ul>
-                              {SidebarSection && SidebarSection.map((section, index) =>(
-                                <li key={index}>
-                                  <NavLink
-                                    className="new-launch"
-                                    onClick={() => {scrollToSection(section.link);toggleMenu("close");}}
-                                  >
-                                    {section.section_title}
-                                  </NavLink>
-                                </li>
-                              ))}
-
-                              <li>
-                                <NavLink to={import.meta.env.VITE_APP_URL + 'contact-us'} onClick={() => toggleMenu("close")}>
-                                Contact Us
-                                </NavLink>
-                              </li>
-
-                            </ul>
-                          </div>
-
-                          <div className="left">
-
-                            {otherProjects && otherProjects.map((singleProject, index) => (
-                              <React.Fragment key={index}>
-                                <h4 className={index === 0 && 'pt-0'}>{singleProject.location}</h4>
-                                <ul>
-                                  {singleProject.projects && singleProject.projects.map((project, index)=>(
-                                    <li className={project.status && 'new_launch'} key={project.name+index}>
-                                      <NavLink to={project.link} target={project.target_blank === false ? "_self" : "_blank"} onClick={() => toggleMenu("close")}>
-                                        {project.name}
-                                      </NavLink>
-                                      {project.status && <span>{project.status}</span>}
-                                    </li>
-                                  ))}
-                                  
-                                </ul>
-                              </React.Fragment>
-                            ))}
-
-                          </div>
-
-                          <div className={`right ${window.innerWidth > 768 ? 'top' : 'bottom'}`}>
-                            <ul>
-                              {otherPages && otherPages.map((singleLink, index)=>(
-                                <li key={index}>
-                                  <NavLink to={import.meta.env.VITE_APP_URL + singleLink.link} onClick={() => toggleMenu("close")}>
-                                    {singleLink.name}
-                                  </NavLink>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-
-                        </div>
-                      </div>
-
-                      <div className="top-area">
-                        
-                        <div className="inner-logo d-none d-md-block">
-                          <p><span>Office:</span> {otherDetails.address}</p>
-                          <p><span>Talk:</span> {otherDetails.contact}</p>
-                        </div>
-
-                        <ul className="sub_menu">
-                            <li>
-                              <label htmlFor="school" className=" d-block w-100">Social Media</label>
-                              <ul className="social_links ">
-                                {socialMedia && socialMedia.map((socialIcon, index) => (
-                                  <li key={index}>
-                                    <Link to={socialIcon.link} target="_blank" onClick={() => toggleMenu("close")}>
-                                      <img
-                                        src={`${CONFIG.IMAGE_URL + socialIcon.imgUrl}`}
-                                        alt={socialIcon.alt}
-                                      />
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
+                <div className="inner-menu">
+                  <div className="bottom-area">
+                    <div className="inner-bottom-area">
+                      <div className="microsite">
+                        <ul>
+                          <li>
+                            <NavLink to={import.meta.env.VITE_APP_URL} onClick={() => toggleMenu("close")}>Home</NavLink>
+                          </li>
+                        </ul>
+                        <h4>{data.title}</h4>
+                        <ul>
+                          {SidebarSection && SidebarSection.map((section, index) => (
+                            <li key={index}>
+                              <NavLink className="new-launch" onClick={() => { scrollToSection(section.link); toggleMenu("close"); }}>
+                                {section.section_title}
+                              </NavLink>
                             </li>
-                            <li>
-                            <img src={subscribeBtn} alt="subscribe_btn" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} style={{cursor:'pointer'}} />
-                            </li>
+                          ))}
+                          <li>
+                            <NavLink to={import.meta.env.VITE_APP_URL + 'contact-us'} onClick={() => toggleMenu("close")}>Contact Us</NavLink>
+                          </li>
                         </ul>
                       </div>
-
+                      <div className="left">
+                        {otherProjects && otherProjects.map((singleProject, index) => (
+                          <React.Fragment key={index}>
+                            <h4 className={index === 0 ? 'pt-0' : ''}>{singleProject.location}</h4>
+                            <ul>
+                              {singleProject.projects && singleProject.projects.map((project, idx) => (
+                                <li className={project.status ? 'new_launch' : ''} key={project.name + idx}>
+                                  <NavLink to={project.link} target={project.target_blank === false ? "_self" : "_blank"} onClick={() => toggleMenu("close")}>
+                                    {project.name}
+                                  </NavLink>
+                                  {project.status && <span>{project.status}</span>}
+                                </li>
+                              ))}
+                            </ul>
+                          </React.Fragment>
+                        ))}
+                      </div>
+                      <div className={`right ${isMobile ? 'bottom' : 'top'}`}>
+                        <ul>
+                          {otherPages && otherPages.map((singleLink, index) => (
+                            <li key={index}>
+                              <NavLink to={import.meta.env.VITE_APP_URL + singleLink.link} onClick={() => toggleMenu("close")}>
+                                {singleLink.name}
+                              </NavLink>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
+                  <div className="top-area">
+                    <div className="inner-logo d-none d-md-block">
+                      <p><span>Office:</span> {otherDetails.address}</p>
+                      <p><span>Talk:</span> {otherDetails.contact}</p>
+                    </div>
+                    <ul className="sub_menu">
+                      <li>
+                        <label htmlFor="school" className="d-block w-100">Social Media</label>
+                        <ul className="social_links">
+                          {socialMedia.map((socialIcon, index) => (
+                            <li key={index}>
+                              <Link to={socialIcon.link} target="_blank" onClick={() => toggleMenu("close")}>
+                                <img src={`${CONFIG.IMAGE_URL + socialIcon.imgUrl}`} alt={socialIcon.alt} />
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </li>
+                      <li>
+                        <img src={subscribeBtn} alt="subscribe_btn" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} />
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-
-                <div className="closebtn-area d-none d-md-grid" onClick={() => toggleMenu("close")}>
-                  <a 
-                    href="#"
-                    className="closebtn"
-                    onClick={(e) => {
-                      e.stopPropagation(); 
-                      toggleMenu("close");
-                    }}>
-                      <img src={CloseBtnimg} alt="mvn close icon"  className="img-fluid close-img"/>  Close
-                  </a>
-                </div>
+              </div>
+              <div className="closebtn-area d-none d-md-grid" onClick={() => toggleMenu("close")}>
+                <button className="closebtn" onClick={(e) => { e.stopPropagation(); toggleMenu("close"); }}>
+                  <img src={CloseBtnimg} alt="mvn close icon" className="img-fluid close-img" /> Close
+                </button>
               </div>
             </div>
           </div>
-        </Container>
-      </Navbar>
-    </>
+        </div>
+      </Container>
+    </Navbar>
   );
 };
 

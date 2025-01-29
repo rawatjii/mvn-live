@@ -724,10 +724,12 @@ canvas {
     filter: invert(1);
 }
 
-a.closebtn {
+button.closebtn {
     display: flex;
     align-items: center;
     gap: 0px 40px;
+    background-color: transparent;
+    border: none;
 }
 
 
