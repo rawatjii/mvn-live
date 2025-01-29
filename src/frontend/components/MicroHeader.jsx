@@ -112,7 +112,7 @@ const MicroHeader = ({ scrollToSection, data}) => {
   const [isMicro, setIsMicro] = useState(false);
 
   const SidebarSection = data.sidebar_section;
-  // const channelUrl = "https://www.youtube.com/@MVNInfrastructures?sub_confirmation=1";
+  const channelUrl = "https://www.youtube.com/@MVNInfrastructures?sub_confirmation=1";
 
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
   const [otherProjectsOpen, setOtherProjectsOpen] = useState(false);
@@ -315,7 +315,7 @@ const MicroHeader = ({ scrollToSection, data}) => {
                               </ul>
                             </li>
                             <li>
-                            {/* <img src={subscribeBtn} alt="subscribe_btn" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} style={{cursor:'pointer'}} /> */}
+                            <img src={subscribeBtn} alt="subscribe_btn" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} style={{cursor:'pointer'}} />
                             </li>
                         </ul>
                       </div>

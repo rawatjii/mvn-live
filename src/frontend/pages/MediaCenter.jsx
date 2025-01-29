@@ -363,7 +363,7 @@ function MediaCenter() {
               </h4>
             </div>
             
-            {/* <div className="row">
+            <div className="row">
               {ourEvents &&
                 ourEvents.map((item, index) => (
                   <div className="col-sm-4" key={`event-${index}`}>
@@ -388,7 +388,7 @@ function MediaCenter() {
                     </div>
                   </div>
                 ))}
-            </div> */}
+            </div>
           </div>
         </section>
         <div className="container-fluid">
