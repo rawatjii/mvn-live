@@ -28,7 +28,7 @@ import MicroHeader from "../components/MicroHeader";
 import CustomCard from "../components/Card";
 import LivingRoomVideoGurugram from "../components/MicroPage/LivingRoomVideoGurugram";
 import PartyVideo from "../components/MicroPage/PartyVideo";
-import PartyVideo1 from "../components/MicroPage/PartyVideo1";
+// import PartyVideo1 from "../components/MicroPage/PartyVideo1";
 import MasterBedroom from "../components/MicroPage/MasterBedroom";
 import MicroLandscape from "../components/MicroPage/Landscape";
 import MicroElevation from "../components/MicroPage/MicroElevation";

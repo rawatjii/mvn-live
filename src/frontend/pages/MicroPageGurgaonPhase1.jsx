@@ -17,7 +17,7 @@ import AthensBanner from "../components/MicroPage/athens/AthensBanner";
 import FeatureSection from "../components/MicroPage/athens/FeatureSection";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-
+ 
 const MicroPageGurgaonPhase1 = ({ data, loadingCount, setLoadingCount }) => {
   const [heroLoaded, setHeroLoaded] = useState(true);
   const [newLoadingCount, setNewLoadingCount] = useState(

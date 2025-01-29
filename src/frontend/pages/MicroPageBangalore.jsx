@@ -18,7 +18,7 @@ import BangaloreElevationSection from "../components/MicroPage/bangalore/Bangalo
 import SliderTypology from "../components/MicroPage/bangalore/SliderTypology";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-
+ 
 const MicroPageBangalore = ({ data, loadingCount, setLoadingCount }) => {
   const [heroLoaded, setHeroLoaded] = useState(true);
   const [newLoadingCount, setNewLoadingCount] = useState(

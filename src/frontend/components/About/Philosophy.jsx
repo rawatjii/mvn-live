@@ -81,7 +81,7 @@ const Philosophy = () => {
     <section className="section philosophy_section pb-0">
       <Container>
         <div className="heading_div mb_60 mb_sm_30">
-          <img src={headingIconImg} alt="mvn heading icon" className="img-fluid title_plane1"/>
+          <img src={headingIconImg} alt="mvn heading icon" className="img-fluid title_plane1" loading="lazy" />
           <h4 ref={titleRef} className="title title_style1 text-center">Our Philosophy</h4>
         </div>
 
@@ -90,7 +90,7 @@ const Philosophy = () => {
             <ul>
          <li>
             <h4 ref={(el) => miniTitleRefs.current[0] = el} className="title">
-              <img src={planeIcon} alt="mvn-plan-icon" className="img-fluid icon" />
+              <img src={planeIcon} alt="mvn-plan-icon" className="img-fluid icon"  loading="lazy"/>
               Our Vision
             </h4>
             <p ref={(el) => desRefs.current[0] = el}>
@@ -102,7 +102,7 @@ const Philosophy = () => {
           <ul>
           <li>
             <h4 ref={(el) => miniTitleRefs.current[1] = el} className="title">
-              <img src={planeIcon} alt="mvn-plan-icon" className="img-fluid icon" />
+              <img src={planeIcon} alt="mvn-plan-icon" className="img-fluid icon" loading="lazy" />
               Our Mission
             </h4>
             <p ref={(el) => desRefs.current[1] = el}>
@@ -115,25 +115,25 @@ const Philosophy = () => {
             <ul>
           <li>
             <h4 ref={(el) => miniTitleRefs.current[2] = el} className="title">
-              <img src={planeIcon} alt="mvn-plan-icon" className="img-fluid icon" />
+              <img src={planeIcon} alt="mvn-plan-icon" className="img-fluid icon" loading="lazy" />
               Our Values
             </h4>
             <ul ref={(el) => desRefs.current[2] = el} className="our-values-ul-icon">
               <li>
-                <img src={ourValueIcon1} alt="mvn Enrich lives" className="img-fluid values-ul-icon" />                
+                <img src={ourValueIcon1} alt="mvn Enrich lives" className="img-fluid values-ul-icon" loading="lazy" />                
                 Enrich lives
                 </li>
               <li>
-              <img src={ourValueIcon2} alt="mvn Empower ambitions" className="img-fluid values-ul-icon" />   
+              <img src={ourValueIcon2} alt="mvn Empower ambitions" className="img-fluid values-ul-icon" loading="lazy" />   
                 Empower ambitions
                 </li>
               <li>
-              <img src={ourValueIcon3} alt="mvn Drive innovation" className="img-fluid values-ul-icon" />   
+              <img src={ourValueIcon3} alt="mvn Drive innovation" className="img-fluid values-ul-icon" loading="lazy" />   
                 Drive innovation
                 
                 </li>
               <li>
-              <img src={ourValueIcon4} alt="mvn Inspire quality" className="img-fluid values-ul-icon" />   
+              <img src={ourValueIcon4} alt="mvn Inspire quality" className="img-fluid values-ul-icon" loading="lazy" />   
                 Inspire quality
                 </li>
             </ul>

@@ -106,15 +106,15 @@ export const data = {
     second_title:'EXPERIENCE THE GRANDEUR OF THE LIVING ROOM WITH 360° PANORAMIC VIEWS',
     desc:'Step into a living room where nature’s vibrant splendor enchants, blending elegance and serenity for both relaxation and gatherings.',
     path:{
-      mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/Peacock/Mobile/data.json`,
-      desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/Peacock/Mobile/data.json`,
+      mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/Peacock/data.json`,
+      desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/Peacock/data.json`,
     }
 },
-  living_room_video:{
-    title: "OPEN THE DOORS TO EXPANSIVE ELEGANCE AND SPACIOUS LUXURY",
-    desc: "Glide your way through the floor-to-ceiling sliding doors, and step on to the sprawling deck with breathtaking vistas and an air of tranquility.",
-    isVdo: true,
-  },
+  // living_room_video:{
+  //   title: "OPEN THE DOORS TO EXPANSIVE ELEGANCE AND SPACIOUS LUXURY",
+  //   desc: "Glide your way through the floor-to-ceiling sliding doors, and step on to the sprawling deck with breathtaking vistas and an air of tranquility.",
+  //   isVdo: true,
+  // },
   ScrollFramesData:{
     title:'OPEN THE DOORS TO EXPANSIVE ELEGANCE AND SPACIOUS LUXURY',
     desc: "Glide your way through the floor-to-ceiling sliding doors, and step on to the sprawling deck with breathtaking vistas and an air of tranquility.",
@@ -131,10 +131,9 @@ export const data = {
     second_title:'OPEN THE DOORS TO EXPANSIVE ELEGANCE AND SPACIOUS LUXURY',
     desc:'Glide your way through the floor-to-ceiling sliding doors, and step on to the sprawling deck with breathtaking vistas and an air of tranquility.',
     path:{
-      mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/livingRoom/desktop.json`,
-      desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/livingRoom/desktop.json`,
+      mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/livingRoom/data.json`,
+      desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/livingRoom/data.json`,
     }
-
   },
   video3: {
     title: "LIVE. LAUGH. LOUNGE",
@@ -150,7 +149,7 @@ export const data = {
     }
   },
   masterBedroom: {
-    title: "BEDROOM Platinum",
+    second_title: "BEDROOM Platinum",
     desc: "Your own sphere of serenity crafted artfully for the ultimate retreat into blissful moments of privacy.",
     path:{
       mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/Panther/Mobile/data.json`,
@@ -213,7 +212,7 @@ export const data = {
         desktop:CONFIG.IMAGE_URL + 'renders/apartment/5.webp',
         mobile:CONFIG.IMAGE_URL + 'renders/apartment/5_sm.webp',
         watermark:'right',
-        title:'Panoromic Living Room',
+        title:'Panoramic Living Room',
       },
       {
         desktop:CONFIG.IMAGE_URL + 'renders/apartment/7.webp',

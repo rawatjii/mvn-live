@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import SecTitle from "../../../common/SecTitle/Index";
 import mvnMallImg from "../../assets/images/mvn_mall.webp";
 import mvnMallBannerImg1 from "../../assets/images/mall-banner-1.webp"
 import mvnMallBannerImg2 from "../../assets/images/mall-banner-2.webp"

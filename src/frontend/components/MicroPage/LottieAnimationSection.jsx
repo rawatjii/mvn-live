@@ -7,11 +7,13 @@ import PartyLoader from "../../../common/Loader/micro/partyLoader/Index";
 import Watermark from "../../../common/watermark/Index";
 import lottie from "lottie-web";
 import { useMatches } from "../../../theme/theme";
+import ScrollDown from "../../../common/scrollDown/Index";
+import Logomark from "../../../common/logomark/Index";
 
 // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-const LottieAnimationSection = ({ data, onLoadComplete }) => {
+const LottieAnimationSection = React.memo(({ data, onLoadComplete, position, watermark, logomark, type }) => {
   const containerRef = useRef(null);
   const titleRef = useRef();
   const lottieContainerRef = useRef(null);
@@ -56,7 +58,7 @@ const LottieAnimationSection = ({ data, onLoadComplete }) => {
 
     const scrollAnimation = ScrollTrigger.create({
       trigger: containerRef.current,
-      start: "top 95px",
+      start: `top ${position ? position : '75px'}`,
       end: `+=${window.innerHeight * 5}`,
       pin: true,
       scrub: 0.5,
@@ -102,31 +104,35 @@ const LottieAnimationSection = ({ data, onLoadComplete }) => {
     });
   }, []);
 
-  
-
   return (
-    <div className="section peacock_section party_section pb-0">
+    <div className="">
       {loading ? (
         <PartyLoader />
       ) : (
         <>
-          <div ref={containerRef} className="frames_content">
-            <div className="position-relative h_sm_100">
+          <div ref={containerRef}>
+            <div className="frames_content">
               <div className="position-relative h_sm_100">
-                <Watermark />
-                <div ref={lottieContainerRef} style={{ width: "100%", height: "100%" }}></div>
+                <div className="position-relative h_sm_100">
+                  <Watermark className={watermark ? watermark : null} />
+                  <Logomark className={`left ${logomark ? logomark : null}`} />
+                  <div ref={lottieContainerRef} style={{ width: "100%", height: "100%" }}></div>
+                </div>
               </div>
+
+              {(!type || type !== 'style1') && <ScrollDown className="color-black" />}
             </div>
+            {type && type == 'style1' && <ScrollDown className="color-black" />}
+            <Container>
+              <div className="about">
+                <CustomCard className="px-0 pb-0" title={second_title} desc={desc} />
+              </div>
+            </Container>
           </div>
-          <Container>
-            <div className="about">
-              <CustomCard className="px-0 pb-0" title={second_title} desc={desc} />
-            </div>
-          </Container>
         </>
       )}
     </div>
   );
-};
+});
 
 export default LottieAnimationSection;

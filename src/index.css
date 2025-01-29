@@ -647,6 +647,29 @@ a {
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+
+  &:after{
+    position: absolute;
+    content: "";
+    background-color: #d6bf5a59;
+    width: 70px;
+    height: 70px;
+    top: 50%;
+    left: -25px;
+    border-radius: 100px;
+    z-index: 0;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+  }
+
+  &.hide_after{
+
+    &:after{
+
+      display: none;
+    }
+  }
 }
 
 

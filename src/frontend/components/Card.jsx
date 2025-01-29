@@ -1,7 +1,7 @@
 import React from "react";
 import planeIMG from "../assets/images/icons/plane.png";
 
-const CustomCard = ({ className, title, location, extra, desc, extraTxt, type }) => {
+const CustomCard = React.memo(({ className, title, location, extra, desc, extraTxt, type }) => {
   return (
     <div className={`overview_card ${className}`}>
       <div className="diamond_img_strip">
@@ -28,6 +28,6 @@ const CustomCard = ({ className, title, location, extra, desc, extraTxt, type })
       {extraTxt && <h4 className="extraTxt">{extraTxt}</h4>}
     </div>
   );
-};
+});
 
 export default CustomCard;

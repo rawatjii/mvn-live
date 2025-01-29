@@ -1,13 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import SecTitle from "../../../common/SecTitle/Index";
-
-import arrowIcon from "../../assets/images/icons/arrow.png";
-import { Link } from "react-router-dom";
-import LazyLoad from "react-lazyload";
-
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import arrowIcon from "../../assets/images/icons/arrow.png";
+import { Link } from "react-router-dom";
 
 import AnImage from "../../../common/animations/Image/Index";
 
@@ -20,6 +16,8 @@ import mvnUniversityDesktop from "../../assets/images/other-projects/mvn-univers
 import mvnSportsAcademyDesktop from "../../assets/images/other-projects/mvn-sports-academy-desktop-2.webp";
 import headingIconImg from "../../assets/images/icons/heading-icon-img.webp";
 import { useMatches } from "../../../theme/theme";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const otherProjects = [
   {
@@ -48,31 +46,13 @@ const otherProjects = [
   },
 ];
 
-// Separate the `content` array for clarity
-const additionalContent = [
-  {
-    fname: "Lorem klsdjfskldfjsd",
-    con: "klsdjfklsdjfs",
-  },
-  {
-    fname: "sdkfjskldfjsdklfjsdklfj",
-    con: "zdskjfsjdfkl",
-  },
-  {
-    fname: "Lorem klsdjfskldfjsd",
-    con: "klsdjfklsdjfs",
-  },
-];
-
-gsap.registerPlugin(ScrollTrigger);
-
-const OtherProjects = ({ data, title, subTitle, mobContent=12 }) => {
+const OtherProjects = React.memo(({ data, title, subTitle, mobContent=12 }) => {
   const titleRef = useRef();
   const imageDivRefs = useRef([]);
   const { isMobile } = useMatches(); 
   const [imagesLoaded, setImagesLoaded] = useState(0);
 
-  const initializeAnimations = () => {
+  const initializeAnimations = useCallback(() => {
     if (otherProjects.length > 0) {
       gsap.from(titleRef.current, {
         y: 50,
@@ -97,7 +77,7 @@ const OtherProjects = ({ data, title, subTitle, mobContent=12 }) => {
         }
       });
     }
-  };
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -145,20 +125,22 @@ const OtherProjects = ({ data, title, subTitle, mobContent=12 }) => {
                   </Link>
                 </div>
                 {title && (
-                  <div class="content">
-                    <span class="am-name">{title}</span>
-                    <p class="desc">{subTitle}</p>
+                  <div className="content">
+                    <span className="am-name">{title}</span>
+                    <p className="desc">{subTitle}</p>
                   </div>
                 )}
 
-                <AnImage ref={(el) => (imageDivRefs.current[index] = el)}>
-                  <img
+<img
                     src={isMobile ? item.thumbnails.mobile : item.thumbnails.desktop}
                     alt="mvn projects image"
                     className="img-fluid other-project-img"
                     onLoad={handleImageLoad}
                   />
-                </AnImage>
+
+                {/* <AnImage ref={(el) => (imageDivRefs.current[index] = el)}>
+                  
+                </AnImage> */}
               </div>
             </Col>
           ))}
@@ -166,6 +148,6 @@ const OtherProjects = ({ data, title, subTitle, mobContent=12 }) => {
       </Container>
     </section>
   );
-};
+});
 
 export default OtherProjects;

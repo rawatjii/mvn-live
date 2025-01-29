@@ -20,7 +20,7 @@ import { useMatches } from "../../../theme/theme";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Typology = ({ onLoadComplete }) => {
+const Typology = React.memo(({ onLoadComplete }) => {
   const containerRef = useRef(null);
   const frameRefs = useRef([]);
   const isImagesLoaded = useRef(false);
@@ -89,12 +89,12 @@ const Typology = ({ onLoadComplete }) => {
           (self.progress - segmentIndex / segments.length) * segments.length;
         const frameIndex = Math.min(
           segment.startFrame +
-            Math.floor(segmentProgress * (segment.endFrame - segment.startFrame)),
+            Math.floor(
+              segmentProgress * (segment.endFrame - segment.startFrame)
+            ),
           totalFrames - 1
         );
 
-        // Debugging output (optional)
-        console.log("Frame Index:", frameIndex, "Progress:", self.progress);
 
         // Show the current frame and hide others
         frameRefs.current.forEach((img, index) => {
@@ -133,7 +133,7 @@ const Typology = ({ onLoadComplete }) => {
   return (
     <>
       <section ref={containerRef} className="section typology_section pb-0">
-        <div className="heading_div mb_60 mb_sm_30" >
+        <div className="heading_div mb_60 mb_sm_30">
           <h4 className="title title_style1 text-center">Typologies</h4>
         </div>
         {/* Images section */}
@@ -146,21 +146,24 @@ const Typology = ({ onLoadComplete }) => {
               alt={`Frame ${index}`}
               className="frame"
               style={{ display: index === 0 ? "block" : "none" }}
-              
             />
           ))}
 
-<div className="typology_arrow">
+          <div className="typology_arrow">
             <div className="line"></div>
           </div>
         </div>
 
         {/* Content boxes */}
         <div className="typology_content">
-
           <div className="typology-before-line">
             <div className="diamond_img_strip">
-              <img src={PlaneIcon} className="img-fluid" alt="Plane image" />
+              <img
+                src={PlaneIcon}
+                className="img-fluid"
+                alt="Plane image"
+                loading="lazy"
+              />
             </div>
 
             <div
@@ -171,9 +174,9 @@ const Typology = ({ onLoadComplete }) => {
               <h1>Penthouse</h1>
               <p>
                 Elevate your lifestyle to new heights with these extraordinary
-                duplex residences, where two levels of unmatched luxury unfold before
-                you. With impeccable attention to detail and a focus on privacy
-                and exclusivity, these residences embody the pinnacle of
+                duplex residences, where two levels of unmatched luxury unfold
+                before you. With impeccable attention to detail and a focus on
+                privacy and exclusivity, these residences embody the pinnacle of
                 sophisticated living, where only the most discerning will
                 reside.
               </p>
@@ -215,11 +218,26 @@ const Typology = ({ onLoadComplete }) => {
             style={{ display: "block" }}
           >
             <span className="image-1">
-              <img className="img-fluid" src={typo1} alt="mvn typlogy 1" loading="lazy" />
+              <img
+                className="img-fluid"
+                src={typo1}
+                alt="mvn typlogy 1"
+                loading="lazy"
+              />
               <Watermark />
             </span>
-            <img className="image-2" src={typo2} alt="mvn typlogy 1" loading="lazy" />
-            <img className="image-3" src={typo3} alt="mvn typlogy 1" loading="lazy" />
+            <img
+              className="image-2"
+              src={typo2}
+              alt="mvn typlogy 1"
+              loading="lazy"
+            />
+            <img
+              className="image-3"
+              src={typo3}
+              alt="mvn typlogy 1"
+              loading="lazy"
+            />
           </div>
 
           <div
@@ -227,9 +245,24 @@ const Typology = ({ onLoadComplete }) => {
             className="typologies-images"
             style={{ display: "none" }}
           >
-            <img className="image-1" src={typo4} alt="mvn typlogy 2" loading="lazy" />
-            <img className="image-2" src={typo5} alt="mvn typlogy 2" loading="lazy" />
-            <img className="image-3" src={typo6} alt="mvn typlogy 2" loading="lazy" />
+            <img
+              className="image-1"
+              src={typo4}
+              alt="mvn typlogy 2"
+              loading="lazy"
+            />
+            <img
+              className="image-2"
+              src={typo5}
+              alt="mvn typlogy 2"
+              loading="lazy"
+            />
+            <img
+              className="image-3"
+              src={typo6}
+              alt="mvn typlogy 2"
+              loading="lazy"
+            />
           </div>
 
           <div
@@ -237,17 +270,32 @@ const Typology = ({ onLoadComplete }) => {
             className="typologies-images"
             style={{ display: "none" }}
           >
-            <img className="image-1 img-fluid" src={typo7} alt="mvn typlogy 3" loading="lazy" />
+            <img
+              className="image-1 img-fluid"
+              src={typo7}
+              alt="mvn typlogy 3"
+              loading="lazy"
+            />
             <span className="image-2">
-              <img className="img-fluid" src={typo8} alt="mvn typlogy 3" loading="lazy" />
+              <img
+                className="img-fluid"
+                src={typo8}
+                alt="mvn typlogy 3"
+                loading="lazy"
+              />
               <Watermark className="left" />
             </span>
-            <img className="image-3" src={typo9} alt="mvn typlogy 3" loading="lazy" />
+            <img
+              className="image-3"
+              src={typo9}
+              alt="mvn typlogy 3"
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
     </>
   );
-};
+});
 
 export default Typology;

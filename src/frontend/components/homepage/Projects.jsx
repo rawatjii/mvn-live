@@ -1,10 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "../../../common/Button/Button";
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 import AnImage from "../../../common/animations/Image/Index";
 
 import mvnMallImg from "../../assets/images/projects/mvn-mall.webp";
@@ -14,18 +11,9 @@ import mvnMallImgDesktop from "../../assets/images/projects/project-img-3.webp";
 import mvnAerooneImgDesktop from "../../assets/images/projects/mvn-aeroone.webp";
 import mvnAerooneBangaloreImgDesktop from "../../assets/images/projects/mvn-bangalore-project.webp";
 import arrowIcon from "../../assets/images/icons/arrow.png";
-import btn_arrow from "../../assets/images/icons/btn_arrow.png";
-// import planeIcon from "../../assets/images/icons/plane.jpg";
 import planeIcon from "../../assets/images/icons/heading-icon-img.webp";
-import NewLaunchIcon from "../../assets/images/icons/new-launch-patch.png"
-
 
 import * as CONFIG from '../../../config/config'
-
-import { Link } from "react-router-dom";
-import LazyLoad from "react-lazyload";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const projectsData = [
   {
@@ -58,6 +46,7 @@ const Projects = () => {
 
   const imageDivRefs = useRef([]);
   const titleRef = useRef();
+  const desRef = useRef();
   const [imagesLoaded, setImagesLoaded] = useState(0);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768); // Set initial state based on current screen size
 
@@ -71,49 +60,6 @@ const Projects = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  const initializeAnimations = () => {
-    gsap.from(titleRef.current, {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      scrollTrigger: {
-        trigger: titleRef.current,
-        start: "top 95%",
-        once: true,
-      },
-    });
-
-    imageDivRefs.current.forEach((imagediv) => {
-
-      if (imagediv) {
-        gsap.to(imagediv, {
-          scrollTrigger: {
-            trigger: imagediv,
-            start: "top 95%",
-            once: true,
-            onEnter: () => {
-              imagediv.classList.add("active")
-              // console.log(imagediv.classList);
-            },
-          },
-          clearProps: "all",
-        });
-      }
-    });
-  };
-
-  useEffect(() => {
-    if (imagesLoaded === projectsData.length) {
-      setTimeout(() => {
-        initializeAnimations();
-        ScrollTrigger.refresh();
-      }, 300);
-    }
-
-    window.addEventListener("resize", ScrollTrigger.refresh);
-    return () => window.removeEventListener("resize", ScrollTrigger.refresh);
-  }, [imagesLoaded]);
 
   const handleImageLoad = () => {
     setImagesLoaded((prev) => prev + 1);
@@ -130,8 +76,6 @@ const Projects = () => {
   return (
     <>
       <section className="section projects_section_new pb-0">
-
-
         <Container>
           <Row className="mx_-8">
 
@@ -142,8 +86,8 @@ const Projects = () => {
                 alt="mvn-plane-icon"
                 className="img-fluid title_plane1"
               />
-              <h4 className="title title_style1 text-center">Explore Our Projects</h4>
-              <article className="des_style1 text-center">MVN Infrastructure introduces MVN Aero One Residencies, the largest ultra-luxury apartments in Delhi NCR, located at the 22-kilometer stone on Dwarka Expressway.</article>
+              <h4 className="title title_style1 text-center" ref={titleRef}>Explore Our Projects</h4>
+              <article className="des_style1 text-center" ref={desRef}>MVN Infrastructure introduces MVN Aero One Residencies, the largest ultra-luxury apartments in Delhi NCR, located at the 22-kilometer stone on Dwarka Expressway.</article>
             </div>
 
             <div className="project_div d-flex flex-wrap">
@@ -169,7 +113,7 @@ const Projects = () => {
               </div>
               <div className="projects_flex_row d-flex flex-wrap col-md-8 col-12">
                 {leftColProjects.map((item, index) => (
-                  <div className="project_box col-md-6 col-12">
+                  <div className="project_box col-md-6 col-12" key={index}>
                     <div className="project_box_in" key={index}>
                       <AnImage
                         ref={(el) => (imageDivRefs.current[index] = el)}
@@ -228,7 +172,7 @@ const Projects = () => {
               </div>
               <div className="projects_flex_row d-flex flex-wrap col-md-8 col-12">
                 {rightColProjects.map((item, index) => (
-                  <div className="project_box col-12">
+                  <div className="project_box col-12" key={index}>
                     <div className="project_box_in" key={index}>
                       <AnImage
                         ref={(el) => (imageDivRefs.current[index] = el)}

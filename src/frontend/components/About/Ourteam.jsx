@@ -55,7 +55,7 @@ const OurTeam = () => {
         {/* Row for the first three members */}
 
         <div className="heading_div ">
-          <img src={headingIconImg} alt="mvn overview image" className="img-fluid title_plane1"/>
+          <img src={headingIconImg} alt="mvn overview image" className="img-fluid title_plane1" loading="lazy" />
           <h4 className="title title_style1 text-center">
             People Behind
           </h4>
@@ -70,6 +70,7 @@ const OurTeam = () => {
                     src={member.Person_Photo}
                     alt={member.Person_Name}
                     className="img-fluid"
+                    loading="lazy"
                   />
                 </div>
                 <div className="cardContent">
@@ -99,6 +100,7 @@ const OurTeam = () => {
                     src={member.Person_Photo}
                     alt={member.Person_Name}
                     className="img-fluid"
+                     loading="lazy"
                   />
                 </div>
                 <div className="cardContent">

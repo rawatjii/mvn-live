@@ -3,13 +3,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import * as CONFIG from "../../../config/config";
 
-
-
 import Watermark from "../../../common/watermark/Index";
 
 gsap.registerPlugin(ScrollTrigger);
-
-
 
 export default function NoPollutionZone1({ data }) {
 

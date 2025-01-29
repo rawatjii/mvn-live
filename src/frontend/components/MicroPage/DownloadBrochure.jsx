@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import Button from '../../../common/Button/Button';
 import CustomModal from "../../../common/Modal";
 import { Container } from "react-bootstrap";
 
-const DownloadBrochure = ()=>{
+const DownloadBrochure = React.memo(()=>{
   const [isShowModal, setIsShowModal] = useState(false)
 
-  const isHideModal = () => {
+  const isHideModal = useCallback(() => {
     setIsShowModal(false);
-  };
+  }, []);
 
-  const handleOpenBrochureModal = () => {
+  const handleOpenBrochureModal = useCallback(() => {
     setIsShowModal(true)
-  };
+  }, []);
 
   return(
     <section className="download_brochure_section text-center">
@@ -25,6 +25,6 @@ const DownloadBrochure = ()=>{
       
     </section>
   )
-}
+})
 
 export default DownloadBrochure;

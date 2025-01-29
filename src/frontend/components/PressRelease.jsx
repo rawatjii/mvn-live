@@ -35,14 +35,14 @@ function PressRelease({ data, slidesPerView, spaceBetween }) {
 
                         <SwiperSlide key={index}>
 
-<article class="awa_card awa_shadow">
+<article className="awa_card awa_shadow">
     <div>
         <img src={item.thumbnail} alt={item.title} className="pressRelease-Img" />
         </div>
     <div>
         <p> {item.presscontent}</p>
-        <div className=" awa_posted d-md-flex justify-content-between align-items-center"><span class="text-capitalize"><time>{item.EventDate}   </time></span>
-            <p class="text-capitalize  " onClick={() => window.open(item.pdf, "_blank")}>View Details</p>
+        <div className=" awa_posted d-md-flex justify-content-between align-items-center"><span className="text-capitalize"><time>{item.EventDate}   </time></span>
+            <p className="text-capitalize  " onClick={() => window.open(item.pdf, "_blank")}>View Details</p>
         </div>
     </div>
 </article>

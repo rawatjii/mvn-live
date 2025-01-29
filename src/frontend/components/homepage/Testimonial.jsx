@@ -1,11 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { Container } from "react-bootstrap";
-import SecTitle from "../../../common/SecTitle/Index";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper/modules';
-import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -46,43 +43,15 @@ const testimonialData = [
   }
 ];
 
-gsap.registerPlugin(ScrollTrigger);
-
 const Testimonial = () => {
   const titleRef = useRef();
   const contentRef = useRef();
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(titleRef.current, {
-        y: 50,  
-        opacity: 0,
-        duration: 1, 
-        scrollTrigger: {
-          trigger: titleRef.current,
-          start: "top 95%",
-        },
-      });
-
-      gsap.from(contentRef.current, {
-        y: 50,  
-        opacity: 0,
-        duration: 1, 
-        scrollTrigger: {
-          trigger: contentRef.current,
-          start: "top 95%",
-        },
-      });
-    });
-
-    return () => ctx.revert();
-  }, []);
 
   return (
     <section className="section testimonial_section">
       <Container>
         <div className="heading_div mb_60 mb_sm_30">
-          <img src={headingIconImg} alt="mvn heading image" className="img-fluid title_plane1" />
+          <img src={headingIconImg} alt="mvn heading image" className="img-fluid title_plane1" loading="lazy" />
           <h4 ref={titleRef} className="title title_style1 text-center">What Client Says!</h4>
         </div>
 
@@ -114,13 +83,13 @@ const Testimonial = () => {
                 <div className="content">
                  <div className="flex-content-box">
                    <div className="flex-heading-row">
-                   <img src={quoteIcon} alt="mvn quotes icon" className="img-fluid quote_icon" />
+                   <img src={quoteIcon} alt="mvn quotes icon" className="img-fluid quote_icon" loading="lazy" />
                    <h5 className="title">{item.title}</h5>
                    </div>
                   <p className="msg">{item.msg}</p>
                  </div>
                   <div className="flex-name-pic">
-                    <img src={item.image} alt="mvn quotes icon" className="img-fluid testimonial-pic" />
+                    <img src={item.image} alt="mvn quotes icon" className="img-fluid testimonial-pic" loading="lazy" />
                     <p className="testimonial-name">{item.name}</p>
                   </div>
                 </div>

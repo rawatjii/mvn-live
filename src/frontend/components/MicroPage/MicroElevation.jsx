@@ -7,12 +7,11 @@ import Watermark from '../../../common/watermark/Index';
 import Lightbox from "yet-another-react-lightbox";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
-
-import AnImage from "../../../common/animations/Image/Index"; // Assuming AnImage is being used for animations
+import AnImage from "../../../common/animations/Image/Index";
+import Logomark from '../../../common/logomark/Index';
+import CustomCard from '../Card';
 
 import "yet-another-react-lightbox/styles.css";
-import CustomCard from '../Card';
-import Logomark from '../../../common/logomark/Index';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,23 +40,12 @@ const images = [
 ];
 
 export default function MicroElevation({ data = images }) {
-  const sectionsRef = useRef([]);
   const [index, setIndex] = useState(-1);
   const imageDivRefs = useRef([]);
   const [imagesLoaded, setImagesLoaded] = useState(0);  // Add imagesLoaded state
 
   const initializeAnimations = () => {
     if (data.length > 0) {
-      gsap.from(sectionsRef.current, {
-        y: 50,
-        opacity: 1,
-        duration: 1,
-        scrollTrigger: {
-          trigger: sectionsRef.current,
-          start: "top 95%",
-        },
-      });
-
       // Add animation for AnImage components using imageDivRefs
       imageDivRefs.current.forEach((imagediv, index) => {
         if (imagediv) {

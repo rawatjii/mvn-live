@@ -14,7 +14,7 @@ import MicroHeader from "../components/MicroHeader";
 import ImagesGallery from "../components/MicroPage/ImagesGallery";
 import SliderTypology from "../components/MicroPage/bangalore/SliderTypology";
 import AthensBanner from "../components/MicroPage/athens/AthensBanner";
-
+ 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 const MicroPageFaridabad = ({ data, loadingCount, setLoadingCount }) => {

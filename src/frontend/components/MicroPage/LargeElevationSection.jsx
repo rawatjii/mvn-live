@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Container } from 'react-bootstrap'
-// import LazyLoad from 'react-lazyload'
 import bgImgMB from '../../assets/images/aero-gurgaon/largeBg1Sm.webp'
 import bgImgDesk from '../../assets/images/aero-gurgaon/largeBg1.png'
 import absDesk from '../../assets/images/aero-gurgaon/building_sm.webp'

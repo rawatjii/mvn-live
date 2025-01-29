@@ -8,7 +8,7 @@ import Formlogo from "../../public/assets/images/logo_white.webp";
 import * as CONFIG from "../config/config";
 import Loader from "./Loader/loader";
 
-const CustomModal = ({ show, hide, projectName, isOffer }) => {
+const CustomModal = React.memo(({ show, hide, projectName, isOffer }) => {
   const [formDetails, setFormDetails] = useState({});
   const [loading, setLoading] = useState(false);
 
@@ -64,7 +64,7 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
 
   useEffect(() => {
     const close = (e) => {
-      if (!modalRef.current.contains(e.target)) {
+      if (!modalRef.current?.contains(e.target)) {
         console.log("closed");
         hide();
       }
@@ -260,6 +260,6 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
       </div>
     </Modal>
   );
-};
+});
 
 export default CustomModal;

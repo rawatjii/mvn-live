@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Button, Container } from "react-bootstrap";
-import SecTitle from "../../../common/SecTitle/Index";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -12,30 +11,25 @@ import Accordion from "react-bootstrap/Accordion";
 import "swiper/css";
 import "yet-another-react-lightbox/styles.css";
 
-import floorPlanImg from "../../assets/images/floor-plan/floor-plan.png";
 import CustomModal from "../../../common/Modal";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const MicroFloorPlan = ({ data }) => {
+const MicroFloorPlan = React.memo(({ data }) => {
   const titleRef = useRef();
-  const typoRefs = useRef([]);
-  const priceRefs = useRef([]);
-  const sizeRefs = useRef([]);
-  const [isMasterPlanOpen, setIsMasterPlanOpen] = useState(false);
   const [index, setIndex] = useState(-1);
   const [isShowModal, setIsShowModal] = useState(false);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
 
   const { floorPlanData, title } = data;
 
-  const showModal = () => {
+  const showModal = useCallback(() => {
     setIsShowModal(true);
-  };
+  });
 
-  const isHideModal = () => {
+  const isHideModal = useCallback(() => {
     setIsShowModal(false);
-  };
+  });
 
   // Detect screen size changes
   useEffect(() => {
@@ -56,60 +50,14 @@ const MicroFloorPlan = ({ data }) => {
       },
     });
 
-    typoRefs.current.forEach((singleRef) => {
-      if (singleRef) {
-        gsap.from(singleRef, {
-          y: 20,
-          opacity: 0,
-          duration: 0.5,
-          scrollTrigger: {
-            trigger: singleRef,
-            start: "top 95%",
-          },
-        });
-      }
-    });
-
-    priceRefs.current.forEach((singleRef) => {
-      if (singleRef) {
-        gsap.from(singleRef, {
-          y: 20,
-          opacity: 0,
-          duration: 0.5,
-          scrollTrigger: {
-            trigger: singleRef,
-            start: "top 95%",
-          },
-        });
-      }
-    });
-
-    sizeRefs.current.forEach((singleRef) => {
-      if (singleRef) {
-        gsap.from(singleRef, {
-          y: 10,
-          opacity: 0,
-          duration: 0.5,
-          scrollTrigger: {
-            trigger: singleRef,
-            start: "top 95%",
-          },
-        });
-      }4
-    });
   }, []);
 
   return (
     <section className="section floor_plan_section pb-0">
       <div className="heading_div mb_60 mb_sm_30">
-        <h4 className="title title_style1 text-center">{title}</h4>
+        <h4 className="title title_style1 text-center" ref={titleRef}>{title}</h4>
       </div>
 
-      {/* <SecTitle className="text-center color style1">
-        <h4 ref={titleRef} className="title">
-          {title}
-        </h4>
-      </SecTitle> */}
       <Container>
         {isDesktop ? (
           <div className="floor_plan_data">
@@ -119,7 +67,7 @@ const MicroFloorPlan = ({ data }) => {
                 <div className="accordion-body">
                   <Swiper pagination={true} className="mySwiper">
                     {item.thumbnail.map((image, index) => (
-                      <SwiperSlide>
+                      <SwiperSlide key={image.src + index}>
                         <div
                           style={{
                             width: "100%",
@@ -216,6 +164,6 @@ const MicroFloorPlan = ({ data }) => {
       />
     </section>
   );
-};
+});
 
 export default MicroFloorPlan;
