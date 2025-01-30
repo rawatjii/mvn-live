@@ -15,43 +15,43 @@ const DownloadBrochure = React.lazy(()=>import("../components/MicroPage/Download
 const PeacockSection = React.lazy(() =>
   import("../components/MicroPage/PeacockSection")
 );
-// const LivingRoomVideoGurugram = React.lazy(() =>
-//   import("../components/MicroPage/LivingRoomVideoGurugram")
-// );
-// const PartyVideo = React.lazy(() =>
-//   import("../components/MicroPage/PartyVideo"));
+const LivingRoomVideoGurugram = React.lazy(() =>
+  import("../components/MicroPage/LivingRoomVideoGurugram")
+);
+const PartyVideo = React.lazy(() =>
+  import("../components/MicroPage/PartyVideo"));
 
-// const MasterBedroom = React.lazy(() =>
-//   import("../components/MicroPage/MasterBedroom"));
+const MasterBedroom = React.lazy(() =>
+  import("../components/MicroPage/MasterBedroom"));
 
-// const Consultant = React.lazy(() =>
-//   import("../components/MicroPage/Consultant")
-// );
-// const ImageGallery = React.lazy(() =>
-//   import("../components/MicroPage/ImagesGallery")
-// );
-// const ConstructionTechnology = React.lazy(() =>
-//   import("../components/MicroPage/ConstructionTechnology")
-// );
-// const MicroAmenities = React.lazy(() =>
-//   import("../components/MicroPage/Amenities")
-// );
-// // const Typology = React.lazy(() => import("../components/homepage/Typology"));
-// const MicroFloorPlan = React.lazy(() =>
-//   import("../components/MicroPage/FloorPlan")
-// );
-// const MicroLocationMap = React.lazy(() =>
-//   import("../components/MicroPage/LocationMap")
-// );
-// const MvnMall = React.lazy(() => import("../components/MicroPage/MvnMall"));
-// const NoPolutionZone = React.lazy(() =>
-//   import("../components/MicroPage/NoPolutionZone")
-// );
-// const Enquire = React.lazy(() => import("../components/homepage/Enquire"));
-// const EnquireForm = React.lazy(() =>
-//   import("../components/homepage/EnquireForm")
-// );
-// const Footer = React.lazy(() => import("../components/Footer"));
+const Consultant = React.lazy(() =>
+  import("../components/MicroPage/Consultant")
+);
+const ImageGallery = React.lazy(() =>
+  import("../components/MicroPage/ImagesGallery")
+);
+const ConstructionTechnology = React.lazy(() =>
+  import("../components/MicroPage/ConstructionTechnology")
+);
+const MicroAmenities = React.lazy(() =>
+  import("../components/MicroPage/Amenities")
+);
+const Typology = React.lazy(() => import("../components/homepage/Typology"));
+const MicroFloorPlan = React.lazy(() =>
+  import("../components/MicroPage/FloorPlan")
+);
+const MicroLocationMap = React.lazy(() =>
+  import("../components/MicroPage/LocationMap")
+);
+const MvnMall = React.lazy(() => import("../components/MicroPage/MvnMall"));
+const NoPolutionZone = React.lazy(() =>
+  import("../components/MicroPage/NoPolutionZone")
+);
+const Enquire = React.lazy(() => import("../components/homepage/Enquire"));
+const EnquireForm = React.lazy(() =>
+  import("../components/homepage/EnquireForm")
+);
+const Footer = React.lazy(() => import("../components/Footer"));
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -247,7 +247,9 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <div ref={bannerRef}>
-            <MicroHero />
+            <MicroHero 
+            onBannerExit={setIsHeaderFixed} 
+            isMainBanner={true} />
           </div>
 
           <Suspense fallback="">
@@ -280,7 +282,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             </Suspense>
           </div>
 
-          {/* <Suspense fallback="">
+          <Suspense fallback="">
             <div>
               <LivingRoomVideoGurugram
                 data={data.living_room}
@@ -308,10 +310,10 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
                 isMobile={isMobile}
               />
             </div>
-          </Suspense> */}
+          </Suspense>
           
 
-          {/* <Suspense fallback="">
+          <Suspense fallback="">
             <div ref={(el) => (sectionRefs.current.consultant = el)}>
               <Consultant data={data.consultant} />
             </div>
@@ -347,9 +349,9 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             <div ref={(el) => (sectionRefs.current.MicroAmenities = el)}>
               <MicroAmenities section_data={data.amenities} />
             </div>
-          </Suspense> */}
+          </Suspense>
 
-          {/* <Suspense fallback="">
+          <Suspense fallback="">
             <div
               ref={(el) =>
                 (sectionRefs.current.MicroTypology = el)
@@ -357,9 +359,9 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             >
               <Typology onLoadComplete={() => setTypologyLoaded(true)} />
             </div>
-          </Suspense> */}
+          </Suspense>
 
-          {/* <Suspense fallback="">
+          <Suspense fallback="">
             <div ref={(el) => (sectionRefs.current.MicroFloorPlan = el)}>
               <MicroFloorPlan data={data.floorPlan} />
             </div>
@@ -403,7 +405,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
           <Suspense fallback="">
             <Footer />
-          </Suspense> */}
+          </Suspense>
         </div>
       </div>
 

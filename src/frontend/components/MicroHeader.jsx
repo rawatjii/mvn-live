@@ -7,7 +7,6 @@ import React, { useEffect, useState } from "react";
 import subscribeBtn from '../assets/images/icons/subscribe_btn.webp';
 import CloseBtnimg from '../assets/images/icons/close.png';
 import "./Header.css";
-import { gsap } from "gsap";
 import { otherPages, otherProjects, otherDetails, socialMedia } from '../../data/headerdata';
 import { useMatches } from "../../theme/theme";
 
@@ -43,10 +42,10 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
     };
   }, [pathname]);
 
-  useEffect(() => {
-    gsap.from(".logo", { y: 30, opacity: 0, duration: 1 });
-    gsap.from(".navbar-toggle", { y: 15, opacity: 0, duration: 0.6, delay: 0.4 });
-  }, []);
+  // useEffect(() => {
+  //   gsap.from(".logo", { y: 30, opacity: 0, duration: 1 });
+  //   gsap.from(".navbar-toggle", { y: 15, opacity: 0, duration: 0.6, delay: 0.4 });
+  // }, []);
 
 
   const toggleMenu = (value) => {

@@ -10,7 +10,6 @@ import MenuSideVideo from '../assets/images/hero/tiger.mp4';
 
 import "./Header.css";
 
-import { gsap } from "gsap";
 import Button from "../../common/Button/Button";
 import subscribeBtn from '../assets/images/icons/subscribe_btn.webp';
 
@@ -24,9 +23,6 @@ const Header = () => {
 
   const menusRef = useRef();
   const headerRef = useRef();
-  const logoRef = useRef();
-  const toggleRef = useRef();
-  const callBtnRef = useRef();
 
   const { pathname } = useLocation();
 
@@ -61,35 +57,6 @@ const Header = () => {
     };
   }, []);
 
-  useEffect(() => {
-    // logo animation
-
-    gsap.from(logoRef.current, {
-      y: 30, // Move 50px from the bottom
-      opacity: 0, // Start with 0 opacity (invisible)
-      duration: 1, // Animation duration in seconds
-      // ease: "power2" // Easing function for a smooth effect
-    });
-
-    // menu toggle animation
-    gsap.from(toggleRef.current, {
-      y: 15, // Move 50px from the bottom
-      opacity: 0, // Start with 0 opacity (invisible)
-      duration: 0.6, // Animation duration in seconds
-      delay: 0.4,
-      // ease: "power2" // Easing function for a smooth effect
-    });
-
-    // menu toggle animation
-    gsap.from(callBtnRef.current, {
-      y: 15, // Move 50px from the bottom
-      opacity: 0, // Start with 0 opacity (invisible)
-      duration: 0.6, // Animation duration in seconds
-      delay: 0.4,
-      // ease: "power2" // Easing function for a smooth effect
-    });
-  }, []);
-
   const toggleMenu = (value) => {
     if (value == "show") {
       document.querySelector(".navbar_collapse").classList.add("show");
@@ -115,7 +82,7 @@ const Header = () => {
         className={`${scrolled ? "fixed" : ""} ${isMicro ? "micro_nav" : null}`}
       >
         <Container>
-          <Navbar.Brand ref={logoRef} className="logo">
+          <Navbar.Brand className="logo">
             <Link onClick={() => toggleMenu("close")} to={import.meta.env.VITE_APP_URL}>
               <img
                 src={CONFIG.IMAGE_URL + "logo_white.webp"}
@@ -133,11 +100,11 @@ const Header = () => {
           </Navbar.Brand>
 
           <div className="right">
-            <a href="tel:+917996000196" className="call_btn" ref={callBtnRef}>
+            <a href="tel:+917996000196" className="call_btn">
               <img src={CONFIG.IMAGE_URL + 'icons/call.png'} alt="mvn call icon" />
             </a>
             <Navbar.Toggle
-              ref={toggleRef}
+             
               aria-controls="basic-navbar-nav"
               onClick={() => toggleMenu("show")}
             >
