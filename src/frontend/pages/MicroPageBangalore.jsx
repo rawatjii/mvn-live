@@ -101,7 +101,7 @@ const MicroPageBangalore = ({ data, loadingCount, setLoadingCount }) => {
           >
             <DownloadBrochure />
           </div>
-          <div
+          {/* <div
             ref={(el) =>
               (sectionRefs.current.livingRoom = el)
             }>
@@ -109,8 +109,8 @@ const MicroPageBangalore = ({ data, loadingCount, setLoadingCount }) => {
             data={data.living_room}
             onLoadComplete={() => setLivingRoomLoaded(true)}
             />
-          </div>
-          <div 
+          </div> */}
+          {/* <div 
             ref={(el) =>
               (sectionRefs.current.masterBedroom = el)
             }>
@@ -118,7 +118,7 @@ const MicroPageBangalore = ({ data, loadingCount, setLoadingCount }) => {
             data={data.masterBedroom}
             onLoadComplete={() => setMasterBedroomLoaded(true)}
             />
-          </div>
+          </div> */}
           <div
             ref={(el) =>
               (sectionRefs.current.MicroLandscape = el)
