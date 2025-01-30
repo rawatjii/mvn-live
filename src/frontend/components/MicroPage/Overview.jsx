@@ -1,8 +1,8 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import { Container } from "react-bootstrap";
 import diamondIMG from "../../assets/images/icons/plane1.png";
 
-const MicroOverview = ({ data }) => {
+const MicroOverview = React.memo(({ data }) => {
   const [count1, setCount1] = useState(0);
   const [count2, setCount2] = useState(0);
   const [count3, setCount3] = useState(0);
@@ -14,15 +14,15 @@ const MicroOverview = ({ data }) => {
   const ref2 = useRef(null);
   const ref3 = useRef(null);
 
-  const isScrolledIntoView = (elem) => {
+  const isScrolledIntoView = useCallback((elem) => {
     if (!elem.current) return false;
     const rect = elem.current.getBoundingClientRect();
     const viewHeight =
       window.innerHeight || document.documentElement.clientHeight;
     return rect.top <= viewHeight;
-  };
+  }, []);
 
-  const countUp = (countTo, setCount, setEnded) => {
+  const countUp = useCallback((countTo, setCount, setEnded) => {
     const duration = 200; // Duration of the animation in milliseconds
     const fps = 60; // Frames per second
     const steps = duration / (300 / fps); // Total steps for the animation
@@ -43,7 +43,7 @@ const MicroOverview = ({ data }) => {
     };
 
     animate();
-  };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -124,6 +124,6 @@ const MicroOverview = ({ data }) => {
       </Container>
     </section>
   );
-};
+});
 
 export default MicroOverview;

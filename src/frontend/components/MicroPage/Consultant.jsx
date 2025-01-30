@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import CustomCard from "../Card";
-import { Button, Col, Container, Row } from "react-bootstrap";
-import CustomModal from "../../../common/Modal";
+import { Col, Container, Row } from "react-bootstrap";
 import * as CONFIG from '../../../config/config'
 
 const Consultant = ()=>{
