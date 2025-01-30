@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import CustomCard from "../Card";
-import { Button, Container } from "react-bootstrap";
-import CustomModal from "../../../common/Modal";
+import { Container } from "react-bootstrap";
 import * as CONFIG from "../../../config/config";
 
-const Walkthrough = ({ data }) => {
+const Walkthrough = React.memo(({ data }) => {
   const { src, second_title, desc } = data;
 
   const [videoSrc, setVideoSrc] = useState(src);
@@ -47,20 +46,20 @@ const Walkthrough = ({ data }) => {
   }, [videoSrc]); // Reinitialize player when videoSrc changes
   
 
-  const getVideoIdFromUrl = (url) => {
+  const getVideoIdFromUrl = useCallback((url) => {
     const match = url.match(/(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
     return match ? match[1] : null;
-  };
+  });
 
-  const handleStateChange = (event) => {
+  const handleStateChange = useCallback((event) => {
     if (event.data === window.YT.PlayerState.PLAYING) {
       setIsVideoPlaying(true); // Mark video as playing
     } else if ( event.data === window.YT.PlayerState.ENDED) {
       setIsVideoPlaying(false); // Mark video as not playing
     }
-  };
+  });
 
-  const handleRefresh = () => {
+  const handleRefresh = useCallback(() => {
     // Temporarily reset the videoSrc to an empty string to stop the video
     setVideoSrc("");
     
@@ -69,7 +68,7 @@ const Walkthrough = ({ data }) => {
       setVideoSrc(src);
       setIsVideoPlaying(false);
     }, 10);
-  };
+  });
 
 
 
@@ -117,6 +116,6 @@ const Walkthrough = ({ data }) => {
       </Container>
     </section>
   );
-};
+});
 
 export default Walkthrough;

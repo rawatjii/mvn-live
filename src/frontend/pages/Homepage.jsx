@@ -49,7 +49,7 @@ const Homepage = () => {
     <>
         <Helmet>
           <title>Best Property Developers in Gurugram| MVN Infrastructure</title>
-          <meta name="description" content="Best Developers in Gurgaon. 5.5 BHK Largest floor size in Gurugram. 40+ years of delivering trust and projects on time. MVN Infrastructure." />
+          <meta name="description" content="Best Developers in Gurgaon. 5.5 BHK Largest floor sizes in Gurugram. 40+ years of delivering trust and projects on time. MVN Infrastructure." />
           <meta name="keywords" content="MVN Infrastructure, MVN Gurgaon, MVN MALL Gurugram, MVN aero one, 5BHK in Gurgaon, Aero one, MVN Bangalore, mvn.in, MVN Developer." />
           <link rel="preload" as="image" href="/assets/images/logo_white.webp" />
           <link rel="preload" as="image" href="/assets/images/homepage/hero/hero_img_sm.webp" />
@@ -68,7 +68,7 @@ const Homepage = () => {
           <meta name="expires" content="never" />
           <meta property="og:type" content="website" />
           <meta property="og:title" content="Best Property Developers in Gurugram| MVN Infrastructure" />
-          <meta property="og:description" content="Best Developers in Gurgaon. 5.5 BHK Largest floor size in Gurugram. 40+ years of delivering trust and projects on time. MVN Infrastructure." />
+          <meta property="og:description" content="Best Developers in Gurgaon. 5.5 BHK Largest floor sizes in Gurugram. 40+ years of delivering trust and projects on time. MVN Infrastructure." />
           <meta property="og:url" content="https://www.mvn.in/" />
           <meta property="og:site_name" content="MVN Infrastructure" />
           <meta property="og:image" content="https://mvn.in/assets/images/mvn.webp" />
@@ -76,7 +76,7 @@ const Homepage = () => {
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:site" content="@MVN_infra" />    
           <meta name="twitter:title" content="Best Property Developers in Gurugram| MVN Infrastructure" />
-          <meta name="twitter:description" content="Best Developers in Gurgaon. 5.5 BHK Largest floor size in Gurugram. 40+ years of delivering trust and projects on time. MVN Infrastructure." />
+          <meta name="twitter:description" content="Best Developers in Gurgaon. 5.5 BHK Largest floor sizes in Gurugram. 40+ years of delivering trust and projects on time. MVN Infrastructure." />
           <meta name="twitter:creator" content="@MVN_infra" />
           <meta name="twitter:image" content="https://mvn.in/assets/images/mvn.webp" />
 

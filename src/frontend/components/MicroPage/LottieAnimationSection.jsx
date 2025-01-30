@@ -22,6 +22,36 @@ const LottieAnimationSection = React.memo(({ data, onLoadComplete, position, wat
   const { isMobile } = useMatches();
   const { second_title, desc, path } = data;
 
+  // Ref for the interseciton observer
+  const observerRef = useRef(null);
+
+  // Lazy load animation data when section comes into view
+
+  useEffect(() => {
+    if(observerRef.current) return; // Avoid multiple observers
+
+    observerRef.current = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Start loading the animation data when the section is in view
+          loadAnimationData();
+        }
+      });
+    }, { threshold: 0.25 }); // Trigger when 25% of the section is in view
+
+    const target = containerRef.current;
+    if (target) {
+      observerRef.current.observe(target);
+    }
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect(); // Cleanup observer when component unmounts
+      }
+    };
+
+  }, [])
+
   // Dynamically load JSON animation data using fetch
   useEffect(() => {
     const loadAnimationData = async () => {

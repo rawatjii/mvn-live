@@ -28,6 +28,10 @@ const ThankYou = React.lazy(() => import("./frontend/pages/ThankYou.jsx"));
 // const Gallery = React.lazy(() => import('./frontend/pages/Gallery.jsx'));
 // const Csr = React.lazy(() => import('./frontend/pages/Csr.jsx'));
 const MicroPageGurgaon1 = React.lazy(()=>import("./frontend/pages/MicroPageGurgaon1.jsx"));
+import MicroPageBangalore from "./frontend/pages/MicroPageBangalore.jsx";
+import MicroPageFaridabad from "./frontend/pages/MicroPageFaridabad.jsx";
+import MicroPageGurgaonPhase1 from "./frontend/pages/MicroPageGurgaonPhase1.jsx";
+import MicroPageGurgaonPhase2 from "./frontend/pages/MicroPageGurgaonPhase2.jsx";
 // const MicroPageGurgaon1 = React.lazy(() =>
 //   new Promise((resolve) =>
 //     setTimeout(() => resolve(import("./frontend/pages/MicroPageGurgaon1.jsx")), 100000)
@@ -39,10 +43,6 @@ import "./index.css";
 import "./awaneesh.css";
 import "./savan.css";
 import './adarsh.css'
-import MicroPageBangalore from "./frontend/pages/MicroPageBangalore.jsx";
-import MicroPageFaridabad from "./frontend/pages/MicroPageFaridabad.jsx";
-import MicroPageGurgaonPhase1 from "./frontend/pages/MicroPageGurgaonPhase1.jsx";
-import MicroPageGurgaonPhase2 from "./frontend/pages/MicroPageGurgaonPhase2.jsx";
 
 
 const router = createBrowserRouter([
