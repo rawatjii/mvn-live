@@ -9,10 +9,6 @@ export const athensGurgaonPhase1Data = {
     title:'MVN Athens, Gurgaon Phase 1',
     sidebar_section:[
       {
-        section_title:'Banner',
-        link:'banner'
-      },
-      {
         section_title:'Overview',
         link:'microOverview'
       },

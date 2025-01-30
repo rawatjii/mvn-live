@@ -75,6 +75,8 @@ import {bangaloreData} from './frontend/pages/micro/mvn-aeroone-bangalore/Index.
 import { faridabadData } from "./frontend/pages/micro/Athens/Index.jsx";
 import { athensGurgaonPhase1Data } from "./frontend/pages/micro/athens-gurgaon-phase-1/Index.jsx";
 import { athensGurgaonPhase2Data } from "./frontend/pages/micro/athens-gurgaon-phase-2/Index.jsx";
+import { mvnMallData } from "./frontend/pages/micro/mvnMall/Index.jsx";
+import MvnMall1 from "./frontend/pages/mvnMall.jsx";
 
 
 const router = createBrowserRouter([
@@ -261,6 +263,14 @@ const router = createBrowserRouter([
         element: (
           <FrontendRoute  loaderType="mvn-athens-gurgaon-phase-2">
           <MicroPageGurgaonPhase2 data={athensGurgaonPhase2Data}/>
+          </FrontendRoute>
+        ),
+      },
+      {
+        path: "mvn-mall-1",
+        element: (
+          <FrontendRoute  loaderType="mvn-mall-1">
+          <MvnMall1 data={mvnMallData}/>
           </FrontendRoute>
         ),
       },

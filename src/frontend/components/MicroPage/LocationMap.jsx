@@ -110,11 +110,11 @@ const MicroLocationMap = ({data})=>{
         <div className="row justify-content-center">
           <div className="col-sm-9">
             <div className="thumbnail">
-
-              <button type="button" className="location_btn"  onClick={handleShow}>
+{modalIframe && <button type="button" className="location_btn"  onClick={handleShow}>
                 <img src={CONFIG.IMAGE_URL + 'icons/yt_color.png'} alt="youtube icon" className="img-fluid yt_icon"  />
                 Location Video
-              </button>
+              </button>}
+              
 
               
               <div onClick={()=>setIsLocationMapOpen(true)}>
