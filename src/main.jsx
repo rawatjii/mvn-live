@@ -8,10 +8,6 @@ import store from "./store/store.js";
 
 // import InitialLoading from "./frontend/skeleton/Initial/Index.jsx";
 import { data } from "./frontend/pages/micro/mvn-aeroone-gurgaon1/Index.jsx";
-import {bangaloreData} from "./frontend/pages/micro/mvn-aeroone-bangalore/Index.jsx"
-import { faridabadData } from "./frontend/pages/micro/Athens/Index.jsx";
-import { athensGurgaonPhase1Data } from "./frontend/pages/micro/athens-gurgaon-phase-1/Index.jsx";
-import { athensGurgaonPhase2Data } from "./frontend/pages/micro/athens-gurgaon-phase-2/Index.jsx";
 import FrontendRoute from "./common/FrontendRoute.jsx";
 
 const Homepage = React.lazy(() => import("./frontend/pages/Homepage.jsx"));
@@ -43,6 +39,13 @@ import "./index.css";
 import "./awaneesh.css";
 import "./savan.css";
 import './adarsh.css'
+
+import {bangaloreData} from './frontend/pages/micro/mvn-aeroone-bangalore/Index.jsx';
+import { faridabadData } from "./frontend/pages/micro/Athens/Index.jsx";
+import { athensGurgaonPhase1Data } from "./frontend/pages/micro/athens-gurgaon-phase-1/Index.jsx";
+import { athensGurgaonPhase2Data } from "./frontend/pages/micro/athens-gurgaon-phase-2/Index.jsx";
+import { mvnMallData } from "./frontend/pages/micro/mvnMall/Index.jsx";
+import MvnMall1 from "./frontend/pages/mvnMall.jsx";
 
 
 const router = createBrowserRouter([
@@ -164,7 +167,15 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "disclaimer",
+        path: "mvn-mall-1",
+        element: (
+          <FrontendRoute  loaderType="mvn-mall-1">
+          <MvnMall1 data={mvnMallData}/>
+          </FrontendRoute>
+        ),
+      },
+      {
+        path: "mvn-university-haryana",
         element: (
           <FrontendRoute loaderType="">
             <Disclaimer />
