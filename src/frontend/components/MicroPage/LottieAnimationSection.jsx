@@ -144,7 +144,7 @@ const LottieAnimationSection = React.memo(({ data, onLoadComplete, position, wat
             <div className="frames_content">
               <div className="position-relative h_sm_100">
                 <div className="position-relative h_sm_100">
-                  <Watermark className={watermark ? watermark : null} />
+                  <Watermark className={watermark ? watermark : null} type="style1" />
                   <Logomark className={`left ${logomark ? logomark : null}`} />
                   <div ref={lottieContainerRef} style={{ width: "100%", height: "100%" }}></div>
                 </div>

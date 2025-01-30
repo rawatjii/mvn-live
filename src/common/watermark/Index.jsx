@@ -3,7 +3,7 @@ import './watermark.css';
 import * as CONFIG from '../../config/config';
 import { useLocation } from 'react-router-dom';
 
-const Watermark = ({className})=>{
+const Watermark = ({className, type})=>{
   const location = useLocation();
   
   // Set logo based on the URL path
@@ -14,14 +14,22 @@ const Watermark = ({className})=>{
   } else {
     logoSrc = `${CONFIG.IMAGE_URL}logo.png`;
   }
-  return(
-    <div className={`WaterMarkContainer ${className}`}>
-    <div className="Watermark_artistic">Artistic Impression</div>
-    
-    <div className="Watermark_logo"><img src={logoSrc} alt="logo" /></div>
 
-    </div>
-  )
+  switch(type){
+    case 'style1':
+      return <small className={`watermark ${className}`}>Artistic Impression</small>
+
+    default:
+      return(
+        <div className={`WaterMarkContainer ${className}`}>
+        <div className="Watermark_artistic">Artistic Impression</div>
+        
+        <div className="Watermark_logo"><img src={logoSrc} alt="logo" /></div>
+    
+        </div>
+      )
+  }
+
 }
 
 export default Watermark;

@@ -72,9 +72,11 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
         <div id="basic-navbar-nav"  className={`navbar_collapse ${isMenuOpen ? "show" : ""}`}>
           <div className="overlay-content">
             <div className="inner-overlay">
+
               <div className="video-area d-none d-md-block">
                 <img src={CONFIG.IMAGE_URL + 'renders/elevation/2.webp'} alt="mvn elevation image" />
               </div>
+              
               <div className="menu-area">
                 <div className="top_head">
                   <Link onClick={() => toggleMenu("close")}>

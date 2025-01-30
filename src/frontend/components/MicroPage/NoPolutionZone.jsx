@@ -20,7 +20,12 @@ gsap.registerPlugin(ScrollTrigger);
       sectionsRef.current.forEach((section, i) => {
         const bg = section.querySelector(".bg");
         if (bg) {
-          const image_url = `url(${CONFIG.IMAGE_URL}/no-pollution/${data[i].imgSrc})`;
+          let image_url;
+          if(window.innerWidth < 768){
+            image_url = `url(${data[i].path.mobile})`;
+          }else{
+            image_url = `url(${data[i].path.desktop})`;
+          }
           bg.style.backgroundImage = image_url;
 
           const defaultBgPos = i === 0 ? "50% 0" : `50% ${-window.innerHeight * getRatio(section)}px`;
@@ -58,17 +63,17 @@ gsap.registerPlugin(ScrollTrigger);
         <div key={index} className="col-sm-12 col-md-4 col-lg-4">
           <div className="card center">
             <img
-              src={`${CONFIG.IMAGE_URL}no-pollution/${single.imgSrc}`}
+              src={`${single.path.mobile}`}
               alt={`mvn connection ${index}`}
-              className="img-fluid d-md-none"
+              className="img-fluid"
               loading="lazy"
             />
-            <img
+            {/* <img
               src={`${CONFIG.IMAGE_URL}no-pollution/${single.imgSrc}`}
               alt={`mvn connection ${index}`}
               className="img-fluid d-none d-md-block"
               loading="lazy"
-            />
+            /> */}
             <Watermark />
           </div>
           <div className="content">

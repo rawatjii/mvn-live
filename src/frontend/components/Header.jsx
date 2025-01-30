@@ -164,15 +164,15 @@ const Header = () => {
                           <h4>Bangalore</h4>
                           <ul>
                             <li>
-                              <NavLink to="https://www.mvnaeroone.com/" target="_blank" onClick={() => toggleMenu("close")}>MVN</NavLink>
+                              <NavLink to={import.meta.env.VITE_APP_URL + 'aeroone-bangalore1'} onClick={() => toggleMenu("close")}>MVN</NavLink>
                             </li>
                             
-                            <li className="new_launch">
+                            {/* <li className="new_launch">
                               <NavLink to={import.meta.env.VITE_APP_URL + 'aeroone-bangalore1'} onClick={() => toggleMenu("close")}>
                                 MVN Bangalore
                               </NavLink>
                               <span>New Launch</span>
-                            </li>
+                            </li> */}
                           </ul>
 
                           

@@ -25,7 +25,7 @@ const PeacockSection = React.memo(({ data}) => {
       : <>
       <div className="frames_content">
         <div className="image_col position-relative">
-          <Watermark className={isMobile ? 'style4' : 'style2'} />
+          <Watermark className={isMobile ? 'style4' : 'style2'} type="style1" />
           <img src={CONFIG.IMAGE_URL + 'peacock/peacock.webp'} alt="Peacock image" className="img-fluid peacock_img" />
         </div>
 
