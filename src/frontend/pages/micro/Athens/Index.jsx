@@ -8,10 +8,6 @@ export const faridabadData = {
     title:'MVN Athens, Faridabad',
     sidebar_section:[
       {
-        section_title:'Banner',
-        link:'banner'
-      },
-      {
         section_title:'Overview',
         link:'microOverview'
       },

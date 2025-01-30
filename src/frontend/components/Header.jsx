@@ -181,17 +181,30 @@ const Header = () => {
                               <span>New Launch</span>
                             </li>
                             <li className="new_launch">
-                              <NavLink to="https://mvnmall.com/" target="_blank" onClick={() => toggleMenu("close")}>
+                              <NavLink to={import.meta.env.VITE_APP_URL + 'mvn-mall-1'} onClick={() => toggleMenu("close")}>
                                 MVN Mall
                               </NavLink>
                               <span>New Launch</span>
                             </li>
+                            {/* <li className="new_launch">
+                              <NavLink to="https://mvnmall.com/" target="_blank" onClick={() => toggleMenu("close")}>
+                                MVN Mall
+                              </NavLink>
+                              <span>New Launch</span>
+                            </li> */}
                           </ul>
 
                           <h4>Bangalore</h4>
                           <ul>
                             <li>
                               <NavLink to="https://www.mvnaeroone.com/" target="_blank" onClick={() => toggleMenu("close")}>MVN</NavLink>
+                            </li>
+                            
+                            <li className="new_launch">
+                              <NavLink to={import.meta.env.VITE_APP_URL + 'aeroone-bangalore1'} onClick={() => toggleMenu("close")}>
+                                MVN Bangalore
+                              </NavLink>
+                              <span>New Launch</span>
                             </li>
                           </ul>
 
@@ -212,8 +225,23 @@ const Header = () => {
 
                           <h4>Faridabad</h4>
                           <ul>
-                            <li>
+                            {/* <li>
                               <NavLink to="https://www.mvn.in/athens-faridabad/" target="_blank" onClick={() => toggleMenu("close")}>MVN Athens</NavLink>
+                            </li> */}
+                            <li className="new_launch">
+                              <NavLink to={import.meta.env.VITE_APP_URL + 'mvn-athens-faridabad'} onClick={() => toggleMenu("close")}>
+                                MVN Athens 
+                              </NavLink>
+                            </li>
+                            <li className="new_launch">
+                              <NavLink to={import.meta.env.VITE_APP_URL + 'mvn-athens-gurgaon-phase-1'} onClick={() => toggleMenu("close")}>
+                                MVN Athens Phase 1
+                              </NavLink>
+                            </li>
+                            <li className="new_launch">
+                              <NavLink to={import.meta.env.VITE_APP_URL + 'mvn-athens-gurgaon-phase-2'} onClick={() => toggleMenu("close")}>
+                              MVN Athens Phase 2
+                              </NavLink>
                             </li>
                           </ul>
                           </div>

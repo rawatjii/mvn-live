@@ -43,6 +43,17 @@ import "./index.css";
 import "./awaneesh.css";
 import "./savan.css";
 import './adarsh.css'
+import MicroPageBangalore from "./frontend/pages/MicroPageBangalore.jsx";
+import MicroPageFaridabad from "./frontend/pages/MicroPageFaridabad.jsx";
+import MicroPageGurgaonPhase1 from "./frontend/pages/MicroPageGurgaonPhase1.jsx";
+import MicroPageGurgaonPhase2 from "./frontend/pages/MicroPageGurgaonPhase2.jsx";
+
+import {bangaloreData} from './frontend/pages/micro/mvn-aeroone-bangalore/Index.jsx';
+import { faridabadData } from "./frontend/pages/micro/Athens/Index.jsx";
+import { athensGurgaonPhase1Data } from "./frontend/pages/micro/athens-gurgaon-phase-1/Index.jsx";
+import { athensGurgaonPhase2Data } from "./frontend/pages/micro/athens-gurgaon-phase-2/Index.jsx";
+import { mvnMallData } from "./frontend/pages/micro/mvnMall/Index.jsx";
+import MvnMall1 from "./frontend/pages/mvnMall.jsx";
 
 
 const router = createBrowserRouter([
@@ -164,7 +175,15 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "disclaimer",
+        path: "mvn-mall-1",
+        element: (
+          <FrontendRoute  loaderType="mvn-mall-1">
+          <MvnMall1 data={mvnMallData}/>
+          </FrontendRoute>
+        ),
+      },
+      {
+        path: "mvn-university-haryana",
         element: (
           <FrontendRoute loaderType="">
             <Disclaimer />
