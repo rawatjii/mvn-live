@@ -5,6 +5,8 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import mvnMallImg from "../../assets/images/mvn_mall.webp";
 import mvnMallBannerImg1 from "../../assets/images/mall-banner-1.webp"
 import mvnMallBannerImg2 from "../../assets/images/mall-banner-2.webp"
+import Watermark from "../../../common/watermark/Index";
+import Logomark from "../../../common/logomark/Index";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -54,6 +56,8 @@ const MvnMall = () => {
                 alt="mvn_mall_animation"
                 className="img-fluid"
               />
+              <Watermark />
+              <Logomark className="left sm" />
             </div>
           </>
         ) : (
@@ -66,10 +70,18 @@ const MvnMall = () => {
 
               <div className="row">
                 <div className="col-sm-12 col-md-6 col-lg-6">
-                  <img src={mvnMallBannerImg1} alt="mvn mall icon" className="img-fluid" />
+                  <div className="position-relative">
+                    <img src={mvnMallBannerImg1} alt="mvn mall icon" className="img-fluid" />
+                    <Watermark />
+                    <Logomark className="left sm" />
+                  </div>
                 </div>
                 <div className="col-sm-12 col-md-6 col-lg-6">
-                  <img src={mvnMallBannerImg2} alt="mvn mall icon" className="img-fluid" />
+                  <div className="position-relative">
+                    <img src={mvnMallBannerImg2} alt="mvn mall icon" className="img-fluid" />
+                    <Watermark />
+                    <Logomark className="left sm" />
+                  </div>
                 </div>
               </div>
           </Container>

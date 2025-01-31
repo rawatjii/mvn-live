@@ -19,22 +19,34 @@ gsap.registerPlugin(ScrollTrigger);
 // Original landscape data array
 const landscapeData = [
   {
-    thumbnail_desktop: CONFIG.IMAGE_URL + 'renders/landscape/1.webp',
-    thumbnail_mobile: CONFIG.IMAGE_URL + 'renders/landscape/1_sm.webp',
+    thumbnail_desktop: CONFIG.IMAGE_URL + 'renders/landscape/yoga_deck.webp',
+    thumbnail_mobile: CONFIG.IMAGE_URL + 'renders/landscape/yoga_deck_sm.webp',
     watermark: 'right',
     title:'Yoga Deck',
   },
   {
-    thumbnail_desktop: CONFIG.IMAGE_URL + 'renders/landscape/2.webp',
-    thumbnail_mobile: CONFIG.IMAGE_URL + 'renders/landscape/2_sm.webp',
+    thumbnail_desktop: CONFIG.IMAGE_URL + 'renders/landscape/swimming_pool.webp',
+    thumbnail_mobile: CONFIG.IMAGE_URL + 'renders/landscape/swimming_pool_sm.webp',
     watermark: 'right',
     title:'Swimming Pool',
   },
   {
-    thumbnail_desktop: CONFIG.IMAGE_URL + 'renders/landscape/3.webp',
-    thumbnail_mobile: CONFIG.IMAGE_URL + 'renders/landscape/3_sm.webp',
+    thumbnail_desktop: CONFIG.IMAGE_URL + 'renders/landscape/pargola.webp',
+    thumbnail_mobile: CONFIG.IMAGE_URL + 'renders/landscape/pargola_sm.webp',
     watermark: 'right',
     title:'Pergola View',
+  },
+  {
+    thumbnail_desktop: CONFIG.IMAGE_URL + 'renders/landscape/tennis.webp',
+    thumbnail_mobile: CONFIG.IMAGE_URL + 'renders/landscape/tennis_sm.webp',
+    watermark: 'right',
+    title:'Lawn Tennis View',
+  },
+  {
+    thumbnail_desktop: CONFIG.IMAGE_URL + 'renders/landscape/landscape.webp',
+    thumbnail_mobile: CONFIG.IMAGE_URL + 'renders/landscape/landscape_sm.webp',
+    watermark: 'right',
+    title:'Landscape View',
   }
 ];
 
