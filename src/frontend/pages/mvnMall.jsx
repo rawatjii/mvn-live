@@ -77,7 +77,7 @@ const MvnMall1 = ({ data }) => {
               (sectionRefs.current.downloadBrochure = el)
             }
           >
-            <DownloadBrochure />
+            <DownloadBrochure projectName="MVN Mall Dwarka Expressway" />
           </div>
           <div
             ref={(el) =>

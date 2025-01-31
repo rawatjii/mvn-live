@@ -5,6 +5,10 @@ import MicroPageGurgaonPhase1 from "../../MicroPageGurgaonPhase1";
 
 export const athensGurgaonPhase1Data = {
   header:{
+    sidebarAsset:{
+      desktop:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}header/athens_phase1.webp`,
+      mobile:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}header/athens_phase1.webp`,
+    },
     athens_header:'Athens_nav',
     title:'MVN Athens, Gurgaon Phase 1',
     sidebar_section:[

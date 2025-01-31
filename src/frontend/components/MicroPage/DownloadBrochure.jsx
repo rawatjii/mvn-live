@@ -2,8 +2,9 @@ import React, { useCallback, useState } from "react";
 import Button from '../../../common/Button/Button';
 import CustomModal from "../../../common/Modal";
 import { Container } from "react-bootstrap";
+import PropTypes from "prop-types";
 
-const DownloadBrochure = React.memo(()=>{
+const DownloadBrochure = React.memo(({projectName})=>{
   const [isShowModal, setIsShowModal] = useState(false)
 
   const isHideModal = useCallback(() => {
@@ -20,7 +21,7 @@ const DownloadBrochure = React.memo(()=>{
         <Button type="button" className="btn btn_style3 r_100" onClick={handleOpenBrochureModal}>Download MVN ID Brochure</Button>
 
 
-        <CustomModal hide={isHideModal} show={isShowModal} type="enquire" projectName="MVN Aeroone"  />
+        <CustomModal hide={isHideModal} show={isShowModal} type="enquire" projectName={projectName ? projectName : 'MVN Aeroone'}  />
       </Container>
       
     </section>
@@ -28,3 +29,7 @@ const DownloadBrochure = React.memo(()=>{
 })
 
 export default DownloadBrochure;
+
+DownloadBrochure.propTypes = {
+  projectName:PropTypes.string.isRequired,
+}

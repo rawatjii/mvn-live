@@ -2050,31 +2050,28 @@ footer {
                 width: 14px;
                 filter: invert();
               }
-            }
 
-            &:nth-of-type(1) a{
-              background-color: #007ab9;
-            }
+              &.linkedin_icon{
+                background-color: #007ab9;
+              }
 
-            &:nth-of-type(2) a{
-              background-color: #3b5998;
-            }
+              &.fb_icon{
+                background-color: #3b5998;
+              }
+              
+              &.insta_icon{
+                /* background-color: #fff; */
+                background: #f09433; 
+                background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+                background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+                background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+              }
 
-            &:nth-of-type(3) a{
-              /* background-color: #fff; */
-              background: #f09433; 
-              background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
-              background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
-              background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
-
-              img{
-                /* filter:unset; */
+              &.yt_icon{
+                background-color: #ff0000;
               }
             }
-
-            &:nth-of-type(4) a{
-              background-color: #ff0000;
-            }
+            
           }
         }
       }
@@ -4110,6 +4107,11 @@ footer {
   min-height:100vh;
 }
 
+.subscribe_style1{
+
+  max-width: 120px;
+}
+
 /* start responsive */
 /* by bhupendra */
 @media(min-width:768px) {
@@ -5242,6 +5244,10 @@ footer {
   .parent-box-div{
 
     min-height: 600px;
+  }
+
+  .subscribe_style1{
+    max-width:100px;
   }
 
 }

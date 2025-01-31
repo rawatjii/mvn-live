@@ -4,8 +4,12 @@ import MvnMall1 from "../../mvnMall";
 
 export const mvnMallData = {
   header:{
+    sidebarAsset:{
+      desktop:`${CONFIG.IMAGE_URL_MVL_MALL}header/sidebar.webp`,
+      mobile:`${CONFIG.IMAGE_URL_MVL_MALL}header/sidebar.webp`,
+    },
     athens_header:'Athens_nav',
-    title:'MVN Athens, Faridabad',
+    title:'MVN Mall, Dwarka Expressway',
     sidebar_section:[
       {
         section_title:'Overview',

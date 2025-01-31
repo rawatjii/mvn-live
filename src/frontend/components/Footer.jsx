@@ -4,17 +4,20 @@ import { Link, NavLink } from "react-router-dom";
 import LazyLoad from "react-lazyload";
 import * as CONFIG from '../../config/config';
 
+import { otherProjects, otherPages, otherDetails,socialMedia } from "../../data/headerdata";
+
 // import twitterIcon from '../assets/images/icons/social/twitter.png';
-import linkedinIcon from '../assets/images/icons/social/linkedin.png';
-import fbIcon from '../assets/images/icons/social/fb.png';
-import instaIcon from '../assets/images/icons/social/instagram.png';
-import YoutubeIcon from '../assets/images/icons/social/youtube.png';
+// import linkedinIcon from '../assets/images/icons/social/linkedin.png';
+// import fbIcon from '../assets/images/icons/social/fb.png';
+// import instaIcon from '../assets/images/icons/social/instagram.png';
+// import YoutubeIcon from '../assets/images/icons/social/youtube.png';
 import BtnIcon from '../assets/images/icons/send.png';
 import FooterMiddleLogo from '../assets/images/logomvn.png';
 import subscribeBtn from '../assets/images/icons/subscribe_btn.webp';
 
 const Footer = () => {
-  const channelUrl = "https://www.youtube.com/@MVNInfrastructures?sub_confirmation=1";
+  const channelUrl = CONFIG.YOUTUBE_URL;
+  const baseUrl = import.meta.env.VITE_APP_URL;
 
   return (
     <footer>
@@ -32,28 +35,14 @@ const Footer = () => {
                 <div className="box">
                   <h4>Projects</h4>
                   <ul>
-                    <li>
-                      <label htmlFor="">Gurgaon</label>
-                      <NavLink to='https://mvnmall.com/' target="_blank">MVN Mall</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to={`${import.meta.env.VITE_APP_URL}aeroone-gurgaon`}>MVN Aero One</NavLink>
-                    </li>
-                    <li>
-                      <label htmlFor="">Bangalore</label>
-                      <NavLink to="https://www.mvnaeroone.com/" target="_blank">MVN</NavLink>
-                    </li>
-                    <li>
-                      <label htmlFor="">Sohna</label>
-                      <NavLink to="https://www.mvn.in/athens-gurugram/" target="_blank">MVN Athens</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to="https://www.mvninfrastructure.com/athens-gurugram-phase2/" target="_blank">MVN Athens PH-2</NavLink>
-                    </li>
-                    <li>
-                      <label htmlFor="">Faridabad</label>
-                      <NavLink to="https://www.mvn.in/athens-faridabad/" target="_blank">MVN Athens</NavLink>
-                    </li>
+                    {otherProjects && otherProjects.map((singleProject, index)=>(
+                      <li key={index}>
+                        <label htmlFor="">{singleProject.location}</label>
+                        {singleProject.projects && singleProject.projects.map((singleNav, index1)=>(
+                          <NavLink key={index1} to={singleNav.link} target={singleNav.target_blank}>{singleNav.name}</NavLink>
+                        ))}
+                      </li>
+                    ))}
                   </ul>
                 </div>
 
@@ -61,29 +50,18 @@ const Footer = () => {
                   <h4>Important Links</h4>
                   <ul>
                     <li>
-                      <NavLink to={`${import.meta.env.VITE_APP_URL}`}>
+                      <NavLink to={baseUrl}>
                         Home
                       </NavLink>
                     </li>
-                    <li>
-                      <NavLink to={`${import.meta.env.VITE_APP_URL}about-us`}>
-                        About us
-                      </NavLink>
-                    </li>
-                    <li>
-                      <NavLink to={`${import.meta.env.VITE_APP_URL}media-centre`}>Media Centre</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to={`${import.meta.env.VITE_APP_URL}blogs`}>Blogs</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to={`${import.meta.env.VITE_APP_URL}career`}>Career</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to={`${import.meta.env.VITE_APP_URL}contact-us`}>
-                        Contact Us
-                      </NavLink>
-                    </li>
+                    {otherPages && otherPages.map((singlePage, pageIndex)=>(
+                      <li key={pageIndex}>
+                        <NavLink to={`${baseUrl}${singlePage.link}`}>
+                          {singlePage.name}
+                        </NavLink>
+                      </li>
+                    ))}
+                  
                   </ul>
                 </div>
               </div>
@@ -92,17 +70,24 @@ const Footer = () => {
             <div className="left">
               <h4>Contact Details</h4>
 
-              <p className="address-details"><span>Meet:</span> MVN AERO ONE, C/o Awfis, 7th Floor, Gate No. 3 &4 Ambience Mall, Ambience Island, NH-8, DLF Phase-3, Sector-24, Gurugram
+              <p className="address-details"><span>Meet:</span>{otherDetails.address}
               <br /> CIN:ACA-4678 | PAN:ABWFM8415E</p>
-              <p className="phone-details"><span>Talk:</span> +91 799 6000 196</p>
-              <p className="mail-details"><span>Write:</span> info@mvn.in</p>
+              <p className="phone-details"><span>Talk:</span> {otherDetails.contact}</p>
+              <p className="mail-details"><span>Write:</span> {otherDetails.email}</p>
 
               <div className="footer-top">
                 <div className="social-media">
                   <div className="left-b">
                     <div className="icons">
                       <ul>
-                        <li>
+                        {socialMedia && socialMedia.map((singleLink, socialIndex)=>(
+                          <li key={socialIndex}>
+                            <Link to={singleLink.link} target="_blank" className={`icon ${singleLink.className}`}>
+                              <img src={CONFIG.IMAGE_URL + singleLink.imgUrl} alt={singleLink.alt} className={`img-fluid`} /> 
+                            </Link>
+                          </li>
+                        ))}
+                        {/* <li>
                           <Link to="https://www.linkedin.com/company/mvn-infrastructure/" target="_blank" className="icon">
                             <img src={linkedinIcon} alt="mvn-linkedin-icon" className="img-fluid" />
                           </Link>
@@ -121,7 +106,7 @@ const Footer = () => {
                           <Link to="https://www.youtube.com/@MVNInfrastructures" target="_blank" className="icon">
                             <img src={YoutubeIcon} alt="mvn-youtube-icon" className="img-fluid" />
                           </Link>
-                        </li>
+                        </li> */}
                       </ul>
                     </div>
                   </div>

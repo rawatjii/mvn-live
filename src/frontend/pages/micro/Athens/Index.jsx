@@ -4,6 +4,10 @@ import MicroPageFaridabad from "../../MicroPageFaridabad";
 
 export const faridabadData = {
   header:{
+    sidebarAsset:{
+      desktop:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}header/athens.webp`,
+      mobile:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}header/athens.webp`,
+    },
     athens_header:'Athens_nav',
     title:'MVN Athens, Faridabad',
     sidebar_section:[

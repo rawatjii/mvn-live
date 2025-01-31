@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import CustomCard from "../Card";
 import { Container } from "react-bootstrap";
+import subscribeImg from '../../../frontend/assets/images/icons/subscribe_btn.webp'
 import * as CONFIG from "../../../config/config";
 
 const Walkthrough = React.memo(({ data }) => {
   const { src, second_title, desc } = data;
+
+  const channelUrl = CONFIG.YOUTUBE_URL;
 
   const [videoSrc, setVideoSrc] = useState(src);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false); // Track video state
@@ -103,6 +106,10 @@ const Walkthrough = React.memo(({ data }) => {
           </button>
         )}
       </div>
+
+      <a href={channelUrl} target="_blank" className="d-table mx-auto mt-4">
+        <img src={subscribeImg} alt="mvn subscribe btn" className="img-fluid subscribe_style1" />
+      </a> 
 
       <Container>
         <div className="about">

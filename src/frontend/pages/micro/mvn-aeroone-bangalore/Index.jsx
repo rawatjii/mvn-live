@@ -9,6 +9,10 @@ import building_sm from '../../../assets/images/aero-gurgaon/building_sm.webp'
 
 export const bangaloreData = {
   header:{
+    sidebarAsset:{
+          desktop:`${CONFIG.IMAGE_URL_BANGALORE}header/sidebar.webp`,
+          mobile:`${CONFIG.IMAGE_URL_BANGALORE}header/sidebar.webp`,
+        },
     title:'MVN AeroOne, Bangalore',
     sidebar_section:[
       {
@@ -882,7 +886,7 @@ export const bangaloreData = {
           ]
         },
         {
-          title:'360 Panoramic Apartment (12420 sq.ft.)',
+          title:'360 Panoramic Apartment (12600 sq.ft.)',
           thumbnail:[
             {
               src:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/360/1.webp',
@@ -891,7 +895,7 @@ export const bangaloreData = {
           ]
         },
         {
-          title:'270 Panoramic Apartment (6210 sq.ft.)',
+          title:'270 Panoramic Apartment (6300 sq.ft.)',
           thumbnail:[
             {
               src:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/270/1.webp',

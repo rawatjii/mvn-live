@@ -10,6 +10,10 @@ import MicroPageGurgaon1 from "../../MicroPageGurgaon1";
 
 export const data = {
   header:{
+    sidebarAsset:{
+      desktop:`${CONFIG.IMAGE_URL}header/sidebar.webp`,
+      mobile:`${CONFIG.IMAGE_URL}header/sidebar.webp`,
+    },
     title:'MVN AeroOne, Gurugram',
     sidebar_section:[
       {
@@ -162,23 +166,35 @@ export const data = {
     desc:'Expansive lush green gardens landscaped for beauty and sustainability. Revel in this oasis of freshness and serenity exclusively for the residents.',
     images:[
       {
-        desktop: CONFIG.IMAGE_URL + "renders/landscape/1.webp",
-        mobile: CONFIG.IMAGE_URL + "renders/landscape/1_sm.webp",
+        desktop: CONFIG.IMAGE_URL + 'renders/landscape/yoga_deck.webp',
+        mobile: CONFIG.IMAGE_URL + 'renders/landscape/yoga_deck_sm.webp',
         watermark: "right",
         title: "Yoga Deck",
       },
       {
-        desktop: CONFIG.IMAGE_URL + "renders/landscape/2.webp",
-        mobile: CONFIG.IMAGE_URL + "renders/landscape/2_sm.webp",
+        desktop: CONFIG.IMAGE_URL + 'renders/landscape/swimming_pool.webp',
+        mobile: CONFIG.IMAGE_URL + 'renders/landscape/swimming_pool_sm.webp',
         watermark: "right",
         title: "Swimming Pool",
       },
       {
-        desktop: CONFIG.IMAGE_URL + "renders/landscape/3.webp",
-        mobile: CONFIG.IMAGE_URL + "renders/landscape/3_sm.webp",
+        desktop: CONFIG.IMAGE_URL + 'renders/landscape/pargola.webp',
+        mobile: CONFIG.IMAGE_URL + 'renders/landscape/pargola_sm.webp',
         watermark: "right",
         title: "Pergola View",
       },
+      {
+        desktop: CONFIG.IMAGE_URL + 'renders/landscape/tennis.webp',
+        mobile: CONFIG.IMAGE_URL + 'renders/landscape/tennis_sm.webp',
+        watermark: 'right',
+        title:'Lawn Tennis View',
+      },
+      {
+        desktop: CONFIG.IMAGE_URL + 'renders/landscape/landscape.webp',
+        mobile: CONFIG.IMAGE_URL + 'renders/landscape/landscape_sm.webp',
+        watermark: 'right',
+        title:'Landscape View',
+      }
     ],
   },
   microElevation:{
@@ -695,14 +711,10 @@ export const data = {
             src:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/penthouse/1.webp',
             mobile:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/penthouse/1.webp',
           },
-          {
-            src:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/penthouse/2.webp',
-            mobile:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/penthouse/2.webp',
-          }
         ]
       },
       {
-        title:'360 Panoramic Apartment (12420 sq.ft.)',
+        title:'360 Panoramic Apartment (12600 sq.ft.)',
         thumbnail:[
           {
             src:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/360/1.webp',
@@ -711,20 +723,12 @@ export const data = {
         ]
       },
       {
-        title:'270 Panoramic Apartment (6210 sq.ft.)',
+        title:'270 Panoramic Apartment (6300 sq.ft.)',
         thumbnail:[
           {
             src:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/270/1.webp',
             mobile:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/270/1.webp',
           },
-          {
-            src:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/270/2.webp',
-            mobile:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/270/2.webp',
-          },
-          {
-            src:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/270/3.webp',
-            mobile:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/270/3.webp',
-          }
         ]
       },
     ]

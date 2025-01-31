@@ -16,8 +16,8 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
   const [scrolled, setScrolled] = useState(false);
   const [isMicro, setIsMicro] = useState(false);
 
-  const SidebarSection = data.sidebar_section;
-  const channelUrl = "https://www.youtube.com/@MVNInfrastructures?sub_confirmation=1";
+  const {sidebar_section, sidebarAsset} = data;
+  const channelUrl = CONFIG.YOUTUBE_URL;
   const { pathname } = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isMobile } = useMatches();
@@ -74,7 +74,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
             <div className="inner-overlay">
 
               <div className="video-area d-none d-md-block">
-                <img src={CONFIG.IMAGE_URL + 'renders/elevation/2.webp'} alt="mvn elevation image" />
+                <img src={sidebarAsset.desktop} alt="mvn elevation image" className="img-fluid" />
               </div>
               
               <div className="menu-area">
@@ -95,7 +95,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                         </ul>
                         <h4>{data.title}</h4>
                         <ul>
-                          {SidebarSection && SidebarSection.map((section, index) => (
+                          {sidebar_section && sidebar_section.map((section, index) => (
                             <li key={index}>
                               <NavLink className="new-launch" onClick={() => { scrollToSection(section.link); toggleMenu("close"); }}>
                                 {section.section_title}
@@ -112,27 +112,31 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                           <React.Fragment key={index}>
                             <h4 className={index === 0 ? 'pt-0' : ''}>{singleProject.location}</h4>
                             <ul>
-                              {singleProject.projects && singleProject.projects.map((project, idx) => (
-                                <li className={project.status ? 'new_launch' : ''} key={project.name + idx}>
-                                  <NavLink to={project.link} target={project.target_blank === false ? "_self" : "_blank"} onClick={() => toggleMenu("close")}>
-                                    {project.name}
-                                  </NavLink>
-                                  {project.status && <span>{project.status}</span>}
-                                </li>
-                              ))}
+                              {singleProject.projects && singleProject.projects.map((project, idx) => {
+                                return !project.link.includes(pathname) ? (
+                                  <li className={project.status ? 'new_launch' : ''} key={project.name + idx}>
+                                    <NavLink to={project.link} target={project.target_blank === false ? "_self" : "_blank"} onClick={() => toggleMenu("close")}>
+                                      {project.name}
+                                    </NavLink>
+                                    {project.status && <span>{project.status}</span>}
+                                  </li>
+                                ) : null
+                              })}
                             </ul>
                           </React.Fragment>
                         ))}
                       </div>
                       <div className={`right ${isMobile ? 'bottom' : 'top'}`}>
                         <ul>
-                          {otherPages && otherPages.map((singleLink, index) => (
-                            <li key={index}>
-                              <NavLink to={import.meta.env.VITE_APP_URL + singleLink.link} onClick={() => toggleMenu("close")}>
-                                {singleLink.name}
-                              </NavLink>
-                            </li>
-                          ))}
+                          {otherPages && otherPages.map((singleLink, index) => {
+                            if(singleLink.name !== 'Contact Us'){
+                              return <li key={index}>
+                                <NavLink to={import.meta.env.VITE_APP_URL + singleLink.link} onClick={() => toggleMenu("close")}>
+                                  {singleLink.name}
+                                </NavLink>
+                              </li>
+                            }
+                          })}
                         </ul>
                       </div>
                     </div>
@@ -148,7 +152,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                         <ul className="social_links">
                           {socialMedia.map((socialIcon, index) => (
                             <li key={index}>
-                              <Link to={socialIcon.link} target="_blank" onClick={() => toggleMenu("close")}>
+                              <Link to={socialIcon.link} target="_blank" onClick={() => toggleMenu("close")} className={socialIcon.className}>
                                 <img src={`${CONFIG.IMAGE_URL + socialIcon.imgUrl}`} alt={socialIcon.alt} />
                               </Link>
                             </li>
