@@ -4106,6 +4106,11 @@ footer {
   min-height:100vh;
 }
 
+.subscribe_style1{
+
+  max-width: 120px;
+}
+
 /* start responsive */
 /* by bhupendra */
 @media(min-width:768px) {
@@ -5238,6 +5243,10 @@ footer {
   .parent-box-div{
 
     min-height: 600px;
+  }
+
+  .subscribe_style1{
+    max-width:100px;
   }
 
 }

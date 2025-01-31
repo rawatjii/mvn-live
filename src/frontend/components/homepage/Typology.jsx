@@ -188,7 +188,7 @@ const Typology = ({ onLoadComplete }) => {
             >
               <h1>360 degree Panoramic Apartment</h1>
               <p>
-                At an impressive 12420 sq.ft., the simplex flats offer a
+                At an impressive 12600 sq.ft., the simplex flats offer a
                 commanding 360-degree panoramic vista, presenting a boundless
                 world of elegance. This is where space, design, and nature
                 converge in perfect harmony.
@@ -202,7 +202,7 @@ const Typology = ({ onLoadComplete }) => {
             >
               <h1>270 degree Panoramic Apartment</h1>
               <p>
-                Spanning an expansive 6210 sq.ft., these exquisite residences
+                Spanning an expansive 6300 sq.ft., these exquisite residences
                 offer a captivating 270-degree panoramic view, seamlessly
                 blending breathtaking vistas with unmatched sophistication.
               </p>

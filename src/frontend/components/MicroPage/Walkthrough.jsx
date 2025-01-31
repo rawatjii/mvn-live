@@ -1,8 +1,14 @@
 import React from "react";
 import CustomCard from "../Card";
 import {Container } from "react-bootstrap";
+import Button from "../../../common/Button/Button";
+import subscribeImg from '../../../frontend/assets/images/icons/subscribe_btn.webp'
+
+import * as CONFIG from '../../../config/config.js';
 
 const Walkthrough = React.memo(()=>{
+
+  const channelUrl = CONFIG.YOUTUBE_URL;
 
   return(
     <section className="section walkthrough_section pb-0">
@@ -15,6 +21,10 @@ const Walkthrough = React.memo(()=>{
         width="100"
         height="100"
       ></iframe>
+
+      <a href={channelUrl} target="_blank" className="d-table mx-auto mt-4">
+        <img src={subscribeImg} alt="mvn subscribe btn" className="img-fluid subscribe_style1" />
+      </a> 
    
       <Container>
         <div className='about'>

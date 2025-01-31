@@ -527,14 +527,10 @@ export const data = {
             src:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/penthouse/1.webp',
             mobile:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/penthouse/1.webp',
           },
-          {
-            src:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/penthouse/2.webp',
-            mobile:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/penthouse/2.webp',
-          }
         ]
       },
       {
-        title:'360 Panoramic Apartment (12420 sq.ft.)',
+        title:'360 Panoramic Apartment (12600 sq.ft.)',
         thumbnail:[
           {
             src:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/360/1.webp',
@@ -543,20 +539,12 @@ export const data = {
         ]
       },
       {
-        title:'270 Panoramic Apartment (6210 sq.ft.)',
+        title:'270 Panoramic Apartment (6300 sq.ft.)',
         thumbnail:[
           {
             src:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/270/1.webp',
             mobile:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/270/1.webp',
           },
-          {
-            src:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/270/2.webp',
-            mobile:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/270/2.webp',
-          },
-          {
-            src:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/270/3.webp',
-            mobile:CONFIG.IMAGE_URL + 'aero-bangalore/floorPlan/270/3.webp',
-          }
         ]
       },
     ]
