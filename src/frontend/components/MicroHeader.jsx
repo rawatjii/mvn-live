@@ -16,7 +16,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
   const [scrolled, setScrolled] = useState(false);
   const [isMicro, setIsMicro] = useState(false);
 
-  const {sidebar_section, sidebarAsset} = data;
+  const { sidebar_section, sidebarAsset } = data;
   const channelUrl = CONFIG.YOUTUBE_URL;
   const { pathname } = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -69,14 +69,14 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
             <span className="icon"></span>
           </Navbar.Toggle>
         </div>
-        <div id="basic-navbar-nav"  className={`navbar_collapse ${isMenuOpen ? "show" : ""}`}>
+        <div id="basic-navbar-nav" className={`navbar_collapse ${isMenuOpen ? "show" : ""}`}>
           <div className="overlay-content">
             <div className="inner-overlay">
 
               <div className="video-area d-none d-md-block">
                 <img src={sidebarAsset.desktop} alt="mvn elevation image" className="img-fluid" />
               </div>
-              
+
               <div className="menu-area">
                 <div className="top_head">
                   <Link onClick={() => toggleMenu("close")}>
@@ -110,7 +110,8 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                       <div className="left">
                         {otherProjects && otherProjects.map((singleProject, index) => (
                           <React.Fragment key={index}>
-                            <h4 className={index === 0 ? 'pt-0' : ''}>{singleProject.location}</h4>
+                            {singleProject.projects.length == 1 && singleProject.projects.some(sinProject => sinProject.link.includes(pathname)) ? null : <h4 className={index === 0 ? 'pt-0' : ''}>{singleProject.location}</h4>}
+
                             <ul>
                               {singleProject.projects && singleProject.projects.map((project, idx) => {
                                 return !project.link.includes(pathname) ? (
@@ -129,7 +130,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                       <div className={`right ${isMobile ? 'bottom' : 'top'}`}>
                         <ul>
                           {otherPages && otherPages.map((singleLink, index) => {
-                            if(singleLink.name !== 'Contact Us'){
+                            if (singleLink.name !== 'Contact Us') {
                               return <li key={index}>
                                 <NavLink to={import.meta.env.VITE_APP_URL + singleLink.link} onClick={() => toggleMenu("close")}>
                                   {singleLink.name}

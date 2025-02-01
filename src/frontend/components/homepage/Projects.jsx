@@ -13,6 +13,9 @@ import mvnAerooneBangaloreImgDesktop from "../../assets/images/projects/mvn-bang
 import arrowIcon from "../../assets/images/icons/arrow.png";
 import planeIcon from "../../assets/images/icons/heading-icon-img.webp";
 
+import mvnAeroworldBg from '../../assets/images/homepage/projects/mvn-aeroworld-bg.webp';
+import mvnAeroworldBgSm from '../../assets/images/homepage/projects/mvn-aeroworld-bg-sm.webp';
+
 import * as CONFIG from '../../../config/config'
 
 const projectsData = [
@@ -94,12 +97,12 @@ const Projects = () => {
               <div className="box_with_overlay col-md-4">
                 <div className="box_with_overlay_in">
                   <img
-                    src={CONFIG.IMAGE_URL + "gurgaon-project-map.webp"}
+                    src={mvnAeroworldBg}
                     alt="project map image"
                     className="img-fluid img_bg d-lg-block d-none"
                   />
                   <img
-                    src={CONFIG.IMAGE_URL + "gurgaon-project-map-sm.webp"}
+                    src={mvnAeroworldBgSm}
                     alt="project map image"
                     className="img-fluid img_bg d-lg-none d-block"
                   />
