@@ -30,7 +30,8 @@ const projectsData = [
     name: "Mvn Mall",
     location: "Gurugram",
     otherPage: true,
-    link: 'https://mvnmall.com/'
+    link: 'https://mvnmall.com/',
+    watermark:true,
   },
   {
     mobile: mvnAerooneBangaloreImg,
@@ -131,6 +132,11 @@ const Projects = () => {
                             onLoad={handleImageLoad}
                           />
                         </Link>
+                        {item.watermark && (
+                          <div className="watermark">
+                            <img src={CONFIG.IMAGE_URL + 'watermark/mvn_mall.webp'} alt="mvn mall logo" className="img-fluid" />
+                          </div>
+                        )}
                       </AnImage>
                       <div className="text d-flex">
                         <span className="pro_name text-uppercase">{item.name}</span>

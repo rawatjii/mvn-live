@@ -57,7 +57,7 @@ const MvnMall = () => {
                 className="img-fluid"
               />
               <Watermark />
-              <Logomark className="left sm" />
+              <Logomark className="left" logo="mvn" />
             </div>
           </>
         ) : (
@@ -73,14 +73,14 @@ const MvnMall = () => {
                   <div className="position-relative">
                     <img src={mvnMallBannerImg1} alt="mvn mall icon" className="img-fluid" />
                     <Watermark />
-                    <Logomark className="left sm" />
+                    <Logomark className="left" logo="mvn" />
                   </div>
                 </div>
                 <div className="col-sm-12 col-md-6 col-lg-6">
                   <div className="position-relative">
                     <img src={mvnMallBannerImg2} alt="mvn mall icon" className="img-fluid" />
                     <Watermark />
-                    <Logomark className="left sm" />
+                    <Logomark className="left" logo="mvn" />
                   </div>
                 </div>
               </div>

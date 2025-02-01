@@ -7,7 +7,7 @@ const Banner1 = ()=>{
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   return(
-    <section className="banner1">
+    <section className="banner1 custom_cursor_section click_here">
       <a
         href={import.meta.env.VITE_APP_URL + "aeroone-gurgaon"}
         className="hero-banner-link"
