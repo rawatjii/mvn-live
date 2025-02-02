@@ -253,7 +253,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
           </div>
 
           <Suspense fallback="">
-            <MicroOverview data={data} />
+            <MicroOverview data={data.overview} />
           </Suspense>
 
           <Suspense fallback="">

@@ -3,9 +3,7 @@ import { Col, Container, Form, Row } from "react-bootstrap";
 import Button from "./Button/Button";
 import Modal from "react-bootstrap/Modal";
 import SecTitle from "./SecTitle/Index";
-// import headingIconImg from "./../frontend/assets/images/icons/heading-icon-img.webp";
 import Formlogo from "../../public/assets/images/logo_white.webp";
-import * as CONFIG from "../config/config";
 import Loader from "./Loader/loader";
 
 const CustomModal = React.memo(({ show, hide, projectName, isOffer }) => {
@@ -84,11 +82,11 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer }) => {
         <div ref={modalRef}>
           <Modal.Body>
             <div className="left">
-              <img
+              {/* <img
                 src={CONFIG.IMAGE_URL + "offer/1.webp"}
                 className="img-fluid offer_img"
                 alt="offer image"
-              />
+              /> */}
             </div>
 
             <div className="right">

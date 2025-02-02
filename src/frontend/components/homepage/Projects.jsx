@@ -16,7 +16,8 @@ import planeIcon from "../../assets/images/icons/heading-icon-img.webp";
 import mvnAeroworldBg from '../../assets/images/homepage/projects/mvn-aeroworld-bg.webp';
 import mvnAeroworldBgSm from '../../assets/images/homepage/projects/mvn-aeroworld-bg-sm.webp';
 
-import * as CONFIG from '../../../config/config'
+import mvnBangaloreBg from '../../assets/images/homepage/projects/bangalore/bangalore-project-map.webp';
+import mvnBangaloreBgSm from '../../assets/images/homepage/projects/bangalore/bangalore-project-map-sm.webp';
 
 const projectsData = [
   {
@@ -33,7 +34,7 @@ const projectsData = [
     name: "Mvn Mall",
     location: "Gurugram",
     otherPage: true,
-    link: 'https://mvnmall.com/'
+    link: 'mvn-mall-1'
   },
   {
     mobile: mvnAerooneBangaloreImg,
@@ -41,7 +42,7 @@ const projectsData = [
     name: "Mvn AERO ONE",
     location: "Bangalore",
     otherPage: true,
-    link: 'https://www.mvnaeroone.com/'
+    link: 'aeroone-bangalore1'
   },
 ];
 
@@ -156,12 +157,12 @@ const Projects = () => {
               <div className="box_with_overlay col-md-4">
                 <div className="box_with_overlay_in">
                   <img
-                    src={CONFIG.IMAGE_URL + "bangalore-project-map.webp"}
+                    src={mvnBangaloreBg}
                     alt="Bangalore project map image"
                     className="img-fluid img_bg d-lg-block d-none"
                   />
                   <img
-                    src={CONFIG.IMAGE_URL + "bangalore-project-map-sm.webp"}
+                    src={mvnBangaloreBgSm}
                     alt="Bangalore project map image"
                     className="img-fluid img_bg d-lg-none d-block"
                   />

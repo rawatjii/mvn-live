@@ -1,12 +1,17 @@
 import React from "react";
 import * as CONFIG from '../../../../config/config';
 import MvnMall1 from "../../mvnMall";
+import headerDesktopImg from '../../../assets/images/mvn-mall/header/sidebar.webp';
+import bannerImg from '../../../assets/images/mvn-mall/banner/banner.webp';
+import landscapeImg1 from '../../../assets/images/mvn-mall/landscape/1.webp';
+import landscapeImg2 from '../../../assets/images/mvn-mall/landscape/2.webp';
+import landscapeImg3 from '../../../assets/images/mvn-mall/landscape/3.webp';
 
 export const mvnMallData = {
   header:{
     sidebarAsset:{
-      desktop:`${CONFIG.IMAGE_URL_MVL_MALL}header/sidebar.webp`,
-      mobile:`${CONFIG.IMAGE_URL_MVL_MALL}header/sidebar.webp`,
+      desktop:headerDesktopImg,
+      mobile:headerDesktopImg,
     },
     athens_header:'Athens_nav',
     title:'MVN Mall, Dwarka Expressway',
@@ -38,8 +43,8 @@ export const mvnMallData = {
     ],
   },
   banner:{
-    desktop:`${CONFIG.IMAGE_URL_MVL_MALL}banner/banner.webp`,
-    mobile:`${CONFIG.IMAGE_URL_MVL_MALL}banner/banner.webp`,
+    desktop:bannerImg,
+    mobile:bannerImg,
   },
   overview: {
     title: "MVN Mall",
@@ -51,16 +56,16 @@ export const mvnMallData = {
     desc:'Step into a visual journey where every snapshot captures the seamless blend of elegance and innovation.',
     images:[
       {
-        desktop: `${CONFIG.IMAGE_URL_MVL_MALL}landscape/1.webp`,
-        mobile: `${CONFIG.IMAGE_URL_MVL_MALL}landscape/1.webp`,
+        desktop: landscapeImg1,
+        mobile: landscapeImg1,
       },
       {
-        desktop: `${CONFIG.IMAGE_URL_MVL_MALL}landscape/2.webp`,
-        mobile: `${CONFIG.IMAGE_URL_MVL_MALL}landscape/2.webp`,
+        desktop: landscapeImg2,
+        mobile: landscapeImg2,
       },
       {
-        desktop: `${CONFIG.IMAGE_URL_MVL_MALL}landscape/3.webp`,
-        mobile: `${CONFIG.IMAGE_URL_MVL_MALL}landscape/3.webp`,
+        desktop: landscapeImg3,
+        mobile: landscapeImg3,
       },
     ],
   },

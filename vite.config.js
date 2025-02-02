@@ -6,6 +6,9 @@ import path from 'path';
 export default defineConfig({
   base:'/',
   plugins: [react()],
+  // json:{
+  //   stringify:true,
+  // },
   resolve:{
     alias:{
       root:path.resolve(__dirname, 'src/'),

@@ -4,14 +4,13 @@ import CustomCard from "../Card";
 import { useMatches } from "../../../theme/theme";
 import LottieAnimationSection from "./LottieAnimationSection";
 
-import * as CONFIG from '../../../config/config';
 import Watermark from "../../../common/watermark/Index";
 import ScrollDown from "../../../common/scrollDown/Index";
 
 const PeacockSection = React.memo(({ data}) => {
   const { isMobile } = useMatches();
 
-  const {second_title, desc} = data;
+  const {second_title, desc, path} = data;
 
   return (
     <div className="section peacock_section pb-0" id="peacockSection">
@@ -26,7 +25,7 @@ const PeacockSection = React.memo(({ data}) => {
       <div className="frames_content">
         <div className="image_col position-relative">
           <Watermark className={isMobile ? 'style4' : 'style2'} type="style1" />
-          <img src={CONFIG.IMAGE_URL + 'peacock/peacock.webp'} alt="Peacock image" className="img-fluid peacock_img" />
+          <img src={path.desktop} alt="Peacock image" className="img-fluid peacock_img" />
         </div>
 
         <ScrollDown className="color-black" />
