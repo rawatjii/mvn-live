@@ -6,6 +6,11 @@ import path from 'path';
 export default defineConfig({
   base:'/',
   plugins: [react()],
+  test:{
+    globals:true, //allow using global jest like functions
+    environment:'jsdom', //simulate a browser environment
+    setupFiles: './setupTests.js',
+  },
   // json:{
   //   stringify:true,
   // },
