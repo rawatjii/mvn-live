@@ -4,12 +4,13 @@ import MicroPageFaridabad from "../../MicroPageFaridabad";
 import MicroPageGurgaonPhase1 from "../../MicroPageGurgaonPhase1";
 import heroDesktopImg from '../../../assets/images/athens-ph1/banner/banner1.webp';
 import heroMobileImg from '../../../assets/images/athens-ph1/banner/banner1_sm.webp';
+import headerSidebarImg from '../../../assets/images/athens-ph1/header/sidebar.webp'
 
 export const athensGurgaonPhase1Data = {
   header:{
     sidebarAsset:{
-      desktop:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}header/athens_phase1.webp`,
-      mobile:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}header/athens_phase1.webp`,
+      desktop:headerSidebarImg,
+      mobile:headerSidebarImg,
     },
     athens_header:'Athens_nav',
     title:'MVN Athens, Gurgaon Phase 1',
