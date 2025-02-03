@@ -75,7 +75,7 @@ export const data = {
     client:true,
   },
   overview: {
-    title: "MVN AEROONE LUXURY RESIDENCES",
+    title: "MVN AERO ONE LUXURY RESIDENCES",
     // location: "Gurugram",
     extra: "AN EPITOME OF GLOBAL LUXURY NOW IN GURUGRAM",
     desc: "Gurugram is set to redefine luxury living with the launch  of MVN ultra-luxurious 5.5 BHK apartments, offering unmatched opulence. Combining the grandeur of Dubai and New York, these residences feature cutting-edge designs, premium amenities, and breathtaking views. Experience an elite lifestyle with sophistication and comfort at its pinnacle, like never before!",
@@ -105,7 +105,7 @@ export const data = {
   },
   video3: {
     title: "LIVE. LAUGH. LOUNGE",
-    desc: "Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambiance, perfect for hosting unforgettable soirees and extravagant gatherings.",
+    desc: "Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambience, perfect for hosting unforgettable soirees and extravagant gatherings.",
     isVdo: true,
   },
   masterBedroom: {
