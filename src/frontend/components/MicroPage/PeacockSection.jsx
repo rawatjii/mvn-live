@@ -6,6 +6,7 @@ import LottieAnimationSection from "./LottieAnimationSection";
 
 import Watermark from "../../../common/watermark/Index";
 import ScrollDown from "../../../common/scrollDown/Index";
+import peacokImg from "../../assets/loader/peacock.webp"
 
 const PeacockSection = React.memo(({ data}) => {
   const { isMobile } = useMatches();
@@ -18,7 +19,7 @@ const PeacockSection = React.memo(({ data}) => {
       {/* {isMobile && loading && <PeacockLoader />} */}
       {isMobile ? 
       <>
-        <LottieAnimationSection data={data} position="0" logomark="sm style4" watermark="style4"/>
+        <LottieAnimationSection backgroundImg={peacokImg} data={data} position="0" logomark="sm style4" watermark="style4"/>
       </>
       
       : <>

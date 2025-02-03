@@ -48,6 +48,7 @@ import { mvnMallData } from "./frontend/pages/micro/mvnMall/Index.jsx";
 import MvnMall1 from "./frontend/pages/mvnMall.jsx";
 
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -80,7 +81,7 @@ const router = createBrowserRouter([
       {
         path: "aeroone-bangalore1",
         element: (
-          <FrontendRoute loaderType="aeroone-bangalore1">
+          <FrontendRoute loaderType="aeroone-bangalore1" >
             <MicroPageBangalore data={bangaloreData} />
           </FrontendRoute>
         ),

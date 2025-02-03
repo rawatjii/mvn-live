@@ -60,12 +60,12 @@ export const mvnMallData = {
   },
   overview: {
     title: "MVN Mall",
-    extra: "Where Imagination Shapes Timeless Harmony",
-    desc: "Discover a world where modern architecture interwines with the essence of affordable living. At MVN Mall, we don't just build homes; we craft masterpieces that resonate with creativity and sophistication.",
+    extra: "The Pinnacle of Luxury Shopping",
+    desc: "Experience unparalleled elegance at MVN Mall , where world-class brands converge in an architecturally stunning setting. Indulge in a curated selection of premium boutiques, gourmet dining, and exclusive entertainment options, redefining luxury retail.",
   },
   landscape:{
     title:'Landscapes',
-    desc:'Step into a visual journey where every snapshot captures the seamless blend of elegance and innovation.',
+    desc:'A mesmerizing fusion of art and nature, MVN Mall 1’s landscape unfolds like a masterpiece, cascading water features, sculpted green terraces, and ambient lighting create an atmosphere of serene grandeur.',
     images:[
       {
         desktop: landscapeImg1,
@@ -101,7 +101,7 @@ export const mvnMallData = {
   },
   amenities : {
     title:'Amenities',
-    desc: "Immerse yourself in a world of thoughtfully created amenities designed to elevate your lifestyle with comfort, convenience, and indulgence.",
+    desc: "Elevate your experience with world-class amenities, all designed for an effortless blend of luxury and convenience.",
     data:[
       {
         name: `Fantasy Garden`,
