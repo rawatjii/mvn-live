@@ -140,7 +140,7 @@ export const bangaloreData = {
       desktopFrameCounts:162,
     },
     second_title:'A Haven of Luxury and Repose',
-    desc:"Enter a master bedroom where grandeur meets tranquility. This retreat is your ultimate haven, epitomizing luxurious living at its finest, with bespoke interiors, expansive layouts, and an ambiance of refined elegance."
+    desc:"Enter a master bedroom where grandeur meets tranquility. This retreat is your ultimate haven, epitomizing luxurious living at its finest, with bespoke interiors, expansive layouts, and an ambience of refined elegance."
 
   },
   landscape:{
@@ -538,12 +538,12 @@ export const bangaloreData = {
     // },
     video3: {
       title: "LIVE. LAUGH. LOUNGE",
-      desc: "Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambiance, perfect for hosting unforgettable soirees and extravagant gatherings.",
+      desc: "Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambience, perfect for hosting unforgettable soirees and extravagant gatherings.",
       isVdo: true,
     },
     party_video:{
       second_title:'LIVE. LAUGH. LOUNGE',
-      desc:'Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambiance, perfect for hosting unforgettable soirees and extravagant gatherings.',
+      desc:'Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambience, perfect for hosting unforgettable soirees and extravagant gatherings.',
       path:{
         mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/PartyVideo/Mobile/data.json`,
         desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/PartyVideo/Desktop/data.json`,

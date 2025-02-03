@@ -12,6 +12,7 @@ import mvnAerooneImgDesktop from "../../assets/images/projects/mvn-aeroone.webp"
 import mvnAerooneBangaloreImgDesktop from "../../assets/images/projects/mvn-bangalore-project.webp";
 import arrowIcon from "../../assets/images/icons/arrow.png";
 import planeIcon from "../../assets/images/icons/heading-icon-img.webp";
+import mvnWatermarkLogo from '../../assets/images/watermark/mvn_mall.webp';
 
 import mvnAeroworldBg from '../../assets/images/homepage/projects/mvn-aeroworld-bg.webp';
 import mvnAeroworldBgSm from '../../assets/images/homepage/projects/mvn-aeroworld-bg-sm.webp';
@@ -34,7 +35,8 @@ const projectsData = [
     name: "Mvn Mall",
     location: "Gurugram",
     otherPage: true,
-    link: 'mvn-mall-1'
+    link: 'mvn-mall-1',
+    watermark:true,
   },
   {
     mobile: mvnAerooneBangaloreImg,
@@ -91,7 +93,7 @@ const Projects = () => {
                 className="img-fluid title_plane1"
               />
               <h4 className="title title_style1 text-center" ref={titleRef}>Explore Our Projects</h4>
-              <article className="des_style1 text-center" ref={desRef}>MVN Infrastructure introduces MVN Aero One Residencies, the largest ultra-luxury apartments in Delhi NCR, located at the 22-kilometer stone on Dwarka Expressway.</article>
+              <article className="des_style1 text-center" ref={desRef}>MVN Infrastructure introduces MVN Aero One Residences, the largest ultra-luxury apartments in Delhi NCR, located at the 22-kilometer stone on Dwarka Expressway.</article>
             </div>
 
             <div className="project_div d-flex flex-wrap">
@@ -135,6 +137,11 @@ const Projects = () => {
                             onLoad={handleImageLoad}
                           />
                         </Link>
+                        {item.watermark && (
+                          <div className="watermark">
+                            <img src={mvnWatermarkLogo} alt="mvn mall logo" className="img-fluid" />
+                          </div>
+                        )}
                       </AnImage>
                       <div className="text d-flex">
                         <span className="pro_name text-uppercase">{item.name}</span>
