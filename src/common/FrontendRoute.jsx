@@ -3,6 +3,8 @@ import InitialLoading from "../frontend/skeleton/Initial/Index";
 import PropTypes from "prop-types";
 import * as CONFIG from '../config/config';
 
+import bangaloreImg from "../frontend/assets/bangalore/laoder/banner.png"
+
 const FrontendRoute = ({children, loaderType})=>{
   const [loaderImage, setLoaderImage] = useState({
     desktop:null,
@@ -19,6 +21,11 @@ const FrontendRoute = ({children, loaderType})=>{
       setLoaderImage({
         desktop: CONFIG.IMAGE_URL + 'loader/aeroone-gurgaon/desktop.webp',
         mobile: CONFIG.IMAGE_URL + 'loader/aeroone-gurgaon/mobile.webp',
+      })
+    }else if(loaderType == "aeroone-bangalore1"){
+      setLoaderImage({
+        desktop: bangaloreImg,
+        mobile: bangaloreImg,
       })
     }else if(loaderType == "about-us"){
       setLoaderImage({

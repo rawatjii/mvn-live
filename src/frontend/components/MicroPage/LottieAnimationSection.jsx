@@ -9,11 +9,12 @@ import lottie from "lottie-web";
 import { useMatches } from "../../../theme/theme";
 import ScrollDown from "../../../common/scrollDown/Index";
 import Logomark from "../../../common/logomark/Index";
+import loaderImg from "../../../frontend/assets/bangalore/laoder/banner.png"
 
 // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-const LottieAnimationSection = React.memo(({ data, onLoadComplete, position, watermark, logomark, type,onBannerExit, isMainBanner }) => {
+const LottieAnimationSection = React.memo(({backgroundImg, data, onLoadComplete, position, watermark, logomark, type,onBannerExit, isMainBanner }) => {
   const containerRef = useRef(null);
   const titleRef = useRef();
   const lottieContainerRef = useRef(null);
@@ -148,14 +149,14 @@ const LottieAnimationSection = React.memo(({ data, onLoadComplete, position, wat
         <PartyLoader />
       ) : (
         <>
-        <section className="LottieAnimationContainer">
-          <div ref={containerRef}>
+        <section className="LottieAnimationContainer" >
+          <div ref={containerRef} >
             <div className="frames_content">
               <div className="position-relative h_sm_100">
                 <div className="position-relative h_sm_100">
                   <Watermark className={watermark ? watermark : null} type="style1" />
                   <Logomark className={`left ${logomark ? logomark : null}`} />
-                  <div ref={lottieContainerRef} className={`Animation_height ${isMainBanner && 'isMainBanner'} ${data.Custom_height}`}></div>
+                  <div ref={lottieContainerRef} className={`Animation_height ${isMainBanner && 'isMainBanner'} ${data.Custom_height}`}style={{ backgroundImage: `url(${backgroundImg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
                 </div>
               </div>
 

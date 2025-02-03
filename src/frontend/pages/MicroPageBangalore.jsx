@@ -16,6 +16,9 @@ const ScrollTriggerFrames = React.lazy(()=>import("../components/MicroPage/Scrol
 const LottieAnimationSection = React.lazy(()=>import("../components/MicroPage/LottieAnimationSection"));
 const BangaloreElevationSection = React.lazy(()=>import("../components/MicroPage/bangalore/BangaloreElevationSection"));
 const SliderTypology = React.lazy(()=>import("../components/MicroPage/bangalore/SliderTypology"));
+import bannerImg from "../assets/bangalore/laoder/banner.png"
+import livingRoomImg from "../assets/bangalore/laoder/living-room.webp"
+import masterBedroomImg from "../assets/bangalore/laoder/master-bedroom.webp"
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -77,6 +80,7 @@ const MicroPageBangalore = ({ data, loadingCount, setLoadingCount }) => {
             onLoadComplete={() => setHeroLoaded(true)}
             onBannerExit={setIsHeaderFixed} 
             isMainBanner={true} 
+            backgroundImg={bannerImg}
             />
           </div>
           {/* Render other components only after Hero Section is loaded */}
@@ -112,7 +116,8 @@ const MicroPageBangalore = ({ data, loadingCount, setLoadingCount }) => {
               (sectionRefs.current.livingRoom = el)
             }>
           <Suspense fallback="">
-            <LottieAnimationSection data={data.living_room}/>
+            <LottieAnimationSection data={data.living_room} 
+            backgroundImg={livingRoomImg}/>
             {/* <ScrollTriggerFrames 
             data={data.living_room}
             onLoadComplete={() => setLivingRoomLoaded(true)}
@@ -128,6 +133,7 @@ const MicroPageBangalore = ({ data, loadingCount, setLoadingCount }) => {
             data={data.masterBedroom}
             onLoadComplete={() => setMasterBedroomLoaded(true)}
             isMainBanner={true} 
+            backgroundImg={masterBedroomImg}
             />
             </Suspense>
           </div>

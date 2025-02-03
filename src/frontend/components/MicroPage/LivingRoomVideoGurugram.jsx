@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import LottieAnimationSection from "./LottieAnimationSection";
 import { useMatches } from "../../../theme/theme";
+import livingRoomImg from "../../assets/loader/living-room.webp"
 
 const LivingRoomVideoGurugram = React.memo(({ data, onLoadComplete }) => {
   const sectionRef = useRef(null);
@@ -12,7 +13,7 @@ const LivingRoomVideoGurugram = React.memo(({ data, onLoadComplete }) => {
       {/* Loading progress */}
       {/* {loading && <PeacockLoader progress={progress} />} */}
 
-      <LottieAnimationSection data={data} logomark={isMobile ? `left sm` : `left`} />
+      <LottieAnimationSection backgroundImg={livingRoomImg} data={data} logomark={isMobile ? `left sm` : `left`} />
     </div>
   );
 });
