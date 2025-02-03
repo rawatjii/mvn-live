@@ -17,10 +17,10 @@ const Blog = React.lazy(() => import("./frontend/pages/Blog.jsx"));
 const BlogDetails = React.lazy(() => import("./frontend/pages/BlogDetails.jsx")); 
 const Career = React.lazy(() => import("./frontend/pages/Career.jsx"));
 const ContactPage = React.lazy(() => import("./frontend/pages/ContactUs.jsx"));
-const PrPolcy = React.lazy(() => import('./frontend/pages/PrPolcy.jsx'));
-const Disclaimer = React.lazy(() => import("./frontend/pages/Disclaimer.jsx"));
+import PrPolcy from './frontend/pages/PrPolcy.jsx';
+import Disclaimer from "./frontend/pages/Disclaimer.jsx";
 const PageNotFound = React.lazy(() => import("./common/PageNotFound/Index.jsx"));
-const ThankYou = React.lazy(() => import("./frontend/pages/ThankYou.jsx"));
+import ThankYou from "./frontend/pages/ThankYou.jsx";
 // const Gallery = React.lazy(() => import('./frontend/pages/Gallery.jsx'));
 // const Csr = React.lazy(() => import('./frontend/pages/Csr.jsx'));
 const MicroPageGurgaon1 = React.lazy(()=>import("./frontend/pages/MicroPageGurgaon1.jsx"));
@@ -153,9 +153,8 @@ const router = createBrowserRouter([
       {
         path: "thanks",
         element: (
-          <FrontendRoute loaderType="">
-              <ThankYou />
-          </FrontendRoute>
+          
+          <ThankYou />
         ),
       },
       {
@@ -175,7 +174,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "mvn-university-haryana",
+        path: "disclaimer",
         element: (
           <FrontendRoute loaderType="">
             <Disclaimer />
