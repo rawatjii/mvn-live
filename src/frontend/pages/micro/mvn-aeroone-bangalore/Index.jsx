@@ -48,10 +48,6 @@ export const bangaloreData = {
         link:'MicroApartment'
       },
       {
-        section_title:'Construction Technology',
-        link:'constructionTechnology'
-      },
-      {
         section_title:'Amenities',
         link:'MicroAmenities'
       },
@@ -60,20 +56,12 @@ export const bangaloreData = {
         link:'MicroTypology'
       },
       {
-        section_title:'Floor Plans',
-        link:'MicroFloorPlan'
-      },
-      {
         section_title:'Location Map',
         link:'MicroLocationMap'
       },
       {
-        section_title:'MVN Mall',
-        link:'MVNMALL'
-      },
-      {
-        section_title:'Connections MVN Mall',
-        link:'NoPolutionZone'
+        section_title:'Enquiry Form',
+        link:'enquiryForm'
       },
     ],
   },
