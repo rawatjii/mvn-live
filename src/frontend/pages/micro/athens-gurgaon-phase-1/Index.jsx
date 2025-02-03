@@ -2,6 +2,8 @@ import React from "react";
 import * as CONFIG from '../../../../config/config';
 import MicroPageFaridabad from "../../MicroPageFaridabad";
 import MicroPageGurgaonPhase1 from "../../MicroPageGurgaonPhase1";
+import heroDesktopImg from '../../../assets/images/athens-ph1/banner/banner1.webp';
+import heroMobileImg from '../../../assets/images/athens-ph1/banner/banner1_sm.webp';
 
 export const athensGurgaonPhase1Data = {
   header:{
@@ -43,8 +45,8 @@ export const athensGurgaonPhase1Data = {
     ],
   },
   banner:{
-    desktop:`${CONFIG.IMAGE_URL_ATHENS_GURGAON_PHASE_1}banner/banner.jpg`,
-    mobile:`${CONFIG.IMAGE_URL_ATHENS_GURGAON_PHASE_1}banner/banner-m.jpg`,
+    desktop:heroDesktopImg,
+    mobile:heroMobileImg,
   },
   overview: {
     title: "MVN Athens",

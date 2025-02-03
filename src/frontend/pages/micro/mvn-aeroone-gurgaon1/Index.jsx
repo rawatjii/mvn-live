@@ -4,6 +4,7 @@ import bgImgMB from '../../../assets/images/aero-gurgaon/largeBg1Sm.webp'
 import bgImgDesk from '../../../assets/images/aero-gurgaon/largeBg1.png'
 import absDesk from '../../../assets/images/aero-gurgaon/building_sm.webp'
 import building_sm from '../../../assets/images/aero-gurgaon/building_sm.webp';
+import headerSidebarDesktopImg from '../../../assets/images/aero-gurgaon/header/sidebar.webp';
 import peacockDesktopImg from '../../../assets/images/aero-gurgaon/Peacock/peacock.webp';
 import yogaDeck from '../../../assets/images/aero-gurgaon/renders/landscape/yoga_deck.webp';
 import yogaDeckSm from '../../../assets/images/aero-gurgaon/renders/landscape/yoga_deck_sm.webp';
@@ -94,8 +95,8 @@ import MicroPageGurgaon1 from "../../MicroPageGurgaon1";
 export const data = {
   header:{
     sidebarAsset:{
-      desktop:`${CONFIG.IMAGE_URL}header/sidebar.webp`,
-      mobile:`${CONFIG.IMAGE_URL}header/sidebar.webp`,
+      desktop:headerSidebarDesktopImg,
+      mobile:headerSidebarDesktopImg,
     },
     title:'MVN AeroOne, Gurugram',
     sidebar_section:[
@@ -158,7 +159,7 @@ export const data = {
     ],
   },
   overview: {
-    title: "MVN AEROONE LUXURY RESIDENCES",
+    title: "MVN AERO ONE LUXURY RESIDENCES",
     extra: "AN EPITOME OF GLOBAL LUXURY NOW IN GURUGRAM",
     desc: "Gurugram is set to redefine luxury living with the launch  of MVN ultra-luxurious 5.5 BHK apartments, offering unmatched opulence. Combining the grandeur of Dubai and New York, these residences feature cutting-edge designs, premium amenities, and breathtaking views. Experience an elite lifestyle with sophistication and comfort at its pinnacle, like never before!",
 
@@ -208,7 +209,7 @@ export const data = {
   },
   party_video:{
     second_title:'LIVE. LAUGH. LOUNGE',
-    desc:'Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambiance, perfect for hosting unforgettable soirees and extravagant gatherings.',
+    desc:'Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambience, perfect for hosting unforgettable soirees and extravagant gatherings.',
     path:{
       mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/Party/Mobile/data.json`,
       desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/Party/Desktop/data.json`,

@@ -48,7 +48,7 @@ const MvnAthensPh2Sohna = ()=>{
         },
         living_room_video:{
           title: "ESCAPE TO EXCLUSIVITY",
-          desc: "Experience the elegance of a sliding door that seamlessly connects your living space to the outdoors, transforming the ambiance with every glide.",
+          desc: "Experience the elegance of a sliding door that seamlessly connects your living space to the outdoors, transforming the ambience with every glide.",
           isVdo: false,
         },
         video3: {

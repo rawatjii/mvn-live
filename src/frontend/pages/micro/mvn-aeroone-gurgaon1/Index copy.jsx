@@ -234,12 +234,12 @@ export const data = {
   },
   video3: {
     title: "LIVE. LAUGH. LOUNGE",
-    desc: "Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambiance, perfect for hosting unforgettable soirees and extravagant gatherings.",
+    desc: "Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambience, perfect for hosting unforgettable soirees and extravagant gatherings.",
     isVdo: true,
   },
   party_video:{
     second_title:'LIVE. LAUGH. LOUNGE',
-    desc:'Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambiance, perfect for hosting unforgettable soirees and extravagant gatherings.',
+    desc:'Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambience, perfect for hosting unforgettable soirees and extravagant gatherings.',
     path:{
       mobile:CONFIG.IMAGE_URL + 'Panther/Desktop/data.json',
       desktop:CONFIG.IMAGE_URL + 'Panther/Desktop/data.json',

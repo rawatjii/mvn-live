@@ -1,12 +1,50 @@
 import React from "react";
 import * as CONFIG from '../../../../config/config';
 import MicroPageFaridabad from "../../MicroPageFaridabad";
+import headerSidebarDesktopImg from '../../../assets/images/athens-faridabad/header/athens.webp'
+// banner image
+import bannerDesktopImg from '../../../assets/images/athens-faridabad/banner/banner.webp';
+import bannerMobileImg from '../../../assets/images/athens-faridabad/banner/bannerSm.webp';
+// gallery image
+import galleryImg1 from '../../../assets/images/athens-faridabad/gallery/1.webp';
+import galleryImgSm1 from '../../../assets/images/athens-faridabad/gallery/1sm.webp';
+import galleryImg2 from '../../../assets/images/athens-faridabad/gallery/2.webp';
+import galleryImgSm2 from '../../../assets/images/athens-faridabad/gallery/2sm.webp';
+import galleryImg3 from '../../../assets/images/athens-faridabad/gallery/3.webp';
+import galleryImgSm3 from '../../../assets/images/athens-faridabad/gallery/3sm.webp';
+// amenities images
+import kidsDesktopImg from '../../../assets/images/athens-faridabad/amenities/kids.webp';
+import kidsMobileImg from '../../../assets/images/athens-faridabad/amenities/kidsSm.webp';
+import gymDesktopImg from '../../../assets/images/athens-faridabad/amenities/gym.webp';
+import gymMobileImg from '../../../assets/images/athens-faridabad/amenities/gymSm.webp';
+import poolDesktopImg from '../../../assets/images/athens-faridabad/amenities/pool.webp';
+import poolMobileImg from '../../../assets/images/athens-faridabad/amenities/poolSm.webp';
+import securityDesktopImg from '../../../assets/images/athens-faridabad/amenities/security.webp';
+import securityMobileImg from '../../../assets/images/athens-faridabad/amenities/securitySm.webp';
+import sportDesktopImg from '../../../assets/images/athens-faridabad/amenities/sport.webp';
+import sportMobileImg from '../../../assets/images/athens-faridabad/amenities/sportSm.webp';
+import gardenDesktopImg from '../../../assets/images/athens-faridabad/amenities/garden.webp';
+import gardenMobileImg from '../../../assets/images/athens-faridabad/amenities/gardenSm.webp';
+import liftDesktopImg from '../../../assets/images/athens-faridabad/amenities/lift.webp';
+import liftMobileImg from '../../../assets/images/athens-faridabad/amenities/liftSm.webp';
+import powerDesktopImg from '../../../assets/images/athens-faridabad/amenities/power.webp';
+import powerMobileImg from '../../../assets/images/athens-faridabad/amenities/powerSm.webp';
+// floor plan
+import floorPlanTowerC1 from '../../../assets/images/athens-faridabad/floor-plan/towerc/1.png';
+import floorPlanTowerC2 from '../../../assets/images/athens-faridabad/floor-plan/towerc/2.png';
+import floorPlanTowerC3 from '../../../assets/images/athens-faridabad/floor-plan/towerc/3.png';
+import floorPlanTowerD1 from '../../../assets/images/athens-faridabad/floor-plan/towerd/1.png';
+import floorPlanTowerD2 from '../../../assets/images/athens-faridabad/floor-plan/towerd/2.png';
+import floorPlanTowerD3 from '../../../assets/images/athens-faridabad/floor-plan/towerd/3.png';
+// location map
+import locationMapDesktop from '../../../assets/images/athens-faridabad/location-map/location-map.webp';
+import locationMapMobile from '../../../assets/images/athens-faridabad/location-map/location-mapm.webp';
 
 export const faridabadData = {
   header:{
     sidebarAsset:{
-      desktop:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}header/athens.webp`,
-      mobile:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}header/athens.webp`,
+      desktop:headerSidebarDesktopImg,
+      mobile:headerSidebarDesktopImg,
     },
     athens_header:'Athens_nav',
     title:'MVN Athens, Faridabad',
@@ -38,8 +76,8 @@ export const faridabadData = {
     ],
   },
   banner:{
-    desktop:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}banner/banner.webp`,
-    mobile:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}banner/bannerSm.webp`,
+    desktop:bannerDesktopImg,
+    mobile:bannerMobileImg,
   },
   overview: {
     title: "MVN Athens",
@@ -51,16 +89,16 @@ export const faridabadData = {
     desc:'Step into a visual journey where every snapshot captures the seamless blend of elegance and innovation.',
     images:[
       {
-        desktop: `${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}gallery/1.webp`,
-        mobile: `${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}gallery/1sm.webp`,
+        desktop: galleryImg1,
+        mobile: galleryImgSm1,
       },
       {
-        desktop: `${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}gallery/2.webp`,
-        mobile: `${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}gallery/2sm.webp`,
+        desktop: galleryImg2,
+        mobile: galleryImgSm2,
       },
       {
-        desktop: `${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}gallery/3.webp`,
-        mobile: `${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}gallery/3sm.webp`,
+        desktop: galleryImg3,
+        mobile: galleryImgSm3,
       },
     ],
   },
@@ -71,64 +109,64 @@ export const faridabadData = {
       { 
         name: "Kids' Play Area",
         path:{
-          desktop:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}amenities/kids.jpg`,
-          mobile:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}amenities/kidsSm.jpg`,
+          desktop:kidsDesktopImg,
+          mobile:kidsMobileImg,
         },
         desc:'World of wonder, where little dreams take flight.' 
       },  
       {
         name: 'Gym',
         path: {
-          desktop:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}amenities/gym.jpg`,
-          mobile:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}amenities/gymSm.jpg`,
+          desktop:gymDesktopImg,
+          mobile:gymMobileImg,
         },
         desc:'Where strength meets style for your fitness sanctuary.'
       },
       {
         name: 'Swimming Pool',
         path: {
-          desktop:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}amenities/pool.jpg`,
-          mobile:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}amenities/poolSm.jpg`,
+          desktop:poolDesktopImg,
+          mobile:poolMobileImg,
         },
         desc:'Dive into luxury, where every splash refreshes your soul. '
       },
       {
         name: `24/7 Security`,
         path: {
-          desktop:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}amenities/security.jpg`,
-          mobile:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}amenities/securitySm.jpg`,
+          desktop:securityDesktopImg,
+          mobile:securityMobileImg,
         },
         desc:'Your safety, our promise, always around the clock.'
       },
       {
         name: 'Sports Area',
         path: {
-          desktop:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}amenities/sport.jpg`,
-          mobile:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}amenities/sportSm.jpg`,
+          desktop:sportDesktopImg,
+          mobile:sportMobileImg,
         },
         desc:'Where champions are made, and fun finds its field.'
       },
       {
         name: 'Landscaped Garden',
         path: {
-          desktop:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}amenities/garden.jpg`,
-          mobile:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}amenities/gardenSm.jpg`,
+          desktop:gardenDesktopImg,
+          mobile:gardenMobileImg,
         },
         desc:'Nature’s embrace, right outside your door.'
       },
       {
         name: 'Lift',
         path: {
-          desktop:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}amenities/lift.jpg`,
-          mobile:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}amenities/liftSm.jpg`,
+          desktop:liftDesktopImg,
+          mobile:liftMobileImg,
         },
         desc:'Effortless elevation, because every step matters.'
       },
       {
         name: 'Power Backup',
         path: {
-          desktop:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}amenities/power.jpg`,
-          mobile:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}amenities/powerSm.jpg`,
+          desktop:powerDesktopImg,
+          mobile:powerMobileImg,
         },
         desc:'Uninterrupted living, powered for your peace of mind.'
       },
@@ -145,19 +183,19 @@ export const faridabadData = {
         title: "Lower Level Plan",
         area: "3419 sq.ft.",
         link: "#",
-        src: `${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}floor-plan/towerc/1.png`
+        src: floorPlanTowerC1
       },
       {
         title: "Upper Level Plan",
         area: "3419 sq.ft.",
         link: "#",
-        src: `${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}floor-plan/towerc/2.png`
+        src: floorPlanTowerC2
       },
       {
         title: "Upper Level Plan",
         area: "3375 sq.ft.",
         link: "#",
-        src: `${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}floor-plan/towerc/3.png`
+        src: floorPlanTowerC3
       },
     ], 
     tower_d: [
@@ -165,19 +203,19 @@ export const faridabadData = {
       title: "Lower Level Plan",
       area: "3419 sq.ft.",
       link: "#",
-      src: `${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}floor-plan/towerd/1.png`
+      src: floorPlanTowerD1
     },
     {
       title: "Upper Level Plan",
       area: "3419 sq.ft.",
       link: "#",
-      src: `${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}floor-plan/towerd/2.png`
+      src: floorPlanTowerD2
     },
     {
       title: "Upper Level Plan",
       area: "3375 sq.ft.",
       link: "#",
-      src: `${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}floor-plan/towerd/3.png`
+      src: floorPlanTowerD3
     },
   ],
   }
@@ -187,8 +225,8 @@ export const faridabadData = {
     title: "Location Advantages",
     desc:"Strategically nestled in Faridabad, MVN Athens ensures connectivity while surrounding you with urban conveniences and serene charm.",
     mapIMG: {
-      desktop: `${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}location-map.jpg`,
-      mobile: `${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}location-mapm.jpg`,
+      desktop: locationMapDesktop,
+      mobile: locationMapMobile,
     },
     locationSlider: true,
     chunks:1,

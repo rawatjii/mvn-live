@@ -197,7 +197,7 @@ export const bangaloreData = {
       desktop:`${CONFIG.JSON_URL}bangalore/masterBedroom/desktop/data.json`,
     },
     second_title:'A Haven of Luxury and Repose',
-    desc:"Enter a master bedroom where grandeur meets tranquility. This retreat is your ultimate haven, epitomizing luxurious living at its finest, with bespoke interiors, expansive layouts, and an ambiance of refined elegance."
+    desc:"Enter a master bedroom where grandeur meets tranquility. This retreat is your ultimate haven, epitomizing luxurious living at its finest, with bespoke interiors, expansive layouts, and an ambience of refined elegance."
 
   },
   landscape:{

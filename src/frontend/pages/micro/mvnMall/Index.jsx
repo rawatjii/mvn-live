@@ -3,9 +3,21 @@ import * as CONFIG from '../../../../config/config';
 import MvnMall1 from "../../mvnMall";
 import headerDesktopImg from '../../../assets/images/mvn-mall/header/sidebar.webp';
 import bannerImg from '../../../assets/images/mvn-mall/banner/banner.webp';
+import bannerImgSm from '../../../assets/images/mvn-mall/banner/banner_sm.webp';
 import landscapeImg1 from '../../../assets/images/mvn-mall/landscape/1.webp';
+import landscapeImgSm1 from '../../../assets/images/mvn-mall/landscape/1_sm.webp';
 import landscapeImg2 from '../../../assets/images/mvn-mall/landscape/2.webp';
+import landscapeImgSm2 from '../../../assets/images/mvn-mall/landscape/2_sm.webp';
 import landscapeImg3 from '../../../assets/images/mvn-mall/landscape/3.webp';
+import landscapeImgSm3 from '../../../assets/images/mvn-mall/landscape/3_sm.webp';
+
+// gallery images
+import galleryImg1 from '../../../assets/images/mvn-mall/gallery/gallery1.webp'
+import galleryImgSm1 from '../../../assets/images/mvn-mall/gallery/gallery1_sm.webp'
+import galleryImg2 from '../../../assets/images/mvn-mall/gallery/gallery2.webp'
+import galleryImgSm2 from '../../../assets/images/mvn-mall/gallery/gallery2_sm.webp'
+import galleryImg3 from '../../../assets/images/mvn-mall/gallery/gallery3.webp'
+import galleryImgSm3 from '../../../assets/images/mvn-mall/gallery/gallery3_sm.webp'
 
 export const mvnMallData = {
   header:{
@@ -44,7 +56,7 @@ export const mvnMallData = {
   },
   banner:{
     desktop:bannerImg,
-    mobile:bannerImg,
+    mobile:bannerImgSm,
   },
   overview: {
     title: "MVN Mall",
@@ -57,15 +69,15 @@ export const mvnMallData = {
     images:[
       {
         desktop: landscapeImg1,
-        mobile: landscapeImg1,
+        mobile: landscapeImgSm1,
       },
       {
         desktop: landscapeImg2,
-        mobile: landscapeImg2,
+        mobile: landscapeImgSm2,
       },
       {
         desktop: landscapeImg3,
-        mobile: landscapeImg3,
+        mobile: landscapeImgSm3,
       },
     ],
   },
@@ -74,16 +86,16 @@ export const mvnMallData = {
     desc:'Step into a visual journey where every snapshot captures the seamless blend of elegance and innovation.',
     images:[
       {
-        desktop: `${CONFIG.IMAGE_URL_MVL_MALL}gallery/1.webp`,
-        mobile: `${CONFIG.IMAGE_URL_MVL_MALL}gallery/1.webp`,
+        desktop: galleryImg3,
+        mobile: galleryImgSm3,
       },
       {
-        desktop: `${CONFIG.IMAGE_URL_MVL_MALL}gallery/2.webp`,
-        mobile: `${CONFIG.IMAGE_URL_MVL_MALL}gallery/2.webp`,
+        desktop: galleryImg1,
+        mobile: galleryImgSm1,
       },
       {
-        desktop: `${CONFIG.IMAGE_URL_MVL_MALL}gallery/3.webp`,
-        mobile: `${CONFIG.IMAGE_URL_MVL_MALL}gallery/3.webp`,
+        desktop: galleryImg2,
+        mobile: galleryImgSm2,
       },
     ],
   },
@@ -261,6 +273,28 @@ export const mvnMallData = {
       desktop: `${CONFIG.IMAGE_URL_MVL_MALL}location-map.webp`,
       mobile: `${CONFIG.IMAGE_URL_MVL_MALL}location-map.webp`,
     },
+    locationData: [
+      {
+        distance: '5.4 kms',
+        title: 'National Highway 48',
+      },
+      {
+        distance: '29.7 kms',
+        title: 'IGI Airport',
+      },
+      {
+        distance: '20 kms',
+        title: 'DLF Cyber City',
+      },
+      {
+        distance: '10.5 kms',
+        title: 'Gurgaon Railway station',
+      },
+      {
+        distance: '17.4 kms',
+        title: 'DLF City Centre',
+      },
+    ]
   },
 };
 
