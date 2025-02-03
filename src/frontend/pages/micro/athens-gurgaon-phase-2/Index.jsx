@@ -2,12 +2,13 @@ import React from "react";
 import * as CONFIG from '../../../../config/config';
 import MicroPageFaridabad from "../../MicroPageFaridabad";
 import MicroPageGurgaonPhase2 from "../../MicroPageGurgaonPhase2";
+import headerSidebarImg from '../../../assets/images/athens-ph2/header/sidebar.webp'
 
 export const athensGurgaonPhase2Data = {
   header:{
     sidebarAsset:{
-      desktop:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}header/athens_phase1.webp`,
-      mobile:`${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}header/athens_phase1.webp`,
+      desktop:headerSidebarImg,
+      mobile:headerSidebarImg,
     },
     athens_header:'Athens_nav',
     title:'MVN Athens, Gurgaon Phase 2',
