@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Container } from "react-bootstrap";
-import frontDesktopImg from "/public/assets/bangalore/fr-front1.png";
+import frontDesktopImg from "../../../assets/bangalore/elegence/fr-front1.png";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CustomCard from "../../Card";

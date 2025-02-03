@@ -6,6 +6,7 @@ import 'swiper/css/navigation';
 import './location_slider.css'
 import { Container } from 'react-bootstrap';
 import * as CONFIG from "../../../../config/config";
+import locationIcon from "../../../assets/bangalore/icon/location.png"
 
 
 
@@ -44,7 +45,7 @@ const LocationSlider = ({data}) => {
                 {chunk.map((item, subIndex) => (
                   <div key={subIndex}>
                   <p className='Heading'>
-                    <img src={`${CONFIG.IMAGE_URL_BANGALORE}icon/location.png`} alt="location img" className='LocationImg'/>
+                    <img src={locationIcon} alt="location img" className='LocationImg'/>
                     {item.title}
                   </p>
                   <p>{item.desc}</p>

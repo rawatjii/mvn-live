@@ -86,7 +86,7 @@
     margin-top: 58px;
     display: flex;
     justify-content: center;
-    background: url(/public/assets/bangalore/lg_elevation-bg.png) no-repeat;
+    background: url(../../../assets/bangalore/elegence/lg_elevation-bg.png) no-repeat;
     background-size: 100% 98%;
     background-position: bottom;
     height: calc(100vh - 79px);

@@ -1,107 +1,223 @@
-import React, { useEffect, useState, useRef, Suspense, useMemo } from "react";
-
-// Load critical components normally
+import React, { useEffect, useState, useRef ,Suspense} from "react";
+import { gsap } from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import ScrollSmoother from "gsap/ScrollSmoother";
 import MicroHeader from "../components/MicroHeader";
-import Footer from "../components/Footer";
-import ScrollTriggerFrames from "../components/MicroPage/ScrollTriggerFrames";
+const MicroOverview = React.lazy(()=>import("../components/MicroPage/Overview"));
+const MicroAmenities = React.lazy(()=>import("../components/MicroPage/Amenities"));
+const MicroLocationMap = React.lazy(()=>import("../components/MicroPage/LocationMap"));
+const Enquire = React.lazy(()=>import("../components/homepage/Enquire"));
+const EnquireForm = React.lazy(()=>import("../components/homepage/EnquireForm"));
+const Walkthrough = React.lazy(()=>import("../components/MicroPage/Walkthrough"));
+const Footer = React.lazy(()=>import("../components/Footer"));
+const DownloadBrochure = React.lazy(()=>import("../components/MicroPage/DownloadBrochure"));
+const ImagesGallery = React.lazy(()=>import("../components/MicroPage/ImagesGallery"));
+const ScrollTriggerFrames = React.lazy(()=>import("../components/MicroPage/ScrollTriggerFrames"));
+const LottieAnimationSection = React.lazy(()=>import("../components/MicroPage/LottieAnimationSection"));
+const BangaloreElevationSection = React.lazy(()=>import("../components/MicroPage/bangalore/BangaloreElevationSection"));
+const SliderTypology = React.lazy(()=>import("../components/MicroPage/bangalore/SliderTypology"));
 
-// Lazy load non-critical components
-const MicroOverview = React.lazy(() => import("../components/MicroPage/Overview"));
-const MicroAmenities = React.lazy(() => import("../components/MicroPage/Amenities"));
-const MicroLocationMap = React.lazy(() => import("../components/MicroPage/LocationMap"));
-const Enquire = React.lazy(() => import("../components/homepage/Enquire"));
-const EnquireForm = React.lazy(() => import("../components/homepage/EnquireForm"));
-const Walkthrough = React.lazy(() => import("../components/MicroPage/Walkthrough"));
-const DownloadBrochure = React.lazy(() => import("../components/MicroPage/DownloadBrochure"));
-const ImagesGallery = React.lazy(() => import("../components/MicroPage/ImagesGallery"));
-const BangaloreElevationSection = React.lazy(() => import("../components/MicroPage/bangalore/BangaloreElevationSection"));
-const SliderTypology = React.lazy(() => import("../components/MicroPage/bangalore/SliderTypology"));
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
-const MicroPageBangalore = ({ data }) => {
-  const sectionRefs = useRef([]);
+const MicroPageBangalore = ({ data, loadingCount, setLoadingCount }) => {
+  const [heroLoaded, setHeroLoaded] = useState(true);
+  const [newLoadingCount, setNewLoadingCount] = useState(
+    Math.floor(localStorage.getItem('count') || 0)
+  );
+  const [isPageLoaded, setIsPageLoaded] = useState(false);
+  const [peacockLoaded, setPeacockLoaded] = useState(false);
+  const [livingRoomLoaded, setLivingRoomLoaded] = useState(false);
+  const [partyLoaded, setPartyLoaded] = useState(false);
+  const [masterBedroomLoaded, setMasterBedroomLoaded] = useState(false);
+  const [typologyLoaded, setTypologyLoaded] = useState(false);
+  const smootherRef = useRef(null);
+  const sectionRefs = useRef({});
+  const {pageSections, projectName} = data;
+
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
+  const bannerRef = useRef(null);
 
-  // Memoize data to avoid unnecessary re-renders
-  const memoizedData = useMemo(() => data, [data]);
+
+  const scrollToSection = (sectionKey) => {
+    const target = sectionRefs.current[sectionKey];
+    if (target && smootherRef.current) {
+      smootherRef.current.scrollTo(target, true);
+    }
+  };
+
+  useEffect(() => {
+    if (heroLoaded) {
+      smootherRef.current = ScrollSmoother.create({
+        wrapper: "#smooth-wrapper",
+        content: "#smooth-content",
+        smooth: 1.5,
+        effects: true,
+        smoothTouch: 1.4,
+      });
+    }
+    return () => {
+      if (smootherRef.current) {
+        smootherRef.current.kill();
+        smootherRef.current = null;
+      }
+    };
+  }, [heroLoaded]);
 
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
-        <MicroHeader data={memoizedData.header} isFixed={isHeaderFixed} />
 
-        <div>
-          {/* Hero Section */}
-          <div>
-            <ScrollTriggerFrames 
-              data={memoizedData.micro_hero_section}
-              onBannerExit={setIsHeaderFixed}
-              isMainBanner={true}
+
+      <MicroHeader scrollToSection={scrollToSection} data={data.header} isFixed={ isHeaderFixed }/>
+      <div id="smooth-wrapper">
+        <div id="smooth-content">
+          
+          <div ref={bannerRef}>
+            <LottieAnimationSection 
+            data={data.micro_hero_section}
+            onLoadComplete={() => setHeroLoaded(true)}
+            onBannerExit={setIsHeaderFixed} 
+            isMainBanner={true} 
             />
           </div>
+          {/* Render other components only after Hero Section is loaded */}
+          <div ref={(el) => (sectionRefs.current.microOverview = el)}>
+          <Suspense fallback="">
+            <MicroOverview data={data.overview} />
+          </Suspense>
+          </div>
+          <BangaloreElevationSection/>
 
-          {/* Other Sections */}
-          <div ref={(el) => (sectionRefs.current[0] = el)}>
-            <MicroOverview data={memoizedData.overview} />
+          
+          <div
+            ref={(el) =>
+              (sectionRefs.current.Walkthrough = el)
+            }
+          >
+          <Suspense fallback="">
+            <Walkthrough data={data.walkthrough}/>
+            </Suspense>
           </div>
 
-          <BangaloreElevationSection />
-
-          <div ref={(el) => (sectionRefs.current[1] = el)}>
-            <Walkthrough data={memoizedData.walkthrough} />
-          </div>
-
-          <div ref={(el) => (sectionRefs.current[2] = el)}>
+          <div
+            ref={(el) =>
+              (sectionRefs.current.downloadBrochure = el)
+            }
+          >
+          <Suspense fallback="">
             <DownloadBrochure />
+            </Suspense>
+          </div>
+          <div
+            ref={(el) =>
+              (sectionRefs.current.livingRoom = el)
+            }>
+          <Suspense fallback="">
+            <LottieAnimationSection data={data.living_room}/>
+            {/* <ScrollTriggerFrames 
+            data={data.living_room}
+            onLoadComplete={() => setLivingRoomLoaded(true)}
+            /> */}
+            </Suspense>
+          </div>
+          <div 
+            ref={(el) =>
+              (sectionRefs.current.masterBedroom = el)
+            }>
+          <Suspense fallback="">
+            <LottieAnimationSection 
+            data={data.masterBedroom}
+            onLoadComplete={() => setMasterBedroomLoaded(true)}
+            isMainBanner={true} 
+            />
+            </Suspense>
+          </div>
+          <div
+            ref={(el) =>
+              (sectionRefs.current.MicroLandscape = el)
+            }
+          >
+          <Suspense fallback="">
+            <ImagesGallery data={data.landscape}/>
+            </Suspense>
           </div>
 
-          <div ref={(el) => (sectionRefs.current[3] = el)}>
-            <ScrollTriggerFrames data={memoizedData.living_room} />
+          <div
+            ref={(el) =>
+              (sectionRefs.current.MicroElevation = el)
+            }
+          >
+          <Suspense fallback="">
+            <ImagesGallery data={data.microElevation}/>
+            </Suspense>
           </div>
 
-          <div ref={(el) => (sectionRefs.current[4] = el)}>
-            <ScrollTriggerFrames data={memoizedData.masterBedroom} />
+         <div
+            ref={(el) =>
+              (sectionRefs.current.MicroApartment = el)
+            }
+          >
+          <Suspense fallback="">
+            <ImagesGallery data={data.microApartment}/>
+            </Suspense>
           </div>
 
-          <div ref={(el) => (sectionRefs.current[5] = el)}>
-            <ImagesGallery data={memoizedData.landscape} />
+          <div
+            ref={(el) =>
+              (sectionRefs.current.MicroAmenities = el)
+            }>
+          <Suspense fallback="">
+            <MicroAmenities section_data={data.amenities} />
+            </Suspense>
           </div>
 
-          <div ref={(el) => (sectionRefs.current[6] = el)}>
-            <ImagesGallery data={memoizedData.microElevation} />
+          <div
+            ref={(el) =>
+              (sectionRefs.current.MicroTypology = el)
+            }
+          >
+          <Suspense fallback="">
+            <SliderTypology data={data.typologies} onLoadComplete={() => setTypologyLoaded(true)} />
+            </Suspense>
           </div>
 
-          <div ref={(el) => (sectionRefs.current[7] = el)}>
-            <ImagesGallery data={memoizedData.microApartment} />
+          <div
+            ref={(el) =>
+              (sectionRefs.current.MicroLocationMap = el)
+            }
+          >
+          <Suspense fallback="">
+            <MicroLocationMap
+              data={data.locationAdvantage}
+            />
+            </Suspense>
           </div>
 
-          <div ref={(el) => (sectionRefs.current[8] = el)}>
-            <MicroAmenities section_data={memoizedData.amenities} />
-          </div>
-
-          <div ref={(el) => (sectionRefs.current[9] = el)}>
-            <SliderTypology data={memoizedData.typologies} />
-          </div>
-
-          <div ref={(el) => (sectionRefs.current[10] = el)}>
-            <MicroLocationMap data={memoizedData.locationAdvantage} />
-          </div>
-
-          <div className="container-fluid micro_footer" ref={(el) => (sectionRefs.current[11] = el)}>
-            <div className="row">
+          <div
+            className="container-fluid micro_footer"
+            ref={(el) => (sectionRefs.current.enquiryForm = el)}
+          >
+            <div className="row ">
               <div className="col-sm-6 px-0">
                 <Enquire />
               </div>
               <div className="col-sm-6 px-0">
-                <EnquireForm projectName={"MVN Aeroone"} />
+                <EnquireForm
+                  projectName={"MVN Aeroone"}
+                />
               </div>
             </div>
           </div>
 
           <Footer />
         </div>
-      </Suspense>
+      </div>
+
+      {/* <ScrollTop /> */}
     </>
   );
 };
 
 export default MicroPageBangalore;
+
+
+

@@ -198,6 +198,7 @@ export const data = {
     }
 },
   living_room:{
+    Custom_height:"Custom_height",
     second_title:'OPEN THE DOORS TO EXPANSIVE ELEGANCE AND SPACIOUS LUXURY',
     desc:'Glide your way through the floor-to-ceiling sliding doors, and step on to the sprawling deck with breathtaking vistas and an air of tranquility.',
     path:{
