@@ -5667,7 +5667,7 @@ footer {
 }
 @media (min-width: 767px) {
   section.walkthrough_section.new_height iframe {
-    height: 500px !important;
+    height: 700px !important;
   }
 }
 /* walkthrough youtube video style end */
