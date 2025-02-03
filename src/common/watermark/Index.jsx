@@ -1,5 +1,7 @@
 import React from "react";
 import mvnMallLogo from '../../frontend/assets/images/mvn-mall/mvn-mall-logo.webp';
+import athensFaridabadLogo from '../../frontend/assets/images/athens-faridabad/athens-logo.png';
+
 import * as CONFIG from '../../config/config';
 import { useLocation } from 'react-router-dom';
 import './watermark.css';
@@ -11,7 +13,7 @@ const Watermark = ({className, type})=>{
   let logoSrc = `${CONFIG.IMAGE_URL}default-logo.png`; // default logo
   
   if (location.pathname === '/mvn-athens-faridabad' || location.pathname === '/mvn-athens-gurgaon-phase-2' || location.pathname === '/mvn-athens-gurgaon-phase-1') {
-    logoSrc = `${CONFIG.IMAGE_URL_ATHENS_FARIDABAD}athens-logo.png`;
+    logoSrc = athensFaridabadLogo;
   }else if(location.pathname.includes('mvn-mall')){
     logoSrc = mvnMallLogo;
   } else {
