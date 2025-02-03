@@ -1641,7 +1641,7 @@ section.section.other_projects_section.pb-0 {
 .blog_page .col-sm-12.col-md-4.col-lg-4 .row { display: flex;  justify-content: center; text-align: center;}
 .blog_page h3 { font-size: 24px; margin-bottom: 20px;}
 .blog-platter-detail {padding: 15px;}
-nav.null.navbar.navbar-expand-false.navbar-light .right {width: 200px; display: flex;align-items: center; margin-left: auto;justify-content: end;}
+nav.null.navbar.navbar-expand-false.navbar-light .right {width: 200px; display: flex; margin-left: auto;justify-content: end; padding-top: 20px;}
 .navbar .call_btn { height: 40px;width: 40px;}
 
 .terms-condition-content.container{text-align:left}

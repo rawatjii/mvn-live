@@ -1124,7 +1124,7 @@ a {
           .right{
 
             display: grid;
-            align-items: flex-end;
+            /* align-items: flex-end; */
             padding-right: 30px;
 
             ul{
@@ -1134,12 +1134,13 @@ a {
 
               li{
 
-                padding: 5px 0px;
+                /* padding: 5px 0px; */
+                margin-bottom:10px;
 
                 a{
 
                   color: #d9d9d9;
-                  font-size: 24px;
+                  font-size: 18px;
                 }
               }
             }
@@ -4443,10 +4444,16 @@ footer {
           .menu-area{
 
             width: 100%;
+            align-items: unset;
+            padding: 15px 20px;
 
             .top_head{
               display:flex;
               justify-content: space-between;
+
+              .logo{
+                width: 50px;
+              }
 
               .close{
 
@@ -4457,7 +4464,7 @@ footer {
             .inner-menu{
               display:flex;
               flex-direction: column;
-              height: calc(100vh - 150px);
+              height: calc(100vh - 120px);
               overflow: auto;
         
               .top-area{
