@@ -18,7 +18,7 @@ export const athensGurgaonPhase2Data = {
         link:'microOverview'
       },
       {
-        section_title:'MVN ID Brochure',
+        section_title:'MVN Athens ID Brochure',
         link:'downloadBrochure'
       },
       {

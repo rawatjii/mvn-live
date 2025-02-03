@@ -33,7 +33,7 @@ export const mvnMallData = {
         link:'microOverview'
       },
       {
-        section_title:'MVN ID Brochure',
+        section_title:'MVN Mall ID Brochure',
         link:'downloadBrochure'
       },
       {
