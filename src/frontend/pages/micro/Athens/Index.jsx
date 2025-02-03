@@ -37,8 +37,8 @@ import floorPlanTowerD1 from '../../../assets/images/athens-faridabad/floor-plan
 import floorPlanTowerD2 from '../../../assets/images/athens-faridabad/floor-plan/towerd/2.png';
 import floorPlanTowerD3 from '../../../assets/images/athens-faridabad/floor-plan/towerd/3.png';
 // location map
-import locationMapDesktop from '../../../assets/images/athens-faridabad/location-map/location-map.webp';
-import locationMapMobile from '../../../assets/images/athens-faridabad/location-map/location-mapm.webp';
+import locationMapDesktop from '../../../assets/images/athens-faridabad/location-map/location-map.jpg';
+import locationMapMobile from '../../../assets/images/athens-faridabad/location-map/location-mapm.jpg';
 
 export const faridabadData = {
   header:{
@@ -147,7 +147,7 @@ export const faridabadData = {
         desc:'Where champions are made, and fun finds its field.'
       },
       {
-        name: 'Landscaped Garden',
+        name: 'Landscape Garden',
         path: {
           desktop:gardenDesktopImg,
           mobile:gardenMobileImg,

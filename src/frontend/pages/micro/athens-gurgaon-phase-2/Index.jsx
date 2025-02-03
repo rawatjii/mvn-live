@@ -52,7 +52,7 @@ export const athensGurgaonPhase2Data = {
     extra: "Your dream paradise",
     desc: [
       "MVN is a group formed with the vision of delivery of projects that inbibe its spirit of perfection & consumer satisfaction based on the philosophy of trust & integrity. Their clear vision leads to a seamless experience for the customers.",
-      "Our happiness dwells in the hearts of our home buyers. So, where somebody talks about customer satisfaction we are all ears. All our efforts are committed towards it. Delivery before time, Affordable luxury, Reliability & Quality in terms of material used for construction backed by a dedicated in -house team to look after the day to day affairs. MVN Athens, a residential affordable housing scheme by the State of Haryana, a gated community in sector-5, Sohna- Gurugram is home to more than 1104 families in Phase I & II."
+      "Our happiness dwells in the hearts of our home buyers. So, when somebody talks about customer satisfaction, we are all ears. All our efforts are committed to it. Delivery before time, Affordable luxury, Reliability, & Quality in terms of material used for construction backed by a dedicated in-house team to look after the daily affairs. MVN Athens, a residential affordable housing scheme by the State of Haryana, a gated community in sector-5, Sohna-Gurugram, is home to more than 1104 families in Phase I & II."
     ],
     rera:"RERA NO. RC/REP/HARERA/GGM/326/58/2019/20",
   },
@@ -75,7 +75,7 @@ export const athensGurgaonPhase2Data = {
     ],
   },
   features:{
-    title:"Feature So Unique",
+    title:"Features",
     desc:"Designed to delight at every step.",
     src:`${CONFIG.IMAGE_URL_ATHENS_GURGAON_PHASE_2}elevation.png`,
     bgImg:`${CONFIG.IMAGE_URL_ATHENS_GURGAON_PHASE_2}bg-back.jpg`,
@@ -103,7 +103,7 @@ export const athensGurgaonPhase2Data = {
         desc:'A dynamic, fun space to keep children active and entertained.' 
       },  
       {
-        name: 'Landscaped outdoor Seating',
+        name: 'Landscape outdoor Seating',
         path: {
           desktop:`${CONFIG.IMAGE_URL_ATHENS_GURGAON_PHASE_2}amenities/2.jpg`,
           mobile:`${CONFIG.IMAGE_URL_ATHENS_GURGAON_PHASE_2}amenities/2.jpg`,
@@ -127,12 +127,12 @@ export const athensGurgaonPhase2Data = {
         desc:'Cutting-edge security ensuring a worry-free lifestyle.'
       },
       {
-        name: 'Landscaped Walkway',
+        name: 'Landscape Walkway',
         path: {
           desktop:`${CONFIG.IMAGE_URL_ATHENS_GURGAON_PHASE_2}amenities/5.jpg`,
           mobile:`${CONFIG.IMAGE_URL_ATHENS_GURGAON_PHASE_2}amenities/5.jpg`,
         },
-        desc:'Comfortable indoor nooks designed for a blend of elegance and coziness.'
+        desc:'A path where every step is a breath of nature.'
       },
       {
         name: 'Clean & Peaceful environment',
@@ -143,7 +143,7 @@ export const athensGurgaonPhase2Data = {
         desc:'A calm, pollution-free space promoting well-being.'
       },
       {
-        name: 'Landscaped Indoor Seating',
+        name: 'Landscape Indoor Seating',
         path: {
           desktop:`${CONFIG.IMAGE_URL_ATHENS_GURGAON_PHASE_2}amenities/7.jpg`,
           mobile:`${CONFIG.IMAGE_URL_ATHENS_GURGAON_PHASE_2}amenities/7.jpg`,
