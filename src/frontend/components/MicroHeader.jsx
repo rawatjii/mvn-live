@@ -110,18 +110,17 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                       <div className="left">
                         {otherProjects && otherProjects.map((singleProject, index) => (
                           <React.Fragment key={index}>
-                            {singleProject.projects.length == 1 && singleProject.projects.some(sinProject => sinProject.link.includes(pathname)) ? null : <h4 className={index === 0 ? 'pt-0' : ''}>{singleProject.location}</h4>}
+                            <h4 className={index === 0 ? 'pt-0' : ''}>{singleProject.location}</h4>
+                            {/* {singleProject.projects.length == 1 && singleProject.projects.some(sinProject => sinProject.link.includes(pathname)) ? null : } */}
 
                             <ul>
                               {singleProject.projects && singleProject.projects.map((project, idx) => {
-                                return !project.link.includes(pathname) ? (
-                                  <li className={project.status ? 'new_launch' : ''} key={project.name + idx}>
-                                    <NavLink to={project.link} target={project.target_blank === false ? "_self" : "_blank"} onClick={() => toggleMenu("close")}>
-                                      {project.name}
-                                    </NavLink>
-                                    {project.status && <span>{project.status}</span>}
-                                  </li>
-                                ) : null
+                                return <li className={project.status ? 'new_launch' : ''} key={project.name + idx}>
+                                  <NavLink to={project.link} target={project.target_blank === false ? "_self" : "_blank"} onClick={() => toggleMenu("close")}>
+                                    {project.name}
+                                  </NavLink>
+                                  {project.status && <span>{project.status}</span>}
+                                </li>
                               })}
                             </ul>
                           </React.Fragment>
