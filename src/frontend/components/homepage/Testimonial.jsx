@@ -67,14 +67,18 @@ const Testimonial = () => {
           }}
           modules={[Pagination, Navigation]}
           breakpoints={{
-            768: {
-              slidesPerView: 3, // 3 items for desktop
-              spaceBetween: 50,
+            1298: { // Desktop
+              slidesPerView: 3,
+              spaceBetween: 30,
             },
-            0: {
-              slidesPerView: 1, // 1 item for mobile
+            868: { // Tablet
+              slidesPerView: 2,
               spaceBetween: 20,
             },
+            0: { // Mobile
+              slidesPerView: 1,
+              spaceBetween: 10,
+            }
           }}
         >
           {testimonialData.map((item, index) => (

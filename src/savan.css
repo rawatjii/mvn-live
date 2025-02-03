@@ -491,7 +491,7 @@ section.section.our_brand_section .brand_content {
 
 .our_brand_section p {
   font-size: 14px;
-  line-height: 26px;
+  line-height: 18px;
   letter-spacing: 1px;
   margin: 0 auto;
   color: #c1c2c1;
@@ -901,7 +901,8 @@ button.closebtn {
   }
 
   .our_brand_section .brand_content .content h4.title {
-    font-size: 18px 
+    font-size: 18px ;
+    margin-bottom: 5px;
   }
 
   .our_brand_section {
