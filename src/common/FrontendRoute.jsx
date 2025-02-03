@@ -53,6 +53,11 @@ const FrontendRoute = ({children, loaderType})=>{
         desktop: CONFIG.IMAGE_URL + 'loader/contact-us/desktop.webp',
         mobile: CONFIG.IMAGE_URL + 'loader/contact-us/mobile.webp',
       })
+    }else{
+      setLoaderImage({
+        desktop: CONFIG.IMAGE_URL + 'loader/homepage/desktop.webp',
+        mobile: CONFIG.IMAGE_URL + 'loader/homepage/mobile.webp',
+      })
     }
   }, [loaderType])
 

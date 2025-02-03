@@ -9,14 +9,6 @@ const ThankYou = () => {
     window.scrollTo(0, 0);
     const [newLoadingCount, setNewLoadingCount] = useState(Number(localStorage.getItem('count')));
 
-    useEffect(() => {
-        setNewLoadingCount(Number(localStorage.getItem('count')));
-    }, [localStorage.getItem('count')]);
-
-    if (newLoadingCount < 99) {
-        return <InitialLoading loadingCount={newLoadingCount} setLoadingCount={setNewLoadingCount} fast="true" />;
-    }
-    
     return (
         <>
         <Helmet>

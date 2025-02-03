@@ -1,7 +1,7 @@
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import CloseBtnimg from '../assets/images/icons/close.png';
 import * as CONFIG from "root/config/config";
 
@@ -10,15 +10,28 @@ import subscribeBtn from '../assets/images/icons/subscribe_btn.webp';
 import MenuSideVideo from '../assets/images/hero/tiger.mp4';
 
 import "./Header.css";
+import CustomModal from "../../common/Modal";
 
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isMicro, setIsMicro] = useState(false);
-  const channelUrl = "https://www.youtube.com/@MVNInfrastructures?sub_confirmation=1";
-
+  const [isShowModal, setIsShowModal] = useState(false);
   const menusRef = useRef();
   const headerRef = useRef();
+  const channelUrl = "https://www.youtube.com/@MVNInfrastructures?sub_confirmation=1";
+
+  const isHideModal = () => {
+    setIsShowModal(false);
+  };
+
+  const showCustomModal = useCallback((offer)=>{
+      if(offer){
+        setIsShowModal(true);
+      }else{
+        setIsShowModal(true);
+      }
+    }, []);
 
   const { pathname } = useLocation();
 
@@ -71,9 +84,8 @@ const Header = () => {
         className={`${scrolled ? "fixed" : ""} ${isMicro ? "micro_nav" : null}`}
       >
         <Container>
-          <Navbar.Brand className="logo">
-            <Link onClick={() => toggleMenu("close")} to={import.meta.env.VITE_APP_URL}>
-              <img
+          <Navbar.Brand className="logo" onClick={showCustomModal} style={{cursor:'pointer'}}>
+          <img
                 src={CONFIG.IMAGE_URL + "logo_white.webp"}
                 alt="mvn-logo"
                 className="img-fluid d-none d-md-block"
@@ -85,7 +97,6 @@ const Header = () => {
                 className="img-fluid d-md-none"
                 fetchpriority="high"
               />
-            </Link>
           </Navbar.Brand>
 
           <div className="right">
@@ -313,6 +324,8 @@ const Header = () => {
           </div>
         </Container>
       </Navbar>
+
+      <CustomModal hide={isHideModal} show={isShowModal} type="enquire" projectName="MVN Aeroone"  />
     </>
   );
 };
