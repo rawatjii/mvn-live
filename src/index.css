@@ -5029,9 +5029,14 @@ footer {
 
     .footer-bottom{
 
+      .main-pera{
+        font-size:11px;
+        letter-spacing: 0;
+      }
+
       p,
       a{
-        font-size: 12px;
+        font-size: 11px;
         display:block;
         line-height: initial;
       }
@@ -5249,6 +5254,8 @@ footer {
   .subscribe_style1{
     max-width:100px;
   }
+
+
 
 }
 

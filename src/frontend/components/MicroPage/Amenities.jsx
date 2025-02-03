@@ -87,7 +87,7 @@ gsap.registerPlugin(ScrollTrigger);
           <h4 className="title title_style1 text-center">{title}</h4>
         </div>
         {data.map((single, index) => (
-          <div key={index} className="col-sm-12 col-md-4 col-lg-4">
+          <div key={index} className="col-sm-12  col-lg-4">
             <div className="card center">
               <img
                 src={single.path.mobile} // Use the mobile path directly
