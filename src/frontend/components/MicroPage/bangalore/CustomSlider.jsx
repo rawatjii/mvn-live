@@ -19,7 +19,7 @@ const CustomSlider = ({slides, className}) => {
   loop={true} // loop through slides
 //   autoplay={{delay:2000, disableOnInteraction:true}}
   pagination={{ clickable: true }} // pagination
-  navigation={true} // enable navigation buttons
+  navigation={slides.length>1?true:false} // enable navigation buttons
   modules={[Autoplay, Navigation]} // Import necessary modules
 >
   {slides.length === 0 ? (
