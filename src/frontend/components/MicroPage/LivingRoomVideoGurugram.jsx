@@ -13,7 +13,7 @@ const LivingRoomVideoGurugram = React.memo(({ data, onLoadComplete }) => {
       {/* Loading progress */}
       {/* {loading && <PeacockLoader progress={progress} />} */}
 
-      <LottieAnimationSection backgroundImg={livingRoomImg} data={data} logomark={isMobile ? `left sm` : `left`} />
+      <LottieAnimationSection  data={data} logomark={isMobile ? `left sm` : `left`} />
     </div>
   );
 });
