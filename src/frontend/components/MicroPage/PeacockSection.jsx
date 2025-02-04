@@ -19,7 +19,7 @@ const PeacockSection = React.memo(({ data}) => {
       {/* {isMobile && loading && <PeacockLoader />} */}
       {isMobile ? 
       <>
-        <LottieAnimationSection backgroundImg={peacokImg} data={data} position="0" logomark="sm style4" watermark="style4"/>
+        <LottieAnimationSection  data={data} position="0" logomark="sm style4" watermark="style4"/>
       </>
       
       : <>

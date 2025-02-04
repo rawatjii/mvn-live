@@ -154,15 +154,15 @@ const LottieAnimationSection = React.memo(({backgroundImg, data, onLoadComplete,
             <div className="frames_content">
               <div className="position-relative h_sm_100">
                 <div className="position-relative h_sm_100">
-                  <Watermark className={watermark ? watermark : null} type="style1" />
-                  <Logomark className={`left ${logomark ? logomark : null}`} />
+                  <Watermark />
+                  {/* <Logomark className={`left ${logomark ? logomark : null}`} /> */}
                   <div ref={lottieContainerRef} className={`Animation_height ${isMainBanner && 'isMainBanner'} ${data.Custom_height}`}style={{ backgroundImage: `url(${backgroundImg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
                 </div>
               </div>
 
               {(!type || type !== 'style1') && <ScrollDown className="color-black" />}
             </div>
-            {type && type == 'style1' && <ScrollDown className="color-black" />}
+            {/* {type && type == 'style1' && <ScrollDown className="color-black" />} */}
             {(second_title || desc) && (
             <Container>
               <div className="about">
