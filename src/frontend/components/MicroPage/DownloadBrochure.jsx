@@ -4,7 +4,7 @@ import CustomModal from "../../../common/Modal";
 import { Container } from "react-bootstrap";
 import PropTypes from "prop-types";
 
-const DownloadBrochure = React.memo(({projectName})=>{
+const DownloadBrochure = React.memo(({projectName, name})=>{
   const [isShowModal, setIsShowModal] = useState(false)
 
   const isHideModal = useCallback(() => {
@@ -18,7 +18,7 @@ const DownloadBrochure = React.memo(({projectName})=>{
   return(
     <section className="download_brochure_section text-center">
       <Container>
-        <Button type="button" className="btn btn_style3 r_100" onClick={handleOpenBrochureModal}>Download MVN ID Brochure</Button>
+        <Button type="button" className="btn btn_style3 r_100" onClick={handleOpenBrochureModal}>{name ? name : 'Download MVN ID Brochure'}</Button>
 
 
         <CustomModal hide={isHideModal} show={isShowModal} type="enquire" projectName={projectName ? projectName : 'MVN Aeroone'}  />

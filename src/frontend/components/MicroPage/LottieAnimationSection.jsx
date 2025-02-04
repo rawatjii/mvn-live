@@ -9,11 +9,12 @@ import lottie from "lottie-web";
 import { useMatches } from "../../../theme/theme";
 import ScrollDown from "../../../common/scrollDown/Index";
 import Logomark from "../../../common/logomark/Index";
+import loaderImg from "../../../frontend/assets/bangalore/laoder/banner.png"
 
 // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-const LottieAnimationSection = React.memo(({ data, onLoadComplete, position, watermark, logomark, type }) => {
+const LottieAnimationSection = React.memo(({backgroundImg, data, onLoadComplete, position, watermark, logomark, type,onBannerExit, isMainBanner }) => {
   const containerRef = useRef(null);
   const titleRef = useRef();
   const lottieContainerRef = useRef(null);
@@ -88,8 +89,8 @@ const LottieAnimationSection = React.memo(({ data, onLoadComplete, position, wat
 
     const scrollAnimation = ScrollTrigger.create({
       trigger: containerRef.current,
-      start: `top ${position ? position : '75px'}`,
-      end: `+=${window.innerHeight * 5}`,
+      start: `top ${isMobile ? '75px' : 'top'}`,
+      end: `+=${window.innerHeight * 2}`,
       pin: true,
       scrub: 0.5,
       onUpdate: (self) => {
@@ -105,6 +106,15 @@ const LottieAnimationSection = React.memo(({ data, onLoadComplete, position, wat
         lottieAnimation.goToAndStop(0, true);
       },
     });
+    if (isMainBanner) {
+      ScrollTrigger.create({
+        trigger: containerRef.current,
+        start: "bottom top",
+        toggleActions: "play none none reverse",
+        onEnterBack: () => onBannerExit(false),
+        onLeave: () => onBannerExit(true),
+      });
+    }
 
     // Event listener for when Lottie is fully initialized
     lottieAnimation.addEventListener("DOMLoaded", () => {
@@ -133,32 +143,36 @@ const LottieAnimationSection = React.memo(({ data, onLoadComplete, position, wat
       },
     });
   }, []);
-
   return (
     <div className="">
       {loading ? (
         <PartyLoader />
       ) : (
         <>
-          <div ref={containerRef}>
+        <section className="LottieAnimationContainer" >
+          <div ref={containerRef} >
             <div className="frames_content">
               <div className="position-relative h_sm_100">
                 <div className="position-relative h_sm_100">
-                  <Watermark className={watermark ? watermark : null} type="style1" />
-                  <Logomark className={`left ${logomark ? logomark : null}`} />
-                  <div ref={lottieContainerRef} style={{ width: "100%", height: "100%" }}></div>
+                  <Watermark />
+                  {/* <Logomark className={`left ${logomark ? logomark : null}`} /> */}
+                  <div ref={lottieContainerRef} className={`Animation_height ${isMainBanner && 'isMainBanner'} ${data.Custom_height}`}style={{ backgroundImage: `url(${backgroundImg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
                 </div>
               </div>
 
               {(!type || type !== 'style1') && <ScrollDown className="color-black" />}
             </div>
-            {type && type == 'style1' && <ScrollDown className="color-black" />}
+            {/* {type && type == 'style1' && <ScrollDown className="color-black" />} */}
+            {(second_title || desc) && (
             <Container>
               <div className="about">
                 <CustomCard className="px-0 pb-0" title={second_title} desc={desc} />
               </div>
             </Container>
+
+            )}
           </div>
+          </section>
         </>
       )}
     </div>

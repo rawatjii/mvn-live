@@ -877,8 +877,8 @@ section.section.experience-section {
   }
 
   .enquire_form .container {
-    padding: 50px 40px !important;
-    margin: 0px 180px !important;
+    /* padding: 50px 40px !important; */
+    /* margin: 0px 180px !important; */
   }
 
   .enquire_section {
@@ -894,20 +894,6 @@ section.section.experience-section {
       z-index: -1;
     }
   }
-
-  .enquire_section .container {
-    padding: 170px 40px !important;
-    margin: 120px !important;
-    background-color: #000000;
-    display: block;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* .enquire_form,
-  .enquire_section {
-    height: unset !important;
-  } */
 
   .our_brand_section {
     & .brand_content {
@@ -1102,11 +1088,6 @@ section.section.experience-section {
     }
   }
 
-  .enquire_section .container {
-    padding: 140px 40px !important;
-    margin: 70px !important;
-  }
-
   .projects_section {
     .sec_title {
       font-size: 34px;
@@ -1282,8 +1263,8 @@ section.section.other_projects_section.pb-0 {
 
 @media (max-width: 1600px) {
   .enquire_form .container {
-    padding: 50px 40px !important;
-    margin: 0px 115px !important;
+    /* padding: 50px 40px !important; */
+    /* margin: 0px 115px !important; */
   }
 
   p {
@@ -1539,8 +1520,8 @@ section.section.other_projects_section.pb-0 {
   }
 
   .enquire_form .container {
-    padding: 0px 40px !important;
-    margin: 0px 0px !important;
+    /* padding: 0px 40px !important;
+    margin: 0px 0px !important; */
   }
 
   section.section.about_overview.pb-0 .about_bg {

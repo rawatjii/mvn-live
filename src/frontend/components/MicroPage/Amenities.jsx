@@ -87,7 +87,7 @@ gsap.registerPlugin(ScrollTrigger);
           <h4 className="title title_style1 text-center">{title}</h4>
         </div>
         {data.map((single, index) => (
-          <div key={index} className="col-sm-12 col-md-4 col-lg-4">
+          <div key={index} className="col-sm-12  col-lg-4">
             <div className="card center">
               <img
                 src={single.path.mobile} // Use the mobile path directly
@@ -104,13 +104,13 @@ gsap.registerPlugin(ScrollTrigger);
               <Watermark />
             </div>
             <div className="content">
-              <span className="am-name">{single.name}</span>
+              <span className="am-name mx-auto">{single.name}</span>
               {Array.isArray(single.desc) ? (
                 single.desc.map((desc, idx) => (
                   <p key={idx} className="desc des_style1 text-center mt-3">{desc}</p>
                 ))
               ) : (
-                <p className="desc des_style1 text-center mt-3">{single.desc}</p>
+                <p className="desc des_style1 text-center mt-3 w-100">{single.desc}</p>
               )}
             </div>
           </div>
@@ -135,8 +135,8 @@ gsap.registerPlugin(ScrollTrigger);
             <Watermark className="left" />
           </div>
           <div className="content">
-            <span className="am-name">{amenity.name}</span>
-            <p className="desc des_style1 text-center mt-2">{Array.isArray(amenity.desc) ? amenity.desc.join(' ') : amenity.desc}</p>
+            <span className="am-name mx-auto">{amenity.name}</span>
+            <p className="desc des_style1 text-center mt-2 w-100">{Array.isArray(amenity.desc) ? amenity.desc.join(' ') : amenity.desc}</p>
           </div>
         </section>
       ))}

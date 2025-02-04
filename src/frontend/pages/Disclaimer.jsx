@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import MicroBanner from "../components/MicroBanner/Index";
-// import headingIconImg from "../assets/images/icons/heading-icon-img.webp";
 import Mobilemicro_bg from '../assets/images/disclaimer-head-bg-desktop.jpg';
 import Desktopmicro_bg from '../assets/images/disclaimer-head-bg-desktop.jpg';
+import Layout from "../components/Layout";
 
 
 // Importing the MicroBanner component (Ensure the correct path)
@@ -25,35 +25,15 @@ const Disclaimer = () => {
       ]
     };
 
-    // Update background image based on window width
-    useEffect(() => {
-      const updateBackground = () => {
-        if (window.innerWidth <= 768) {
-          setMicroBg(Mobilemicro_bg);
-        } else {
-          setMicroBg(Desktopmicro_bg);
-        }
-      };
-
-      // Initial check for background image
-      updateBackground();
-
-      // Add resize event listener to update background on window resize
-      window.addEventListener('resize', updateBackground);
-
-      // Cleanup the event listener on component unmount
-      return () => {
-        window.removeEventListener('resize', updateBackground);
-      };
-    }, []); // Empty dependency array to run once on mount
 
     return (
         <>
-            {/* MicroBanner component with dynamic background and breadcrumbs */}
-            <MicroBanner bg={microBg} data={breadcrumbs} />
+        <Layout>
+          <MicroBanner bg={microBg} data={breadcrumbs} />
             
             {/* Main Content Section */}
-            <section className="upcoming_page">
+            <section className="section">
+            {/* upcoming_page */}
                 {/* <div className="micro_content">
                     <div className="micro_data">
                         <div className="content_col position-relative page-header-main-heading">
@@ -184,6 +164,9 @@ const Disclaimer = () => {
 
                 </Container>
             </section>
+        </Layout>
+            {/* MicroBanner component with dynamic background and breadcrumbs */}
+            
         </>
     );
 };

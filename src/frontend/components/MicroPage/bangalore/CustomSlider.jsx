@@ -8,17 +8,18 @@ import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 
-const CustomSlider = ({slides}) => {
+const CustomSlider = ({slides, className}) => {
     const [index, setIndex] = useState(-1);
   return (
     <>
     <Swiper
+     className={className}
   spaceBetween={50} // space between slides
   slidesPerView={1} // number of slides visible at a time
   loop={true} // loop through slides
 //   autoplay={{delay:2000, disableOnInteraction:true}}
   pagination={{ clickable: true }} // pagination
-  navigation={true} // enable navigation buttons
+  navigation={slides.length>1?true:false} // enable navigation buttons
   modules={[Autoplay, Navigation]} // Import necessary modules
 >
   {slides.length === 0 ? (
@@ -38,7 +39,7 @@ const CustomSlider = ({slides}) => {
                 />
                 <div className="carousel-caption">
                   <h1 className="main-title">{slide.title}</h1>
-                  <span>Area: {slide.area}</span>
+                  {slide.area && (<span>Area: {slide.area}</span>)}
                   <div className="link">
                     <a href={slide.link}>View Details</a>
                   </div>

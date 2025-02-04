@@ -38,16 +38,18 @@ function GallerySlider({ data, slidesPerView, spaceBetween, navigation }) {
             >
                 {images?.map((image, index) => (
                     <SwiperSlide key={index}>
-                        <Watermark className="left" />
-                        <img
-                            src={image.src}
-                            alt={image.alt}
-                            style={{ width: "100%", cursor: "pointer" }}
-                            onClick={() => {
-                                setCurrentIndex(index);
-                                setOpen(true);
-                            }}
-                        />
+                        <div className="position-relative sliderBg">
+                            <Watermark className="left" />
+                            <img
+                                src={image.src}
+                                alt={image.alt}
+                                style={{ width: "100%", cursor: "pointer" }}
+                                onClick={() => {
+                                    setCurrentIndex(index);
+                                    setOpen(true);
+                                }}
+                            />
+                        </div>
                     </SwiperSlide>
                 ))}
             </Swiper>

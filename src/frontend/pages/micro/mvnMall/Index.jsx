@@ -3,9 +3,42 @@ import * as CONFIG from '../../../../config/config';
 import MvnMall1 from "../../mvnMall";
 import headerDesktopImg from '../../../assets/images/mvn-mall/header/sidebar.webp';
 import bannerImg from '../../../assets/images/mvn-mall/banner/banner.webp';
+import bannerImgSm from '../../../assets/images/mvn-mall/banner/banner_sm.webp';
 import landscapeImg1 from '../../../assets/images/mvn-mall/landscape/1.webp';
+import landscapeImgSm1 from '../../../assets/images/mvn-mall/landscape/1_sm.webp';
 import landscapeImg2 from '../../../assets/images/mvn-mall/landscape/2.webp';
+import landscapeImgSm2 from '../../../assets/images/mvn-mall/landscape/2_sm.webp';
 import landscapeImg3 from '../../../assets/images/mvn-mall/landscape/3.webp';
+import landscapeImgSm3 from '../../../assets/images/mvn-mall/landscape/3_sm.webp';
+
+// gallery images
+import galleryImg1 from '../../../assets/images/mvn-mall/gallery/gallery1.webp'
+import galleryImgSm1 from '../../../assets/images/mvn-mall/gallery/gallery1_sm.webp'
+import galleryImg2 from '../../../assets/images/mvn-mall/gallery/gallery2.webp'
+import galleryImgSm2 from '../../../assets/images/mvn-mall/gallery/gallery2_sm.webp'
+import galleryImg3 from '../../../assets/images/mvn-mall/gallery/gallery3.webp'
+import galleryImgSm3 from '../../../assets/images/mvn-mall/gallery/gallery3_sm.webp'
+
+// amenities images start
+import fantasyGarden from "../../../assets/images/mvn-mall/amenities/fantasy-garden.webp"
+import leisureLane from "../../../assets/images/mvn-mall/amenities/leisure_lane.webp"
+import characterCorner from "../../../assets/images/mvn-mall/amenities/character_corner.webp"
+import virtualVortex from "../../../assets/images/mvn-mall/amenities/vertual-vortex.webp"
+import performancePlaza from "../../../assets/images/mvn-mall/amenities/performance_plaza.webp"
+import visionaryVault from "../../../assets/images/mvn-mall/amenities/visionary_vault.webp"
+import movieHub from "../../../assets/images/mvn-mall/amenities/movie_hub.webp"
+import gamerGalaxy from "../../../assets/images/mvn-mall/amenities/gamer_galaxy.webp"
+import flavourStreet from "../../../assets/images/mvn-mall/amenities/flavour_street.webp"
+import dineDistrict from "../../../assets/images/mvn-mall/amenities/dine_district.webp"
+import artisanNook from "../../../assets/images/mvn-mall/amenities/artisan_nook.webp"
+import homeDecor from "../../../assets/images/mvn-mall/amenities/home_decor.webp"
+import innovationStation from "../../../assets/images/mvn-mall/amenities/inovasion_station.webp"
+import zenZone from "../../../assets/images/mvn-mall/amenities/zen_zone.webp"
+// amenities images end
+
+// location images start
+import locationMapDesktop from "../../../assets/images/mvn-mall/location-map/location-map.webp"
+// location images end
 
 export const mvnMallData = {
   header:{
@@ -21,7 +54,7 @@ export const mvnMallData = {
         link:'microOverview'
       },
       {
-        section_title:'MVN ID Brochure',
+        section_title:'MVN Mall ID Brochure',
         link:'downloadBrochure'
       },
       {
@@ -44,28 +77,28 @@ export const mvnMallData = {
   },
   banner:{
     desktop:bannerImg,
-    mobile:bannerImg,
+    mobile:bannerImgSm,
   },
   overview: {
     title: "MVN Mall",
-    extra: "Where Imagination Shapes Timeless Harmony",
-    desc: "Discover a world where modern architecture interwines with the essence of affordable living. At MVN Mall, we don't just build homes; we craft masterpieces that resonate with creativity and sophistication.",
+    extra: "The Pinnacle of Luxury Shopping",
+    desc: "Experience unparalleled elegance at MVN Mall , where world-class brands converge in an architecturally stunning setting. Indulge in a curated selection of premium boutiques, gourmet dining, and exclusive entertainment options, redefining luxury retail.",
   },
   landscape:{
     title:'Landscapes',
-    desc:'Step into a visual journey where every snapshot captures the seamless blend of elegance and innovation.',
+    desc:'A mesmerizing fusion of art and nature, MVN Mall landscape unfolds like a masterpiece, cascading water features, sculpted green terraces, and ambient lighting create an atmosphere of serene grandeur.',
     images:[
       {
         desktop: landscapeImg1,
-        mobile: landscapeImg1,
+        mobile: landscapeImgSm1,
       },
       {
         desktop: landscapeImg2,
-        mobile: landscapeImg2,
+        mobile: landscapeImgSm2,
       },
       {
         desktop: landscapeImg3,
-        mobile: landscapeImg3,
+        mobile: landscapeImgSm3,
       },
     ],
   },
@@ -74,132 +107,132 @@ export const mvnMallData = {
     desc:'Step into a visual journey where every snapshot captures the seamless blend of elegance and innovation.',
     images:[
       {
-        desktop: `${CONFIG.IMAGE_URL_MVL_MALL}gallery/1.webp`,
-        mobile: `${CONFIG.IMAGE_URL_MVL_MALL}gallery/1.webp`,
+        desktop: galleryImg3,
+        mobile: galleryImgSm3,
       },
       {
-        desktop: `${CONFIG.IMAGE_URL_MVL_MALL}gallery/2.webp`,
-        mobile: `${CONFIG.IMAGE_URL_MVL_MALL}gallery/2.webp`,
+        desktop: galleryImg1,
+        mobile: galleryImgSm1,
       },
       {
-        desktop: `${CONFIG.IMAGE_URL_MVL_MALL}gallery/3.webp`,
-        mobile: `${CONFIG.IMAGE_URL_MVL_MALL}gallery/3.webp`,
+        desktop: galleryImg2,
+        mobile: galleryImgSm2,
       },
     ],
   },
   amenities : {
     title:'Amenities',
-    desc: "Immerse yourself in a world of thoughtfully created amenities designed to elevate your lifestyle with comfort, convenience, and indulgence.",
+    desc: "Elevate your experience with world-class amenities, all designed for an effortless blend of luxury and convenience.",
     data:[
       {
         name: `Fantasy Garden`,
         path: {
-          desktop:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/fantasy-garden.webp`,
-          mobile:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/fantasy-garden.webp`,
+          desktop: fantasyGarden,
+          mobile: fantasyGarden,
         },
         desc:' To Bring The Grandest Dreams Alive.'
       },
       {
         name: 'Leisure Lane',
         path: {
-          desktop:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/leisure_lane.webp`,
-          mobile:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/leisure_lane.webp`,
+          desktop: leisureLane,
+          mobile: leisureLane,
         },
         desc:' Entertainment Zone'
       },
       {
         name: 'Character Corner',
         path: {
-          desktop:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/character_corner.webp`,
-          mobile:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/character_corner.webp`,
+          desktop: characterCorner,
+          mobile: characterCorner,
         },
         desc:'Spaces For The Best Memories'
       },
       {
         name: 'Virtual Vortex',
         path: {
-          desktop:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/vertual-vortex.webp`,
-          mobile:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/vertual-vortex.webp`,
+          desktop: virtualVortex,
+          mobile: virtualVortex,
         },
         desc:'The Biggest VR Park'
       },
       {
         name: 'Performance Plaza',
         path: {
-          desktop:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/performance_plaza.webp`,
-          mobile:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/performance_plaza.webp`,
+          desktop: performancePlaza,
+          mobile: performancePlaza,
         },
         desc:'Live Stages For Trilling Performances'
       },
       {
         name: 'Visionary Vault',
         path: {
-          desktop:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/visionary_vault.webp`,
-          mobile:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/visionary_vault.webp`,
+          desktop:visionaryVault,
+          mobile:visionaryVault,
         },
         desc:'Artifacts From Different Cultures'
       },
       {
         name: 'Movie Hub',
         path: {
-          desktop:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/movie_hub.webp`,
-          mobile:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/movie_hub.webp`,
+          desktop: movieHub,
+          mobile: movieHub,
         },
         desc:'The New Address For Movie Screenings'
       },
       {
         name: "Gamer's Galaxy",
         path: {
-          desktop:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/gamer_galaxy.webp`,
-          mobile:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/gamer_galaxy.webp`,
+          desktop: gamerGalaxy,
+          mobile: gamerGalaxy,
         },
         desc:'Where ESPORT Champions Arrive'
       },
       {
         name: 'Flavour Street',
         path: {
-          desktop:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/flavour_street.webp`,
-          mobile:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/flavour_street.webp`,
+          desktop:flavourStreet,
+          mobile:flavourStreet,
         },
         desc:"Grandest Food Court Every Foodie's Paradise"
       },
       {
         name: 'Dine District',
         path: {
-          desktop:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/dine_district.webp`,
-          mobile:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/dine_district.webp`,
+          desktop: dineDistrict,
+          mobile: dineDistrict,
         },
         desc:'The Best Fine Dining Chains. '
       },
       { 
         name: "Artisan's Nook",
         path:{
-          desktop:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/artisan_nook.webp`,
-          mobile:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/artisan_nook.webp`,
+          desktop:artisanNook,
+          mobile:artisanNook,
         },
         desc:'Artisan Market Selling Crafts From Every Country' 
       },  
       {
         name: 'Lift',
         path: {
-          desktop:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/home_decor.webp`,
-          mobile:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/home_decor.webp`,
+          desktop:homeDecor,
+          mobile:homeDecor,
         },
         desc:'Effortless elevation, because every step matters.'
       },
       {
         name: 'Innovation Station',
         path: {
-          desktop:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/inovasion_station.webp`,
-          mobile:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/inovasion_station.webp`,
+          desktop: innovationStation,
+          mobile: innovationStation,
         },
         desc:'Spaces For Exploring World Class Technologies'
       },
       {
         name: 'Zen Zone',
         path: {
-          desktop:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/zen_zone.webp`,
-          mobile:`${CONFIG.IMAGE_URL_MVL_MALL}amenities/zen_zone.webp`,
+          desktop:zenZone,
+          mobile:zenZone,
         },
         desc:'Premium Wellness And Fitness Centre'
       },
@@ -258,9 +291,31 @@ export const mvnMallData = {
     title: "Location Advantages",
     desc:" MVN Mall ensures connectivity while surrounding you with urban conveniences and serene charm.",
     mapIMG: {
-      desktop: `${CONFIG.IMAGE_URL_MVL_MALL}location-map.webp`,
-      mobile: `${CONFIG.IMAGE_URL_MVL_MALL}location-map.webp`,
+      desktop:  locationMapDesktop,
+      mobile:  locationMapDesktop,
     },
+    locationData: [
+      {
+        distance: '5.4 kms',
+        title: 'National Highway 48',
+      },
+      {
+        distance: '29.7 kms',
+        title: 'IGI Airport',
+      },
+      {
+        distance: '20 kms',
+        title: 'DLF Cyber City',
+      },
+      {
+        distance: '10.5 kms',
+        title: 'Gurgaon Railway station',
+      },
+      {
+        distance: '17.4 kms',
+        title: 'DLF City Centre',
+      },
+    ]
   },
 };
 
