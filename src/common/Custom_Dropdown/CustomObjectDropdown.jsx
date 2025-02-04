@@ -16,7 +16,7 @@ const CustomObjectDropdown = (props) => {
     
     return(
         <>
-        <label htmlFor="optionSelect" className="visually-hidden">Choose an Option:</label>
+        <label htmlFor="optionSelect" className="visually-hidden">Choose an Option:
             <select id="optionSelect" className={className} defaultValue={defaultVal} name='optionName' onChange={handleSelect}>
                 
                 {Object.entries(options).map(([key, value]) => {
@@ -27,7 +27,7 @@ const CustomObjectDropdown = (props) => {
                     
                 })}
             </select>
-
+            </label>
         </>
     )
 }
