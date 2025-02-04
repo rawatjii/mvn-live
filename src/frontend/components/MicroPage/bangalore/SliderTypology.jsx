@@ -16,7 +16,7 @@ const SliderTypology = ({ data }) => {
         <Tabs defaultActiveKey={tabs_name[0]} id="typology-tabs" className="mb-3 pb-0">
           {Object.keys(tabs).map((key, index) => (
             <Tab eventKey={tabs_name[index]} title={tabs_name[index]} key={key}>
-              <CustomSlider slides={tabs[key]} />
+              <CustomSlider className="typology_slider" slides={tabs[key]} />
             </Tab>
           ))}
         </Tabs>

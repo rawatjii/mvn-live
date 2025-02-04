@@ -176,7 +176,6 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer }) => {
     <Modal show={show} className="enquire_form custom_modal floor_plan_popup">
       <div ref={modalRef}>
         <Modal.Body>
-          <Container style={{ position: "relative" }}>
             <SecTitle className="text-center color style1">
               <img
                 src={Formlogo}
@@ -253,7 +252,6 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer }) => {
                 {loading ? "Sending..." : "Submit"}
               </Button>
             </Form>
-          </Container>
         </Modal.Body>
       </div>
     </Modal>

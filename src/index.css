@@ -1744,7 +1744,6 @@ a {
 /* enquire_section */
 
 .enquire_section {
-  margin-bottom: 20px;
 
   .enquire_bg {
     position: absolute;
@@ -3620,10 +3619,10 @@ footer {
 
   .modal-body{
 
-    background: #252525;
+    background: #101010;
     border-radius: 0;
     outline: none;
-    padding: 30px;
+    padding: 50px;
   }
 
   .modal-header{
@@ -4112,6 +4111,56 @@ footer {
   max-width: 120px;
 }
 
+
+
+
+.section.enquire_form{
+  padding: 50px 100px;
+    
+}
+
+.enquire_section{
+
+  .container{
+
+    padding: 120px 40px;
+    margin: 120px;
+    background:#000;
+  }
+}
+
+
+.typology_slider{
+
+  overflow: visible;
+}
+
+.LocationSlider{
+
+  .swiper-slide{
+    height:unset;
+  }
+}
+
+.media-news_offline{
+
+  .swiper-slide{
+
+    display:unset;
+
+    .sliderBg{
+
+      /* background: #fff;
+      height: 100%; */
+
+      /* img{
+        object-fit: contain;
+        height:auto;
+      } */
+    }
+  }
+}
+
 /* start responsive */
 /* by bhupendra */
 @media(min-width:768px) {
@@ -4201,6 +4250,51 @@ footer {
 }
 
 /* end of 1500 */
+
+@media(max-width:1199px) {
+
+  .navbar{
+
+    .navbar_collapse{
+
+      .overlay-content{
+
+        .inner-overlay{
+
+          .menu-area{
+
+            padding: 2% 2%;
+          }
+        }
+
+        
+      }
+    }
+
+    .inner-bottom-area{
+
+      .right{
+
+        padding: 0 4%;
+      }
+    }
+  }
+
+  .section.enquire_form{
+    padding: 20px 20px;
+  }
+
+  .enquire_section{
+
+    .container{
+
+      padding: 70px 40px;
+      margin: 40px;
+    }
+  }
+}
+
+/* end of 1199 */
 
 @media(max-width:767px) {
 
@@ -4426,10 +4520,16 @@ footer {
           .menu-area{
 
             width: 100%;
+            padding: 20px;
 
             .top_head{
               display:flex;
               justify-content: space-between;
+              margin-bottom: 10px;
+
+              .logo{
+                width: 50px;
+              }
 
               .close{
 
@@ -5255,7 +5355,26 @@ footer {
     max-width:100px;
   }
 
+  .custom_modal{
 
+    .modal-body{
+
+      padding:25px;
+    }
+  }
+
+  .enquire_section {
+
+    padding:0;
+
+    .container{
+
+      margin:0;
+      padding: 60px 30px;
+    }
+
+    
+  }
 
 }
 

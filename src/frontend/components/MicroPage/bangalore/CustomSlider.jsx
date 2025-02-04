@@ -8,11 +8,12 @@ import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 
-const CustomSlider = ({slides}) => {
+const CustomSlider = ({slides, className}) => {
     const [index, setIndex] = useState(-1);
   return (
     <>
     <Swiper
+     className={className}
   spaceBetween={50} // space between slides
   slidesPerView={1} // number of slides visible at a time
   loop={true} // loop through slides

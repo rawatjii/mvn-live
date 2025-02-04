@@ -89,7 +89,7 @@
 }
 
 .enquire_form .container{
-    margin: 0 !important;
+    /* margin: 0 !important; */
 }
 .masterPlanImg img{
     filter:  blur(5px);
@@ -757,18 +757,6 @@ border-bottom: 1px solid rgb(42 42 42 / 49%);text-decoration: none;letter-spacin
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 !important;
-}
-
-.enquire_section  .container{
-   padding: 80px 40px;
-   margin: 90px;
-   background-color: black;
-}
-.enquire_form  .container{
-   padding: 80px 40px;
-   margin: 0px 90px;
-   background-color: black;
 }
 
 .floor_plan_section .container{
@@ -934,14 +922,14 @@ border-bottom: 1px solid rgb(42 42 42 / 49%);text-decoration: none;letter-spacin
 }
 
 
-.micro_footer .enquire_form, .micro_footer .enquire_section{
+/* .micro_footer .enquire_form, .micro_footer .enquire_section{
     height: 100% !important;
-}
+} */
 
 
-.micro_footer .enquire_form .container{
+/* .micro_footer .enquire_form .container{
     margin: 0px 140px!important;
-}
+} */
 
 
 .job_description{
@@ -954,7 +942,7 @@ border-bottom: 1px solid rgb(42 42 42 / 49%);text-decoration: none;letter-spacin
 } */
 
 .career_page .enquire_form .container{
-    margin: 0px 90px;
+    /* margin: 0px 90px; */
 }
 
 

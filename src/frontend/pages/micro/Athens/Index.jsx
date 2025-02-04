@@ -54,7 +54,7 @@ export const faridabadData = {
         link:'microOverview'
       },
       {
-        section_title:'MVN Faridabad ID Brochure',
+        section_title:'MVN Athens ID Brochure',
         link:'downloadBrochure'
       },
       {

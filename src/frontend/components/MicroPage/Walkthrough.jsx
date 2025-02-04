@@ -47,7 +47,6 @@ const Walkthrough = React.memo(({ data }) => {
       }
     };
   }, [videoSrc]); // Reinitialize player when videoSrc changes
-  
 
   const getVideoIdFromUrl = useCallback((url) => {
     const match = url.match(/(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
@@ -72,9 +71,6 @@ const Walkthrough = React.memo(({ data }) => {
       setIsVideoPlaying(false);
     }, 10);
   });
-
-
-
 
   return (
     <section className="section walkthrough_section new_height">

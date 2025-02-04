@@ -18,12 +18,12 @@ const CustomCard = React.memo(({ className, title, location, extra, desc, extraT
 
       {desc && Array.isArray(desc) ? (
         desc.map((el, i) => (
-          <p className="desc des_style1 text-center" key={`desc-${i}`}>
+          <p className="desc des_style1 text-center w-100" key={`desc-${i}`}>
             {el}
           </p>
         ))
       ) : (
-        <p className={`desc des_style1 text-center ${type && 'mb-0'}`}>{desc}</p>
+        <p className={`desc des_style1 text-center w-100 ${type && 'mb-0'}`}>{desc}</p>
       )}
       {extraTxt && <h4 className="extraTxt">{extraTxt}</h4>}
     </div>
