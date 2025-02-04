@@ -1,6 +1,8 @@
 import React from "react";
 import MicroPage from "../../Micro";
 import * as CONFIG from '../../../../config/config';
+
+
 import MicroPageBangalore from "../../MicroPageBangalore";
 import bgImgMB from '../../../assets/images/aero-gurgaon/largeBg1Sm.webp'
 import bgImgDesk from '../../../assets/images/aero-gurgaon/largeBg1.png'
@@ -97,7 +99,7 @@ export const bangaloreData = {
           desktop:sidebar,
           mobile:sidebar,
         },
-    title:'MVN AeroOne, Bangalore',
+    title:'MVN Aero One, Bangalore',
     sidebar_section:[
       {
         section_title:'Overview',
@@ -108,7 +110,7 @@ export const bangaloreData = {
         link:'Walkthrough'
       },
       {
-        section_title:'MVN ID Brochure',
+        section_title:'MVN Aero one ID Brochure',
         link:'downloadBrochure'
       },
       {

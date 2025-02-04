@@ -192,7 +192,7 @@ const MicroPageFaridabad = ({ data, loadingCount, setLoadingCount }) => {
               (sectionRefs.current.downloadBrochure = el)
             }
           >
-            <DownloadBrochure />
+            <DownloadBrochure name="DOWNLOAD MVN ATHENS ID BROCHURE" />
           </div>
           <div
             ref={(el) =>

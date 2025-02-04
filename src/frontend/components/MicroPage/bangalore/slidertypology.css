@@ -46,7 +46,7 @@ color: #131313;text-decoration: none;font-family: "Tinos-Regular";font-size: 18p
     justify-content: center;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    font-family: "Tinos-Regular";font-size: 18px;
+    font-size: 18px;
 }
 .typology_section .nav-tabs li button.active{
     background-color: #d9c072;
@@ -59,9 +59,11 @@ color: #131313;text-decoration: none;font-family: "Tinos-Regular";font-size: 18p
 }
 .typology_section .swiper-button-next{
     right: 45%;
+    left: 50%;
 }
 .typology_section .swiper-button-prev, .typology_section .swiper-button-next{
-    top: var(--swiper-navigation-top-offset, 95%);
+    top: var(--swiper-navigation-top-offset, calc(100% + 10px));
+    /* position:relative; */
     color: #d9c072;
     border-radius: 50%;
     border: 1px solid #d9c072;
@@ -116,6 +118,14 @@ color: #131313;text-decoration: none;font-family: "Tinos-Regular";font-size: 18p
     .Typologies_Modal .SlideImg{
         height: auto;
         width: 100%;
+    }
+    .typology_section .nav-tabs li{
+        padding:0;
+    }
+    .typology_section .nav-tabs li button{
+        font-size: 14px;
+        height: 100%;
+        margin: 0;
     }
   }
   @media (max-width: 520px) {

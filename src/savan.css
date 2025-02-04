@@ -994,8 +994,8 @@ button.closebtn {
   }
 
   .enquire_form .container {
-    padding: 50px 40px !important;
-    margin: 0px 180px !important;
+    /* padding: 50px 40px !important; */
+    /* margin: 0px 180px !important; */
   }
 
 
@@ -1013,15 +1013,6 @@ button.closebtn {
       z-index: -1;
       filter: brightness(5);
     }
-  }
-
-  .enquire_section .container {
-    padding: 170px 40px !important;
-    margin: 120px !important;
-    background-color: #000000;
-    display: block;
-    position: relative;
-    z-index: 1;
   }
 
   /* .enquire_form,
@@ -1251,10 +1242,6 @@ button.closebtn {
     }
   }
 
-  .enquire_section .container {
-    padding: 140px 40px !important;
-    margin: 70px !important;
-  }
 
   .projects_section {
     .sec_title {
@@ -1788,8 +1775,8 @@ section.section.projects_section.pb-0 .px_8.left_col.col-12 .an_img.undefined  .
 }
 
   .enquire_form .container {
-    padding: 50px 40px !important;
-    margin: 0px 115px !important;
+    /* padding: 50px 40px !important; */
+    /* margin: 0px 115px !important; */
   }
 
   p {
@@ -1920,8 +1907,8 @@ section.section.timeline_section.pb-0 .diamond-img {  width: auto; height: 70px;
 }
 
 .floor_plan_popup .sec_title .style1 .title { padding-bottom: 20px; }
-.floor_plan_popup .container{margin: 0 auto !important;background-color:#101010 !important ;}
-.custom_modal.floor_plan_popup .modal-body {  background: transparent !important; }
+/* .floor_plan_popup .container{margin: 0 auto !important;background-color:#101010 !important ;} */
+/* .custom_modal.floor_plan_popup .modal-body {  background: transparent !important; } */
 
 section.section.micro_overview.text-center.pb-0 .overview_card {
   padding-bottom: 40px;
@@ -2242,8 +2229,8 @@ section.section.projects_section.pb-0 .new-launch-patch { position: absolute;top
   }
 
   .enquire_form .container {
-    padding: 0px 40px !important;
-    margin: 0px 0px !important;
+    /* padding: 0px 40px !important;
+    margin: 0px 0px !important; */
   }
 
   section.section.about_overview.pb-0 .about_bg {
@@ -2433,7 +2420,7 @@ section.section.media-gallery {padding-top: 70px;}
 section.section.press-releases-container { padding-top: 40px;}
 section.section.enquire_form {padding-top: 40px;}
 .media_center .row {row-gap: 0px;}
-.enquire_form .container { padding: 0px 20px !important; margin: 0px 0px !important;}
+.enquire_form .container { /*padding: 0px 20px !important; margin: 0px 0px !important;*/}
 section.section.media-gallery {  padding-top: 90px;}
 section.section.press-releases-container{padding-top:40px}
 section.section.media-events section.section.enquire_form{padding-top:40px}

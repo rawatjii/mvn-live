@@ -108,7 +108,7 @@ const MicroPageBangalore = ({ data, loadingCount, setLoadingCount }) => {
             }
           >
           <Suspense fallback="">
-            <DownloadBrochure />
+            <DownloadBrochure name="Download MVN AERO ONE ID Brochure" />
             </Suspense>
           </div>
           <div
