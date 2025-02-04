@@ -86,7 +86,7 @@ export const mvnMallData = {
   },
   landscape:{
     title:'Landscapes',
-    desc:'A mesmerizing fusion of art and nature, MVN Mall 1’s landscape unfolds like a masterpiece, cascading water features, sculpted green terraces, and ambient lighting create an atmosphere of serene grandeur.',
+    desc:'A mesmerizing fusion of art and nature, MVN Mall landscape unfolds like a masterpiece, cascading water features, sculpted green terraces, and ambient lighting create an atmosphere of serene grandeur.',
     images:[
       {
         desktop: landscapeImg1,
