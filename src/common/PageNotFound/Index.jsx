@@ -24,7 +24,7 @@ const PageNotFound = () => {
             <h2 className="title">404</h2>
             <h3 className="sub_title">Look like you're lost</h3>
             <p className="para">The page you are looking for not avaible!</p>
-            <Link to="/" className="btn btn_style3">Go To Home</Link>
+            <Link to="/" className="btn btn_style3">Home</Link>
           </div>
         </Container>
       </div>

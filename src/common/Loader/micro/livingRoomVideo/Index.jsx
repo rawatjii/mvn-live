@@ -8,7 +8,7 @@ const LivingRoomVideoLoader = ()=>{
   return(
     <div className="loader_section gurgaon_loader living_room_video_loader">
       <div className="position-relative">
-        <img src={CONFIG.VIDEO_URL + 'living-room/loader_thumbnail.webp'} alt="mvn-micro-loader" className="img-fluid micro_thumbnail" />
+        <img src={CONFIG.VIDEO_URL + 'living-room/loader_thumbnail.webp'} alt="mvn micro loader" className="img-fluid micro_thumbnail" />
 
         <div className="loaderTxt">
           <BarLoader

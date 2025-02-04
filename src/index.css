@@ -1944,7 +1944,7 @@ footer {
               display: grid;
               padding-bottom: 7px;
               
-              label{
+              span{
 
                 color: var(--theme_primary_color);
                 font-size: 10px;

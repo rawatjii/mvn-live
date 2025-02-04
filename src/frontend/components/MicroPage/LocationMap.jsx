@@ -64,9 +64,9 @@ const MicroLocationMap = ({data})=>{
               </button>
 
               
-              <div onClick={()=>setIsLocationMapOpen(true)}>
-                <img src={data.mapIMG.desktop} alt="mvn-master-plan" className="img-fluid d-none d-md-block"  />
-                <img src={data.mapIMG.mobile} alt="mvn-master-plan" className="img-fluid d-md-none"  />
+              <div onClick={()=>setIsLocationMapOpen(true)} role="button">
+                <img src={data.mapIMG.desktop} alt="mvn master plan icon" className="img-fluid d-none d-md-block"  />
+                <img src={data.mapIMG.mobile} alt="mvn master plan icon" className="img-fluid d-md-none"  />
               </div>
             </div>
           </div>

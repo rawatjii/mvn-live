@@ -168,20 +168,20 @@ const MicroHeader = ({ scrollToSection, sectionsMenus, projectName }) => {
         ref={headerRef}
         expand="false"
         className={`${scrolled ? "fixed" : ""} ${isMicro ? "micro_nav" : null}`}
-        role="navbar"
+        role="navigation"
       >
         <Container>
           <Navbar.Brand  className="logo">
             <Link onClick={() => toggleMenu("close")}>
               <img
                 src={CONFIG.IMAGE_URL + "logo_white.webp"}
-                alt="mvn-logo"
+                alt="mvn logo"
                 className="img-fluid d-none d-md-block"
                 fetchpriority="high"
               />
               <img
                 src={CONFIG.IMAGE_URL + "logo_white.webp"}
-                alt="mvn-logo"
+                alt="mvn logo"
                 className="img-fluid d-md-none"
                 fetchpriority="high"
               />
@@ -193,6 +193,7 @@ const MicroHeader = ({ scrollToSection, sectionsMenus, projectName }) => {
               <img src={CONFIG.IMAGE_URL + 'icons/call.png'} alt="mvn call icon" />
             </a>
             <Navbar.Toggle
+            role="button"
               aria-controls="basic-navbar-nav"
               onClick={() => toggleMenu("show")}
             >
@@ -314,7 +315,7 @@ const MicroHeader = ({ scrollToSection, sectionsMenus, projectName }) => {
                               </ul>
                             </li>
                             <li>
-                            <img src={subscribeBtn} alt="subscribe_btn" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} style={{cursor:'pointer'}} />
+                            <img src={subscribeBtn} alt="subscribe btn" role="button" tabIndex={0}  className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} style={{cursor:'pointer'}} />
                             </li>
                         </ul>
                       </div>

@@ -131,7 +131,7 @@ export default function MicroLandscape({ data = landscapeData, title, subTitle, 
         <div className="row">
           {data.map((image, index) => (
             <div className="col-sm-12 col-md-4 col-lg-4" key={index}>
-              <div className="card center" onClick={() => setIndex(index)}>
+              <div className="card center" role='button' onClick={() => setIndex(index)}>
                 {/* Wrapping image in AnImage component for animation */}
                 <div className="img">
                   <Watermark className={image.watermark} />

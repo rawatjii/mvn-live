@@ -120,7 +120,7 @@ const OurJourney = () => {
   return (
     <section className="section journey_section pb-0">
       <LazyLoad height={200}>
-        <img src={FooterBgImg} alt="mvn-about-bg" className="img-fluid about_bg" />
+        <img src={FooterBgImg} alt="mvn journey background image" className="img-fluid about_bg" />
       </LazyLoad>
 
       <Container>

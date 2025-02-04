@@ -79,21 +79,22 @@ const Header = () => {
   return (
     <>
       <Navbar
+       role="navigation"
         ref={headerRef}
         expand="false"
         className={`${scrolled ? "fixed" : ""} ${isMicro ? "micro_nav" : null}`}
       >
         <Container>
-          <Navbar.Brand className="logo" onClick={showCustomModal} style={{cursor:'pointer'}}>
+          <Navbar.Brand role="button"  className="logo" onClick={showCustomModal} style={{cursor:'pointer'}}>
           <img
                 src={CONFIG.IMAGE_URL + "logo_white.webp"}
-                alt="mvn-logo"
+                alt="mvn logo"
                 className="img-fluid d-none d-md-block"
                 fetchpriority="high"
               />
               <img
                 src={CONFIG.IMAGE_URL + "logo_white.webp"}
-                alt="mvn-logo"
+                alt="mvn logo"
                 className="img-fluid d-md-none"
                 fetchpriority="high"
               />
@@ -104,6 +105,7 @@ const Header = () => {
               <img src={CONFIG.IMAGE_URL + 'icons/call.png'} alt="mvn call icon" />
             </a>
             <Navbar.Toggle
+            role="button"
               aria-controls="basic-navbar-nav"
               onClick={() => toggleMenu("show")}
             >
@@ -270,7 +272,7 @@ const Header = () => {
                                   <Link to="https://www.facebook.com/officialmvninfra/" target="_blank" onClick={() => toggleMenu("close")}>
                                     <img
                                       src={`${CONFIG.IMAGE_URL + "social/fb.png"}`}
-                                      alt="mvn-facebook-icon"
+                                      alt="mvn facebook icon"
                                     />
                                   </Link>
                                 </li>
@@ -278,7 +280,7 @@ const Header = () => {
                                   <Link to="https://www.instagram.com/mvn_infrastructure/" target="_blank" onClick={() => toggleMenu("close")}>
                                     <img
                                       src={`${CONFIG.IMAGE_URL + "social/instagram.png"}`}
-                                      alt="mvn-instagram-icon"
+                                      alt="mvn instagram icon"
                                     />
                                   </Link>
                                 </li>
@@ -286,7 +288,7 @@ const Header = () => {
                                   <Link to="https://www.linkedin.com/company/mvn-infrastructure/" target="_blank" onClick={() => toggleMenu("close")}>
                                     <img
                                       src={`${CONFIG.IMAGE_URL + "social/linkedin.png"}`}
-                                      alt="mvn-linkedin-icon"
+                                      alt="mvn linkedin icon"
                                     />
                                   </Link>
                                 </li>
@@ -294,14 +296,14 @@ const Header = () => {
                                   <Link to="https://www.youtube.com/@MVNInfrastructures" target="_blank" onClick={() => toggleMenu("close")}>
                                     <img
                                       src={`${CONFIG.IMAGE_URL + "social/youtube.png"}`}
-                                      alt="mvn-youtube-icon"
+                                      alt="mvn youtube icon"
                                     />
                                   </Link>
                                 </li>
                               </ul>
                             </li>
                             <li>
-                              <img src={subscribeBtn} alt="subscribe_btn" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} style={{cursor:'pointer'}} />
+                              <img src={subscribeBtn} alt="subscribe btn" role="button" tabIndex={0}  className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} style={{cursor:'pointer'}} />
                             </li>
                         </ul>
                       </div>

@@ -87,7 +87,7 @@ const Philosophy = () => {
             <ul>
          <li>
             <h4 ref={(el) => miniTitleRefs.current[0] = el} className="title">
-              <img src={planeIcon} alt="mvn-plan-icon" className="img-fluid icon"  />
+              <img src={planeIcon} alt="mvn plan icon" className="img-fluid icon"  />
               Our Vision
             </h4>
             <p ref={(el) => desRefs.current[0] = el}>
@@ -99,7 +99,7 @@ const Philosophy = () => {
           <ul>
           <li>
             <h4 ref={(el) => miniTitleRefs.current[1] = el} className="title">
-              <img src={planeIcon} alt="mvn-plan-icon" className="img-fluid icon"  />
+              <img src={planeIcon} alt="mvn plan icon" className="img-fluid icon"  />
               Our Mission
             </h4>
             <p ref={(el) => desRefs.current[1] = el}>
@@ -112,7 +112,7 @@ const Philosophy = () => {
             <ul>
           <li>
             <h4 ref={(el) => miniTitleRefs.current[2] = el} className="title">
-              <img src={planeIcon} alt="mvn-plan-icon" className="img-fluid icon"  />
+              <img src={planeIcon} alt="mvn plan icon" className="img-fluid icon"  />
               Our Values
             </h4>
             <ul ref={(el) => desRefs.current[2] = el} className="our-values-ul-icon">

@@ -96,7 +96,7 @@ export default function NoPolutionZone({ data }) {
           ) : (
             noPollutionZone.map((single, index)=>(
               <div key={index} className='col-sm-12 col-md-4 col-lg-4'>
-                <div className="card center" onClick={() => setIndex(index)}>
+                <div className="card center" role='button'  onClick={() => setIndex(index)}>
                   <img src={CONFIG.IMAGE_URL + 'no-pollution/'+single.imgSrc} alt={`mvn connection ${index}`} className="img-fluid d-md-none"   />
                   <img src={CONFIG.IMAGE_URL + 'no-pollution/'+single.imgSrc} alt={`mvn connection ${index}`} className="img-fluid d-none d-md-block"   />
                   <Watermark  />

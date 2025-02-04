@@ -29,7 +29,7 @@ const Enquire = () => {
   return (
     <section className="section enquire_section">
       <LazyLoad>
-        <img src={imageSrc} alt="mvn-enquire-bg" className="img-fluid enquire_bg" />
+        <img src={imageSrc} alt="mvn enquire bg" className="img-fluid enquire_bg" />
       </LazyLoad>
 
       <Container>

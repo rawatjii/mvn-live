@@ -85,7 +85,7 @@ const Overview = () => {
 
     <section className="section about_overview pb-0">
       <div className="content_col position-relative page-header-main-heading">
-        <img src={bg} alt="mvn-about-bg" className="img-fluid about_bg" />
+        <img src={bg} alt="mvn about bg" className="img-fluid about_bg" />
 
         <Container>
           <div className="heading_div mb_60 mb_sm_30">
@@ -116,7 +116,7 @@ const Overview = () => {
       <AnImage ref={imageRef} className="img_col">
         <img
           src={isMobile ? Mobileabout_img : Desktopabout_img}
-          alt="mvn-about-bg"
+          alt="mvn about bg"
           className="img-fluid about_img"
         />
       </AnImage>

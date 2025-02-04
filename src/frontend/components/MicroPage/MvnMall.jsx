@@ -53,7 +53,7 @@ const MvnMall = () => {
               <img
                 ref={imageRef}
                 src={mvnMallImg}
-                alt="mvn_mall_animation"
+                alt="mvn mall animation image"
                 className="img-fluid"
               />
               <Watermark />

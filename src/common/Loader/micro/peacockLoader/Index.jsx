@@ -24,7 +24,7 @@ const PeacockLoader = ()=>{
   return(
     <div className={`loader_section gurgaon_loader ${classes.peacock_loader}`}>
       <div className="position-relative">
-        <img src={`${CONFIG.IMAGE_URL}${isMobile ? 'peacock/mobile/1.webp' : 'peacock/peacock.webp'}`} alt="mvn-micro-loader" className="img-fluid micro_thumbnail" />
+        <img src={`${CONFIG.IMAGE_URL}${isMobile ? 'peacock/mobile/1.webp' : 'peacock/peacock.webp'}`} alt="mvn micro loader" className="img-fluid micro_thumbnail" />
 
         <div className="loaderTxt">
           <BarLoader

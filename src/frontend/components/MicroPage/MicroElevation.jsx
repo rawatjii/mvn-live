@@ -92,7 +92,7 @@ export default function MicroElevation({ data = images }) {
         <div className='row'>
           {images.map((image, index) => (
             <div className='col-sm-12 col-md-4 col-lg-4' key={index}>
-              <div className="card center" onClick={() => setIndex(index)}>
+              <div className="card center" role='button'  onClick={() => setIndex(index)}>
                 {/* Wrapping image in AnImage component for animation */}
                 <AnImage ref={(el) => (imageDivRefs.current[index] = el)}>
                   <img src={image.assets.mobile} alt={`mvn elevation ${index}`} className='img-fluid elevation-section-img '  onLoad={handleImageLoad} />
