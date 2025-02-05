@@ -115,7 +115,7 @@ const MicroPrice = ()=>{
   return(
     <section className="section price_section pb-0">
       <LazyLoad>
-        <img src={bgImg} alt="mvn-price-bg" className="img-fluid price_bg" />
+        <img src={bgImg} alt="mvn price background image" className="img-fluid price_bg" />
       </LazyLoad>
 
       <Container>

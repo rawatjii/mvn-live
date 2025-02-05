@@ -99,8 +99,8 @@ const Testimonial = () => {
         </Swiper>
 
         {/* Add navigation buttons */}
-        <div className="swiper-button-prev"></div>
-        <div className="swiper-button-next"></div>
+        <div className="swiper-button-prev" role="button" aria-label="prev"></div>
+        <div className="swiper-button-next" role="button" aria-label="next"></div>
       </Container>
     </section>
   );

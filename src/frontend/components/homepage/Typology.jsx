@@ -228,13 +228,13 @@ const Typology = ({ onLoadComplete }) => {
             <img
               className="image-2"
               src={typo2}
-              alt="mvn typlogy 1"
+              alt="mvn typlogy 2"
               
             />
             <img
               className="image-3"
               src={typo3}
-              alt="mvn typlogy 1"
+              alt="mvn typlogy 3"
               
             />
           </div>

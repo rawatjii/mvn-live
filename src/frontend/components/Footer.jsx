@@ -33,25 +33,25 @@ const Footer = () => {
                   <h4>Projects</h4>
                   <ul>
                     <li>
-                      <label htmlFor="">Gurgaon</label>
+                      <span>Gurgaon</span>
                       <NavLink to='https://mvnmall.com/' target="_blank">MVN Mall</NavLink>
                     </li>
                     <li>
                       <NavLink to={`${import.meta.env.VITE_APP_URL}aeroone-gurgaon`}>MVN Aero One</NavLink>
                     </li>
                     <li>
-                      <label htmlFor="">Bangalore</label>
+                      <span>Bangalore</span>
                       <NavLink to="https://www.mvnaeroone.com/" target="_blank">MVN</NavLink>
                     </li>
                     <li>
-                      <label htmlFor="">Sohna</label>
+                      <span>Sohna</span>
                       <NavLink to="https://www.mvn.in/athens-gurugram/" target="_blank">MVN Athens</NavLink>
                     </li>
                     <li>
                       <NavLink to="https://www.mvninfrastructure.com/athens-gurugram-phase2/" target="_blank">MVN Athens PH-2</NavLink>
                     </li>
                     <li>
-                      <label htmlFor="">Faridabad</label>
+                      <span>Faridabad</span>
                       <NavLink to="https://www.mvn.in/athens-faridabad/" target="_blank">MVN Athens</NavLink>
                     </li>
                   </ul>
@@ -104,22 +104,22 @@ const Footer = () => {
                       <ul>
                         <li>
                           <Link to="https://www.linkedin.com/company/mvn-infrastructure/" target="_blank" className="icon">
-                            <img src={linkedinIcon} alt="mvn-linkedin-icon" className="img-fluid" />
+                            <img src={linkedinIcon} alt="mvn linkedin icon" className="img-fluid" />
                           </Link>
                         </li>
                         <li>
                           <Link to="https://www.facebook.com/officialmvninfra/" target="_blank" className="icon">
-                            <img src={fbIcon} alt="mvn-facebook-icon" className="img-fluid" />
+                            <img src={fbIcon} alt="mvn facebook icon" className="img-fluid" />
                           </Link>
                         </li>
                         <li>
                           <Link to="https://www.instagram.com/mvn_infrastructure/" target="_blank" className="icon">
-                            <img src={instaIcon} alt="mvn-instagram-icon" className="img-fluid" />
+                            <img src={instaIcon} alt="mvn instagram icon" className="img-fluid" />
                           </Link>
                         </li>
                         <li>
                           <Link to="https://www.youtube.com/@MVNInfrastructures" target="_blank" className="icon">
-                            <img src={YoutubeIcon} alt="mvn-youtube-icon" className="img-fluid" />
+                            <img src={YoutubeIcon} alt="mvn youtube icon" className="img-fluid" />
                           </Link>
                         </li>
                       </ul>
@@ -129,7 +129,7 @@ const Footer = () => {
                   <div className="right-b">
                     <div className="box">
                       <span>
-                        <img src={subscribeBtn} alt="subscribe_btn" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} />
+                        <img src={subscribeBtn} alt="subscribe btn" role="button" tabIndex={0} className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} />
                       </span>
                     </div>
                   </div>
@@ -144,9 +144,9 @@ const Footer = () => {
             <div className="left">
               <ul>
                 <li>
-                  <NavLink to={`${import.meta.env.VITE_APP_URL}privacy-policy`}>Privacy Policy</NavLink>
+                  <NavLink to={`${import.meta.env.VITE_APP_URL}privacy-policy`}>Privacy Policy |  </NavLink>
                 </li>
-                {` | `}
+        
                 <li>
                   <NavLink to={`${import.meta.env.VITE_APP_URL}disclaimer`}> Disclaimer</NavLink>
                 </li>

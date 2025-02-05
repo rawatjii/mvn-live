@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Helmet } from "react-helmet";
-import InitialLoading from '../skeleton/Initial/Index';
 import Layout from '../components/Layout';
 
 const ThankYou = () => {
     window.scrollTo(0, 0);
-    const [newLoadingCount, setNewLoadingCount] = useState(Number(localStorage.getItem('count')));
 
     return (
         <>
@@ -28,7 +26,7 @@ const ThankYou = () => {
             </script>
             <noscript>
                 {`
-                    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=562105226581202&ev=PageView&noscript=1"/>
+                    <img alt="facebook" height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=562105226581202&ev=PageView&noscript=1"/>
                 `}
             </noscript>
 
@@ -68,7 +66,7 @@ const ThankYou = () => {
             </script>
             <noscript>
                 {`
-                    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1277605383505048&ev=PageView&noscript=1"/>
+                    <img alt="facebook" height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1277605383505048&ev=PageView&noscript=1"/>
                 `}
             </noscript>
 
@@ -117,7 +115,7 @@ const ThankYou = () => {
                         </p>
                     </div>
                     <Link className='backBtn' to="/">
-                    back to home
+                    Home
                     </Link>
                 </Container>
                 

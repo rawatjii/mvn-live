@@ -15,7 +15,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       <ul className="pagination">
         <li className='page-item'>
           <button className={`page-link ${currentPage === 1 ? 'disabled': ''}`}>
-            <img src={chevronLeftIcon} alt="left icon" className='img-fluid' />
+            <img src={chevronLeftIcon} alt="left pagination icon" className='img-fluid' />
           </button>
         </li>
         {pages.map((page) => (
@@ -27,7 +27,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         ))}
         <li className='page-item'>
           <button className={`page-link ${currentPage === totalPages ? 'disabled': ''}`}>
-            <img src={chevronRightIcon} alt="right icon" className='img-fluid' />
+            <img src={chevronRightIcon} alt="right pagination icon" className='img-fluid' />
           </button>
         </li>
       </ul>

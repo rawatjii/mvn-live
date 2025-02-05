@@ -44,19 +44,19 @@ Imagine living in a home that merges the grandeur of New York's skyline views wi
           description: `MVN AeroOne Gurugram are not just homes; they're a statement of class. Here's what sets them apart:
           <br>
           <ul>
-            <li class="mt-2 px-4">
+            <li className="mt-2 px-4">
               <b>Expansive Living Spaces:</b>
              Open-concept designs with floor-to-ceiling glass walls offering uninterrupted views of the city. 
             </li>
-            <li class="mt-2 px-4">
+            <li className="mt-2 px-4">
               <b>Private Amenities:</b>
              Dedicated elevators, private terraces, and rooftop pools ensure exclusivity.
             </li>
-            <li class="mt-2 px-4">
+            <li className="mt-2 px-4">
               <b>Premium Finishes:</b>
              Imported marble flooring, smart home automation, and designer fixtures make every corner exquisite.
             </li>
-            <li class="mt-2 px-4">
+            <li className="mt-2 px-4">
               <b>World-Class Facilities:</b>
               Residents will enjoy access to concierge services, a fitness center, landscaped gardens, and a sky lounge.
             </li>
@@ -212,7 +212,7 @@ Let's focus our attention on the reasons that will show why investing in real es
           description: `<ul>
             <li><b>Appreciation</b><br>
             
-            <p class="mt-2">
+            <p className="mt-2">
             Real estate investors can generate wealth through rents, any gains created by property-aligned business activity, and appreciation. In real estate, property values tend to increase over time, and with a good investment, you can generate a mammoth profit when it's time to sell. As time passes by, even the rent increases (10 - 20%), which can lead to higher cash flow. The cash flow associated with real estate is easy to track and requires fewer efforts from the owner.
 
             </p>
@@ -221,46 +221,46 @@ Let's focus our attention on the reasons that will show why investing in real es
 
             <li><b>Ease of Financing</b>
             
-                <p class="mt-2">
+                <p className="mt-2">
               Ease in Financing may not feel like it when you're applying for a mortgage, but lenders like property. Home loans are a crucial part of any bank's business model, and people are more likely to lend on residential property than any other asset class – as witnessed by the fact that they will lend a higher proportion of the value, like almost close to 100% and at lower interest rates than any other asset class. This motivates the investors to invest in properties rather than going for any other asset class.</p>
             </li>
 
 
             <li><b>Real Estate is Improvable</b>
             
-                <p class="mt-2">
+                <p className="mt-2">
               To increase the worth of a property is in your hand, this cannot be possible in any other sector. If you renovate your flat or a house, your chances of getting good resale value will definitely increase. Since real estate is a substantial asset, any improvements you make will surely increase its value. Some things that bring the biggest return for your money are flooring, doors, and ceilings. </p>
             </li>
 
             <li><b>Real Estate Leverage</b>
             
-                <p class="mt-2">
+                <p className="mt-2">
              Real estate is the only sector that provides huge leverage to its investors. Leverage is defined as the process of using various financial instruments or borrowed capital like debt to uplift an investment's potential return. A 20% down payment on a mortgage will get you 100% of the house you want to buy; that's how leverage helps investors. In NCR, many builders like MVN Infrastructure are offering a ready-to-move house in Faridabad which becomes a good opportunity with the advantage of leverage.  </p>
             </li>
 
 
             <li><b>Portfolio Diversification</b>
             
-                <p class="mt-2">
+                <p className="mt-2">
              Investors always look for methods to lower the risks in their investments; real estate gives them the opportunity by providing different platforms like commercial offices, Plots, Flats, and independent houses. It ensures that if one area falls down a little, another is always there to balance it out.   </p>
             </li>
 
 
             <li><b>Tax Deductions</b>
             
-                <p class="mt-2">
+                <p className="mt-2">
              Tax codes allow various deductions for the normal expenses aroused in owning real estate properties, such as apartment upkeep, maintenance, advancements, and also the interest paid on the mortgage. The deductions can build income and reduce your overall taxes. For first-time home buyers, tax deductions are more favourable. Most of the  Builders and Developers in Bangalore are associated with RERA, which improves their authenticity and also helps investors get tax deductions easily.   </p>
             </li>
 
             <li><b>Inflation Hedge</b>
             
-                <p class="mt-2">
+                <p className="mt-2">
              Inflation affects every investment and impacts the functioning of that sector, but real estate is an investment that is almost always in demand, so it basically maintains its monetary power. Normal inflation often creates hurdles for companies to create products and services. They either have to increase their prices or accept lower profits. Real estate does not get affected by such inflation; because of this prominent feature, it comes out as a natural Inflation hedge. </p>
             </li>
 
             <li><b>Inflation Hedge</b>
             
-                <p class="mt-2">
+                <p className="mt-2">
              Inflation affects every investment and impacts the functioning of that sector, but real estate is an investment that is almost always in demand, so it basically maintains its monetary power. Normal inflation often creates hurdles for companies to create products and services. They either have to increase their prices or accept lower profits. Real estate does not get affected by such inflation; because of this prominent feature, it comes out as a natural Inflation hedge. </p>
             </li>
 

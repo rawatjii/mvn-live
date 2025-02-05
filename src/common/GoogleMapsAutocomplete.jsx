@@ -22,6 +22,7 @@ const GoogleMapsAutocomplete = ({ handlePlaceSelect }) => {
       id="location"
       type="text"
       placeholder="Enter project Location"
+      autoComplete='off'
     />
   </Autocomplete>
 </Form.Group>

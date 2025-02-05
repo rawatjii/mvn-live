@@ -34,7 +34,7 @@ const MicroBanner = ({bg, data})=>{
     <>
       <section className="section micro_banner">
         <Container>
-          <img src={bg} alt="mvn-microbanner-bg" className="img-fluid microbanner_bg" />
+          <img src={bg} alt="mvn microbanner background image" className="img-fluid microbanner_bg" />
           <h2 ref={titleRef} className="microTitle" >{data.title}</h2>
           <p className="microContent">{data.content}</p>
         </Container>

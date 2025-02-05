@@ -53,7 +53,7 @@ const OurBrand = () => {
       <LazyLoad>
         <img
           src={isMobile ? MobilebrandBG : DesktopbrandBG}
-          alt="mvn brand-bg"
+          alt="mvn brand bg"
           className="brand_bg"
           
         />
@@ -62,7 +62,7 @@ const OurBrand = () => {
       <LazyLoad>
         <img
           src={LeftSideBanner}
-          alt="mvn brand-bg"
+          alt="mvn brand bg"
           className="brand_bg brand_bg-2"
           
         />

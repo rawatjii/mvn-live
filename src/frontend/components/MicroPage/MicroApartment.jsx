@@ -85,7 +85,7 @@ export default function MicroApartment({ data }) {
         <div className="row">
           {images.map((image, index) => (
             <div key={index} className="col-sm-12 col-md-4 col-lg-4">
-              <div className="card center" onClick={() => setIndex(index)}>
+              <div className="card center" role='button'  onClick={() => setIndex(index)}>
                 <div className="img">
                   <img
                     src={image.thumbnail_mobile}

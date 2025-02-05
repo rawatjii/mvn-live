@@ -26,7 +26,7 @@ const GurgaonLoader1 = () => {
     <div className="loader_section gurgaon_loader">
       <img
         src={imageUrl}
-        alt="mvn-micro-loader"
+        alt="mvn micro loader"
         className="img-fluid micro_thumbnail"
       />
 

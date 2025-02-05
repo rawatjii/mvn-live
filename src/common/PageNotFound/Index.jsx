@@ -12,19 +12,20 @@ const PageNotFound = () => {
     <>
       <div className="page_not_found micro_page">
         {/* <Header /> */}
-
+         <div className="NotFoundImage">
         <img
           src={notFoundGif}
           alt="page not found img"
           className="img-fluid thumbnail"
         />
+        </div>
 
         <Container>
           <div className="content">
             <h2 className="title">404</h2>
             <h3 className="sub_title">Look like you're lost</h3>
             <p className="para">The page you are looking for not avaible!</p>
-            <Link to="/" className="btn btn_style3">Go To Home</Link>
+            <Link to="/" className="btn btn_style3">Home</Link>
           </div>
         </Container>
       </div>
