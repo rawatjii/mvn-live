@@ -137,7 +137,7 @@ const Projects = () => {
             <div className="flex-box-1">
             <img
             src={planeIcon}
-            alt="mvn-plane-icon"
+            alt="mvn plane icon"
             className="img-fluid plane_icon"
             />
 
@@ -176,7 +176,7 @@ const Projects = () => {
                       <Link to={item.link}>
                         <img
                           src={arrowIcon}
-                          alt="mvn-arrow-icon"
+                          alt="mvn arrow icon"
                           className="img-fluid icon"
                         />
                       </Link>
@@ -219,7 +219,7 @@ const Projects = () => {
                       <Link to={item.link} target="_blank">
                         <img
                           src={arrowIcon}
-                          alt="mvn-arrow-icon"
+                          alt="mvn arrow icon"
                           className="img-fluid icon"
                         />
                       </Link>

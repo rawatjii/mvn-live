@@ -39,7 +39,7 @@ const ScrollTop = () => {
       onClick={scrollToTop}
       
     >
-      <img src={CONFIG.IMAGE_URL + 'icons/arrow_up.png'} alt="arrow up img" className="arrow_up_icon" />
+      <img src={CONFIG.IMAGE_URL + 'icons/arrow_up.png'} alt="arrow up image" className="arrow_up_icon" />
      Top
     </div>
   )  

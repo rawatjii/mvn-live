@@ -41,7 +41,7 @@ const Spec_Sec = () => {
         <div className="specifications-details">
           {loc_arr?.map((item) => (
             <div className="spec-points" key={item.id}>
-              <img src={Diamond} alt="diamond-img" />
+              <img src={Diamond} alt="diamond image" />
               <p>
                 {item.content}
               </p>

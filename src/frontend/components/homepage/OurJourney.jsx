@@ -120,7 +120,7 @@ const OurJourney = () => {
   return (
     <section className="section journey_section pb-0" aria-label="Journey Section">
       <LazyLoad height={200}>
-        <img src={FooterBgImg} alt="mvn-about-bg" className="img-fluid about_bg" />
+        <img src={FooterBgImg} alt="mvn about background image" className="img-fluid about_bg" />
       </LazyLoad>
 
       <Container>
@@ -142,7 +142,7 @@ const OurJourney = () => {
           </li>
           {journeyData?.map((item, index) => (
             <li
-              className={"single " + (index % 2 !== 0 ? "right" : "")}
+              className={`single ${index % 2 !== 0 ? "right" : ""}`}
               key={index}
             >
               <div

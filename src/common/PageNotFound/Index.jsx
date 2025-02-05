@@ -15,7 +15,7 @@ const PageNotFound = () => {
 
         <img
           src={notFoundGif}
-          alt="page not found img"
+          alt="page not found image"
           className="img-fluid thumbnail"
         />
 

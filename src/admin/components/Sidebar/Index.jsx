@@ -154,16 +154,16 @@ const Sidebar = (props)=>{
 
           <NavLink className="sidebar_link" onClick={(e)=>props.toggleSubMenusHandler(e, 'cms')}>
             <span className="icon">
-              <img src={cmsIcon} alt="cms icon" className="img-fluid default" />
-              <img src={cmsColorIcon} alt="cms icon" className="img-fluid color" />
+              <img src={cmsIcon} alt="Content Management System icon" className="img-fluid default" />
+              <img src={cmsColorIcon} alt="Content Management System icon" className="img-fluid color" />
             </span>
             <span>CMS</span>
           </NavLink>
 
           <NavLink className="sidebar_link" onClick={(e)=>props.toggleSubMenusHandler(e, 'enquiry')}>
             <span className="icon">
-              <img src={enquireIcon} alt="message icon" className="img-fluid default" />
-              <img src={enquireColorIcon} alt="message icon" className="img-fluid color" />
+              <img src={enquireIcon} alt="enquiry icon" className="img-fluid default" />
+              <img src={enquireColorIcon} alt="enquiry icon" className="img-fluid color" />
             </span>
             <span>Enquiry</span>
           </NavLink>

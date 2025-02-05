@@ -7,7 +7,7 @@ import './peacock_loader.css';
 const MasterBedroom = ()=>{
   return(
     <div className="loader_section gurgaon_loader">
-      <img src={CONFIG.VIDEO_URL + 'master-bedroom/mobile/1.webp'} alt="mvn-micro-loader" className="img-fluid micro_thumbnail" />
+      <img src={CONFIG.VIDEO_URL + 'master-bedroom/mobile/1.webp'} alt="mvn micro loader" className="img-fluid micro_thumbnail" />
 
       <div className="loaderTxt">
         <BarLoader

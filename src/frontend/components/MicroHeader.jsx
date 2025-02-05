@@ -57,8 +57,8 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
       <Container>
         <Navbar.Brand className="logo">
           <Link onClick={() => toggleMenu("close")}>
-            <img src={CONFIG.IMAGE_URL + "logo_white.webp"} alt="mvn-logo" className="img-fluid d-none d-md-block" fetchpriority="high" />
-            <img src={CONFIG.IMAGE_URL + "logo_white.webp"} alt="mvn-logo" className="img-fluid d-md-none" fetchpriority="high" />
+            <img src={CONFIG.IMAGE_URL + "logo_white.webp"} alt="mvn logo" className="img-fluid d-none d-md-block" fetchpriority="high" />
+            <img src={CONFIG.IMAGE_URL + "logo_white.webp"} alt="mvn logo" className="img-fluid d-md-none" fetchpriority="high" />
           </Link>
         </Navbar.Brand>
         <div className="right">
@@ -162,7 +162,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                         </ul>
                       </li>
                       <li>
-                        <img src={subscribeBtn} alt="subscribe_btn" role="button" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} />
+                        <img src={subscribeBtn} alt="subscribe button" role="button" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} />
                       </li>
                     </ul>
                   </div>

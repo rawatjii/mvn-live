@@ -78,7 +78,7 @@ const Overview = () => {
     <section className="section about_overview pb-0" aria-label="Overview Section">
       <div className="content_col position-relative page-header-main-heading">
         <LazyLoad>
-          <img src={bg} alt="mvn-about-bg" className="img-fluid about_bg" />
+          <img src={bg} alt="mvn about background" className="img-fluid about_bg" />
         </LazyLoad>
 
         <Container>
@@ -110,7 +110,7 @@ const Overview = () => {
       <AnImage ref={imageRef} className="img_col">
         <img
           src={isMobile ? Mobileabout_img : Desktopabout_img}
-          alt="mvn-about-bg"
+          alt="mvn about background"
           className="img-fluid about_img"
         />
       </AnImage>

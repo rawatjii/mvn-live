@@ -131,7 +131,7 @@ const MicroPageGurgaonPhase2 = ({ data, loadingCount, setLoadingCount }) => {
 
           <noscript>
             {`
-              <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=562105226581202&ev=PageView&noscript=1" />
+              <img  alt="facebook" height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=562105226581202&ev=PageView&noscript=1" />
             `}
           </noscript>
 

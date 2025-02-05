@@ -88,13 +88,13 @@ const Header = () => {
             <Link onClick={() => toggleMenu("close")} to={import.meta.env.VITE_APP_URL}>
               <img
                 src={CONFIG.IMAGE_URL + "logo_white.webp"}
-                alt="mvn-logo"
+                alt="mvn logo"
                 className="img-fluid d-none d-md-block"
                 fetchpriority="high"
               />
               <img
                 src={CONFIG.IMAGE_URL + "logo_white.webp"}
-                alt="mvn-logo"
+                alt="mvn logo"
                 className="img-fluid d-md-none"
                 fetchpriority="high"
               />
@@ -219,7 +219,7 @@ const Header = () => {
                               </ul>
                             </li>
                             <li>
-                              <img src={subscribeBtn} alt="subscribe_btn" role="button" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} />
+                              <img src={subscribeBtn} alt="subscribe button image" role="button" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} />
                             </li>
                         </ul>
                       </div>

@@ -7,9 +7,9 @@ const OverviewSec = () => {
     <section className="section overview-section mvn_mall" aria-label="Overview Section">
       <div class="container">
       <div className="overview-image">
-        <img className="ovr-img" src={OverviewImg} alt="overview-img" />
+        <img className="ovr-img" src={OverviewImg} alt="overview image" />
         <div className="overview-image-content">
-          <img src={MvnLogo} alt="logo" />
+          <img src={MvnLogo} alt="mvn logo" />
           <h4>BIGGER THAN YOUR IMAGINATION</h4>
         </div>
       </div>

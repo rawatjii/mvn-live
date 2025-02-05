@@ -99,7 +99,7 @@ const MicroMasterPlan = ({data})=>{
         </SecTitle>
 
         <div className="masterPlanImg" onClick={()=>setIsMasterPlanOpen(true)}>
-          <img src={data} alt="mvn-master-plan" className="img-fluid" />
+          <img src={data} alt="mvn master plan" className="img-fluid" />
           <button type="button" className="btn btn_master">view more</button>
         </div>
 

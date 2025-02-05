@@ -234,7 +234,7 @@ const Timeline = () => {
   return (
     <section className="section timeline_section pb-0" aria-label="Timeline Section">
       <LazyLoad className="timeline_bg">
-        <img src={timelineBg} alt="mvn-timeline-background-image" className="img-fluid bg" />
+        <img src={timelineBg} alt="mvn timeline background image" className="img-fluid bg" />
       </LazyLoad>
 
       <Container>
@@ -253,7 +253,7 @@ const Timeline = () => {
               <div ref={(el) => (imageRefs.current[index] = el)} className="thumbnail">
                 <img
                   src={item.img}
-                  alt="mvn-timeline-image"
+                  alt="mvn timeline image"
                   className="img-fluid"
                   onLoad={handleImageLoad}
                    loading="lazy"

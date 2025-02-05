@@ -26,7 +26,7 @@ const Footer = () => {
           <div className="inner-mid">
             <div className="center">
               <div className="f-logo reveal">
-                <img src={CONFIG.IMAGE_URL + 'logo_white.webp'} width="100%" alt="mvn logo" />
+                <img src={CONFIG.IMAGE_URL + 'logo_white.webp'} width="100%" alt="mvn logo image" />
               </div>
             </div>
 
@@ -37,7 +37,7 @@ const Footer = () => {
                   <ul>
                     {otherProjects && otherProjects.map((singleProject, index)=>(
                       <li key={index}>
-                        <span htmlFor="">{singleProject.location}</span>
+                        <span >{singleProject.location}</span>
                         {singleProject.projects && singleProject.projects.map((singleNav, index1)=>(
                           <NavLink key={index1} to={singleNav.link} target={singleNav.target_blank}>{singleNav.name}</NavLink>
                         ))}
@@ -87,26 +87,6 @@ const Footer = () => {
                             </Link>
                           </li>
                         ))}
-                        {/* <li>
-                          <Link to="https://www.linkedin.com/company/mvn-infrastructure/" target="_blank" className="icon">
-                            <img src={linkedinIcon} alt="mvn-linkedin-icon" className="img-fluid" />
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to="https://www.facebook.com/officialmvninfra/" target="_blank" className="icon">
-                            <img src={fbIcon} alt="mvn-facebook-icon" className="img-fluid" />
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to="https://www.instagram.com/mvn_infrastructure/" target="_blank" className="icon">
-                            <img src={instaIcon} alt="mvn-instagram-icon" className="img-fluid" />
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to="https://www.youtube.com/@MVNInfrastructures" target="_blank" className="icon">
-                            <img src={YoutubeIcon} alt="mvn-youtube-icon" className="img-fluid" />
-                          </Link>
-                        </li> */}
                       </ul>
                     </div>
                   </div>
@@ -114,7 +94,7 @@ const Footer = () => {
                   <div className="right-b">
                     <div className="box">
                       <span>
-                        <img src={subscribeBtn} alt="subscribe_btn" role="button" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} />
+                        <img src={subscribeBtn} alt="subscribe button" role="button" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} />
                       </span>
                     </div>
                   </div>
