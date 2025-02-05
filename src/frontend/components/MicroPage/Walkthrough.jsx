@@ -12,7 +12,7 @@ const Walkthrough = React.memo(()=>{
   const channelUrl = CONFIG.YOUTUBE_URL;
 
   useEffect(() => {
-    setVideoSrc("https://www.youtube.com/embed/9CHcJAveejU?autoplay=1&mute=1");
+    setVideoSrc("https://www.youtube.com/embed/9CHcJAveejU?autoplay=1&loop=1&mute=1&playlist=9CHcJAveejU");
   }, []);
 
   return(
@@ -27,6 +27,7 @@ const Walkthrough = React.memo(()=>{
           width="100"
           height="100"
           playsInline
+        
         ></iframe>
       </div>
 
