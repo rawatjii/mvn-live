@@ -266,7 +266,7 @@ const Header = () => {
 
                         <ul className="sub_menu">
                             <li>
-                              <label htmlFor="school" className=" d-block w-100">Social Media</label>
+                              <span className=" d-block w-100">Social Media</span>
                               <ul className="social_links ">
                                 <li>
                                   <Link to="https://www.facebook.com/officialmvninfra/" target="_blank" onClick={() => toggleMenu("close")}>

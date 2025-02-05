@@ -109,6 +109,7 @@ const LocationSearch = () => {
               left: '50%',
               marginLeft: '-120px'
             }}
+            autoComplete='off'
           />
         </Autocomplete>
       </GoogleMap>

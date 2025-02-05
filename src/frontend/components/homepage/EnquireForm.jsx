@@ -91,6 +91,7 @@ const EnquireForm = ({ career, projectName }) => {
                 placeholder="Your Name:"
                 value={formDetails.name ?? ""}
                 onChange={handleFormChange}
+                autoComplete="name"
               />
             </Form.Group>
 
@@ -119,6 +120,7 @@ const EnquireForm = ({ career, projectName }) => {
                 placeholder="Your Phone:"
                 value={formDetails.number ?? ""}
                 onChange={handleFormChange}
+                autoComplete="tel"
               />
             </Form.Group>
 
@@ -134,6 +136,7 @@ const EnquireForm = ({ career, projectName }) => {
                     name="designation"
                     placeholder="Designation"
                     onChange={handleFormChange}
+                    autoComplete="off"
                   />
                 </Form.Group>
                 <Form.Group className="form-group" as={Col} xs="12">
@@ -146,6 +149,7 @@ const EnquireForm = ({ career, projectName }) => {
                     name="experience"
                     placeholder="Experience"
                     onChange={handleFormChange}
+                    autoComplete="off"
                   />
                 </Form.Group>
               </>
@@ -162,6 +166,7 @@ const EnquireForm = ({ career, projectName }) => {
                 placeholder="Your Message:"
                 value={formDetails.message ?? ""}
                 onChange={handleFormChange}
+                autoComplete="off"
               />
             </Form.Group>
 

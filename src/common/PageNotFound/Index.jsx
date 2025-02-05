@@ -12,12 +12,13 @@ const PageNotFound = () => {
     <>
       <div className="page_not_found micro_page">
         {/* <Header /> */}
-
+         <div className="NotFoundImage">
         <img
           src={notFoundGif}
           alt="page not found img"
           className="img-fluid thumbnail"
         />
+        </div>
 
         <Container>
           <div className="content">

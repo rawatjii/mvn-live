@@ -120,6 +120,7 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
                       placeholder="Name:"
                       value={formDetails.name ?? ""}
                       onChange={handleFormChange}
+                      autoComplete="name"
                     />
                   </Form.Group>
 
@@ -144,6 +145,7 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
                       placeholder="Phone:"
                       value={formDetails.number ?? ""}
                       onChange={handleFormChange}
+                      autoComplete="tel"
                     />
                   </Form.Group>
 
@@ -156,6 +158,7 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
                       placeholder="Message:"
                       value={formDetails.message ?? ""}
                       onChange={handleFormChange}
+                      autoComplete="off"
                     />
                   </Form.Group>
                 </Row>
@@ -207,6 +210,7 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
                     placeholder="Name:"
                     value={formDetails.name ?? ""}
                     onChange={handleFormChange}
+                    autoComplete="name"
                   />
                 </Form.Group>
 
@@ -231,6 +235,7 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
                     placeholder="Phone:"
                     value={formDetails.number ?? ""}
                     onChange={handleFormChange}
+                    autoComplete="tel"
                   />
                 </Form.Group>
 
@@ -243,6 +248,7 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
                     placeholder="Message:"
                     value={formDetails.message ?? ""}
                     onChange={handleFormChange}
+                    autoComplete="off"
                   />
                 </Form.Group>
               </Row>

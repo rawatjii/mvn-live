@@ -185,6 +185,7 @@ const ModalSelectBox = ({
                       value={formDetails.name ?? ""}
                       onChange={handleFormChange}
                       isInvalid={!!errors.name}
+                      autoComplete="name"
                     />
                     <Form.Control.Feedback
                       className="align-left"
@@ -204,6 +205,7 @@ const ModalSelectBox = ({
                       value={formDetails.email ?? ""}
                       onChange={handleFormChange}
                       isInvalid={!!errors.email}
+                      autoComplete="off"
                     />
                     <Form.Control.Feedback
                       className="align-left"
@@ -223,6 +225,7 @@ const ModalSelectBox = ({
                       value={formDetails.number ?? ""}
                       onChange={handleFormChange}
                       isInvalid={!!errors.number}
+                      autoComplete="tel"
                     />
                     <Form.Control.Feedback
                       className="align-left"
@@ -242,6 +245,7 @@ const ModalSelectBox = ({
                       value={formDetails.message ?? ""}
                       onChange={handleFormChange}
                       isInvalid={!!errors.message}
+                      autoComplete="off"
                     />
                     <Form.Control.Feedback
                       className="align-left"
@@ -324,6 +328,7 @@ const ModalSelectBox = ({
                     value={formDetails.name ?? ""}
                     onChange={handleFormChange}
                     isInvalid={!!errors.name}
+                    autoComplete="name"
                   />
                   <Form.Control.Feedback className="align-left" type="invalid">
                     {errors.name}
@@ -340,6 +345,7 @@ const ModalSelectBox = ({
                     value={formDetails.email ?? ""}
                     onChange={handleFormChange}
                     isInvalid={!!errors.email}
+                    autoComplete="off"
                   />
                   <Form.Control.Feedback className="align-left" type="invalid">
                     {errors.email}
@@ -356,6 +362,7 @@ const ModalSelectBox = ({
                     value={formDetails.number ?? ""}
                     onChange={handleFormChange}
                     isInvalid={!!errors.number}
+                    autoComplete="tel"
                   />
                   <Form.Control.Feedback className="align-left" type="invalid">
                     {errors.number}
@@ -372,6 +379,7 @@ const ModalSelectBox = ({
                     value={formDetails.message ?? ""}
                     onChange={handleFormChange}
                     isInvalid={!!errors.message}
+                    autoComplete="off"
                   />
                   <Form.Control.Feedback className="align-left" type="invalid">
                     {errors.message}

@@ -1,6 +1,7 @@
 .page_not_found{
     background:#fff;
     height:100vh;
+
     
     .thumbnail{
         height: 420px;
@@ -39,7 +40,19 @@
         }
       }
 }
-
+/* .NotFoundImage{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: 100%;
+    overflow: auto;
+}
+.NotFoundImage .img-fluid.thumbnail{
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+} */
 @media(max-width:767px){
 
     .page_not_found {
