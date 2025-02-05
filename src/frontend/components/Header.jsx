@@ -117,12 +117,13 @@ const Header = () => {
           <div id="basic-navbar-nav" className="navbar_collapse" ref={menusRef}>
             <div className="overlay-content">
               <div className="inner-overlay">
-                <div className="video-area d-none d-md-block">
-                  <video autoPlay muted  loop>
-                    <source src={MenuSideVideo} type="video/mp4" className="img-fluid videoMenu"/>
-                  </video>
-
-                </div>
+                {window.innerWidth > 767 && (
+                  <div className="video-area">
+                    <video autoPlay muted  loop>
+                      <source src={MenuSideVideo} type="video/mp4" className="img-fluid videoMenu"/>
+                    </video>
+                  </div>
+                )}
 
                 <div className="menu-area">
                   <div>

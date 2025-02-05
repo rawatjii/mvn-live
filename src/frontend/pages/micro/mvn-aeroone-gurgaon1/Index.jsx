@@ -571,7 +571,7 @@ export const data = {
             desktop:shopping,
             mobile:shoppingSm,
           },
-          desc:'When it comes to best of entertainment, you won’t have to look far. Just step into your exclusive elevator and enter a whole world of global entertainment in the MVN mall.'
+          desc:'All the best of luxury shopping and brands from the world over, right at your doorstep at MVN Mall'
         },
         {
           name: '0 km from Global Entertainment',
@@ -579,7 +579,7 @@ export const data = {
             desktop:entertainment,
             mobile:entertainmentSm,
           },
-          desc:'When it comes to best of entertainment, you won’t have to look far. Just step into your exclusive elevator and enter a whole world of global entertainment in the MVN mall.n'
+          desc:'When it comes to best of entertainment, you won’t have to look far. Just step into your exclusive elevator and enter a whole world of global entertainment in the MVN mall'
         },
         {
           name: '0 km from the Sports Club & Lounge',

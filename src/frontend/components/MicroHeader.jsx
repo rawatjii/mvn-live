@@ -72,10 +72,12 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
         <div id="basic-navbar-nav" className={`navbar_collapse ${isMenuOpen ? "show" : ""}`}>
           <div className="overlay-content">
             <div className="inner-overlay">
-
-              <div className="video-area d-none d-md-block">
-                <img src={sidebarAsset.desktop} alt="mvn elevation image" className="img-fluid" />
-              </div>
+              {window.innerWidth > 767 && (
+                <div className="video-area">
+                  <img src={sidebarAsset.desktop} alt="mvn elevation image" className="img-fluid" />
+                </div>
+              )}
+              
 
               <div className="menu-area">
                 <div className="top_head">
