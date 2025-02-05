@@ -4129,6 +4129,7 @@ footer {
 }
 
 
+section.section.walkthrough_section iframe { width: 100%;height: 1000px; object-fit: cover; display:flex;}
 
 /* start responsive */
 /* by bhupendra */
@@ -4216,9 +4217,31 @@ footer {
       height:500px;
     }
   }
+
+  section.section.walkthrough_section iframe{
+
+    height: 800px;
+  }
 }
 
 /* end of 1500 */
+
+@media(max-width:1366px){
+
+  section.section.walkthrough_section iframe{
+    height: 700px;
+  }
+}
+
+/* end of 1366 */
+
+@media(max-width:1199px){
+
+  section.section.walkthrough_section iframe{
+
+    height: 430px;
+  }
+}
 
 @media(max-width:767px) {
 
@@ -5289,6 +5312,11 @@ footer {
 
   .subscribe_style1{
     max-width:100px;
+  }
+
+  section.section.walkthrough_section iframe{
+
+    height: 270px;
   }
 
 }
