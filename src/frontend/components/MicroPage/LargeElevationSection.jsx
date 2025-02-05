@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { Container } from 'react-bootstrap'
 import bgImgMB from '../../assets/images/aero-gurgaon/largeBg1Sm.webp'
-import bgImgDesk from '../../assets/images/aero-gurgaon/largeBg1.png'
+import bgImgDesk from '../../assets/images/aero-gurgaon/largeBg.webp'
 import absDesk from '../../assets/images/aero-gurgaon/building_sm.webp'
 import building_sm from '../../assets/images/aero-gurgaon/building_sm.webp'
 import { gsap } from "gsap";
