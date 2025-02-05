@@ -53,7 +53,7 @@ export default function BangaloreElevationSection() {
         </div>
       </Container>
 
-      <section className="BangaloreElevation " ref={elevationRef}>
+      <section className="BangaloreElevation " ref={elevationRef} aria-label="BangaloreElevation Section">
         <div className="BangaloreImgs">
           <img
             src={frontDesktopImg}

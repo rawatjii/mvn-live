@@ -125,7 +125,7 @@ const Projects = () => {
 
   return (
     <>
-      <section className="section projects_section pb-0 HomeMobileProject-section">
+      <section className="section projects_section pb-0 HomeMobileProject-section" aria-label="Mobile Section">
    
         <Container>
           <Row className="mx_-8">

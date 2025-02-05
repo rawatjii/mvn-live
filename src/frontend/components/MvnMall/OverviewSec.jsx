@@ -4,7 +4,7 @@ import MvnLogo from "../../assets/images/mvn-mall/mvn-logo-icon.png";
 
 const OverviewSec = () => {
   return (
-    <section className="section overview-section mvn_mall">
+    <section className="section overview-section mvn_mall" aria-label="Overview Section">
       <div class="container">
       <div className="overview-image">
         <img className="ovr-img" src={OverviewImg} alt="overview-img" />

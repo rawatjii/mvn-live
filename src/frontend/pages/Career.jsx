@@ -79,7 +79,7 @@ function Career() {
         </Suspense>
             </div>
 
-            <section className="front-page-all">
+            <section className="front-page-all" aria-label="Career Section">
 
 
 
@@ -178,7 +178,7 @@ function Career() {
             </section>
 
 
-            <section className="oppotunities padding">
+            <section className="oppotunities padding" aria-label="Oppotunities Section">
                 <div className="container">
                     <div className="inn_oppor">
                         <div className="left text-center mx-auto">

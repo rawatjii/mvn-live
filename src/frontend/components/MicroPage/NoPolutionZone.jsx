@@ -92,7 +92,7 @@ gsap.registerPlugin(ScrollTrigger);
   const renderDesktopView = () => (
     <>
       {data.map((amenity, i) => (
-        <section key={i} className="parallax" ref={(el) => (sectionsRef.current[i] = el)}>
+        <section key={i} className="parallax" ref={(el) => (sectionsRef.current[i] = el)} aria-label="NoPolutionZone Section">
           <div className="bg">
             <Watermark className="left" />
           </div>

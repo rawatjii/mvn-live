@@ -148,7 +148,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                     </div>
                     <ul className="sub_menu">
                       <li>
-                        <label htmlFor="school" className="d-block w-100">Social Media</label>
+                        <span htmlFor="school" className="d-block w-100">Social Media</span>
                         <ul className="social_links">
                           {socialMedia.map((socialIcon, index) => (
                             <li key={index}>
@@ -160,7 +160,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                         </ul>
                       </li>
                       <li>
-                        <img src={subscribeBtn} alt="subscribe_btn" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} />
+                        <img src={subscribeBtn} alt="subscribe_btn" role="button" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} />
                       </li>
                     </ul>
                   </div>

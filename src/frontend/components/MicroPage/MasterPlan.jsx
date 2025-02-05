@@ -92,7 +92,7 @@ const MicroMasterPlan = ({data})=>{
 
 
   return(
-    <section className="section master_plan_section pb-0">
+    <section className="section master_plan_section pb-0" aria-label="Master Plan Section">
       <Container>
         <SecTitle className="text-center color style1">
           <h4 className="title">Master Plan</h4>

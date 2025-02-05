@@ -59,7 +59,7 @@ const Experience_Sec = () => {
   ];
 
   return (
-    <section className="section experience-section">
+    <section className="section experience-section" aria-label="Experience Section">
       <h2 id="carouselTitle" className="visually-hidden">Featured Products</h2>
       <Carousel
         activeIndex={index}

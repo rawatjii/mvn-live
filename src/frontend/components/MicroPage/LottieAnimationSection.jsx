@@ -149,7 +149,7 @@ const LottieAnimationSection = React.memo(({backgroundImg, data, onLoadComplete,
         <PartyLoader />
       ) : (
         <>
-        <section className="LottieAnimationContainer" >
+        <section className="LottieAnimationContainer" aria-label="LottieAnimation Section">
           <div ref={containerRef} >
             <div className="frames_content">
               <div className="position-relative h_sm_100">

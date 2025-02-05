@@ -6,7 +6,7 @@ import * as CONFIG from '../../../config/config'
 const Consultant = ()=>{
 
   return(
-    <section className="section consultant_section pb-0">
+    <section className="section consultant_section pb-0" aria-label="Consultant Section">
       <Container>
           <CustomCard
             className="pt-0 px-0"

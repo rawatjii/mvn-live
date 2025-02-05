@@ -16,7 +16,7 @@ const DownloadBrochure = React.memo(({projectName, name})=>{
   }, []);
 
   return(
-    <section className="download_brochure_section text-center">
+    <section className="download_brochure_section text-center" aria-label="Brochure Section">
       <Container>
         <Button type="button" className="btn btn_style3 r_100" onClick={handleOpenBrochureModal}>{name ? name : 'Download MVN ID Brochure'}</Button>
 

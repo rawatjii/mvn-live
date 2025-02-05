@@ -174,7 +174,7 @@ const ScrollTriggerFrames = ({ data, onLoadComplete, onBannerExit, isMainBanner 
   }, [images]);
 
   return (
-    <section className={`section ${isMainBanner ? "banner p-0" : "Scroll_Height pb-0"}`} ref={sectionRef}>
+    <section className={`section ${isMainBanner ? "banner p-0" : "Scroll_Height pb-0"}`} ref={sectionRef} aria-label="Animation Section">
       <div className="frames_content">
         <div className="image_col position-relative">
           <Watermark />

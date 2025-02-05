@@ -100,7 +100,7 @@ const OtherProjects = React.memo(({ data, title, subTitle, mobContent=12 }) => {
   };
 
   return (
-    <section className="section other_projects_section pb-0">
+    <section className="section other_projects_section pb-0" aria-label="Other Project Section">
       <Container>
 
         <div className="heading_div mb_60 mb_sm_30">

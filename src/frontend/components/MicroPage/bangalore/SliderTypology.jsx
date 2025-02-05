@@ -8,7 +8,7 @@ const SliderTypology = ({ data }) => {
   const {title, desc, tabs, tabs_name } = data;
 
   return (
-    <section className="section typology_section">
+    <section className="section typology_section" aria-label="Typology Section">
       <div className="heading_div mb_60 mb_sm_30">
         <h4 className="title title_style1 text-center">{title}</h4>
       </div>

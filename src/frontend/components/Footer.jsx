@@ -37,7 +37,7 @@ const Footer = () => {
                   <ul>
                     {otherProjects && otherProjects.map((singleProject, index)=>(
                       <li key={index}>
-                        <label htmlFor="">{singleProject.location}</label>
+                        <span htmlFor="">{singleProject.location}</span>
                         {singleProject.projects && singleProject.projects.map((singleNav, index1)=>(
                           <NavLink key={index1} to={singleNav.link} target={singleNav.target_blank}>{singleNav.name}</NavLink>
                         ))}
@@ -114,7 +114,7 @@ const Footer = () => {
                   <div className="right-b">
                     <div className="box">
                       <span>
-                        <img src={subscribeBtn} alt="subscribe_btn" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} />
+                        <img src={subscribeBtn} alt="subscribe_btn" role="button" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} />
                       </span>
                     </div>
                   </div>
@@ -129,9 +129,8 @@ const Footer = () => {
             <div className="left">
               <ul>
                 <li>
-                  <NavLink to={`${import.meta.env.VITE_APP_URL}privacy-policy`}>Privacy Policy</NavLink>
+                  <NavLink to={`${import.meta.env.VITE_APP_URL}privacy-policy`}>Privacy Policy | </NavLink>
                 </li>
-                {` | `}
                 <li>
                   <NavLink to={`${import.meta.env.VITE_APP_URL}disclaimer`}> Disclaimer</NavLink>
                 </li>

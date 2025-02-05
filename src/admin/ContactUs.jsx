@@ -112,26 +112,26 @@ const ContactUs = ()=>{
                     <Row>
                         <Form.Group as={Col} md="4" className="mb_15 form-group">
                             <Form.Label htmlFor="ivrNumber">IVR Number*</Form.Label>
-                            <Form.Control id="ivrNumber" ref={ivrRef} className="" type="text" placeholder="Enter IVR Number" />
+                            <Form.Control autoComplete="off" id="ivrNumber" ref={ivrRef} className="goldenBorder" type="text" placeholder="Enter IVR Number" />
                             {errors.heading && <div className="errMsg text-danger">{errors.heading}</div>}
                         </Form.Group>
 
                         <Form.Group as={Col} md="4" className="mb_15 form-group">
                             <Form.Label htmlFor="email">Email*</Form.Label>
-                            <Form.Control id="email" ref={emailRef} className="" type="text" placeholder="Enter Email" />
+                            <Form.Control autoComplete="off"  id="email" ref={emailRef} className="goldenBorder" type="text" placeholder="Enter Email" />
                             {errors.emailRef && <div className="errMsg text-danger">{errors.emailRef}</div>}
                         </Form.Group>
 
                         <Form.Group as={Col} md="4" className="mb_15 form-group">
                             <Form.Label htmlFor="address">Address*</Form.Label>
-                            <Form.Control id="address" ref={addressRef} className="" type="text" placeholder="Enter address" />
+                            <Form.Control autoComplete="off"  id="address" ref={addressRef} className="goldenBorder" type="text" placeholder="Enter address" />
                             {/* <textarea className="form-control" required type="text"  name="address"  /> */}
                             {errors.address && <div className="errMsg text-danger">{errors.address}</div>}
                         </Form.Group>
 
                         <Form.Group as={Col} md="12" className="mb_15 form-group">
                             <Form.Label htmlFor="mapUrl">Map Url*</Form.Label>
-                            <Form.Control id="mapUrl" ref={mapRef} className="" type="text" placeholder="Enter map Url" />
+                            <Form.Control autoComplete="off"  id="mapUrl" ref={mapRef} className="goldenBorder" type="text" placeholder="Enter map Url" />
                             {errors.map && <div className="errMsg text-danger">{errors.map}</div>}
                         </Form.Group>
                     </Row>

@@ -73,7 +73,7 @@ const Walkthrough = React.memo(({ data }) => {
   });
 
   return (
-    <section className="section walkthrough_section new_height">
+    <section className="section walkthrough_section new_height" aria-label="Walkthrough Section">
       <div className="Walkthrough_video">
         {/* YouTube Video IFrame */}
         {src && (

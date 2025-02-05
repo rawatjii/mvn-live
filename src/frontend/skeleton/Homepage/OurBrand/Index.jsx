@@ -5,7 +5,7 @@ import './ourBrandSkeleton.css';
 
 const OurBrandSkeleton = ()=>{
     return(
-        <section className="section our_brand_section brand_loading">
+        <section className="section our_brand_section brand_loading" aria-label="OurBrandSkeleton Section">
             <div className="img brand_bg"></div>
 
             <Container>

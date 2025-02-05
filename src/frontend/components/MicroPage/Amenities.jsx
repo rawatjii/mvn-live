@@ -130,6 +130,7 @@ gsap.registerPlugin(ScrollTrigger);
           key={i}
           className="parallax"
           ref={(el) => (sectionsRef.current[i] = el)}
+          aria-label="Desktop View Section"
         >
           <div className="bg">
             <Watermark className="left" />

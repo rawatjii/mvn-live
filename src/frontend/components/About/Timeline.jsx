@@ -232,7 +232,7 @@ const Timeline = () => {
   };
 
   return (
-    <section className="section timeline_section pb-0">
+    <section className="section timeline_section pb-0" aria-label="Timeline Section">
       <LazyLoad className="timeline_bg">
         <img src={timelineBg} alt="mvn-timeline-background-image" className="img-fluid bg" />
       </LazyLoad>

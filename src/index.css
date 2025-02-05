@@ -850,7 +850,7 @@ a {
           margin-bottom: 18px;
         }
 
-        label {
+        span {
           display: block;
           text-transform: uppercase;
           font-size: 10px;
@@ -1002,7 +1002,7 @@ a {
               /* display:flex; */
               /* justify-content: space-between; */
 
-              label{
+              span{
 
                 display: block;
                 text-transform: uppercase;
@@ -1927,7 +1927,7 @@ footer {
               display: grid;
               padding-bottom: 7px;
               
-              label{
+              span{
 
                 color: var(--theme_primary_color);
                 font-size: 10px;
@@ -4550,7 +4550,7 @@ footer {
                 .sub_menu{
                   margin-top: 10px;
 
-                  label{
+                  span{
                     letter-spacing: 1.5px;
                     font-weight: 400;
                   }
@@ -5790,3 +5790,22 @@ footer {
   }
 }
 /* walkthrough youtube video style end */
+
+/* border style start */
+.goldenBorder{
+  border: 1px solid #cbc5ab !important;
+}
+.blackBorder{
+  border: 1px solid #000 !important;
+}
+.grayBorder{
+  border: 1px solid gray !important;
+}
+/* border style end */
+
+
+/* new css for input */
+div input:focus{
+  border: 1px solid #000 !important;
+}
+/* new css for input */

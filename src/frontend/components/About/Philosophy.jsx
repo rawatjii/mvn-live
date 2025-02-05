@@ -78,7 +78,7 @@ const Philosophy = () => {
   }, []);
 
   return (
-    <section className="section philosophy_section pb-0">
+    <section className="section philosophy_section pb-0" aria-label="Philosophy Section">
       <Container>
         <div className="heading_div mb_60 mb_sm_30">
           <img src={headingIconImg} alt="mvn heading icon" className="img-fluid title_plane1" loading="lazy" />

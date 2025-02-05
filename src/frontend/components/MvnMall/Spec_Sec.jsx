@@ -32,7 +32,7 @@ const loc_arr = [
 
 const Spec_Sec = () => {
   return (
-    <section className="section specifications-section">
+    <section className="section specifications-section" aria-label="Specifications Section">
       <div className="container">
         <div className="specs-head">
           <h2>SPECIFICATIONS</h2>

@@ -81,6 +81,7 @@ export default function AmenitiesDesktop({ data }) {
             key={i}
             className="parallax"
             ref={(el) => (sectionsRef.current[i] = el)}
+            aria-label="Amenities Desktop Section"
           >
             <div className="bg">
             <Watermark />

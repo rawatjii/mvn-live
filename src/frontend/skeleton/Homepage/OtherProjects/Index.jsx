@@ -4,7 +4,7 @@ import { Col, Container, Row } from "react-bootstrap";
 
 const OtherProjectsSkeleton = ()=>{
     return(
-        <section className="section other_projects_section other_projects_loading pb-0">
+        <section className="section other_projects_section other_projects_loading pb-0" aria-label="OtherProjectsSkeleton Section">
             <Container>
                 <h4 className="title skeleton_box d-block"></h4>
 

@@ -83,7 +83,7 @@ const Renders = () => {
   }, [slides.length]);
 
   return (
-    <section className="render_section" ref={sectionRef}>
+    <section className="render_section" ref={sectionRef} aria-label="Render Section">
       <Container className="topContainer">
         <div className="slider-container">
 

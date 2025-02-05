@@ -55,7 +55,7 @@ const TestOverview = () => {
 
   return (
     <>
-      <section ref={sectionRef} className="testOverviewSection">
+      <section ref={sectionRef} className="testOverviewSection" aria-label="Overview Section">
       <img
           src={CONFIG.IMAGE_URL + `test/frame1.jpg`}
           alt="mvn overview image"

@@ -36,7 +36,7 @@ const OurBrand = () => {
   const dataRefs = useRef([]);
 
   return (
-    <section className="section our_brand_section">
+    <section className="section our_brand_section" aria-label="Brand Section">
       <LazyLoad>
         <img
           src={isMobile ? MobilebrandBG : DesktopbrandBG}

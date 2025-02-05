@@ -51,7 +51,7 @@ const PrPolcy = ()=>{
             <MicroBanner bg={microBg} data={breadcrumbs} />
               
 
-              <section className="section ">
+              <section className="section " aria-label="PrPolicy Section">
                   <Container className="privacy-policy-content">
                       <h4>Privacy Policy</h4>
                       <h5>Welcome to MVN Infrastructure!</h5>

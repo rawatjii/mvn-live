@@ -118,7 +118,7 @@ const OurJourney = () => {
   }, []); // Initialize on mount
 
   return (
-    <section className="section journey_section pb-0">
+    <section className="section journey_section pb-0" aria-label="Journey Section">
       <LazyLoad height={200}>
         <img src={FooterBgImg} alt="mvn-about-bg" className="img-fluid about_bg" />
       </LazyLoad>

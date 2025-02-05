@@ -47,7 +47,7 @@ const FeatureSection = ({ data }) => {
   }, []);
 
   return (
-    <section className="feature">
+    <section className="feature" aria-label="Feature Section">
         <div className="row">
             <div className="col-lg-6">
                 

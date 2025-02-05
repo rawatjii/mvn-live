@@ -75,7 +75,7 @@ const Overview = () => {
 
 
 
-    <section className="section about_overview pb-0">
+    <section className="section about_overview pb-0" aria-label="Overview Section">
       <div className="content_col position-relative page-header-main-heading">
         <LazyLoad>
           <img src={bg} alt="mvn-about-bg" className="img-fluid about_bg" />

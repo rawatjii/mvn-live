@@ -132,7 +132,7 @@ const Typology = React.memo(({ onLoadComplete }) => {
 
   return (
     <>
-      <section ref={containerRef} className="section typology_section pb-0">
+      <section ref={containerRef} className="section typology_section pb-0" aria-label="Typology Section">
         <div className="heading_div mb_60 mb_sm_30">
           <h4 className="title title_style1 text-center">Typologies</h4>
         </div>

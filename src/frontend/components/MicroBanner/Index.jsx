@@ -33,14 +33,14 @@ const MicroBanner = ({bg, data})=>{
 
   return(
     <>
-      <section className="section micro_banner">
+      <section className="section micro_banner" aria-label="Banner Section">
         <Container>
         <img src={bg} alt="mvn-microbanner-bg" className="img-fluid microbanner_bg" />
           <h2 ref={titleRef} className="microTitle" >{data.title}</h2>
           <p className="microContent">{data.content}</p>
         </Container>
       </section>
-      <section className="breadcrumb_section">
+      <section className="breadcrumb_section" aria-label="Breadcrumb Section">
           <Container>
             <Breadcrumb ref={linksRef}>
               {data.links.map((link, index)=>(

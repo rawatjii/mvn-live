@@ -145,7 +145,7 @@ const MicroHero = ({ data, onLoadComplete }) => {
 
 
   return (
-    <section className="section micro_hero_section p-0">
+    <section className="section micro_hero_section p-0" aria-label="Hero Section">
       {!loading && data.micro_hero_section.isVdo && (
         <div className="frames_content">
           <div

@@ -5,7 +5,7 @@ import mallLogo from "../../assets/images/mvn-mall/mvn-mall-logo.webp";
 const Banner = () => {
   return (
     <>
-      <section className="banner-section">
+      <section className="banner-section" aria-label="Banner Section">
         <div className="banner-img">
           <img
             className="img-fluid mobile-img"

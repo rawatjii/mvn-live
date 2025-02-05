@@ -81,7 +81,7 @@ const Projects = () => {
 
   return (
     <>
-      <section className="section projects_section_new pb-0">
+      <section className="section projects_section_new pb-0" aria-label="Project Section">
         <Container>
           <Row className="mx_-8">
 
