@@ -144,7 +144,12 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
                       name="number"
                       placeholder="Phone:"
                       value={formDetails.number ?? ""}
-                      onChange={handleFormChange}
+                      onChange={(e) => {
+                        const inputValue = e.target.value.replace(/\D/g, ""); // Remove non-digits
+                        if (inputValue.length <= 10) {
+                          handleFormChange({ target: { name: "number", value: inputValue } });
+                        }
+                      }}
                       autoComplete="tel"
                     />
                   </Form.Group>
@@ -234,7 +239,12 @@ const CustomModal = ({ show, hide, projectName, isOffer }) => {
                     name="number"
                     placeholder="Phone:"
                     value={formDetails.number ?? ""}
-                    onChange={handleFormChange}
+                    onChange={(e) => {
+                      const inputValue = e.target.value.replace(/\D/g, ""); // Remove non-digits
+                      if (inputValue.length <= 10) {
+                        handleFormChange({ target: { name: "number", value: inputValue } });
+                      }
+                    }}
                     autoComplete="tel"
                   />
                 </Form.Group>
