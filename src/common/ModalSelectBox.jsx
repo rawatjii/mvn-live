@@ -223,7 +223,12 @@ const ModalSelectBox = ({
                       name="number"
                       placeholder="Phone:"
                       value={formDetails.number ?? ""}
-                      onChange={handleFormChange}
+                      onChange={(e) => {
+                        const inputValue = e.target.value.replace(/\D/g, ""); // Remove non-digits
+                        if (inputValue.length <= 10) {
+                          handleFormChange({ target: { name: "number", value: inputValue } });
+                        }
+                      }}
                       isInvalid={!!errors.number}
                       autoComplete="tel"
                     />
@@ -360,7 +365,12 @@ const ModalSelectBox = ({
                     name="number"
                     placeholder="Phone:"
                     value={formDetails.number ?? ""}
-                    onChange={handleFormChange}
+                    onChange={(e) => {
+                      const inputValue = e.target.value.replace(/\D/g, ""); // Remove non-digits
+                      if (inputValue.length <= 10) {
+                        handleFormChange({ target: { name: "number", value: inputValue } });
+                      }
+                    }}
                     isInvalid={!!errors.number}
                     autoComplete="tel"
                   />
