@@ -175,11 +175,18 @@ function MediaCenter() {
 
   const onlineNews = [
     {
-      id: 8,
+      id: 9,
       title: `Sensex Today, Stock Market Feb 7 Highlights: Sensex, Nifty closed in red after RBI rate cut announcement; metals buck the trend`,
       img: etNowImg,
       postedDate: "February 07, 2025",
       url: "https://www.etnownews.com/markets/sensex-today-stock-market-live-updates-feb-7-nifty-50-share-price-itc-dividend-sbi-hero-motocorp-airtel-q3-results-brokerages-picks-liveblog-117997762",
+    },
+    {
+      id: 8,
+      title: `Budget 2025 HIGHLIGHTS: Zero Income Tax till Rs 12 Lakh Income under New Tax Regime, says FM Nirmala Sitharaman`,
+      img: etNowImg,
+      postedDate: "February 03, 2025",
+      url: "https://www.etnownews.com/budget/union-budget-2025-26-live-updates-nirmala-sitharaman-speech-1-feb-income-tax-rate-slabs-railway-healthcare-auto-defence-announcement-news-liveblog-117808795?fbclid=PAZXh0bgNhZW0CMTEAAaYIewOaeqH1y7nE_t6Kkh4efUo-KhP90OHL0cbXMAeIYy0ZnJxIqIv6bbc_aem_x5E7h1S33kZdG4Ss9cAX2A",
     },
     {
       id: 7,
