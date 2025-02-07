@@ -174,6 +174,13 @@ function MediaCenter() {
 
   const onlineNews = [
     {
+      id: 8,
+      title: `Ultra luxe, spacious homes arrive in Gurugram`,
+      img: economicTimesImg,
+      postedDate: "January 29, 2025",
+      url: "https://economictimes.indiatimes.com/epaper/delhicapital/2025/jan/29/et-panache/ultra-luxe-spacious-homes-arrive-in-gurugram/articleshow/117660416.cms",
+    },
+    {
       id: 7,
       title: `Ultra luxe, spacious homes arrive in Gurugram`,
       img: economicTimesImg,
