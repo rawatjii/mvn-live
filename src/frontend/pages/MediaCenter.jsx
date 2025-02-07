@@ -14,6 +14,7 @@ import aninewsIMG from "../assets/images/mediacenter/aninews.png";
 import webindiaIMG from "../assets/images/mediacenter/webindia-logo.png";
 import financialExpIMG from "../assets/images/mediacenter/financialexp_logo.webp";
 import economicTimesImg from '../assets/images/mediacenter/economicTimes_logo.webp'
+import etNowImg from '../assets/images/mediacenter/etnow_logo.webp'
 
 // news images
 
@@ -175,10 +176,10 @@ function MediaCenter() {
   const onlineNews = [
     {
       id: 8,
-      title: `Ultra luxe, spacious homes arrive in Gurugram`,
-      img: economicTimesImg,
-      postedDate: "January 29, 2025",
-      url: "https://economictimes.indiatimes.com/epaper/delhicapital/2025/jan/29/et-panache/ultra-luxe-spacious-homes-arrive-in-gurugram/articleshow/117660416.cms",
+      title: `Sensex Today, Stock Market Feb 7 Highlights: Sensex, Nifty closed in red after RBI rate cut announcement; metals buck the trend`,
+      img: etNowImg,
+      postedDate: "February 07, 2025",
+      url: "https://www.etnownews.com/markets/sensex-today-stock-market-live-updates-feb-7-nifty-50-share-price-itc-dividend-sbi-hero-motocorp-airtel-q3-results-brokerages-picks-liveblog-117997762",
     },
     {
       id: 7,
