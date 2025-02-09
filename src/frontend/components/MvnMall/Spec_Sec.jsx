@@ -32,7 +32,7 @@ const loc_arr = [
 
 const Spec_Sec = () => {
   return (
-    <section className="section specifications-section">
+    <section className="section specifications-section" aria-label="Specifications Section">
       <div className="container">
         <div className="specs-head">
           <h2>SPECIFICATIONS</h2>
@@ -41,7 +41,7 @@ const Spec_Sec = () => {
         <div className="specifications-details">
           {loc_arr?.map((item) => (
             <div className="spec-points" key={item.id}>
-              <img src={Diamond} alt="diamond-img" />
+              <img src={Diamond} alt="diamond image" />
               <p>
                 {item.content}
               </p>

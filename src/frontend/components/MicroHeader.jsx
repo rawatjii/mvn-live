@@ -57,8 +57,8 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
       <Container>
         <Navbar.Brand className="logo">
           <Link onClick={() => toggleMenu("close")}>
-            <img src={CONFIG.IMAGE_URL + "logo_white.webp"} alt="mvn-logo" className="img-fluid d-none d-md-block" fetchpriority="high" />
-            <img src={CONFIG.IMAGE_URL + "logo_white.webp"} alt="mvn-logo" className="img-fluid d-md-none" fetchpriority="high" />
+            <img src={CONFIG.IMAGE_URL + "logo_white.webp"} alt="mvn logo" className="img-fluid d-none d-md-block" fetchpriority="high" />
+            <img src={CONFIG.IMAGE_URL + "logo_white.webp"} alt="mvn logo" className="img-fluid d-md-none" fetchpriority="high" />
           </Link>
         </Navbar.Brand>
         <div className="right">
@@ -72,10 +72,12 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
         <div id="basic-navbar-nav" className={`navbar_collapse ${isMenuOpen ? "show" : ""}`}>
           <div className="overlay-content">
             <div className="inner-overlay">
-
-              <div className="video-area d-none d-md-block">
-                <img src={sidebarAsset.desktop} alt="mvn elevation image" className="img-fluid" />
-              </div>
+              {window.innerWidth > 767 && (
+                <div className="video-area">
+                  <img src={sidebarAsset.desktop} alt="mvn elevation image" className="img-fluid" />
+                </div>
+              )}
+              
 
               <div className="menu-area">
                 <div className="top_head">
@@ -148,7 +150,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                     </div>
                     <ul className="sub_menu">
                       <li>
-                        <label htmlFor="school" className="d-block w-100">Social Media</label>
+                        <span htmlFor="school" className="d-block w-100">Social Media</span>
                         <ul className="social_links">
                           {socialMedia.map((socialIcon, index) => (
                             <li key={index}>
@@ -160,7 +162,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                         </ul>
                       </li>
                       <li>
-                        <img src={subscribeBtn} alt="subscribe_btn" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} />
+                        <img src={subscribeBtn} alt="subscribe button" role="button" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} />
                       </li>
                     </ul>
                   </div>

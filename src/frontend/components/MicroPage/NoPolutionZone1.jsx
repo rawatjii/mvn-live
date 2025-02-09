@@ -77,6 +77,7 @@ export default function NoPollutionZone1({ data }) {
             key={i}
             className="parallax"
             ref={(el) => (sectionsRef.current[i] = el)}
+            aria-label="NoPolutionZone Section"
           >
             <div className="bg">
             <Watermark />

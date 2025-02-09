@@ -69,12 +69,12 @@ const MicroOverview = React.memo(({ data }) => {
   const { title, location, extra, desc ,rera ,counterHeading } = data;
 
   return (
-    <section className="section micro_overview text-center pb-0">
+    <section className="section micro_overview text-center pb-0" aria-label="Overview Section">
       <Container>
         <div className="overview_card px-0">
           <div className="aboutUs-card_heading">
             <div className="diamond_img_strip">
-              <img src={diamondIMG} className="img-fluid" alt="image" />
+              <img src={diamondIMG} className="img-fluid" alt="diamond image" />
             </div>
             <div className="title">
               {title && <h1 className="pr_name">{title}</h1>}

@@ -7,13 +7,13 @@ import CustomCard from '../Card';
 export default function ConstructionTechnology() {
 
   return (
-    <section className='section constructionTech_section pb-0'>
+    <section className='section constructionTech_section pb-0' aria-label="Construction Tech Section">
       <Container>
         <div className="heading_div mb_60 mb_sm_30">
           <h4 className="title title_style1 text-center">Construction Technology</h4>
         </div>
         
-        <video src={CONFIG.VIDEO_URL + 'construction-technology.mp4'} autoPlay muted playsInline loop controls className='img-fluid' />
+        <video src={CONFIG.VIDEO_URL + 'construction-technology.mp4'}  muted playsInline loop controls className='img-fluid' />
 
         <div className='about'>
           <CustomCard

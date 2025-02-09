@@ -185,6 +185,7 @@ const ModalSelectBox = ({
                       value={formDetails.name ?? ""}
                       onChange={handleFormChange}
                       isInvalid={!!errors.name}
+                      autoComplete="name" 
                     />
                     <Form.Control.Feedback
                       className="align-left"
@@ -204,6 +205,7 @@ const ModalSelectBox = ({
                       value={formDetails.email ?? ""}
                       onChange={handleFormChange}
                       isInvalid={!!errors.email}
+                      autoComplete="off" 
                     />
                     <Form.Control.Feedback
                       className="align-left"
@@ -221,8 +223,14 @@ const ModalSelectBox = ({
                       name="number"
                       placeholder="Phone:"
                       value={formDetails.number ?? ""}
-                      onChange={handleFormChange}
+                      onChange={(e) => {
+                        const inputValue = e.target.value.replace(/\D/g, ""); // Remove non-digits
+                        if (inputValue.length <= 10) {
+                          handleFormChange({ target: { name: "number", value: inputValue } });
+                        }
+                      }}
                       isInvalid={!!errors.number}
+                      autoComplete="tel"
                     />
                     <Form.Control.Feedback
                       className="align-left"
@@ -242,6 +250,7 @@ const ModalSelectBox = ({
                       value={formDetails.message ?? ""}
                       onChange={handleFormChange}
                       isInvalid={!!errors.message}
+                      autoComplete="off" 
                     />
                     <Form.Control.Feedback
                       className="align-left"
@@ -324,6 +333,7 @@ const ModalSelectBox = ({
                     value={formDetails.name ?? ""}
                     onChange={handleFormChange}
                     isInvalid={!!errors.name}
+                    autoComplete="name" 
                   />
                   <Form.Control.Feedback className="align-left" type="invalid">
                     {errors.name}
@@ -340,6 +350,7 @@ const ModalSelectBox = ({
                     value={formDetails.email ?? ""}
                     onChange={handleFormChange}
                     isInvalid={!!errors.email}
+                    autoComplete="off" 
                   />
                   <Form.Control.Feedback className="align-left" type="invalid">
                     {errors.email}
@@ -354,8 +365,14 @@ const ModalSelectBox = ({
                     name="number"
                     placeholder="Phone:"
                     value={formDetails.number ?? ""}
-                    onChange={handleFormChange}
+                    onChange={(e) => {
+                      const inputValue = e.target.value.replace(/\D/g, ""); // Remove non-digits
+                      if (inputValue.length <= 10) {
+                        handleFormChange({ target: { name: "number", value: inputValue } });
+                      }
+                    }}
                     isInvalid={!!errors.number}
+                    autoComplete="tel"
                   />
                   <Form.Control.Feedback className="align-left" type="invalid">
                     {errors.number}
@@ -372,6 +389,7 @@ const ModalSelectBox = ({
                     value={formDetails.message ?? ""}
                     onChange={handleFormChange}
                     isInvalid={!!errors.message}
+                    autoComplete="off" 
                   />
                   <Form.Control.Feedback className="align-left" type="invalid">
                     {errors.message}

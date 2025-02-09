@@ -6,7 +6,7 @@ const CustomRadio = (props)=>{
     return(
         <>
             <div className={`${props.className}`}>
-                <input type="radio" name={props.name} id={props.id} {...props} hidden />
+                <input autoComplete="off"   className="grayBorder" type="radio" name={props.name} id={props.id} {...props} hidden />
                 <label className="custom_radio" htmlFor={props.id}>
                     {props.label}
                 </label>
@@ -19,7 +19,7 @@ export const CustomRadio1 = (props)=>{
     return(
         <>
             <div className={`${props.className}`}>
-                <input type="checkbox" name={props.name} id={props.label} {...props} hidden />
+                <input autoComplete="off"  className="grayBorder"  type="checkbox" name={props.name} id={props.label} {...props} hidden />
                 <label className="custom_radio" htmlFor={props.label}>
                     <span className="icon"></span>
                     {props.label}

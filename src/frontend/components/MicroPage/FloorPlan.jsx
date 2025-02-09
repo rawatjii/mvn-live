@@ -53,7 +53,7 @@ const MicroFloorPlan = React.memo(({ data }) => {
   }, []);
 
   return (
-    <section className="section floor_plan_section pb-0">
+    <section className="section floor_plan_section pb-0" aria-label="Floor Plan Section">
       <div className="heading_div mb_60 mb_sm_30">
         <h4 className="title title_style1 text-center" ref={titleRef}>{title}</h4>
       </div>

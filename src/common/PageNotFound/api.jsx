@@ -91,6 +91,7 @@ const LocationSearch = () => {
         >
           <label htmlFor="location-input" className="visually-hidden">Enter a location</label>
           <input
+          autoComplete="off" 
           id='location-input'
             type="text"
             placeholder="Enter a location"
@@ -109,6 +110,7 @@ const LocationSearch = () => {
               left: '50%',
               marginLeft: '-120px'
             }}
+            className='className="grayBorder"'
           />
         </Autocomplete>
       </GoogleMap>

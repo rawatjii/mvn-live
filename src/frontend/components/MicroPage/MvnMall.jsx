@@ -40,7 +40,7 @@ const MvnMall = () => {
 
   return (
     <>
-      <section className="section mvn_mall_section micro_design1 pb-0" ref={secRef}>
+      <section className="section mvn_mall_section micro_design1 pb-0" ref={secRef} aria-label="MVN Mall Section">
         {window.innerWidth < 768 ? (
           <>
             <Container>
@@ -53,7 +53,7 @@ const MvnMall = () => {
               <img
                 ref={imageRef}
                 src={mvnMallImg}
-                alt="mvn_mall_animation"
+                alt="mvn mall animation"
                 className="img-fluid"
               />
             </div>

@@ -259,6 +259,7 @@ const BlogCategory = () => {
                 <Form.Group>
                   <Form.Label htmlFor="name">Name</Form.Label>
                   <Form.Control
+                  autoComplete="name" 
                   id="name"
                     ref={nameRef}
                     className=""

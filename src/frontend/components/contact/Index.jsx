@@ -6,10 +6,10 @@ import * as CONFIG from '../../../config/config'
 
 const ContactPage = ()=>{
     return(
-        <section className="section contact-us-section ">
+        <section className="section contact-us-section " aria-label="Contact Us Section">
             <Container>
                 <SecTitle className="text-center color style1 mb_30 page-header-main-heading">
-                    <img src={supportIcon} alt="mvn-support-icon" className="img-fluid supportIcon" />
+                    <img src={supportIcon} alt="mvn support icon" className="img-fluid supportIcon" />
                     <h4 className="title title_style1 text-center">Call or Visit us at One of our locations</h4>
                 </SecTitle>
 

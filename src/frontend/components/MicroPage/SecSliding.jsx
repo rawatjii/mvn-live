@@ -61,6 +61,7 @@ export default function SecSliding({ data }) {
             key={i}
             className="parallax"
             ref={(el) => (sectionsRef.current[i] = el)}
+            aria-label="Sliding Section"
           >
           <div className="bg"></div>
           {Object.keys(amenity.content).length !== 0 && (

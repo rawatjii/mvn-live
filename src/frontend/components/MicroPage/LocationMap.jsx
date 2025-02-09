@@ -98,7 +98,7 @@ const MicroLocationMap = ({data})=>{
 
 
   return(
-    <section className="section location_map_section pb-0">
+    <section className="section location_map_section pb-0" aria-label="Location Map Section">
       <Container>
         <div className="heading_div mb_60 mb_sm_30">
           <h4 className="title title_style1 text-center">Location Map</h4>

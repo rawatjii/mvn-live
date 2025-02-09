@@ -6,7 +6,7 @@ function AmenitiesAthens() {
     
 
   return (
-    <section className="section amenities-section">
+    <section className="section amenities-section" aria-label="Amenities Section">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-6 col-md-3">

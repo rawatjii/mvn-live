@@ -61,7 +61,7 @@ const Header = (props) => {
           <div className="logo">
             <img
               src={CONFIG.IMAGE_URL + "logo.webp"}
-              alt="logo"
+              alt="logo image"
               className="img-fluid logo"
             />
           </div>
@@ -70,7 +70,7 @@ const Header = (props) => {
             <Dropdown>
               <Dropdown.Toggle variant="success" id="dropdown-basic">
                 <span className="name">Admin</span>
-                <img src={userImg} alt="user" className="user_img" />
+                <img src={userImg} alt="user image" className="user_img" />
               </Dropdown.Toggle>
 
               <Dropdown.Menu>

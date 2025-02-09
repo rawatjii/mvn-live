@@ -78,7 +78,7 @@ const Philosophy = () => {
   }, []);
 
   return (
-    <section className="section philosophy_section pb-0">
+    <section className="section philosophy_section pb-0" aria-label="Philosophy Section">
       <Container>
         <div className="heading_div mb_60 mb_sm_30">
           <img src={headingIconImg} alt="mvn heading icon" className="img-fluid title_plane1" loading="lazy" />
@@ -90,7 +90,7 @@ const Philosophy = () => {
             <ul>
          <li>
             <h4 ref={(el) => miniTitleRefs.current[0] = el} className="title">
-              <img src={planeIcon} alt="mvn-plan-icon" className="img-fluid icon"  loading="lazy"/>
+              <img src={planeIcon} alt="mvn plan icon" className="img-fluid icon"  loading="lazy"/>
               Our Vision
             </h4>
             <p ref={(el) => desRefs.current[0] = el}>
@@ -102,7 +102,7 @@ const Philosophy = () => {
           <ul>
           <li>
             <h4 ref={(el) => miniTitleRefs.current[1] = el} className="title">
-              <img src={planeIcon} alt="mvn-plan-icon" className="img-fluid icon" loading="lazy" />
+              <img src={planeIcon} alt="mvn plan icon" className="img-fluid icon" loading="lazy" />
               Our Mission
             </h4>
             <p ref={(el) => desRefs.current[1] = el}>
@@ -115,7 +115,7 @@ const Philosophy = () => {
             <ul>
           <li>
             <h4 ref={(el) => miniTitleRefs.current[2] = el} className="title">
-              <img src={planeIcon} alt="mvn-plan-icon" className="img-fluid icon" loading="lazy" />
+              <img src={planeIcon} alt="mvn plan icon" className="img-fluid icon" loading="lazy" />
               Our Values
             </h4>
             <ul ref={(el) => desRefs.current[2] = el} className="our-values-ul-icon">

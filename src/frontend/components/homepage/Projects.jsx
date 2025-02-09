@@ -81,7 +81,7 @@ const Projects = () => {
 
   return (
     <>
-      <section className="section projects_section_new pb-0">
+      <section className="section projects_section_new pb-0" aria-label="Project Section">
         <Container>
           <Row className="mx_-8">
 
@@ -89,7 +89,7 @@ const Projects = () => {
             <div className="col-md-12 col-12 heading_div">
               <img
                 src={planeIcon}
-                alt="mvn-plane-icon"
+                alt="mvn plane icon"
                 className="img-fluid title_plane1"
               />
               <h4 className="title title_style1 text-center" ref={titleRef}>Explore Our Projects</h4>
@@ -149,7 +149,7 @@ const Projects = () => {
                           view detail
                           <img
                             src={arrowIcon}
-                            alt="mvn-arrow-icon"
+                            alt="mvn arrow icon"
                             className="img-fluid icon"
                           />
                         </Link>
@@ -205,7 +205,7 @@ const Projects = () => {
                           view detail
                           <img
                             src={arrowIcon}
-                            alt="mvn-arrow-icon"
+                            alt="mvn arrow icon"
                             className="img-fluid icon"
                           />
                         </Link>

@@ -32,7 +32,7 @@ const Disclaimer = () => {
           <MicroBanner bg={microBg} data={breadcrumbs} />
             
             {/* Main Content Section */}
-            <section className="section">
+            <section className="section" aria-label="Disclaimer Section">
             {/* upcoming_page */}
                 {/* <div className="micro_content">
                     <div className="micro_data">

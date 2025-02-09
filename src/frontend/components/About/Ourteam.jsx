@@ -50,7 +50,7 @@ const OurTeam = () => {
   ];
 
   return (
-    <section className="our-team-section">
+    <section className="our-team-section" aria-label="Our Team Section">
       <Container>
         {/* Row for the first three members */}
 

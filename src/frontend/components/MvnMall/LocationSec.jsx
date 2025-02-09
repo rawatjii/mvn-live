@@ -15,7 +15,7 @@ const thumbnails = [
 
 const LocationSec = () => {
   return (
-    <section className="section location-section">
+    <section className="section location-section" aria-label="Location Section">
       <div className="container">
         <div className="row">
           <div className="col-md-6">

@@ -47,7 +47,7 @@ const FeatureSection = ({ data }) => {
   }, []);
 
   return (
-    <section className="feature">
+    <section className="feature" aria-label="Feature Section">
         <div className="row">
             <div className="col-lg-6">
                 
@@ -61,8 +61,8 @@ const FeatureSection = ({ data }) => {
         alt="Elevation feature"
       />
         <div class="m-v overlap" >
-    <img class="elevation bg-elevation" src={bgImg} />
-     <img class="elevation fr-elevation" src={src}/>      
+    <img class="elevation bg-elevation" src={bgImg} alt="elevation background image"/>
+     <img class="elevation fr-elevation" src={src} alt='elevation front image'/>      
   </div>
             </div>
             <div className="col-lg-6">

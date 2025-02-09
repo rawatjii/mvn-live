@@ -132,7 +132,7 @@ const Typology = React.memo(({ onLoadComplete }) => {
 
   return (
     <>
-      <section ref={containerRef} className="section typology_section pb-0">
+      <section ref={containerRef} className="section typology_section pb-0" aria-label="Typology Section">
         <div className="heading_div mb_60 mb_sm_30">
           <h4 className="title title_style1 text-center">Typologies</h4>
         </div>
@@ -221,7 +221,7 @@ const Typology = React.memo(({ onLoadComplete }) => {
               <img
                 className="img-fluid"
                 src={typo1}
-                alt="mvn typlogy 1"
+                alt="mvn typology 1"
                 loading="lazy"
               />
               <Watermark />
@@ -229,13 +229,13 @@ const Typology = React.memo(({ onLoadComplete }) => {
             <img
               className="image-2"
               src={typo2}
-              alt="mvn typlogy 1"
+              alt="mvn typology 2"
               loading="lazy"
             />
             <img
               className="image-3"
               src={typo3}
-              alt="mvn typlogy 1"
+              alt="mvn typology 3"
               loading="lazy"
             />
           </div>
@@ -248,19 +248,19 @@ const Typology = React.memo(({ onLoadComplete }) => {
             <img
               className="image-1"
               src={typo4}
-              alt="mvn typlogy 2"
+              alt="mvn typology 1"
               loading="lazy"
             />
             <img
               className="image-2"
               src={typo5}
-              alt="mvn typlogy 2"
+              alt="mvn typology 2"
               loading="lazy"
             />
             <img
               className="image-3"
               src={typo6}
-              alt="mvn typlogy 2"
+              alt="mvn typology 3"
               loading="lazy"
             />
           </div>
@@ -273,14 +273,14 @@ const Typology = React.memo(({ onLoadComplete }) => {
             <img
               className="image-1 img-fluid"
               src={typo7}
-              alt="mvn typlogy 3"
+              alt="mvn typology 1"
               loading="lazy"
             />
             <span className="image-2">
               <img
                 className="img-fluid"
                 src={typo8}
-                alt="mvn typlogy 3"
+                alt="mvn typology 2"
                 loading="lazy"
               />
               <Watermark className="left" />
@@ -288,7 +288,7 @@ const Typology = React.memo(({ onLoadComplete }) => {
             <img
               className="image-3"
               src={typo9}
-              alt="mvn typlogy 3"
+              alt="mvn typology 3"
               loading="lazy"
             />
           </div>

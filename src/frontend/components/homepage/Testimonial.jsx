@@ -48,7 +48,7 @@ const Testimonial = () => {
   const contentRef = useRef();
 
   return (
-    <section className="section testimonial_section">
+    <section className="section testimonial_section" aria-label="Testimonial Section">
       <Container>
         <div className="heading_div mb_60 mb_sm_30">
           <img src={headingIconImg} alt="mvn heading image" className="img-fluid title_plane1" loading="lazy" />
@@ -103,8 +103,8 @@ const Testimonial = () => {
         </Swiper>
 
         {/* Add navigation buttons */}
-        <div className="swiper-button-prev"></div>
-        <div className="swiper-button-next"></div>
+        <div className="swiper-button-prev" role="button" aria-label="previous button"></div>
+        <div className="swiper-button-next" role="button" aria-label="next button"></div>
       </Container>
     </section>
   );

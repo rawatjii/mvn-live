@@ -102,7 +102,7 @@ const AddBlog = ()=>{
                 <Form onSubmit={addSubmitHandler} className="mt_40">
                     <Form.Group className="mb_15 form-group">
                         <Form.Label htmlFor="title">Title*</Form.Label>
-                        <Form.Control id="title" ref={titleRef} className="" type="text" placeholder="Enter Blog Title" />
+                        <Form.Control autoComplete="off"  id="title" ref={titleRef} className="" type="text" placeholder="Enter Blog Title" />
                         {errors.heading && <div className="errMsg text-danger">{errors.heading}</div>}
                     </Form.Group>
 
@@ -134,7 +134,7 @@ const AddBlog = ()=>{
                         <Form.Label htmlFor="image">Image*
                             <small className="size">(Size 1200px x 750px)</small>
                         </Form.Label>
-                        <Form.Control id="image" ref={imageRef} className="form-control" required type="file" />
+                        <Form.Control autoComplete="off"  id="image" ref={imageRef} className="form-control" required type="file" />
                         {errors.image && <div className="errMsg text-danger">{errors.image}</div>}
                         {showEditEnableImage ? <img width="100" alt="edit image" src={showEditEnableImage}/> : null }
                     </Form.Group>

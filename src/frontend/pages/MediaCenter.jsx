@@ -243,7 +243,7 @@ function MediaCenter() {
     <Layout>
       <div className="media_center">
         <MicroBanner bg={MediaImg} data={breadcrumbs} />
-        <section className="section media-news-section pb-0">
+        <section className="section media-news-section pb-0" aria-label="Media Center Section">
           <div className="micro_content">
             <div className="micro_data">
               <div className="content_col position-relative page-header-main-heading">
@@ -264,7 +264,7 @@ function MediaCenter() {
               <div className="col-sm-6 px-md-0">
 
                 <div className="heading_div mb_60 mb_sm_30">
-                  <img src={headingIconImg} alt="mvn vertical icon" className="img-fluid title_plane1" />
+                  <img src={headingIconImg} alt="heading icon" className="img-fluid title_plane1" />
                   <h4 className="title title_style1 text-center">
                   Offline Media News
                   </h4>
@@ -283,7 +283,7 @@ function MediaCenter() {
               <div className="col-sm-6 px-md-0">
                 <div className="media-news_online">
                   <div className="heading_div mb_60 mb_sm_30">
-                    <img src={headingIconImg} alt="mvn vertical icon" className="img-fluid title_plane1" />
+                    <img src={headingIconImg} alt="heading icon" className="img-fluid title_plane1" />
                     <h4 className="title title_style1 text-center">
                     Online Media News
                     </h4>
@@ -295,7 +295,7 @@ function MediaCenter() {
                         key={`news-${index}`}
                       >
                         <div>
-                          <img src={item.img} alt="image" />
+                          <img src={item.img} alt="item image" />
                         </div>
 
                         <div>
@@ -322,10 +322,10 @@ function MediaCenter() {
           </div>
         </section>
 
-        <section className="section press-releases-container">
+        <section className="section press-releases-container" aria-label="Press Section">
           <div className="container">
             <div className="heading_div mb_60 mb_sm_30">
-              <img src={headingIconImg} alt="mvn vertical icon" className="img-fluid title_plane1" />
+              <img src={headingIconImg} alt="heading icon" className="img-fluid title_plane1" />
               <h4 className="title title_style1 text-center">
               Press Releases
               </h4>
@@ -338,10 +338,10 @@ function MediaCenter() {
             />
           </div>
         </section>
-        <section className="section media-gallery">
+        <section className="section media-gallery" aria-label="Media Gallery Section">
           <div className="container">
             <div className="heading_div mb_60 mb_sm_30">
-              <img src={headingIconImg} alt="mvn vertical icon" className="img-fluid title_plane1" />
+              <img src={headingIconImg} alt="heading icon" className="img-fluid title_plane1" />
               <h4 className="title title_style1 text-center">
                 Gallery
               </h4>
@@ -354,10 +354,10 @@ function MediaCenter() {
             />
           </div>
         </section>
-        <section className="section media-events">
+        <section className="section media-events" aria-label="Media Events Section">
           <div className="container">
             <div className="heading_div mb_60 mb_sm_30">
-              <img src={headingIconImg} alt="mvn vertical icon" className="img-fluid title_plane1" />
+              <img src={headingIconImg} alt="heading icon" className="img-fluid title_plane1" />
               <h4 className="title title_style1 text-center">
               OUR EVENTS
               </h4>

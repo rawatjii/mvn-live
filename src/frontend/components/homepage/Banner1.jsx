@@ -8,7 +8,7 @@ const Banner1 = ()=>{
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   return(
-    <section className="banner1">
+    <section className="banner1" aria-label="Banner Section">
         
         <img
           src={isMobile ? MobileheronormalImg2 : DeskopheronormalImg2}

@@ -112,6 +112,7 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer }) => {
                   <Form.Group className="form-group" as={Col} xs="12">
                     <Form.Label className='visually-hidden' htmlFor="name">Name</Form.Label>
                     <Form.Control
+                    autoComplete="name" 
                       id="name"
                       type="text"
                       name="name"
@@ -124,6 +125,7 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer }) => {
                   <Form.Group className="form-group" as={Col} xs="12">
                     <Form.Label className='visually-hidden' htmlFor="email">E-Mail</Form.Label>
                     <Form.Control
+                    autoComplete="off" 
                       id="email"
                       type="email"
                       name="email"
@@ -136,18 +138,26 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer }) => {
                   <Form.Group className="form-group" as={Col} xs="12">
                     <Form.Label className='visually-hidden' htmlFor="number">Phone</Form.Label>
                     <Form.Control
+
                       id="number"
                       type="number"
                       name="number"
                       placeholder="Phone:"
                       value={formDetails.number ?? ""}
-                      onChange={handleFormChange}
+                      onChange={(e) => {
+                        const inputValue = e.target.value.replace(/\D/g, ""); // Remove non-digits
+                        if (inputValue.length <= 10) {
+                          handleFormChange({ target: { name: "number", value: inputValue } });
+                        }
+                      }}
+                      autoComplete="tel"
                     />
                   </Form.Group>
 
                   <Form.Group className="form-group" as={Col} xs="12">
                     <Form.Label className='visually-hidden' htmlFor="message">Message</Form.Label>
                     <Form.Control
+                    autoComplete="off" 
                       id="message"
                       type="text"
                       name="message"
@@ -204,6 +214,7 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer }) => {
                     placeholder="Name:"
                     value={formDetails.name ?? ""}
                     onChange={handleFormChange}
+                    autoComplete="name" 
                   />
                 </Form.Group>
 
@@ -216,6 +227,7 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer }) => {
                     placeholder="E-Mail:"
                     value={formDetails.email ?? ""}
                     onChange={handleFormChange}
+                    autoComplete="off" 
                   />
                 </Form.Group>
 
@@ -227,7 +239,13 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer }) => {
                     name="number"
                     placeholder="Phone:"
                     value={formDetails.number ?? ""}
-                    onChange={handleFormChange}
+                    onChange={(e) => {
+                      const inputValue = e.target.value.replace(/\D/g, ""); // Remove non-digits
+                      if (inputValue.length <= 10) {
+                        handleFormChange({ target: { name: "number", value: inputValue } });
+                      }
+                    }}
+                    autoComplete="tel"
                   />
                 </Form.Group>
 
@@ -240,6 +258,7 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer }) => {
                     placeholder="Message:"
                     value={formDetails.message ?? ""}
                     onChange={handleFormChange}
+                    autoComplete="off" 
                   />
                 </Form.Group>
               </Row>

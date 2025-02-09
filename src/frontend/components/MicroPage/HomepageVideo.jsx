@@ -115,7 +115,7 @@ const HomepageVideo = ({ data }) => {
 
   return (
     <>
-      <section className="section micro_hero_section p-0">
+      <section className="section micro_hero_section p-0" aria-label="Hero Section">
         {/* Show Loader */}
         {loading && <GurgaonLoader mobile={mobile} />}
 

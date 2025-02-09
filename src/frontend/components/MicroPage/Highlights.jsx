@@ -42,7 +42,7 @@ const MicroHighlights = ({ data }) => {
   }, []);
 
   return (
-    <section className="section highlights_section">
+    <section className="section highlights_section" aria-label="Highlights Section">
       <Container>
         <SecTitle className="text-center color style1">
           <h4 ref={titleRef} className="title">{data.title}</h4>

@@ -29,7 +29,7 @@ const Watermark = ({className, type})=>{
         <div className={`WaterMarkContainer ${className}`}>
         <div className="Watermark_artistic">Artistic Impression</div>
         
-        <div className="Watermark_logo"><img src={logoSrc} alt="logo" /></div>
+        <div className="Watermark_logo"><img src={logoSrc} alt="logo image" /></div>
     
         </div>
       )

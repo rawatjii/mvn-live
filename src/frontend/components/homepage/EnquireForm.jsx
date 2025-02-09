@@ -62,7 +62,7 @@ const EnquireForm = ({ career, projectName }) => {
   }, [formDetails, projectName]);
 
   return (
-    <section className="section enquire_form">
+    <section className="section enquire_form" aria-label="Enquiry Form Section">
       <Container>
         <div className="heading_div mb_60 mb_sm_30">
           <img
@@ -91,6 +91,7 @@ const EnquireForm = ({ career, projectName }) => {
                 placeholder="Your Name:"
                 value={formDetails.name ?? ""}
                 onChange={handleFormChange}
+                autoComplete="name" 
               />
             </Form.Group>
 
@@ -105,6 +106,7 @@ const EnquireForm = ({ career, projectName }) => {
                 placeholder="Your E-Mail:"
                 value={formDetails.email ?? ""}
                 onChange={handleFormChange}
+                autoComplete="off" 
               />
             </Form.Group>
 
@@ -118,7 +120,13 @@ const EnquireForm = ({ career, projectName }) => {
                 name="number"
                 placeholder="Your Phone:"
                 value={formDetails.number ?? ""}
-                onChange={handleFormChange}
+                onChange={(e) => {
+                  const inputValue = e.target.value.replace(/\D/g, ""); // Remove non-digits
+                  if (inputValue.length <= 10) {
+                    handleFormChange({ target: { name: "number", value: inputValue } });
+                  }
+                }}
+                autoComplete="tel"
               />
             </Form.Group>
 
@@ -134,6 +142,7 @@ const EnquireForm = ({ career, projectName }) => {
                     name="designation"
                     placeholder="Designation"
                     onChange={handleFormChange}
+                    autoComplete="off" 
                   />
                 </Form.Group>
                 <Form.Group className="form-group" as={Col} xs="12">
@@ -146,6 +155,7 @@ const EnquireForm = ({ career, projectName }) => {
                     name="experience"
                     placeholder="Experience"
                     onChange={handleFormChange}
+                    autoComplete="off" 
                   />
                 </Form.Group>
               </>
@@ -162,6 +172,7 @@ const EnquireForm = ({ career, projectName }) => {
                 placeholder="Your Message:"
                 value={formDetails.message ?? ""}
                 onChange={handleFormChange}
+                autoComplete="off" 
               />
             </Form.Group>
 
@@ -177,6 +188,7 @@ const EnquireForm = ({ career, projectName }) => {
                     name="resume"
                     placeholder="Your Resume"
                     onChange={handleFormChange}
+                    autoComplete="off" 
                   />
                 </Form.Group>
               </>

@@ -5,15 +5,15 @@ import mallLogo from "../../assets/images/mvn-mall/mvn-mall-logo.webp";
 const Banner = () => {
   return (
     <>
-      <section className="banner-section">
+      <section className="banner-section" aria-label="Banner Section">
         <div className="banner-img">
           <img
             className="img-fluid mobile-img"
             src={bannerMob}
-            alt="banner-mob"
+            alt="mobile banner"
           />
           <div className="banner-content">
-            <img className="mvn-mall-logo" src={mallLogo} alt="logo" />
+            <img className="mvn-mall-logo" src={mallLogo} alt="mvn mall logo" />
             <p>First And Only Drop Of The 22 Kms. Elevated Dwarka Expressway</p>
           </div>
         </div>

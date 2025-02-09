@@ -70,7 +70,7 @@ const CustomSlider = ({slides, className}) => {
         <div className="area">{slide.area}</div> {/* Display area */}
         </div>
         {/* Optional: You can add the image explicitly here if you want */}
-        <img src={slide.src} alt="Slide" className='SlideImg'/>
+        <img src={slide.src} alt="Slide image" className='SlideImg'/>
       </div>
     ),
   }}

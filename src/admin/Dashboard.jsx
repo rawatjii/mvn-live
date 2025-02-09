@@ -37,7 +37,7 @@ const Dashboard = ()=>{
             <div className="row cards_row">
                 <div className="col-md-4 single_col">
                     <div className="card card_style1 color_card">
-                        <img src={projectIcon} alt="project" className="img-fluid icon"  />
+                        <img src={projectIcon} alt="project image" className="img-fluid icon"  />
                         <h4 className="count">{data?.project?.count}</h4>
                         <p className="title">Total {data?.project?.name}</p>
                     </div>
@@ -45,7 +45,7 @@ const Dashboard = ()=>{
 
                 <div className="col-md-4 single_col">
                     <div className="card card_style1 color_card">
-                        <img src={blogIcon} alt="blogs" className="img-fluid icon"  />
+                        <img src={blogIcon} alt="blogs image" className="img-fluid icon"  />
                         <h4 className="count">{data?.blog?.count}</h4>
                         <p className="title">Total {data?.blog?.name}</p>
                     </div>
@@ -53,7 +53,7 @@ const Dashboard = ()=>{
 
                 <div className="col-md-4 single_col">
                     <div className="card card_style1 color_card">
-                        <img src={enquireIcon} alt="enquire" className="img-fluid icon"  />
+                        <img src={enquireIcon} alt="enquire image" className="img-fluid icon"  />
                         <h4 className="count">{data?.total_enquiry?.count}</h4>
                         <p className="title">Total {data?.total_enquiry?.name}</p>
                     </div>

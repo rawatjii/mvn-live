@@ -11,7 +11,7 @@ const OurTeam = ()=>{
   const contentRef = useRef();
 
   return(
-    <section className="section our_team_section">
+    <section className="section our_team_section" aria-label="Team Section">
     <Container>
       <Row className="mx_-8">
         <div className="col-md-12 col-12 heading_div  mb_60 mb_sm_30">

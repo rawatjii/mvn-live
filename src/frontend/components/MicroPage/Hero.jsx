@@ -22,9 +22,9 @@ const MicroHero = ({onBannerExit, isMainBanner}) => {
   }, [isMainBanner, onBannerExit]);
 
   return (
-    <section className="section micro_hero_section p-0" ref={sectionRef}>
-      <img src={desktopBanner} alt="aeroone-gurgaon-hero-image" className="img-fluid d-none d-md-block" />
-      <img src={mobileBanner} alt="aeroone-gurgaon-hero-image" className="img-fluid d-md-none" />
+    <section className="section micro_hero_section p-0" ref={sectionRef} aria-label="Hero Section">
+      <img src={desktopBanner} alt="aeroone gurgaon hero image" className="img-fluid d-none d-md-block" />
+      <img src={mobileBanner} alt="aeroone gurgaon hero image" className="img-fluid d-md-none" />
       <div
         className="microsite-scrolldown microsite-scrolldown_1 micro_scroll"
       >

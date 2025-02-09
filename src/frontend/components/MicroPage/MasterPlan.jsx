@@ -92,14 +92,14 @@ const MicroMasterPlan = ({data})=>{
 
 
   return(
-    <section className="section master_plan_section pb-0">
+    <section className="section master_plan_section pb-0" aria-label="Master Plan Section">
       <Container>
         <SecTitle className="text-center color style1">
           <h4 className="title">Master Plan</h4>
         </SecTitle>
 
         <div className="masterPlanImg" onClick={()=>setIsMasterPlanOpen(true)}>
-          <img src={data} alt="mvn-master-plan" className="img-fluid" />
+          <img src={data} alt="mvn master plan" className="img-fluid" />
           <button type="button" className="btn btn_master">view more</button>
         </div>
 

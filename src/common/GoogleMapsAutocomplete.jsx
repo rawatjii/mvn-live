@@ -19,6 +19,7 @@ const GoogleMapsAutocomplete = ({ handlePlaceSelect }) => {
     onPlaceChanged={() => handlePlaceSelect(autocompleteRef.current.getPlace())}
   >
     <Form.Control
+    autoComplete="off" 
       id="location"
       type="text"
       placeholder="Enter project Location"
