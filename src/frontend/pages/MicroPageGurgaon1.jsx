@@ -101,7 +101,6 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
   return (
     <>
-
       <Helmet>
       <title>MVN AeroOne Gurgaon | 5.5 BHK Luxury residences | Dwarka Expressway</title>
       <meta name="description" content="MVN AeroOne Gurgaon 5.5 BHK residences, the largest ultra-luxury apartments in Dwarka Expressway. 360° Panoramic View." />
