@@ -13,6 +13,8 @@ import newsIMG from "../assets/images/mediacenter/newsdrum-logo.jpg";
 import aninewsIMG from "../assets/images/mediacenter/aninews.png";
 import webindiaIMG from "../assets/images/mediacenter/webindia-logo.png";
 import financialExpIMG from "../assets/images/mediacenter/financialexp_logo.webp";
+import economicTimesIMG from "../assets/images/mediacenter/economic_times_logo.webp";
+import et_now_IMG from "../assets/images/mediacenter/et_now_logo.webp";
 
 // news images
 
@@ -23,6 +25,7 @@ import newsIMG4 from "../assets/images/mediacenter/news-img-4.jpeg";
 import newsIMG5 from "../assets/images/mediacenter/news-img-5.jpeg";
 import newsIMG6 from "../assets/images/mediacenter/news-img-6.jpeg";
 import newsIMG7 from "../assets/images/mediacenter/news-img-7.webp";
+import newsIMG8 from "../assets/images/mediacenter/news-img-8.webp";
 
 import mediaGalleryImg1 from "../assets/images/projects/gallery_img1.webp";
 import mediaGalleryImg2 from "../assets/images/projects/gallery_img2.webp";
@@ -103,6 +106,7 @@ function MediaCenter() {
   const newsImages = {
     isshow: true,
     galleryData: [
+      {src:newsIMG8, alt:"news Image8"},
       { src: newsIMG7, alt: "Image 7" },
       { src: newsIMG1, alt: "Image 1" },
       { src: newsIMG2, alt: "Image 2" },
@@ -170,6 +174,27 @@ function MediaCenter() {
   ];
 
   const onlineNews = [
+    {
+      id: 9,
+      title: `Sensex Today, Stock Market Feb 7 Highlights: Sensex, Nifty closed in red after RBI rate cut announcement; metals buck the trend`,
+      img: et_now_IMG,
+      postedDate: "Februrary 07, 2025",
+      url: "https://www.etnownews.com/markets/sensex-today-stock-market-live-updates-feb-7-nifty-50-share-price-itc-dividend-sbi-hero-motocorp-airtel-q3-results-brokerages-picks-liveblog-117997762",
+    },
+    {
+      id: 8,
+      title: `Budget 2025 HIGHLIGHTS: Zero Income Tax till Rs 12 Lakh Income under New Tax Regime, says FM Nirmala Sitharaman`,
+      img: et_now_IMG,
+      postedDate: "Februrary 04, 2025",
+      url: "https://www.etnownews.com/budget/union-budget-2025-26-live-updates-nirmala-sitharaman-speech-1-feb-income-tax-rate-slabs-railway-healthcare-auto-defence-announcement-news-liveblog-117808795",
+    },
+    {
+      id: 7,
+      title: `Ultra luxe, spacious homes arrive in Gurugram`,
+      img: economicTimesIMG,
+      postedDate: "January 29, 2025",
+      url: "https://economictimes.indiatimes.com/epaper/delhicapital/2025/jan/29/et-panache/ultra-luxe-spacious-homes-arrive-in-gurugram/articleshow/117660416.cms",
+    },
     {
       id: 6,
       title: `Average flat sizes in top 7 cities rise by 7% in 2024, NCR records highest growth`,
