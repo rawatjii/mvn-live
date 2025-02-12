@@ -102,9 +102,9 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
   return (
     <>
       <Helmet>
-        <title>MVN Aero One Gurgaon | 5.5 BHK Luxury Residencies | Dwarka Expressway</title>
-        <meta name="description" content="MVN AeroOne Gurgaon 5.5 BHK Residencies, the largest ultra-luxury apartments on Dwarka Expressway. 360° Panoramic View." />
-        <meta name="keywords" content="MVN Infrastructure, MVN Gurgaon, MVN MALL Gurugram, MVN Aero one, 5BHK in Gurgaon, Aero one, MVN Bangalore, mvn.in, MVN Developer." />
+        <title>MVN Aero One Gurugram | 5.5 BHK Luxury Residencies | Dwarka Expressway</title>
+        <meta name="description" content="MVN Aero One Gurugram 5.5 BHK Residencies, the largest ultra-luxury apartments on Dwarka Expressway. 360° Panoramic View." />
+        <meta name="keywords" content="MVN Infrastructure, MVN Gurgaon, MVN MALL Gurugram, MVN Aero one, 5BHK in Gurugram, Aero one, MVN Bangalore, mvn.in, MVN Developer." />
     
         <link rel="canonical" href="https://www.mvn.in/aeroone-gurgaon" />
         <meta name="distribution" content="Global" />
@@ -123,10 +123,10 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
         {/* Open Graph data */}
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="MVN Aero One Gurgaon | 5.5 BHK Luxury Residencies | Dwarka Expressway" />
-        <meta property="og:description" content="MVN AeroOne Gurgaon 5.5 BHK Residencies, the largest ultra-luxury apartments on Dwarka Expressway. 360° Panoramic View." />
+        <meta property="og:title" content="MVN Aero One Gurugram | 5.5 BHK Luxury Residencies | Dwarka Expressway" />
+        <meta property="og:description" content="MVN Aero One Gurugram 5.5 BHK Residencies, the largest ultra-luxury apartments on Dwarka Expressway. 360° Panoramic View." />
         <meta property="og:url" content="https://www.mvn.in/aeroone-gurgaon" />
-        <meta property="og:site_name" content="MVN AeroOne" />
+        <meta property="og:site_name" content="MVN Aero One" />
         <meta property="og:image" content="https://www.mvn.in/assets/images/micro/hero/aeroone-gurgaon/desktop.webp" />
 
         {/* Twitter Card  */}
@@ -134,8 +134,8 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
         <meta name="twitter:url" content="https://www.mvn.in/aeroone-gurgaon" />
         <meta name="twitter:image" content="https://www.mvn.in/assets/images/micro/hero/aeroone-gurgaon/desktop.webp" />
         <meta name="twitter:creator" content="@MVN_infra"/>
-        <meta name="twitter:title" content="MVN Aero One Gurgaon | 5.5 BHK Luxury Residencies | Dwarka Expressway" />
-        <meta name="keywords" content="MVN Aero one Gurgaon, MVN MALL Gurugram, MVN Aero one, 5BHK in Gurgaon, Aero one, MVN Bangalore, mvn.in, MVN Infrastructure, MVN Gurgaon, MVN Developer"/>
+        <meta name="twitter:title" content="MVN Aero One Gurugram | 5.5 BHK Luxury Residencies | Dwarka Expressway" />
+        <meta name="keywords" content="MVN Aero one Gurgaon, MVN MALL Gurugram, MVN Aero one, 5BHK in Gurugram, Aero one, MVN Bangalore, mvn.in, MVN Infrastructure, MVN Gurgaon, MVN Developer"/>
         <script>
           {`
             window.dataLayer = window.dataLayer || [];
