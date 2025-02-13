@@ -688,6 +688,12 @@ export const data = {
           ]
         },
       ]
+    },
+    mvnMall:{
+      path:{
+        mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/mvnMall/data.json`,
+        desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/mvnMall/data.json`,
+      }
     }
 };
 

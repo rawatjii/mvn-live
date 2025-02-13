@@ -7,10 +7,11 @@ import mvnMallBannerImg1 from "../../assets/images/mall-banner-1.webp"
 import mvnMallBannerImg2 from "../../assets/images/mall-banner-2.webp"
 import Watermark from "../../../common/watermark/Index";
 import Logomark from "../../../common/logomark/Index";
+import ZoomOutImage from "./ZoomOut";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const MvnMall = () => {
+const MvnMall = ({data}) => {
   const imageRef = useRef(null);
   const secRef = useRef(null);
 
@@ -49,6 +50,7 @@ const MvnMall = () => {
               </div>
               <p className="des_style1 text-center mb_20">Experience a pollution-free haven at MVN's iconic masterpiece, where every breath you take is purified by advanced air filtration systems. Nestled above MVN mall, everything you need—from gourmet dining to designer boutiques and private cinemas—is just an elevator ride away. This is a sanctuary where luxury and convenience come together, offering you everything at your doorstep, so you never need to leave.</p>
             </Container>  
+            <ZoomOutImage data={data}/>
             <div className="image_animation">
               <img
                 ref={imageRef}
