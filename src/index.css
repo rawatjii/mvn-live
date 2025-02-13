@@ -3704,14 +3704,15 @@ footer {
 .mvn_mall_animation{
 
   .frames_content{
-
-    height:calc(100vh - 63px)
+    /* height:auto; */
+    /* min-height:100vh; */
+    /* height:calc(100vh) */
   }
 }
 
 .mvn_mall_section{
 
-  .mvn_mall_left_col{
+  /* .mvn_mall_left_col{
 
     .position-relative{
       height: 100%;
@@ -3723,17 +3724,17 @@ footer {
         object-fit: cover;
       }
     }
-  }
+  } */
 
   .mvn_mall_right_col{
 
     .position-relative{
-      height: calc(50% - 10px);
+      /* height: calc(50% - 10px); */
 
 
       img{
-        height:100%;
-        object-fit: cover;
+        /* height:100%;
+        object-fit: cover; */
       }
     }
   }
