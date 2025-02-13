@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ZoomOutImage = ({data}) => {
     return (
-        <div>
+        <div className="mvn_mall_animation mb-4">
             <LottieAnimationSection data={data}/>
         </div>
     );

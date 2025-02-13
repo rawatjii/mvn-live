@@ -89,7 +89,7 @@ const LottieAnimationSection = React.memo(({backgroundImg, data, onLoadComplete,
 
     const scrollAnimation = ScrollTrigger.create({
       trigger: containerRef.current,
-      start: `top ${isMobile ? '75px' : 'top'}`,
+      start: `top ${isMobile ? '65px' : 'top'}`,
       end: `+=${window.innerHeight * 2}`,
       pin: true,
       scrub: 0.5,
