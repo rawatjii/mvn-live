@@ -2,11 +2,11 @@ import {render, screen, fireEvent} from '@testing-library/react';
 import Hero from '../frontend/components/homepage/Hero';
 import Overview from '../frontend/components/homepage/Overview';
 import {MemoryRouter} from 'react-router-dom';
-import userEvent from '@testing-library/user-event';
+import userEvent from "@testing-library/user-event";
 import { describe } from 'vitest';
 
 // Ensure VITE_APP_URL is set in the test environment
-import.meta.env.VITE_APP_URL = "/";
+// import.meta.env.VITE_APP_URL = "/";
 
 describe('homepage testing', ()=>{
     test('hero section', async()=>{
