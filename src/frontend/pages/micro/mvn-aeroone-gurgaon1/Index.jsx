@@ -692,8 +692,12 @@ export const data = {
     mvnMall:{
       Custom_height:"Custom_height",
       path:{
-        mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/mvnMall/data.json`,
-        desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/mvnMall/data.json`,
+        mobilePath:`../../assets/images/mvn-mall/mvn-mall/`,
+        desktopPath:`../../assets/images/mvn-mall/mvn-mall/`,
+      },
+      frameCounts:{
+        mobileFrameCounts:102,
+        desktopFrameCounts:102,
       }
     }
 };
