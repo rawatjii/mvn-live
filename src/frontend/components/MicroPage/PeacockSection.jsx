@@ -14,12 +14,12 @@ const PeacockSection = React.memo(({ data}) => {
   const {second_title, desc, path} = data;
 
   return (
-    <div className="section peacock_section pb-0" id="peacockSection">
+    <div className="section peacock_section pb-0 pt_sm_0" id="peacockSection">
       {/* Show loader only on mobile */}
       {/* {isMobile && loading && <PeacockLoader />} */}
       {isMobile ? 
       <>
-        <LottieAnimationSection  data={data} position="0" logomark="sm style4" watermark="style4"/>
+        <LottieAnimationSection customClass="style2" data={data} position="0" logomark="sm style4" watermark="style4"/>
       </>
       
       : <>

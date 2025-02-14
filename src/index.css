@@ -4371,6 +4371,10 @@ section.section.walkthrough_section iframe { width: 100%;height: 1000px; object-
     margin-bottom:30px;
   }
 
+  .pt_sm_0{
+    padding-top:0px!important;
+  }
+
   .pb_sm_0{
     padding-bottom:0px!important;
   }

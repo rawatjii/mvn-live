@@ -192,11 +192,15 @@ const ScrollTriggerFrames = ({ data, onLoadComplete, onBannerExit, isMainBanner 
         </div>
         <ScrollDown className="color-black" />
       </div>
-      <Container className={data.classCustomCard}>
-        <div className="about">
-          <CustomCard title={cardData.title} desc={cardData.desc} className="px_sm_0 pb-0" />
-        </div>
-      </Container>
+
+      {data.classCustomCard && (
+        <Container className={data.classCustomCard}>
+          <div className="about">
+            <CustomCard title={cardData.title} desc={cardData.desc} className="px_sm_0 pb-0" />
+          </div>
+        </Container>
+      )}
+      
     </section>
   );
 };

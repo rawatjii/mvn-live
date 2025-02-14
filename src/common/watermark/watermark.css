@@ -41,10 +41,21 @@
   z-index: 1;
   color: #fff;
   font-size: 11px; 
+
+  &.style2{
+    bottom: 130px;
+  }
+
+  &.style3{
+    bottom: 60px;
+  }
 }
 .WaterMarkContainer .Watermark_logo img{
   width: 50px !important;
   height: auto;
+}
+.WaterMarkContainer .Watermark_logo.aeroGurgaon_logo img{
+  width: 100px!important;
 }
 .WaterMarkContainer.lightbox_watermark{
   padding: 5px 20px;
@@ -59,4 +70,10 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+@media(max-width:767px){
+  .WaterMarkContainer .Watermark_logo.aeroGurgaon_logo img{
+    width: 50px!important;
+  }
 }

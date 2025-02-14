@@ -14,7 +14,7 @@ import loaderImg from "../../../frontend/assets/bangalore/laoder/banner.png"
 // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-const LottieAnimationSection = React.memo(({backgroundImg, data, onLoadComplete, position, watermark, logomark, type,onBannerExit, isMainBanner }) => {
+const LottieAnimationSection = React.memo(({separateScroll, backgroundImg, data, onLoadComplete, position, watermark, logomark, type,onBannerExit, isMainBanner, customClass }) => {
   const containerRef = useRef(null);
   const titleRef = useRef();
   const lottieContainerRef = useRef(null);
@@ -154,14 +154,15 @@ const LottieAnimationSection = React.memo(({backgroundImg, data, onLoadComplete,
             <div className="frames_content">
               <div className="position-relative h_sm_100">
                 <div className="position-relative h_sm_100">
-                  <Watermark />
+                  <Watermark customClass={customClass} />
                   {/* <Logomark className={`left ${logomark ? logomark : null}`} /> */}
                   <div ref={lottieContainerRef} className={`Animation_height ${isMainBanner && 'isMainBanner'} ${data.Custom_height}`}style={{ backgroundImage: `url(${backgroundImg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
                 </div>
               </div>
 
-              {(!type || type !== 'style1') && <ScrollDown className="color-black" />}
+              {(!type || type !== 'style1') && !separateScroll && <ScrollDown className="color-black" />}
             </div>
+            {separateScroll && <ScrollDown className="color-black" />}
             {/* {type && type == 'style1' && <ScrollDown className="color-black" />} */}
             {(second_title || desc) && (
             <Container>

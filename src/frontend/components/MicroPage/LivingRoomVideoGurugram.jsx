@@ -9,7 +9,7 @@ const LivingRoomVideoGurugram = React.memo(({ data, onLoadComplete }) => {
 
 
   return (
-    <div className="section sliding_door_section pb-0" ref={sectionRef} id="peacockSection">
+    <div className="section sliding_door_section py-0" ref={sectionRef} id="peacockSection">
       {/* Loading progress */}
       {/* {loading && <PeacockLoader progress={progress} />} */}
 

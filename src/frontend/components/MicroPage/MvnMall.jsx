@@ -84,8 +84,8 @@ const MvnMall = ({data}) => {
               
                 <div className="col-sm-12 col-md-6 col-lg-6 mvn_mall_left_col">
                   <div className="position-relative">
-                    <img src={mvnMallAnimatedImg} alt="mvn mall icon" className="img-fluid" />
-                    <Watermark />
+                    <img src={mvnMallAnimatedImg} alt="mvn mall icon" className="img-fluid w-100" />
+                    <Watermark isMvnLogo="true" />
                     <Logomark className="left sm" />
                   </div>
                 </div>
@@ -94,13 +94,13 @@ const MvnMall = ({data}) => {
 
                   <div className="position-relative mb-4">
                     <img src={mvnMallBannerImg2} alt="mvn mall icon" className="img-fluid" />
-                    <Watermark />
+                    <Watermark isMvnLogo="true" />
                     <Logomark className="left sm" />
                   </div>
 
                   <div className="position-relative">
                     <img src={mvnMallBannerImg1} alt="mvn mall icon" className="img-fluid" />
-                    <Watermark />
+                    <Watermark isMvnLogo="true" />
                     <Logomark className="left sm" />
                   </div>
 

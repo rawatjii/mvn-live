@@ -8,8 +8,8 @@ const MasterBedroom = React.memo(({  data, onLoadComplete }) => {
 
 
   return (
-    <div className="section peacock_section pb-0 master-bed-room">
-      <LottieAnimationSection backgroundImg={bedrromImg} data={data} logomark={isMobile ? "left sm style3" : "left"} watermark={isMobile ? 'style3':''} position="0" type="style1" />
+    <div className="section peacock_section py-0 master-bed-room">
+      <LottieAnimationSection separateScroll={true} customClass="style3" backgroundImg={bedrromImg} data={data} logomark={isMobile ? "left sm style3" : "left"} watermark={isMobile ? 'style3':''} position="0" />
     </div>
   );
 });
