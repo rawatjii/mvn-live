@@ -59,7 +59,7 @@ const MvnMall = ({data}) => {
               <p className="des_style1 text-center mb_20">Experience a pollution-free haven at MVN's iconic masterpiece, where every breath you take is purified by advanced air filtration systems. Nestled above MVN mall, everything you need—from gourmet dining to designer boutiques and private cinemas—is just an elevator ride away. This is a sanctuary where luxury and convenience come together, offering you everything at your doorstep, so you never need to leave.</p>
             </Container>  
             
-            <ZoomOutImage dataFrames={data}/>
+            <ZoomOutImage dataFrames={data} />
 
             <div ref={secRef}>
               <div className="image_animation">
@@ -69,6 +69,7 @@ const MvnMall = ({data}) => {
                   alt="mvn mall animation"
                   className="img-fluid"
                 />
+                <Watermark isMvnLogo={true} />
               </div>
             </div>
           </>
