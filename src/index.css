@@ -4197,6 +4197,8 @@ footer {
   }
 }
 
+section.section.walkthrough_section iframe { width: 100%;height: 1000px; object-fit: cover; display:flex;}
+
 /* start responsive */
 /* by bhupendra */
 @media(min-width:768px) {
@@ -4283,9 +4285,23 @@ footer {
       height:500px;
     }
   }
+
+  section.section.walkthrough_section iframe{
+
+    height: 800px;
+  }
 }
 
 /* end of 1500 */
+
+@media(max-width:1366px){
+
+  section.section.walkthrough_section iframe{
+    height: 700px;
+  }
+}
+
+/* end of 1366 */
 
 @media(max-width:1199px) {
 
@@ -4327,6 +4343,11 @@ footer {
       padding: 70px 40px;
       margin: 40px;
     }
+  }
+
+  section.section.walkthrough_section iframe{
+
+    height: 430px;
   }
 }
 
@@ -5412,6 +5433,12 @@ footer {
     
   }
 
+  section.section.walkthrough_section iframe{
+
+    height: 270px;
+  }
+
+
 }
 
 /* end of 767 */
@@ -5821,9 +5848,6 @@ footer {
   }
 }
 @media (min-width: 767px) {
-  section.walkthrough_section.new_height iframe {
-    height: 700px !important;
-  }
 }
 /* walkthrough youtube video style end */
 
