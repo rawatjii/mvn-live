@@ -9,9 +9,9 @@ gsap.registerPlugin(ScrollTrigger);
 const ZoomOutImage = ({dataFrames}) => {
     console.log(dataFrames,"dataFrames")
     return (
-        <div className="mvn_mall_animation mb-4">
+        <div className="mvn_mall_animation mb-2">
             {/* <LottieAnimationSection data={data}   isMainBanner={true} /> */}
-            <ScrollTriggerFrames data={dataFrames} />
+            <ScrollTriggerFrames data={dataFrames} isMvnLogo={true} />
         </div>
     );
 };

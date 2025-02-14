@@ -11,7 +11,7 @@ import frame1 from "../../assets/images/mvn-mall/mvn-mall/1.webp"
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ScrollTriggerFrames = ({ data, onLoadComplete, onBannerExit, isMainBanner }) => {
+const ScrollTriggerFrames = ({ isMvnLogo, data, onLoadComplete, onBannerExit, isMainBanner }) => {
   const canvasRef = useRef(null);
   const sectionRef = useRef(null);
   const [images, setImages] = useState([]);
@@ -180,13 +180,13 @@ const ScrollTriggerFrames = ({ data, onLoadComplete, onBannerExit, isMainBanner 
     <section className={`section ${isMainBanner ? "banner p-0" : "pb-0"}`} ref={sectionRef} aria-label="Animation Section">
       <div className="frames_content">
         <div className="image_col position-relative">
-          <Watermark />
+          <Watermark isMvnLogo={isMvnLogo} />
           
           {/* <img src={frame1} alt="" /> */}
           <canvas
             ref={canvasRef}
             width={window.innerWidth}
-            height={window.innerHeight}
+            // height={window.innerHeight}
             style={{ display: "block", margin: "auto" }}
           />
         </div>

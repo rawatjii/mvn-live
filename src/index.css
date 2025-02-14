@@ -3708,6 +3708,10 @@ footer {
     /* min-height:100vh; */
     /* height:calc(100vh) */
   }
+
+  canvas{
+    height:100vh;
+  }
 }
 
 .mvn_mall_section{
