@@ -107,13 +107,21 @@ const Footer = () => {
         <div className="footer-bottom">
           <div className="box-b">
             <div className="left">
-              <ul>
+            <ul>
                 <li>
-                  <NavLink to={`${import.meta.env.VITE_APP_URL}privacy-policy`}>Privacy Policy | </NavLink>
+                  <NavLink to={`${import.meta.env.VITE_APP_URL}privacy-policy`}>Privacy Policy |</NavLink>
                 </li>
+                  {" "}
                 <li>
-                  <NavLink to={`${import.meta.env.VITE_APP_URL}disclaimer`}> Disclaimer</NavLink>
+                  <NavLink to={`${import.meta.env.VITE_APP_URL}disclaimer`}> Disclaimer |</NavLink>
                 </li>
+                {" "}
+                <li>
+                  <a href={`${import.meta.env.VITE_APP_URL}sitemap.xml`} target="_blank" rel="noopener noreferrer">
+                    Sitemap
+                  </a>
+                </li>
+
             </ul>
             </div>
             <div className="right">
