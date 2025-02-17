@@ -1858,7 +1858,7 @@ footer {
     content: '';
     height: 100%;
     width: 120%;
-    opacity: 10%;
+    opacity: 0.1;
     background: url('./frontend/assets/images/footer-bg-img.webp') no-repeat right center;
     left: -31%;
     bottom: 0px;

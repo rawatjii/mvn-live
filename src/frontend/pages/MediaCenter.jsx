@@ -175,6 +175,13 @@ function MediaCenter() {
 
   const onlineNews = [
     {
+      id: 10,
+      title: `The Rise of Four-Side Open Residences in Gurugram: A new trend in urban luxury`,
+      img: financialExpIMG,
+      postedDate: "February 12, 2025",
+      url: "https://www.financialexpress.com/money/the-rise-of-four-side-open-residences-a-new-standard-in-urban-luxury-3747311/",
+    },
+    {
       id: 9,
       title: `Sensex Today, Stock Market Feb 7 Highlights: Sensex, Nifty closed in red after RBI rate cut announcement; metals buck the trend`,
       img: etNowImg,
