@@ -127,8 +127,9 @@ const Footer = () => {
             <div className="right">
               <ul>
                 <li>
-                  <p className="main-pera">© Copyright 2024 - MVN Group. All Right Reserved. |
-                  <Link to="http://gtftechnologies.com/" target="_blank">Curated by: GTF Technologies</Link></p>
+                  {/* <p className="main-pera">© Copyright 2024 - MVN Group. All Right Reserved. | */}
+                  <Link to="http://gtftechnologies.com/" target="_blank">Curated by: GTF Technologies</Link>
+                  {/* </p> */}
                 </li>
               </ul>
             </div>
