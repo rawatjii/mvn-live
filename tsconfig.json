@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "esnext",                // Use modern JS (Vite handles transpilation)
+    "lib": ["dom", "dom.iterable", "esnext"], // Include DOM and ESNext libs
+    "allowJs": true,                   // Allow JS files for gradual adoption
+    "skipLibCheck": true,              // Skip type checking of .d.ts files
+    "esModuleInterop": true,           // Better module interop
+    "allowSyntheticDefaultImports": true, // Allow default imports
+    "strict": true,                    // Enable strict type checking
+    "module": "esnext",                // Use ESNext modules (Vite default)
+    "moduleResolution": "node",        // Node-style module resolution
+    "resolveJsonModule": true,         // Allow importing JSON
+    "isolatedModules": true,           // Required for Vite/esbuild
+    "jsx": "react-jsx",                // Modern JSX transform for React
+    "baseUrl": ".",                    // Base directory for module resolution
+    "paths": {
+      "@/*": ["src/*"]                 // Alias for src folder (optional, matches Vite)
+    }
+  },
+  "include": ["src/**/*"],             // Include all files in src
+  "exclude": ["node_modules", "dist"]  // Exclude build output and dependencies
+}

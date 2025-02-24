@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import heroImg from '../../assets/images/homepage/hero/hero_img.webp';
 import heroImgSm from '../../assets/images/homepage/hero/hero_img_sm.webp';
 
-const Hero = ()=>{
+const Hero:React.FC = ()=>{
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   return(
