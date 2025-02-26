@@ -4,13 +4,13 @@ import heroImg from '../../assets/images/homepage/hero/hero_img.webp';
 import heroImgSm from '../../assets/images/homepage/hero/hero_img_sm.webp';
 
 const Hero:React.FC = ()=>{
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 768);
 
   return(
     <>
       <div className="parent-box-div">
         <a
-          href={import.meta.env.VITE_APP_URL + "aeroone-gurgaon"}
+          href={`${import.meta.env.VITE_APP_URL}aeroone-gurgaon`}
           className="hero-banner-link"
           target="_blank"
           rel="noopener noreferrer"
@@ -26,7 +26,7 @@ const Hero:React.FC = ()=>{
           <h1 className="slider-heading">Enter The Experience Center</h1>
           <div className="btns">
             <Link
-              to={import.meta.env.VITE_APP_URL + "aeroone-gurgaon"}
+              to={`${import.meta.env.VITE_APP_URL}aeroone-gurgaon`}
               className="btn ink-btn btn_style3 r_100"
             >
               Click Here

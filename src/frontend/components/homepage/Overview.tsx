@@ -5,8 +5,12 @@ import Col from 'react-bootstrap/Col';
 import headingIconImg from "../../assets/images/icons/heading-icon-img.webp";
 import homeMobileLogo from "../../../frontend/assets/mvn-aeroone-logo-img.webp";
 
+// define prop interface
+interface OverviewProps{
+  className?:string;
+}
 
-const Overview = ({className}) => {
+const Overview:React.FC<OverviewProps> = ({className}) => {
 
   return (
     <>
@@ -24,7 +28,7 @@ const Overview = ({className}) => {
             Behold to Experience the complete view!
           </h3>
           <a
-            href={import.meta.env.VITE_APP_URL + "aeroone-gurgaon"}
+            href={`${import.meta.env.VITE_APP_URL}aeroone-gurgaon`}
             className="btn btn_style3 r_100 mt-3 mt-md-4"
           >
             Click Here
