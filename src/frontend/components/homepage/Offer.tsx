@@ -4,10 +4,10 @@ import offer1_sm from '../../assets/images/homepage/offer/offer1_sm.mp4';
 
 // define interface
 interface OfferProps{
-  clickHandler:
+  clickHandler:(value:boolean)=>void;
 }
 
-const Offer:React.FC = React.memo(({clickHandler})=>{
+const Offer:React.FC<OfferProps> = React.memo(({clickHandler})=>{
   return(
     <div className="offers_section">
       <div className="single" role="link" tabIndex={0} style={{cursor:'pointer'}} onClick={()=>clickHandler(false)}>

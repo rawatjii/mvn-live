@@ -8,7 +8,7 @@ import Hero from "../components/homepage/Hero";
 import Overview from "../components/homepage/Overview";
 const Banner1 = React.lazy(()=>import("../components/homepage/Banner1"));
 const Offer = React.lazy(()=>import("../components/homepage/Offer"));
-const Projects = React.lazy(()=>import("../components/homepage/Projects"));
+const Projects = React.lazy(()=>import("../components/homepage/Projects.tsx"));
 const OtherProjects = React.lazy(()=>import("../components/homepage/OtheProjects"));
 const OurJourney = React.lazy(()=>import("../components/homepage/OurJourney"));
 const OurTeam = React.lazy(()=>import("../components/homepage/OurTeam"));

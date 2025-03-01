@@ -20,7 +20,20 @@ import mvnAeroworldBgSm from '../../assets/images/homepage/projects/mvn-aeroworl
 import mvnBangaloreBg from '../../assets/images/homepage/projects/bangalore/bangalore-project-map.webp';
 import mvnBangaloreBgSm from '../../assets/images/homepage/projects/bangalore/bangalore-project-map-sm.webp';
 
-const projectsData = [
+// Define project interface for the projectsdata array
+
+interface Project{
+  mobile:string;
+  desktop:string;
+  name:string;
+  location:string;
+  otherPage:boolean;
+  link:string;
+  watermark:boolean;
+}
+
+// Define the projects data with type
+const projectsData:Project[] = [
   {
     mobile: mvnAerooneImg,
     desktop: mvnAerooneImgDesktop,
@@ -48,13 +61,13 @@ const projectsData = [
   },
 ];
 
-const Projects = () => {
+const Projects:React.FC = () => {
 
-  const imageDivRefs = useRef([]);
+  const imageDivRefs = useRef<(HTMLDivElement | null)[]>([]);
   const titleRef = useRef();
   const desRef = useRef();
-  const [imagesLoaded, setImagesLoaded] = useState(0);
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768); // Set initial state based on current screen size
+  const [imagesLoaded, setImagesLoaded] = useState<number>(0);
+  const [isDesktop, setIsDesktop] = useState<boolean>(window.innerWidth >= 768); // Set initial state based on current screen size
 
   useEffect(() => {
     const handleResize = () => {
