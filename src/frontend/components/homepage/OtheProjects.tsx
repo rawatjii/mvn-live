@@ -19,7 +19,23 @@ import { useMatches } from "../../../theme/theme";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const otherProjects = [
+interface OtherProject{
+  name:string;
+  thumbnails: {
+    mobile:string;
+    desktop:string;
+  };
+  link:string;
+}
+
+interface OtherProjectsProps{
+  data?:OtherProject[];
+  title?:string;
+  subTitle?:string;
+  mobContent?:number;
+}
+
+const otherProjects:OtherProject[] = [
   {
     name: "MVN School",
     thumbnails: {
@@ -46,9 +62,9 @@ const otherProjects = [
   },
 ];
 
-const OtherProjects = React.memo(({ data, title, subTitle, mobContent=12 }) => {
-  const titleRef = useRef();
-  const imageDivRefs = useRef([]);
+const OtherProjects:React.FC<OtherProjectsProps> = React.memo(({ data, title, subTitle, mobContent=12 }) => {
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const imageDivRefs = useRef<(HTMLDivElement | null)[]>([]);
   const { isMobile } = useMatches(); 
   const [imagesLoaded, setImagesLoaded] = useState(0);
 

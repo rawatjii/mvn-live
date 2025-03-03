@@ -29,7 +29,7 @@ interface Project{
   location:string;
   otherPage:boolean;
   link:string;
-  watermark:boolean;
+  watermark?:boolean;
 }
 
 // Define the projects data with type
@@ -64,8 +64,8 @@ const projectsData:Project[] = [
 const Projects:React.FC = () => {
 
   const imageDivRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const titleRef = useRef();
-  const desRef = useRef();
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const desRef = useRef<HTMLParagraphElement | null>(null);
   const [imagesLoaded, setImagesLoaded] = useState<number>(0);
   const [isDesktop, setIsDesktop] = useState<boolean>(window.innerWidth >= 768); // Set initial state based on current screen size
 
@@ -79,7 +79,7 @@ const Projects:React.FC = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
+  
   const handleImageLoad = () => {
     setImagesLoaded((prev) => prev + 1);
   };
@@ -87,6 +87,7 @@ const Projects:React.FC = () => {
   const leftColProjects = isDesktop
     ? [projectsData[0], projectsData[1]]
     : [projectsData[0], projectsData[1]];
+
   const rightColProjects = isDesktop
     ? [projectsData[2]]
     : [projectsData[2]]
