@@ -6,8 +6,8 @@ import Skeleton from "../../common/Loader/skeleton/Index";
 
 import Hero from "../components/homepage/Hero";
 import Overview from "../components/homepage/Overview";
+import Offer from "../components/homepage/Offer";
 const Banner1 = React.lazy(()=>import("../components/homepage/Banner1"));
-const Offer = React.lazy(()=>import("../components/homepage/Offer"));
 const Projects = React.lazy(()=>import("../components/homepage/Projects"));
 const OtherProjects = React.lazy(()=>import("../components/homepage/OtheProjects"));
 const OurJourney = React.lazy(()=>import("../components/homepage/OurJourney"));
@@ -149,9 +149,11 @@ const Homepage = () => {
           <Banner1 />
         </Suspense>
 
-        <Suspense fallback={<Skeleton height="h_100vh" />}>
-          <Offer clickHandler={showCustomModal} />
-        </Suspense>
+        <Offer clickHandler={showCustomModal} />
+
+        {/* <Suspense fallback={<Skeleton height="h_100vh" />}>
+          
+        </Suspense> */}
 
         <Suspense fallback={<Skeleton height="h_200vh" />}>
           <Projects />
