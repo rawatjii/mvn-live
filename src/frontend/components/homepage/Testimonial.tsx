@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { RefObject, useRef } from "react";
 import { Container } from "react-bootstrap";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -16,7 +16,14 @@ import testiImg3 from '../../assets/images/testimonials/prashant.webp';
 import testiImg4 from '../../assets/images/testimonials/vikas.webp';
 import headingIconImg from "../../assets/images/icons/heading-icon-img.webp";
 
-const testimonialData = [
+interface TestimonialData{
+  image:string;
+  title:string;
+  msg:string;
+  name:string;
+}
+
+const testimonialData:TestimonialData[] = [
   { 
      image: testiImg1,
      title: 'Going above and beyond',
@@ -43,9 +50,9 @@ const testimonialData = [
   }
 ];
 
-const Testimonial = () => {
-  const titleRef = useRef();
-  const contentRef = useRef();
+const Testimonial:React.FC = () => {
+  const titleRef:RefObject<HTMLHeadingElement> = useRef<HTMLHeadingElement>(null);
+  const contentRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <section className="section testimonial_section" aria-label="Testimonial Section">

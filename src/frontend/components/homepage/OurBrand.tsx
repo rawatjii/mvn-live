@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { RefObject, useRef, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import LazyLoad from "react-lazyload";
 
@@ -11,7 +11,13 @@ import headingIconImg from "../../assets/images/icons/heading-icon-img.webp";
 import LeftSideBanner from "../../assets/images/icons/brand/our-brand-ethos-bg-2.webp";
 import { useMatches } from "../../../theme/theme";
 
-const brandData = [
+interface BrandData {
+  title: string;
+  para: string;
+  icon: string;
+}
+
+const brandData: BrandData[] = [
   {
     title: "Commitment",
     para: `MVN develops and heightens competencies that show a realtor's dedication to code of Ethics & Standards of Practice.`,
@@ -29,11 +35,15 @@ const brandData = [
   },
 ];
 
-const OurBrand = () => {
+const OurBrand: React.FC = () => {
   const { isMobile } = useMatches();
 
-  const titleRef = useRef();
-  const dataRefs = useRef([]);
+  // Properly typed refs
+  const titleRef: RefObject<HTMLHeadingElement> =
+    useRef<HTMLHeadingElement>(null);
+
+  // Use an array of refs for multiple elements
+  const dataRefs = useRef<RefObject<HTMLDivElement>[]>([]);
 
   return (
     <section className="section our_brand_section" aria-label="Brand Section">
@@ -71,27 +81,30 @@ const OurBrand = () => {
         <div className="brand_content">
           <Row>
             <div className="inner-ethos">
-              {brandData?.map((item, index) => (
-                <div key={index} className="box">
-                  <div
-                    ref={(el) => (dataRefs.current[index] = el)}
-                    className="box-flex"
-                  >
-                    <div className="icon">
-                      <img
-                        src={item.icon}
-                        alt="mvn brand icon"
-                        className="img-fluid"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="content">
-                      <h4 className="title">{item.title}</h4>
-                      <p>{item.para}</p>
+              {brandData?.map((item, index) => {
+                if (!dataRefs.current[index]) {
+                  dataRefs.current[index] = React.createRef<HTMLDivElement>();
+                }
+
+                return (
+                  <div key={index} className="box">
+                    <div ref={dataRefs.current[index]} className="box-flex">
+                      <div className="icon">
+                        <img
+                          src={item.icon}
+                          alt="mvn brand icon"
+                          className="img-fluid"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="content">
+                        <h4 className="title">{item.title}</h4>
+                        <p>{item.para}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </Row>
         </div>
