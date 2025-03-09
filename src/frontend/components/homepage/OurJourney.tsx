@@ -18,11 +18,17 @@ import FooterBgImg from "../../assets/images/our-story-bg.webp"; // Corrected pa
 // Register ScrollTrigger plugin with GSAP
 gsap.registerPlugin(ScrollTrigger);
 
-const OurJourney = () => {
-  const titleRef = useRef();
-  const contentRef = useRef([]);
-  const journeyRef = useRef();
-  const [journeyData] = useState([
+interface JourneyData{
+  icon:string;
+  title:string;
+  value:string;
+}
+
+const OurJourney:React.FC = () => {
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const contentRef = useRef<(HTMLDivElement | null)[]>([]);
+  const journeyRef = useRef<HTMLDivElement | null>(null);
+  const [journeyData] = useState<(JourneyData | null)[]>([
     { icon: expIcon, title: "Years Experience", value: "40+" },
     { icon: citiesIcon, title: "Cities", value: "04" },
     { icon: completeProjectsIcon, value: "09", title: "Completed Projects" },

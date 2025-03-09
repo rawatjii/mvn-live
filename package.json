@@ -16,6 +16,7 @@
     "@lottiefiles/react-lottie-player": "^3.5.4",
     "@reduxjs/toolkit": "^2.3.0",
     "bootstrap": "^5.3.3",
+    "formik": "^2.4.6",
     "g": "^2.0.1",
     "gsap": "npm:@gsap/business@^3.12.5",
     "lottie-react": "^2.4.0",

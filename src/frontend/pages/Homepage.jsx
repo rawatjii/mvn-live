@@ -10,7 +10,7 @@ const Banner1 = React.lazy(()=>import("../components/homepage/Banner1"));
 const Offer = React.lazy(()=>import("../components/homepage/Offer"));
 const Projects = React.lazy(()=>import("../components/homepage/Projects.tsx"));
 const OtherProjects = React.lazy(()=>import("../components/homepage/OtheProjects.tsx"));
-const OurJourney = React.lazy(()=>import("../components/homepage/OurJourney"));
+const OurJourney = React.lazy(()=>import("../components/homepage/OurJourney.tsx"));
 const OurTeam = React.lazy(()=>import("../components/homepage/OurTeam"));
 const OurBrand = React.lazy(()=>import("../components/homepage/OurBrand"));
 const Testimonial = React.lazy(()=>import("../components/homepage/Testimonial"));

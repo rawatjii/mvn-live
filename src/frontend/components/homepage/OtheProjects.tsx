@@ -66,7 +66,7 @@ const OtherProjects:React.FC<OtherProjectsProps> = React.memo(({ data, title, su
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const imageDivRefs = useRef<(HTMLDivElement | null)[]>([]);
   const { isMobile } = useMatches(); 
-  const [imagesLoaded, setImagesLoaded] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState<number>(0);
 
   const initializeAnimations = useCallback(() => {
     if (otherProjects.length > 0) {

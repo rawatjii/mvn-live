@@ -47,6 +47,7 @@ import { athensGurgaonPhase1Data } from "./frontend/pages/micro/athens-gurgaon-p
 import { athensGurgaonPhase2Data } from "./frontend/pages/micro/athens-gurgaon-phase-2/Index.jsx";
 import { mvnMallData } from "./frontend/pages/micro/mvnMall/Index.jsx";
 import MvnMall1 from "./frontend/pages/mvnMall.jsx";
+import FormTesting from "./test/Form/form.jsx";
 
 
 
@@ -66,6 +67,18 @@ const router = createBrowserRouter([
 
         ),
       },
+      {
+        path: "form-testing",
+        element: (
+          <ErrorBoundary>
+            <FrontendRoute loaderType="homepage">
+              <FormTesting />
+            </FrontendRoute>
+          </ErrorBoundary>
+
+        ),
+      },
+      
       {
         path: "about-us",
         element: (
