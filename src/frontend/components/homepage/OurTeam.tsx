@@ -8,9 +8,9 @@ import headingIconImg from "../../assets/images/icons/heading-icon-img.webp";
 const OurTeam: React.FC = () => {
   // Properly typed refs
 
-  const titleRef: RefObject<HTMLHeadingElement> = useRef<HTMLHeadingElement>();
-  const imageRef: RefObject<HTMLImageElement> = useRef<HTMLImageElement>();
-  const contentRef: RefObject<HTMLParagraphElement> = useRef<HTMLParagraphElement>();
+  const titleRef: RefObject<HTMLHeadingElement> = useRef<HTMLHeadingElement>(null);
+  const imageRef: RefObject<HTMLImageElement> = useRef<HTMLImageElement>(null);
+  const contentRef: RefObject<HTMLParagraphElement> = useRef<HTMLParagraphElement>(null);
 
   return (
     <section className="section our_team_section" aria-label="Team Section">
