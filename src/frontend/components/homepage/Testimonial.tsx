@@ -1,7 +1,7 @@
 import React, { RefObject, useRef } from "react";
 import { Container } from "react-bootstrap";
 
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide, SwiperRef } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper/modules';
 
 // Import Swiper styles
@@ -52,7 +52,7 @@ const testimonialData:TestimonialData[] = [
 
 const Testimonial:React.FC = () => {
   const titleRef:RefObject<HTMLHeadingElement> = useRef<HTMLHeadingElement>(null);
-  const contentRef = useRef<HTMLDivElement | null>(null);
+  const contentRef = useRef<SwiperRef>(null);
 
   return (
     <section className="section testimonial_section" aria-label="Testimonial Section">
