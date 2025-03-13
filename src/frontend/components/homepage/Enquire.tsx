@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { RefObject, useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 
 import MobileenquireBg from "../../assets/images/enquire/form-bg.webp";
@@ -7,9 +7,9 @@ import DesktopenquireBg from "../../assets/images/enquire/form-bg.webp";
 import LazyLoad from "react-lazyload";
 
 
-const Enquire = () => {
-  const titleRef = useRef();
-  const contentRef = useRef();
+const Enquire:React.FC = () => {
+  const titleRef:RefObject<HTMLHeadingElement> = useRef<HTMLHeadingElement>(null);
+  const contentRef:RefObject<HTMLParagraphElement> = useRef<HTMLParagraphElement>(null);
   const [imageSrc, setImageSrc] = useState(DesktopenquireBg);
 
   useEffect(() => {

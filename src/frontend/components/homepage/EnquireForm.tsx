@@ -1,12 +1,17 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { RefObject, useCallback, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import Button from "../../../common/Button/Button";
 import headingIconImg from "../../assets/images/icons/heading-icon-img.webp";
 
-const EnquireForm = ({ career, projectName }) => {
-  const titleRef = useRef();
-  const formRef = useRef();
+interface EnquireFormProps {
+  career:boolean;
+  projectName:string;
+}
+
+const EnquireForm:React.FC<EnquireFormProps> = ({ career, projectName }) => {
+  const titleRef:RefObject<HTMLHeadingElement> = useRef<HTMLHeadingElement>(null);
+  const formRef:RefObject<HTMLFormElement> = useRef<HTMLFormElement>(null);
 
   const [formDetails, setFormDetails] = useState({});
   const [loading, setLoading] = useState(false);
