@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { RefObject, useEffect, useRef, useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import Button from "./Button/Button";
 import Modal from "react-bootstrap/Modal";
@@ -6,20 +6,36 @@ import SecTitle from "./SecTitle/Index";
 import Formlogo from "../../public/assets/images/logo_white.webp";
 import Loader from "./Loader/loader";
 
-const CustomModal = React.memo(({ show, hide, projectName, isOffer }) => {
-  const [formDetails, setFormDetails] = useState({});
-  const [loading, setLoading] = useState(false);
+interface CustomModalProps {
+  show:boolean;
+  hide:()=>void;
+  projectName:string;
+  isOffer:boolean;
+}
 
-  const handleFormChange = (e) => {
+interface FormDetails{
+  name?: string;
+  email?: string;
+  number?: string;
+  message?: string;
+}
+
+const CustomModal:React.FC<CustomModalProps> = React.memo(({ show, hide, projectName, isOffer }) => {
+  const [formDetails, setFormDetails] = useState<FormDetails>({});
+  const [loading, setLoading] = useState<boolean>(false);
+  const modalRef:RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
+
+  const handleFormChange = (e:React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const {name, value} = e.target;
+
     setFormDetails({
       ...formDetails,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const apiUrl = `https://api2.gtftech.com/AjaxHelper/AgentInstantQuerySetter.aspx?qAgentID=4804&qSenderName=${formDetails.name}"&qMobileNo=${formDetails.number}&qEmailID=${formDetails.email}&qQueryMessage=${formDetails.message}&qProjectName=${projectName}`;
 
     if (
       !formDetails.name ||
@@ -29,6 +45,7 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer }) => {
     ) {
       alert("Please fill all details!");
     } else {
+      const apiUrl = `https://api2.gtftech.com/AjaxHelper/AgentInstantQuerySetter.aspx?qAgentID=4804&qSenderName=${formDetails.name}"&qMobileNo=${formDetails.number}&qEmailID=${formDetails.email}&qQueryMessage=${formDetails.message}&qProjectName=${projectName}`;
       setLoading(true);
       fetch(apiUrl, {
         method: "GET", // HTTP method
@@ -58,11 +75,9 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer }) => {
     }
   };
 
-  const modalRef = useRef();
-
   useEffect(() => {
-    const close = (e) => {
-      if (!modalRef.current?.contains(e.target)) {
+    const close = (e:MouseEvent) => {
+      if (!modalRef.current?.contains(e.target as Node)) {
         console.log("closed");
         hide();
       }
@@ -147,7 +162,7 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer }) => {
                       onChange={(e) => {
                         const inputValue = e.target.value.replace(/\D/g, ""); // Remove non-digits
                         if (inputValue.length <= 10) {
-                          handleFormChange({ target: { name: "number", value: inputValue } });
+                          handleFormChange({ target: { name: "number", value: inputValue } } as React.ChangeEvent<HTMLInputElement>);
                         }
                       }}
                       autoComplete="tel"
@@ -242,7 +257,7 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer }) => {
                     onChange={(e) => {
                       const inputValue = e.target.value.replace(/\D/g, ""); // Remove non-digits
                       if (inputValue.length <= 10) {
-                        handleFormChange({ target: { name: "number", value: inputValue } });
+                        handleFormChange({ target: { name: "number", value: inputValue } } as React.ChangeEvent<HTMLInputElement>);
                       }
                     }}
                     autoComplete="tel"

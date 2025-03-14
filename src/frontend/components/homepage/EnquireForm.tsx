@@ -1,6 +1,5 @@
-import React, { RefObject, useCallback, useRef, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import { Form } from "react-bootstrap";
+import React, { ChangeEvent, RefObject, useCallback, useRef, useState } from "react";
+import { Col, Container, Row, Form } from "react-bootstrap";
 import Button from "../../../common/Button/Button";
 import headingIconImg from "../../assets/images/icons/heading-icon-img.webp";
 
@@ -9,26 +8,35 @@ interface EnquireFormProps {
   projectName:string;
 }
 
+interface FormDetails{
+  name?: string;
+  number?: string;
+  email?: string;
+  message?: string;
+}
+
 const EnquireForm:React.FC<EnquireFormProps> = ({ career, projectName }) => {
   const titleRef:RefObject<HTMLHeadingElement> = useRef<HTMLHeadingElement>(null);
   const formRef:RefObject<HTMLFormElement> = useRef<HTMLFormElement>(null);
 
-  const [formDetails, setFormDetails] = useState({});
-  const [loading, setLoading] = useState(false);
+  const [formDetails, setFormDetails] = useState<FormDetails>({});
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const handleFormChange = useCallback((e) => {
+  const handleFormChange = useCallback((e:React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const {name, value} = e.target as HTMLInputElement;
+
     setFormDetails((prevDetails)=>({
       ...prevDetails,
-      [e.target.name]: e.target.value,
+      name: value,
     }));
   }, []);
 
   // `https://api2.gtftech.com/AjaxHelper/AgentInstantQuerySetter.aspx?qAgentID=4804&qSenderName=${formDetails.name}"&qMobileNo=${formDetails.number}&qEmailID=${formDetails.email}&qQueryMessage=${formDetails.message}&qProjectName=&qIP=".getUserIP().`
 
-  const handleSubmit = useCallback((e) => {
+  const handleSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const apiUrl = `https://api2.gtftech.com/AjaxHelper/AgentInstantQuerySetter.aspx?qAgentID=4804&qSenderName=${formDetails.name}"&qMobileNo=${formDetails.number}&qEmailID=${formDetails.email}&qQueryMessage=${formDetails.message}&qProjectName=${projectName}`;
+    
     if (
       !formDetails.name ||
       !formDetails.email ||
@@ -37,6 +45,9 @@ const EnquireForm:React.FC<EnquireFormProps> = ({ career, projectName }) => {
     ) {
       alert("Please fill all details!");
     } else {
+
+      const apiUrl = `https://api2.gtftech.com/AjaxHelper/AgentInstantQuerySetter.aspx?qAgentID=4804&qSenderName=${formDetails.name}"&qMobileNo=${formDetails.number}&qEmailID=${formDetails.email}&qQueryMessage=${formDetails.message}&qProjectName=${projectName}`;
+
       setLoading(true);
       fetch(apiUrl, {
         method: "GET", // HTTP method
@@ -128,7 +139,7 @@ const EnquireForm:React.FC<EnquireFormProps> = ({ career, projectName }) => {
                 onChange={(e) => {
                   const inputValue = e.target.value.replace(/\D/g, ""); // Remove non-digits
                   if (inputValue.length <= 10) {
-                    handleFormChange({ target: { name: "number", value: inputValue } });
+                    handleFormChange({ target: { name: "number", value: inputValue } } as React.ChangeEvent<HTMLInputElement>);
                   }
                 }}
                 autoComplete="tel"
@@ -203,7 +214,7 @@ const EnquireForm:React.FC<EnquireFormProps> = ({ career, projectName }) => {
           <Button
             type="submit"
             className="btn_style3"
-            disabled={loading ? true : false}
+            disabled={loading}
           >
             {loading ? "Sending..." : "Submit"}
           </Button>
