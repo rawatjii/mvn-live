@@ -14,8 +14,8 @@ const OurJourney = React.lazy(()=>import("../components/homepage/OurJourney.tsx"
 const OurTeam = React.lazy(()=>import("../components/homepage/OurTeam"));
 const OurBrand = React.lazy(()=>import("../components/homepage/OurBrand"));
 const Testimonial = React.lazy(()=>import("../components/homepage/Testimonial"));
-const Enquire = React.lazy(()=>import("../components/homepage/Enquire"));
-const EnquireForm = React.lazy(()=>import("../components/homepage/EnquireForm"));
+const Enquire = React.lazy(()=>import("../components/homepage/Enquire.tsx"));
+const EnquireForm = React.lazy(()=>import("../components/homepage/EnquireForm.tsx"));
 const CustomModal = React.lazy(()=>import("../../common/Modal"));
 // const Enquire = React.lazy(() =>
 //   new Promise((resolve) =>

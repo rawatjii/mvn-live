@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Suspense } from "react";
-import MicroBanner from "../components/MicroBanner/Index";
-import AboutOverview from '../components/About/Overview';
+import MicroBanner from "../components/MicroBanner/Index.tsx";
+import AboutOverview from '../components/About/Overview.tsx';
 
 const Philosophy = React.lazy(()=>import("../components/About/Philosophy"));
 const Timeline = React.lazy(()=>import("../components/About/Timeline"));

@@ -8,9 +8,23 @@ import './microBanner.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const MicroBanner = ({bg, data})=>{
-  const titleRef = useRef();
-  const linksRef = useRef();
+interface Link{
+  name:string;
+  link?:string;
+}
+
+interface MicroBannerProps{
+  bg:string;
+  data: {
+    title: string;
+    content: string;
+    links: Link[];
+  }
+}
+
+const MicroBanner:React.FC<MicroBannerProps> = ({bg, data})=>{
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const linksRef = useRef<HTMLDivElement>(null);
 
   useEffect(()=>{
     // breadcrumb animation
@@ -44,7 +58,7 @@ const MicroBanner = ({bg, data})=>{
           <Container>
             <Breadcrumb ref={linksRef}>
               {data.links.map((link, index)=>(
-                <Breadcrumb.Item key={index} href={link.link ? link.link : null}>{link.name}</Breadcrumb.Item>
+                <Breadcrumb.Item key={index} href={link.link ? link.link : undefined}>{link.name}</Breadcrumb.Item>
               ))}
             </Breadcrumb>
           </Container>
