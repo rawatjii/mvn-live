@@ -2,7 +2,7 @@ import React, { useState, useEffect, Suspense } from "react";
 import MicroBanner from "../components/MicroBanner/Index.tsx";
 import AboutOverview from '../components/About/Overview.tsx';
 
-const Philosophy = React.lazy(()=>import("../components/About/Philosophy"));
+const Philosophy = React.lazy(()=>import("../components/About/Philosophy.tsx"));
 const Timeline = React.lazy(()=>import("../components/About/Timeline"));
 const OurTeam = React.lazy(()=>import("../components/About/Ourteam"));
 const Enquire = React.lazy(()=>import("../components/homepage/Enquire"));

@@ -16,10 +16,10 @@ import headingIconImg from "../../assets/images/icons/heading-icon-img.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Philosophy = () => {
-  const titleRef = useRef();
-  const miniTitleRefs = useRef([]);
-  const desRefs = useRef([]);
+const Philosophy:React.FC = () => {
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const miniTitleRefs = useRef<HTMLHeadingElement[]>([]);
+  const desRefs = useRef<HTMLDivElement || HTMLParagraphElement[]>([]);
 
   useEffect(() => {
     // Title animation
@@ -89,11 +89,11 @@ const Philosophy = () => {
           <div className="flex-li-row-1">
             <ul>
          <li>
-            <h4 ref={(el) => miniTitleRefs.current[0] = el} className="title">
+            <h4 ref={(el) => el && (miniTitleRefs.current[0] = el)} className="title">
               <img src={planeIcon} alt="mvn plan icon" className="img-fluid icon"  loading="lazy"/>
               Our Vision
             </h4>
-            <p ref={(el) => desRefs.current[0] = el}>
+            <p ref={(el) => el && (desRefs.current[0] = el)}>
             We craft exceptional ecosystems that drive India’s growth, blending sustainability with global standards. From universities to urban spaces, we shape aspirations and achievements across India, from Khambi to Bengaluru.
             </p>
           </li>
@@ -101,11 +101,11 @@ const Philosophy = () => {
 
           <ul>
           <li>
-            <h4 ref={(el) => miniTitleRefs.current[1] = el} className="title">
+            <h4 ref={(el) => el && (miniTitleRefs.current[1] = el)} className="title">
               <img src={planeIcon} alt="mvn plan icon" className="img-fluid icon" loading="lazy" />
               Our Mission
             </h4>
-            <p ref={(el) => desRefs.current[1] = el}>
+            <p ref={(el) => el && (desRefs.current[1] = el)}>
               We build exceptional ecosystems that serve India’s high-growth ambitions. As part of our mission, we are creating a legacy of world-class real estate offerings that are locally relevant and sustainable yet meet global standards. We are building universities, urban infrastructure, hotels, and homes with equal zest across ‘aspiring’ to ‘arrived’ India – from Khambi to Bengaluru.
             </p>
           </li>
@@ -114,11 +114,11 @@ const Philosophy = () => {
           <div className="flex-li-row-2">
             <ul>
           <li>
-            <h4 ref={(el) => miniTitleRefs.current[2] = el} className="title">
+            <h4 ref={(el) => el && (miniTitleRefs.current[2] = el)} className="title">
               <img src={planeIcon} alt="mvn plan icon" className="img-fluid icon" loading="lazy" />
               Our Values
             </h4>
-            <ul ref={(el) => desRefs.current[2] = el} className="our-values-ul-icon">
+            <ul ref={(el) => el && (desRefs.current[2] = el)} className="our-values-ul-icon">
               <li>
                 <img src={ourValueIcon1} alt="mvn Enrich lives" className="img-fluid values-ul-icon" loading="lazy" />                
                 Enrich lives
