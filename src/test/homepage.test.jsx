@@ -3,7 +3,7 @@ import Hero from '../frontend/components/homepage/Hero';
 import Overview from '../frontend/components/homepage/Overview';
 import {MemoryRouter} from 'react-router-dom';
 import userEvent from "@testing-library/user-event";
-import { describe } from 'vitest';
+import { describe, expect } from 'vitest';
 
 // Ensure VITE_APP_URL is set in the test environment
 // import.meta.env.VITE_APP_URL = "/";
@@ -50,16 +50,65 @@ describe('homepage testing', ()=>{
         
     })
 
-    test('overview section', ()=>{
-        render(
-            <MemoryRouter>
-                <Overview />
-            </MemoryRouter>
-        )
+    describe('overview section', ()=>{
+        // test classname props
+        test("overview section applies className prop correctly", ()=>{
+            const customClassName = "custom-class";
+            render(
+                <MemoryRouter>
+                    <Overview className={customClassName} />
+                </MemoryRouter>
+            );
+
+            const overviewSection = screen.getByRole('region', {name: "Overview Section"});
+            expect(overviewSection).toHaveClass(customClassName);
+        });
+
+        test("overview section renders without crashing", ()=>{
+            render(
+                <MemoryRouter>
+                    <Overview />
+                </MemoryRouter>
+            );
+
+            // check if the component renders without crashing
+            const overviewSection = screen.getByRole('region', {name:"Overview Section"});
+            expect(overviewSection).toBeInTheDocument();
+        })
+
+        test("displays the correct logo and alt text", ()=>{
+            render(
+                <MemoryRouter>
+                    <Overview />
+                </MemoryRouter>
+            )
+
+            const logo = screen.getByAltText('mvn aeroone logo');
+            expect(logo).toBeInTheDocument();
+            expect(logo).toHaveAttribute('src', expect.stringContaining('mvn-aeroone-logo-img.webp'));
+        });
+
+        test("displays the correct heading and description", ()=>{
+            render(
+                <MemoryRouter>
+                    <Overview />
+                </MemoryRouter>
+            );
+
+            const location = document.querySelector('.logo_title');
+            const status = document.querySelector('.status');
+
+            // slogan
+            const slogan = screen.getByText("Behold to Experience the complete view!");
+            
+            expect(location).toBeInTheDocument();
+            expect(status).toBeInTheDocument();
+            expect(slogan).toBeInTheDocument();
+        })
 
         // check logo exist
-        const logoImg = screen.queryByAltText('mvn aeroone logo');
-        expect(logoImg).toBeInTheDocument();
+        // const logoImg = screen.queryByAltText('mvn aeroone logo');
+        // expect(logoImg).toBeInTheDocument();
     })
 })
 
