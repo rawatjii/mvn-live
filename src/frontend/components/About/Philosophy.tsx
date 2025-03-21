@@ -19,7 +19,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Philosophy:React.FC = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const miniTitleRefs = useRef<HTMLHeadingElement[]>([]);
-  const desRefs = useRef<HTMLDivElement || HTMLParagraphElement[]>([]);
+  const desRefs = useRef<(HTMLUListElement | HTMLParagraphElement)[]>([]);
 
   useEffect(() => {
     // Title animation
@@ -72,8 +72,9 @@ const Philosophy:React.FC = () => {
     });
 
     // Refresh ScrollTrigger on resize
-    window.addEventListener("resize", ScrollTrigger.refresh);
-    return () => window.removeEventListener("resize", ScrollTrigger.refresh);
+    const handleResize = ()=>ScrollTrigger.refresh();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
 
   }, []);
 
