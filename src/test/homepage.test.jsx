@@ -87,7 +87,7 @@ describe('homepage testing', ()=>{
             expect(logo).toBeInTheDocument();
             expect(logo).toHaveAttribute('src', expect.stringContaining('mvn-aeroone-logo-img.webp'));
         });
-
+        
         test("displays the correct heading and description", ()=>{
             render(
                 <MemoryRouter>
@@ -105,7 +105,7 @@ describe('homepage testing', ()=>{
             expect(status).toBeInTheDocument();
             expect(slogan).toBeInTheDocument();
         })
-
+          
         // check logo exist
         // const logoImg = screen.queryByAltText('mvn aeroone logo');
         // expect(logoImg).toBeInTheDocument();
