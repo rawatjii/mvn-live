@@ -1,0 +1,3 @@
+select.form-control{
+  background: url(/public/assets/images/icons/chevron_down.svg) no-repeat calc(100% - 14px) center;
+}

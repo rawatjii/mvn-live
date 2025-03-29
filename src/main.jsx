@@ -46,6 +46,7 @@ import { athensGurgaonPhase1Data } from "./frontend/pages/micro/athens-gurgaon-p
 import { athensGurgaonPhase2Data } from "./frontend/pages/micro/athens-gurgaon-phase-2/Index.jsx";
 import { mvnMallData } from "./frontend/pages/micro/mvnMall/Index.jsx";
 import MvnMall1 from "./frontend/pages/mvnMall.jsx";
+import AdminLayout from "./admin/components/ContentLayout/ContentLayout.jsx";
 
 
 
@@ -210,6 +211,18 @@ const router = createBrowserRouter([
           </Suspense>
         ),
       },*/}
+    ],
+  },
+  {
+    path: "/admin",
+    element:<AdminLayout />,
+    children: [
+      {
+        path: "",
+        element: (
+          <h1>Dashboard</h1>
+        ), 
+      },
     ],
   },
 ]);
