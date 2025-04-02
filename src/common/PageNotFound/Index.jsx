@@ -2,10 +2,11 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Header from "../../frontend/components/Header";
 import Button from "../Button/Button";
-import "./page_not_found.css";
-
-import notFoundGif from "../../frontend/assets/images/page_not_found/404.gif";
 import { Link } from "react-router-dom";
+import "./page_not_found.css";
+import { API_URL } from "../../config/config";
+
+const notFoundGif = `${API_URL}images/page_not_found/404.gif`;
 
 const PageNotFound = () => {
   return (

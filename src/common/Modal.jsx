@@ -3,8 +3,8 @@ import { Col, Container, Form, Row } from "react-bootstrap";
 import Button from "./Button/Button";
 import Modal from "react-bootstrap/Modal";
 import SecTitle from "./SecTitle/Index";
-import Formlogo from "../../public/assets/images/logo_white.webp";
 import Loader from "./Loader/loader";
+import { API_URL } from "../config/config";
 
 const CustomModal = React.memo(({ show, hide, projectName, isOffer }) => {
   const [formDetails, setFormDetails] = useState({});
@@ -188,7 +188,7 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer }) => {
         <Modal.Body>
             <SecTitle className="text-center color style1">
               <img
-                src={Formlogo}
+                src={`${API_URL}assets/logo_white.webp`}
                 alt="mvn modal logo"
                 className="img-fluid headingIcon"
               />

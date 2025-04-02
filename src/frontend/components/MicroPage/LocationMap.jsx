@@ -111,7 +111,7 @@ const MicroLocationMap = ({data})=>{
           <div className="col-sm-9">
             <div className="thumbnail">
 {modalIframe && <button type="button" className="location_btn"  onClick={handleShow}>
-                <img src={CONFIG.IMAGE_URL + 'icons/yt_color.png'} alt="youtube icon" className="img-fluid yt_icon"  />
+                <img src={`${CONFIG.API_URL}assets/icons/yt_color.png`} alt="youtube icon" className="img-fluid yt_icon"  />
                 Location Video
               </button>}
               

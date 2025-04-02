@@ -1,44 +1,46 @@
 import React from "react";
-import * as CONFIG from '../../../../config/config';
 import MicroPageFaridabad from "../../MicroPageFaridabad";
-import headerSidebarDesktopImg from '../../../assets/images/athens-faridabad/header/athens.webp'
+import { API_URL } from "../../../../config/config";
+
+
+const headerSidebarDesktopImg = `${API_URL}images/athens-faridabad/header/athens.webp`
 // banner image
-import bannerDesktopImg from '../../../assets/images/athens-faridabad/banner/banner.webp';
-import bannerMobileImg from '../../../assets/images/athens-faridabad/banner/bannerSm.webp';
+const bannerDesktopImg = `${API_URL}images/athens-faridabad/banner/banner.webp`
+const bannerMobileImg = `${API_URL}images/athens-faridabad/banner/bannerSm.webp`
 // gallery image
-import galleryImg1 from '../../../assets/images/athens-faridabad/gallery/1.webp';
-import galleryImgSm1 from '../../../assets/images/athens-faridabad/gallery/1sm.webp';
-import galleryImg2 from '../../../assets/images/athens-faridabad/gallery/2.webp';
-import galleryImgSm2 from '../../../assets/images/athens-faridabad/gallery/2sm.webp';
-import galleryImg3 from '../../../assets/images/athens-faridabad/gallery/3.webp';
-import galleryImgSm3 from '../../../assets/images/athens-faridabad/gallery/3sm.webp';
+const galleryImg1 = `${API_URL}images/athens-faridabad/gallery/1.webp`
+const galleryImgSm1 = `${API_URL}images/athens-faridabad/gallery/1sm.webp`
+const galleryImg2 = `${API_URL}images/athens-faridabad/gallery/2.webp`
+const galleryImgSm2 = `${API_URL}images/athens-faridabad/gallery/2sm.webp`
+const galleryImg3 = `${API_URL}images/athens-faridabad/gallery/3.webp`
+const galleryImgSm3 = `${API_URL}images/athens-faridabad/gallery/3sm.webp`
 // amenities images
-import kidsDesktopImg from '../../../assets/images/athens-faridabad/amenities/kids.webp';
-import kidsMobileImg from '../../../assets/images/athens-faridabad/amenities/kidsSm.webp';
-import gymDesktopImg from '../../../assets/images/athens-faridabad/amenities/gym.webp';
-import gymMobileImg from '../../../assets/images/athens-faridabad/amenities/gymSm.webp';
-import poolDesktopImg from '../../../assets/images/athens-faridabad/amenities/pool.webp';
-import poolMobileImg from '../../../assets/images/athens-faridabad/amenities/poolSm.webp';
-import securityDesktopImg from '../../../assets/images/athens-faridabad/amenities/security.webp';
-import securityMobileImg from '../../../assets/images/athens-faridabad/amenities/securitySm.webp';
-import sportDesktopImg from '../../../assets/images/athens-faridabad/amenities/sport.webp';
-import sportMobileImg from '../../../assets/images/athens-faridabad/amenities/sportSm.webp';
-import gardenDesktopImg from '../../../assets/images/athens-faridabad/amenities/garden.webp';
-import gardenMobileImg from '../../../assets/images/athens-faridabad/amenities/gardenSm.webp';
-import liftDesktopImg from '../../../assets/images/athens-faridabad/amenities/lift.webp';
-import liftMobileImg from '../../../assets/images/athens-faridabad/amenities/liftSm.webp';
-import powerDesktopImg from '../../../assets/images/athens-faridabad/amenities/power.webp';
-import powerMobileImg from '../../../assets/images/athens-faridabad/amenities/powerSm.webp';
+const kidsDesktopImg = `${API_URL}images/athens-faridabad/amenities/kids.webp`
+const kidsMobileImg = `${API_URL}images/athens-faridabad/amenities/kidsSm.webp`
+const gymDesktopImg = `${API_URL}images/athens-faridabad/amenities/gym.webp`
+const gymMobileImg = `${API_URL}images/athens-faridabad/amenities/gymSm.webp`
+const poolDesktopImg = `${API_URL}images/athens-faridabad/amenities/pool.webp`
+const poolMobileImg = `${API_URL}images/athens-faridabad/amenities/poolSm.webp`
+const securityDesktopImg = `${API_URL}images/athens-faridabad/amenities/security.webp`
+const securityMobileImg = `${API_URL}images/athens-faridabad/amenities/securitySm.webp`
+const sportDesktopImg = `${API_URL}images/athens-faridabad/amenities/sport.webp`
+const sportMobileImg = `${API_URL}images/athens-faridabad/amenities/sportSm.webp`
+const gardenDesktopImg = `${API_URL}images/athens-faridabad/amenities/garden.webp`
+const gardenMobileImg = `${API_URL}images/athens-faridabad/amenities/gardenSm.webp`
+const liftDesktopImg = `${API_URL}images/athens-faridabad/amenities/lift.webp`
+const liftMobileImg = `${API_URL}images/athens-faridabad/amenities/liftSm.webp`
+const powerDesktopImg = `${API_URL}images/athens-faridabad/amenities/power.webp`
+const powerMobileImg = `${API_URL}images/athens-faridabad/amenities/powerSm.webp`
 // floor plan
-import floorPlanTowerC1 from '../../../assets/images/athens-faridabad/floor-plan/towerc/1.png';
-import floorPlanTowerC2 from '../../../assets/images/athens-faridabad/floor-plan/towerc/2.png';
-import floorPlanTowerC3 from '../../../assets/images/athens-faridabad/floor-plan/towerc/3.png';
-import floorPlanTowerD1 from '../../../assets/images/athens-faridabad/floor-plan/towerd/1.png';
-import floorPlanTowerD2 from '../../../assets/images/athens-faridabad/floor-plan/towerd/2.png';
-import floorPlanTowerD3 from '../../../assets/images/athens-faridabad/floor-plan/towerd/3.png';
+const floorPlanTowerC1 = `${API_URL}images/athens-faridabad/floor-plan/towerc/1.png`
+const floorPlanTowerC2 = `${API_URL}images/athens-faridabad/floor-plan/towerc/2.png`
+const floorPlanTowerC3 = `${API_URL}images/athens-faridabad/floor-plan/towerc/3.png`
+const floorPlanTowerD1 = `${API_URL}images/athens-faridabad/floor-plan/towerd/1.png`
+const floorPlanTowerD2 = `${API_URL}images/athens-faridabad/floor-plan/towerd/2.png`
+const floorPlanTowerD3 = `${API_URL}images/athens-faridabad/floor-plan/towerd/3.png`
 // location map
-import locationMapDesktop from '../../../assets/images/athens-faridabad/location-map/location-map.jpg';
-import locationMapMobile from '../../../assets/images/athens-faridabad/location-map/location-mapm.jpg';
+const locationMapDesktop = `${API_URL}images/athens-faridabad/location-map/location-map.jpg`
+const locationMapMobile = `${API_URL}images/athens-faridabad/location-map/location-mapm.jpg`
 
 export const faridabadData = {
   header:{

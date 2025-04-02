@@ -1,14 +1,13 @@
 import React, { useState, useEffect, Suspense } from "react";
 import MicroBanner from "../components/MicroBanner/Index";
-
 const ContactPage = React.lazy(() => import('../components/contact/Index'));
-
-import MobilebannerBg from '../assets/images/contact/head-banner_bg.webp';
-import DesktopbannerBg from '../assets/images/contact/head-banner_bg-2.webp';
 import Enquire from '../components/homepage/Enquire';
 import EnquireForm from '../components/homepage/EnquireForm';
-import InitialLoading from "../skeleton/Initial/Index";
 import Layout from "../components/Layout";
+import { API_URL } from "../../config/config";
+
+const MobilebannerBg = `${API_URL}images/contact/head-banner_bg.webp`;
+const DesktopbannerBg = `${API_URL}images/contact/head-banner_bg-2.webp`;
 
 const ContactUs = () => {
   window.scrollTo(0, 0);
@@ -48,20 +47,6 @@ const ContactUs = () => {
       window.removeEventListener('resize', updateBackground);
     };
   }, []);
-
-  // useEffect(() => {
-  //   if (newLoadingCount === 100) {
-  //     const timer = setTimeout(() => {
-  //       setNewLoadingCount(101);
-  //     }, 500); // 1 seconds delay before removing InitialLoading
-
-  //     return () => clearTimeout(timer);
-  //   }
-  // }, [newLoadingCount]);
-
-  // if (newLoadingCount <= 100) {
-  //   return <InitialLoading loadingCount={newLoadingCount} setLoadingCount={setNewLoadingCount} fast="true" second="true" />;
-  // }
 
   return (
     <>

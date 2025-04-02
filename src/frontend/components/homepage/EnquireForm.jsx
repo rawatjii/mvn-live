@@ -2,7 +2,7 @@ import React, { useCallback, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import Button from "../../../common/Button/Button";
-import headingIconImg from "../../assets/images/icons/heading-icon-img.webp";
+import { API_URL } from "../../../config/config";
 
 const EnquireForm = ({ career, projectName }) => {
   const titleRef = useRef();
@@ -66,7 +66,7 @@ const EnquireForm = ({ career, projectName }) => {
       <Container>
         <div className="heading_div mb_60 mb_sm_30">
           <img
-            src={headingIconImg}
+            src={`${API_URL}images/icons/heading-icon-img.webp`}
             alt="mvn heading icon"
             className="img-fluid title_plane1"
             loading="lazy"

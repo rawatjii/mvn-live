@@ -10,13 +10,12 @@ const EnquireForm = React.lazy(()=>import("../components/homepage/EnquireForm"))
 
 import Layout from "../components/Layout";
 
-import Mobilemicro_bg from '../assets/images/about/about-head-bg-desktop.webp';
-import Desktopmicro_bg from '../assets/images/about/about-head-bg-desktop.webp';
+import { API_URL } from "../../config/config";
 
 const AboutUs = () => {
   window.scrollTo(0, 0);
   
-  const [microBg, setMicroBg] = useState(Desktopmicro_bg);
+  const [microBg, setMicroBg] = useState(`${API_URL}images/about/about-head-bg-desktop.webp`);
   
   const breadcrumbs = {
     title: 'About Us',
@@ -31,9 +30,9 @@ const AboutUs = () => {
   useEffect(() => {
     const updateBackground = () => {
       if (window.innerWidth <= 768) {
-        setMicroBg(Mobilemicro_bg);
+        setMicroBg(`${API_URL}images/about/about-head-bg-desktop.webp`);
       } else {
-        setMicroBg(Desktopmicro_bg);
+        setMicroBg(`${API_URL}images/about/about-head-bg-desktop.webp`);
       }
     };
 

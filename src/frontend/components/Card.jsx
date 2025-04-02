@@ -1,5 +1,7 @@
 import React from "react";
-import planeIMG from "../assets/images/icons/plane.png";
+import { API_URL } from "../../config/config";
+
+const planeIMG = `${API_URL}images/icons/plane.png`;
 
 const CustomCard = React.memo(({ className, title, location, extra, desc, extraTxt, type }) => {
   return (

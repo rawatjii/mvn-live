@@ -1,3 +1,5 @@
+import { API_URL } from "../config/config";
+
 export const otherPages = [
   { name: 'About Us', link: 'about-us' },
   { name: 'Media Centre', link: 'media-centre' },
@@ -44,8 +46,8 @@ export const otherDetails = {
 };
 
 export const socialMedia = [
-  { imgUrl: 'icons/social/fb.png', alt: 'mvn-facebook-icon', link: 'https://www.facebook.com/officialmvninfra/', className: 'fb_icon' },
-  { imgUrl: 'icons/social/instagram.png', alt: 'mvn-instagram-icon', link: 'https://www.instagram.com/mvn_infrastructure/', className: 'insta_icon' },
-  { imgUrl: 'icons/social/linkedin.png', alt: 'mvn-linkedin-icon', link: 'https://www.linkedin.com/company/mvn-infrastructure/', className: 'linkedin_icon' },
-  { imgUrl: 'icons/social/youtube.png', alt: 'mvn-youtube-icon', link: 'https://www.youtube.com/@MVNInfrastructures', className: 'yt_icon' },
+  { imgUrl: `${API_URL}assets/icons/social/fb.png`, alt: 'mvn-facebook-icon', link: 'https://www.facebook.com/officialmvninfra/', className: 'fb_icon' },
+  { imgUrl: `${API_URL}assets/icons/social/instagram.png`, alt: 'mvn-instagram-icon', link: 'https://www.instagram.com/mvn_infrastructure/', className: 'insta_icon' },
+  { imgUrl: `${API_URL}assets/icons/social/linkedin.png`, alt: 'mvn-linkedin-icon', link: 'https://www.linkedin.com/company/mvn-infrastructure/', className: 'linkedin_icon' },
+  { imgUrl: `${API_URL}assets/icons/social/youtube.png`, alt: 'mvn-youtube-icon', link: 'https://www.youtube.com/@MVNInfrastructures', className: 'yt_icon' },
 ];

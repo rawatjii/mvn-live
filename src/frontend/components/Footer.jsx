@@ -11,9 +11,8 @@ import { otherProjects, otherPages, otherDetails,socialMedia } from "../../data/
 // import fbIcon from '../assets/images/icons/social/fb.png';
 // import instaIcon from '../assets/images/icons/social/instagram.png';
 // import YoutubeIcon from '../assets/images/icons/social/youtube.png';
-import BtnIcon from '../assets/images/icons/send.png';
-import FooterMiddleLogo from '../assets/images/logomvn.png';
-import subscribeBtn from '../assets/images/icons/subscribe_btn.webp';
+
+const subscribeBtn = `${CONFIG.API_URL}images/icons/subscribe_btn.webp`;
 
 const Footer = () => {
   const channelUrl = CONFIG.YOUTUBE_URL;
@@ -26,7 +25,7 @@ const Footer = () => {
           <div className="inner-mid">
             <div className="center">
               <div className="f-logo reveal">
-                <img src={CONFIG.IMAGE_URL + 'logo_white.webp'} width="100%" alt="mvn logo image" />
+                <img src={CONFIG.API_URL + 'assets/logo_white.webp'} width="100%" alt="mvn logo image" />
               </div>
             </div>
 
@@ -83,7 +82,7 @@ const Footer = () => {
                         {socialMedia && socialMedia.map((singleLink, socialIndex)=>(
                           <li key={socialIndex}>
                             <Link to={singleLink.link} target="_blank" className={`icon ${singleLink.className}`}>
-                              <img src={CONFIG.IMAGE_URL + singleLink.imgUrl} alt={singleLink.alt} className={`img-fluid`} /> 
+                              <img src={singleLink.imgUrl} alt={singleLink.alt} className={`img-fluid`} /> 
                             </Link>
                           </li>
                         ))}

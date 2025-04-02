@@ -4,12 +4,13 @@ import Nav from "react-bootstrap/Nav";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import * as CONFIG from "root/config/config";
 import React, { useEffect, useState } from "react";
-import subscribeBtn from '../assets/images/icons/subscribe_btn.webp';
-import CloseBtnimg from '../assets/images/icons/close.png';
-import "./Header.css";
 import { otherPages, otherProjects, otherDetails, socialMedia } from '../../data/headerdata';
 import { useMatches } from "../../theme/theme";
+import { API_URL } from "../../config/config";
+import "./Header.css";
 
+const subscribeBtn = `${API_URL}images/icons/subscribe_btn.webp`;
+const CloseBtnimg = `${API_URL}images/icons/close.png`;
 
 
 const MicroHeader = ({ scrollToSection, data, isFixed }) => {
@@ -57,13 +58,13 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
       <Container>
         <Navbar.Brand className="logo">
           <Link onClick={() => toggleMenu("close")}>
-            <img src={CONFIG.IMAGE_URL + "logo_white.webp"} alt="mvn logo" className="img-fluid d-none d-md-block" fetchpriority="high" />
-            <img src={CONFIG.IMAGE_URL + "logo_white.webp"} alt="mvn logo" className="img-fluid d-md-none" fetchpriority="high" />
+            <img src={`${API_URL}assets/logo_white.webp`} alt="mvn logo" className="img-fluid d-none d-md-block" fetchpriority="high" />
+            <img src={`${API_URL}assets/logo_white.webp`} alt="mvn logo" className="img-fluid d-md-none" fetchpriority="high" />
           </Link>
         </Navbar.Brand>
         <div className="right">
           <a href={`tel:${otherDetails.contact}`} className="call_btn">
-            <img src={CONFIG.IMAGE_URL + 'icons/call.png'} alt="mvn call icon" />
+            <img src={`${API_URL}assets/icons/call.png`} alt="mvn call icon" />
           </a>
           <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={() => toggleMenu("show")} className="navbar-toggle">
             <span className="icon"></span>
@@ -82,7 +83,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
               <div className="menu-area">
                 <div className="top_head">
                   <Link onClick={() => toggleMenu("close")}>
-                    <img src={CONFIG.IMAGE_URL + "logo_white.webp"} className="logo" alt="mvn logo" />
+                    <img src={`${API_URL}assets/logo_white.webp`} className="logo" alt="mvn logo" />
                   </Link>
                   <span className="close d-md-none" onClick={() => toggleMenu("close")}>&times;</span>
                 </div>
@@ -155,7 +156,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                           {socialMedia.map((socialIcon, index) => (
                             <li key={index}>
                               <Link to={socialIcon.link} target="_blank" onClick={() => toggleMenu("close")} className={socialIcon.className}>
-                                <img src={`${CONFIG.IMAGE_URL + socialIcon.imgUrl}`} alt={socialIcon.alt} />
+                                <img src={socialIcon.imgUrl} alt={socialIcon.alt} />
                               </Link>
                             </li>
                           ))}

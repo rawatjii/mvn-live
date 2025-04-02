@@ -1,21 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 
-import MobileenquireBg from "../../assets/images/enquire/form-bg.webp";
-import DesktopenquireBg from "../../assets/images/enquire/form-bg.webp";
-
 import LazyLoad from "react-lazyload";
+import { API_URL } from "../../../config/config";
 
 
 const Enquire = () => {
   const titleRef = useRef();
   const contentRef = useRef();
-  const [imageSrc, setImageSrc] = useState(DesktopenquireBg);
+  const [imageSrc, setImageSrc] = useState(`${API_URL}images/enquire/form-bg.webp`);
 
   useEffect(() => {
     // Set the correct image on mount and window resize
     const updateImageSrc = () => {
-      setImageSrc(window.innerWidth <= 768 ? MobileenquireBg : DesktopenquireBg);
+      setImageSrc(window.innerWidth <= 768 ? `${API_URL}images/enquire/form-bg.webp` : `${API_URL}images/enquire/form-bg.webp`);
     };
 
     updateImageSrc(); // Initial check

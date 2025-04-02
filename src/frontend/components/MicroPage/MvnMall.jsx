@@ -2,14 +2,16 @@ import React, { useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import mvnMallImg from "../../assets/images/mvn_mall.webp";
-import mvnMallBannerImg1 from "../../assets/images/mall-banner-1.webp"
-import mvnMallBannerImg2 from "../../assets/images/mall-banner-2.webp"
-import mvnMallAnimatedImg from "../../assets/images/mvn_mall_animated_img.webp"
 import Watermark from "../../../common/watermark/Index";
 import Logomark from "../../../common/logomark/Index";
 import ZoomOutImage from "./ZoomOut";
 import { useMatches } from "../../../theme/theme";
+import { API_URL } from "../../../config/config";
+
+const mvnMallImg = `${API_URL}images/mvn_mall.webp`;
+const mvnMallBannerImg1 = `${API_URL}images/mall-banner-1.webp`
+const mvnMallBannerImg2 = `${API_URL}images/mall-banner-2.webp`
+const mvnMallAnimatedImg = `${API_URL}images/mvn_mall_animated_img.webp`
 
 gsap.registerPlugin(ScrollTrigger);
 

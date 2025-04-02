@@ -1,44 +1,44 @@
 import React from "react";
-import * as CONFIG from '../../../../config/config';
-import MicroPageFaridabad from "../../MicroPageFaridabad";
 import MicroPageGurgaonPhase1 from "../../MicroPageGurgaonPhase1";
-import heroDesktopImg from '../../../assets/images/athens-ph1/banner/banner1.webp';
-import heroMobileImg from '../../../assets/images/athens-ph1/banner/banner1_sm.webp';
-import headerSidebarImg from '../../../assets/images/athens-ph1/header/sidebar.webp'
+import { API_URL } from "../../../../config/config";
+
+const heroDesktopImg = `${API_URL}images/athens-ph1/banner/banner1.webp`;
+const heroMobileImg = `${API_URL}images/athens-ph1/banner/banner1_sm.webp`;
+const headerSidebarImg = `${API_URL}images/athens-ph1/header/sidebar.webp`
 
 // gallery images start
-import gallery1 from "../../../assets/athens-gurgaon-phase-1/gallery/1.jpg"
-import gallery2 from "../../../assets/athens-gurgaon-phase-1/gallery/2.jpg"
-import gallery3 from "../../../assets/athens-gurgaon-phase-1/gallery/3.jpg"
-import gallery4 from "../../../assets/athens-gurgaon-phase-1/gallery/4.jpg"
+const gallery1 = `${API_URL}athens-gurgaon-phase-1/gallery/1.jpg`
+const gallery2 = `${API_URL}athens-gurgaon-phase-1/gallery/2.jpg`
+const gallery3 = `${API_URL}athens-gurgaon-phase-1/gallery/3.jpg`
+const gallery4 = `${API_URL}athens-gurgaon-phase-1/gallery/4.jpg`
 // gallery images end
 //   <----------------------------------->
 // features images start
-import features1 from "../../../assets/athens-gurgaon-phase-1/features/elevation.png"
-import featuresBgImg from "../../../assets/athens-gurgaon-phase-1/features/bg-back.jpg"
+const features1 = `${API_URL}athens-gurgaon-phase-1/features/elevation.png`
+const featuresBgImg = `${API_URL}athens-gurgaon-phase-1/features/bg-back.jpg`
 // features images end
 //   <----------------------------------->
 // amenities images start
-import kidsPlayArea from "../../../assets/athens-gurgaon-phase-1/amenities/1.jpg"
-import landscapeOutdoorSeating from "../../../assets/athens-gurgaon-phase-1/amenities/2.jpg"
-import Lawn from "../../../assets/athens-gurgaon-phase-1/amenities/3.jpg"
-import security from "../../../assets/athens-gurgaon-phase-1/amenities/4.jpg"
-import landscapeWalkway from "../../../assets/athens-gurgaon-phase-1/amenities/5.jpg"
-import peacefulEnvironment from "../../../assets/athens-gurgaon-phase-1/amenities/6.jpg"
-import landscapeIndoorSeating from "../../../assets/athens-gurgaon-phase-1/amenities/7.jpg"
-import communityCentre from "../../../assets/athens-gurgaon-phase-1/amenities/8.jpg"
+const kidsPlayArea = `${API_URL}athens-gurgaon-phase-1/amenities/1.jpg`
+const landscapeOutdoorSeating = `${API_URL}athens-gurgaon-phase-1/amenities/2.jpg`
+const Lawn = `${API_URL}athens-gurgaon-phase-1/amenities/3.jpg`
+const security = `${API_URL}athens-gurgaon-phase-1/amenities/4.jpg`
+const landscapeWalkway = `${API_URL}athens-gurgaon-phase-1/amenities/5.jpg`
+const peacefulEnvironment = `${API_URL}athens-gurgaon-phase-1/amenities/6.jpg`
+const landscapeIndoorSeating = `${API_URL}athens-gurgaon-phase-1/amenities/7.jpg`
+const communityCentre = `${API_URL}athens-gurgaon-phase-1/amenities/8.jpg`
 // amenities images end
 //   <----------------------------------->
 // typology images start
-import typology1bhk1 from "../../../assets/athens-gurgaon-phase-1/floor-plan/4.png"
-import typology2bhk1 from "../../../assets/athens-gurgaon-phase-1/floor-plan/3.png"
-import typology2bhk2 from "../../../assets/athens-gurgaon-phase-1/floor-plan/2.png"
-import typology3bhk1 from "../../../assets/athens-gurgaon-phase-1/floor-plan/3.png"
+const typology1bhk1 = `${API_URL}athens-gurgaon-phase-1/floor-plan/4.png`
+const typology2bhk1 = `${API_URL}athens-gurgaon-phase-1/floor-plan/3.png`
+const typology2bhk2 = `${API_URL}athens-gurgaon-phase-1/floor-plan/2.png`
+const typology3bhk1 = `${API_URL}athens-gurgaon-phase-1/floor-plan/3.png`
 // typology images end
 //   <----------------------------------->
 // location map start
-import locationMapDesktop from "../../../assets/athens-gurgaon-phase-1/location-map/location-map.jpg"
-import locationMapMobile from "../../../assets/athens-gurgaon-phase-1/location-map/location-mapm.jpg"
+const locationMapDesktop = `${API_URL}athens-gurgaon-phase-1/location-map/location-map.jpg`
+const locationMapMobile = `${API_URL}athens-gurgaon-phase-1/location-map/location-mapm.jpg`
 // location map end
 
 

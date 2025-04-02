@@ -4,7 +4,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 
 import CustomCard from '../Card';
 
-export default function ConstructionTechnology() {
+export default function ConstructionTechnology({data}) {
 
   return (
     <section className='section constructionTech_section pb-0' aria-label="Construction Tech Section">
@@ -13,7 +13,7 @@ export default function ConstructionTechnology() {
           <h4 className="title title_style1 text-center">Construction Technology</h4>
         </div>
         
-        <video src='https://res.cloudinary.com/dxxmdziew/video/upload/v1737550384/construction-technology/construction-technology.mp4' autoPlay  muted playsInline loop controls  className='img-fluid' />
+        <video src={data.videoUrl} autoPlay  muted playsInline loop controls  className='img-fluid' />
 
         <div className='about'>
           <CustomCard

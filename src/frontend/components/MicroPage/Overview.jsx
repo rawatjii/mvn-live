@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { Container } from "react-bootstrap";
-import diamondIMG from "../../assets/images/icons/plane1.png";
+import { API_URL } from "../../../config/config";
+
+const diamondIMG = `${API_URL}images/icons/plane1.png`;
 
 const MicroOverview = React.memo(({ data }) => {
   const [count1, setCount1] = useState(0);

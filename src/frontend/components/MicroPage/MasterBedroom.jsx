@@ -1,7 +1,9 @@
 import React from "react";
 import { useMatches } from "../../../theme/theme";
 import LottieAnimationSection from "./LottieAnimationSection";
-import bedrromImg from "../../assets/loader/bedroom.webp"
+import { API_URL } from "../../../config/config";
+
+const bedrromImg = `${API_URL}assets/loader/bedroom.webp`
 
 const MasterBedroom = React.memo(({  data, onLoadComplete }) => {
   const { isMobile } = useMatches();

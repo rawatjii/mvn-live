@@ -1,7 +1,9 @@
 import React from "react";
 import LottieAnimationSection from "./LottieAnimationSection";
 import { useMatches } from "../../../theme/theme";
-import partyImg from "../../assets/loader/party.jpg"
+import { API_URL } from "../../../config/config";
+
+const partyImg = `${API_URL}assets/loader/party.jpg`
 
 const PartyVideo = React.memo(({ data }) => {
   const { isMobile } = useMatches();

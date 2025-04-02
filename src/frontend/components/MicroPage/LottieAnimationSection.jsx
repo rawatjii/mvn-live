@@ -9,7 +9,6 @@ import lottie from "lottie-web";
 import { useMatches } from "../../../theme/theme";
 import ScrollDown from "../../../common/scrollDown/Index";
 import Logomark from "../../../common/logomark/Index";
-import loaderImg from "../../../frontend/assets/bangalore/laoder/banner.png"
 
 // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);

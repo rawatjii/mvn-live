@@ -341,7 +341,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             <div
               ref={(el) => (sectionRefs.current.constructionTechnology = el)}
             >
-              <ConstructionTechnology />
+              <ConstructionTechnology data={data.construction_technology} />
             </div>
           </Suspense>
 

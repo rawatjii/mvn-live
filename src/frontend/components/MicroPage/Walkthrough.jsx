@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import CustomCard from "../Card";
 import { Container } from "react-bootstrap";
-import subscribeImg from '../../../frontend/assets/images/icons/subscribe_btn.webp'
 import * as CONFIG from "../../../config/config";
+
+const subscribeImg = `${CONFIG.API_URL}images/icons/subscribe_btn.webp`
 
 const Walkthrough = React.memo(({ data }) => {
   const [videoSrc, setVideoSrc] = useState("");

@@ -7,7 +7,6 @@ import Watermark from "../../../common/watermark/Index";
 import ScrollDown from "../../../common/scrollDown/Index";
 import { useMatches } from "../../../theme/theme";
 import { debounce } from "lodash"; // Add lodash debounce for optimized resize
-import frame1 from "../../assets/images/mvn-mall/mvn-mall/1.webp"
 
 gsap.registerPlugin(ScrollTrigger);
 

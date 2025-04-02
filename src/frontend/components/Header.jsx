@@ -5,15 +5,14 @@ import Nav from "react-bootstrap/Nav";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import * as CONFIG from "root/config/config";
 import { useEffect, useRef, useState } from "react";
-import CloseBtnimg from '../assets/images/icons/close.png';
 import { otherProjects, otherPages, otherDetails, socialMedia } from "../../data/headerdata";
-
-import MenuSideVideo from '../assets/images/hero/tiger.mp4';
-
 import "./Header.css";
 
-import Button from "../../common/Button/Button";
-import subscribeBtn from '../assets/images/icons/subscribe_btn.webp';
+import { API_URL } from "../../config/config";
+
+const CloseBtnimg = `${API_URL}images/icons/close.png`;
+const MenuSideVideo = `${API_URL}images/hero/tiger.mp4`;
+const subscribeBtn = `${API_URL}images/icons/subscribe_btn.webp`;
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -87,13 +86,13 @@ const Header = () => {
           <Navbar.Brand className="logo">
             <Link onClick={() => toggleMenu("close")} to={import.meta.env.VITE_APP_URL}>
               <img
-                src={CONFIG.IMAGE_URL + "logo_white.webp"}
+                src={`${API_URL}assets/logo_white.webp`}
                 alt="mvn logo"
                 className="img-fluid d-none d-md-block"
                 fetchpriority="high"
               />
               <img
-                src={CONFIG.IMAGE_URL + "logo_white.webp"}
+                src={`${API_URL}assets/logo_white.webp`}
                 alt="mvn logo"
                 className="img-fluid d-md-none"
                 fetchpriority="high"
@@ -103,7 +102,7 @@ const Header = () => {
 
           <div className="right">
             <a href="tel:+917996000196" className="call_btn">
-              <img src={CONFIG.IMAGE_URL + 'icons/call.png'} alt="mvn call icon" />
+              <img src={`${API_URL}images/icons/call.png`} alt="mvn call icon" />
             </a>
             <Navbar.Toggle
              
@@ -131,7 +130,7 @@ const Header = () => {
                       <Link
                         onClick={() => toggleMenu("close")}
                       >
-                        <img src={CONFIG.IMAGE_URL + "logo_white.webp"} width="50" alt="mvn logo" />
+                        <img src={`${API_URL}assets/logo_white.webp`} width="50" alt="mvn logo" />
                       </Link>
 
                       <span className="close d-md-none"onClick={() => toggleMenu("close")}>&times;</span>
@@ -211,7 +210,7 @@ const Header = () => {
                                 {socialMedia.map((socialIcon, index) => (
                                   <li key={index}>
                                     <Link to={socialIcon.link} target="_blank" onClick={() => toggleMenu("close")}>
-                                      <img src={`${CONFIG.IMAGE_URL + socialIcon.imgUrl}`} alt={socialIcon.alt} />
+                                      <img src={`${socialIcon.imgUrl}`} alt={socialIcon.alt} />
                                     </Link>
                                   </li>
                                 ))}

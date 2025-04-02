@@ -1,22 +1,22 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-import PlaneIcon from "../../../frontend/assets/images/icons/plane.png";
-import typo1 from "../../assets/images/typologies/270/1.webp";
-import typo2 from "../../assets/images/typologies/270/2.webp";
-import typo3 from "../../assets/images/typologies/270/3.webp";
-
-import typo4 from "../../assets/images/typologies/360/1.webp";
-import typo5 from "../../assets/images/typologies/360/2.webp";
-import typo6 from "../../assets/images/typologies/360/3.webp";
-
-import typo7 from "../../assets/images/typologies/penthouse/1.webp";
-import typo8 from "../../assets/images/typologies/penthouse/2.webp";
-import typo9 from "../../assets/images/typologies/penthouse/3.webp";
-
 import Watermark from '../../../common/watermark/Index';
 import { useMatches } from "../../../theme/theme";
+import { API_URL } from "../../../config/config";
+
+const PlaneIcon = `${API_URL}images/icons/plane.png`;
+const typo1 = `${API_URL}images/typologies/270/1.webp`;
+const typo2 = `${API_URL}images/typologies/270/2.webp`;
+const typo3 = `${API_URL}images/typologies/270/3.webp`;
+
+const typo4 = `${API_URL}images/typologies/360/1.webp`;
+const typo5 = `${API_URL}images/typologies/360/2.webp`;
+const typo6 = `${API_URL}images/typologies/360/3.webp`;
+
+const typo7 = `${API_URL}images/typologies/penthouse/1.webp`;
+const typo8 = `${API_URL}images/typologies/penthouse/2.webp`;
+const typo9 = `${API_URL}images/typologies/penthouse/3.webp`;
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -50,8 +50,8 @@ const Typology = React.memo(({ onLoadComplete }) => {
     for (let i = 1; i <= totalFrames; i++) {
       const img = new Image();
       img.src = isMobile
-        ? `assets/images/micro/aeroone-gurgaon/mobiles/${i}.webp`
-        : `assets/images/micro/aeroone-gurgaon/mobiles/${i}.webp`;
+        ? `${API_URL}assets/micro/aeroone-gurgaon/mobiles/${i}.webp`
+        : `${API_URL}assets/micro/aeroone-gurgaon/mobiles/${i}.webp`;
 
       // Track when each image loads
       img.onload = () => {

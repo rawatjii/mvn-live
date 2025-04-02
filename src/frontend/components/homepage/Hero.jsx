@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import heroImg from '../../assets/images/homepage/hero/hero_img.webp';
-import heroImgSm from '../../assets/images/homepage/hero/hero_img_sm.webp';
+import { API_URL } from "../../../config/config";
 
 const Hero = ()=>{
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -16,7 +15,7 @@ const Hero = ()=>{
           rel="noopener noreferrer"
         >
           <img
-            src={isMobile ? heroImgSm : heroImg}
+            src={isMobile ? `${API_URL}images/homepage/hero/hero_img_sm.webp` : `${API_URL}images/homepage/hero/hero_img.webp`}
             alt="Hero Banner"
             className="img-fluid hero-banner"
           />

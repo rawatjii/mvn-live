@@ -1,19 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import MicroBanner from "../components/MicroBanner/Index";
-import Desktopmicro_bg from "../assets/images/blogs/1865.jpg";
-import BlogImg from "../assets/images/blogs/blog.jpg";
-
 import { Container } from "react-bootstrap";
 import SecTitle from "../../common/SecTitle/Index";
-
-import headingIconImg from "../assets/images/icons/heading-icon-img.webp";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setSelectedBlog } from "../../redux/blogsSlice";
 import { blogData } from "../../data/blogsdata";
-import ScrollToTop from './../../common/ScrollToTop';
-import InitialLoading from "../skeleton/Initial/Index";
 import Layout from "../components/Layout";
+import { API_URL } from "../../config/config";
+
+const BlogImg = `${API_URL}images/blogs/blog.jpg`;
+const headingIconImg = `${API_URL}images/icons/heading-icon-img.webp`;
 
 function Blog() {
   window.scrollTo(0, 0);
