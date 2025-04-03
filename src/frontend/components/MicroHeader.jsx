@@ -15,6 +15,7 @@ import { useMatches } from "../../theme/theme";
 const MicroHeader = ({ scrollToSection, data, isFixed }) => {
   const [scrolled, setScrolled] = useState(false);
   const [isMicro, setIsMicro] = useState(false);
+  const [isBangaloreProject, setIsBangaloreProject] = useState(false);
 
   const { sidebar_section, sidebarAsset } = data;
   const channelUrl = CONFIG.YOUTUBE_URL;
@@ -25,6 +26,10 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
   useEffect(() => {
     if (pathname.includes("aeroone-gurgaon") || pathname.includes("mvn-mall") || pathname.includes("aeroone-bangalore1") || pathname.includes("mvn-athens-faridabad") || pathname.includes("/mvn-athens-gurgaon-phase-2") || pathname.includes("/mvn-athens-gurgaon-phase-1")) {
       setIsMicro(true);
+    }
+
+    if(pathname.includes("aeroone-bangalore1")){
+      setIsBangaloreProject(true);
     }
 
     const handleScroll = () => {
@@ -146,7 +151,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                   <div className="top-area">
                     <div className="inner-logo d-none d-md-block">
                       <p><span>Office:</span> {otherDetails.address}</p>
-                      <p><span>Talk:</span> {otherDetails.contact}</p>
+                      <p><span>Talk:</span> {!isBangaloreProject ? otherDetails.contact : '+91 91640 01177'}</p>
                     </div>
                     <ul className="sub_menu">
                       <li>
