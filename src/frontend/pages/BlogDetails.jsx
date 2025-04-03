@@ -1,15 +1,17 @@
 import React,{useState,useEffect } from "react";
 import MicroBanner from "../components/MicroBanner/Index";
-import Desktopmicro_bg from "../assets/images/blogs/blog.jpg";
+import { API_URL } from "../../config/config";
+
+
 import { Container,  } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 
-
 import {blogData} from '../../data/blogsdata';
-import InitialLoading from "../skeleton/Initial/Index";
 import Layout from "../components/Layout";
+
+const Desktopmicro_bg = `${API_URL}images/blogs/blog.jpg`;
 
 function BlogDetails() {
   window.scrollTo(0, 0);

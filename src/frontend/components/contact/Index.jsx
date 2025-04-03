@@ -1,8 +1,8 @@
 import { Container } from "react-bootstrap"
 import SecTitle from "../../../common/SecTitle/Index";
-
-import supportIcon from '../../assets/images/icons/contact/support.png';
 import * as CONFIG from '../../../config/config'
+
+const supportIcon = `${CONFIG.API_URL}images/icons/contact/support.png`;
 
 const ContactPage = ()=>{
     return(
@@ -17,7 +17,7 @@ const ContactPage = ()=>{
                 <ul className="contact_details">
                     <li>
                         <span className="icon">
-                            <img src={CONFIG.IMAGE_URL + 'icons/mail.png'} alt="mvn envelope icon" className="img-fluid" />
+                            <img src={`${CONFIG.API_URL}assets/icons/mail.png`} alt="mvn envelope icon" className="img-fluid" />
                         </span>
                         <span className="txt">
                         <a href="mailto:info@mvngroup.in" aria-label="Email us at info@mvngroup.in">
@@ -27,7 +27,7 @@ const ContactPage = ()=>{
                     </li>
                     <li>
                         <span className="icon">
-                            <img src={CONFIG.IMAGE_URL + 'icons/call.png'} alt="mvn envelope icon" className="img-fluid" />
+                            <img src={`${CONFIG.API_URL}assets/icons/call.png`} alt="mvn envelope icon" className="img-fluid" />
                         </span>
                         <span  className="txt">
                         <a href="tel:+917996000196" aria-label="Call us at (+91) 799 6000 196">
@@ -38,7 +38,7 @@ const ContactPage = ()=>{
                     </li>
                     <li>
                         <span className="icon">
-                            <img src={CONFIG.IMAGE_URL + 'icons/location.png'} alt="mvn envelope icon" className="img-fluid" />
+                            <img src={`${CONFIG.API_URL}assets/icons/location.png`} alt="mvn envelope icon" className="img-fluid" />
                         </span>
                         <span className="txt">MVN AERO ONE, C/o Awfis, 7th Floor, Gate No. 3 &4 Ambience Mall, Ambience Island, NH-8, DLF Phase-3, Sector-24, Gurugram | CIN:ACA-4678 | PAN:ABWFM8415E</span>
                     </li>
