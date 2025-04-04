@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Watermark from "../../../common/watermark/Index";
@@ -8,98 +8,119 @@ import CustomCard from "../Card";
 
 gsap.registerPlugin(ScrollTrigger);
 
- function Amenities({ section_data }) {
+function Amenities({ section_data }) {
   const { isMobile } = useMatches();
-  const sectionsRef = useRef([]);
-  const triggers = useRef([]);
-  const { title , data, second_title, desc } = section_data;
+  const sectionsRef = useRef([]); // Array to hold section refs
+  const triggersRef = useRef([]); // Array to hold ScrollTrigger instances
+  const containerRef = useRef(null); // Ref for the component container
+  const { title, data, second_title, desc } = section_data || {};
 
-  const getRatio = (el) => window.innerHeight / (window.innerHeight + el.offsetHeight);
+  // Memoized ratio calculation
+  const getRatio = useCallback((el) => {
+    return el ? window.innerHeight / (window.innerHeight + el.offsetHeight) : 0;
+  }, []);
 
-  // Set up GSAP ScrollTrigger for desktop view
+  // Setup GSAP animations
+  const setupAnimations = useCallback(() => {
+    if (!data || !sectionsRef.current.length || isMobile) return;
+
+    triggersRef.current = sectionsRef.current.map((section, i) => {
+      const bg = section?.querySelector(".bg");
+      if (!bg || !data[i]?.path?.desktop) return null;
+
+      const imageUrl = `url(${data[i].path.desktop})`;
+      bg.style.backgroundImage = imageUrl;
+
+      const defaultBgPos = i === 0
+        ? "50% 0"
+        : `50% ${-window.innerHeight * getRatio(section)}px`;
+
+      return ScrollTrigger.create({
+        trigger: section,
+        start: i === 0 ? "top top" : "top bottom",
+        end: "bottom top",
+        scrub: 0.5,
+        invalidateOnRefresh: true,
+        animation: gsap.fromTo(
+          bg,
+          { backgroundPosition: defaultBgPos },
+          {
+            backgroundPosition: `50% ${window.innerHeight * (1 - getRatio(section))}px`,
+            ease: "none",
+          }
+        ),
+      });
+    }).filter(Boolean);
+
+    ScrollTrigger.refresh();
+  }, [data, isMobile, getRatio]);
+
+  // Handle animation setup and cleanup
   useEffect(() => {
-    if (!isMobile) {
-      triggers.current = [];
-      sectionsRef.current.forEach((section, i) => {
-        const bg = section.querySelector(".bg");
+    if (!isMobile && data && sectionsRef.current.length) {
+      setupAnimations();
+    }
 
-        if (bg) {
-          const imageUrl = `url(${data[i].path.desktop})`; // Dynamically using the desktop path
-          bg.style.backgroundImage = imageUrl;
+    return () => {
+      triggersRef.current.forEach((trigger) => trigger?.kill());
+      triggersRef.current = [];
+      ScrollTrigger.refresh(); // Ensure a clean slate on unmount
+    };
+  }, [isMobile, data, setupAnimations]);
 
-          const defaultBgPos = i === 0 ? "50% 0" : `50% ${-window.innerHeight * getRatio(section)}px`;
-          console.log(`Section ${i} Default Background Position:`, defaultBgPos);
+  // Refresh ScrollTrigger after images load, scoped to this component
+  useEffect(() => {
+    if (!isMobile && containerRef.current) {
+      const images = containerRef.current.querySelectorAll("img");
+      if (!images.length) {
+        ScrollTrigger.refresh();
+        return;
+      }
 
-          const trigger = gsap.fromTo(
-            bg,
-            { backgroundPosition: defaultBgPos },
-            {
-              backgroundPosition: `50% ${window.innerHeight * (1 - getRatio(section))}px`,
-              ease: "none",
-              scrollTrigger: {
-                trigger: section,
-                start: i === 0 ? "top top" : "top bottom",
-                end: "bottom top",
-                scrub: 0.5, // Smoothness of animation
-                invalidateOnRefresh: true,
-              },
-            }
-          );
+      let loadedCount = 0;
+      const totalImages = images.length;
 
-          triggers.current.push(trigger.scrollTrigger);
+      const checkAllLoaded = () => {
+        loadedCount++;
+        if (loadedCount === totalImages) {
+          ScrollTrigger.refresh();
+        }
+      };
+
+      images.forEach((img) => {
+        if (img.complete) {
+          checkAllLoaded();
+        } else {
+          img.addEventListener("load", checkAllLoaded, { once: true });
         }
       });
 
-      ScrollTrigger.refresh();
+      return () => {
+        images.forEach((img) => img.removeEventListener("load", checkAllLoaded));
+      };
     }
-
-    // Cleanup ScrollTriggers
-    return () => {
-      triggers.current.forEach((trigger) => trigger.kill());
-    };
   }, [isMobile, data]);
 
-  // Refresh ScrollTrigger after images are loaded
-  useEffect(() => {
-    const images = document.querySelectorAll("img");
-    let loadedCount = 0;
-
-    images.forEach((img) => {
-      if (img.complete) {
-        loadedCount++;
-      } else {
-        img.addEventListener("load", () => {
-          loadedCount++;
-          if (loadedCount === images.length) {
-            console.log("All images loaded. Refreshing ScrollTrigger...");
-            ScrollTrigger.refresh();
-          }
-        });
-      }
-    });
-  }, []);
-
-  // Render Mobile View
   const renderMobileView = () => (
     <div className="section amenities_section main_am bottom_content pb-0">
       <div className="cards-container">
         <div className="heading_div mb_60 mb_sm_30">
           <h4 className="title title_style1 text-center">{title}</h4>
         </div>
-        {data.map((single, index) => (
-          <div key={index} className="col-sm-12  col-lg-4">
+        {data?.map((single, index) => (
+          <div key={index} className="col-sm-12 col-lg-4">
             <div className="card center">
               <img
-                src={single.path.mobile} // Use the mobile path directly
+                src={single.path?.mobile}
                 alt={`mvn amenities ${index}`}
                 className="img-fluid d-md-none"
-                loading="lazy" // Lazy load images
+                loading="lazy"
               />
               <img
-                src={single.path.desktop} // Use the desktop path directly
+                src={single.path?.desktop}
                 alt={`mvn amenities ${index}`}
                 className="img-fluid d-none d-md-block"
-                loading="lazy" // Lazy load images
+                loading="lazy"
               />
               <Watermark />
             </div>
@@ -119,13 +140,12 @@ gsap.registerPlugin(ScrollTrigger);
     </div>
   );
 
-  // Render Desktop View
   const renderDesktopView = () => (
     <div className="section main_am pb-0">
       <div className="heading_div mb_60 mb_sm_30">
         <h4 className="title title_style1 text-center">{title}</h4>
       </div>
-      {data.map((amenity, i) => (
+      {data?.map((amenity, i) => (
         <section
           key={i}
           className="parallax"
@@ -137,7 +157,9 @@ gsap.registerPlugin(ScrollTrigger);
           </div>
           <div className="content">
             <span className="am-name mx-auto">{amenity.name}</span>
-            <p className="desc des_style1 text-center mt-2 w-100">{Array.isArray(amenity.desc) ? amenity.desc.join(' ') : amenity.desc}</p>
+            <p className="desc des_style1 text-center mt-2 w-100">
+              {Array.isArray(amenity.desc) ? amenity.desc.join(" ") : amenity.desc}
+            </p>
           </div>
         </section>
       ))}
@@ -145,10 +167,8 @@ gsap.registerPlugin(ScrollTrigger);
   );
 
   return (
-    <>
+    <div ref={containerRef}>
       {isMobile ? renderMobileView() : renderDesktopView()}
-      
-      {/* Description */}
       {(second_title || desc) && (
         <Container>
           <div className="about">
@@ -160,7 +180,7 @@ gsap.registerPlugin(ScrollTrigger);
           </div>
         </Container>
       )}
-    </>
+    </div>
   );
 }
 

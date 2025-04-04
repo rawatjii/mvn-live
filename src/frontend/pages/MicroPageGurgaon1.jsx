@@ -7,6 +7,9 @@ import { Helmet } from "react-helmet";
 import MicroHeader from "../components/MicroHeader";
 import MicroHero from "../components/MicroPage/Hero";
 import { useMatches } from "../../theme/theme";
+import MicroAmenities from "../components/MicroPage/Amenities";
+import NoPolutionZone from "../components/MicroPage/NoPolutionZone"
+
 const MicroOverview = React.lazy(()=>import("../components/MicroPage/Overview"));
 const LargeElevationSection = React.lazy(()=>import("../components/MicroPage/LargeElevationSection"));
 const Walkthrough = React.lazy(()=>import("../components/MicroPage/Walkthrough"));
@@ -33,9 +36,6 @@ const ImageGallery = React.lazy(() =>
 const ConstructionTechnology = React.lazy(() =>
   import("../components/MicroPage/ConstructionTechnology")
 );
-const MicroAmenities = React.lazy(() =>
-  import("../components/MicroPage/Amenities")
-);
 const Typology = React.lazy(() => import("../components/homepage/Typology"));
 const MicroFloorPlan = React.lazy(() =>
   import("../components/MicroPage/FloorPlan")
@@ -44,9 +44,7 @@ const MicroLocationMap = React.lazy(() =>
   import("../components/MicroPage/LocationMap")
 );
 const MvnMall = React.lazy(() => import("../components/MicroPage/MvnMall"));
-const NoPolutionZone = React.lazy(() =>
-  import("../components/MicroPage/NoPolutionZone")
-);
+
 const Enquire = React.lazy(() => import("../components/homepage/Enquire"));
 const EnquireForm = React.lazy(() =>
   import("../components/homepage/EnquireForm")
@@ -345,11 +343,9 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             </div>
           </Suspense>
 
-          <Suspense fallback="">
             <div ref={(el) => (sectionRefs.current.MicroAmenities = el)}>
               <MicroAmenities section_data={data.amenities} />
             </div>
-          </Suspense>
 
           <Suspense fallback="">
             <div
@@ -379,11 +375,9 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             </div>
           </Suspense>
 
-          <Suspense fallback="">
             <div ref={(el) => (sectionRefs.current.NoPolutionZone = el)}>
               <NoPolutionZone section_data={data.noPollutionZone} />
             </div>
-          </Suspense>
 
           <div
             className="container-fluid micro_footer"
