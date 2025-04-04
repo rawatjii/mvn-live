@@ -359,7 +359,7 @@ export const data = {
     "Premium emulsion paint finish.",
   ],
   walkthrough: {
-    src: "https://www.youtube.com/embed/9CHcJAveejU?si=Sr3K9ETfhxeyjrOW",
+    src: "https://www.youtube.com/embed/9CHcJAveejU?autoplay=1&loop=1&mute=1&playlist=9CHcJAveejU",
     // title: "Virtual Tour",
     // title: "Walkthrough",
     second_title:'A GLIMPSE INTO A LIFE EXTRAORDINARY',

@@ -160,7 +160,12 @@ export const bangaloreData = {
     title: "MVN RESIDENCE",
     extra: "Where Prestige Meets Unparalleled Elegance",
     desc: "Discover an architectural masterpiece that transforms Bangalore's skyline. The breathtaking elevation of the MVN Aero One perfectly merges modern sophistication and timeless splendor, creating a visual delight that captures the spirit of opulent living.",
-    rera: "RERA Registration no : PRM/KA/RERA/1250/303/PR/201222/003761",
+    rera: ["RERA Registration no : PRM/KA/RERA/1250/303/PR/201222/003761", "Tower no 4 RERA Registration no : PRM/KA/RERA/1250/303/PR/140923/006259", "Tower no 5 and Tower 6 RERA Registration No : PRM/KA/RERA/1250/303/PR/141223/006472"],
+    bankDetails:{
+      acName:'MVN AERO ONE U/O M F FARMLANDS PVT LTD',
+      acNo:'50200053428336',
+      ifscCode:'HDFC0001744',
+    }
   },
   LargeElevationSection: {
         path:{
@@ -178,7 +183,7 @@ export const bangaloreData = {
       desc:'Designed to inspire awe at first glance, the static elevation of MVN Aero One showcases a perfect fusion of form and function. Each detail is meticulously crafted to embody a harmonious balance of contemporary aesthetics and architectural innovation.',
   },
   walkthrough: {
-    src: "https://www.youtube.com/embed/gJqfXn7vR9M",
+    src: "https://www.youtube.com/embed/gJqfXn7vR9M?autoplay=1&loop=1&mute=1&playlist=gJqfXn7vR9M",
     // title: "Virtual Tour",
     // title: "Walkthrough",
     second_title:'Walkthrough',

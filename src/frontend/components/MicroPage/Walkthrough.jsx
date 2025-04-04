@@ -7,7 +7,7 @@ const subscribeImg = `${CONFIG.API_URL}images/icons/subscribe_btn.webp`
 
 const Walkthrough = React.memo(({ data }) => {
   const [videoSrc, setVideoSrc] = useState("");
-  const { second_title, desc } = data;
+  const { second_title, desc, src } = data;
 
   const channelUrl = CONFIG.YOUTUBE_URL;
 
@@ -18,7 +18,7 @@ const Walkthrough = React.memo(({ data }) => {
   return (
     <section className="section walkthrough_section new_height" aria-label="Walkthrough Section">
       <div style={{backgroundImage: `url(${CONFIG.IMAGE_URL}loader/aeroone-gurgaon/largeElevation/largeBg.webp)`, backgroundSize: 'cover',backgroundPosition: 'bottom'}}>
-        <iframe src={videoSrc} 
+        <iframe src={src ? src : videoSrc} 
           title="YouTube video player"
           frameBorder="0"
           allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

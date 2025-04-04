@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import LazyLoad from "react-lazyload";
 import * as CONFIG from '../../config/config';
 
@@ -15,8 +15,20 @@ import { otherProjects, otherPages, otherDetails,socialMedia } from "../../data/
 const subscribeBtn = `${CONFIG.API_URL}images/icons/subscribe_btn.webp`;
 
 const Footer = () => {
+  const [isBangaloreProject, setIsBangaloreProject] = useState(false);
+
+  const {pathname} = useLocation();
+
   const channelUrl = CONFIG.YOUTUBE_URL;
   const baseUrl = import.meta.env.VITE_APP_URL;
+
+  useEffect(()=>{
+    if(pathname.includes("aeroone-bangalore1")){
+      setIsBangaloreProject(true);
+    }
+  }, [pathname])
+
+  
 
   return (
     <footer>
@@ -68,10 +80,18 @@ const Footer = () => {
 
             <div className="left">
               <h4>Contact Details</h4>
+              {isBangaloreProject ? (
+                <>
+                  <p className="address-details"><span>Meet:</span>MVN Group, 2nd Floor, Above McDonald's, Jansons Mall, Downtown Park II, Menakunte, Sadahalli Gate, Bangalore – 562157</p>
+                  <p className="address-details"><span>MVN Aero One Project:</span>Brigade Orchards Spinal Rd, Bychapura, Karnataka 562110</p>
+                </>
+              ) : (
+                <>
+                  <p className="address-details"><span>Meet:</span>{otherDetails.address}<br /> CIN:ACA-4678 | PAN:ABWFM8415E</p>
+                </>
+              )}
 
-              <p className="address-details"><span>Meet:</span>{otherDetails.address}
-              <br /> CIN:ACA-4678 | PAN:ABWFM8415E</p>
-              <p className="phone-details"><span>Talk:</span> {otherDetails.contact}</p>
+              <p className="phone-details"><span>Talk:</span> {!isBangaloreProject ? otherDetails.contact : '+91 9164001177'}</p>
               <p className="mail-details"><span>Write:</span> {otherDetails.email}</p>
 
               <div className="footer-top">
@@ -106,7 +126,7 @@ const Footer = () => {
         <div className="footer-bottom">
           <div className="box-b">
             <div className="left">
-            <ul>
+              <ul>
                 <li>
                   <NavLink to={`${import.meta.env.VITE_APP_URL}privacy-policy`}>Privacy Policy |</NavLink>
                 </li>
@@ -121,7 +141,7 @@ const Footer = () => {
                   </a>
                 </li>
 
-            </ul>
+              </ul>
             </div>
             <div className="right">
               <ul>

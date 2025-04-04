@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { Container } from "react-bootstrap";
+import Table from 'react-bootstrap/Table';
 import { API_URL } from "../../../config/config";
 
 const diamondIMG = `${API_URL}images/icons/plane1.png`;
@@ -68,7 +69,7 @@ const MicroOverview = React.memo(({ data }) => {
     };
   }, [ended1, ended2, ended3]);
 
-  const { title, location, extra, desc ,rera ,counterHeading } = data;
+  const { title, location, extra, desc ,rera ,counterHeading, bankDetails } = data;
 
   return (
     <section className="section micro_overview text-center pb-0" aria-label="Overview Section">
@@ -122,7 +123,45 @@ const MicroOverview = React.memo(({ data }) => {
           <span className="bar"></span>
           </>}
         </div>
-          {rera && <p className="rera-number des_style1 text-center">{rera}</p>}
+
+        {Array.isArray(rera) ? (
+          <>
+            {rera && (
+              <>
+                {rera.map((el, i) => (
+                  <p key={i} className="rera-number des_style1 text-center mb-2">{el}</p>
+                ))}
+              </>
+            )}
+          </>
+        ) : (
+          <>
+            {rera && <p className="rera-number des_style1 text-center">{rera}</p>}
+          </>
+        )}
+
+        {bankDetails && Object.keys(bankDetails).length > 0 && (
+          <>
+            <Table bordered hover className="bg_transparent mt-5 mb-0" style={{fontSize:'14px'}}>
+              <thead>
+                <tr>
+                  <th>Bank A/C Name</th>
+                  <th>HDFC A/C NO</th>
+                  <th>IFSC CODE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{bankDetails.acName}</td>
+                  <td>{bankDetails.acNo}</td>
+                  <td>{bankDetails.ifscCode}</td>
+                </tr>
+              </tbody>
+            </Table>
+            <small className="d-block text-start fw-light" style={{fontSize:'12px'}}>*Project Approved By All Leading Banks.</small>
+          </>
+        )}
+          
       </Container>
     </section>
   );

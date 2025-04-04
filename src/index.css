@@ -1862,7 +1862,7 @@ footer {
       p{
         color: #d4d4d4;
         font-size: 13px;
-        display: flex;
+        /* display: flex; */
         margin-bottom: 15px;
         letter-spacing: 0.1px;
 
@@ -4202,6 +4202,15 @@ footer {
 }
 
 section.section.walkthrough_section iframe { width: 100%;height: 1000px; object-fit: cover; display:flex;}
+table.bg_transparent{
+  background:transparent!important;
+
+  th,td{
+    background:transparent!important;
+    color:#c1c2c1;
+    
+  }
+}
 
 /* start responsive */
 /* by bhupendra */
