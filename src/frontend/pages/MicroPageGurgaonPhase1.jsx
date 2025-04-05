@@ -15,6 +15,7 @@ import ImagesGallery from "../components/MicroPage/ImagesGallery";
 import SliderTypology from "../components/MicroPage/bangalore/SliderTypology";
 import AthensBanner from "../components/MicroPage/athens/AthensBanner";
 import FeatureSection from "../components/MicroPage/athens/FeatureSection";
+import ParallaxSection from "../../common/ParallaxSection";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
  
@@ -215,7 +216,7 @@ const MicroPageGurgaonPhase1 = ({ data, loadingCount, setLoadingCount }) => {
             ref={(el) =>
               (sectionRefs.current.MicroAmenities = el)
             }>
-            <MicroAmenities section_data={data.amenities} />
+            <ParallaxSection section_data={data.amenities} />
           </div>
 
           <div

@@ -20,7 +20,7 @@ const FrontendRoute = ({children, loaderType})=>{
         desktop: `${CONFIG.API_URL}assets/loader/aeroone-gurgaon/desktop.webp`,
         mobile: `${CONFIG.API_URL}assets/loader/aeroone-gurgaon/mobile.webp`,
       })
-    }else if(loaderType == "aeroone-bangalore1"){
+    }else if(loaderType == "aeroone-bangalore"){
       setLoaderImage({
         desktop: `${CONFIG.API_URL}bangalore/laoder/banner.png`,
         mobile: `${CONFIG.API_URL}bangalore/laoder/banner.png`,

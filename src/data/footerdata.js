@@ -3,14 +3,14 @@ export default footerData = {
     {
       location:'Gurugram',
       projects: [
-        { name: 'MVN Mall', link: '/mvn-mall-1', target_blank: false, status: 'new Launch' },
+        { name: 'MVN Mall', link: '/mvn-mall', target_blank: false, status: 'new Launch' },
         { name: 'MVN AeroOne', link: '/aeroone-gurgaon', status: 'new Launch', target_blank: false  }
       ]
     },
     {
       location:'Bangalore',
       projects: [
-        { name: 'MVN', link: '/aeroone-bangalore1', status: '', target_blank: false }
+        { name: 'MVN', link: '/aeroone-bangalore', status: '', target_blank: false }
       ]
     },
     {

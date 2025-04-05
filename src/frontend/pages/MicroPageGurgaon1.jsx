@@ -9,11 +9,12 @@ import MicroHero from "../components/MicroPage/Hero";
 import { useMatches } from "../../theme/theme";
 import MicroAmenities from "../components/MicroPage/Amenities";
 import NoPolutionZone from "../components/MicroPage/NoPolutionZone"
+import ParallaxSection from "../../common/ParallaxSection";
 
-const MicroOverview = React.lazy(()=>import("../components/MicroPage/Overview"));
-const LargeElevationSection = React.lazy(()=>import("../components/MicroPage/LargeElevationSection"));
-const Walkthrough = React.lazy(()=>import("../components/MicroPage/Walkthrough"));
-const DownloadBrochure = React.lazy(()=>import("../components/MicroPage/DownloadBrochure"));
+const MicroOverview = React.lazy(() => import("../components/MicroPage/Overview"));
+const LargeElevationSection = React.lazy(() => import("../components/MicroPage/LargeElevationSection"));
+const Walkthrough = React.lazy(() => import("../components/MicroPage/Walkthrough"));
+const DownloadBrochure = React.lazy(() => import("../components/MicroPage/DownloadBrochure"));
 
 const PeacockSection = React.lazy(() =>
   import("../components/MicroPage/PeacockSection")
@@ -64,10 +65,10 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
   const smootherRef = useRef(null);
   const sectionRefs = useRef({});
   const { pageSections, projectName } = data;
-  const { isMobile } = useMatches(); 
+  const { isMobile } = useMatches();
 
-    const [isHeaderFixed, setIsHeaderFixed] = useState(false);
-    const bannerRef = useRef(null);
+  const [isHeaderFixed, setIsHeaderFixed] = useState(false);
+  const bannerRef = useRef(null);
 
   const scrollToSection = (sectionKey) => {
     const target = sectionRefs.current[sectionKey];
@@ -98,29 +99,29 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
     <>
 
       <Helmet>
-      <title>MVN AeroOne Gurgaon | 5.5 BHK Luxury Residences | Dwarka Expressway</title>
-      <meta name="description" content="MVN AeroOne Gurgaon 5.5 BHK Residences, the largest ultra-luxury apartments in Dwarka Expressway. 360° Panoramic View." />
-      <meta name="keywords" content="MVN Infrastructure, MVN Gurgaon, MVN MALL Gurugram, MVN aero one, 5BHK in Gurgaon, Aero one, MVN Bangalore, mvn.in, MVN Developer." />
-      <link rel="canonical" href="https://mvn.in/aeroone-gurgaon" />
-      <meta name="distribution" content="Global" />
-      <meta name="Language" content="English" />
-      <meta name="doc-type" content="Public" />
-      <meta name="robots" content="index, follow" />
-      <meta name="author" content="MVN AeroOne" />
-      <meta name="googlebot" content="all, index, follow" />
-      <meta name="YahooSeeker" content="all, index, follow" />
-      <meta name="msnbot" content="all, index, follow" />
-      <meta name="HandheldFriendly" content="true" />
-      <meta name="revisit-after" content="1 days" />
-      <meta name="rating" content="safe for kids" />
-      <meta name="expires" content="never" />
-      <meta property="og:type" content="website" />
-      <meta property="og:title" content="MVN AeroOne Gurgaon | 5.5 BHK Luxury Residences | Dwarka Expressway" />
-      <meta property="og:description" content="MVN AeroOne Gurgaon 5.5 BHK Residences, the largest ultra-luxury apartments in Dwarka Expressway. 360° Panoramic View." />
-      <meta property="og:url" content="https://mvn.in/aeroone-gurgaon" />
-      <meta property="og:site_name" content="MVN AeroOne" />
-      <meta property="og:image" content="https://mvn.in/assets/images/micro/hero/aeroone-gurgaon/desktop.webp">
-      </meta>
+        <title>MVN AeroOne Gurgaon | 5.5 BHK Luxury Residences | Dwarka Expressway</title>
+        <meta name="description" content="MVN AeroOne Gurgaon 5.5 BHK Residences, the largest ultra-luxury apartments in Dwarka Expressway. 360° Panoramic View." />
+        <meta name="keywords" content="MVN Infrastructure, MVN Gurgaon, MVN MALL Gurugram, MVN aero one, 5BHK in Gurgaon, Aero one, MVN Bangalore, mvn.in, MVN Developer." />
+        <link rel="canonical" href="https://mvn.in/aeroone-gurgaon" />
+        <meta name="distribution" content="Global" />
+        <meta name="Language" content="English" />
+        <meta name="doc-type" content="Public" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="MVN AeroOne" />
+        <meta name="googlebot" content="all, index, follow" />
+        <meta name="YahooSeeker" content="all, index, follow" />
+        <meta name="msnbot" content="all, index, follow" />
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="revisit-after" content="1 days" />
+        <meta name="rating" content="safe for kids" />
+        <meta name="expires" content="never" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="MVN AeroOne Gurgaon | 5.5 BHK Luxury Residences | Dwarka Expressway" />
+        <meta property="og:description" content="MVN AeroOne Gurgaon 5.5 BHK Residences, the largest ultra-luxury apartments in Dwarka Expressway. 360° Panoramic View." />
+        <meta property="og:url" content="https://mvn.in/aeroone-gurgaon" />
+        <meta property="og:site_name" content="MVN AeroOne" />
+        <meta property="og:image" content="https://mvn.in/assets/images/micro/hero/aeroone-gurgaon/desktop.webp">
+        </meta>
         <script>
           {`
             window.dataLayer = window.dataLayer || [];
@@ -181,27 +182,27 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             fbq('init', '562105226581202');
             fbq('track', 'PageView');
             `}
-          </script>
+        </script>
 
-          <noscript>
-            {`
+        <noscript>
+          {`
               <img  alt="facebook" height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=562105226581202&ev=PageView&noscript=1" />
             `}
-          </noscript>
+        </noscript>
 
-          <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11490416244"></script>
-          <script>
-            {`
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11490416244"></script>
+        <script>
+          {`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
 
               gtag('config', 'AW-11490416244');
             `}
-          </script>
+        </script>
 
-          <script>
-              {`
+        <script>
+          {`
                 <script type='text/javascript'>
                 window._tfa = window._tfa || [];
                 window._tfa.push({notify: 'event', name: 'page_view', id: 1787600});
@@ -215,16 +216,16 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
                 'tb_tfa_script');
               </script>
               `}
-          </script>
+        </script>
 
-          <script>
-            {`
+        <script>
+          {`
               (function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"187169642", enableAutoSpaTracking: true};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");
             `}
-          </script>
+        </script>
 
-          <script type="text/javascript">
-            {`
+        <script type="text/javascript">
+          {`
               (function(c,l,a,r,i,t,y){
                   c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
                   t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
@@ -239,15 +240,15 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
       <MicroHeader
         scrollToSection={scrollToSection}
         data={data.header}
-        isFixed={ isHeaderFixed }
+        isFixed={isHeaderFixed}
       />
 
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <div ref={bannerRef}>
-            <MicroHero 
-            onBannerExit={setIsHeaderFixed} 
-            isMainBanner={true} />
+            <MicroHero
+              onBannerExit={setIsHeaderFixed}
+              isMainBanner={true} />
           </div>
 
           <Suspense fallback="">
@@ -260,7 +261,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
           <div ref={(el) => (sectionRefs.current.Walkthrough = el)}>
             <Suspense fallback="">
-              <Walkthrough  data={data.walkthrough}/>
+              <Walkthrough data={data.walkthrough} />
             </Suspense>
           </div>
 
@@ -309,7 +310,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
               />
             </div>
           </Suspense>
-          
+
 
           <Suspense fallback="">
             <div ref={(el) => (sectionRefs.current.consultant = el)}>
@@ -325,7 +326,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
           <Suspense fallback="">
             <div ref={(el) => (sectionRefs.current.MicroElevation = el)}>
-              <ImageGallery  data={data.microElevation} />
+              <ImageGallery data={data.microElevation} />
             </div>
           </Suspense>
 
@@ -343,9 +344,9 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             </div>
           </Suspense>
 
-            <div ref={(el) => (sectionRefs.current.MicroAmenities = el)}>
-              <MicroAmenities section_data={data.amenities} />
-            </div>
+          <div ref={(el) => (sectionRefs.current.MicroAmenities = el)}>
+            <ParallaxSection section_data={data.amenities} />
+          </div>
 
           <Suspense fallback="">
             <div
@@ -371,13 +372,17 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
           <Suspense fallback="">
             <div ref={(el) => (sectionRefs.current.MVNMALL = el)}>
-              <MvnMall data={data.mvnMall}/>
+              <MvnMall data={data.mvnMall} />
             </div>
           </Suspense>
 
-            <div ref={(el) => (sectionRefs.current.NoPolutionZone = el)}>
+          {/* <div ref={(el) => (sectionRefs.current.NoPolutionZone = el)}>
               <NoPolutionZone section_data={data.noPollutionZone} />
-            </div>
+            </div> */}
+
+          <div ref={(el) => (sectionRefs.current.NoPolutionZone = el)}>
+            <ParallaxSection section_data={data.noPollutionZone} />
+          </div>
 
           <div
             className="container-fluid micro_footer"

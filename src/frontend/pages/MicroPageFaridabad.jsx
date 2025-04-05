@@ -14,6 +14,7 @@ import MicroHeader from "../components/MicroHeader";
 import ImagesGallery from "../components/MicroPage/ImagesGallery";
 import SliderTypology from "../components/MicroPage/bangalore/SliderTypology";
 import AthensBanner from "../components/MicroPage/athens/AthensBanner";
+import ParallaxSection from "../../common/ParallaxSection";
  
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -206,7 +207,7 @@ const MicroPageFaridabad = ({ data, loadingCount, setLoadingCount }) => {
             ref={(el) =>
               (sectionRefs.current.MicroAmenities = el)
             }>
-            <MicroAmenities section_data={data.amenities} />
+            <ParallaxSection section_data={data.amenities} />
           </div>
 
           <div

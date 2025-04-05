@@ -79,9 +79,9 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "aeroone-bangalore1",
+        path: "aeroone-bangalore",
         element: (
-          <FrontendRoute loaderType="aeroone-bangalore1" >
+          <FrontendRoute loaderType="aeroone-bangalore" >
             <MicroPageBangalore data={bangaloreData} />
           </FrontendRoute>
         ),
@@ -167,7 +167,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "mvn-mall-1",
+        path: "mvn-mall",
         element: (
           <FrontendRoute  loaderType="mvn-mall-1">
           <MvnMall1 data={mvnMallData}/>

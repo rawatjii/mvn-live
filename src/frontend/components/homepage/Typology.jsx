@@ -50,8 +50,8 @@ const Typology = React.memo(({ onLoadComplete }) => {
     for (let i = 1; i <= totalFrames; i++) {
       const img = new Image();
       img.src = isMobile
-        ? `${API_URL}assets/micro/aeroone-gurgaon/mobiles/${i}.webp`
-        : `${API_URL}assets/micro/aeroone-gurgaon/mobiles/${i}.webp`;
+        ? `assets/images/micro/aeroone-gurgaon/mobiles/${i}.webp`
+        : `assets/images/micro/aeroone-gurgaon/mobiles/${i}.webp`;
 
       // Track when each image loads
       img.onload = () => {

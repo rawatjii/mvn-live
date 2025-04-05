@@ -324,7 +324,7 @@ export const mvnMallData = {
 const MvnMall = () => {
   window.scrollTo(0,0)
   return (
-    <MvnMall1 data={mvnMallData}  projectName={'mvn-mall-1'}/>
+    <MvnMall1 data={mvnMallData}  projectName={'mvn-mall'}/>
   )
 };
 

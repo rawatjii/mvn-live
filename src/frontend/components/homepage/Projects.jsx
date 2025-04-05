@@ -21,7 +21,7 @@ const projectsData = [
     name: "Mvn Mall",
     location: "Gurugram",
     otherPage: true,
-    link: 'mvn-mall-1',
+    link: 'mvn-mall',
     watermark:true,
   },
   {
@@ -30,7 +30,7 @@ const projectsData = [
     name: "Mvn AERO ONE",
     location: "Bangalore",
     otherPage: true,
-    link: 'aeroone-bangalore1'
+    link: 'aeroone-bangalore'
   },
 ];
 

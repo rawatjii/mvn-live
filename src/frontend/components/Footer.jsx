@@ -23,7 +23,7 @@ const Footer = () => {
   const baseUrl = import.meta.env.VITE_APP_URL;
 
   useEffect(()=>{
-    if(pathname.includes("aeroone-bangalore1")){
+    if(pathname.includes("aeroone-bangalore")){
       setIsBangaloreProject(true);
     }
   }, [pathname])

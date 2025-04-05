@@ -4,6 +4,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import ScrollSmoother from "gsap/ScrollSmoother";
 import MicroHeader from "../components/MicroHeader";
 import { API_URL } from "../../config/config";
+import ParallaxSection from "../../common/ParallaxSection";
 const MicroOverview = React.lazy(()=>import("../components/MicroPage/Overview"));
 const MicroAmenities = React.lazy(()=>import("../components/MicroPage/Amenities"));
 const MicroLocationMap = React.lazy(()=>import("../components/MicroPage/LocationMap"));
@@ -174,7 +175,7 @@ const MicroPageBangalore = ({ data, loadingCount, setLoadingCount }) => {
               (sectionRefs.current.MicroAmenities = el)
             }>
           <Suspense fallback="">
-            <MicroAmenities section_data={data.amenities} />
+            <ParallaxSection section_data={data.amenities} />
             </Suspense>
           </div>
 
