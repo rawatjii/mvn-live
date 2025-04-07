@@ -4,7 +4,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import ScrollSmoother from "gsap/ScrollSmoother";
 import MicroHeader from "../components/MicroHeader";
 import { API_URL } from "../../config/config";
-import ParallaxSection from "../../common/ParallaxSection";
+const ParallaxSection = React.lazy(()=>import("../../common/ParallaxSection"));
 const MicroOverview = React.lazy(()=>import("../components/MicroPage/Overview"));
 const MicroAmenities = React.lazy(()=>import("../components/MicroPage/Amenities"));
 const MicroLocationMap = React.lazy(()=>import("../components/MicroPage/LocationMap"));

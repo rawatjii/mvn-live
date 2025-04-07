@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, Suspense } from "react";
 import MicroOverview from "../components/MicroPage/Overview";
 import MicroAmenities from "../components/MicroPage/Amenities";
 import MicroLocationMap from "../components/MicroPage/LocationMap";
@@ -14,7 +14,7 @@ import MicroHeader from "../components/MicroHeader";
 import ImagesGallery from "../components/MicroPage/ImagesGallery";
 import SliderTypology from "../components/MicroPage/bangalore/SliderTypology";
 import AthensBanner from "../components/MicroPage/athens/AthensBanner";
-import ParallaxSection from "../../common/ParallaxSection";
+const ParallaxSection = React.lazy(()=>import("../../common/ParallaxSection"));
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
  
@@ -99,7 +99,9 @@ const MvnMall1 = ({ data }) => {
             ref={(el) =>
               (sectionRefs.current.MicroAmenities = el)
             }>
+              <Suspense>
               <ParallaxSection section_data={data.amenities} />
+              </Suspense>
             {/* <MicroAmenities section_data={data.amenities} /> */}
           </div>
 
