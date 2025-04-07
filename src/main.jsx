@@ -9,6 +9,14 @@ import store from "./store/store.js";
 // import InitialLoading from "./frontend/skeleton/Initial/Index.jsx";
 import { data } from "./frontend/pages/micro/mvn-aeroone-gurgaon1/Index.jsx";
 import FrontendRoute from "./common/FrontendRoute.jsx";
+import PrPolcy from './frontend/pages/PrPolcy.jsx';
+import Disclaimer from "./frontend/pages/Disclaimer.jsx";
+import ThankYou from "./frontend/pages/ThankYou.jsx";
+import {bangaloreData} from './frontend/pages/micro/mvn-aeroone-bangalore/Index.jsx';
+import { faridabadData } from "./frontend/pages/micro/Athens/Index.jsx";
+import { athensGurgaonPhase1Data } from "./frontend/pages/micro/athens-gurgaon-phase-1/Index.jsx";
+import { athensGurgaonPhase2Data } from "./frontend/pages/micro/athens-gurgaon-phase-2/Index.jsx";
+import { mvnMallData } from "./frontend/pages/micro/mvnMall/Index.jsx";
 
 const Homepage = React.lazy(() => import("./frontend/pages/Homepage.jsx"));
 const AboutUs = React.lazy(() => import("./frontend/pages/AboutUs.jsx"));
@@ -17,17 +25,15 @@ const Blog = React.lazy(() => import("./frontend/pages/Blog.jsx"));
 const BlogDetails = React.lazy(() => import("./frontend/pages/BlogDetails.jsx")); 
 const Career = React.lazy(() => import("./frontend/pages/Career.jsx"));
 const ContactPage = React.lazy(() => import("./frontend/pages/ContactUs.jsx"));
-import PrPolcy from './frontend/pages/PrPolcy.jsx';
-import Disclaimer from "./frontend/pages/Disclaimer.jsx";
 const PageNotFound = React.lazy(() => import("./common/PageNotFound/Index.jsx"));
-import ThankYou from "./frontend/pages/ThankYou.jsx";
 // const Gallery = React.lazy(() => import('./frontend/pages/Gallery.jsx'));
 // const Csr = React.lazy(() => import('./frontend/pages/Csr.jsx'));
 const MicroPageGurgaon1 = React.lazy(()=>import("./frontend/pages/MicroPageGurgaon1.jsx"));
-import MicroPageBangalore from "./frontend/pages/MicroPageBangalore.jsx";
-import MicroPageFaridabad from "./frontend/pages/MicroPageFaridabad.jsx";
-import MicroPageGurgaonPhase1 from "./frontend/pages/MicroPageGurgaonPhase1.jsx";
-import MicroPageGurgaonPhase2 from "./frontend/pages/MicroPageGurgaonPhase2.jsx";
+const MicroPageBangalore = React.lazy(()=>import("./frontend/pages/MicroPageBangalore.jsx"));
+const MicroPageFaridabad = React.lazy(()=>import("./frontend/pages/MicroPageFaridabad.jsx"));
+const MicroPageGurgaonPhase1 = React.lazy(()=>import("./frontend/pages/MicroPageGurgaonPhase1.jsx"));
+const MicroPageGurgaonPhase2 = React.lazy(()=>import("./frontend/pages/MicroPageGurgaonPhase2.jsx"));
+const MvnMall1 = React.lazy(()=>import("./frontend/pages/mvnMall.jsx"));
 // const MicroPageGurgaon1 = React.lazy(() =>
 //   new Promise((resolve) =>
 //     setTimeout(() => resolve(import("./frontend/pages/MicroPageGurgaon1.jsx")), 100000)
@@ -39,13 +45,6 @@ import "./index.css";
 import "./awaneesh.css";
 import "./savan.css";
 import './adarsh.css'
-
-import {bangaloreData} from './frontend/pages/micro/mvn-aeroone-bangalore/Index.jsx';
-import { faridabadData } from "./frontend/pages/micro/Athens/Index.jsx";
-import { athensGurgaonPhase1Data } from "./frontend/pages/micro/athens-gurgaon-phase-1/Index.jsx";
-import { athensGurgaonPhase2Data } from "./frontend/pages/micro/athens-gurgaon-phase-2/Index.jsx";
-import { mvnMallData } from "./frontend/pages/micro/mvnMall/Index.jsx";
-import MvnMall1 from "./frontend/pages/mvnMall.jsx";
 
 
 

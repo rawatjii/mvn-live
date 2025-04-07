@@ -9,12 +9,12 @@ import MicroHero from "../components/MicroPage/Hero";
 import { useMatches } from "../../theme/theme";
 import MicroAmenities from "../components/MicroPage/Amenities";
 import NoPolutionZone from "../components/MicroPage/NoPolutionZone"
-import ParallaxSection from "../../common/ParallaxSection";
 
 const MicroOverview = React.lazy(() => import("../components/MicroPage/Overview"));
 const LargeElevationSection = React.lazy(() => import("../components/MicroPage/LargeElevationSection"));
 const Walkthrough = React.lazy(() => import("../components/MicroPage/Walkthrough"));
 const DownloadBrochure = React.lazy(() => import("../components/MicroPage/DownloadBrochure"));
+const ParallaxSection = React.lazy(() => import("../../common/ParallaxSection"));
 
 const PeacockSection = React.lazy(() =>
   import("../components/MicroPage/PeacockSection")
