@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Watermark from '../../../common/watermark/Index';
-import { useMatches } from "../../../theme/theme";
 import { API_URL } from "../../../config/config";
+import { useMatches } from "../../../theme/theme";
 
 const PlaneIcon = `${API_URL}images/icons/plane.png`;
 const typo1 = `${API_URL}images/typologies/270/1.webp`;
@@ -50,8 +50,8 @@ const Typology = React.memo(({ onLoadComplete }) => {
     for (let i = 1; i <= totalFrames; i++) {
       const img = new Image();
       img.src = isMobile
-        ? `assets/images/micro/aeroone-gurgaon/mobiles/${i}.webp`
-        : `assets/images/micro/aeroone-gurgaon/mobiles/${i}.webp`;
+        ? `${API_URL}assets/micro/aeroone-gurgaon/mobiles/${i}.webp`
+        : `${API_URL}assets/micro/aeroone-gurgaon/mobiles/${i}.webp`;
 
       // Track when each image loads
       img.onload = () => {
@@ -83,7 +83,7 @@ const Typology = React.memo(({ onLoadComplete }) => {
           Math.floor(self.progress * segments.length),
           segments.length - 1
         );
-
+      
         const segment = segments[segmentIndex];
         const segmentProgress =
           (self.progress - segmentIndex / segments.length) * segments.length;
@@ -94,24 +94,20 @@ const Typology = React.memo(({ onLoadComplete }) => {
             ),
           totalFrames - 1
         );
-
-
-        // Show the current frame and hide others
+      
+        // ✅ Fix null errors by checking existence
         frameRefs.current.forEach((img, index) => {
-          img.style.display = index === frameIndex ? "block" : "none";
+          if (img) img.style.display = index === frameIndex ? "block" : "none";
         });
-
-        // Toggle content-box visibility
+      
         contentRefs.current.forEach((el, i) => {
-          el.style.display = i === segment.contentIndex ? "block" : "none";
+          if (el) el.style.display = i === segment.contentIndex ? "block" : "none";
         });
-
-        // Toggle typologies-images visibility
+      
         imageContentRefs.current.forEach((el, i) => {
-          el.style.display = i === segment.contentIndex ? "block" : "none";
+          if (el) el.style.display = i === segment.contentIndex ? "block" : "none";
         });
-
-        // Update typology_arrow top value based on segment
+      
         const typologyArrow = document.querySelector(".typology_arrow");
         if (typologyArrow) {
           let topValue;
@@ -122,7 +118,8 @@ const Typology = React.memo(({ onLoadComplete }) => {
           }
           typologyArrow.style.top = `${topValue}px`;
         }
-      },
+      }
+      
     });
 
     return () => {
