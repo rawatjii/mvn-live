@@ -1841,7 +1841,7 @@ footer {
     content: '';
     height: 100%;
     width: 120%;
-    opacity: 10%;
+    opacity: 0.1;
     background: url('./frontend/assets/images/footer-bg-img.webp') no-repeat right center;
     left: -31%;
     bottom: 0px;
@@ -3701,7 +3701,47 @@ footer {
 
 /* mvn_mall_section */
 
+.mvn_mall_animation{
+
+  .frames_content{
+    /* height:auto; */
+    /* min-height:100vh; */
+    /* height:calc(100vh) */
+  }
+
+  canvas{
+    height:100vh;
+  }
+}
+
 .mvn_mall_section{
+
+  /* .mvn_mall_left_col{
+
+    .position-relative{
+      height: 100%;
+
+
+      img{
+        height:100%;
+        width:100%;
+        object-fit: cover;
+      }
+    }
+  } */
+
+  .mvn_mall_right_col{
+
+    .position-relative{
+      /* height: calc(50% - 10px); */
+
+
+      img{
+        /* height:100%;
+        object-fit: cover; */
+      }
+    }
+  }
 
   .sec_title{
 
@@ -4161,6 +4201,8 @@ footer {
   }
 }
 
+section.section.walkthrough_section iframe { width: 100%;height: 1000px; object-fit: cover; display:flex;}
+
 /* start responsive */
 /* by bhupendra */
 @media(min-width:768px) {
@@ -4247,9 +4289,23 @@ footer {
       height:500px;
     }
   }
+
+  section.section.walkthrough_section iframe{
+
+    height: 800px;
+  }
 }
 
 /* end of 1500 */
+
+@media(max-width:1366px){
+
+  section.section.walkthrough_section iframe{
+    height: 700px;
+  }
+}
+
+/* end of 1366 */
 
 @media(max-width:1199px) {
 
@@ -4292,6 +4348,11 @@ footer {
       margin: 40px;
     }
   }
+
+  section.section.walkthrough_section iframe{
+
+    height: 430px;
+  }
 }
 
 /* end of 1199 */
@@ -4312,6 +4373,10 @@ footer {
 
   .mb_sm_30{
     margin-bottom:30px;
+  }
+
+  .pt_sm_0{
+    padding-top:0px!important;
   }
 
   .pb_sm_0{
@@ -5376,6 +5441,12 @@ footer {
     
   }
 
+  section.section.walkthrough_section iframe{
+
+    height: 270px;
+  }
+
+
 }
 
 /* end of 767 */
@@ -5785,9 +5856,6 @@ footer {
   }
 }
 @media (min-width: 767px) {
-  section.walkthrough_section.new_height iframe {
-    height: 700px !important;
-  }
 }
 /* walkthrough youtube video style end */
 

@@ -7,10 +7,11 @@ import Watermark from "../../../common/watermark/Index";
 import ScrollDown from "../../../common/scrollDown/Index";
 import { useMatches } from "../../../theme/theme";
 import { debounce } from "lodash"; // Add lodash debounce for optimized resize
+import frame1 from "../../assets/images/mvn-mall/mvn-mall/1.webp"
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ScrollTriggerFrames = ({ data, onLoadComplete, onBannerExit, isMainBanner }) => {
+const ScrollTriggerFrames = ({ isMvnLogo, data, onLoadComplete, onBannerExit, isMainBanner }) => {
   const canvasRef = useRef(null);
   const sectionRef = useRef(null);
   const [images, setImages] = useState([]);
@@ -35,6 +36,8 @@ const ScrollTriggerFrames = ({ data, onLoadComplete, onBannerExit, isMainBanner 
     [isMobile, data.frameCounts]
   );
 
+  console.log(data.path.mobilePath,"PATH");
+  console.log(data.path.desktopPath,"PATH");
   const imagePath = useMemo(
     () => (isMobile ? data.path.mobilePath : data.path.desktopPath),
     [isMobile, data.path]
@@ -174,24 +177,30 @@ const ScrollTriggerFrames = ({ data, onLoadComplete, onBannerExit, isMainBanner 
   }, [images]);
 
   return (
-    <section className={`section ${isMainBanner ? "banner p-0" : "Scroll_Height pb-0"}`} ref={sectionRef} aria-label="Animation Section">
+    <section className={`section ${isMainBanner ? "banner p-0" : "pb-0"}`} ref={sectionRef} aria-label="Animation Section">
       <div className="frames_content">
         <div className="image_col position-relative">
-          <Watermark />
+          <Watermark isMvnLogo={isMvnLogo} />
+          
+          {/* <img src={frame1} alt="" /> */}
           <canvas
             ref={canvasRef}
             width={window.innerWidth}
-            height={window.innerHeight}
+            // height={window.innerHeight}
             style={{ display: "block", margin: "auto" }}
           />
         </div>
         <ScrollDown className="color-black" />
       </div>
-      <Container className={data.classCustomCard}>
-        <div className="about">
-          <CustomCard title={cardData.title} desc={cardData.desc} className="px_sm_0 pb-0" />
-        </div>
-      </Container>
+
+      {data.classCustomCard && (
+        <Container className={data.classCustomCard}>
+          <div className="about">
+            <CustomCard title={cardData.title} desc={cardData.desc} className="px_sm_0 pb-0" />
+          </div>
+        </Container>
+      )}
+      
     </section>
   );
 };

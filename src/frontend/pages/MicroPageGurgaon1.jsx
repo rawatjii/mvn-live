@@ -375,7 +375,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
           <Suspense fallback="">
             <div ref={(el) => (sectionRefs.current.MVNMALL = el)}>
-              <MvnMall />
+              <MvnMall data={data.mvnMall}/>
             </div>
           </Suspense>
 

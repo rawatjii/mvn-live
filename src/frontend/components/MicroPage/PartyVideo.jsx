@@ -7,7 +7,7 @@ const PartyVideo = React.memo(({ data }) => {
   const { isMobile } = useMatches();
 
   return (
-    <div className="section peacock_section party_section pb-0">
+    <div className="section peacock_section party_section py-0">
       <LottieAnimationSection backgroundImg={partyImg} data={data} logomark={isMobile ? "left sm" : "left"} position="0" />
     </div>
   );
