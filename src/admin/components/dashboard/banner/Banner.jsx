@@ -10,41 +10,46 @@ const formConfig = [
   {
     sectionName: "About banner",
     sectionApi: "about-banner",
-    visible: "true",
+    visible: true,
     fields: {
-      title: { visible: "true", label: "Banner Title" },
-      alt_tag: { visible: "true", label: "Alt Text" },
-      image: { visible: "true", label: "Main Image" },
-      alternative_image: { visible: "true", label: "Alternative Image" },
-      description: { visible: "true" },
+      title: { visible: true, label: "Banner Title" },
+      alt_tag: { visible: true, label: "Alt Text" },
+      image: { visible: true, label: "Main Image" },
+      alternative_image: { visible: true, label: "Alternative Image" },
+      description: { visible: true },
     },
   },
   {
     sectionName: "About overview",
     sectionApi: "about-overview",
-    visible: "true",
+    visible: true,
     fields: {
-      title: { visible: "true", label: "Overview Title" },
-      alt_tag: { visible: "true", label: "Alt Tag" },
-      image: { visible: "true", label: "Overview Image" },
-      alternative_image: { visible: "true", label: "Alt Image" },
-      description: { visible: "true", label: "Overview Description" },
+      title: { visible: true, label: "Overview Title" },
+      alt_tag: { visible: true, label: "Alt Tag" },
+      image: { visible: true, label: "Overview Image" },
+      alternative_image: { visible: true, label: "Alt Image" },
+      description: { visible: true, label: "Overview Description" },
     },
   },
   {
     sectionName: "About gallery",
     sectionApi: "about-gallery",
-    visible: "true",
+    visible: true,
     fields: {
-      title: { visible: "true", label: "Overview Title" },
-      alt_tag: { visible: "true", label: "Alt Tag" },
-      image: { visible: "true", label: "Overview Image" },
-      alternative_image: { visible: "true", label: "Alt Image" },
-      description: { visible: "true", label: "Overview Description" },
+      title: { visible: true, label: "Overview Title" },
+      alt_tag: { visible: true, label: "Alt Tag" },
+      image: { visible: true, label: "Overview Image" },
+      alternative_image: { visible: true, label: "Alt Image" },
+      description: { visible: true, label: "Overview Description" },
     },
   },
 ];
 
+const metaFields=[
+  { name: "faq_question", label: "Question", type: "text", col: 12 },
+  { name: "faq_answer", label: "Answer", type: "textarea", col: 12 },
+  { name: "attachment", label: "Upload Attachment", type: "file", col: 6 },
+];
 const Banner = () => {
   const { pageName } = useParams(); 
 
@@ -80,6 +85,7 @@ const Banner = () => {
             <CustomTitle title={section.sectionName} />
             <CustomForm
               fieldVisibility={section.fields}
+              dynamicFields={metaFields}
               onSubmit={(data) =>
                 handleSectionSubmit(section.sectionApi, data)
               }
