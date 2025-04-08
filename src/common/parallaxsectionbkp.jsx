@@ -5,67 +5,102 @@ import Watermark from "../common/watermark/Index";
 import { useMatches } from "../theme/theme";
 import { Container } from "react-bootstrap";
 import CustomCard from "../frontend/components/Card";
-import * as CONFIG from "../config/config";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
 function ParallaxSection({ section_data }) {
   const { isMobile } = useMatches();
   const sectionsRef = useRef([]); // Array to hold section refs
+  const triggersRef = useRef([]); // Array to hold ScrollTrigger instances
   const containerRef = useRef(null); // Ref for the component container
   const { title, data, second_title, desc } = section_data || {};
 
-  // Function to calculate ratio for background positioning
+  // Memoized ratio calculation
   const getRatio = useCallback((el) => {
     return el ? window.innerHeight / (window.innerHeight + el.offsetHeight) : 0;
   }, []);
 
-  useEffect(() => {
-    if (!isMobile && data) {
-      // Array to hold the unique ScrollTrigger instances
-      const triggers = [];
+  // Setup GSAP animations
+  const setupAnimations = useCallback(() => {
+    if (!data || !sectionsRef.current.length || isMobile) return;
 
-      sectionsRef.current.forEach((section, i) => {
-        const bg = section?.querySelector(".bg");
-        if (!bg || !data[i]?.path?.desktop) return;
+    triggersRef.current = sectionsRef.current.map((section, i) => {
+      const bg = section?.querySelector(".bg");
+      if (!bg || !data[i]?.path?.desktop) return null;
 
-        const imageUrl = `url(${data[i].path.desktop})`;
-        bg.style.backgroundImage = imageUrl;
+      const imageUrl = `url(${data[i].path.desktop})`;
+      bg.style.backgroundImage = imageUrl;
 
-        const defaultBgPos =
-          i === 0 ? "50% 0" : `50% ${-window.innerHeight * getRatio(section)}px`;
+      const defaultBgPos = i === 0
+        ? "50% 0"
+        : `50% ${-window.innerHeight * getRatio(section)}px`;
 
-        // Create a unique ScrollTrigger instance for each section
-        const trigger = gsap.fromTo(
+      return ScrollTrigger.create({
+        trigger: section,
+        start: i === 0 ? "top top" : "top bottom",
+        end: "bottom top",
+        scrub: 0.5,
+        invalidateOnRefresh: true,
+        animation: gsap.fromTo(
           bg,
           { backgroundPosition: defaultBgPos },
           {
             backgroundPosition: `50% ${window.innerHeight * (1 - getRatio(section))}px`,
             ease: "none",
-            scrollTrigger: {
-              trigger: section,
-              start: i === 0 ? "top top" : "top bottom",
-              end: "bottom top",
-              scrub: true,
-              invalidateOnRefresh: true,
-              onEnter: () => {},
-              onLeave: () => {},
-              onEnterBack: () => {},
-              onLeaveBack: () => {},
-            },
           }
-        );
+        ),
+      });
+    }).filter(Boolean);
 
-        // Store the scrollTrigger in the triggers array
-        triggers.push(trigger.scrollTrigger);
+    ScrollTrigger.refresh();
+  }, [data, isMobile, getRatio]);
+
+  // Handle animation setup and cleanup
+  useEffect(() => {
+    if (!isMobile && data && sectionsRef.current.length) {
+      setupAnimations();
+    }
+
+    return () => {
+      triggersRef.current.forEach((trigger) => trigger?.kill());
+      triggersRef.current = [];
+      ScrollTrigger.refresh(); // Ensure a clean slate on unmount
+    };
+  }, [isMobile, data, setupAnimations]);
+
+  // Refresh ScrollTrigger after images load, scoped to this component
+  useEffect(() => {
+    if (!isMobile && containerRef.current) {
+      const images = containerRef.current.querySelectorAll("img");
+      if (!images.length) {
+        ScrollTrigger.refresh();
+        return;
+      }
+
+      let loadedCount = 0;
+      const totalImages = images.length;
+
+      const checkAllLoaded = () => {
+        loadedCount++;
+        if (loadedCount === totalImages) {
+          ScrollTrigger.refresh();
+        }
+      };
+
+      images.forEach((img) => {
+        if (img.complete) {
+          checkAllLoaded();
+        } else {
+          img.addEventListener("load", checkAllLoaded, { once: true });
+        }
       });
 
-      // Cleanup ScrollTriggers when the component is unmounted or when dependencies change
       return () => {
-        triggers.forEach((trigger) => trigger.kill());
+        images.forEach((img) => img.removeEventListener("load", checkAllLoaded));
       };
     }
-  }, [isMobile, data, getRatio]); // Re-run effect when isMobile or data changes
+  }, [isMobile, data]);
 
   const renderMobileView = () => (
     <div className="section amenities_section main_am bottom_content pb-0">
@@ -94,9 +129,7 @@ function ParallaxSection({ section_data }) {
               <span className="am-name mx-auto">{single.name}</span>
               {Array.isArray(single.desc) ? (
                 single.desc.map((desc, idx) => (
-                  <p key={idx} className="desc des_style1 text-center mt-3">
-                    {desc}
-                  </p>
+                  <p key={idx} className="desc des_style1 text-center mt-3">{desc}</p>
                 ))
               ) : (
                 <p className="desc des_style1 text-center mt-3 w-100">{single.desc}</p>
@@ -117,7 +150,7 @@ function ParallaxSection({ section_data }) {
         <section
           key={i}
           className="parallax"
-          ref={(el) => (sectionsRef.current[i] = el)} // Assign section ref
+          ref={(el) => (sectionsRef.current[i] = el)}
           aria-label="Desktop View Section"
         >
           <div className="bg">

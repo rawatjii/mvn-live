@@ -95,15 +95,16 @@ const MvnMall1 = ({ data }) => {
             <ImagesGallery data={data.gallery}/>
           </div>
 
+
+          <Suspense>
           <div
             ref={(el) =>
               (sectionRefs.current.MicroAmenities = el)
             }>
-              <Suspense>
               <ParallaxSection section_data={data.amenities} />
-              </Suspense>
             {/* <MicroAmenities section_data={data.amenities} /> */}
           </div>
+              </Suspense>
 
 
           <div
