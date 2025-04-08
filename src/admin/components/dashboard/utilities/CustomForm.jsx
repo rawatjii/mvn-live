@@ -11,7 +11,7 @@ const defaultBannerFields = [
   { name: "description", type: "textarea", label: "Description", col: 12 },
 ];
 
-const CustomForm = ({ fieldVisibility, onSubmit, formType="" ,isBanner = true,dynamicFields = [] }) => {
+const CustomForm = ({ fieldVisibility, onSubmit, formType="" ,isBanner = false,dynamicFields = [] }) => {
 
 
   const Fields = isBanner ? defaultBannerFields : dynamicFields;

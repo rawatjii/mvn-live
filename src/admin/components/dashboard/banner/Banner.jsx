@@ -45,6 +45,11 @@ const formConfig = [
   },
 ];
 
+const metaFields=[
+  { name: "faq_question", label: "Question", type: "text", col: 12 },
+  { name: "faq_answer", label: "Answer", type: "textarea", col: 12 },
+  { name: "attachment", label: "Upload Attachment", type: "file", col: 6 },
+];
 const Banner = () => {
   const { pageName } = useParams(); 
 
@@ -80,6 +85,7 @@ const Banner = () => {
             <CustomTitle title={section.sectionName} />
             <CustomForm
               fieldVisibility={section.fields}
+              dynamicFields={metaFields}
               onSubmit={(data) =>
                 handleSectionSubmit(section.sectionApi, data)
               }
