@@ -11,8 +11,8 @@ const formConfig = [
     sectionApi: "meta-micro-site",
     visible: "true",
     fields: {
-      title: { visible: "true", label: "Meta Title", isLeft: true },
-      alt_tag: { visible: "true", label: "Alt Text", isLeft: true },
+      title: { visible: "true",name : "meta_name", label: "Meta Title", isLeft: true },
+      title: { visible: "true", label: "Meta Keyword", isLeft: true },
       image: { visible: "true", label: "Main Image", isLeft: true },
       alternative_image: { visible: "true", label: "Alternative Image", isLeft: true },
       description: { visible: "true", isLeft: true },

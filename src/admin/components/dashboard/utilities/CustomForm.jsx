@@ -16,6 +16,8 @@ const CustomForm = ({ fieldVisibility, onSubmit, formType="" }) => {
     const visibilityConfig = fieldVisibility[field.name];
     return {
       ...field,
+      
+      name:visibilityConfig?.name || field.name,
       condition: visibilityConfig?.visible === "true",
       label: visibilityConfig?.label || field.label,
       col: visibilityConfig?.isLeft ? 12 : field.col,
