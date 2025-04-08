@@ -49,9 +49,17 @@ const Footer = () => {
                     {otherProjects && otherProjects.map((singleProject, index)=>(
                       <li key={index}>
                         <span >{singleProject.location}</span>
-                        {singleProject.projects && singleProject.projects.map((singleNav, index1)=>(
-                          <NavLink key={index1} to={singleNav.link} target={singleNav.target_blank}>{singleNav.name}</NavLink>
-                        ))}
+                        {
+                            singleProject.projects && singleProject.projects.map((singleNav, index1) => {
+                              const target = singleNav.target_blank ? "_blank" : undefined;
+
+                              return (
+                                <NavLink key={index1} to={singleNav.link} target={target}>
+                                  {singleNav.name}
+                                </NavLink>
+                              );
+                            })
+                          }
                       </li>
                     ))}
                   </ul>

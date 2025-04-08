@@ -208,7 +208,7 @@ const MicroPageFaridabad = ({ data, loadingCount, setLoadingCount }) => {
               (sectionRefs.current.MicroAmenities = el)
             }>
               <Suspense>
-                <ParallaxSection section_data={data.amenities} />
+            <ParallaxSection section_data={data.amenities} />
               </Suspense>
           </div>
 
