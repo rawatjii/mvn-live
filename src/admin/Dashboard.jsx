@@ -26,6 +26,7 @@ import { IoShareSocial } from "react-icons/io5";
 import { Box, TopBox } from "./components/dashboard/utilities/CutomTags";
 import { RiPagesFill } from "react-icons/ri";
 import { FaImage } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 import { FaUser,  FaPhoneAlt } from "react-icons/fa";
 import { FaRegNewspaper } from "react-icons/fa";
@@ -211,12 +212,12 @@ const Dashboard = () => {
                           <a href="Project-list.html"> View Details</a>
                         </li>
                         <li>
-                          <a href="micro-site.html">
+                          <Link to={`${import.meta.env.VITE_APP_ADMIN_ROOT}microsite`}>
                             <span>
                               <IoIosAddCircleOutline />
                             </span>
                             Add More Project
-                          </a>
+                          </Link>
                         </li>
                       </ul>
                     </div>
