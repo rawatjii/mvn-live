@@ -3,7 +3,7 @@ import { Form } from "./CutomTags";
 import CustomFormField from "./CustomFormField";
 import CustomButton from "./CutomButton";
 
-const Fields = [
+const defaultBannerFields = [
   { name: "title", type: "text", label: "Title", col: 6 },
   { name: "alt_tag", type: "text", label: "Alt Tag", col: 6 },
   { name: "image", type: "file", label: "Upload Image", col: 6 },
@@ -11,14 +11,17 @@ const Fields = [
   { name: "description", type: "textarea", label: "Description", col: 12 },
 ];
 
-const CustomForm = ({ fieldVisibility, onSubmit, formType="" }) => {
+const CustomForm = ({ fieldVisibility, onSubmit, formType="" ,isBanner = true,dynamicFields = [] }) => {
+
+
+  const Fields = isBanner ? defaultBannerFields : dynamicFields;
+
+
   const visibleFields = Fields.map((field) => {
     const visibilityConfig = fieldVisibility[field.name];
     return {
       ...field,
-      
-      name:visibilityConfig?.name || field.name,
-      condition: visibilityConfig?.visible === "true",
+      condition: visibilityConfig?.visible !== false,
       label: visibilityConfig?.label || field.label,
       col: visibilityConfig?.isLeft ? 12 : field.col,
       isLeft: visibilityConfig?.isLeft || false,
@@ -73,7 +76,7 @@ const CustomForm = ({ fieldVisibility, onSubmit, formType="" }) => {
     <Form onSubmit={handleSubmit}>
       <div className={formType === "block" ? "" : "row"}>
         {visibleFields
-          .filter((field) => field.condition)
+          .filter((field) => field.condition !== false)
           .map((field) => (
             <div className={field.isLeft === true ? '' : `col-${field.col || 12}`} key={resetKey + field.name}>
               <CustomFormField

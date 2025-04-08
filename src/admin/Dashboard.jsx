@@ -28,6 +28,11 @@ import { RiPagesFill } from "react-icons/ri";
 import { FaImage } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
+import { FaUser,  FaPhoneAlt } from "react-icons/fa";
+import { FaRegNewspaper } from "react-icons/fa";
+import { SiBloglovin } from "react-icons/si";
+import { PiBuildingOffice } from "react-icons/pi";
+
 const data = [
   { id: 1, name: "Godrej Properties", hot: true, calculator: true },
   { id: 2, name: "DLF Group", hot: true, calculator: true },
@@ -99,27 +104,27 @@ const otherSection = [
 const PageCommonSection = [
   {
     name: "About US",
-    icon: <FaImage className="mr-3 box-icon" />,
+    icon: <FaUser className="mr-3 box-icon" />,
     link: "/admin/page/about-us",
   },
   {
     name: "Media Centre",
-    icon: <FaImage className="mr-3 box-icon" />,
+    icon: <FaRegNewspaper className="mr-3 box-icon" />,
     link: "/admin/page/media-centre",
   },
   {
     name: "Blogs",
-    icon: <FaImage className="mr-3 box-icon" />,
+    icon: <SiBloglovin className="mr-3 box-icon" />,
     link: "/admin/page/blogs",
   },
   {
     name: "Career",
-    icon: <FaImage className="mr-3 box-icon" />,
+    icon: <PiBuildingOffice className="mr-3 box-icon" />,
     link: "/admin/page/career",
   },
   {
     name: "Contact US",
-    icon: <FaImage className="mr-3 box-icon" />,
+    icon: <FaPhoneAlt className="mr-3 box-icon" />,
     link: "/admin/page/contact-us",
   }
 ];

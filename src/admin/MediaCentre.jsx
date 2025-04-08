@@ -1,9 +1,9 @@
 import React from 'react'
 
-const MediaCentre = () => {
+const AdminMediaCentre = () => {
   return (
     <div>MediaCentre</div>
   )
 }
 
-export default MediaCentre
+export default AdminMediaCentre

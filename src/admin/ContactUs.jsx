@@ -17,12 +17,12 @@ import { useAsyncError } from "react-router-dom";
  
 import * as CONFIG from 'root/config/config';
 
-const statusOptions = [
+const statusOptions = [ 
     { label: 'Active', value: '1' },
     { label: 'Hide', value: '0' },
 ];
 
-const ContactUs = ()=>{
+const AdminContactUs = ()=>{
     const [isLoading, setIsLoading] = useState(false);
     const [data, setData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -144,4 +144,4 @@ const ContactUs = ()=>{
     )
 }
 
-export default ContactUs;
+export default AdminContactUs;

@@ -23,7 +23,7 @@ export default function Sidebar() {
 
   const menuItems = [
     { title: "Dashboard", icon: <AiFillHome size={24} />, link: "/admin" },
-    { title: "About Us", icon: <FaUser size={20} />, link: "/about-us" },
+    { title: "About Us", icon: <FaUser size={20} />, link: "/admin/about-us" },
     { title: "Media Centre", icon: <FaRegNewspaper size={20} />, link: "/admin/media-center" },
     { title: "Blogs", icon: <SiBloglovin size={22} />, link: "/admin/blogs" },
     { title: "Career", icon: <PiBuildingOffice size={22} />, link: "/admin/career" },
