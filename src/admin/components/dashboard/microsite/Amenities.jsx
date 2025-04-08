@@ -23,7 +23,7 @@ const Amenities = () => {
           <LeftArea>
             <MicroBox>
             <CustomTitle icon={<BsBuildingFillAdd />} title="Add More Project AMenities" />
-            <CustomForm />
+            {/* <CustomForm /> */}
             </MicroBox>
           </LeftArea>
 

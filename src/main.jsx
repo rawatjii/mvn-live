@@ -50,6 +50,11 @@ import AdminLayout from "./admin/components/ContentLayout/AdminLayout.jsx";
 import Dashboard from "./admin/Dashboard.jsx";
 import Amenities from "./admin/components/dashboard/microsite/Amenities.jsx";
 import Banner from "./admin/components/dashboard/banner/Banner.jsx";
+import AdminAboutUs from "./admin/AboutUs.jsx";
+import AdminBlog from "./admin/Blog.jsx";
+import AdminCareer from "./admin/Career.jsx";
+import AdminMediaCentre from "./admin/MediaCentre.jsx";
+import AdminContactUs from "./admin/ContactUs.jsx";
 
 
 
@@ -239,15 +244,33 @@ const router = createBrowserRouter([
         ), 
       },
       {
-        path: "/admin/amenities",
+        path: "/admin/about-us",
         element: (
-          <Amenities/>
+          <AdminAboutUs/>
         ), 
       },
       {
-        path: "/admin/amenities",
+        path: "/admin/blog",
         element: (
-          <Amenities/>
+          <AdminBlog/>
+        ), 
+      },
+      {
+        path: "/admin/career",
+        element: (
+          <AdminCareer/>
+        ), 
+      },
+      {
+        path: "/admin/media-centre",
+        element: (
+          <AdminMediaCentre/>
+        ), 
+      },
+      {
+        path: "/admin/contact-us",
+        element: (
+          <AdminContactUs/>
         ), 
       },
     ],
