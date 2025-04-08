@@ -4,6 +4,8 @@ import logo from '../../../assets/images/logo.webp';
 // icons
 import { FaSearch } from "react-icons/fa";
 import { FaBell } from "react-icons/fa6";
+import { IoLogOut } from "react-icons/io5";
+import { IoPersonCircleSharp } from "react-icons/io5";
 
 
 import "./styles.css";
@@ -48,10 +50,11 @@ export default function Header() {
                   <img src="images/icon/login.png" />
                 </li> */}
                 <li>
+                  <IoPersonCircleSharp className="icon"/>
                   <span className="admin-name">Admin</span>
                 </li>
                 <li>
-                  <img src="images/icon/logout.png" />{" "}
+                  <IoLogOut className="icon"/>
                   <sapn className="admin-name">Logout</sapn>
                 </li>
               </ul>

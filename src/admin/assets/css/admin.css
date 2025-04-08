@@ -449,3 +449,16 @@
 .min_height_600{
     min-height: 600px;
 }
+
+/* style for dashboard start */
+.Dashboard_container{
+    display: flex;
+    justify-content: space-between;
+}
+.Left_contain{
+    width: 70%;
+}
+.Right_contain{
+    width: 30%;
+}
+/* style for dashboard end */

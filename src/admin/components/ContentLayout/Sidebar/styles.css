@@ -1,12 +1,11 @@
 
 
-
 .navigation {position: fixed;width: 80px;left: 0;bottom: 0;overflow: hidden;transition: 0.5s;top: 0;height: 100%;
   background-color: #13131d;box-shadow: 0 3px 3px rgb(0 0 0 / 4%), 0 3px 3px rgb(255 255 255 / 17%);}
   .navigation.active {width: 300px;border-radius: 5px;}
   .toggle {position: absolute;bottom: 15px;right: 15px;width: 50px;height: 50px;background: var(--orange);
   border-radius: 50%;box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);cursor: pointer;display: flex;
-  justify-content: center;align-items: center;}
+  justify-content: center;align-items: center;border: none;}
   .toggle:hover {
   
   /*background: #9d2cff;*/
@@ -31,12 +30,13 @@
   height: 20px;background: transparent;}
   .navigation ul li a {position: relative;width: 100%;display: flex;text-decoration: none;color: #717177;
   font-weight: 400;}
+  .navigation ul li a.active{color: #f1f1f1;}
   .navigation ul li:hover:not(:first-child) a {color: #f1f1f1;}
   .navigation ul li a .icon {position: relative;display: block;min-width: 80px;height: 65px;
   line-height: 70px;text-align: center;}
   .navigation ul li a .icon i {font-size: 20px;}
   .navigation ul li a .icon img{width: 35px;}
-  .navigation ul li a .title img{width: 135px;margin-top: 12px;}
+  .navigation ul li a .title img{width: 90px;margin-top: 12px;}
   .navigation ul li a .title {position: relative;display: block;padding: 0 0px;height: 65px;
   line-height: 70px;letter-spacing: 0.5px;text-align: start;white-space: nowrap;}
   @keyframes outline {

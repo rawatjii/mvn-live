@@ -1,0 +1,32 @@
+.FieldContainer{
+
+}
+ .CustomForm{
+    width: 100%;
+}
+.CustomForm .FieldContainer label.label{
+    color: var(--gree-blue);
+    font-family: "Roboto-Regular";
+    letter-spacing: 0.8px;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+.FieldContainer .InputContainer .form-control{
+    background-color: transparent;
+    border: 1px solid #45464f;
+    color: #eee;
+    height: auto;
+    padding: 5px 15px;
+    border-radius: 3px;
+}
+
+.custom-file-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .custom-file-wrapper label {
+    cursor: pointer;
+  }
+  

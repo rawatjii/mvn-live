@@ -11,16 +11,18 @@ import "./styles.css";
 const AdminLayout = (props) => {
   return (
     <>
-      <div className={`content_layout`}>
-        <Header />
-
+      <div className={`content_layout Admin_Container`}>
         <div className="layout_sidebar">
           <Sidebar />
         </div>
+        <div className="custom_width">
+        <Header />
+        </div>
 
-        {/* <Sidebar onclick={props.onclick} /> */}
         <div className="layout_content">
-          <Outlet />
+          <div className="main_container custom_width pt-0">
+            <Outlet />
+          </div>
         </div>
       </div>
     </>

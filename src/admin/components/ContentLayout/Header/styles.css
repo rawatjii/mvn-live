@@ -1,14 +1,14 @@
-.top-header{width:100%;margin-top: 2%;margin-right: 2%;height: 115px;padding-left:7%;padding-right: 50px;}
-.top-header .box-area{display: flex;justify-content: space-between;padding: 10px 20px;}
+.top-header{width:100%;height: 115px;}
+.top-header .box-area{display: flex;justify-content: space-between;}
 .top-header .box-area .left img{width: 60px;}
 .top-header .box-area .left{width: 10%;}
 .top-header .box-area .right{width: 50%;}
 .top-header .box-area .right .search{display: flex;width: 60%;}
 .top-header .box-area .right .search .select-width{width: 70px;margin-left: 10px;}
 .top-header .box-area .right .search .form-control{background-color: transparent;
-border: 1px solid #45464f;color: #fff;border-radius: 5px;}
+border: 1px solid #45464f;color: #fff;border-radius: 5px;height: auto;}
 .top-header .box-area .right .search .input-group-append{margin-left: -43px;}
-.top-header .box-area .right .admin-search{display: flex;justify-content: flex-end;}
+.top-header .box-area .right .admin-search{display: flex;justify-content: flex-end;align-items: center;height: 100%;}
 .top-header .box-area .right .search .form-control::placeholder{color: #fff;}
 .top-header .box-area .right .login{display: grid;align-items: center;padding-left: 5%;}
 .top-header .box-area .right .admin-search .login .fa{color: #fff;font-size: 18px;vertical-align: middle;}
@@ -22,7 +22,16 @@ border: 1px solid #45464f;color: #fff;border-radius: 5px;}
 width: 18px;height: 18px;background-color: var(--theme_orange_color);border-radius: 10px;color: #fff;right: -7px}
 .top-header .box-area .right .admin-search .login ul li.noti span{font-size: 12px;text-align: center;
 font-family: "Roboto-Regular";letter-spacing: 0.8px;}
-.top-header .box-area .right .admin-search .login ul li img{width: 20px;}
-.top-header .box-area .right .admin-search .login ul li .admin-name{color: #fff;font-family: "Roboto-Light";
-letter-spacing: 0.8px;font-size: 16px;vertical-align: middle;}
+.top-header .box-area .right .admin-search .login ul li .icon{font-size: 22px;margin-right: 5px;}
+.top-header .box-area .right .admin-search .login ul li .admin-name{color: #fff;
+letter-spacing: 0.8px;font-size: 15px;vertical-align: middle;}
+.Admin_Container select.form-control{appearance: auto;padding: 0;background-size: auto;}
+@media screen and (max-width: 1500px) {
+    .top-header .box-area .right {
+        width: 70%;
+    }
+    .top-header {
+        height: 80px;
+    }
+}
 
