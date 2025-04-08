@@ -5,26 +5,23 @@ import CustomForm from "../utilities/CustomForm";
 import { useParams } from "react-router-dom";
 
 // Simulated backend response
-const formConfig = [
-  { visible: "true",name : "meta_name", label: "Meta Title", isLeft: true },
-  { visible: "true",name : "title ", label: "Meta Title", isLeft: true },
-  { visible: "true",name : "ame", label: "Meta Title", isLeft: true },
-]
+const metaFields=[
+  { name: "faq_question", label: "Question", type: "text", col: 12 },
+  { name: "faq_answer", label: "Answer", type: "textarea", col: 12 },
+  { name: "attachment", label: "Upload Attachment", type: "file", col: 6 },
+];
 
 const BasicMicroSite = () => {
-turn (
-    <CustomSection customClass="d-block">
-      <div class="left-area">
-        
-      <MicroBox>
-              <CustomTitle title={'test'} />
-              <CustomForm
-                isBanner={false}
-                dynamicFields={formConfig}
-              />
-            </MicroBox>
-      </div>
-    </CustomSection>
+return (
+  <CustomSection customClass="d-block">
+  
+  <MicroBox>
+        <CustomTitle title="demo" />
+        <CustomForm
+          dynamicFields={metaFields}
+        />
+      </MicroBox>
+</CustomSection>
   );
 };
 
