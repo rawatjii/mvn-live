@@ -6,6 +6,7 @@ import { useMatches } from "../theme/theme";
 import { Container } from "react-bootstrap";
 import CustomCard from "../frontend/components/Card";
 import * as CONFIG from "../config/config";
+import { useLocation } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,12 +15,13 @@ function ParallaxSection({ section_data }) {
   const sectionsRef = useRef([]); // Array to hold section refs
   const triggersRef = useRef([]); // Array to hold ScrollTrigger instances
   const containerRef = useRef(null); // Ref for the component container
+  const {pathname} = useLocation()
   const { title, data, second_title, desc } = section_data || {};
 
   // Memoized ratio calculation
   const getRatio = useCallback((el) => {
     return el ? window.innerHeight / (window.innerHeight + el.offsetHeight) : 0;
-  }, []);
+  }, [pathname]);
 
   // Setup GSAP animations
   const setupAnimations = useCallback(() => {
@@ -78,7 +80,7 @@ function ParallaxSection({ section_data }) {
         ScrollTrigger.refresh(); // Clean slate on unmount
       };
     }
-  }, [isMobile, data, setupAnimations]);
+  }, [isMobile, data, setupAnimations, pathname]);
 
   // Refresh ScrollTrigger after images load, scoped to this component
   useEffect(() => {
@@ -115,7 +117,7 @@ function ParallaxSection({ section_data }) {
         });
       };
     }
-  }, [isMobile, data]);
+  }, [isMobile, data, pathname]);
 
   const renderMobileView = () => (
     <div className="section amenities_section main_am bottom_content pb-0">
