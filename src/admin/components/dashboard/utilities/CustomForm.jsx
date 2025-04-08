@@ -11,7 +11,7 @@ const defaultBannerFields = [
   { name: "description", type: "textarea", label: "Description", col: 12 },
 ];
 
-const CustomForm = ({ fieldVisibility, onSubmit, formType="" ,isBanner = false,dynamicFields = [] }) => {
+const CustomForm = ({ fieldVisibility, onSubmit, formType="" ,isBanner = true,dynamicFields = [] }) => {
 
 
   const Fields = isBanner ? defaultBannerFields : dynamicFields;
@@ -76,7 +76,7 @@ const CustomForm = ({ fieldVisibility, onSubmit, formType="" ,isBanner = false,d
     <Form onSubmit={handleSubmit}>
       <div className={formType === "block" ? "" : "row"}>
         {visibleFields
-          .filter((field) => field.condition)
+          .filter((field) => field.condition !== false)
           .map((field) => (
             <div className={field.isLeft === true ? '' : `col-${field.col || 12}`} key={resetKey + field.name}>
               <CustomFormField
