@@ -11,13 +11,15 @@ const Fields = [
   { name: "description", type: "textarea", label: "Description", col: 12 },
 ];
 
-const CustomForm = ({ fieldVisibility, onSubmit }) => {
+const CustomForm = ({ fieldVisibility, onSubmit, formType="" }) => {
   const visibleFields = Fields.map((field) => {
     const visibilityConfig = fieldVisibility[field.name];
     return {
       ...field,
       condition: visibilityConfig?.visible === "true",
       label: visibilityConfig?.label || field.label,
+      col: visibilityConfig?.isLeft ? 12 : field.col,
+      isLeft: visibilityConfig?.isLeft || false,
     };
   });
 
@@ -67,11 +69,11 @@ const CustomForm = ({ fieldVisibility, onSubmit }) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <div className="row">
+      <div className={formType === "block" ? "" : "row"}>
         {visibleFields
           .filter((field) => field.condition)
           .map((field) => (
-            <div className={`col-${field.col || 12}`} key={resetKey + field.name}>
+            <div className={field.isLeft === true ? '' : `col-${field.col || 12}`} key={resetKey + field.name}>
               <CustomFormField
                 {...field}
                 id={`${field.name}_${resetKey}`}

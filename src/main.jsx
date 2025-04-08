@@ -50,6 +50,7 @@ import AdminLayout from "./admin/components/ContentLayout/AdminLayout.jsx";
 import Dashboard from "./admin/Dashboard.jsx";
 import Amenities from "./admin/components/dashboard/microsite/Amenities.jsx";
 import Banner from "./admin/components/dashboard/banner/Banner.jsx";
+import BasicMicroSite from "./admin/components/dashboard/microsite/Basic.jsx";
 
 
 
@@ -239,15 +240,9 @@ const router = createBrowserRouter([
         ), 
       },
       {
-        path: "/admin/amenities",
+        path: "/admin/microsite",
         element: (
-          <Amenities/>
-        ), 
-      },
-      {
-        path: "/admin/amenities",
-        element: (
-          <Amenities/>
+          <BasicMicroSite/>
         ), 
       },
     ],

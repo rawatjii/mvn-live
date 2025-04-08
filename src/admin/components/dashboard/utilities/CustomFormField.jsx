@@ -11,6 +11,7 @@ const CustomFormField = ({
   placeholder = "",
   className = "",
   resetKey,
+  isLeft,
   ...rest
 }) => {
   const [fileName, setFileName] = useState("");
@@ -28,8 +29,11 @@ const CustomFormField = ({
   }, [resetKey, type]);
 
   return (
-    <div className="FieldContainer mb-3">
-      <label htmlFor={name} className="label">{label}</label>
+    <div className={`FieldContainer mb-3 ${isLeft ? "row" : undefined}`}>
+      <div className={isLeft ? "col-3" : undefined}>
+        <label htmlFor={name} className="label">{`${label}${isLeft ? ':' : ''}`}</label>
+      </div>
+      <div className={isLeft ? "col-9" : undefined}>
       <div className="InputContain">
         {type === "textarea" ? (
           <textarea
@@ -67,6 +71,8 @@ const CustomFormField = ({
           />
         )}
       </div>
+      </div>
+      
 
       {/* Optional: Display image preview for file input */}
       {value && type === "file" && value instanceof File && value.type.startsWith("image/") && (
