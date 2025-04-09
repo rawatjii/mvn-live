@@ -11,7 +11,7 @@ const defaultBannerFields = [
   { name: "description", type: "textarea", label: "Description", col: 12 },
 ];
 
-const CustomForm = ({ fieldVisibility = {}, onSubmit, formType = "", isBanner = true, dynamicFields = [] }) => {
+const CustomForm = ({ fieldVisibility = {}, onSubmit, formType = "", isBanner = false, dynamicFields = [] }) => {
 
 
 
@@ -25,7 +25,6 @@ const CustomForm = ({ fieldVisibility = {}, onSubmit, formType = "", isBanner = 
       condition: visibilityConfig?.visible !== false,
       label: visibilityConfig?.label || field.label,
       col: visibilityConfig?.isLeft ? 12 : field.col,
-      isLeft: visibilityConfig?.isLeft || false,
     };
   });
 
@@ -87,6 +86,7 @@ const CustomForm = ({ fieldVisibility = {}, onSubmit, formType = "", isBanner = 
                 value={field.type === "file" ? formData[field.name] : formData[field.name]}
                 onChange={field.type === "file" ? handleFileChange : handleChange}
                 resetKey={resetKey}
+                isLeft={field.name}
               />
             </div>
           ))}
