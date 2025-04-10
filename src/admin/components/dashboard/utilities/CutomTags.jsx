@@ -36,4 +36,29 @@ export const CustomSection = ({ children ,customClass}) => (
   export const Form = ({ children, onSubmit }) => (
     <form onSubmit={onSubmit} className="CustomForm">{children}</form>
   );
+
+  // custom table tag
+
+  export const  TableContainer = ({ children }) => (
+    <div className="CustomTableContainer">{children}</div>
+  );
+  export const  Table = ({ children }) => (
+    <table className="CustomTable">{children}</table>
+  );
+  export const  TableHead = ({ children }) => (
+    <thead className="CustomTableHead">{children}</thead>
+  );
+  export const  TableBody = ({ children }) => (
+    <tbody className="CustomTableBody">{children}</tbody>
+  );
+  export const TableRow = ({children}) => (
+    <tr className="CustomTableRow">{children}</tr>
+  );
+  export const  TableHeadColum = ({ children }) => (
+    <th className="CustomHeadColumn">{children}</th>
+  );
+  export const  TableBodyColum = ({ children ,customClass}) => (
+    <td className={`CustomBodyColumn ${customClass}`}>{children}</td>
+  );
+
   

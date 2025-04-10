@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form } from "./CutomTags";
+import { Form } from "./CutomTags"; // assuming your styled form wrapper
 import CustomFormField from "./CustomFormField";
 import CustomButton from "./CutomButton";
 
@@ -11,12 +11,16 @@ const defaultBannerFields = [
   { name: "description", type: "textarea", label: "Description", col: 12 },
 ];
 
-const CustomForm = ({ fieldVisibility = {}, onSubmit, formType = "", isBanner = false, dynamicFields = [] }) => {
-
-
-
+const CustomForm = ({
+  fieldVisibility = {},
+  onSubmit,
+  formType = "",
+  isBanner = false,
+  dynamicFields = [],
+  buttonLabel = "Save",
+  initialData = {}, // for edit mode
+}) => {
   const Fields = isBanner ? defaultBannerFields : dynamicFields;
-
 
   const visibleFields = Fields.map((field) => {
     const visibilityConfig = fieldVisibility[field.name];
@@ -30,7 +34,9 @@ const CustomForm = ({ fieldVisibility = {}, onSubmit, formType = "", isBanner = 
 
   const initialState = {};
   Fields.forEach((field) => {
-    initialState[field.name] = field.type === "file" ? null : "";
+    const initValue = initialData[field.name];
+    initialState[field.name] =
+      field.type === "file" ? null : initValue || "";
   });
 
   const [formData, setFormData] = useState(initialState);
@@ -59,15 +65,8 @@ const CustomForm = ({ fieldVisibility = {}, onSubmit, formType = "", isBanner = 
         }
       });
 
-    // Debug
-    // console.log("FormData Payload:");
-    // for (let [key, value] of payload.entries()) {
-    //   console.log(`${key}:`, value instanceof File ? value.name : value);
-    // }
-
     if (onSubmit) onSubmit(payload);
 
-    // Reset
     setFormData(initialState);
     setResetKey(Date.now());
   };
@@ -83,15 +82,14 @@ const CustomForm = ({ fieldVisibility = {}, onSubmit, formType = "", isBanner = 
                 {...field}
                 id={`${field.name}_${resetKey}`}
                 name={field.name}
-                value={field.type === "file" ? formData[field.name] : formData[field.name]}
+                value={formData[field.name]}
                 onChange={field.type === "file" ? handleFileChange : handleChange}
                 resetKey={resetKey}
-                isLeft={field.name}
               />
             </div>
           ))}
       </div>
-      <CustomButton text="Save" type="submit" />
+      <CustomButton text={buttonLabel} type="submit" />
     </Form>
   );
 };

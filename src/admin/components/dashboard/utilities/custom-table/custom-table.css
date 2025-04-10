@@ -1,0 +1,91 @@
+:root {
+    --orange: #d74e34;
+}
+
+:root {
+    --gree-blue: #53c5cf;
+}
+
+:root {
+    --yellow: #f7ab5d;
+}
+
+.CustomTableContainer {
+    padding-right: 35px;
+}
+
+.CustomTableContainer::-webkit-scrollbar {
+    width: 2px;
+}
+
+.CustomTableContainer::-webkit-scrollbar-thumb {
+    background: var(--orange);
+    border-radius: 10px;
+}
+
+.CustomTableContainer::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+.CustomTable {
+    width: 100%;
+    max-width: 100%;
+    background-color: transparent;
+}
+
+.CustomTableHead {}
+
+.CustomTableBody {}
+
+.CustomTableRow {}
+
+.CustomHeadColumn {
+    color: var(--gree-blue);
+    border-bottom: 0;
+    font-family: "Roboto-Light";
+    letter-spacing: 1px;
+    padding: 10px 0px;
+}
+
+.CustomBodyColumn {
+    color: #eee;
+    font-family: "Roboto-Light";
+    letter-spacing: 1px;
+    padding: 10px 0px;
+    font-size: 14px;
+}
+
+.ActionColum {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+
+.CustomTableBody .ActionColum button {
+    padding: 5px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.CustomTableBody .ActionColum button svg {
+    font-size: 18px;
+}
+
+.CustomTableBody .ActionColum button.edit svg {
+    color: #53c5cf;
+}
+
+.CustomTableBody .ActionColum button.delete svg {
+    color: #d74e34;
+}
+
+/* responsive table*/
+@media screen and (max-width: 1500px) {
+    .CustomHeadColumn {
+        font-size: 14px;
+    }
+}

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import '../../../assets/css/microsite.css';
 import { BsBuildingFillAdd } from "react-icons/bs";
 import CustomForm from '../utilities/CustomForm'
-import CustomTable  from '../utilities/CustomTable'
+import CustomTable  from '../utilities/custom-table/CustomTable'
 import { CustomSection, LeftArea, MicroBox, RightArea } from '../utilities/CutomTags';
 import CustomTitle from '../utilities/CustomTitle';
 import CustomButton from '../utilities/CutomButton';
