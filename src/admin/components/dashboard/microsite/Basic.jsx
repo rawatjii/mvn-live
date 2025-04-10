@@ -48,8 +48,8 @@ return (
             <MicroBox className="col col-6" key={section.sectionName}>
               <CustomTitle title={section.sectionName} />
               <CustomForm
-                fieldVisibility={section.fields}
                 dynamicFields={section.fields}
+                isBanner={false} 
               />
             </MicroBox>
           ))}

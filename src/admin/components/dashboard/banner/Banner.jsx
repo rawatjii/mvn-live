@@ -45,17 +45,12 @@ const formConfig = [
   },
 ];
 
-const metaFields=[
-  { name: "faq_question", label: "Question", type: "text", col: 12 },
-  { name: "faq_answer", label: "Answer", type: "textarea", col: 12 },
-  { name: "attachment", label: "Upload Attachment", type: "file", col: 6 },
-];
 const Banner = () => {
   const { pageName } = useParams(); 
 
   const handleSectionSubmit = (sectionApi, data) => {
-    console.log(`🔽 Data from section [${sectionApi}] is already FormData`);
-    console.log(`🟡 FormData content for [${sectionApi}]:`);
+    console.log(` Data from section [${sectionApi}] is already FormData`);
+    console.log(` FormData content for [${sectionApi}]:`);
     for (let [key, value] of data.entries()) {
       console.log(`${key}:`, value instanceof File ? value.name : value);
     }
@@ -84,8 +79,8 @@ const Banner = () => {
           <MicroBox key={section.sectionName}>
             <CustomTitle title={section.sectionName} />
             <CustomForm
+              isBanner={true}
               fieldVisibility={section.fields}
-              dynamicFields={metaFields}
               onSubmit={(data) =>
                 handleSectionSubmit(section.sectionApi, data)
               }
