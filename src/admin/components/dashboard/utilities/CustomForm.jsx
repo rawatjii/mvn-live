@@ -83,7 +83,6 @@ const CustomForm = ({ fieldVisibility = {}, onSubmit, formType = "", isBanner = 
                 value={field.type === "file" ? formData[field.name] : formData[field.name]}
                 onChange={field.type === "file" ? handleFileChange : handleChange}
                 resetKey={resetKey}
-                isLeft={field.isLeft}
               />
             </div>
           ))}
@@ -91,6 +90,7 @@ const CustomForm = ({ fieldVisibility = {}, onSubmit, formType = "", isBanner = 
       <CustomButton text="Save" type="submit" />
     </Form>
   );
+  
 };
 
 export default CustomForm;

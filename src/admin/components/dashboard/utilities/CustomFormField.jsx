@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FaUpload } from "react-icons/fa";
+import CustomFile from "./CustomFile";
 
 const CustomFormField = ({
   label,
@@ -12,26 +12,23 @@ const CustomFormField = ({
   className = "",
   resetKey,
   isLeft,
+  options = [],
+  info = '',
   ...rest
 }) => {
-  const [fileName, setFileName] = useState("");
+  
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setFileName(file ? file.name : "");
-    onChange(e); // call parent onChange
-  };
-
-  useEffect(() => {
-    if (type === "file") {
-      setFileName("");
-    }
-  }, [resetKey, type]);
+  // useEffect(() => {
+  //   if (type === "file") {
+  //     setFileName("");
+  //   }
+  // }, [resetKey, type]);
 
   return (
     <div className={`FieldContainer mb-3 ${isLeft ? "row" : undefined}`}>
       <div className={isLeft ? "col-3" : undefined}>
         <label htmlFor={name} className="label">{`${label}${isLeft ? ':' : ''}`}</label>
+        {info && <small>{info}</small>}
       </div>
       <div className={isLeft ? "col-9" : undefined}>
       <div className="InputContain">
@@ -45,20 +42,16 @@ const CustomFormField = ({
             {...rest}
           />
         ) : type === "file" ? (
-          <div className="custom-file-wrapper form-control d-flex justify-content-between align-items-center">
-            <label htmlFor={id} className="d-flex align-items-center gap-2 m-0 cursor-pointer">
-              <FaUpload />
-              <span>{fileName || "Upload File"}</span>
-            </label>
-            <input
-              type="file"
-              name={name}
-              id={id}
-              onChange={handleFileChange}
-              className="d-none"
-              {...rest}
-            />
-          </div>
+          <CustomFile id={id} name={name} rest={rest} onCustomChange={onChange} />
+        ) : type === 'radioFields' ? (
+            <div className="d-flex">
+              {options.map((option, index) => (
+                <div className="me-3" key={index}> 
+                  <input type="radio" className="me-1" id={option.value} name="example" value={option.value} />
+                  <label className="custom-control-label" htmlFor={option.value}>{option.label}</label>
+                </div>
+              ))}
+            </div>
         ) : (
           <input
             type={type}
@@ -70,11 +63,11 @@ const CustomFormField = ({
             {...rest}
           />
         )}
-      </div>
+        </div>
       </div>
       
 
-      {/* Optional: Display image preview for file input */}
+      {/* Optional: Display image preview for file input
       {value && type === "file" && value instanceof File && value.type.startsWith("image/") && (
         <div className="mt-2">
           <img
@@ -84,7 +77,7 @@ const CustomFormField = ({
             style={{ borderRadius: "8px" }}
           />
         </div>
-      )}
+      )} */}
     </div>
   );
 };
