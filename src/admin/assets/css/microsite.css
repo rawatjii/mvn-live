@@ -7,6 +7,9 @@
 .microsite-area .inner-micro-structure .single-box-area{width: 100%;}
 .microsite-area .microbox{width: 100%;border: 1px solid #45464f;padding: 40px;border-radius: 15px;
 background-color: rgba(24, 26, 38, 0.2);margin-bottom: 30px;}
+.microsite-area .microbox.col{
+    width:unset;
+}
 .microsite-area .microbox .box{display: flex;justify-content: space-between;padding: 10px 0px;}
 .microsite-area .microbox .box .admin-text{width: 35%;}
 .microsite-area .microbox .box .input-sec button{cursor: pointer;background-color: transparent;

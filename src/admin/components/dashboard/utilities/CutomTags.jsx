@@ -10,8 +10,8 @@ export const CustomSection = ({ children ,customClass}) => (
     <div className="left-area">{children}</div>
   );
     // LeftArea.jsx
-    export const MicroBox = ({ children }) => (
-        <div className="microbox">{children}</div>
+    export const MicroBox = ({ children, className }) => (
+        <div className={`microbox ${className}`}>{children}</div>
       );
   // RightArea.jsx
   export const RightArea = ({ children }) => (
@@ -33,7 +33,7 @@ export const CustomSection = ({ children ,customClass}) => (
     <div className="box">{children}</div>
   );
 
-  export const Form = ({ children, onSubmit }) => (
-    <form onSubmit={onSubmit} className="CustomForm">{children}</form>
+  export const Form = ({ children, onSubmit, className }) => (
+    <form onSubmit={onSubmit} className={`CustomForm ${className}`}>{children}</form>
   );
   
