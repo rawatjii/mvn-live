@@ -88,8 +88,8 @@ const typology3bhk4 = `${CONFIG.API_URL}bangalore/floor-plan/3bhk/4.webp`
 // typology images end
 // < ---------------------------------- >
 // location map start
-const locationMapDesktop = `${CONFIG.API_URL}bangalore/map/location-map.jpg`
-const locationMapMobile = `${CONFIG.API_URL}bangalore/map/location-mapm.jpg`
+const locationMapDesktop = `${CONFIG.API_URL}bangalore/map/location-map.webp`
+const locationMapMobile = `${CONFIG.API_URL}bangalore/map/location_map_sm.webp`
 // location map end
 // < ---------------------------------- >
 export const bangaloreData = {
