@@ -75,7 +75,7 @@ const Testimonial = () => {
             1298: {
               // Desktop
               slidesPerView: 3,
-              spaceBetween: 30,
+              spaceBetween: 50,
             },
             868: {
               // Tablet

@@ -165,7 +165,7 @@ export const data = {
     title: "MVN AERO ONE LUXURY RESIDENCES",
     extra: "AN EPITOME OF GLOBAL LUXURY NOW IN GURUGRAM",
     desc: "Gurugram is set to redefine luxury living with the launch  of MVN ultra-luxurious 5.5 BHK apartments, offering unmatched opulence. Combining the grandeur of Dubai and New York, these residences feature cutting-edge designs, premium amenities, and breathtaking views. Experience an elite lifestyle with sophistication and comfort at its pinnacle, like never before!",
-
+    counterHeading:true
   },
   LargeElevationSection: {
     title: ['Unseen', 'Unheard', 'Unimagined'],
@@ -625,13 +625,6 @@ export const data = {
       desktop:locationMap,
       mobile:locationMapSm
     },
-    //     yasho bhoomi
-    // indira gandhi international airport
-    // diplomatic enclave
-    // palam vihar 
-    // gurgaon railway station
-    // dlf cyber city 
-    // world global city
     locationData: [
       {
         distance: '0 km',
@@ -661,7 +654,9 @@ export const data = {
         distance: '29.7 kms',
         title: 'IGI Airport',
       },
-    ]
+    ],
+    second_title:'THE LOCATION AS INVITING AS ITS ALLURE',
+    desc:'Located at the prime 22km stone on Dwarka Expressway, Gurugram, MVN Aero One sits on the growth corridor at the first and only drop of the 23km elevated expressway. Strategically positioned at downtown Gurugram.'
   },
   floorPlan:{
       title:'Floor Plan',
