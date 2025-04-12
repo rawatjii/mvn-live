@@ -127,7 +127,7 @@ const MvnMall1 = ({ data }) => {
               </div>
               <div className="col-sm-6 px-0">
                 <EnquireForm
-                  projectName={"MVN Aeroone"}
+                  projectName={"MVN Mall Dwarka Expressway"}
                 />
               </div>
             </div>

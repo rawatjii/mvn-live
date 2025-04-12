@@ -111,7 +111,7 @@ const MicroPageBangalore = ({ data, loadingCount, setLoadingCount }) => {
             }
           >
           <Suspense fallback="">
-            <DownloadBrochure name="Download MVN AERO ONE ID Brochure" />
+            <DownloadBrochure name="Download MVN AERO ONE ID Brochure" projectName="MVN Aeroone Bangalore" />
             </Suspense>
           </div>
           <div
@@ -211,7 +211,7 @@ const MicroPageBangalore = ({ data, loadingCount, setLoadingCount }) => {
               </div>
               <div className="col-sm-6 px-0">
                 <EnquireForm
-                  projectName={"MVN Aeroone"}
+                  projectName={"MVN Aeroone Bangalore"}
                 />
               </div>
             </div>

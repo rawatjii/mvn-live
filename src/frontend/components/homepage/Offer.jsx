@@ -4,7 +4,7 @@ import { API_URL } from "../../../config/config";
 const Offer = React.memo(({clickHandler})=>{
   return(
     <div className="offers_section">
-      <div className="single" role="link" tabIndex={0} style={{cursor:'pointer'}} onClick={()=>clickHandler(false)}>
+      <div className="single" role="presentation" aria-label="Play offer video" style={{cursor:'pointer'}} onClick={()=>clickHandler(false)}>
         <video src={`${API_URL}images/homepage/offer/offer1.mp4`} muted  className="img-fluid d-none d-md-block" playsInline autoPlay loop />
         <video src={`${API_URL}images/homepage/offer/offer1_sm.mp4`} muted  className="img-fluid d-md-none" playsInline autoPlay loop />
       </div>

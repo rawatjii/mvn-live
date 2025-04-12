@@ -1153,7 +1153,10 @@ a {
     }
 
     .closebtn {
-      writing-mode: vertical-rl;
+      /* writing-mode: vertical-rl; */
+      transform: rotate(90deg);
+      -webkit-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
       color: #d9d9d9;
       letter-spacing: 0.5px;
       font-size: 20px;
