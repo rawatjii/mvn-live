@@ -56,6 +56,7 @@ import AdminCareer from "./admin/Career.jsx";
 import AdminMediaCentre from "./admin/MediaCentre.jsx";
 import AdminContactUs from "./admin/ContactUs.jsx";
 import BasicMicroSite from "./admin/components/dashboard/microsite/Basic.jsx";
+import Login from "./admin/Login.jsx";
 
 
 
@@ -233,6 +234,12 @@ const router = createBrowserRouter([
         ), 
       },
       {
+        path: "/admin/login",
+        element: (
+          <Login/>
+        ), 
+      },
+      {
         path: "/admin/amenities",
         element: (
           <Amenities/>
@@ -251,7 +258,7 @@ const router = createBrowserRouter([
         ), 
       },
       {
-        path: "/admin/blog",
+        path: "/admin/blogs",
         element: (
           <AdminBlog/>
         ), 
