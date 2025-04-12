@@ -46,7 +46,7 @@ const CustomFormField = ({
         ) : type === 'radioFields' ? (
             <div className="d-flex">
               {options.map((option, index) => (
-                <div className="me-3" key={index}> 
+                <div className="me-3 d-flex" key={index}> 
                   <input type="radio" className="me-1" id={option.value} name="example" value={option.value} />
                   <label className="custom-control-label" htmlFor={option.value}>{option.label}</label>
                 </div>
@@ -59,7 +59,7 @@ const CustomFormField = ({
             value={value}
             onChange={onChange}
             placeholder={placeholder}
-            className={`form-control ${className}`}
+            className={`form-control w-100 ${className}`}
             {...rest}
           />
         )}
