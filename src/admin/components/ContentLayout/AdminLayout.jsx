@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "./Sidebar/Sidebar";
 import Header from "./Header/Header";
@@ -8,32 +8,41 @@ import "./styles.css";
 
 const AdminLayout = (props) => {
   const location = useLocation();
+  const [isMicroPage, setIsMicroPage] = useState(false);
 
   // Check if current path includes "login"
   const isLoginPage = location.pathname.includes("login");
 
+  useEffect(()=>{
+    if(location.pathname.includes("microsite")){
+      setIsMicroPage(true)
+    }
+  }, [location.pathname])
+
   return (
-    <>{!isLoginPage ?
-          <div className={`content_layout Admin_Container`}>
-       <div className="layout_sidebar">
-          <Sidebar />
+    <>
+      {!isLoginPage ? (
+        <div className={`content_layout Admin_Container`}>
+          <div className="layout_sidebar">
+            <Sidebar />
+          </div>
+
+          <div className={`custom_width ${isMicroPage ? "micro_page" : undefined}`}>
+            <Header />
+          </div>
+
+          <div className="layout_content">
+            <div className={`main_container custom_width pt-0 ${isMicroPage ? "micro_page" : undefined}`}>
+              <Outlet />
+            </div>
+          </div>
         </div>
-
-      <div className="custom_width">
-      <Header />
-      </div>
-
-      <div className="layout_content">
-        <div className="main_container custom_width pt-0">
+      ) : (
+        <div className="loginContainer">
           <Outlet />
         </div>
-      </div>
-    </div>
-     
-      : <div className="loginContainer"><Outlet /></div> 
-    }
+      )}
     </>
-
   );
 };
 

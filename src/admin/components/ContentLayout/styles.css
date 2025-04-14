@@ -1,34 +1,147 @@
-select.form-control{
-  background: url(/public/assets/images/icons/chevron_down.svg) no-repeat calc(100% - 14px) center;
+select.form-control {
+  background: url(/public/assets/images/icons/chevron_down.svg) no-repeat
+    calc(100% - 14px) center;
 }
-@font-face {font-family: "JosefinSans-Thin";font-display: swap;src: url("../../assets/fonts/JosefinSans-Thin.ttf");}
-@font-face {font-family: "JosefinSans-Regular";font-display: swap;src: url("../../assets/fonts/JosefinSans-Regular.ttf");}
-@font-face {font-family: "Roboto-Medium";font-display: swap;src: url("../../assets/fonts/Roboto-Medium.ttf");}
-@font-face {font-family: "Roboto-Light";font-display: swap;src: url("../../assets/fonts/Roboto-Light.ttf");}
-@font-face {font-family: "Roboto-Regular";font-display: swap;src: url("../../assets/fonts/Roboto-Regular.ttf");}
-@font-face {font-family: "JosefinSans-Light";font-display: swap;src: url("../../assets/fonts/JosefinSans-Light.ttf");}
-@font-face {font-family: "BebasNeue-Regular";font-display: swap;src: url("../../assets/fonts/BebasNeue-Regular.ttf");}
-:root {--orange: #d74e34;}
-:root {--gree-blue: #53c5cf;}
-:root {--yellow: #f7ab5d;}
+@font-face {
+  font-family: "JosefinSans-Thin";
+  font-display: swap;
+  src: url("../../assets/fonts/JosefinSans-Thin.ttf");
+}
+@font-face {
+  font-family: "JosefinSans-Regular";
+  font-display: swap;
+  src: url("../../assets/fonts/JosefinSans-Regular.ttf");
+}
+@font-face {
+  font-family: "Roboto-Medium";
+  font-display: swap;
+  src: url("../../assets/fonts/Roboto-Medium.ttf");
+}
+@font-face {
+  font-family: "Roboto-Light";
+  font-display: swap;
+  src: url("../../assets/fonts/Roboto-Light.ttf");
+}
+@font-face {
+  font-family: "Roboto-Regular";
+  font-display: swap;
+  src: url("../../assets/fonts/Roboto-Regular.ttf");
+}
+@font-face {
+  font-family: "JosefinSans-Light";
+  font-display: swap;
+  src: url("../../assets/fonts/JosefinSans-Light.ttf");
+}
+@font-face {
+  font-family: "BebasNeue-Regular";
+  font-display: swap;
+  src: url("../../assets/fonts/BebasNeue-Regular.ttf");
+}
+:root {
+  --orange: #d74e34;
+}
+:root {
+  --gree-blue: #53c5cf;
+}
+:root {
+  --yellow: #f7ab5d;
+}
 /* :root {--orange: #dfb772;}
 :root {--gree-blue: #dca004;}
 :root {--yellow:  #e6d49c;} */
 /* style for dashboard start*/
-.Admin_Container{
+.Admin_Container {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   overflow-x: hidden !important;
-  background-image: linear-gradient(#181a26 1px, transparent 1px), linear-gradient(to right, #181a26 1px, #292b37 1px);
+  background-image: linear-gradient(#181a26 1px, transparent 1px),
+    linear-gradient(to right, #181a26 1px, #292b37 1px);
   font-family: "Roboto-Light";
   background-size: 3px 3px;
   width: 100%;
   min-height: 100vh;
 }
-.custom_width{
-  width: calc(100% - 80px);
-  margin-left: auto;
+.custom_width {
+  width: calc(100% - 120px);
+  margin-left: 100px;
   padding: 25px;
 }
+
+.custom_width.micro_page{
+  width: calc(100% - 200px);
+}
+
+/* micro sidebar */
+
+.sidenav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  height: 100%;
+  width: 80px;
+  background: #13131d;
+  box-shadow: 0 3px 3px rgb(0 0 0 / 4%), 0 3px 3px rgb(255 255 255 / 17%);
+}
+.sidenav .nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  left: 0px;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  font-family: "Roboto-Regular";
+  letter-spacing: 0.8px;
+}
+.sidenav .nav.active {
+  left: -10px;
+}
+.sidenav .nav:hover {
+  left: -115px;
+}
+.sidenav .nav:hover img {
+  filter: invert(0);
+}
+.sidenav .description,
+.sidenav .icon {
+  height: 60px;
+  line-height: 60px;
+  background: #13131d;
+}
+.sidenav .nav.active .description,
+.sidenav .nav.active .icon {
+  background: var(--orange);
+}
+.sidenav .icon {
+  width: 80px;
+  text-align: center;
+  color: #e9e9e9;
+  font-size: 18px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.sidenav .icon img {
+  width: 24px;
+  filter: invert(40%);
+}
+.sidenav .nav.active .description,
+.sidenav .nav.active .icon img {
+  filter: invert(0);
+}
+.sidenav .description {
+  position: relative;
+  left: 80px;
+  color: #eee;
+  min-width: 115px;
+  padding-left: 12px;
+  height: 100%;
+}
+
 /* style for dashboard end*/

@@ -57,6 +57,9 @@ import AdminMediaCentre from "./admin/MediaCentre.jsx";
 import AdminContactUs from "./admin/ContactUs.jsx";
 import BasicMicroSite from "./admin/components/dashboard/microsite/Basic.jsx";
 import Login from "./admin/Login.jsx";
+import MicroSidebar from "./admin/components/ContentLayout/microSidebar/MicroSidebar.jsx";
+import OverviewMicroSite from "./admin/components/dashboard/microsite/Overview.jsx";
+import PricelistMicroSite from "./admin/components/dashboard/microsite/PriceList.jsx";
 
 
 
@@ -281,10 +284,32 @@ const router = createBrowserRouter([
           <AdminContactUs/>
         ), 
       },
-      {  path: "/admin/microsite",
+      {  
+        path: "/admin/microsite/",
         element: (
-          <BasicMicroSite/>
+          <MicroSidebar/>
         ),
+        children:[
+          {
+            path:'',
+            element: (
+              <BasicMicroSite/>
+            ),
+          },
+          {
+            path:'overview',
+            element: (
+              <OverviewMicroSite/>
+            ),
+          },
+          {
+            path:'pricelist',
+            element: (
+              <PricelistMicroSite/>
+            ),
+          }
+        ]
+        
        }
     ],
   },

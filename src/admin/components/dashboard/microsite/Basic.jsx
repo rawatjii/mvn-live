@@ -34,8 +34,8 @@ const formFields = [
     visible: true,
     fields: [
       {
-        name: "select_slider_details",
-        label: "Select Slider Details",
+        name: "select_slider_type",
+        label: "Select Slider Type",
         type: "radioFields",
         col: 12,
         isLeft:true,
@@ -51,6 +51,33 @@ const formFields = [
         ]
       },
       { name: "Images", label: "Images", info:'Images Size 800*500 Only', type: "file", col: 12, isLeft:true },
+      { name: "json", label: "JSON", type: "file", col: 12, isLeft:true },
+    ],
+  },
+  {
+    sectionName: "Project Mobile Slider Image/Video",
+    sectionApi: "project-main-slider",
+    visible: true,
+    fields: [
+      {
+        name: "select_slider_type",
+        label: "Select Slider Type",
+        type: "radioFields",
+        col: 12,
+        isLeft:true,
+        options:[
+          {
+            label:'Images',
+            value:'images',
+          },
+          {
+            label:'JSON File',
+            value:'json_file',
+          }
+        ]
+      },
+      { name: "Images", label: "Images", info:'Images Size 800*500 Only', type: "file", col: 12, isLeft:true },
+      { name: "json", label: "JSON", type: "file", col: 12, isLeft:true },
     ],
   },
 ];

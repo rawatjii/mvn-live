@@ -43,6 +43,13 @@ const CustomFormField = ({
           />
         ) : type === "file" ? (
           <CustomFile id={id} name={name} rest={rest} onCustomChange={onChange} />
+        ) : type === 'select' ? (
+          <select className="form-control w-100">
+            <option>--Select--</option>
+            {options?.map((option, index) =>(
+              <option key={index} value={option.value} >{option.label}</option>
+            ))}
+          </select>
         ) : type === 'radioFields' ? (
             <div className="d-flex">
               {options.map((option, index) => (
