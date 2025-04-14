@@ -270,28 +270,6 @@ function ParallaxSection({ section_data }) {
 
       {/* parallax */}
       {data?.map((amenity, i) => (
-<<<<<<< HEAD
-        <>
-          <section
-            key={i}
-            className="parallax"
-            ref={(el) => (sectionsRef.current[i] = el)}
-            aria-label="Desktop View Section"
-          >
-            <div className="bg">
-              <Watermark className="left" />
-            </div>
-            <div className="content">
-              <span className="am-name mx-auto">{amenity.name}</span>
-              <p className="desc des_style1 text-center mt-2 w-100">
-                {Array.isArray(amenity.desc)
-                  ? amenity.desc.join(" ")
-                  : amenity.desc}
-              </p>
-            </div>
-          </section>
-        </>
-=======
         <section
           key={i}
           className="parallax"
@@ -310,7 +288,6 @@ function ParallaxSection({ section_data }) {
             </p>
           </div>
         </section>
->>>>>>> 5d6af46c980d16e321c38ad66ebfba1e0b505fb3
       ))}
     </div>
   );
