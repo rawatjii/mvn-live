@@ -6,9 +6,10 @@ import SecTitle from "./SecTitle/Index";
 import Loader from "./Loader/loader";
 import { API_URL } from "../config/config";
 
-const CustomModal = React.memo(({ show, hide, projectName, isOffer }) => {
+const CustomModal = React.memo(({ show, hide, projectName, isOffer, isVideoModal }) => {
   const [formDetails, setFormDetails] = useState({});
   const [loading, setLoading] = useState(false);
+  const modalRef = useRef();
 
   const handleFormChange = (e) => {
     setFormDetails({
@@ -58,8 +59,6 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer }) => {
     }
   };
 
-  const modalRef = useRef();
-
   useEffect(() => {
     const close = (e) => {
       if (!modalRef.current?.contains(e.target)) {
@@ -70,6 +69,31 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer }) => {
     document.addEventListener("mousedown", close);
     return () => document.removeEventListener("mousedown", close);
   }, []);
+
+  if (isVideoModal) {
+    return (
+      <Modal
+        show={show}
+        className="custom_modal video_modal"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <div ref={modalRef}>
+          <Modal.Body>
+            
+            <video src="https://img.websitedesigningcompany.co.in/public/images/aero-gurgaon/360.mp4" autoPlay  muted playsInline loop controls  className='img-fluid' />
+            <span
+              className="close"
+              onClick={hide}
+              style={{ position: "absolute", top: 0, right: 10, fontSize: 30 }}
+            >
+              &times;
+            </span>
+          </Modal.Body>
+        </div>
+      </Modal>
+    );
+  }
 
   if (isOffer) {
     return (
@@ -182,6 +206,7 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer }) => {
       </Modal>
     );
   }
+  
   return (
     <Modal show={show} className="enquire_form custom_modal floor_plan_popup">
       <div ref={modalRef}>

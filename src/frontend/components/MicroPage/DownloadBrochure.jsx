@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 
 const DownloadBrochure = React.memo(({projectName, name})=>{
   const [isShowModal, setIsShowModal] = useState(false)
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
 
   const isHideModal = useCallback(() => {
     setIsShowModal(false);
@@ -13,15 +14,22 @@ const DownloadBrochure = React.memo(({projectName, name})=>{
 
   const handleOpenBrochureModal = useCallback(() => {
     setIsShowModal(true)
+    setIsVideoModalOpen(false);
   }, []);
+
+  const openVideoModal = useCallback(()=>{
+    setIsShowModal(true)
+    setIsVideoModalOpen(true);
+  }, [])
 
   return(
     <section className="download_brochure_section text-center" aria-label="Brochure Section">
       <Container>
         <Button type="button" className="btn btn_style3 r_100" onClick={handleOpenBrochureModal}>{name ? name : 'Download MVN ID Brochure'}</Button>
+        <Button type="button" className="btn btn_style3 r_100 ms-3" onClick={openVideoModal}>{name ? name : '360° View'}</Button>
 
 
-        <CustomModal hide={isHideModal} show={isShowModal} type="enquire" projectName={projectName ? projectName : 'MVN Aeroone'}  />
+        <CustomModal hide={isHideModal} show={isShowModal} type="enquire" projectName={projectName ? projectName : 'MVN Aeroone'} isVideoModal={isVideoModalOpen}  />
       </Container>
       
     </section>

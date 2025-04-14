@@ -15,13 +15,18 @@ function ParallaxSection({ section_data }) {
   const sectionsRef = useRef([]); // Array to hold section refs
   const triggersRef = useRef([]); // Array to hold ScrollTrigger instances
   const containerRef = useRef(null); // Ref for the component container
-  const {pathname} = useLocation()
-  const { title, data, second_title, desc } = section_data || {};
+  const { pathname } = useLocation();
+  const { title, data, second_title, desc, iframe } = section_data || {};
 
   // Memoized ratio calculation
-  const getRatio = useCallback((el) => {
-    return el ? window.innerHeight / (window.innerHeight + el.offsetHeight) : 0;
-  }, [pathname]);
+  const getRatio = useCallback(
+    (el) => {
+      return el
+        ? window.innerHeight / (window.innerHeight + el.offsetHeight)
+        : 0;
+    },
+    [pathname]
+  );
 
   // Setup GSAP animations
   const setupAnimations = useCallback(() => {
@@ -31,33 +36,38 @@ function ParallaxSection({ section_data }) {
     triggersRef.current.forEach((trigger) => trigger?.kill());
     triggersRef.current = [];
 
-    triggersRef.current = sectionsRef.current.map((section, i) => {
-      const bg = section?.querySelector(".bg");
-      if (!bg || !data[i]?.path?.desktop) return null;
+    triggersRef.current = sectionsRef.current
+      .map((section, i) => {
+        const bg = section?.querySelector(".bg");
+        if (!bg || !data[i]?.path?.desktop) return null;
 
-      const imageUrl = `url(${data[i].path.desktop})`;
-      bg.style.backgroundImage = imageUrl;
+        const imageUrl = `url(${data[i].path.desktop})`;
+        bg.style.backgroundImage = imageUrl;
 
-      const defaultBgPos = i === 0
-        ? "50% 0"
-        : `50% ${-window.innerHeight * getRatio(section)}px`;
+        const defaultBgPos =
+          i === 0
+            ? "50% 0"
+            : `50% ${-window.innerHeight * getRatio(section)}px`;
 
-      return ScrollTrigger.create({
-        trigger: section,
-        start: i === 0 ? "top top" : "top bottom",
-        end: "bottom top",
-        scrub: true,
-        invalidateOnRefresh: true,
-        animation: gsap.fromTo(
-          bg,
-          { backgroundPosition: defaultBgPos },
-          {
-            backgroundPosition: `50% ${window.innerHeight * (1 - getRatio(section))}px`,
-            ease: "none",
-          }
-        ),
-      });
-    }).filter(Boolean);
+        return ScrollTrigger.create({
+          trigger: section,
+          start: i === 0 ? "top top" : "top bottom",
+          end: "bottom top",
+          scrub: true,
+          invalidateOnRefresh: true,
+          animation: gsap.fromTo(
+            bg,
+            { backgroundPosition: defaultBgPos },
+            {
+              backgroundPosition: `50% ${
+                window.innerHeight * (1 - getRatio(section))
+              }px`,
+              ease: "none",
+            }
+          ),
+        });
+      })
+      .filter(Boolean);
 
     ScrollTrigger.refresh(); // Explicitly refresh after setup
   }, [data, isMobile, getRatio]);
@@ -120,11 +130,34 @@ function ParallaxSection({ section_data }) {
   }, [isMobile, data, pathname]);
 
   const renderMobileView = () => (
-    <div className="section amenities_section main_am bottom_content pb-0">
+    <div className="section amenities_section main_am bottom_content parallax_section pb-0">
       <div className="cards-container">
         <div className="heading_div mb_60 mb_sm_30">
           <h4 className="title title_style1 text-center">{title}</h4>
         </div>
+
+        {/* walkthrough */}
+
+        {iframe && (
+          <div className="walkthrough mb-5">
+            <iframe
+              src={iframe}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              width="100"
+              height="100"
+              playsInline
+              className=" mb-4"
+            ></iframe>
+            <hr />
+          </div>
+        )}
+
+        {/* parallax */}
+
         {data?.map((single, index) => (
           <div key={index} className="col-sm-12 col-lg-4">
             <div className="card center">
@@ -146,10 +179,14 @@ function ParallaxSection({ section_data }) {
               <span className="am-name mx-auto">{single.name}</span>
               {Array.isArray(single.desc) ? (
                 single.desc.map((desc, idx) => (
-                  <p key={idx} className="desc des_style1 text-center mt-3">{desc}</p>
+                  <p key={idx} className="desc des_style1 text-center mt-3">
+                    {desc}
+                  </p>
                 ))
               ) : (
-                <p className="desc des_style1 text-center mt-3 w-100">{single.desc}</p>
+                <p className="desc des_style1 text-center mt-3 w-100">
+                  {single.desc}
+                </p>
               )}
             </div>
           </div>
@@ -159,27 +196,52 @@ function ParallaxSection({ section_data }) {
   );
 
   const renderDesktopView = () => (
-    <div className="section main_am pb-0">
+    <div className="section main_am parallax_section pb-0">
       <div className="heading_div mb_60 mb_sm_30">
         <h4 className="title title_style1 text-center">{title}</h4>
       </div>
+
+      {/* walkthrough */}
+      {iframe && (
+        <div className="walkthrough mb-5">
+          <iframe
+            src={iframe}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            width="100"
+            height="100"
+            playsInline
+            className=" mb-4"
+          ></iframe>
+          <hr />
+        </div>
+      )}
+
+      {/* parallax */}
       {data?.map((amenity, i) => (
-        <section
-          key={i}
-          className="parallax"
-          ref={(el) => (sectionsRef.current[i] = el)}
-          aria-label="Desktop View Section"
-        >
-          <div className="bg">
-            <Watermark className="left" />
-          </div>
-          <div className="content">
-            <span className="am-name mx-auto">{amenity.name}</span>
-            <p className="desc des_style1 text-center mt-2 w-100">
-              {Array.isArray(amenity.desc) ? amenity.desc.join(" ") : amenity.desc}
-            </p>
-          </div>
-        </section>
+        <>
+          <section
+            key={i}
+            className="parallax"
+            ref={(el) => (sectionsRef.current[i] = el)}
+            aria-label="Desktop View Section"
+          >
+            <div className="bg">
+              <Watermark className="left" />
+            </div>
+            <div className="content">
+              <span className="am-name mx-auto">{amenity.name}</span>
+              <p className="desc des_style1 text-center mt-2 w-100">
+                {Array.isArray(amenity.desc)
+                  ? amenity.desc.join(" ")
+                  : amenity.desc}
+              </p>
+            </div>
+          </section>
+        </>
       ))}
     </div>
   );

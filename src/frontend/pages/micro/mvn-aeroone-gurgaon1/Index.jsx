@@ -558,7 +558,7 @@ export const data = {
          desc:'Experience unparalleled privacy and convenience with exclusive entry and exit points designed for residents of MVN, ensuring seamless access and an elite living experience.'
        },
      ],
-      
+     iframe:'https://www.youtube.com/embed/BqcxVd21m6Y?autoplay=1&loop=1&mute=1&playlist=BqcxVd21m6Y'
    },
   noPollutionZone:{
       title:'Connections with MVN Mall',
@@ -604,7 +604,7 @@ export const data = {
           desc:'Have a blockbuster of a time, without ever missing a show due to traffic. Catch up with all the superhits at the theatres below in the MVN mall.'
         },
       ],
-       
+      
     },
   highlight:{
     isshow: true,
@@ -704,7 +704,8 @@ export const data = {
       frameCounts:{
         mobileFrameCounts:102,
         desktopFrameCounts:102,
-      }
+      },
+      iframe:'https://www.youtube.com/embed/CbmkQBZuvTw?autoplay=1&loop=1&mute=1&playlist=CbmkQBZuvTw'
     }
 };
 
