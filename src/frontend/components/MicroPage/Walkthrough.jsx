@@ -12,7 +12,7 @@ const Walkthrough = React.memo(({ data }) => {
   const channelUrl = CONFIG.YOUTUBE_URL;
 
   useEffect(() => {
-    setVideoSrc("https://www.youtube.com/embed/9CHcJAveejU?autoplay=1&loop=1&mute=1&playlist=9CHcJAveejU");
+    setVideoSrc("https://www.youtube.com/embed/9CHcJAveejU?loop=1&mute=1&playlist=9CHcJAveejU");
   }, []);
 
   return (

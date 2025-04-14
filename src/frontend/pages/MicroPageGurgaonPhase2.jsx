@@ -195,7 +195,7 @@ const MicroPageGurgaonPhase2 = ({ data, loadingCount, setLoadingCount }) => {
               (sectionRefs.current.downloadBrochure = el)
             }
           >
-            <DownloadBrochure name="DOWNLOAD MVN ATHENS ID BROCHURE" />
+            <DownloadBrochure name="DOWNLOAD MVN ATHENS ID BROCHURE" projectName="MVN Athens Gurgaon PH-2" />
           </div>
           <div
             ref={(el) =>
@@ -251,7 +251,7 @@ const MicroPageGurgaonPhase2 = ({ data, loadingCount, setLoadingCount }) => {
               </div>
               <div className="col-sm-6 px-0">
                 <EnquireForm
-                  projectName={"MVN Aeroone"}
+                  projectName={"MVN Athens Gurgaon PH-2"}
                 />
               </div>
             </div>

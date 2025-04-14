@@ -98,30 +98,41 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
   return (
     <>
 
-      <Helmet>
-        <title>MVN AeroOne Gurgaon | 5.5 BHK Luxury Residences | Dwarka Expressway</title>
-        <meta name="description" content="MVN AeroOne Gurgaon 5.5 BHK Residences, the largest ultra-luxury apartments in Dwarka Expressway. 360° Panoramic View." />
-        <meta name="keywords" content="MVN Infrastructure, MVN Gurgaon, MVN MALL Gurugram, MVN aero one, 5BHK in Gurgaon, Aero one, MVN Bangalore, mvn.in, MVN Developer." />
-        <link rel="canonical" href="https://mvn.in/aeroone-gurgaon" />
+<Helmet>
+        <title>MVN Aero One Gurugram | 5.5 BHK Luxury Residencies | Dwarka Expressway</title>
+        <meta name="description" content="MVN Aero One Gurugram 5.5 BHK Residencies, the largest ultra-luxury apartments on Dwarka Expressway. 360° Panoramic View." />
+        <meta name="keywords" content="MVN Infrastructure, MVN Gurgaon, MVN MALL Gurugram, MVN Aero one, 5BHK in Gurugram, Aero one, MVN Bangalore, mvn.in, MVN Developer." />
+    
+        <link rel="canonical" href="https://www.mvn.in/aeroone-gurgaon" />
         <meta name="distribution" content="Global" />
         <meta name="Language" content="English" />
         <meta name="doc-type" content="Public" />
         <meta name="robots" content="index, follow" />
-        <meta name="author" content="MVN AeroOne" />
+        <meta name="author" content="MVN Aero One" />
         <meta name="googlebot" content="all, index, follow" />
         <meta name="YahooSeeker" content="all, index, follow" />
         <meta name="msnbot" content="all, index, follow" />
         <meta name="HandheldFriendly" content="true" />
         <meta name="revisit-after" content="1 days" />
         <meta name="rating" content="safe for kids" />
+        <meta name="allow-search" content="yes" />
         <meta name="expires" content="never" />
+
+        {/* Open Graph data */}
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="MVN AeroOne Gurgaon | 5.5 BHK Luxury Residences | Dwarka Expressway" />
-        <meta property="og:description" content="MVN AeroOne Gurgaon 5.5 BHK Residences, the largest ultra-luxury apartments in Dwarka Expressway. 360° Panoramic View." />
-        <meta property="og:url" content="https://mvn.in/aeroone-gurgaon" />
-        <meta property="og:site_name" content="MVN AeroOne" />
-        <meta property="og:image" content="https://mvn.in/assets/images/micro/hero/aeroone-gurgaon/desktop.webp">
-        </meta>
+        <meta property="og:title" content="MVN Aero One Gurugram | 5.5 BHK Luxury Residencies | Dwarka Expressway" />
+        <meta property="og:description" content="MVN Aero One Gurugram 5.5 BHK Residencies, the largest ultra-luxury apartments on Dwarka Expressway. 360° Panoramic View." />
+        <meta property="og:url" content="https://www.mvn.in/aeroone-gurgaon" />
+        <meta property="og:site_name" content="MVN Aero One" />
+        <meta property="og:image" content="https://www.mvn.in/assets/images/micro/hero/aeroone-gurgaon/desktop.webp" />
+
+        {/* Twitter Card  */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:url" content="https://www.mvn.in/aeroone-gurgaon" />
+        <meta name="twitter:image" content="https://www.mvn.in/assets/images/micro/hero/aeroone-gurgaon/desktop.webp" />
+        <meta name="twitter:creator" content="@MVN_infra"/>
+        <meta name="twitter:title" content="MVN Aero One Gurugram | 5.5 BHK Luxury Residencies | Dwarka Expressway" />
+        <meta name="keywords" content="MVN Aero one Gurgaon, MVN MALL Gurugram, MVN Aero one, 5BHK in Gurugram, Aero one, MVN Bangalore, mvn.in, MVN Infrastructure, MVN Gurgaon, MVN Developer"/>
         <script>
           {`
             window.dataLayer = window.dataLayer || [];
@@ -182,27 +193,27 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             fbq('init', '562105226581202');
             fbq('track', 'PageView');
             `}
-        </script>
+          </script>
 
-        <noscript>
-          {`
-              <img  alt="facebook" height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=562105226581202&ev=PageView&noscript=1" />
+          <noscript>
+            {`
+              <img alt="facebook" height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=562105226581202&ev=PageView&noscript=1" />
             `}
-        </noscript>
+          </noscript>
 
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11490416244"></script>
-        <script>
-          {`
+          <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11490416244"></script>
+          <script>
+            {`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
 
               gtag('config', 'AW-11490416244');
             `}
-        </script>
+          </script>
 
-        <script>
-          {`
+          <script>
+              {`
                 <script type='text/javascript'>
                 window._tfa = window._tfa || [];
                 window._tfa.push({notify: 'event', name: 'page_view', id: 1787600});
@@ -216,16 +227,16 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
                 'tb_tfa_script');
               </script>
               `}
-        </script>
+          </script>
 
-        <script>
-          {`
+          <script>
+            {`
               (function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"187169642", enableAutoSpaTracking: true};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");
             `}
-        </script>
+          </script>
 
-        <script type="text/javascript">
-          {`
+          <script type="text/javascript">
+            {`
               (function(c,l,a,r,i,t,y){
                   c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
                   t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;

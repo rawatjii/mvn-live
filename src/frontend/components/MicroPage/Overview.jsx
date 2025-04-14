@@ -54,10 +54,10 @@ const MicroOverview = React.memo(({ data }) => {
         countUp(13500, setCount1, setEnded1);
       }
       if (!ended2 && isScrolledIntoView(ref2)) {
-        countUp(11700, setCount2, setEnded2);
+        countUp(12600, setCount2, setEnded2);
       }
       if (!ended3 && isScrolledIntoView(ref3)) {
-        countUp(5850, setCount3, setEnded3);
+        countUp(6300, setCount3, setEnded3);
       }
     };
 
@@ -105,17 +105,17 @@ const MicroOverview = React.memo(({ data }) => {
           <div className="counter-flex-box">
             <div className="flex-box" ref={ref1}>
               <h4>
-                <span className="counter">{count1}</span> <span className="sqft">sqft</span>
+                <span className="counter">{count1}</span> <span className="sqft">sq.ft.</span>
               </h4>
             </div>
             <div className="flex-box" ref={ref2}>
               <h4>
-                <span className="counter">{count2}</span> <span className="sqft">sqft</span>
+                <span className="counter">{count2}</span> <span className="sqft">sq.ft.</span>
               </h4>
             </div>
             <div className="flex-box" ref={ref3}>
               <h4>
-                <span className="counter">{count3}</span> <span className="sqft">sqft</span>
+                <span className="counter">{count3}</span> <span className="sqft">sq.ft.</span>
               </h4>
             </div>
           </div>

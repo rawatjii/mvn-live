@@ -914,7 +914,7 @@ a {
 
      &:before{
 
-      background: url('../public/assets/images/header_bg.webp') no-repeat right center;
+      background: url('https://img.websitedesigningcompany.co.in/public/assets/header_bg.webp') no-repeat right center;
       left: 0px;
       bottom:0px;
       right: 0;
@@ -1153,7 +1153,10 @@ a {
     }
 
     .closebtn {
-      writing-mode: vertical-rl;
+      /* writing-mode: vertical-rl; */
+      transform: rotate(90deg);
+      -webkit-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
       color: #d9d9d9;
       letter-spacing: 0.5px;
       font-size: 20px;
@@ -1842,7 +1845,7 @@ footer {
     height: 100%;
     width: 120%;
     opacity: 0.1;
-    background: url('./frontend/assets/images/footer-bg-img.webp') no-repeat right center;
+    background: url('https://img.websitedesigningcompany.co.in/public/images/footer-bg-img.webp') no-repeat right center;
     left: -31%;
     bottom: 0px;
     right: 0;

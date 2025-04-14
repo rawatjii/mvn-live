@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback } from "react";
+import React, { useEffect, useRef, useCallback, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Watermark from "../common/watermark/Index";
@@ -17,6 +17,8 @@ function ParallaxSection({ section_data }) {
   const containerRef = useRef(null); // Ref for the component container
   const { pathname } = useLocation();
   const { title, data, second_title, desc, iframe } = section_data || {};
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [imageUrls, setImageUrls] = useState([]);
 
   // Memoized ratio calculation
   const getRatio = useCallback(
@@ -27,6 +29,53 @@ function ParallaxSection({ section_data }) {
     },
     [pathname]
   );
+
+  // collect all image url to preload
+  useEffect(() => {
+    if (data) {
+      const urls = data.reduce((acc, item) => {
+        if (isMobile && item.path?.mobile) acc.push(item.path.mobile);
+        if (!isMobile && item.path?.desktop) acc.push(item.path.desktop);
+        return acc;
+      }, []);
+      setImageUrls([...new Set(urls)]);
+    }
+  }, [data, isMobile]);
+
+  // Preload images and update loading status
+  useEffect(() => {
+    if (!imageUrls.length) {
+      setImagesLoaded(true); // No images to load
+      return;
+    }
+
+    let loadedCount = 0;
+    const totalImages = imageUrls.length;
+
+    const handleImageLoad = () => {
+      loadedCount++;
+      if (loadedCount === totalImages) {
+        setImagesLoaded(true);
+        ScrollTrigger.refresh();
+      }
+    };
+
+    const preloadImages = () => {
+      imageUrls.forEach((url) => {
+        const img = new Image();
+        img.src = url;
+        img.onload = handleImageLoad;
+        img.onerror = handleImageLoad; // Handle failed loads
+      });
+    };
+
+    preloadImages();
+
+    return () => {
+      // Cleanup not strictly necessary for Image objects, but included for completeness
+      loadedCount = totalImages; // Prevent further updates
+    };
+  }, [imageUrls]);
 
   // Setup GSAP animations
   const setupAnimations = useCallback(() => {
@@ -72,12 +121,11 @@ function ParallaxSection({ section_data }) {
     ScrollTrigger.refresh(); // Explicitly refresh after setup
   }, [data, isMobile, getRatio]);
 
-  // Handle animation setup, cleanup, and resize
+  // Run animations only after images are loaded
   useEffect(() => {
-    if (!isMobile && data && sectionsRef.current.length) {
+    if (imagesLoaded && !isMobile && data && sectionsRef.current.length) {
       setupAnimations();
 
-      // Refresh on window resize
       const handleResize = () => {
         ScrollTrigger.refresh();
       };
@@ -87,47 +135,47 @@ function ParallaxSection({ section_data }) {
         triggersRef.current.forEach((trigger) => trigger?.kill());
         triggersRef.current = [];
         window.removeEventListener("resize", handleResize);
-        ScrollTrigger.refresh(); // Clean slate on unmount
+        ScrollTrigger.refresh();
       };
     }
-  }, [isMobile, data, setupAnimations, pathname]);
+  }, [imagesLoaded, isMobile, data, setupAnimations]);
 
   // Refresh ScrollTrigger after images load, scoped to this component
-  useEffect(() => {
-    if (!isMobile && containerRef.current) {
-      const images = containerRef.current.querySelectorAll("img");
-      if (!images.length) {
-        ScrollTrigger.refresh();
-        return;
-      }
+  // useEffect(() => {
+  //   if (!isMobile && containerRef.current) {
+  //     const images = containerRef.current.querySelectorAll("img");
+  //     if (!images.length) {
+  //       ScrollTrigger.refresh();
+  //       return;
+  //     }
 
-      let loadedCount = 0;
-      const totalImages = images.length;
+  //     let loadedCount = 0;
+  //     const totalImages = images.length;
 
-      const checkAllLoaded = () => {
-        loadedCount++;
-        if (loadedCount === totalImages) {
-          ScrollTrigger.refresh();
-        }
-      };
+  //     const checkAllLoaded = () => {
+  //       loadedCount++;
+  //       if (loadedCount === totalImages) {
+  //         ScrollTrigger.refresh();
+  //       }
+  //     };
 
-      images.forEach((img) => {
-        if (img.complete) {
-          checkAllLoaded();
-        } else {
-          img.addEventListener("load", checkAllLoaded, { once: true });
-          img.addEventListener("error", checkAllLoaded, { once: true }); // Handle failed loads
-        }
-      });
+  //     images.forEach((img) => {
+  //       if (img.complete) {
+  //         checkAllLoaded();
+  //       } else {
+  //         img.addEventListener("load", checkAllLoaded, { once: true });
+  //         img.addEventListener("error", checkAllLoaded, { once: true }); // Handle failed loads
+  //       }
+  //     });
 
-      return () => {
-        images.forEach((img) => {
-          img.removeEventListener("load", checkAllLoaded);
-          img.removeEventListener("error", checkAllLoaded);
-        });
-      };
-    }
-  }, [isMobile, data, pathname]);
+  //     return () => {
+  //       images.forEach((img) => {
+  //         img.removeEventListener("load", checkAllLoaded);
+  //         img.removeEventListener("error", checkAllLoaded);
+  //       });
+  //     };
+  //   }
+  // }, [isMobile, data, pathname]);
 
   const renderMobileView = () => (
     <div className="section amenities_section main_am bottom_content parallax_section pb-0">
@@ -222,6 +270,7 @@ function ParallaxSection({ section_data }) {
 
       {/* parallax */}
       {data?.map((amenity, i) => (
+<<<<<<< HEAD
         <>
           <section
             key={i}
@@ -242,25 +291,71 @@ function ParallaxSection({ section_data }) {
             </div>
           </section>
         </>
+=======
+        <section
+          key={i}
+          className="parallax"
+          ref={(el) => (sectionsRef.current[i] = el)}
+          aria-label="Desktop View Section"
+        >
+          <div className="bg">
+            <Watermark className="left" />
+          </div>
+          <div className="content">
+            <span className="am-name mx-auto">{amenity.name}</span>
+            <p className="desc des_style1 text-center mt-2 w-100">
+              {Array.isArray(amenity.desc)
+                ? amenity.desc.join(" ")
+                : amenity.desc}
+            </p>
+          </div>
+        </section>
+>>>>>>> 5d6af46c980d16e321c38ad66ebfba1e0b505fb3
       ))}
     </div>
   );
 
-  return (
-    <div ref={containerRef}>
-      {isMobile ? renderMobileView() : renderDesktopView()}
-      {(second_title || desc) && (
-        <Container>
-          <div className="about">
-            <CustomCard
-              className="px-0 pb-0"
-              title={second_title || ""}
-              desc={desc || ""}
-            />
-          </div>
-        </Container>
-      )}
+  // Loader component (customize as needed)
+  const Loader = () => (
+    <div
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        background: "#fff",
+        zIndex: 9999,
+      }}
+    >
+      <div>Loading...</div> {/* Replace with your spinner or custom loader */}
     </div>
+  );
+
+  return (
+    <>
+      {!imagesLoaded && <Loader />}
+      <div
+        ref={containerRef}
+        style={{ visibility: imagesLoaded ? "visible" : "hidden" }}
+      >
+        {isMobile ? renderMobileView() : renderDesktopView()}
+        {(second_title || desc) && (
+          <Container>
+            <div className="about">
+              <CustomCard
+                className="px-0 pb-0"
+                title={second_title || ""}
+                desc={desc || ""}
+              />
+            </div>
+          </Container>
+        )}
+      </div>
+    </>
   );
 }
 
