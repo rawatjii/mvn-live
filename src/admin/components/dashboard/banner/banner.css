@@ -11,13 +11,14 @@
     font-size: 15px;
     margin-bottom: 5px;
 }
-.FieldContainer .InputContainer .form-control{
+.FieldContainer .InputContainer .form-control,.FieldContainer .InputContainer input.form-control{
     background-color: transparent;
     border: 1px solid #45464f;
     color: #eee;
     height: auto;
     padding: 5px 15px;
-    border-radius: 3px;
+    border-radius: 3px; 
+    width: 100%;
 }
 
 .custom-file-wrapper {
