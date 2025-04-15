@@ -13,7 +13,7 @@ import generateApi from "../../../api/generateApi";
 import useCrud from "../../../hooks/useCrud";
 // Simulated backend response
 const metaFields = [
-  { name: "price", label: "Price", type: "text", col: 12, isLeft: true },
+  { name: "price", label: "Images", type: "file", info:"Images Size 800*500 Only", col: 12, isLeft: true },
   { name: "size", label: "Size", type: "text", col: 12, isLeft: true },
   { name: "size_type", label: "Size Type", type: "select", col: 12, isLeft: true, options:[
     {
@@ -37,7 +37,7 @@ const columns = [
   { key: "type", label: "Type" },
 ];
 
-const PricelistMicrosite = () => {
+const LocationMicrosite = () => {
   const aboutsApi = generateApi("blog"); // ✅ Adjust endpoint if needed
   const { data, loading, error, createItem, updateItem, deleteItem } =
     useCrud(aboutsApi);
@@ -59,7 +59,7 @@ const PricelistMicrosite = () => {
     <CustomSection customClass="">
       <LeftArea>
         <MicroBox>
-          <CustomTitle title="Price Insight" />
+          <CustomTitle title="Location" />
           <CustomForm
             isBanner={false}
             dynamicFields={metaFields}
@@ -88,4 +88,4 @@ const PricelistMicrosite = () => {
   );
 };
 
-export default PricelistMicrosite;
+export default LocationMicrosite;

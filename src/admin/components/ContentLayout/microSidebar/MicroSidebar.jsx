@@ -3,6 +3,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import { FaRegFileAlt } from "react-icons/fa";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import { LuIndianRupee } from "react-icons/lu";
+import { GrLocation } from "react-icons/gr";
 
 
 const MicroSidebar = () => {
@@ -37,14 +38,14 @@ const MicroSidebar = () => {
             </div>
           </NavLink>
 
-          <a href="location-advantage.html">
+          <NavLink to={import.meta.env.VITE_APP_URL + "admin/microsite/location"}>
             <div className="nav">
               <div className="icon">
-                <img src="images/icon/location.png" />
+                <GrLocation  fontSize={24} />
               </div>
               <div className="description">Location</div>
             </div>
-          </a>
+          </NavLink>
 
           <a href="amenities.html">
             <div className="nav">

@@ -60,6 +60,7 @@ import Login from "./admin/Login.jsx";
 import MicroSidebar from "./admin/components/ContentLayout/microSidebar/MicroSidebar.jsx";
 import OverviewMicroSite from "./admin/components/dashboard/microsite/Overview.jsx";
 import PricelistMicroSite from "./admin/components/dashboard/microsite/PriceList.jsx";
+import LocationMicrosite from "./admin/components/dashboard/microsite/Location.jsx";
 
 
 
@@ -306,6 +307,12 @@ const router = createBrowserRouter([
             path:'pricelist',
             element: (
               <PricelistMicroSite/>
+            ),
+          },
+          {
+            path:'location',
+            element: (
+              <LocationMicrosite/>
             ),
           }
         ]
