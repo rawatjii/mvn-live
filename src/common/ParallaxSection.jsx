@@ -15,9 +15,12 @@ function ParallaxSection({ section_data }) {
   const sectionsRef = useRef([]); // Array to hold section refs
   const triggersRef = useRef([]); // Array to hold ScrollTrigger instances
   const containerRef = useRef(null); // Ref for the component container
+  const iframeRef = useRef(null);
+
   const { pathname } = useLocation();
   const { title, data, second_title, desc, iframe } = section_data || {};
   const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [iframeLoaded, setIframeLoaded] = useState(false);
   const [imageUrls, setImageUrls] = useState([]);
 
   // Memoized ratio calculation
@@ -140,42 +143,31 @@ function ParallaxSection({ section_data }) {
     }
   }, [imagesLoaded, isMobile, data, setupAnimations]);
 
-  // Refresh ScrollTrigger after images load, scoped to this component
-  // useEffect(() => {
-  //   if (!isMobile && containerRef.current) {
-  //     const images = containerRef.current.querySelectorAll("img");
-  //     if (!images.length) {
-  //       ScrollTrigger.refresh();
-  //       return;
-  //     }
+  // lazy load youtube ifram
+  useEffect(()=>{
+    if(!iframe || !containerRef.current || iframeLoaded) return;
 
-  //     let loadedCount = 0;
-  //     const totalImages = images.length;
+    const walkthroughEl = containerRef.current.querySelector('.walkthrough');
 
-  //     const checkAllLoaded = () => {
-  //       loadedCount++;
-  //       if (loadedCount === totalImages) {
-  //         ScrollTrigger.refresh();
-  //       }
-  //     };
+    if(!walkthroughEl) return;
 
-  //     images.forEach((img) => {
-  //       if (img.complete) {
-  //         checkAllLoaded();
-  //       } else {
-  //         img.addEventListener("load", checkAllLoaded, { once: true });
-  //         img.addEventListener("error", checkAllLoaded, { once: true }); // Handle failed loads
-  //       }
-  //     });
+    const trigger = ScrollTrigger.create({
+      trigger:walkthroughEl,
+      start:'top bottom',
+      onEnter:()=>{
+        if(iframeRef.current && !iframeLoaded){
+          const autoplaySrc = iframe;
+          iframeRef.current.src = autoplaySrc;
+          setIframeLoaded(true);
+        }
+      },
+      once:true,
+    })
 
-  //     return () => {
-  //       images.forEach((img) => {
-  //         img.removeEventListener("load", checkAllLoaded);
-  //         img.removeEventListener("error", checkAllLoaded);
-  //       });
-  //     };
-  //   }
-  // }, [isMobile, data, pathname]);
+    return ()=>{
+      trigger.kill();
+    }
+  }, [iframe, iframeLoaded, imagesLoaded])
 
   const renderMobileView = () => (
     <div className="section amenities_section main_am bottom_content parallax_section pb-0">
@@ -189,7 +181,7 @@ function ParallaxSection({ section_data }) {
         {iframe && (
           <div className="walkthrough mb-5">
             <iframe
-              src={iframe}
+            ref={iframeRef}
               title="YouTube video player"
               frameBorder="0"
               allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -199,6 +191,7 @@ function ParallaxSection({ section_data }) {
               height="100"
               playsInline
               className=" mb-4"
+              loading="lazy"
             ></iframe>
             <hr />
           </div>
@@ -253,7 +246,7 @@ function ParallaxSection({ section_data }) {
       {iframe && (
         <div className="walkthrough mb-5">
           <iframe
-            src={iframe}
+            ref={iframeRef}
             title="YouTube video player"
             frameBorder="0"
             allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -263,6 +256,7 @@ function ParallaxSection({ section_data }) {
             height="100"
             playsInline
             className=" mb-4"
+            loading="lazy"
           ></iframe>
           <hr />
         </div>

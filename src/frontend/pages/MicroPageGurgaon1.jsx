@@ -278,7 +278,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
           <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
             <Suspense fallback="">
-              <DownloadBrochure />
+              <DownloadBrochure is360Available={true} />
             </Suspense>
           </div>
 

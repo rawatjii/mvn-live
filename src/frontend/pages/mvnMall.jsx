@@ -14,6 +14,7 @@ import MicroHeader from "../components/MicroHeader";
 import ImagesGallery from "../components/MicroPage/ImagesGallery";
 import SliderTypology from "../components/MicroPage/bangalore/SliderTypology";
 import AthensBanner from "../components/MicroPage/athens/AthensBanner";
+import CustomIframe from "../components/MicroPage/CustomIframe";
 const ParallaxSection = React.lazy(()=>import("../../common/ParallaxSection"));
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -80,6 +81,9 @@ const MvnMall1 = ({ data }) => {
           >
             <DownloadBrochure projectName="MVN Mall Dwarka Expressway" />
           </div>
+
+            <CustomIframe data={data.mvnMallVideo} />
+
           <div
             ref={(el) =>
               (sectionRefs.current.landscape = el)

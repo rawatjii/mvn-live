@@ -1,12 +1,20 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CustomCard from "../Card";
 import { Container } from "react-bootstrap";
 import * as CONFIG from "../../../config/config";
 
 const subscribeImg = `${CONFIG.API_URL}images/icons/subscribe_btn.webp`
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Walkthrough = React.memo(({ data }) => {
   const [videoSrc, setVideoSrc] = useState("");
+  const [iframeLoaded, setIframeLoaded] = useState(false);
+  const iframeRef = useRef(null);
+  const containerRef = useRef(null);
+
   const { second_title, desc, src } = data;
 
   const channelUrl = CONFIG.YOUTUBE_URL;
@@ -15,10 +23,38 @@ const Walkthrough = React.memo(({ data }) => {
     setVideoSrc("https://www.youtube.com/embed/9CHcJAveejU?loop=1&mute=1&playlist=9CHcJAveejU");
   }, []);
 
+  // Lazy-load YouTube iframe when walkthrough enters viewport
+  useEffect(()=>{
+    if(!src || iframeLoaded) return;
+
+    const walkthroughIframe = containerRef.current.querySelector("iframe");
+
+    if(!walkthroughIframe) return;
+
+    const trigger = ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: "top bottom",
+      onEnter:()=>{
+        if(iframeRef.current && !iframeLoaded){
+          const autoplaySrc = src ? src : videoSrc;
+
+          iframeRef.current.src = autoplaySrc;
+
+          setIframeLoaded(true);
+        }
+      },
+      once: true,
+    })
+
+    return ()=>trigger.kill();
+  }, [])
+
   return (
-    <section className="section walkthrough_section new_height" aria-label="Walkthrough Section">
+    <section ref={containerRef} className="section walkthrough_section new_height" aria-label="Walkthrough Section">
       <div style={{backgroundImage: `url(${CONFIG.IMAGE_URL}loader/aeroone-gurgaon/largeElevation/largeBg.webp)`, backgroundSize: 'cover',backgroundPosition: 'bottom'}}>
-        <iframe src={src ? src : videoSrc} 
+        <iframe
+          ref={iframeRef}
+          // src={src ? src : videoSrc}
           title="YouTube video player"
           frameBorder="0"
           allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

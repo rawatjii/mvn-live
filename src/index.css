@@ -4242,6 +4242,14 @@ table.bg_transparent{
   }
 }
 
+.customIframeContainer{
+
+  iframe{
+    width:100%;
+    height:calc(100vh - 70px);
+  }
+}
+
 /* start responsive */
 /* by bhupendra */
 @media(min-width:768px) {
@@ -5504,6 +5512,14 @@ table.bg_transparent{
         width:100%;
         height:250px;
       }
+    }
+  }
+
+  .customIframeContainer{
+
+    iframe{
+      width:100%;
+        height:250px;
     }
   }
 
