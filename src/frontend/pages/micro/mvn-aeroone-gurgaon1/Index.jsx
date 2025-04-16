@@ -193,6 +193,15 @@ export const data = {
     desc: "Dive into your own private pool with a grand view, just a few steps away from your living room",
     isVdo: true,
   },
+  view360:{
+    title:'360° VIEW',
+    second_title:'LIVE. LAUGH. LOUNGE',
+    desc:'Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambience, perfect for hosting unforgettable soirees and extravagant gatherings.',
+    path:{
+      mobile:`/assets/data.json`,
+      desktop:`/assets/data.json`,
+    }
+  },
   peacock_section:{
     second_title:'EXPERIENCE THE GRANDEUR OF THE LIVING ROOM WITH 360° PANORAMIC VIEWS',
     desc:'Step into a living room where nature’s vibrant splendor enchants, blending elegance and serenity for both relaxation and gatherings.',
@@ -200,7 +209,7 @@ export const data = {
       mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/Peacock/data.json`,
       desktop:peacockDesktopImg,
     }
-},
+  },
   living_room:{
     Custom_height:"Custom_height",
     second_title:'OPEN THE DOORS TO EXPANSIVE ELEGANCE AND SPACIOUS LUXURY',

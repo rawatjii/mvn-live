@@ -5523,6 +5523,14 @@ table.bg_transparent{
     }
   }
 
+  .download_brochure_section{
+
+    .btn{
+      font-size:11px; 
+      padding: 10px 12px;
+    }
+  }
+
 
 }
 

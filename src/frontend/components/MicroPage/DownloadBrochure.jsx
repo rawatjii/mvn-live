@@ -4,7 +4,7 @@ import CustomModal from "../../../common/Modal";
 import { Container } from "react-bootstrap";
 import PropTypes from "prop-types";
 
-const DownloadBrochure = React.memo(({projectName, name, is360Available=false})=>{
+const DownloadBrochure = React.memo(({projectName, name, show360Video, is360Available=false})=>{
   const [isShowModal, setIsShowModal] = useState(false)
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
 
@@ -17,17 +17,18 @@ const DownloadBrochure = React.memo(({projectName, name, is360Available=false})=
     setIsVideoModalOpen(false);
   }, []);
 
-  const openVideoModal = useCallback(()=>{
-    setIsShowModal(true)
-    setIsVideoModalOpen(true);
-  }, [])
+  // const openVideoModal = useCallback(()=>{
+  //   setIsShowModal(true)
+  //   setIsVideoModalOpen(true);
+  //   show360Video()
+  // }, [])
 
   return(
     <section className="download_brochure_section text-center" aria-label="Brochure Section">
       <Container>
         <Button type="button" className="btn btn_style3 r_100" onClick={handleOpenBrochureModal}>{name ? name : 'Download MVN ID Brochure'}</Button>
         {is360Available && (
-          <Button type="button" className="btn btn_style3 r_100 ms-3" onClick={openVideoModal}>{name ? name : '360° View'}</Button>
+          <Button type="button" className="btn btn_style3 r_100 ms-2 ms-md-3" onClick={()=>show360Video()}>{name ? name : '360° View'}</Button>
         )}
 
 
