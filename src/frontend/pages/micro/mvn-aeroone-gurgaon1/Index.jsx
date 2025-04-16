@@ -195,11 +195,11 @@ export const data = {
   },
   view360:{
     title:'360° VIEW',
-    second_title:'LIVE. LAUGH. LOUNGE',
-    desc:'Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambience, perfect for hosting unforgettable soirees and extravagant gatherings.',
+    // second_title:'LIVE. LAUGH. LOUNGE',
+    // desc:'Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambience, perfect for hosting unforgettable soirees and extravagant gatherings.',
     path:{
-      mobile:`/assets/data.json`,
-      desktop:`/assets/data.json`,
+      mobile:`${CONFIG.API_URL}images/aero-gurgaon/360/mobile.json`,
+      desktop:`${CONFIG.API_URL}images/aero-gurgaon/360/desktop.json`,
     }
   },
   peacock_section:{
