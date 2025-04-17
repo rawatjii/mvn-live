@@ -19,7 +19,7 @@ export const otherProjects = [
   { 
     location: 'Bangalore',
     projects: [
-      { name: 'MVN', link: '/aeroone-bangalore', status: '', target_blank: false }
+      { name: 'MVN', link: 'https://www.mvnaeroone.com/', status: '', target_blank: true }
     ]
   },
   { 
