@@ -11,54 +11,53 @@ import CustomTable from "../dashboard/utilities/custom-table/CustomTable";
 import CustomPagination from "../dashboard/utilities/pagination/CustomPagination";
 import generateApi from "../../api/generateApi";
 import useCrud from "../../hooks/useCrud";
+import CustomModal from "../dashboard/utilities/custom-modal/CustomModal";
 
 // Simulated backend response
 const metaFields = [
   { name: "heading", label: "Title", type: "text", col: 12, isLeft: true },
   { name: "alt", label: "Alt Tag", type: "text", col: 12, isLeft: true },
   { name: "image", label: "Image", type: "file", col: 6, isLeft: true },
-  {
-    name: "alternative_image",
-    label: "Alternative Image",
-    type: "file",
-    col: 6,
-    isLeft: true,
-  },
+  // {
+  //   name: "alternative_image",
+  //   label: "Alternative Image",
+  //   type: "file",
+  //   col: 6,
+  //   isLeft: true,
+  // },
 ];
 
 const columns = [
-  { key: "id", label: "S.No." },
+  { key: "", label: "S.No." },
   { key: "heading", label: "Title" },
-  { key: "image", label: "Image", type: "image" },
+  { key: "image", label: "Image", type: "file" },
 ];
 
 const Ourvalues = () => {
   const [editModalData, setEditModalData] = useState(null);
 
   const aboutsApi = generateApi("our-values");
-  const { data, loading, error, createItem, updateItem, deleteItem } =
-    useCrud(aboutsApi);
+  const { data, loading, error, createItem, editItem, deleteItem } =useCrud(aboutsApi);
 
   const handleCreate = (formData) => createItem(formData);
-  // const handleEdit = (row) => updateItem(row.id, row);
   const handleDelete = (row) => deleteItem(row.id);
-
+  const handleEditSubmit = (formData) => {
+    editItem(editModalData.id, formData); // update data
+    setEditModalData(null); // close modal
+  };
   const handleEdit = (row) => {
     setEditModalData(row); // open modal
   };
 
-  const handleEditSubmit = (formData) => {
-    updateItem(editModalData.id, formData); // update data
-    setEditModalData(null); // close modal
-  };
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
-  const paginatedData = data.slice(
+  const paginatedData = data?.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
+
 
   return (
     <CustomSection customClass="">
@@ -82,34 +81,29 @@ const Ourvalues = () => {
             data={paginatedData}
             onEdit={handleEdit} // ✅
             onDelete={handleDelete}
+            // startIndex={(currentPage - 1) * itemsPerPage}
           />
         </MicroBox>
         <CustomPagination
           currentPage={currentPage}
-          totalPages={Math.ceil(data.length / itemsPerPage)}
+          totalPages={Math.ceil(data?.length / itemsPerPage)}
           onPageChange={(page) => setCurrentPage(page)}
         />
 
         {/* Edit Modal */}
         {editModalData && (
-          <div
-            className="ImageModalOverlay"
-            onClick={() => setEditModalData(null)}
+            <CustomModal
+            isOpen={!!editModalData}
+            onClose={() => setEditModalData(null)}
+            title="Edit Our Values"
           >
-            <div
-              className="ImageModalContent"
-              onClick={(e) => e.stopPropagation()}
-              style={{ maxWidth: "600px", width: "90%" }}
-            >
-              <h3>Edit Our Value</h3>
-              <CustomForm
-                isBanner={false}
-                dynamicFields={metaFields}
-                defaultData={editModalData} // ✅ pre-fill form
-                onSubmit={handleEditSubmit}
-              />
-            </div>
-          </div>
+            <CustomForm
+              isBanner={false}
+              dynamicFields={metaFields}
+              defaultData={editModalData}
+              onSubmit={handleEditSubmit}
+            />
+          </CustomModal>
         )}
       </RightArea>
     </CustomSection>

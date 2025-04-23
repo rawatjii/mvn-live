@@ -10,9 +10,20 @@ import {
   TableRow,
 } from "../CutomTags";
 import { MdEdit, MdDelete } from "react-icons/md";
+import CustomModal from "../custom-modal/CustomModal";
 
-const CustomTable = ({ columns, data, onEdit, onDelete }) => {
+const CustomTable = ({ columns, data, onEdit, onDelete, startIndex = 0 }) => {
   const [modalImage, setModalImage] = React.useState(null);
+  const [modalText, setModalText] = React.useState(null);
+  const textLength = 1;
+
+  const truncateText = (text) => {
+    const words = text?.split(" ");
+    if (words?.length > textLength) {
+      return words.slice(0, textLength).join(" ") + " ...";
+    }
+    return text;
+  };
 
   return (
     <>
@@ -28,12 +39,14 @@ const CustomTable = ({ columns, data, onEdit, onDelete }) => {
           </TableHead>
 
           <TableBody>
-            {data.length > 0 ? (
+            {data?.length > 0 ? (
               data.map((row, rowIndex) => (
                 <TableRow key={rowIndex}>
                   {columns.map((col, colIndex) => (
                     <TableBodyColum key={colIndex}>
-                      {col.type === "image" ? (
+                      {colIndex === 0 ? (
+                        startIndex + rowIndex + 1
+                      ) : col.type === "file" ? (
                         <img
                           src={row[col.key]}
                           alt="thumbnail"
@@ -46,6 +59,13 @@ const CustomTable = ({ columns, data, onEdit, onDelete }) => {
                           }}
                           onClick={() => setModalImage(row[col.key])}
                         />
+                      ) : row[col.key].split(" ").length > textLength ? (
+                        <span
+                          style={{ cursor: "pointer", color: "#eee" }}
+                          onClick={() => setModalText(row[col.key])}
+                        >
+                          {truncateText(row[col.key])}
+                        </span>
                       ) : (
                         row[col.key]
                       )}
@@ -74,15 +94,27 @@ const CustomTable = ({ columns, data, onEdit, onDelete }) => {
           </TableBody>
         </Table>
       </TableContainer>
+
+      {/* Image Modal */}
       {modalImage && (
-        <div className="ImageModalOverlay" onClick={() => setModalImage(null)}>
-          <div
-            className="ImageModalContent"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <img src={modalImage} alt="full-size" />
-          </div>
-        </div>
+        <CustomModal
+          isOpen={!!modalImage}
+          onClose={() => setModalImage(null)}
+          title="Image Preview"
+        >
+          <img src={modalImage} alt="full-size" />
+        </CustomModal>
+      )}
+
+      {/* Text Modal */}
+      {modalText && (
+        <CustomModal
+          isOpen={!!modalText}
+          onClose={() => setModalText(null)}
+          title="Full Content"
+        >
+          <p style={{ whiteSpace: "pre-wrap" }}>{modalText}</p>
+        </CustomModal>
       )}
     </>
   );

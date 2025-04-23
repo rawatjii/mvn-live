@@ -57,6 +57,9 @@ import AdminMediaCentre from "./admin/MediaCentre.jsx";
 import AdminContactUs from "./admin/ContactUs.jsx";
 import BasicMicroSite from "./admin/components/dashboard/microsite/Basic.jsx";
 import Login from "./admin/Login.jsx";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import AdminProtectedRoute from "./AdminProtectedRoute.jsx";
 
 
 
@@ -224,76 +227,40 @@ const router = createBrowserRouter([
     ],
   },
   {
+    path: "/admin/login",
+    element: <Login />, // Don't protect the login route
+  },
+  {
     path: "/admin",
-    element:<AdminLayout />,
+    element: <AdminProtectedRoute />, // Protect all /admin routes
     children: [
       {
         path: "",
-        element: (
-          <Dashboard/>
-        ), 
-      },
-      {
-        path: "/admin/login",
-        element: (
-          <Login/>
-        ), 
-      },
-      {
-        path: "/admin/amenities",
-        element: (
-          <Amenities/>
-        ), 
-      },
-      {
-        path: "/admin/page/:pageName",
-        element: (
-          <Banner/>
-        ), 
-      },
-      {
-        path: "/admin/about-us",
-        element: (
-          <AdminAboutUs/>
-        ), 
-      },
-      {
-        path: "/admin/blogs",
-        element: (
-          <AdminBlog/>
-        ), 
-      },
-      {
-        path: "/admin/career",
-        element: (
-          <AdminCareer/>
-        ), 
-      },
-      {
-        path: "/admin/media-centre",
-        element: (
-          <AdminMediaCentre/>
-        ), 
-      },
-      {
-        path: "/admin/contact-us",
-        element: (
-          <AdminContactUs/>
-        ), 
-      },
-      {  path: "/admin/microsite",
-        element: (
-          <BasicMicroSite/>
-        ),
-       }
-    ],
+        element: <AdminLayout />,
+        children: [
+          { path: "", element: <Dashboard /> },
+          { path: "amenities", element: <Amenities /> },
+          { path: "page/:pageName", element: <Banner /> },
+          { path: "about-us", element: <AdminAboutUs /> },
+          { path: "blogs", element: <AdminBlog /> },
+          { path: "career", element: <AdminCareer /> },
+          { path: "media-centre", element: <AdminMediaCentre /> },
+          { path: "contact-us", element: <AdminContactUs /> },
+          { path: "microsite", element: <BasicMicroSite /> },
+        ]
+      }
+    ]
   },
+  
 ]);
 
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>
+    <>
     <RouterProvider router={router}>
       <App />
     </RouterProvider>
+    <ToastContainer position="top-right" autoClose={3000} />
+    </>
   </Provider>
 );

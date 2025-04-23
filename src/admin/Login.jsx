@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./assets/css/login.css";
-import { API_BASE_URL } from "../../apiConfig";
+import { API_BASE_URL } from "../config/config";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,13 +20,13 @@ const Login = () => {
 
       const { token, record } = res.data;
 
-      console.log(token, "token");
-
       // ✅ Save token to localStorage
       localStorage.setItem("token", token);
 
-      console.log("✅ Login successful:", record);
       alert("Login successful! Token saved. ✅");
+
+      // ✅ Redirect to admin dashboard
+      navigate("/admin");
     } catch (error) {
       console.error("❌ Login failed:", error.response?.data || error.message);
       alert("Login failed ❌");
@@ -35,7 +37,9 @@ const Login = () => {
     <div className="loginContainer">
       <div className="row">
         <div className="col-6">
-          <div className="imgContainer"></div>
+          <div className="imgContainer">
+            {/* Optional image or logo */}
+          </div>
         </div>
         <div className="col-6">
           <div className="LoginRightContainer">

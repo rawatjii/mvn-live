@@ -80,7 +80,7 @@ const CustomFormField = ({
         </div>
 
         {/* Image Preview */}
-        {value && type === "file" && (
+        {/* {value && type === "file" && (
           <div className="mt-2">
             <img
               src={value instanceof File ? URL.createObjectURL(value) : value}
@@ -89,7 +89,7 @@ const CustomFormField = ({
               style={{ borderRadius: "8px" }}
             />
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );

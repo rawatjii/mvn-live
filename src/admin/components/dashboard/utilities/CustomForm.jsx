@@ -37,14 +37,17 @@ const CustomForm = ({
 
   // Update formData whenever initialData changes (for edit mode)
   useEffect(() => {
-    const updatedForm = {};
-    Fields.forEach((field) => {
-      updatedForm[field.name] = field.type === "file"
-        ? initialData[field.name] || ""
-        : initialData[field.name] || "";
-    });
-    setFormData(updatedForm);
+    if (Object.keys(initialData).length > 0) {
+      const updatedForm = {};
+      Fields.forEach((field) => {
+        updatedForm[field.name] = field.type === "file"
+          ? initialData[field.name] || ""
+          : initialData[field.name] || "";
+      });
+      setFormData(updatedForm);
+    }
   }, [initialData, Fields]);
+  
    
 
   const handleChange = (e) => {

@@ -1,5 +1,6 @@
 // src/hooks/useCrud.js
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const useCrud = (apiService) => {
   const [data, setData] = useState([]);
@@ -10,10 +11,9 @@ const useCrud = (apiService) => {
     setLoading(true);
     try {
       const res = await apiService.get();
-      console.log("✅ API success:", res.data); // ✅ ADDED
       setData(res.data.data);
     } catch (err) {
-      console.error("❌ API error:", err.response?.data || err.message); // ✅ ADDED
+      console.error("❌ Fetch error:", err);
       setError(err);
     }
     setLoading(false);
@@ -28,30 +28,39 @@ const useCrud = (apiService) => {
     loading,
     error,
     fetchAll,
+
     createItem: async (item) => {
       try {
-        const res = await apiService.create(item);
-        setData(prev => [...prev, res.data]);
+        await apiService.create(item);
+        toast.success(" Value added successfully!");
+        await fetchAll(); 
       } catch (err) {
+        toast.error("❌ Failed to add value.");
         setError(err);
       }
     },
-    updateItem: async (id, item) => {
+
+    editItem: async (id, item) => {
       try {
-        const res = await apiService.update(id, item);
-        setData(prev => prev.map(d => (d.id === id ? res.data : d)));
+        await apiService.update(id, item);
+        toast.success(" Value updated successfully!");
+        await fetchAll(); 
       } catch (err) {
+        toast.error("❌ Failed to update value.");
         setError(err);
       }
     },
+
     deleteItem: async (id) => {
       try {
         await apiService.delete(id);
-        setData(prev => prev.filter(d => d.id !== id));
+        toast.success(" Value deleted successfully!");
+        await fetchAll(); 
       } catch (err) {
+        toast.error("❌ Failed to delete value.");
         setError(err);
       }
-    }
+    },
   };
 };
 

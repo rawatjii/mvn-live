@@ -6,11 +6,16 @@ import { FaSearch } from "react-icons/fa";
 import { FaBell } from "react-icons/fa6";
 import { IoLogOut } from "react-icons/io5";
 import { IoPersonCircleSharp } from "react-icons/io5";
-
-
+import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
 export default function Header() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token"); 
+    navigate("/admin/login", { replace: true }); 
+  };
   return (
     <section className="top-header">
       <div className="box-area">
@@ -53,7 +58,7 @@ export default function Header() {
                   <IoPersonCircleSharp className="icon"/>
                   <span className="admin-name">Admin</span>
                 </li>
-                <li>
+                <li onClick={handleLogout}>
                   <IoLogOut className="icon"/>
                   <sapn className="admin-name">Logout</sapn>
                 </li>
