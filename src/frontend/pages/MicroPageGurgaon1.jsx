@@ -16,6 +16,7 @@ import { useMatches } from "../../theme/theme";
 import MicroAmenities from "../components/MicroPage/Amenities";
 import NoPolutionZone from "../components/MicroPage/NoPolutionZone";
 import View360 from "../components/MicroPage/360";
+import LivingRoomVideoGurugram from "../components/MicroPage/LivingRoomVideoGurugram";
 
 const MicroOverview = React.lazy(() =>
   import("../components/MicroPage/Overview")
@@ -36,9 +37,7 @@ const ParallaxSection = React.lazy(() =>
 const PeacockSection = React.lazy(() =>
   import("../components/MicroPage/PeacockSection")
 );
-const LivingRoomVideoGurugram = React.lazy(() =>
-  import("../components/MicroPage/LivingRoomVideoGurugram")
-);
+
 const PartyVideo = React.lazy(() =>
   import("../components/MicroPage/PartyVideo")
 );
@@ -312,9 +311,19 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
       <div id="smooth-wrapper">
         <div id="smooth-content">
-          <div ref={bannerRef}>
+          {/* <div ref={bannerRef}>
             <MicroHero onBannerExit={setIsHeaderFixed} isMainBanner={true} />
-          </div>
+          </div> */}
+
+            <div>
+              <LivingRoomVideoGurugram
+                onBannerExit={setIsHeaderFixed} 
+                isMainBanner={true}
+                data={data.living_room}
+                onLoadComplete={() => setLivingRoomLoaded(true)}
+                isMobile={isMobile}
+              />
+            </div>
 
           <Suspense fallback="">
             <MicroOverview data={data.overview} />
@@ -333,7 +342,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
           <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
             <Suspense fallback="">
               <DownloadBrochure
-                is360Available={false}
+                is360Available={true}
                 show360Video={show360Video}
               />
             </Suspense>
@@ -360,7 +369,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             </Suspense>
           </div>
 
-          <Suspense fallback="">
+          {/* <Suspense fallback="">
             <div>
               <LivingRoomVideoGurugram
                 data={data.living_room}
@@ -368,7 +377,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
                 isMobile={isMobile}
               />
             </div>
-          </Suspense>
+          </Suspense> */}
 
           <Suspense fallback="">
             <div>
