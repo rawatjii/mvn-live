@@ -27,7 +27,9 @@
     position: relative;
   }
   .ImageModalOverlay   .ImageModalContent .ModalHeader{
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #45464f;;
   }
   .ImageModalOverlay   .ImageModalContent .ModalTitle{
     font-family: "Roboto-Regular";
@@ -54,6 +56,8 @@
     top: 15px;
     background-color: transparent;
     border: none;
+    padding: 0;
+    margin: 0;
   }
   .ImageModalOverlay   .ImageModalContent .ModalCloseBtn svg{
     color: red;

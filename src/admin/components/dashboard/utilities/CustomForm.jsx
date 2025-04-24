@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form } from "./CutomTags"; // assuming your styled form wrapper
+import { Form } from "./CutomTags"; // Assuming your styled form wrapper
 import CustomFormField from "./CustomFormField";
 import CustomButton from "./CutomButton";
 
@@ -18,9 +18,11 @@ const CustomForm = ({
   isBanner = false,
   dynamicFields = [],
   buttonLabel = "Save",
-  initialData = {}, // for edit mode
+  initialData = {}, // For edit mode
+  defaultData
 }) => {
   const Fields = isBanner ? defaultBannerFields : dynamicFields;
+
 
   const visibleFields = Fields.map((field) => {
     const visibilityConfig = fieldVisibility[field.name];
@@ -32,23 +34,23 @@ const CustomForm = ({
     };
   });
 
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState( defaultData || {});
   const [resetKey, setResetKey] = useState(Date.now());
 
   // Update formData whenever initialData changes (for edit mode)
   useEffect(() => {
+    const currentFields = isBanner ? defaultBannerFields : dynamicFields;
+  
     if (Object.keys(initialData).length > 0) {
       const updatedForm = {};
-      Fields.forEach((field) => {
-        updatedForm[field.name] = field.type === "file"
-          ? initialData[field.name] || ""
-          : initialData[field.name] || "";
+      currentFields.forEach((field) => {
+        updatedForm[field.name] =
+          field.type === "file" ? initialData[field.name] || null : initialData[field.name] || "";
       });
       setFormData(updatedForm);
     }
-  }, [initialData, Fields]);
-  
-   
+    
+  }, [initialData, isBanner, dynamicFields]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -57,27 +59,36 @@ const CustomForm = ({
 
   const handleFileChange = (e) => {
     const { name, files } = e.target;
+    if (files.length > 0 && files[0].type !== "image/jpeg") {
+      alert("Only JPEG images are allowed.");
+      return;
+    }
+  
     setFormData((prev) => ({ ...prev, [name]: files[0] }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const payload = new FormData();
+  
     visibleFields
       .filter((field) => field.condition)
       .forEach((field) => {
         const value = formData[field.name];
-        if (value !== null && value !== undefined) {
+        if (value != null) { // null or undefined
           payload.append(field.name, value);
         }
       });
-
+  
+    console.log(payload); // Debug to check the payload contents
+  
     if (onSubmit) onSubmit(payload);
-
+  
+    // Reset the form data after submit
     setFormData({});
     setResetKey(Date.now());
   };
+  
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -90,10 +101,11 @@ const CustomForm = ({
                 {...field}
                 id={`${field.name}_${resetKey}`}
                 name={field.name}
-                value={formData[field.name]}
+                value={formData[field.name] || ""} // Ensure empty string for unset values
                 onChange={field.type === "file" ? handleFileChange : handleChange}
                 resetKey={resetKey}
               />
+            
             </div>
           ))}
       </div>

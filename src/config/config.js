@@ -13,6 +13,7 @@ export const YOUTUBE_URL = import.meta.env.VITE_APP_YOUTUBE_LINK
 
 // for api
 export const API_BASE_URL = import.meta.env.VITE_APP_API_BASE_URL
+export const BACKEND_IMAGE_URL = import.meta.env.VITE_APP_BACKEND_IMAGE_URL
 
 
 
