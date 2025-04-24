@@ -80,7 +80,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
   const [partyLoaded, setPartyLoaded] = useState(false);
   const [masterBedroomLoaded, setMasterBedroomLoaded] = useState(false);
   const [typologyLoaded, setTypologyLoaded] = useState(false);
-  const [is360Show, setIs360Show] = useState(false);
+  const [is360Show, setIs360Show] = useState(true);
   const smootherRef = useRef(null);
   const sectionRefs = useRef({});
   const { pageSections, projectName } = data;
@@ -342,7 +342,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
           <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
             <Suspense fallback="">
               <DownloadBrochure
-                is360Available={true}
+                is360Available={false}
                 show360Video={show360Video}
               />
             </Suspense>

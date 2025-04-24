@@ -195,7 +195,7 @@ export const data = {
   },
   view360:{
     title:'360° VIEW',
-    // second_title:'LIVE. LAUGH. LOUNGE',
+    second_title:'Uninterrupted Horizon, unmatched grandeur, unforgettable vistas',
     // desc:'Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambience, perfect for hosting unforgettable soirees and extravagant gatherings.',
     path:{
       mobile:`${CONFIG.API_URL}images/aero-gurgaon/360/mobile.json`,
@@ -212,11 +212,13 @@ export const data = {
   },
   living_room:{
     Custom_height:"Custom_height",
-    second_title:'OPEN THE DOORS TO EXPANSIVE ELEGANCE AND SPACIOUS LUXURY',
-    desc:'Glide your way through the floor-to-ceiling sliding doors, and step on to the sprawling deck with breathtaking vistas and an air of tranquility.',
+    // second_title:'OPEN THE DOORS TO EXPANSIVE ELEGANCE AND SPACIOUS LUXURY',
+    // desc:'Glide your way through the floor-to-ceiling sliding doors, and step on to the sprawling deck with breathtaking vistas and an air of tranquility.',
     path:{
-      mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/livingRoom/data.json`,
-      desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/livingRoom/data.json`,
+      // mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/livingRoom/data.json`,
+      // desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/livingRoom/data.json`,
+      mobile:`${CONFIG.API_URL}videos/aeroone-gurgaon/living-room.mp4`,
+      desktop:`${CONFIG.API_URL}videos/aeroone-gurgaon/living-room.mp4`,
     }
   },
   party_video:{

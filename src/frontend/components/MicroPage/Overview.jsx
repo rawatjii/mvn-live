@@ -72,7 +72,7 @@ const MicroOverview = React.memo(({ data }) => {
   const { title, location, extra, desc ,rera ,counterHeading, bankDetails } = data;
 
   return (
-    <section className="section micro_overview text-center pb-0" aria-label="Overview Section">
+    <section className="section micro_overview text-center pb-0 pt-4" aria-label="Overview Section">
       <Container>
         <div className="overview_card px-0">
           <div className="aboutUs-card_heading">
