@@ -12,6 +12,38 @@ const formFields = [
     visible: true,
     fields: [
       {
+        name: "heading",
+        label: "Heading",
+        type: "text",
+        Placeholder:"Enter Heading",
+        col: 12,
+        isLeft:true ,
+      },
+      {
+        name: "sub_heading",
+        label: "Sub Heading",
+        type: "text",
+        Placeholder:"Enter Sub Heading",
+        col: 12,
+        isLeft:true ,
+      },
+      {
+        name: "description",
+        label: "Description",
+        type: "textarea",
+        Placeholder:"Enter Description",
+        col: 12,
+        isLeft:true ,
+      },
+      {
+        name: "sub_heading",
+        label: "Sub Heading",
+        type: "text",
+        Placeholder:"Enter Sub Heading",
+        col: 12,
+        isLeft:true ,
+      },
+      {
         name: "project_status",
         label: "Project Status",
         type: "select",
@@ -77,7 +109,7 @@ return (
             dynamicFields={section.fields}
             isBanner={false} 
           />
-        </MicroBox>
+          </MicroBox>
         </div>
       ))}
     </div>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import CustomFile from "./CustomFile";
+import { FaUpload } from "react-icons/fa";
 
 const CustomFormField = ({
   label,
@@ -16,7 +17,7 @@ const CustomFormField = ({
   info = '',
   ...rest
 }) => {
-  
+const [fileName, setFileName] = useState(""); 
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -68,7 +69,23 @@ const CustomFormField = ({
                 {...rest}
               />
             </div>
-          ) : (
+          )  : type === 'select' ? (
+            <select className="form-control w-100">
+              <option>--Select--</option>
+              {options?.map((option, index) =>(
+                <option key={index} value={option.value} >{option.label}</option>
+              ))}
+            </select>
+          ) : type === 'radioFields' ? (
+            <div className="d-flex">
+              {options.map((option, index) => (
+                <div className="me-3 d-flex" key={index}> 
+                  <input type="radio" className="me-1" id={option.value} name="example" value={option.value} />
+                  <label className="custom-control-label" htmlFor={option.value}>{option.label}</label>
+                </div>
+              ))}
+            </div>
+        ) : (
             <input
               type={type}
               name={name}

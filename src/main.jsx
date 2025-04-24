@@ -60,6 +60,11 @@ import Login from "./admin/Login.jsx";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AdminProtectedRoute from "./AdminProtectedRoute.jsx";
+import MicroSidebar from "./admin/components/ContentLayout/microSidebar/MicroSidebar.jsx";
+import Overview from "./frontend/components/homepage/Overview.jsx";
+import MicroOverview from "./frontend/components/MicroPage/Overview.jsx";
+import MicroFloorPlan from "./frontend/components/MicroPage/FloorPlan.jsx";
+import OverviewMicroSite from "./admin/components/dashboard/microsite/Overview.jsx";
 
 
 
@@ -246,7 +251,11 @@ const router = createBrowserRouter([
           { path: "career", element: <AdminCareer /> },
           { path: "media-centre", element: <AdminMediaCentre /> },
           { path: "contact-us", element: <AdminContactUs /> },
-          { path: "microsite", element: <BasicMicroSite /> },
+          { path: "microsite", element:<MicroSidebar />, children:[
+            {path:"", element:<BasicMicroSite />},
+            {path:"overview", element:<OverviewMicroSite />},
+
+          ] },
         ]
       }
     ]
