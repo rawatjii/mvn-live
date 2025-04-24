@@ -11,6 +11,7 @@ import {
 } from "../CutomTags";
 import { MdEdit, MdDelete } from "react-icons/md";
 import CustomModal from "../custom-modal/CustomModal";
+import { BACKEND_IMAGE_URL } from "../../../../../config/config";
 
 const CustomTable = ({ columns, data, onEdit, onDelete, startIndex = 0 }) => {
   const [modalImage, setModalImage] = React.useState(null);
@@ -48,10 +49,10 @@ const CustomTable = ({ columns, data, onEdit, onDelete, startIndex = 0 }) => {
                         startIndex + rowIndex + 1
                       ) : col.type === "file" ? (
                         <img
-                          src={row[col.key]}
+                          src={`${BACKEND_IMAGE_URL}${row[col.key]}`}
                           alt="thumbnail"
-                          width="50"
-                          height="50"
+                          width="30"
+                          height="30"
                           style={{
                             cursor: "pointer",
                             objectFit: "cover",
@@ -102,7 +103,7 @@ const CustomTable = ({ columns, data, onEdit, onDelete, startIndex = 0 }) => {
           onClose={() => setModalImage(null)}
           title="Image Preview"
         >
-          <img src={modalImage} alt="full-size" />
+          <img src={`${BACKEND_IMAGE_URL}${modalImage}`} alt="full-size" />
         </CustomModal>
       )}
 
