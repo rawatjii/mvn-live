@@ -10,9 +10,9 @@
     --yellow: #f7ab5d;
 }
 
-.CustomTableContainer {
+/* .CustomTableContainer {
     padding-right: 35px;
-}
+} */
 
 .CustomTableContainer::-webkit-scrollbar {
     width: 2px;
@@ -46,6 +46,7 @@
     font-family: "Roboto-Light";
     letter-spacing: 1px;
     padding: 10px 0px;
+    text-align: center;
 }
 
 .CustomBodyColumn {
@@ -54,11 +55,12 @@
     letter-spacing: 1px;
     padding: 10px 0px;
     font-size: 14px;
+    text-align: center;
 }
 
 .ActionColum {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     gap: 5px;
 }
@@ -89,3 +91,4 @@
         font-size: 14px;
     }
 }
+

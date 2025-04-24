@@ -1,0 +1,61 @@
+
+
+/* modal style start */
+.ImageModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .ImageModalContent {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 1rem;
+    border-radius: 8px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: auto;
+    border: 1px solid #45464f;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+  }
+  .ImageModalOverlay   .ImageModalContent .ModalHeader{
+    margin-bottom: 10px;
+  }
+  .ImageModalOverlay   .ImageModalContent .ModalTitle{
+    font-family: "Roboto-Regular";
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 600;
+  }
+  .ImageModalContent img {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 6px;
+  }
+  .ImageModalOverlay   .ImageModalContent .form-control{
+    background-color: transparent;
+    border: 1px solid #45464f;
+    width: 100%;
+    color: #eee;
+  }
+  .ImageModalOverlay   .ImageModalContent .ModalCloseBtn{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    background-color: transparent;
+    border: none;
+  }
+  .ImageModalOverlay   .ImageModalContent .ModalCloseBtn svg{
+    color: red;
+  }
+  /* modal style end */

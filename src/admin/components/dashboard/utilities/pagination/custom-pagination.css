@@ -1,4 +1,4 @@
-.CustomPaginationContainer{width: 100%;}
+.CustomPaginationContainer{width: 100%;padding-bottom: 20px;}
 .CustomPaginationContainer ul{display: flex;align-items: center;justify-content: end;}
 .CustomPaginationContainer ul li{font-size: 14px; background-color: transparent; border: 1px solid #45464f; color: #fff; padding: 5px 10px;}
 .CustomPaginationContainer ul li:first-child{ border-right: none; border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; }

@@ -1,6 +1,6 @@
 // src/admin/api/generateApi.js
 import axios from 'axios';
-import { API_BASE_URL } from '../../../apiConfig';
+import { API_BASE_URL } from '../../config/config';
 
 const getAuthHeader = () => {
   const token = localStorage.getItem('token'); // ✅ make sure token is stored in localStorage

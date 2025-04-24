@@ -8,16 +8,23 @@ import generateApi from './api/generateApi';
 import useCrud from './hooks/useCrud';
 // Simulated backend response
 const metaFields = [
-  { name: "heading", label: "Title", type: "text", col: 12,isLeft : true  },
-  { name: "alt", label: "Alt Tag", type: "text", col: 12,isLeft : true  },
-  { name: "image", label: "Image", type: "file", col: 6 ,isLeft : true },
-  { name: "alternative_image", label: "Alternative Image", type: "file", col: 6 ,isLeft : true },
+  { name: "heading", label: "Title", type: "text", col: 4 },
+  { name: "date", label: "Date", type: "text", col: 4 },
+  { name: "alt", label: "Alt Tag", type: "text", col: 4 },
+  { name: "image", label: "Image", type: "file", col: 6 },
+  { name: "mobile_image", label: "Mobile Image", type: "file", col: 6 },
+  { name: "alternative_image", label: "Alternative Image", type: "file", col: 6 },
+  { name: "mobile_alternative_image", label: "Mobile Alternative Image", type: "file", col: 6 },
+  { name: "description", label: "Description", type: "textarea", col: 12 },
 ];
 
 const columns = [
   { key: 'id', label: 'S.No.' },
-  { key: 'title', label: 'Title' },
-  { key: 'image', label: 'Image' }
+  { key: 'heading', label: 'Heading' },
+  { key: 'description', label: 'Description' },
+  { key: 'date', label: 'Date' },
+  { key: 'image', label: 'Image' },
+  { key: 'mobile_image', label: 'Mobile Image' }
 ];
 
 const oldData = [
@@ -50,14 +57,11 @@ const AdminBlog = () => {
     )
   
   return (
-       <CustomSection customClass="">
-          <LeftArea>
-            <MicroBox>
-              <CustomTitle title="Our Values From" />
-              <CustomForm isBanner={false} dynamicFields={metaFields}  onSubmit={handleCreate}/>
-            </MicroBox>
-          </LeftArea>
-          <RightArea>
+       <CustomSection customClass="d-block">
+       <MicroBox>
+         <CustomTitle title="Our Values From" />
+         <CustomForm isBanner={false} dynamicFields={metaFields}  onSubmit={handleCreate}/>
+       </MicroBox>
             <MicroBox>
               <CustomTitle title="Our Values Table" />
               <CustomTable
@@ -72,7 +76,6 @@ const AdminBlog = () => {
           totalPages={Math.ceil(data.length / itemsPerPage)}
           onPageChange={(page) => setCurrentPage(page)}
         />
-          </RightArea>
         </CustomSection>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form } from "./CutomTags"; // assuming your styled form wrapper
 import CustomFormField from "./CustomFormField";
 import CustomButton from "./CutomButton";
@@ -32,15 +32,23 @@ const CustomForm = ({
     };
   });
 
-  const initialState = {};
-  Fields.forEach((field) => {
-    const initValue = initialData[field.name];
-    initialState[field.name] =
-      field.type === "file" ? null : initValue || "";
-  });
-
-  const [formData, setFormData] = useState(initialState);
+  const [formData, setFormData] = useState({});
   const [resetKey, setResetKey] = useState(Date.now());
+
+  // Update formData whenever initialData changes (for edit mode)
+  useEffect(() => {
+    if (Object.keys(initialData).length > 0) {
+      const updatedForm = {};
+      Fields.forEach((field) => {
+        updatedForm[field.name] = field.type === "file"
+          ? initialData[field.name] || ""
+          : initialData[field.name] || "";
+      });
+      setFormData(updatedForm);
+    }
+  }, [initialData, Fields]);
+  
+   
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -67,7 +75,7 @@ const CustomForm = ({
 
     if (onSubmit) onSubmit(payload);
 
-    setFormData(initialState);
+    setFormData({});
     setResetKey(Date.now());
   };
 
@@ -77,7 +85,7 @@ const CustomForm = ({
         {visibleFields
           .filter((field) => field.condition !== false)
           .map((field) => (
-            <div className={field.isLeft === true ? '' : `col-${field.col || 12}`} key={resetKey + field.name}>
+            <div className={field.isLeft === true ? '' : `col-${field.col || 12}`} key={`${resetKey}-${field.name}`}>
               <CustomFormField
                 {...field}
                 id={`${field.name}_${resetKey}`}
