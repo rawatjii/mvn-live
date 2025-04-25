@@ -325,15 +325,15 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
               />
             </div>
 
-          <Suspense fallback="">
+          {/* <Suspense fallback="">
             <MicroOverview data={data.overview} />
           </Suspense>
 
           <Suspense fallback="">
             <LargeElevationSection data={data.LargeElevationSection} />
-          </Suspense>
+          </Suspense> */}
 
-          <div ref={(el) => (sectionRefs.current.Walkthrough = el)}>
+          {/* <div ref={(el) => (sectionRefs.current.Walkthrough = el)}>
             <Suspense fallback="">
               <Walkthrough data={data.walkthrough} />
             </Suspense>
@@ -368,16 +368,6 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
               />
             </Suspense>
           </div>
-
-          {/* <Suspense fallback="">
-            <div>
-              <LivingRoomVideoGurugram
-                data={data.living_room}
-                onLoadComplete={() => setLivingRoomLoaded(true)}
-                isMobile={isMobile}
-              />
-            </div>
-          </Suspense> */}
 
           <Suspense fallback="">
             <div>
@@ -459,10 +449,6 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             </div>
           </Suspense>
 
-          {/* <div ref={(el) => (sectionRefs.current.NoPolutionZone = el)}>
-              <NoPolutionZone section_data={data.noPollutionZone} />
-            </div> */}
-
           <div ref={(el) => (sectionRefs.current.NoPolutionZone = el)}>
             <ParallaxSection section_data={data.noPollutionZone} />
           </div>
@@ -483,7 +469,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
                 </Suspense>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <Suspense fallback="">
             <Footer />

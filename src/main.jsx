@@ -61,14 +61,14 @@ const router = createBrowserRouter([
           </FrontendRoute>
         ), 
       },
-      {
-        path: "about-us",
-        element: (
-          <FrontendRoute loaderType="about-us" >
-            <AboutUs />
-          </FrontendRoute>
-        ),
-      },
+      // {
+      //   path: "about-us",
+      //   element: (
+      //     <FrontendRoute loaderType="about-us" >
+      //       <AboutUs />
+      //     </FrontendRoute>
+      //   ),
+      // },
       {
         path: "aeroone-gurgaon",
         element: (
@@ -77,118 +77,119 @@ const router = createBrowserRouter([
           </FrontendRoute>
         ),
       },
-      {
-        path: "aeroone-bangalore",
-        element: (
-          <FrontendRoute loaderType="aeroone-bangalore" >
-            <MicroPageBangalore data={bangaloreData} />
-          </FrontendRoute>
-        ),
-      },
-      {
-        path: "mvn-athens-faridabad",
-        element: (
-          <FrontendRoute loaderType="mvn-athens-faridabad">
-            <MicroPageFaridabad data={faridabadData} />
-          </FrontendRoute>
-        ),
-      },
-      {
-        path: "mvn-athens-gurgaon-phase-1",
-        element: (
-          <FrontendRoute loaderType="mvn-athens-gurgaon-phase-1">
-            <MicroPageGurgaonPhase1 data={athensGurgaonPhase1Data} />
-          </FrontendRoute>
-        ),
-      },
-      {
-        path: "mvn-athens-gurgaon-phase-2",
-        element: (
-          <FrontendRoute loaderType="mvn-athens-gurgaon-phase-2">
-            <MicroPageGurgaonPhase2 data={athensGurgaonPhase2Data} />
-          </FrontendRoute>
-        ),
-      },
-      {
-        path: "media-centre",
-        element: (
-          <FrontendRoute loaderType="media-centre">
-              <MediaCenter />
-          </FrontendRoute>
-        ),
-      },
-      {
-        path: "blogs",
-        element: (
-          <FrontendRoute loaderType="blogs">
-            <Blog />
-          </FrontendRoute>
-        ),
-      },
-      {
-        path: "blogs/details/:slug",
-        element: (
-          <FrontendRoute loaderType="blog-detail">
-            <BlogDetails />
-          </FrontendRoute>
-        ),
-      },
-      {
-        path: "career",
-        element: (
-          <FrontendRoute loaderType="career">
-            <Career />
-          </FrontendRoute>
-        ),
-      },
+      // {
+      //   path: "aeroone-bangalore",
+      //   element: (
+      //     <FrontendRoute loaderType="aeroone-bangalore" >
+      //       <MicroPageBangalore data={bangaloreData} />
+      //     </FrontendRoute>
+      //   ),
+      // },
+      // {
+      //   path: "mvn-athens-faridabad",
+      //   element: (
+      //     <FrontendRoute loaderType="mvn-athens-faridabad">
+      //       <MicroPageFaridabad data={faridabadData} />
+      //     </FrontendRoute>
+      //   ),
+      // },
+      // {
+      //   path: "mvn-athens-gurgaon-phase-1",
+      //   element: (
+      //     <FrontendRoute loaderType="mvn-athens-gurgaon-phase-1">
+      //       <MicroPageGurgaonPhase1 data={athensGurgaonPhase1Data} />
+      //     </FrontendRoute>
+      //   ),
+      // },
+      // {
+      //   path: "mvn-athens-gurgaon-phase-2",
+      //   element: (
+      //     <FrontendRoute loaderType="mvn-athens-gurgaon-phase-2">
+      //       <MicroPageGurgaonPhase2 data={athensGurgaonPhase2Data} />
+      //     </FrontendRoute>
+      //   ),
+      // },
+      // {
+      //   path: "media-centre",
+      //   element: (
+      //     <FrontendRoute loaderType="media-centre">
+      //         <MediaCenter />
+      //     </FrontendRoute>
+      //   ),
+      // },
+      // {
+      //   path: "blogs",
+      //   element: (
+      //     <FrontendRoute loaderType="blogs">
+      //       <Blog />
+      //     </FrontendRoute>
+      //   ),
+      // },
+      // {
+      //   path: "blogs/details/:slug",
+      //   element: (
+      //     <FrontendRoute loaderType="blog-detail">
+      //       <BlogDetails />
+      //     </FrontendRoute>
+      //   ),
+      // },
+      // {
+      //   path: "career",
+      //   element: (
+      //     <FrontendRoute loaderType="career">
+      //       <Career />
+      //     </FrontendRoute>
+      //   ),
+      // },
       
-      {
-        path: "contact-us",
-        element: (
-          <FrontendRoute loaderType="contact-us">
-            <ContactPage />
-          </FrontendRoute>
-        ),
-      },
-      {
-        path: "thanks",
-        element: (
+      // {
+      //   path: "contact-us",
+      //   element: (
+      //     <FrontendRoute loaderType="contact-us">
+      //       <ContactPage />
+      //     </FrontendRoute>
+      //   ),
+      // },
+      // {
+      //   path: "thanks",
+      //   element: (
           
-          <ThankYou />
-        ),
-      },
-      {
-        path: "privacy-policy",
-        element: (
-          <FrontendRoute loaderType="">
-            <PrPolcy />
-          </FrontendRoute>
-        ),
-      },
-      {
-        path: "mvn-mall",
-        element: (
-          <FrontendRoute  loaderType="mvn-mall-1">
-          <MvnMall1 data={mvnMallData}/>
-          </FrontendRoute>
-        ),
-      },
-      {
-        path: "disclaimer",
-        element: (
-          <FrontendRoute loaderType="">
-            <Disclaimer />
-          </FrontendRoute>
-        ),
-      },
-      {
-        path: "*",
-        element: (
-          <Suspense fallback="">
-            <PageNotFound />
-          </Suspense>
-        ),
-      },
+      //     <ThankYou />
+      //   ),
+      // },
+      // {
+      //   path: "privacy-policy",
+      //   element: (
+      //     <FrontendRoute loaderType="">
+      //       <PrPolcy />
+      //     </FrontendRoute>
+      //   ),
+      // },
+      // {
+      //   path: "mvn-mall",
+      //   element: (
+      //     <FrontendRoute  loaderType="mvn-mall-1">
+      //     <MvnMall1 data={mvnMallData}/>
+      //     </FrontendRoute>
+      //   ),
+      // },
+      // {
+      //   path: "disclaimer",
+      //   element: (
+      //     <FrontendRoute loaderType="">
+      //       <Disclaimer />
+      //     </FrontendRoute>
+      //   ),
+      // },
+      // {
+      //   path: "*",
+      //   element: (
+      //     <Suspense fallback="">
+      //       <PageNotFound />
+      //     </Suspense>
+      //   ),
+      // },
+      
       {/*{
         path: "gallery",
         element: (

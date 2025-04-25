@@ -141,11 +141,11 @@ const Homepage = () => {
 
         </Helmet>
 
-        <Layout >
-          <Hero />
+        {/* <Layout > */}
+          {/* <Hero /> */}
           <Overview  />
 
-        <Suspense fallback={<Skeleton height="h_70vh" />}>
+        {/* <Suspense fallback={<Skeleton height="h_70vh" />}>
           <Banner1 />
         </Suspense>
 
@@ -190,9 +190,9 @@ const Homepage = () => {
 
         <Suspense fallback={<div>Loading...</div>}>
           <CustomModal hide={isHideModal} show={isShowModal} type="enquire" projectName="MVN Aeroone" isOffer={isOffer}  />
-        </Suspense>
+        </Suspense> */}
 
-      </Layout>
+      {/* </Layout> */}
     </>
     
   );

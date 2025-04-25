@@ -37,9 +37,9 @@ const Overview = ({className}) => {
             <div className="home-about-content">
               <img src={`${API_URL}images/icons/heading-icon-img.webp`} alt="mvn head icon" className="img-fluid title_plane1"/>
               <h4 className="title_style1 text-center">40+ years of delivering trust and projects on time</h4>
-              <p className="des_style1 text-center">
+              {/* <p className="des_style1 text-center">
               MVN Infrastructure introduces MVN Aero One Residences, the largest ultra-luxury apartments in Delhi NCR, located at the 22-kilometer stone on Dwarka Expressway. These stunning 5.5 BHK residences offer breathtaking 360-degree panoramic views and set a new standard for luxury living. MVN is poised to add yet another wonder to the world.
-              </p>
+              </p> */}
             </div>
           </Col>
         </Row>
