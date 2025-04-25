@@ -15,6 +15,7 @@
   "dependencies": {
     "@lottiefiles/react-lottie-player": "^3.5.4",
     "@reduxjs/toolkit": "^2.3.0",
+    "@vimeo/player": "^2.26.0",
     "bootstrap": "^5.3.3",
     "g": "^2.0.1",
     "gsap": "npm:@gsap/business@^3.12.5",
