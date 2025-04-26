@@ -1,53 +1,51 @@
-import React, { useState, Suspense, useCallback} from "react";
-import { Helmet } from "react-helmet";
-
-import Layout from "../components/Layout";
-import Skeleton from "../../common/Loader/skeleton/Index";
-
-import Hero from "../components/homepage/Hero";
+import React from "react";
+// import { Helmet } from "react-helmet";
 import Overview from "../components/homepage/Overview";
-const Banner1 = React.lazy(()=>import("../components/homepage/Banner1"));
-const Offer = React.lazy(()=>import("../components/homepage/Offer"));
-const Projects = React.lazy(()=>import("../components/homepage/Projects"));
-const OtherProjects = React.lazy(()=>import("../components/homepage/OtheProjects"));
-const OurJourney = React.lazy(()=>import("../components/homepage/OurJourney"));
-const OurTeam = React.lazy(()=>import("../components/homepage/OurTeam"));
-const OurBrand = React.lazy(()=>import("../components/homepage/OurBrand"));
-const Testimonial = React.lazy(()=>import("../components/homepage/Testimonial"));
-const Enquire = React.lazy(()=>import("../components/homepage/Enquire"));
-const EnquireForm = React.lazy(()=>import("../components/homepage/EnquireForm"));
-const CustomModal = React.lazy(()=>import("../../common/Modal"));
+
+// import Layout from "../components/Layout";
+// import Skeleton from "../../common/Loader/skeleton/Index";
+
+// import Hero from "../components/homepage/Hero";
+// const Banner1 = React.lazy(()=>import("../components/homepage/Banner1"));
+// const Offer = React.lazy(()=>import("../components/homepage/Offer"));
+// const Projects = React.lazy(()=>import("../components/homepage/Projects"));
+// const OtherProjects = React.lazy(()=>import("../components/homepage/OtheProjects"));
+// const OurJourney = React.lazy(()=>import("../components/homepage/OurJourney"));
+// const OurTeam = React.lazy(()=>import("../components/homepage/OurTeam"));
+// const OurBrand = React.lazy(()=>import("../components/homepage/OurBrand"));
+// const Testimonial = React.lazy(()=>import("../components/homepage/Testimonial"));
+// const Enquire = React.lazy(()=>import("../components/homepage/Enquire"));
+// const EnquireForm = React.lazy(()=>import("../components/homepage/EnquireForm"));
+// const CustomModal = React.lazy(()=>import("../../common/Modal"));
 // const Enquire = React.lazy(() =>
 //   new Promise((resolve) =>
 //     setTimeout(() => resolve(import("../components/homepage/Enquire")), 100000)
 //   )
 // );
 
-import 'swiper/css';
-import 'swiper/css/navigation';
 
 const Homepage = () => {
-  const [isShowModal, setIsShowModal] = useState(false);
-  const [isOffer, setIsOffer] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  // const [isShowModal, setIsShowModal] = useState(false);
+  // const [isOffer, setIsOffer] = useState(false);
+  // const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   
-  const isHideModal = () => {
-    setIsShowModal(false);
-    setIsOffer(false)
-  };
+  // const isHideModal = () => {
+  //   setIsShowModal(false);
+  //   setIsOffer(false)
+  // };
 
-  const showCustomModal = useCallback((offer)=>{
-    if(offer){
-      setIsOffer(true)
-      setIsShowModal(true);
-    }else{
-      setIsShowModal(true);
-    }
-  }, []);
+  // const showCustomModal = useCallback((offer)=>{
+  //   if(offer){
+  //     setIsOffer(true)
+  //     setIsShowModal(true);
+  //   }else{
+  //     setIsShowModal(true);
+  //   }
+  // }, []);
 
   return (
     <>
-        <Helmet>
+        {/* <Helmet>
           <title>Best Property Developers in Gurugram| MVN Infrastructure</title>
           <meta name="description" content="Best Developers in Gurgaon. 5.5 BHK Largest floor sizes in Gurugram. 40+ years of delivering trust and projects on time. MVN Infrastructure." />
           <meta name="keywords" content="MVN Infrastructure, MVN Gurgaon, MVN MALL Gurugram, MVN aero one, 5BHK in Gurgaon, Aero one, MVN Bangalore, mvn.in, MVN Developer." />
@@ -139,7 +137,7 @@ const Homepage = () => {
               `}
             </script>
 
-        </Helmet>
+        </Helmet> */}
 
         {/* <Layout > */}
           {/* <Hero /> */}

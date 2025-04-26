@@ -2,7 +2,6 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { API_URL } from "../../../config/config";
 
 
 const Overview = ({className}) => {
@@ -11,12 +10,12 @@ const Overview = ({className}) => {
     <>
       <div className="mobile-view-box">
         <Container>
-          <img
+          {/* <img
             src={`${API_URL}mvn-aeroone-logo-img.webp`}
             alt="mvn aeroone logo"
             className="img-fluid mobile-img-logo"
             loading="lazy"
-          />
+          /> */}
           <h2 className="logo_title">Gurugram</h2>
           <span className="status">New Launch</span>
           <h3 className="slogan-heading">
@@ -35,7 +34,7 @@ const Overview = ({className}) => {
         <Row>
           <Col xs={12} md={12} className="about-content">
             <div className="home-about-content">
-              <img src={`${API_URL}images/icons/heading-icon-img.webp`} alt="mvn head icon" className="img-fluid title_plane1"/>
+              {/* <img src={`${API_URL}images/icons/heading-icon-img.webp`} alt="mvn head icon" className="img-fluid title_plane1"/> */}
               <h4 className="title_style1 text-center">40+ years of delivering trust and projects on time</h4>
               {/* <p className="des_style1 text-center">
               MVN Infrastructure introduces MVN Aero One Residences, the largest ultra-luxury apartments in Delhi NCR, located at the 22-kilometer stone on Dwarka Expressway. These stunning 5.5 BHK residences offer breathtaking 360-degree panoramic views and set a new standard for luxury living. MVN is poised to add yet another wonder to the world.
