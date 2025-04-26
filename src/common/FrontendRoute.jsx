@@ -12,8 +12,8 @@ const FrontendRoute = ({children, loaderType})=>{
   useEffect(()=>{
     if(loaderType == 'homepage'){
       setLoaderImage({
-        desktop: `${CONFIG.API_URL}assets/loader/homepage/desktop.webp`,
-        mobile: `${CONFIG.API_URL}assets/loader/homepage/mobile.webp`,
+        desktop: `${CONFIG.API_URL}assets/loader/homepage/desktop-homepage.webp`,
+        mobile: `${CONFIG.API_URL}assets/loader/homepage/mobile-homepage.webp`,
       })
     }else if(loaderType == "aeroone-gurgaon"){
       setLoaderImage({

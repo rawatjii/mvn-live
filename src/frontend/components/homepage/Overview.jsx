@@ -11,6 +11,15 @@ const Overview = ({className}) => {
     <>
       <div className="mobile-view-box">
         <Container>
+          <div className="main_heading_box">
+            <img 
+              src={window.innerWidth <= 768 ? `${API_URL}mobile-line.png` : `${API_URL}desktop-line.png`} 
+              alt="mvn sizes" 
+              className="img-fluid"
+            />
+          </div>
+
+
           <img
             src={`${API_URL}mvn-aeroone-logo-img.webp`}
             alt="mvn aeroone logo"
@@ -19,6 +28,13 @@ const Overview = ({className}) => {
           />
           <h2 className="logo_title">Gurugram</h2>
           <span className="status">New Launch</span>
+
+          {/* <div className="main_heading_box">
+            <h1 className="sq-ft-heading">6300 - 12600 <small>sq. ft. Area</small></h1>
+            <h4 className="main_subheading"><span>5.5 BHK</span> One of the <span>Largest Floor Sizes</span> in gurugram</h4>
+          </div> */}
+
+
           <h3 className="slogan-heading">
             Behold to Experience the complete view!
           </h3>

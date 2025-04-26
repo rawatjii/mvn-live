@@ -25,6 +25,7 @@ const CustomModal = React.lazy(()=>import("../../common/Modal"));
 
 import 'swiper/css';
 import 'swiper/css/navigation';
+import LivingRoomVideoGurugram from "../components/MicroPage/LivingRoomVideoGurugram";
 
 const Homepage = () => {
   const [isShowModal, setIsShowModal] = useState(false);
@@ -142,6 +143,9 @@ const Homepage = () => {
         </Helmet>
 
         <Layout >
+
+          
+
           <Hero />
           <Overview  />
 
