@@ -4250,6 +4250,22 @@ table.bg_transparent{
   }
 }
 
+
+.micro_overview{
+
+  .awards{
+
+    margin: 40px 0;
+
+    img{
+      width: 100%;
+      max-width: 400px;
+    }
+  }
+}
+
+
+
 /* start responsive */
 /* by bhupendra */
 @media(min-width:768px) {

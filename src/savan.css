@@ -350,6 +350,15 @@ ul.content{align-items:center}
     color:var(--theme_primary_color);
     letter-spacing: 0.5px;
   }
+
+  .awards{
+    margin: 40px 0;
+
+    img{
+      width: 100%;
+      max-width: 400px;
+    }
+  }
 }
 
 .mobile-view-box a.link-btn {

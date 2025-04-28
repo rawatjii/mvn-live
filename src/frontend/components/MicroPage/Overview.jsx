@@ -98,6 +98,12 @@ const MicroOverview = React.memo(({ data }) => {
               <p className="des_style1 text-center">{desc}</p>
             )}
           </div>
+
+          {/* <div className="awards">
+            <img src={`${API_URL}mvn-offer.webp`} alt="awards icon" />
+          </div> */}
+
+
           {counterHeading && 
             <>
           <p className="counter-heading">5.5 BHK One of the Largest Apartments in Gurugram</p>

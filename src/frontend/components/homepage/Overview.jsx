@@ -19,6 +19,11 @@ const Overview = ({className}) => {
           />
           <h2 className="logo_title">Gurugram</h2>
           <span className="status">New Launch</span>
+
+          {/* <div className="awards">
+            <img src={`${API_URL}mvn-offer.webp`} alt="awards icon" />
+          </div> */}
+
           <h3 className="slogan-heading">
             Behold to Experience the complete view!
           </h3>
