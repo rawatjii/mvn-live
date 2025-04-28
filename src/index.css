@@ -4331,7 +4331,7 @@ table.bg_transparent{
 
     img{
       width: 100%;
-      max-width: 400px;
+      max-width: 260px;
     }
   }
 }
@@ -4930,6 +4930,13 @@ table.bg_transparent{
       margin-top: 45px;
       font-size: 14px;
       padding: 12px 20px;
+    }
+
+    .awards{
+
+      img{
+        max-width: 200px;
+      }
     }
   }
 

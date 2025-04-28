@@ -356,7 +356,7 @@ ul.content{align-items:center}
 
     img{
       width: 100%;
-      max-width: 400px;
+      max-width: 260px;
     }
   }
 
@@ -1447,6 +1447,8 @@ section.section.other_projects_section.pb-0 {padding-top: 70px;}
 
 .mobile-view-box {
   margin-top: 50px;
+
+
 }
 
 
@@ -2413,6 +2415,13 @@ section.section.media-gallery {padding-top: 70px;}
   .status{
 
     font-size: 14px;
+  }
+
+  .awards{
+
+    img{
+      max-width: 200px;
+    }
   }
 }
 
