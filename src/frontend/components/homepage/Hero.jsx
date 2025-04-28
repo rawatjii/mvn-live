@@ -19,15 +19,15 @@ const Hero = ()=>{
   return(
     <>
       <div>
-        <div style={{ position: "relative", paddingBottom: isMobile ? '177.5%' : '56.25%', overflow: "hidden" }}>
+        <div style={{ position: "relative", paddingBottom: isMobile ? '100%' : '56.25%', overflow: "hidden" }}>
           <iframe
             ref={iframeRef}
-            // src={isMobile 
-            //   ? "https://player.vimeo.com/video/1078911802?background=1&autopause=0&title=0&byline=0&portrait=0" 
-            //   : "https://player.vimeo.com/video/1078294218?background=1&autopause=0&title=0&byline=0&portrait=0"}
             src={isMobile 
-              ? "https://player.vimeo.com/video/1078921802?background=1&autopause=0&title=0&byline=0&portrait=0" 
+              ? "https://player.vimeo.com/video/1078911802?background=1&autopause=0&title=0&byline=0&portrait=0" 
               : "https://player.vimeo.com/video/1078294218?background=1&autopause=0&title=0&byline=0&portrait=0"}
+            // src={isMobile 
+            //   ? "https://player.vimeo.com/video/1078921802?background=1&autopause=0&title=0&byline=0&portrait=0" 
+            //   : "https://player.vimeo.com/video/1078294218?background=1&autopause=0&title=0&byline=0&portrait=0"}
             frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen

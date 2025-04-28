@@ -34,6 +34,10 @@ const Overview = ({className}) => {
             <h4 className="main_subheading"><span>5.5 BHK</span> One of the <span>Largest Floor Sizes</span> in gurugram</h4>
           </div> */}
 
+<div className="awards">
+            <img src={`${API_URL}mvn-offer.webp`} alt="awards icon" />
+          </div>
+
 
           <h3 className="slogan-heading">
             Behold to Experience the complete view!

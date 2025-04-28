@@ -69,7 +69,7 @@ const MicroOverview = React.memo(({ data }) => {
     };
   }, [ended1, ended2, ended3]);
 
-  const { title, location, extra, desc ,rera ,counterHeading, bankDetails } = data;
+  const { title, location, extra, desc ,rera ,counterHeading, bankDetails, showAwards } = data;
 
   return (
     <section className="section micro_overview text-center pb-0 pt-4" aria-label="Overview Section">
@@ -98,6 +98,13 @@ const MicroOverview = React.memo(({ data }) => {
               <p className="des_style1 text-center">{desc}</p>
             )}
           </div>
+
+          {showAwards && (
+            <div className="awards">
+              <img src={`${API_URL}mvn-offer.webp`} alt="awards icon" />
+            </div>
+          )}
+
           {counterHeading && 
             <>
           <p className="counter-heading">5.5 BHK One of the Largest Apartments in Gurugram</p>
