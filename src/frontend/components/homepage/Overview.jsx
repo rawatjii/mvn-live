@@ -35,7 +35,7 @@ const Overview = ({className}) => {
           </div> */}
 
 <div className="awards">
-            <img src={`${API_URL}mvn-offer.webp`} alt="awards icon" />
+            <img src={`${API_URL}mvn-offer-without-logo.webp`} alt="awards icon" />
           </div>
 
 
