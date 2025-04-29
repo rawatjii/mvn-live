@@ -19,6 +19,11 @@ const ClubOne = ()=>{
   return(
     <>
       <section className="section pb-0">
+        <div className="home-about-content pt-0">
+              <img src={`${API_URL}images/icons/heading-icon-img.webp`} alt="mvn head icon" className="img-fluid title_plane1"/>
+              <h4 className="title_style1 text-center">Where leisure meets quiet grandeur, and indulgence is effortlessly within reach</h4>
+            </div>
+
         <div style={{ position: "relative", paddingBottom: isMobile ? '56.25%' : '56.25%', overflow: "hidden" }}>
           <iframe
             ref={iframeRef}
@@ -37,8 +42,7 @@ const ClubOne = ()=>{
         </div>
 
         <div className="home-about-content pb-0">
-              <img src={`${API_URL}images/icons/heading-icon-img.webp`} alt="mvn head icon" className="img-fluid title_plane1"/>
-              <h4 className="title_style1 text-center">Where leisure meets quiet grandeur, and indulgence is effortlessly within reach</h4>
+              
               <p className="des_style1 text-center">
               A realm of distinguished privilege, where artistry, grandeur, and refinement are woven into every detail. An exclusive sanctuary reserved for those who live life without compromise.
               </p>

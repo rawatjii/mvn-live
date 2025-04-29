@@ -19,6 +19,11 @@ const MvnMall = ()=>{
   return(
     <>
       <section className="section pb-0">
+      <div className="home-about-content pt-0">
+              <img src={`${API_URL}images/icons/heading-icon-img.webp`} alt="mvn head icon" className="img-fluid title_plane1"/>
+              <h4 className="title_style1 text-center">Shopping ignites the senses, and entertainment stirs the soul.</h4>
+            </div>
+
         <div style={{ position: "relative", paddingBottom: isMobile ? '56.25%' : '56.25%', overflow: "hidden" }}>
           <iframe
             ref={iframeRef}
@@ -37,8 +42,7 @@ const MvnMall = ()=>{
         </div>
 
         <div className="home-about-content pb-0">
-              <img src={`${API_URL}images/icons/heading-icon-img.webp`} alt="mvn head icon" className="img-fluid title_plane1"/>
-              <h4 className="title_style1 text-center">Shopping ignites the senses, and entertainment stirs the soul.</h4>
+              
               <p className="des_style1 text-center">
               A monumental destination where luxury shopping, world-class entertainment, and unparalleled experiences seamlessly blend, an oasis of sophistication and wonder, where every moment exceeds the extraordinary
               </p>
