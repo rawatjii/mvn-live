@@ -237,7 +237,8 @@ export const data = {
     path:{
       mobile:CONFIG.API_URL + 'assets/Panther/Mobile/data.json',
       desktop:CONFIG.API_URL + 'assets/Panther/Desktop/data.json'
-    }
+    },
+    showAwards:true,
   },
   landscape:{
     title:'Landscape',

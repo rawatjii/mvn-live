@@ -17,6 +17,19 @@ const Overview = ({className}) => {
               alt="mvn sizes" 
               className="img-fluid"
             />
+
+            <div className="mt-3 mt-md-5">
+              <h3 className="slogan-heading">
+                Most Mesmerizing Digital Experience
+              </h3>
+              <a
+                href={import.meta.env.VITE_APP_URL + "aeroone-gurgaon"}
+                className="btn btn_style3 r_100 mt-3 mt-md-4"
+              >
+                Click Here
+              </a>
+            </div>
+
           </div>
 
 
@@ -34,20 +47,12 @@ const Overview = ({className}) => {
             <h4 className="main_subheading"><span>5.5 BHK</span> One of the <span>Largest Floor Sizes</span> in gurugram</h4>
           </div> */}
 
-<div className="awards">
+{/* <div className="awards">
             <img src={`${API_URL}mvn-offer-without-logo.webp`} alt="awards icon" />
-          </div>
+          </div> */}
 
 
-          <h3 className="slogan-heading">
-            Behold to Experience the complete view!
-          </h3>
-          <a
-            href={import.meta.env.VITE_APP_URL + "aeroone-gurgaon"}
-            className="btn btn_style3 r_100 mt-3 mt-md-4"
-          >
-            Click Here
-          </a>
+          
         </Container>
       </div>
 

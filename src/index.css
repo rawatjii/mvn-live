@@ -1587,6 +1587,17 @@ a {
     margin: 40px auto 0;
     max-width: 50%;
   }
+
+  .awards{
+    margin: 40px 0;
+    text-align: center;
+
+    img{
+      width: 100%;
+      max-width: 260px;
+    }
+  }
+
 }
 
 /* our_brand_section */
@@ -2805,6 +2816,16 @@ footer {
     display: block;
     margin: 50px auto 0;
     border-radius: 100px;
+  }
+
+  .awards{
+    margin: 40px 0;
+    text-align: center;
+
+    img{
+      width: 100%;
+      max-width: 260px;
+    }
   }
 }
 
@@ -4955,6 +4976,15 @@ table.bg_transparent{
       text-align: center;
       margin-top:15px;
     }
+
+    .awards{
+      margin: 20px 0;
+  
+      img{
+        width: 100%;
+        max-width: 200px;
+      }
+    }
   }
 
   /* peacock section */
@@ -5651,6 +5681,18 @@ table.bg_transparent{
         font-size: 14px;
         line-height: 20px;
 
+      }
+    }
+  }
+
+  .our_team_section{
+
+    .awards{
+      margin: 20px 0;
+
+      img{
+        width: 100%;
+        max-width: 200px;
       }
     }
   }

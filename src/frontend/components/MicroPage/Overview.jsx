@@ -99,11 +99,11 @@ const MicroOverview = React.memo(({ data }) => {
             )}
           </div>
 
-          {showAwards && (
+          {/* {showAwards && (
             <div className="awards">
               <img src={`${API_URL}mvn-offer.webp`} alt="awards icon" />
             </div>
-          )}
+          )} */}
 
           {counterHeading && 
             <>
