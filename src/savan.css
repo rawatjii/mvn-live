@@ -1282,11 +1282,10 @@ button.closebtn {
     .media-news_offline {  padding: 33px 15%;}
     .awa_card p {font-size: 15px;}
     .projects_section {.plane_icon {   display: block; }}
-    section.overview_section {padding-top: 50px;padding-bottom: 50px;}
     /* .overview_section .hero_title{text-align:center;display:table;padding-bottom:3px;margin-bottom:3px;margin-left:auto;margin-right:auto;font-size:24px!important;color:var(--theme_primary_color);text-transform:uppercase;letter-spacing:1px;margin-bottom:30px} */
     .micro_hero_section .frame{width:100%;height:100vh;object-fit:cover}
     /* .micro_hero_section .pin-spacer{height:fit-content!important} */
-    section.overview_section{padding-top:50px;padding-bottom:70px}
+    section.overview_section{padding-top:50px;padding-bottom:0px}
     .home-about-content{text-align:center;padding-left:150px;padding-right:150px}
     section.overview_section .headingIcon{width:auto;height:50px;margin:0 auto;margin-bottom:20px}
 
@@ -1719,7 +1718,6 @@ nav.null.navbar.navbar-expand-false.navbar-light .right {width: 200px; display: 
   margin-bottom: 60px;
 } */
 
-section.overview_section {padding-bottom: 25px;}
 
 #scroll-wrapper {
   display: table;
@@ -2664,6 +2662,7 @@ section.section.micro_hero_section.p-0 div#scroll-wrapper-inner\ {
 
 .slogan-heading{
   font-size:14px;
+  line-height: inherit;
 }
 
 

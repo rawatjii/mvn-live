@@ -18,7 +18,7 @@ const MvnMall = ()=>{
 
   return(
     <>
-      <section className="section pb-0">
+      <section className="section">
       <div className="home-about-content pt-0">
               <img src={`${API_URL}images/icons/heading-icon-img.webp`} alt="mvn head icon" className="img-fluid title_plane1"/>
               <h4 className="title_style1 text-center">Shopping ignites the senses, and entertainment stirs the soul.</h4>
