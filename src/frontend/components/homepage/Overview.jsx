@@ -59,7 +59,7 @@ const Overview = ({className}) => {
       <section className={`${className} overview_section`} aria-label="Overview Section"> 
         <Row>
           <Col xs={12} md={12} className="about-content">
-            <div className="home-about-content">
+            <div className="home-about-content pb-0">
               <img src={`${API_URL}images/icons/heading-icon-img.webp`} alt="mvn head icon" className="img-fluid title_plane1"/>
               <h4 className="title_style1 text-center">40+ years of delivering trust and projects on time</h4>
               <p className="des_style1 text-center">

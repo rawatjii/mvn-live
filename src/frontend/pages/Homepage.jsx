@@ -155,21 +155,21 @@ const Homepage = () => {
           <Banner1 />
         </Suspense> */}
 
+<Suspense fallback={<Skeleton />}>
+  <ClubOne />
+</Suspense>
+
+<Suspense fallback={<Skeleton />}>
+  <MvnMall />
+</Suspense>
+
         <Suspense fallback={<Skeleton height="h_100vh" />}>
           <Offer clickHandler={showCustomModal} />
         </Suspense>
-        <Suspense fallback={<Skeleton />}>
-        <ClubOne />
-      </Suspense>
-        <Suspense fallback={<Skeleton />}>
-        <MvnMall />
-        </Suspense>
+
         <Suspense fallback={<Skeleton height="h_200vh" />}>
           <Projects />
         </Suspense>
-
-
-
         
         <Suspense fallback={<Skeleton height="h_70vh h_sm_130vh" />}>
           <OtherProjects />
