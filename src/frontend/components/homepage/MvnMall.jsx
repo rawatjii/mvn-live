@@ -48,7 +48,9 @@ const MvnMall = ()=>{
               </p>
             </div>
 
-        
+            <div className="awards text-center mt-5">
+            <img src={`${API_URL}mvn-offer-without-logo.webp`} alt="awards icon"  height={"150"} />
+          </div>
       </section>
 
 

@@ -30,11 +30,11 @@ const CustomCard = React.memo(({ className, title, location, extra, desc, extraT
       )}
       {extraTxt && <h4 className="extraTxt">{extraTxt}</h4>}
 
-      {showAwards && (
+      {/* {showAwards && (
         <div className="awards">
           <img src={`${API_URL}mvn-offer.webp`} alt="awards icon" />
         </div>
-      )}
+      )} */}
     </div>
   );
 });

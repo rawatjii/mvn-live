@@ -18,18 +18,7 @@ const Overview = ({className}) => {
               className="img-fluid"
             />
 
-            <div className="mt-3 mt-md-5">
-              <h3 className="slogan-heading">
-                Most Mesmerizing Digital Experience
-              </h3>
-              <a
-                href={import.meta.env.VITE_APP_URL + "aeroone-gurgaon"}
-                className="btn btn_style3 r_100 mt-3 mt-md-4"
-              >
-                Click Here
-              </a>
-            </div>
-
+           
           </div>
 
 
@@ -41,6 +30,17 @@ const Overview = ({className}) => {
           />
           <h2 className="logo_title">Gurugram</h2>
           <span className="status">New Launch</span>
+          <div className="mt-3 mt-md-5">
+              <h3 className="slogan-heading">
+                Most Mesmerizing Digital Experience
+              </h3>
+              <a
+                href={import.meta.env.VITE_APP_URL + "aeroone-gurgaon"}
+                className="btn btn_style3 r_100 mt-3 mt-md-4"
+              > 
+                Click Here
+              </a>
+            </div>
 
           {/* <div className="main_heading_box">
             <h1 className="sq-ft-heading">6300 - 12600 <small>sq. ft. Area</small></h1>
