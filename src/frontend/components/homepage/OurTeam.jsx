@@ -38,9 +38,9 @@ const OurTeam = () => {
         real estate practices.
       </p>
 
-      {/* <div className="awards">
+      <div className="awards">
             <img src={`${API_URL}mvn-offer-without-logo.webp`} alt="awards icon" />
-          </div> */}
+          </div>
     </section>
   );
 };

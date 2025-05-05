@@ -21,17 +21,8 @@ const Overview = ({className}) => {
            
           </div>
 
-
-          <img
-            src={`${API_URL}mvn-aeroone-logo-img.webp`}
-            alt="mvn aeroone logo"
-            className="img-fluid mobile-img-logo"
-            loading="lazy"
-          />
-          <h2 className="logo_title">Gurugram</h2>
-          <span className="status">New Launch</span>
-          <div className="mt-3 mt-md-5">
-              <h3 className="slogan-heading">
+          <div className="mb-4 mb-md-5">
+              <h3 className="mt-0 slogan-heading">
                 Most Mesmerizing Digital Experience
               </h3>
               <a
@@ -41,6 +32,17 @@ const Overview = ({className}) => {
                 Click Here
               </a>
             </div>
+
+
+          <img
+            src={`${API_URL}mvn-aeroone-logo-img.webp`}
+            alt="mvn aeroone logo"
+            className="img-fluid mobile-img-logo"
+            loading="lazy"
+          />
+          <h2 className="logo_title">Gurugram</h2>
+          <span className="status">New Launch</span>
+          
 
           {/* <div className="main_heading_box">
             <h1 className="sq-ft-heading">6300 - 12600 <small>sq. ft. Area</small></h1>
