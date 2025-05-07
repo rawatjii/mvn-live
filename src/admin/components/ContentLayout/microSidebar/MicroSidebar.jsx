@@ -20,6 +20,15 @@ const MicroSidebar = () => {
             </div>
           </NavLink>
 
+          <NavLink to={import.meta.env.VITE_APP_URL + "admin/microsite/banner"}>
+            <div className="nav">
+              <div className="icon">
+                <IoMdInformationCircleOutline fontSize={28} />
+              </div>
+              <div className="description">Banner</div>
+            </div>
+          </NavLink>
+
           <NavLink to={import.meta.env.VITE_APP_URL + "admin/microsite/overview"}>
             <div className="nav">
               <div className="icon">

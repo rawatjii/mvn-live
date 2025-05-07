@@ -207,16 +207,16 @@ const Dashboard = () => {
                     <span className="no-project">245</span>
                     <div className="media-body">
                       <h4>No. of Project</h4>
-                      <ul>
+                      <ul  className="d-flex align-items-center project_card">
                         <li>
                           <a href="Project-list.html"> View Details</a>
                         </li>
-                        <li>
+                        <li className="project_btn">
                           <Link to={`${import.meta.env.VITE_APP_ADMIN_ROOT}microsite`}>
                             <span>
                               <IoIosAddCircleOutline />
                             </span>
-                            Add More Project
+                            <p>Add More Project</p>
                           </Link>
                         </li>
                       </ul>

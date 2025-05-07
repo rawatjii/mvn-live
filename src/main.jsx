@@ -65,6 +65,7 @@ import Overview from "./frontend/components/homepage/Overview.jsx";
 import MicroOverview from "./frontend/components/MicroPage/Overview.jsx";
 import MicroFloorPlan from "./frontend/components/MicroPage/FloorPlan.jsx";
 import OverviewMicroSite from "./admin/components/dashboard/microsite/Overview.jsx";
+import HeroSection from "./admin/components/dashboard/microsite/HeroSection.jsx";
 
 
 
@@ -254,6 +255,7 @@ const router = createBrowserRouter([
           { path: "microsite", element:<MicroSidebar />, children:[
             {path:"", element:<BasicMicroSite />},
             {path:"overview", element:<OverviewMicroSite />},
+            {path:"banner", element:<HeroSection />},
 
           ] },
         ]

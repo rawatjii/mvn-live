@@ -1,6 +1,7 @@
 .loginContainer{
  overflow: hidden;
 }
+.login_form input:focus{border: none!important;}
 .imgContainer{
     background: url(../images/login_bg.webp) no-repeat center;
     background-size: cover;
@@ -38,3 +39,25 @@ margin-top: 15px;
     margin-top: 15px;
     border-radius: 10px;
 }
+.w-90{width: 90%;}
+input:disabled{color:#ffffff73}
+.project_btn{font-size: 15px;margin-left: 0!important;border: 1px solid var(--orange);border-radius: 30px;}
+.project_btn svg{    height: 24px;
+    width: 22px !important;}
+.project_btn span{margin-right: 0!important;}
+.project_btn p{font-size: 10px;}
+/* .project_btn p{font-size: 12px;} */
+.project_btn a{display: flex;align-items: center;color: #eee;
+    padding: 4px 7px;
+    border-radius: 30px;}
+.project_btn svg{    height: 26px;
+    fill:var(--orange);
+    margin-right: 6px;}
+.project_card a{display: flex;font-size: 10px;text-align: center;justify-content: center;}
+.project_card a:hover{background-color: var(--orange);}
+.project_card a:hover svg{fill:#fff;}
+
+.project_card li{flex: 1;}
+.project_card{gap:6px}
+
+.body-detail .inner-sec .left-area .top-box .box{padding:40px  32px}
