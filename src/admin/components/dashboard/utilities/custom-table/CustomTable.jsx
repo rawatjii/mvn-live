@@ -60,7 +60,7 @@ const CustomTable = ({ columns, data, onEdit, onDelete, startIndex = 0 }) => {
                           }}
                           onClick={() => setModalImage(row[col.key])}
                         />
-                      ) : row[col.key].split(" ").length > textLength ? (
+                      ) : row[col.key]?.split(" ").length > textLength ? (
                         <span
                           style={{ cursor: "pointer", color: "#eee" }}
                           onClick={() => setModalText(row[col.key])}
