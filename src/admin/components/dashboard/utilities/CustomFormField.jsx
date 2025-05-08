@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import { FaUpload } from "react-icons/fa";
+import { BACKEND_IMAGE_URL } from "../../../../config/config";
+import { BsEye } from "react-icons/bs";
+import CustomModal from "./custom-modal/CustomModal";
 
 const CustomFormField = ({
   label,
@@ -22,13 +25,14 @@ const CustomFormField = ({
   ...rest
 }) => {
   const [fileName, setFileName] = useState("");
+  const [modalVia,setModalVia]=useState();
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setFileName(file ? file.name : "");
     onChange(e, isWebpAllowed);
   };
-
+console.log(value,"defaultData defaultData defaultData")
   useEffect(() => {
     if (type === "file") {
       if (value instanceof File) {
@@ -41,15 +45,13 @@ const CustomFormField = ({
       }
     }
   }, [resetKey, value, type]);
-
-  const getValue = (e) => {
-    setValueVia(e.target.value);
-  };
-
+// console.log(type)
   return (
-    <div className={`FieldContainer mb-3 ${isLeft ? "row" : ""}`}>
+    <div className={`FieldContainer mb-3 ${isLeft ? "row" : ""} `}>
       <div className={isLeft ? "col-3" : undefined}>
-        <label htmlFor={name} className="label">{`${label}${isLeft ? ":" : ""}`}</label>
+        {type !== "hidden" && (
+          <label htmlFor={name} className="label">{`${label}${isLeft ? ":" : ""}`}</label>
+        )}
       </div>
       <div className={isLeft ? "col-9" : undefined}>
         <div className="InputContain">
@@ -69,29 +71,35 @@ const CustomFormField = ({
           ) : type === "file" ? (
             <>
               <div className="custom-file-wrapper form-control d-flex justify-content-between align-items-center">
-              <label htmlFor={id} className="d-flex align-items-center gap-2 m-0 cursor-pointer">
-                <FaUpload />
-                <span>{fileName || "Upload File"}</span>
-              </label>
-              <input
-                type="file"
-                name={name}
-                id={id}
-                onChange={handleFileChange}
-                className="d-none"
-                required={isRequired}
-                {...rest}
-              />
+                <label htmlFor={id} className="d-flex align-items-center gap-2 m-0 cursor-pointer">
+                  <FaUpload />
+                  <span>{fileName || "Upload File"}</span>
+                </label>
+                <input
+                  type="file"
+                  name={name}
+                  id={id}
+                  onChange={handleFileChange}
+                  className="d-none"
+                  required={isRequired}
+                  {...rest}
+                />
+              { value && <><button className="bg-transparent p-0" onClick={()=>setModalVia(true)}><BsEye  /></button>
+                <CustomModal isOpen={modalVia} onClose={()=>setModalVia(false)}>
+                  <img src={BACKEND_IMAGE_URL+value} alt="" className="w-100"/>
+                </CustomModal>
+              </>}
             </div>
-            <span className="text-danger">{dataError?.[name]}</span>
+              <span className="text-danger">{dataError?.[name]}</span>
             </>
           ) : type === "select" ? (
             <>
               <select
                 name={name}
                 className="form-control w-100"
-                onChange={(e) => getValue(e)}
-                required={isRequired} // Pass required prop
+                onChange={onChange}
+                value={value}
+                required={isRequired}
               >
                 <option value="">--Select--</option>
                 {options?.map((option, index) => (
@@ -115,9 +123,9 @@ const CustomFormField = ({
                       type="radio"
                       className="me-1"
                       id={option.value}
-                      name={name} // Use name prop for radio group
+                      name={name}
                       value={option.value}
-                      required={isRequired} // Pass required prop
+                      required={isRequired}
                     />
                     <label className="custom-control-label" htmlFor={option.value}>
                       {option.label}
@@ -127,6 +135,13 @@ const CustomFormField = ({
               </div>
               <span className="text-danger">{dataError?.[name]}</span>
             </>
+          ) : type === "hidden" ? (
+            <input
+              type="hidden"
+              name={name}
+              value="1"
+              onChange={() => {}}
+            />
           ) : (
             <>
               <input

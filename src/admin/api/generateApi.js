@@ -18,7 +18,9 @@ const generateApi = (endpoint) => {
     },
     create: (data) => axios.post(baseUrl, data, { headers: getAuthHeader() }),
     update: (id, data) => axios.put(`${baseUrl}/${id}`, data, { headers: getAuthHeader() }),
-    delete: (id) => axios.delete(`${baseUrl}/${id}`, { headers: getAuthHeader() })
+    delete: (id) => axios.delete(`${baseUrl}/${id}`, { headers: getAuthHeader() }),
+    editGet: (id,data) => axios.post(`${baseUrl}/${id}`,data, { headers: getAuthHeader() })
+
   };
 };
 

@@ -19,8 +19,9 @@ const CustomTable = ({ columns, data, onEdit, onDelete, startIndex = 0 }) => {
   const textLength = 1;
 
   const truncateText = (text) => {
-    const words = text?.split(" ");
-    if (words?.length > textLength) {
+    if (typeof text !== "string") return text;
+    const words = text.split(" ");
+    if (words.length > textLength) {
       return words.slice(0, textLength).join(" ") + " ...";
     }
     return text;
@@ -48,19 +49,22 @@ const CustomTable = ({ columns, data, onEdit, onDelete, startIndex = 0 }) => {
                       {colIndex === 0 ? (
                         startIndex + rowIndex + 1
                       ) : col.type === "file" ? (
-                        <img
-                          src={`${BACKEND_IMAGE_URL}${row[col.key]}`}
-                          alt="thumbnail"
-                          width="30"
-                          height="30"
-                          style={{
-                            cursor: "pointer",
-                            objectFit: "cover",
-                            borderRadius: "4px",
-                          }}
-                          onClick={() => setModalImage(row[col.key])}
-                        />
-                      ) : row[col.key]?.split(" ").length > textLength ? (
+                        row[col.key] && (
+                          <img
+                            src={`${BACKEND_IMAGE_URL}${row[col.key]}`}
+                            alt="thumbnail"
+                            width="30"
+                            height="30"
+                            style={{
+                              cursor: "pointer",
+                              objectFit: "cover",
+                              borderRadius: "4px",
+                            }}
+                            onClick={() => setModalImage(row[col.key])}
+                          />
+                        )
+                      ) : typeof row[col.key] === "string" &&
+                        row[col.key].split(" ").length > textLength ? (
                         <span
                           style={{ cursor: "pointer", color: "#eee" }}
                           onClick={() => setModalText(row[col.key])}
@@ -68,7 +72,7 @@ const CustomTable = ({ columns, data, onEdit, onDelete, startIndex = 0 }) => {
                           {truncateText(row[col.key])}
                         </span>
                       ) : (
-                        row[col.key]
+                        row[col.key] ?? "-"
                       )}
                     </TableBodyColum>
                   ))}

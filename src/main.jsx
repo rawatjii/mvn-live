@@ -61,12 +61,9 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AdminProtectedRoute from "./AdminProtectedRoute.jsx";
 import MicroSidebar from "./admin/components/ContentLayout/microSidebar/MicroSidebar.jsx";
-import Overview from "./frontend/components/homepage/Overview.jsx";
-import MicroOverview from "./frontend/components/MicroPage/Overview.jsx";
-import MicroFloorPlan from "./frontend/components/MicroPage/FloorPlan.jsx";
 import OverviewMicroSite from "./admin/components/dashboard/microsite/Overview.jsx";
 import HeroSection from "./admin/components/dashboard/microsite/HeroSection.jsx";
-
+import ProjectList from "./admin/ProjectList.jsx";
 
 
 const router = createBrowserRouter([
@@ -234,11 +231,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin/login",
-    element: <Login />, // Don't protect the login route
+    element: <Login />, 
   },
   {
     path: "/admin",
-    element: <AdminProtectedRoute />, // Protect all /admin routes
+    element: <AdminProtectedRoute />, 
     children: [
       {
         path: "",
@@ -252,12 +249,18 @@ const router = createBrowserRouter([
           { path: "career", element: <AdminCareer /> },
           { path: "media-centre", element: <AdminMediaCentre /> },
           { path: "contact-us", element: <AdminContactUs /> },
+          { path: "project-list", element: <ProjectList /> },
           { path: "microsite", element:<MicroSidebar />, children:[
             {path:"", element:<BasicMicroSite />},
             {path:"overview", element:<OverviewMicroSite />},
             {path:"banner", element:<HeroSection />},
-
           ] },
+          { path: "microsite/:project_id", element:<MicroSidebar />, children:[
+            {path:"", element:<BasicMicroSite />},
+            {path:"overview", element:<OverviewMicroSite />},
+            {path:"banner", element:<HeroSection />},
+          ] 
+        },  
         ]
       }
     ]
