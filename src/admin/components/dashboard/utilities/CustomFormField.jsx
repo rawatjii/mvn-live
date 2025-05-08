@@ -13,16 +13,19 @@ const CustomFormField = ({
   className = "",
   resetKey,
   isLeft,
+  setValueVia,
+  selectedVal,
   options = [],
   info = '',
   ...rest
 }) => {
+
 const [fileName, setFileName] = useState(""); 
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setFileName(file ? file.name : "");
-    onChange(e); // call parent onChange
+    onChange(e); 
   };
 
   useEffect(() => {
@@ -37,6 +40,10 @@ const [fileName, setFileName] = useState("");
       }
     }
   }, [resetKey, value, type]);
+
+  const getValue=(e)=>{
+    setValueVia(e.target.value)
+  }
 
   return (
     <div className={`FieldContainer mb-3 ${isLeft ? "row" : ""}`}>
@@ -70,10 +77,10 @@ const [fileName, setFileName] = useState("");
               />
             </div>
           )  : type === 'select' ? (
-            <select className="form-control w-100">
+            <select name={name} className="form-control w-100"  onChange={(e)=>getValue(e)}>
               <option>--Select--</option>
               {options?.map((option, index) =>(
-                <option key={index} value={option.value} >{option.label}</option>
+                <option key={index} value={option.value}  selected={selectedVal==option.value}>{option.label}</option>
               ))}
             </select>
           ) : type === 'radioFields' ? (

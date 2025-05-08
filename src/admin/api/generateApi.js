@@ -3,7 +3,7 @@ import axios from 'axios';
 import { API_BASE_URL } from '../../config/config';
 
 const getAuthHeader = () => {
-  const token = localStorage.getItem('token'); // ✅ make sure token is stored in localStorage
+  const token = localStorage.getItem('token'); 
   return token ? { Authorization: `Bearer ${token}` } : {};
 };
 
@@ -13,7 +13,7 @@ const generateApi = (endpoint) => {
   return {
     get: () => {
       const headers = getAuthHeader();
-      console.log("🔐 Request Headers:", headers); // ✅ ADDED for debugging
+      console.log("🔐 Request Headers:", headers); 
       return axios.get(baseUrl, { headers });
     },
     create: (data) => axios.post(baseUrl, data, { headers: getAuthHeader() }),

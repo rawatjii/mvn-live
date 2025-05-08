@@ -35,7 +35,7 @@ const columns = [
   { key: "price", label: "Price" },
   { key: "size", label: "Size" },
   { key: "type", label: "Type" },
-];
+];  
 
 const PricelistMicrosite = () => {
   const aboutsApi = generateApi("blog"); // ✅ Adjust endpoint if needed

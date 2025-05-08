@@ -80,7 +80,7 @@ const Ourvalues = () => {
           <CustomTable
             columns={columns}
             data={paginatedData}
-            onEdit={handleEdit} // ✅
+            onEdit={handleEdit} 
             onDelete={handleDelete}
             // startIndex={(currentPage - 1) * itemsPerPage}
           />
