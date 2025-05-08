@@ -32,11 +32,18 @@ const useCrud = (apiService) => {
     createItem: async (item) => {
       try {
         await apiService.create(item);
-        toast.success(" Value added successfully!");
+        toast.success("Data added successfully!");
         await fetchAll(); 
       } catch (err) {
-        toast.error("❌ Failed to add value.");
-        setError(err);
+        console.error('error while create element', err.response?.data?.errors || "Failed to add value");
+        const errorMessage = err.response?.data?.errors || err.errors;
+        if(errorMessage){
+          toast.error(`❌ Please fill all the required fields.`);
+        }else{
+          toast.error("❌ Failed to Create.");
+        }
+        setError(err.response?.data?.errors);
+        await fetchAll(); 
       }
     },
 
@@ -46,7 +53,9 @@ const useCrud = (apiService) => {
         toast.success(" Value updated successfully!");
         await fetchAll(); 
       } catch (err) {
-        toast.error("❌ Failed to update value.");
+        toast.error("❌ Failed to add value.");
+        // const errorMessage = err.response?.data?.message || err.message || "Failed to update value";
+        // toast.error(`❌ ${errorMessage}`);
         setError(err);
       }
     },

@@ -17,6 +17,8 @@ const CustomFormField = ({
   selectedVal,
   options = [],
   info = '',
+  dataError,
+  isWebpAllowed = true,
   ...rest
 }) => {
 
@@ -25,7 +27,7 @@ const [fileName, setFileName] = useState("");
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setFileName(file ? file.name : "");
-    onChange(e); 
+    onChange(e, isWebpAllowed); // call parent onChange
   };
 
   useEffect(() => {
@@ -53,16 +55,20 @@ const [fileName, setFileName] = useState("");
       <div className={isLeft ? "col-9" : undefined}>
         <div className="InputContain">
           {type === "textarea" ? (
-            <textarea
-              name={name}
-              value={value}
-              onChange={onChange}
-              placeholder={placeholder}
-              className={`form-control ${className}`}
-              {...rest}
-            />
+            <>
+              <textarea
+                name={name}
+                value={value}
+                onChange={onChange}
+                placeholder={placeholder}
+                className={`form-control ${className}`}
+                {...rest}
+              />
+              <span className="text-danger">{dataError?.[name]}</span>
+            </>
           ) : type === "file" ? (
-            <div className="custom-file-wrapper form-control d-flex justify-content-between align-items-center">
+            <>
+              <div className="custom-file-wrapper form-control d-flex justify-content-between align-items-center">
               <label htmlFor={id} className="d-flex align-items-center gap-2 m-0 cursor-pointer">
                 <FaUpload />
                 <span>{fileName || "Upload File"}</span>
@@ -76,32 +82,43 @@ const [fileName, setFileName] = useState("");
                 {...rest}
               />
             </div>
+            <span className="text-danger">{dataError?.[name]}</span>
+            </>
           )  : type === 'select' ? (
+            <>
             <select name={name} className="form-control w-100"  onChange={(e)=>getValue(e)}>
               <option>--Select--</option>
               {options?.map((option, index) =>(
                 <option key={index} value={option.value}  selected={selectedVal==option.value}>{option.label}</option>
               ))}
             </select>
+            <span className="text-danger">{dataError?.[name]}</span>
+            </>
           ) : type === 'radioFields' ? (
-            <div className="d-flex">
-              {options.map((option, index) => (
-                <div className="me-3 d-flex" key={index}> 
-                  <input type="radio" className="me-1" id={option.value} name="example" value={option.value} />
-                  <label className="custom-control-label" htmlFor={option.value}>{option.label}</label>
-                </div>
-              ))}
-            </div>
+            <>
+              <div className="d-flex">
+                {options.map((option, index) => (
+                  <div className="me-3 d-flex" key={index}> 
+                    <input type="radio" className="me-1" id={option.value} name="example" value={option.value} />
+                    <label className="custom-control-label" htmlFor={option.value}>{option.label}</label>
+                  </div>
+                ))}
+              </div>
+              <span className="text-danger">{dataError?.[name]}</span>
+            </>
         ) : (
-            <input
-              type={type}
-              name={name}
-              value={value}
-              onChange={onChange}
-              placeholder={placeholder}
-              className={`form-control ${className}`}
-              {...rest}
-            />
+            <>
+              <input
+                type={type}
+                name={name}
+                value={value}
+                onChange={onChange}
+                placeholder={placeholder}
+                className={`form-control ${className}`}
+                {...rest}
+              />
+              <span className="text-danger">{dataError?.[name]}</span>
+            </>
           )}
         </div>
 

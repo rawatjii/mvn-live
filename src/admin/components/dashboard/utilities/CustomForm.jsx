@@ -19,7 +19,8 @@ const CustomForm = ({
   dynamicFields = [],
   buttonLabel = "Save",
   initialData = {}, // For edit mode
-  defaultData
+  defaultData,
+  dataError
 }) => {
   const Fields = isBanner ? defaultBannerFields : dynamicFields;
 
@@ -31,6 +32,7 @@ const CustomForm = ({
       condition: visibilityConfig?.visible !== false,
       label: visibilityConfig?.label || field.label,
       col: visibilityConfig?.isLeft ? 12 : field.col,
+      dataError,
     };
   });
 
@@ -57,9 +59,9 @@ const CustomForm = ({
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleFileChange = (e) => {
+  const handleFileChange = (e, isWebpAllowed) => {
     const { name, files } = e.target;
-    if (files.length > 0 && files[0].type !== "image/jpeg") {
+    if (files.length > 0 && !isWebpAllowed && files[0].type !== "image/jpeg") {
       alert("Only JPEG images are allowed.");
       return;
     }
@@ -80,7 +82,7 @@ const CustomForm = ({
         }
       });
   
-    console.log(payload); // Debug to check the payload contents
+    console.log('payload', payload); // Debug to check the payload contents
   
     if (onSubmit) onSubmit(payload);
   
