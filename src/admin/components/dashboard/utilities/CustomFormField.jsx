@@ -19,6 +19,7 @@ const CustomFormField = ({
   info = '',
   dataError,
   isWebpAllowed = true,
+  isRequired = false,
   ...rest
 }) => {
 
@@ -62,6 +63,7 @@ const [fileName, setFileName] = useState("");
                 onChange={onChange}
                 placeholder={placeholder}
                 className={`form-control ${className}`}
+                required={isRequired}
                 {...rest}
               />
               <span className="text-danger">{dataError?.[name]}</span>
@@ -79,6 +81,7 @@ const [fileName, setFileName] = useState("");
                 id={id}
                 onChange={handleFileChange}
                 className="d-none"
+                required={isRequired}
                 {...rest}
               />
             </div>
@@ -115,6 +118,7 @@ const [fileName, setFileName] = useState("");
                 onChange={onChange}
                 placeholder={placeholder}
                 className={`form-control ${className}`}
+                required={isRequired}
                 {...rest}
               />
               <span className="text-danger">{dataError?.[name]}</span>
