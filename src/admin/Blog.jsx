@@ -13,17 +13,18 @@ import generateApi from "./api/generateApi";
 import useCrud from "./hooks/useCrud";
 // Simulated backend response
 const metaFields = [
-  { name: "heading", label: "Title", type: "text", col: 4 },
-  { name: "date", label: "Date", type: "text", col: 4 },
-  { name: "alt", label: "Alt Tag", type: "text", col: 4 },
-  { name: "image", label: "Image", type: "file", col: 6 },
-  { name: "mobile_image", label: "Mobile Image", type: "file", col: 6 },
+  { name: "heading", label: "Title", type: "text", col: 4, isRequired: true },
+  { name: "date", label: "Date", type: "date", col: 4, isRequired: true },
+  { name: "alt", label: "Alt Tag", type: "text", col: 4, isRequired: true },
+  { name: "image", label: "Image", type: "file", col: 6, isRequired: true },
+  { name: "mobile_image", label: "Mobile Image", type: "file", col: 6, isRequired: true },
   {
     name: "alternative_image",
     label: "Alternative Image",
     type: "file",
     col: 6,
     isWebpAllowed: false,
+    isRequired: true,
   },
   {
     name: "mobile_alternative_image",
@@ -31,8 +32,10 @@ const metaFields = [
     type: "file",
     col: 6,
     isWebpAllowed: false,
+    isRequired: true,
   },
-  { name: "description", label: "Description", type: "textarea", col: 12 },
+  { name: "description", label: "Description", type: "textarea", col: 12, isRequired: true },
+  { name: "description", label: "Description", type: "editor", col: 12, isRequired: true },
 ];
 
 const columns = [
@@ -72,7 +75,7 @@ const AdminBlog = () => {
   return (
     <CustomSection customClass="d-block">
       <MicroBox>
-        <CustomTitle title="Our Values From" />
+        <CustomTitle title="Blog Details" />
         <CustomForm
           isBanner={false}
           dynamicFields={metaFields}

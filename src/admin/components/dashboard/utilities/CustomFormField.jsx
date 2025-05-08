@@ -18,7 +18,7 @@ const CustomFormField = ({
   info = '',
   dataError,
   isWebpAllowed = true,
-  isRequired = false, // Add required prop with default false
+  isRequired = false,
   ...rest
 }) => {
   const [fileName, setFileName] = useState("");
@@ -61,7 +61,7 @@ const CustomFormField = ({
                 onChange={onChange}
                 placeholder={placeholder}
                 className={`form-control ${className}`}
-                required={isRequired} // Pass required prop
+                required={isRequired}
                 {...rest}
               />
               <span className="text-danger">{dataError?.[name]}</span>
@@ -69,21 +69,21 @@ const CustomFormField = ({
           ) : type === "file" ? (
             <>
               <div className="custom-file-wrapper form-control d-flex justify-content-between align-items-center">
-                <label htmlFor={id} className="d-flex align-items-center gap-2 m-0 cursor-pointer">
-                  <FaUpload />
-                  <span>{fileName || "Upload File"}</span>
-                </label>
-                <input
-                  type="file"
-                  name={name}
-                  id={id}
-                  onChange={handleFileChange}
-                  className="d-none"
-                  required={isRequired} // Pass required prop
-                  {...rest}
-                />
-              </div>
-              <span className="text-danger">{dataError?.[name]}</span>
+              <label htmlFor={id} className="d-flex align-items-center gap-2 m-0 cursor-pointer">
+                <FaUpload />
+                <span>{fileName || "Upload File"}</span>
+              </label>
+              <input
+                type="file"
+                name={name}
+                id={id}
+                onChange={handleFileChange}
+                className="d-none"
+                required={isRequired}
+                {...rest}
+              />
+            </div>
+            <span className="text-danger">{dataError?.[name]}</span>
             </>
           ) : type === "select" ? (
             <>
@@ -136,7 +136,7 @@ const CustomFormField = ({
                 onChange={onChange}
                 placeholder={placeholder}
                 className={`form-control ${className}`}
-                required={isRequired} // Pass required prop
+                required={isRequired}
                 {...rest}
               />
               <span className="text-danger">{dataError?.[name]}</span>
