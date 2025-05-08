@@ -4203,6 +4203,7 @@ footer {
 
 section.section.walkthrough_section iframe { width: 100%;height: 1000px; object-fit: cover; display:flex;}
 
+
 /* start responsive */
 /* by bhupendra */
 @media(min-width:768px) {

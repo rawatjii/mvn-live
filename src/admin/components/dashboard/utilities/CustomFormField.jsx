@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import CustomFile from "./CustomFile";
+import ReactQuill from 'react-quill';
 import { FaUpload } from "react-icons/fa";
+
+import 'react-quill/dist/quill.snow.css';
 
 const CustomFormField = ({
   label,
@@ -109,7 +112,12 @@ const [fileName, setFileName] = useState("");
               </div>
               <span className="text-danger">{dataError?.[name]}</span>
             </>
-        ) : (
+        ) : type === 'editor' ? (
+            <>
+              <ReactQuill theme="snow" value={value} onChange={onChange} />
+              <span className="text-danger">{dataError?.[name]}</span>
+            </>
+      ) : (
             <>
               <input
                 type={type}

@@ -59,6 +59,9 @@ color: #eee;margin-top: 5px;letter-spacing: 0.5px;border: none;}
 
 .microsite-area .microbox .form-control{background-color: transparent;border: 1px solid #45464f;width: 100%;
 color: #eee;}
+.microsite-area .quill{border-radius: 5px;background:transparent}
+.microsite-area .quill .ql-toolbar.ql-snow{border: 1px solid #45464f;}
+.microsite-area .quill .ql-container.ql-snow{border: 1px solid #45464f;}
 .microsite-area .microbox .form-controltwo {margin-left: 5px;}
 .microsite-area .microbox .locatio-box{display: flex;flex-wrap: wrap;margin-top: 15px;
 border-top: 1px solid #45464f;padding-top: 25px;}
@@ -67,6 +70,14 @@ padding: 6px 8px;background-color: rgba(0, 0, 0, 0.2);border-radius: 5px;margin-
 .microsite-area .microbox .locatio-box .inner-location-box .km-input{width: 35%;margin-right: 2px;}
 .microsite-area .microbox .locatio-box .inner-location-box .fa{color: var(--orange);padding: 10px 8px;
 padding-right: 2px;}
+.microsite-area .ql-snow.ql-toolbar button,
+.microsite-area .ql-snow .ql-toolbar button{
+    color:#fff;
+}
+
+.microsite-area .ql-snow .ql-stroke{
+    stroke: #afafaf;
+}
 
 select option{background-color: rgb(19 19 29 / 94%)!important;border-bottom: none!important;
 font-family: "Roboto-Regular";font-size: 14px;padding: 5px 15px;}
