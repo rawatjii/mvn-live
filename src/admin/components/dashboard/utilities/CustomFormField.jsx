@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import CustomFile from "./CustomFile";
 import { FaUpload } from "react-icons/fa";
 
 const CustomFormField = ({
@@ -19,15 +18,15 @@ const CustomFormField = ({
   info = '',
   dataError,
   isWebpAllowed = true,
+  isRequired = false, // Add required prop with default false
   ...rest
 }) => {
-
-const [fileName, setFileName] = useState(""); 
+  const [fileName, setFileName] = useState("");
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setFileName(file ? file.name : "");
-    onChange(e, isWebpAllowed); // call parent onChange
+    onChange(e, isWebpAllowed);
   };
 
   useEffect(() => {
@@ -43,9 +42,9 @@ const [fileName, setFileName] = useState("");
     }
   }, [resetKey, value, type]);
 
-  const getValue=(e)=>{
-    setValueVia(e.target.value)
-  }
+  const getValue = (e) => {
+    setValueVia(e.target.value);
+  };
 
   return (
     <div className={`FieldContainer mb-3 ${isLeft ? "row" : ""}`}>
@@ -62,6 +61,7 @@ const [fileName, setFileName] = useState("");
                 onChange={onChange}
                 placeholder={placeholder}
                 className={`form-control ${className}`}
+                required={isRequired} // Pass required prop
                 {...rest}
               />
               <span className="text-danger">{dataError?.[name]}</span>
@@ -69,44 +69,65 @@ const [fileName, setFileName] = useState("");
           ) : type === "file" ? (
             <>
               <div className="custom-file-wrapper form-control d-flex justify-content-between align-items-center">
-              <label htmlFor={id} className="d-flex align-items-center gap-2 m-0 cursor-pointer">
-                <FaUpload />
-                <span>{fileName || "Upload File"}</span>
-              </label>
-              <input
-                type="file"
-                name={name}
-                id={id}
-                onChange={handleFileChange}
-                className="d-none"
-                {...rest}
-              />
-            </div>
-            <span className="text-danger">{dataError?.[name]}</span>
+                <label htmlFor={id} className="d-flex align-items-center gap-2 m-0 cursor-pointer">
+                  <FaUpload />
+                  <span>{fileName || "Upload File"}</span>
+                </label>
+                <input
+                  type="file"
+                  name={name}
+                  id={id}
+                  onChange={handleFileChange}
+                  className="d-none"
+                  required={isRequired} // Pass required prop
+                  {...rest}
+                />
+              </div>
+              <span className="text-danger">{dataError?.[name]}</span>
             </>
-          )  : type === 'select' ? (
+          ) : type === "select" ? (
             <>
-            <select name={name} className="form-control w-100"  onChange={(e)=>getValue(e)}>
-              <option>--Select--</option>
-              {options?.map((option, index) =>(
-                <option key={index} value={option.value}  selected={selectedVal==option.value}>{option.label}</option>
-              ))}
-            </select>
-            <span className="text-danger">{dataError?.[name]}</span>
+              <select
+                name={name}
+                className="form-control w-100"
+                onChange={(e) => getValue(e)}
+                required={isRequired} // Pass required prop
+              >
+                <option value="">--Select--</option>
+                {options?.map((option, index) => (
+                  <option
+                    key={index}
+                    value={option.value}
+                    selected={selectedVal === option.value}
+                  >
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+              <span className="text-danger">{dataError?.[name]}</span>
             </>
-          ) : type === 'radioFields' ? (
+          ) : type === "radioFields" ? (
             <>
               <div className="d-flex">
                 {options.map((option, index) => (
-                  <div className="me-3 d-flex" key={index}> 
-                    <input type="radio" className="me-1" id={option.value} name="example" value={option.value} />
-                    <label className="custom-control-label" htmlFor={option.value}>{option.label}</label>
+                  <div className="me-3 d-flex" key={index}>
+                    <input
+                      type="radio"
+                      className="me-1"
+                      id={option.value}
+                      name={name} // Use name prop for radio group
+                      value={option.value}
+                      required={isRequired} // Pass required prop
+                    />
+                    <label className="custom-control-label" htmlFor={option.value}>
+                      {option.label}
+                    </label>
                   </div>
                 ))}
               </div>
               <span className="text-danger">{dataError?.[name]}</span>
             </>
-        ) : (
+          ) : (
             <>
               <input
                 type={type}
@@ -115,24 +136,13 @@ const [fileName, setFileName] = useState("");
                 onChange={onChange}
                 placeholder={placeholder}
                 className={`form-control ${className}`}
+                required={isRequired} // Pass required prop
                 {...rest}
               />
               <span className="text-danger">{dataError?.[name]}</span>
             </>
           )}
         </div>
-
-        {/* Image Preview */}
-        {/* {value && type === "file" && (
-          <div className="mt-2">
-            <img
-              src={value instanceof File ? URL.createObjectURL(value) : value}
-              alt="Preview"
-              height="80"
-              style={{ borderRadius: "8px" }}
-            />
-          </div>
-        )} */}
       </div>
     </div>
   );
