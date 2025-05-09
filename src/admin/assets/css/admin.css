@@ -461,4 +461,11 @@
 .Right_contain{
     width: 30%;
 }
+.spinner-border{height: 1rem;width: 1rem;border-width: 2px;}
 /* style for dashboard end */
+
+.FieldContainer input::placeholder{opacity: 0.3;font-weight: 300;}
+/* .sidenav a.active .nav{left: -10px;background-color: ;} */
+body .CustomPaginationContainer button{background-color: transparent!important;padding: 0!important;}
+.InputContain button{border: none;}
+.InputContain svg{color:#fff;}

@@ -29,7 +29,6 @@ const CustomFormField = ({
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setFileName(file ? file.name : "");
-    setValueVia(e.target.value);
     onChange(e, isWebpAllowed);
   };
 // console.log(value,"defaultData defaultData defaultData")
@@ -84,7 +83,7 @@ const CustomFormField = ({
                   required={isRequired}
                   {...rest}
                 />
-              { value && <><button className="bg-transparent p-0" onClick={()=>setModalVia(true)}><BsEye  /></button>
+              { value && <><button type="button" className="bg-transparent p-0" onClick={()=>setModalVia(true)}><BsEye  /></button>
                 <CustomModal isOpen={modalVia} onClose={()=>setModalVia(false)}>
                   <img src={BACKEND_IMAGE_URL+value} alt="" className="w-100"/>
                 </CustomModal>
@@ -101,12 +100,10 @@ const CustomFormField = ({
                 value={value}
                 required={isRequired}
               >
-                <option value="">--Select--</option>
                 {options?.map((option, index) => (
                   <option
                     key={index}
                     value={option.value}
-                    selected={selectedVal == option.value}
                   >
                     {option.label}
                   </option>
@@ -139,7 +136,7 @@ const CustomFormField = ({
             <input
               type="hidden"
               name={name}
-              value="1"
+              value={value}
               onChange={() => {}}
             />
           ) : (

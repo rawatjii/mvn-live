@@ -4,9 +4,10 @@ import generateApi from './api/generateApi';
 import CustomTitle from './components/dashboard/utilities/CustomTitle';
 import { CustomSection, MicroBox } from "./components/dashboard/utilities/CutomTags";
 import useCrud from './hooks/useCrud';
+import CustomPagination from './components/dashboard/utilities/pagination/CustomPagination';
 import { useNavigate } from 'react-router-dom';
 export default function ProjectList() {
-    const [currentPage] = useState(1);
+    const [currentPage,setCurrentPage] = useState(1);
     const projectListApi=generateApi("project");
     const { data,deleteItem} =useCrud(projectListApi);
     const itemsPerPage = 5;
@@ -35,6 +36,8 @@ export default function ProjectList() {
       
       const handleDelete = (row) => deleteItem(row.id);
 
+      
+
   return (
     <CustomSection>
     <MicroBox>
@@ -44,7 +47,13 @@ export default function ProjectList() {
             data={paginatedData}
             onEdit={handleEdit} 
             onDelete={handleDelete}
+            startIndex={(currentPage - 1) * itemsPerPage}
           />
+              <CustomPagination
+          currentPage={currentPage}
+          totalPages={Math.ceil(data?.length / itemsPerPage)}
+          onPageChange={(page) => setCurrentPage(page)}
+        />
          
     </MicroBox>
     </CustomSection>

@@ -2,97 +2,167 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { CustomSection, MicroBox } from "../utilities/CutomTags";
 import CustomTitle from "../utilities/CustomTitle";
-import CustomForm from "../utilities/CustomForm";
+import CustomForm from "../utilities/CustomFormMicrosite";
 import generateApi from "../../../api/generateApi";
 import useCrud from "../../../hooks/useCrud";
 import CustomTable from "../utilities/custom-table/CustomTable";
 import CustomPagination from "../utilities/pagination/CustomPagination";
 import CustomModal from "../utilities/custom-modal/CustomModal";
+import { useParams } from "react-router-dom";
 
 const HeroSection = () => {
     const bannerApi = generateApi("project-banner");
     const [editModalData, setEditModalData] = useState(null);
-    const [value,setvalue]=useState('image');
-    const { data,createItem, editItem, deleteItem } =useCrud(bannerApi);
-    const [typeInput,setTypeInputs]=useState([]);
+    const [addFormType, setAddFormType] = useState('image'); // For add form
+    const [editFormType, setEditFormType] = useState('image'); // For edit form
+    const { data, createItem, editItem, deleteItem } = useCrud(bannerApi);
+    const [addTypeInputs, setAddTypeInputs] = useState([]); // For add form inputs
+    const [editTypeInputs, setEditTypeInputs] = useState([]); // For edit form inputs
+    const { project_id } = useParams();
+    const getProjectId = project_id;
 
-    useEffect(()=>{
-      let updateFileTypes=[];
-      switch(value){
+    // Update addTypeInputs based on addFormType
+    useEffect(() => {
+      let updateFileTypes = [];
+      switch (addFormType) {
         case "image": 
-        updateFileTypes= [
-          { 
-            name: "image",
-            label: "Image/ Video/ JSON",
-            type: "file",
-            col: 12,
-            isLeft:true ,
-            required:true
-          },   
-          { 
-            name: "alternative_image",
-            label: "Alternative Image",
-            type: "file",
-            col: 12,
-            isLeft:true ,
-            required:true
-          },
-          { 
-            name: "alt",
-            label: "Alt text",
-            type: "text",
-            col: 12,
-            isLeft:true ,
-            required:true
-          },  
-        ]
-        break;
-        case "iframe_link": 
-        updateFileTypes= [
-          {
-            name: "iframe",
-            label: "Iframe Link",
-            type: "text",
-            Placeholder:"Enter Iframe Link",
-            col: 12,
-            isLeft:true ,
-            required:true
-          }, 
-        ]
-        break;
-         case "json": 
-        updateFileTypes= [
-          {
-            name: "json",
-            label: "Upload JSON",
-            type: "file",
-            col: 12,
-            isLeft:true ,
-            required:true
-          }, 
-        ]
-        break;
+          updateFileTypes = [
+            { 
+              name: "image",
+              label: "Image",
+              type: "file",
+              col: 12,
+              isLeft: true,
+            },   
+            { 
+              name: "alternative_image",
+              label: "Alternative Image",
+              type: "file",
+              col: 12,
+              isLeft: true,
+            },
+            { 
+              name: "alt",
+              label: "Alt text",
+              type: "text",
+              col: 12,
+              isLeft: true,
+              isRequired: true
+            },  
+          ];
+          break;
+        case "iframe": 
+          updateFileTypes = [
+            {
+              name: "iframe",
+              label: "Iframe Link",
+              type: "text",
+              Placeholder: "Enter Iframe Link",
+              col: 12,
+              isLeft: true,
+              isRequired: true
+            }, 
+          ];
+          break;
+        case "json": 
+          updateFileTypes = [
+            {
+              name: "json",
+              label: "Upload JSON",
+              type: "file",
+              col: 12,
+              isLeft: true,
+            }, 
+          ];
+          break;
         case "video": 
-        updateFileTypes= [
-          {
-            name: "video",
-            label: "Upload Video",
-            type: "file",
-            col: 12,
-            isLeft:true,
-            required:true
-          }, 
-        ]
-        break;
+          updateFileTypes = [
+            {
+              name: "video",
+              label: "Upload Video",
+              type: "file",
+              col: 12,
+              isLeft: true,
+            }, 
+          ];
+          break;
       }
+      setAddTypeInputs(updateFileTypes);
+    }, [addFormType]);
 
-      setTypeInputs(updateFileTypes)
-    },[value])
-
+    // Update editTypeInputs based on editFormType
+    useEffect(() => {
+      let updateFileTypes = [];
+      switch (editFormType) {
+        case "image": 
+          updateFileTypes = [
+            { 
+              name: "image",
+              label: "Image",
+              type: "file",
+              col: 12,
+              isLeft: true,
+            },   
+            { 
+              name: "alternative_image",
+              label: "Alternative Image",
+              type: "file",
+              col: 12,
+              isLeft: true,
+            },
+            { 
+              name: "alt",
+              label: "Alt text",
+              type: "text",
+              col: 12,
+              isLeft: true,
+              isRequired: true
+            },  
+          ];
+          break;
+        case "iframe": 
+          updateFileTypes = [
+            {
+              name: "iframe",
+              label: "Iframe Link",
+              type: "text",
+              Placeholder: "Enter Iframe Link",
+              col: 12,
+              isLeft: true,
+              isRequired: true
+            }, 
+          ];
+          break;
+        case "json": 
+          updateFileTypes = [
+            {
+              name: "json",
+              label: "Upload JSON",
+              type: "file",
+              col: 12,
+              isLeft: true,
+            }, 
+          ];
+          break;
+        case "video": 
+          updateFileTypes = [
+            {
+              name: "video",
+              label: "Upload Video",
+              type: "file",
+              col: 12,
+              isLeft: true,
+            }, 
+          ];
+          break;
+      }
+      if (editModalData) {
+        setEditTypeInputs(updateFileTypes);
+      }
+    }, [editFormType, editModalData]);
 
     const formFields = [
       {
-        
         sectionName: "Upload Banner",
         sectionApi: "upload_banner",
         visible: true,
@@ -101,31 +171,45 @@ const HeroSection = () => {
             label: "File type",
             type: "select",
             col: 12,
-            selectedVal:'image',
+            selectedVal: addFormType,
             name: "is_type",
-            isLeft:true ,
-            options:[
-              {
-                label:'Image',
-                value:'image',
-              },
-              {
-                label:'iframe link',
-                value:'iframe_link',
-              },
-              {
-                label:'JSON',
-                value:'json',
-              }
+            isLeft: true,
+            options: [
+              { label: 'Image', value: 'image' },
+              { label: 'iframe link', value: 'iframe' },
+              { label: 'Video', value: 'video' },
+              { label: 'JSON', value: 'json' },
             ]
           },
-          ...typeInput    
+          ...addTypeInputs    
         ],
       },
-     
     ];
     
-    
+    const editFormFields = [
+      {
+        sectionName: "Edit Banner",
+        sectionApi: "upload_banner",
+        visible: true,
+        fields: [ 
+          {
+            label: "File type",
+            type: "select",
+            col: 12,
+            selectedVal: editFormType,
+            name: "is_type",
+            isLeft: true,
+            options: [
+              { label: 'Image', value: 'image' },
+              { label: 'iframe link', value: 'iframe' },
+              { label: 'Video', value: 'video' },
+              { label: 'JSON', value: 'json' },
+            ]
+          },
+          ...editTypeInputs    
+        ],
+      },
+    ];
     
     const columns = [
       { key: "", label: "S.No." },
@@ -135,17 +219,20 @@ const HeroSection = () => {
       { key: "iframe_link", label: "Iframe Link" },
     ];
     
-
     const handleCreate = (formData) => {
-      formData.append("is _type", value);
-      createItem(formData)};
+      createItem(formData);
+    };
+    
     const handleDelete = (row) => deleteItem(row.id);
+    
     const handleEditSubmit = (formData) => {
       editItem(editModalData.id, formData); 
       setEditModalData(null); 
     };
+    
     const handleEdit = (row) => {
       setEditModalData(row); 
+      setEditFormType(row.is_type || 'image'); // Initialize edit form type based on row data
     };
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -154,34 +241,29 @@ const HeroSection = () => {
     const paginatedData = data?.slice(
       (currentPage - 1) * itemsPerPage,
       currentPage * itemsPerPage
-);
+    );
 
-
-return (
-  <CustomSection customClass={"d-block"}>
-      {formFields
-      .filter((section) => section.visible)
-      .map((section) => (
-       
-          <MicroBox key={section.sectionName}>
-          <CustomTitle title={section.sectionName} />
-          <CustomForm
-            dynamicFields={section.fields}
-            isBanner={false} 
-            setValueVia={setvalue}
-
-            onSubmit={handleCreate}
-          />
-          </MicroBox>
-          
-      ))}
+    return (
+      <CustomSection customClass={"d-block"}>
+        {formFields
+          .filter((section) => section.visible)
+          .map((section) => (
+            <MicroBox key={section.sectionName}>
+              <CustomTitle title={section.sectionName} />
+              <CustomForm
+                dynamicFields={section.fields}
+                isBanner={false}
+                setValueVia={setAddFormType}
+                onSubmit={handleCreate}
+              />
+            </MicroBox>
+          ))}
         <MicroBox>
           <CustomTitle title="Our Values Table" />
           <CustomTable
             columns={columns}
             data={paginatedData}
-
-            onEdit={handleEdit} 
+            onEdit={handleEdit}
             onDelete={handleDelete}
           />
         </MicroBox>
@@ -191,22 +273,22 @@ return (
           onPageChange={(page) => setCurrentPage(page)}
         />
         {editModalData && (
-            <CustomModal
+          <CustomModal
             isOpen={!!editModalData}
             onClose={() => setEditModalData(null)}
             title="Edit Our Values"
           >
             <CustomForm
               isBanner={false}
-              dynamicFields={formFields[0].fields}
+              dynamicFields={editFormFields[0].fields}
               defaultData={editModalData}
-              setValueVia={setvalue}
+              setValueVia={setEditFormType}
               onSubmit={handleEditSubmit}
             />
           </CustomModal>
         )}
-</CustomSection>
-  );
+      </CustomSection>
+    );
 };
 
 export default HeroSection;

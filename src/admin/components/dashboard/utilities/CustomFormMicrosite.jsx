@@ -12,7 +12,7 @@ const defaultBannerFields = [
   { name: "description", type: "textarea", label: "Description", col: 12 },
 ];
 
-const CustomForm = ({
+const CustomFormMicrosite = ({
   fieldVisibility = {},
   onSubmit,
   formType = "",
@@ -28,6 +28,7 @@ const CustomForm = ({
   const Fields = isBanner ? defaultBannerFields : dynamicFields;
   const [isLoading, setIsLoading] = useState(false);
   const params=useParams();
+  const project_Id=params['project_id'];
   const visibleFields = Fields.map((field) => {
     const visibilityConfig = fieldVisibility[field.name];
     return {
@@ -42,13 +43,17 @@ const CustomForm = ({
   const [resetKey, setResetKey] = useState(Date.now());
   useEffect(()=>{
     setFormData(defaultData);
+
   },[])
 
   useEffect(() => {
+    
     const currentFields = isBanner ? defaultBannerFields : dynamicFields;
     if (Object.keys(initialData).length > 0) {
+      
       const updatedForm = {};
       currentFields.forEach((field) => {
+        console.log(field)
         updatedForm[field.name] =
           field.type === "file" ? initialData[field.name] || null : initialData[field.name] || "";
       });
@@ -56,6 +61,10 @@ const CustomForm = ({
       if (!("is_theme" in updatedForm)) {
         updatedForm["is_theme"] = "1";
       }
+      if (!("project_id" in updatedForm)) {
+        updatedForm["project_id"] = project_Id;
+      }
+      
       
       setFormData(updatedForm);
     } else {
@@ -80,14 +89,17 @@ const CustomForm = ({
   
     setFormData((prev) => ({ ...prev, [name]: files[0] }));
   };
+  // alert(project_Id)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    
+    // return
     try {
       const payload = new FormData();
-  
+      if(project_Id){
+      payload.append('project_id',project_Id);
+    }
       visibleFields
         .filter((field) => field.condition)
         .forEach((field) => {
@@ -96,11 +108,11 @@ const CustomForm = ({
             payload.append(field.name, value);
           }
         });
-  
-  
       if (onSubmit) await onSubmit(payload);
-  
-      setFormData({});
+      if(!params['project_id']){
+        setFormData({});
+    
+      }
       setResetKey(Date.now());
     } catch (error) {
       console.error('Form submission error:', error);
@@ -137,4 +149,4 @@ const CustomForm = ({
   );
 };
 
-export default CustomForm;
+export default CustomFormMicrosite;
