@@ -26,13 +26,13 @@ const CustomFormField = ({
 }) => {
   const [fileName, setFileName] = useState("");
   const [modalVia,setModalVia]=useState();
-
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setFileName(file ? file.name : "");
+    setValueVia(e.target.value);
     onChange(e, isWebpAllowed);
   };
-console.log(value,"defaultData defaultData defaultData")
+// console.log(value,"defaultData defaultData defaultData")
   useEffect(() => {
     if (type === "file") {
       if (value instanceof File) {
@@ -106,7 +106,7 @@ console.log(value,"defaultData defaultData defaultData")
                   <option
                     key={index}
                     value={option.value}
-                    selected={selectedVal === option.value}
+                    selected={selectedVal == option.value}
                   >
                     {option.label}
                   </option>

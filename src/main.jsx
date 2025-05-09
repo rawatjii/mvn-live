@@ -250,12 +250,15 @@ const router = createBrowserRouter([
           { path: "media-centre", element: <AdminMediaCentre /> },
           { path: "contact-us", element: <AdminContactUs /> },
           { path: "project-list", element: <ProjectList /> },
-          { path: "microsite", element:<MicroSidebar />, children:[
+          { path: "microsite", element:<MicroSidebar />,
+            children:[
             {path:"", element:<BasicMicroSite />},
-            {path:"overview", element:<OverviewMicroSite />},
-            {path:"banner", element:<HeroSection />},
-          ] },
-          { path: "microsite/:project_id", element:<MicroSidebar />, children:[
+          //   {path:"overview", element:<OverviewMicroSite />},
+          //   {path:"banner", element:<HeroSection />},
+          ] 
+        },
+          { path: "microsite/:project_id", element:<MicroSidebar />, 
+            children:[
             {path:"", element:<BasicMicroSite />},
             {path:"overview", element:<OverviewMicroSite />},
             {path:"banner", element:<HeroSection />},

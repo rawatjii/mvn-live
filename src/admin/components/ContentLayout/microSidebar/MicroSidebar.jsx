@@ -11,7 +11,7 @@ const MicroSidebar = () => {
     <>
       <section className="right-side right-sidenav">
         <div className="sidenav right">
-          <NavLink to={import.meta.env.VITE_APP_URL + "admin/microsite"}>
+          <NavLink to={""}>
             <div className="nav active">
               <div className="icon">
                 <FaRegFileAlt fontSize={24} />
@@ -20,7 +20,7 @@ const MicroSidebar = () => {
             </div>
           </NavLink>
 
-          <NavLink to={import.meta.env.VITE_APP_URL + "admin/microsite/banner"}>
+          <NavLink to={"banner"}>
             <div className="nav">
               <div className="icon">
                 <IoMdInformationCircleOutline fontSize={28} />
@@ -29,7 +29,7 @@ const MicroSidebar = () => {
             </div>
           </NavLink>
 
-          <NavLink to={import.meta.env.VITE_APP_URL + "admin/microsite/overview"}>
+          <NavLink to={"overview"}>
             <div className="nav">
               <div className="icon">
                 <IoMdInformationCircleOutline fontSize={28} />
@@ -38,7 +38,7 @@ const MicroSidebar = () => {
             </div>
           </NavLink>
 
-          <NavLink to={import.meta.env.VITE_APP_URL + "admin/microsite/pricelist"}>
+          <NavLink to={"pricelist"}>
             <div className="nav">
               <div className="icon">
                 <LuIndianRupee fontSize={24} />
@@ -47,7 +47,7 @@ const MicroSidebar = () => {
             </div>
           </NavLink>
 
-          <NavLink to={import.meta.env.VITE_APP_URL + "admin/microsite/location"}>
+          <NavLink to={"location"}>
             <div className="nav">
               <div className="icon">
                 <GrLocation  fontSize={24} />

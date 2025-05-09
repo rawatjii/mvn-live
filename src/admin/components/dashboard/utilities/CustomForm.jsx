@@ -21,12 +21,13 @@ const CustomForm = ({
   buttonLabel = "Save",
   initialData = {}, // For edit mode
   defaultData,
-  dataError
+  dataError,
+  setValueVia,
+
 }) => {
   const Fields = isBanner ? defaultBannerFields : dynamicFields;
   const [isLoading, setIsLoading] = useState(false);
   const params=useParams();
-
   const visibleFields = Fields.map((field) => {
     const visibilityConfig = fieldVisibility[field.name];
     return {
@@ -64,7 +65,8 @@ const CustomForm = ({
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name);
+    name=="is_type"&&setValueVia(value);
+
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -117,7 +119,7 @@ const CustomForm = ({
                 {...field}
                 id={`${field.name}_${resetKey}`}
                 name={field.name}
-                value={formData[field.name] || ""} // Ensure empty string for unset values
+                value={formData[field.name] || ""}
                 onChange={field.type == "file" ? handleFileChange : handleChange}
                 resetKey={resetKey}
               />

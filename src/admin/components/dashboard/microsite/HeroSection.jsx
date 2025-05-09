@@ -27,6 +27,7 @@ const HeroSection = () => {
             type: "file",
             col: 12,
             isLeft:true ,
+            required:true
           },   
           { 
             name: "alternative_image",
@@ -34,6 +35,7 @@ const HeroSection = () => {
             type: "file",
             col: 12,
             isLeft:true ,
+            required:true
           },
           { 
             name: "alt",
@@ -41,6 +43,7 @@ const HeroSection = () => {
             type: "text",
             col: 12,
             isLeft:true ,
+            required:true
           },  
         ]
         break;
@@ -53,6 +56,7 @@ const HeroSection = () => {
             Placeholder:"Enter Iframe Link",
             col: 12,
             isLeft:true ,
+            required:true
           }, 
         ]
         break;
@@ -64,6 +68,7 @@ const HeroSection = () => {
             type: "file",
             col: 12,
             isLeft:true ,
+            required:true
           }, 
         ]
         break;
@@ -75,6 +80,7 @@ const HeroSection = () => {
             type: "file",
             col: 12,
             isLeft:true,
+            required:true
           }, 
         ]
         break;
@@ -95,7 +101,6 @@ const HeroSection = () => {
             label: "File type",
             type: "select",
             col: 12,
-            setValueVia:setvalue,
             selectedVal:'image',
             name: "is_type",
             isLeft:true ,
@@ -163,6 +168,8 @@ return (
           <CustomForm
             dynamicFields={section.fields}
             isBanner={false} 
+            setValueVia={setvalue}
+
             onSubmit={handleCreate}
           />
           </MicroBox>
@@ -173,6 +180,7 @@ return (
           <CustomTable
             columns={columns}
             data={paginatedData}
+
             onEdit={handleEdit} 
             onDelete={handleDelete}
           />
@@ -192,6 +200,7 @@ return (
               isBanner={false}
               dynamicFields={formFields[0].fields}
               defaultData={editModalData}
+              setValueVia={setvalue}
               onSubmit={handleEditSubmit}
             />
           </CustomModal>
