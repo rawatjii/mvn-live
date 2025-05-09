@@ -344,6 +344,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
               <DownloadBrochure
                 is360Available={false}
                 show360Video={show360Video}
+                showAwards={true}
               />
             </Suspense>
           </div>

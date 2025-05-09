@@ -4357,6 +4357,15 @@ table.bg_transparent{
   }
 }
 
+.micro_overview .discount_patch{
+  display: table;
+  margin: auto;
+  max-width: 160px;
+  position: absolute;
+  top: 130px;
+  right: 150px;
+}
+
 
 /* start responsive */
 /* by bhupendra */
@@ -4968,7 +4977,7 @@ table.bg_transparent{
     }
 
     .bar {
-      margin: 35px auto 0;
+      margin: 0px auto 0;
       width: 60px;
     }
 
@@ -5699,6 +5708,16 @@ table.bg_transparent{
 
   .offers_section{
     padding:0;
+  }
+
+  .micro_overview .discount_patch{
+    position: relative;
+    top: unset;
+    right: unset;
+  }
+
+  .micro_overview .rera-number{
+    margin-top:30px;
   }
 
 }

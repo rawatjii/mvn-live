@@ -69,7 +69,7 @@ const MicroOverview = React.memo(({ data }) => {
     };
   }, [ended1, ended2, ended3]);
 
-  const { title, location, extra, desc ,rera ,counterHeading, bankDetails, showAwards } = data;
+  const { title, location, extra, desc ,rera ,counterHeading, bankDetails, showAwards, discountUrl } = data;
 
   return (
     <section className="section micro_overview text-center pb-0 pt-4" aria-label="Overview Section">
@@ -130,6 +130,8 @@ const MicroOverview = React.memo(({ data }) => {
           <span className="bar"></span>
           </>}
         </div>
+
+        {discountUrl ? <img src={discountUrl} className="img-fluid discount_patch" /> : undefined}
 
         {Array.isArray(rera) ? (
           <>

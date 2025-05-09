@@ -168,6 +168,7 @@ export const data = {
     counterHeading:true,
     showAwards:true,
     rera:"RERA NO. RC/REP/HARERA/GGM/889/629/2024/116",
+    discountUrl:`${CONFIG.API_URL}patch/discount.webp`
   },
   LargeElevationSection: {
     title: ['Unseen', 'Unheard', 'Unimagined'],
