@@ -126,7 +126,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "blogs/details/:slug",
+        path: "blogs/:slug",
         element: (
           <FrontendRoute loaderType="blog-detail">
             <BlogDetails />

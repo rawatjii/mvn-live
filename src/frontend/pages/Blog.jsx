@@ -71,7 +71,7 @@ function Blog() {
                         <div className="blog-platter-detail-btn">
                           <p>{el.date}</p>
                           <Link
-                            to={`/blogs/details/${el.slug}`}
+                            to={`/blogs/${el.slug}`}
                             className="btn btn_style2"
                             onClick={() => {
                               localStorage.setItem("selectedBlog", i);

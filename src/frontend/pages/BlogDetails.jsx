@@ -104,7 +104,7 @@ function BlogDetails() {
                             <h4>{el.title}</h4>
                             <div className="blog-platter-detail-btn">
                               <p>{el.date}</p>
-                              <Link className="btn btn_style2"   to={`/blogs/details/${el.slug}`}>
+                              <Link className="btn btn_style2"   to={`/blogs/${el.slug}`}>
                                 View Details
                               </Link>
                             </div>
