@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import CustomFile from "./CustomFile";
 import ReactQuill from 'react-quill';
 import { FaUpload } from "react-icons/fa";
+import { BACKEND_IMAGE_URL } from "../../../../config/config";
+import { BsEye } from "react-icons/bs";
+import CustomModal from "./custom-modal/CustomModal";
 
 import 'react-quill/dist/quill.snow.css';
 
@@ -25,15 +28,15 @@ const CustomFormField = ({
   isRequired = false,
   ...rest
 }) => {
-
-const [fileName, setFileName] = useState(""); 
-
+  const [fileName, setFileName] = useState("");
+  const [modalVia,setModalVia]=useState();
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setFileName(file ? file.name : "");
-    onChange(e, isWebpAllowed); // call parent onChange
+    setValueVia(e.target.value);
+    onChange(e, isWebpAllowed);
   };
-
+// console.log(value,"defaultData defaultData defaultData")
   useEffect(() => {
     if (type === "file") {
       if (value instanceof File) {
@@ -46,15 +49,13 @@ const [fileName, setFileName] = useState("");
       }
     }
   }, [resetKey, value, type]);
-
-  const getValue=(e)=>{
-    setValueVia(e.target.value)
-  }
-
+// console.log(type)
   return (
-    <div className={`FieldContainer mb-3 ${isLeft ? "row" : ""}`}>
+    <div className={`FieldContainer mb-3 ${isLeft ? "row" : ""} `}>
       <div className={isLeft ? "col-3" : undefined}>
-        <label htmlFor={name} className="label">{`${label}${isLeft ? ":" : ""}`}</label>
+        {type !== "hidden" && (
+          <label htmlFor={name} className="label">{`${label}${isLeft ? ":" : ""}`}</label>
+        )}
       </div>
       <div className={isLeft ? "col-9" : undefined}>
         <div className="InputContain">
@@ -74,39 +75,65 @@ const [fileName, setFileName] = useState("");
           ) : type === "file" ? (
             <>
               <div className="custom-file-wrapper form-control d-flex justify-content-between align-items-center">
-              <label htmlFor={id} className="d-flex align-items-center gap-2 m-0 cursor-pointer">
-                <FaUpload />
-                <span>{fileName || "Upload File"}</span>
-              </label>
-              <input
-                type="file"
-                name={name}
-                id={id}
-                onChange={handleFileChange}
-                className="d-none"
-                required={isRequired}
-                {...rest}
-              />
+                <label htmlFor={id} className="d-flex align-items-center gap-2 m-0 cursor-pointer">
+                  <FaUpload />
+                  <span>{fileName || "Upload File"}</span>
+                </label>
+                <input
+                  type="file"
+                  name={name}
+                  id={id}
+                  onChange={handleFileChange}
+                  className="d-none"
+                  required={isRequired}
+                  {...rest}
+                />
+              { value && <><button className="bg-transparent p-0" onClick={()=>setModalVia(true)}><BsEye  /></button>
+                <CustomModal isOpen={modalVia} onClose={()=>setModalVia(false)}>
+                  <img src={BACKEND_IMAGE_URL+value} alt="" className="w-100"/>
+                </CustomModal>
+              </>}
             </div>
-            <span className="text-danger">{dataError?.[name]}</span>
+              <span className="text-danger">{dataError?.[name]}</span>
             </>
-          )  : type === 'select' ? (
+          ) : type === "select" ? (
             <>
-            <select name={name} className="form-control w-100"  onChange={(e)=>getValue(e)}>
-              <option>--Select--</option>
-              {options?.map((option, index) =>(
-                <option key={index} value={option.value}  selected={selectedVal==option.value}>{option.label}</option>
-              ))}
-            </select>
-            <span className="text-danger">{dataError?.[name]}</span>
+              <select
+                name={name}
+                className="form-control w-100"
+                onChange={onChange}
+                value={value}
+                required={isRequired}
+              >
+                <option value="">--Select--</option>
+                {options?.map((option, index) => (
+                  <option
+                    key={index}
+                    value={option.value}
+                    selected={selectedVal == option.value}
+                  >
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+              <span className="text-danger">{dataError?.[name]}</span>
             </>
-          ) : type === 'radioFields' ? (
+          ) : type === "radioFields" ? (
             <>
               <div className="d-flex">
                 {options.map((option, index) => (
-                  <div className="me-3 d-flex" key={index}> 
-                    <input type="radio" className="me-1" id={option.value} name="example" value={option.value} />
-                    <label className="custom-control-label" htmlFor={option.value}>{option.label}</label>
+                  <div className="me-3 d-flex" key={index}>
+                    <input
+                      type="radio"
+                      className="me-1"
+                      id={option.value}
+                      name={name}
+                      value={option.value}
+                      required={isRequired}
+                    />
+                    <label className="custom-control-label" htmlFor={option.value}>
+                      {option.label}
+                    </label>
                   </div>
                 ))}
               </div>
@@ -117,7 +144,14 @@ const [fileName, setFileName] = useState("");
               <ReactQuill theme="snow" value={value} onChange={onChange} />
               <span className="text-danger">{dataError?.[name]}</span>
             </>
-      ) : (
+      ) : type === "hidden" ? (
+            <input
+              type="hidden"
+              name={name}
+              value="1"
+              onChange={() => {}}
+            />
+          ) : (
             <>
               <input
                 type={type}
@@ -133,18 +167,6 @@ const [fileName, setFileName] = useState("");
             </>
           )}
         </div>
-
-        {/* Image Preview */}
-        {/* {value && type === "file" && (
-          <div className="mt-2">
-            <img
-              src={value instanceof File ? URL.createObjectURL(value) : value}
-              alt="Preview"
-              height="80"
-              style={{ borderRadius: "8px" }}
-            />
-          </div>
-        )} */}
       </div>
     </div>
   );

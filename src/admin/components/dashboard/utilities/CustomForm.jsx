@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Form } from "./CutomTags"; // Assuming your styled form wrapper
 import CustomFormField from "./CustomFormField";
 import CustomButton from "./CutomButton";
+import { useParams } from "react-router-dom";
 
 const defaultBannerFields = [
   { name: "title", type: "text", label: "Title", col: 6 },
@@ -20,11 +21,13 @@ const CustomForm = ({
   buttonLabel = "Save",
   initialData = {}, // For edit mode
   defaultData,
-  dataError
+  dataError,
+  setValueVia,
+
 }) => {
   const Fields = isBanner ? defaultBannerFields : dynamicFields;
-
-
+  const [isLoading, setIsLoading] = useState(false);
+  const params=useParams();
   const visibleFields = Fields.map((field) => {
     const visibilityConfig = fieldVisibility[field.name];
     return {
@@ -35,27 +38,35 @@ const CustomForm = ({
       dataError,
     };
   });
-
-  const [formData, setFormData] = useState( defaultData || {});
+  const [formData, setFormData] = useState(defaultData || {});
   const [resetKey, setResetKey] = useState(Date.now());
+  // console.log(,"defaultData 1212313211231")
+  useEffect(()=>{
+    setFormData(defaultData);
+  },[])
 
-  // Update formData whenever initialData changes (for edit mode)
   useEffect(() => {
     const currentFields = isBanner ? defaultBannerFields : dynamicFields;
-  
     if (Object.keys(initialData).length > 0) {
       const updatedForm = {};
       currentFields.forEach((field) => {
         updatedForm[field.name] =
           field.type === "file" ? initialData[field.name] || null : initialData[field.name] || "";
       });
+      if (!("is_theme" in updatedForm)) {
+        updatedForm["is_theme"] = "1";
+      }
       setFormData(updatedForm);
+    } else {
+      setFormData((prev) => ({ ...prev, is_theme: "1" }));
     }
-    
-  }, [initialData, isBanner, dynamicFields]);
+  }, [ isBanner, dynamicFields]);
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    name=="is_type"&&setValueVia(value);
+
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -69,52 +80,60 @@ const CustomForm = ({
     setFormData((prev) => ({ ...prev, [name]: files[0] }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const payload = new FormData();
+    setIsLoading(true);
+    
+    try {
+      const payload = new FormData();
   
-    visibleFields
-      .filter((field) => field.condition)
-      .forEach((field) => {
-        const value = formData[field.name];
-        if (value != null) { // null or undefined
-          payload.append(field.name, value);
-        }
-      });
+      visibleFields
+        .filter((field) => field.condition)
+        .forEach((field) => {
+          const value = formData[field.name];
+          if (value != null) {
+            payload.append(field.name, value);
+          }
+        });
   
-    console.log('payload', payload); // Debug to check the payload contents
   
-    if (onSubmit) onSubmit(payload);
+      if (onSubmit) await onSubmit(payload);
   
-    // Reset the form data after submit
-    setFormData({});
-    setResetKey(Date.now());
+      setFormData({});
+      setResetKey(Date.now());
+    } catch (error) {
+      console.error('Form submission error:', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
   
-
   return (
     <Form onSubmit={handleSubmit}>
       <div className={formType === "block" ? "" : "row"}>
         {visibleFields
           .filter((field) => field.condition !== false)
           .map((field) => (
-            <div className={field.isLeft === true ? '' : `col-${field.col || 12}`} key={`${resetKey}-${field.name}`}>
+            <div className={`${(field.isLeft === true ? '' : `col-${field.col || 12}`)} ${field.type=="hidden"&&"d-none"}`} key={`${resetKey}-${field.name}`}>
               <CustomFormField
                 {...field}
                 id={`${field.name}_${resetKey}`}
                 name={field.name}
-                value={formData[field.name] || ""} // Ensure empty string for unset values
-                onChange={field.type === "file" ? handleFileChange : handleChange}
+                value={formData[field.name] || ""}
+                onChange={field.type == "file" ? handleFileChange : handleChange}
                 resetKey={resetKey}
               />
-            
             </div>
           ))}
       </div>
-      <CustomButton text={buttonLabel} type="submit" />
+      <CustomButton 
+        text={buttonLabel} 
+        type="submit" 
+        isLoading={isLoading}
+        disabled={isLoading}
+      />
     </Form>
   );
-  
 };
 
 export default CustomForm;

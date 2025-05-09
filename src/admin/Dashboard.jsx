@@ -209,7 +209,7 @@ const Dashboard = () => {
                       <h4>No. of Project</h4>
                       <ul  className="d-flex align-items-center project_card">
                         <li>
-                          <a href="Project-list.html"> View Details</a>
+                          <Link to="project-list"> View Details</Link>
                         </li>
                         <li className="project_btn">
                           <Link to={`${import.meta.env.VITE_APP_ADMIN_ROOT}microsite`}>
