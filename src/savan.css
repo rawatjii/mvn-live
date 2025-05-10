@@ -2012,7 +2012,7 @@ section.section.projects_section.pb-0 .new-launch-patch { position: absolute;top
 
 
 
-.micro_overview .counter-flex-box { display: inline-flex; justify-content: space-between; margin: 0px auto; margin-bottom: 30px; gap: 100px;}
+.micro_overview .counter-flex-box { display: inline-flex; justify-content: space-between; margin: 0px auto; gap: 100px;}
 
 
 .counter-heading {
@@ -2526,7 +2526,7 @@ section.section.other_projects_section.pb-0 {padding-top: 60px;}
 .projects_section .sec_title span {line-height: 24px;}
 .projects_section {.plane_icon {position: absolute;top: 9%;left: 12%;width: 87px;}}
 .flex-box h4{font-size:18px;}
-.micro_overview .counter-flex-box {margin-bottom: 30px; gap: 40px;}
+.micro_overview .counter-flex-box {gap: 40px;}
 .micro_overview .counter-heading {font-size: 14px; font-weight: 300; line-height: 24px;margin-bottom: 30px;}
 .slider-content {
   position: absolute;

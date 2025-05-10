@@ -28,8 +28,8 @@ const MvnMall = ()=>{
           <iframe
             ref={iframeRef}
             src={isMobile 
-              ? "https://player.vimeo.com/video/1079671210?background=1&autopause=0&title=0&byline=0&portrait=0" 
-              : "https://player.vimeo.com/video/1079671210?background=1&autopause=0&title=0&byline=0&portrait=0"}
+              ? "https://player.vimeo.com/video/1079671210?autopause=0&loop=1&title=0&byline=0&portrait=0" 
+              : "https://player.vimeo.com/video/1079671210?autopause=0&loop=1&title=0&byline=0&portrait=0"}
             // src={isMobile 
             //   ? "https://player.vimeo.com/video/1078921802?background=1&autopause=0&title=0&byline=0&portrait=0" 
             //   : "https://player.vimeo.com/video/1078294218?background=1&autopause=0&title=0&byline=0&portrait=0"}

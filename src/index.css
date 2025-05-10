@@ -2814,7 +2814,7 @@ footer {
     width: 80px;
     background: #3d3d3d;
     display: block;
-    margin: 50px auto 0;
+    margin: 50px auto;
     border-radius: 100px;
   }
 
@@ -4366,6 +4366,19 @@ table.bg_transparent{
   right: 150px;
 }
 
+.micro_overview .discount{
+  text-transform: uppercase;
+}
+
+.micro_overview .bar{
+  height: 1px;
+  width: 80px;
+  background: #3d3d3d;
+  display: block;
+  margin: 50px auto;
+  border-radius: 100px; 
+}
+
 
 /* start responsive */
 /* by bhupendra */
@@ -4977,7 +4990,7 @@ table.bg_transparent{
     }
 
     .bar {
-      margin: 0px auto 0;
+      margin: 30px auto;
       width: 60px;
     }
 
@@ -4994,6 +5007,10 @@ table.bg_transparent{
         max-width: 200px;
       }
     }
+  }
+
+  .micro_overview .bar{
+    margin: 30px auto;
   }
 
   /* peacock section */

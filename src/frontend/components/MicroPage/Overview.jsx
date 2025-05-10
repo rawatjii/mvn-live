@@ -69,12 +69,12 @@ const MicroOverview = React.memo(({ data }) => {
     };
   }, [ended1, ended2, ended3]);
 
-  const { title, location, extra, desc ,rera ,counterHeading, bankDetails, showAwards, discountUrl } = data;
+  const { title, location, extra, desc ,rera ,counterHeading, bankDetails, showAwards, discountUrl, isDiscountAvailable } = data;
 
   return (
     <section className="section micro_overview text-center pb-0 pt-4" aria-label="Overview Section">
       <Container>
-        <div className="overview_card px-0">
+        <div className="overview_card px-0 pb-0">
           <div className="aboutUs-card_heading">
             <div className="diamond_img_strip">
               <img src={diamondIMG} className="img-fluid" alt="diamond image" />
@@ -131,7 +131,12 @@ const MicroOverview = React.memo(({ data }) => {
           </>}
         </div>
 
-        {discountUrl ? <img src={discountUrl} className="img-fluid discount_patch" /> : undefined}
+        {/* {discountUrl ? <img src={discountUrl} className="img-fluid discount_patch" /> : undefined} */}
+        {!counterHeading && isDiscountAvailable && <span className="bar"></span>}
+
+        {isDiscountAvailable ? <p  className="des_style1 text-center discount">2% discount for Indian Armed Forces Personnel</p> : undefined}
+
+        {isDiscountAvailable ? <span className="bar"></span> : undefined}
 
         {Array.isArray(rera) ? (
           <>
