@@ -12,6 +12,9 @@ import CustomPagination from "./components/dashboard/utilities/pagination/Custom
 import generateApi from "./api/generateApi";
 import useCrud from "./hooks/useCrud";
 // Simulated backend response
+
+
+
 const metaFields = [
   { name: "heading", label: "Title", type: "text", col: 4, isRequired: true },
   { name: "date", label: "Date", type: "date", col: 4, isRequired: true },
@@ -34,7 +37,7 @@ const metaFields = [
     isWebpAllowed: false,
     isRequired: true,
   },
-  { name: "description", label: "Description", type: "textarea", col: 12, isRequired: true },
+  // { name: "description", label: "Description", type: "textarea", col: 12, isRequired: true },
   { name: "description", label: "Description", type: "editor", col: 12, isRequired: true },
 ];
 

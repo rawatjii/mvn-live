@@ -87,17 +87,20 @@ const CustomForm = ({
     
     try {
       const payload = new FormData();
-  
       visibleFields
-        .filter((field) => field.condition)
-        .forEach((field) => {
-          const value = formData[field.name];
-          if (value != null) {
-            payload.append(field.name, value);
-          }
-        });
-  
-  
+      .filter((field) => field.condition)
+      .forEach((field) => {
+        debugger
+        // if(field.name['description']){
+        //   console.log('description value', field.name['description'])
+        // }
+        // return;
+        const value = formData[field.name];
+        if (value != null) {
+          payload.append(field.name, value);
+        }
+      });
+
       if (onSubmit) await onSubmit(payload);
   
       setFormData({});

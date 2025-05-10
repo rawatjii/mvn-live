@@ -30,6 +30,7 @@ const CustomFormField = ({
 }) => {
   const [fileName, setFileName] = useState("");
   const [modalVia,setModalVia]=useState();
+  const [quillContent,setQuillContent]=useState('');
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setFileName(file ? file.name : "");
@@ -84,7 +85,6 @@ const CustomFormField = ({
                   id={id}
                   onChange={handleFileChange}
                   className="d-none"
-                  required={isRequired}
                   {...rest}
                 />
               { value && <><button type="button" className="bg-transparent p-0" onClick={()=>setModalVia(true)}><BsEye  /></button>
@@ -102,7 +102,6 @@ const CustomFormField = ({
                 className="form-control w-100"
                 onChange={onChange}
                 value={value}
-                required={isRequired}
               >
                 {options?.map((option, index) => (
                   <option
@@ -126,7 +125,6 @@ const CustomFormField = ({
                       id={option.value}
                       name={name}
                       value={option.value}
-                      required={isRequired}
                     />
                     <label className="custom-control-label" htmlFor={option.value}>
                       {option.label}
@@ -138,7 +136,8 @@ const CustomFormField = ({
             </>
         ) : type === 'editor' ? (
             <>
-              <ReactQuill theme="snow" value={value} onChange={onChange} />
+              <ReactQuill theme="snow" value={quillContent} onChange={(value, delta, source, editor)=>setQuillContent(editor.root.innerHTML)} /> 
+              <div dangerouslySetInnerHTML={{__html:quillContent}} />
               <span className="text-danger">{dataError?.[name]}</span>
             </>
       ) : type === "hidden" ? (
