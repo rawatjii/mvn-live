@@ -166,7 +166,7 @@ export const data = {
     extra: "AN EPITOME OF GLOBAL LUXURY NOW IN GURUGRAM",
     desc: "Gurugram is set to redefine luxury living with the launch  of MVN ultra-luxurious 5.5 BHK apartments, offering unmatched opulence. Combining the grandeur of Dubai and New York, these residences feature cutting-edge designs, premium amenities, and breathtaking views. Experience an elite lifestyle with sophistication and comfort at its pinnacle, like never before!",
     counterHeading:true,
-    rera:"RERA NO. RC/REP/HARERA/GGM/889/629/2024/116",
+    rera:"RERA NO. RC/REP/HARERA/GGM/889/621/2024/116",
   },
   LargeElevationSection: {
     title: ['Unseen', 'Unheard', 'Unimagined'],
