@@ -1,29 +1,36 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { FaRegFileAlt } from "react-icons/fa";
-import { IoMdInformationCircleOutline } from "react-icons/io";
+import { IoMdInformationCircleOutline,IoIosImage } from "react-icons/io";
 import { LuIndianRupee } from "react-icons/lu";
 import { GrLocation } from "react-icons/gr";
-
-
+import { useParams } from "react-router-dom";
 const MicroSidebar = () => {
+  const getProject_id=useParams();
+  console.log(getProject_id,"asd")
+  // const location=useLocation();
+  // const urlLastSegment=location.split("/").pop();
+  // console.log(urlLastSegment)
+  // console.log()
   return (
     <>
       <section className="right-side right-sidenav">
         <div className="sidenav right">
           <NavLink to={""}>
-            <div className="nav active">
+            <div className={`nav active`}>
               <div className="icon">
                 <FaRegFileAlt fontSize={24} />
               </div>
               <div className="description">Basic</div>
             </div>
           </NavLink>
-
+          {getProject_id['project_id']
+&&
+          <>
           <NavLink to={"banner"}>
             <div className="nav">
               <div className="icon">
-                <IoMdInformationCircleOutline fontSize={28} />
+                <IoIosImage fontSize={28} />
               </div>
               <div className="description">Banner</div>
             </div>
@@ -82,6 +89,7 @@ const MicroSidebar = () => {
               <div className="description">Builder</div>
             </div>
           </a>
+          </>}
         </div>
       </section>
       <Outlet />

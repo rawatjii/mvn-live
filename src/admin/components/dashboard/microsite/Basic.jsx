@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { CustomSection, MicroBox } from "../utilities/CutomTags";
 import CustomTitle from "../utilities/CustomTitle";
-import CustomForm from "../utilities/CustomForm";
+import CustomForm from "../utilities/CustomFormMicrosite";
 import generateApi from "../../../api/generateApi";
 import useCrud from "../../../hooks/useCrud";
-import CustomTable from "../utilities/custom-table/CustomTable";
 import { useParams } from "react-router-dom";
 
 
@@ -35,8 +34,8 @@ const formFields =
       { name: "is_theme", label: "", Placeholder:"Enter Project Name", type: "hidden", col: 6,value:1 },
       { name: "name", label: "Project Name", Placeholder:"Enter Project Name", type: "text", col: 6,isRequired:true },
       { name: "slug", label: "Project Slug", Placeholder:'project-slug', type: "text", col: 6,isRequired:true },
-      { name: "image", label: "Project image",  Placeholder:"Enter Project Typology", type: "file", col: 6,isRequired:true },
-      { name: "alternative_image", label: "Project image",  Placeholder:"Enter Project Typology", type: "file", col: 6,isRequired:true },
+      { name: "image", label: "Project image",  Placeholder:"Enter Project Typology", type: "file", col: 6, },
+      { name: "alternative_image", label: "Project image",  Placeholder:"Enter Project Typology", type: "file", col: 6 },
       { name: "phone_ivr", label: "Phone IVR", Placeholder:"xxxxxxxxxx", type: "text", col: 6,isRequired:true },
       { name: "rera_no", label: "RERA NO", Placeholder:"EX/MM/MM/MM", type: "text", col: 6,isRequired:true },
       { name: "meta_title", label: "Meta Title", Placeholder:"Enter Meta Title", type: "text", col: 6},
@@ -46,10 +45,14 @@ const formFields =
   };
  
   
-const handleCreate = (formData) => {createItem(formData)};
+const handleCreate = (formData) => {
+  
+  createItem(formData,"basic")
+
+
+};
 const handleDelete = (row) => deleteItem(row.id);
 const handleEditSubmit = (formData) => {
-  
   editItem(project_Id,formData); 
 };
 

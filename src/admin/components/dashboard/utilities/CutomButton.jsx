@@ -2,41 +2,21 @@ const CustomButton = ({ text = "Button", className = "", onClick, isLoading = fa
   return (
     <div className="btn-save">
       <button 
-        className={`save-btn ${className} ${isLoading ? 'loading' : ''}`} 
+        className={`save-btn position-relative ${className} ${isLoading ? 'loading' : ''}`} 
         onClick={onClick}
         disabled={disabled}
       >
         {isLoading ? (
-          <span className="loader"></span>
+          <div className="d-flex  align-items-center">Loading...
+          <div class="spinner-border m-2" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        </div>
         ) : (
           text
         )}
       </button>
-      <style jsx>{`
-        .save-btn {
-          position: relative;
-          padding: 8px 16px;
-          cursor: pointer;
-        }
-        .save-btn:disabled {
-          opacity: 0.6;
-          cursor: not-allowed;
-        }
-        .loader {
-          display: inline-block;
-          width: 20px;
-          height: 20px;
-          border: 2px solid #ffffff;
-          border-radius: 50%;
-          border-top-color: transparent;
-          animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-          to {
-            transform: rotate(360deg);
-          }
-        }
-      `}</style>
+      
     </div>
   );
 };

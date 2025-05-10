@@ -1,11 +1,13 @@
 // src/hooks/useCrud.js
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const useCrud = (apiService) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const navigate=useNavigate();
 
   const fetchAll = async () => {
     setLoading(true);
@@ -29,10 +31,13 @@ const useCrud = (apiService) => {
     error,
     fetchAll,
 
-    createItem: async (item) => {
+    createItem: async (item,pagevia) => {
       try {
         await apiService.create(item);
         toast.success("Data added successfully!");
+        if(pagevia=="basic"){
+          navigate("/admin/project-list")
+        }
         await fetchAll(); 
       } catch (err) {
         console.error('error while create element', err.response?.data?.errors || "Failed to add value");
