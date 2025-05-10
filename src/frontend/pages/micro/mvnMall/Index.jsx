@@ -83,7 +83,7 @@ export const mvnMallData = {
     title: "MVN Mall",
     extra: "The Pinnacle of Luxury Shopping",
     desc: "Experience unparalleled elegance at MVN Mall , where world-class brands converge in an architecturally stunning setting. Indulge in a curated selection of premium boutiques, gourmet dining, and exclusive entertainment options, redefining luxury retail.",
-    rera:"RERA NO. RC/REP/HARERA/GGM/889/629/2024/116",
+    rera:"RERA NO. RC/REP/HARERA/GGM/889/621/2024/116",
     discountUrl:`${API_URL}patch/discount.webp`,
     isDiscountAvailable:true,
   },
