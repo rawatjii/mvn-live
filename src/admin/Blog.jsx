@@ -13,14 +13,18 @@ import generateApi from "./api/generateApi";
 import useCrud from "./hooks/useCrud";
 // Simulated backend response
 
-
-
 const metaFields = [
   { name: "heading", label: "Title", type: "text", col: 4, isRequired: true },
   { name: "date", label: "Date", type: "date", col: 4, isRequired: true },
   { name: "alt", label: "Alt Tag", type: "text", col: 4, isRequired: true },
   { name: "image", label: "Image", type: "file", col: 6, isRequired: true },
-  { name: "mobile_image", label: "Mobile Image", type: "file", col: 6, isRequired: true },
+  {
+    name: "mobile_image",
+    label: "Mobile Image",
+    type: "file",
+    col: 6,
+    isRequired: true,
+  },
   {
     name: "alternative_image",
     label: "Alternative Image",
@@ -38,7 +42,13 @@ const metaFields = [
     isRequired: true,
   },
   // { name: "description", label: "Description", type: "textarea", col: 12, isRequired: true },
-  { name: "description", label: "Description", type: "editor", col: 12, isRequired: true },
+  {
+    name: "description",
+    label: "Description",
+    type: "editor",
+    col: 12,
+    isRequired: true,
+  },
 ];
 
 const columns = [

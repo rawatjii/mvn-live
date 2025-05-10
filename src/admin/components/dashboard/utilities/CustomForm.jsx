@@ -71,6 +71,11 @@ const CustomForm = ({
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleQuillChange = (name, value) => {
+    // const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
   const handleFileChange = (e, isWebpAllowed) => {
     const { name, files } = e.target;
     if (files.length > 0 && !isWebpAllowed && files[0].type !== "image/jpeg") {
@@ -124,7 +129,7 @@ const CustomForm = ({
                 id={`${field.name}_${resetKey}`}
                 name={field.name}
                 value={formData[field.name] || ""}
-                onChange={field.type == "file" ? handleFileChange : handleChange}
+                onChange={field.type == "file" ? handleFileChange : field.type == 'editor' ? handleQuillChange : handleChange}
                 resetKey={resetKey}
               />
             </div>
