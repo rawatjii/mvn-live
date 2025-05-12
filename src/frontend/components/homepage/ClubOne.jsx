@@ -25,11 +25,13 @@ const ClubOne = ()=>{
             </div>
 
         <div style={{ position: "relative", paddingBottom: isMobile ? '56.25%' : '56.25%', overflow: "hidden" }}>
+        {/* https://www.youtube.com/embed/9CHcJAveejU?loop=1&mute=1&playlist=9CHcJAveejU */}
+        {/* https://player.vimeo.com/video/1079670411?autopause=0&loop=1&title=0&byline=0&portrait=0 */}
           <iframe
             ref={iframeRef}
             src={isMobile 
-              ? "https://player.vimeo.com/video/1079670411?autopause=0&loop=1&title=0&byline=0&portrait=0" 
-              : "https://player.vimeo.com/video/1079670411?autopause=0&loop=1&title=0&byline=0&portrait=0"}
+              ? "https://www.youtube.com/embed/BqcxVd21m6Y?loop=1&mute=1&playlist=BqcxVd21m6Y" 
+              : "https://www.youtube.com/embed/BqcxVd21m6Y?loop=1&mute=1&playlist=BqcxVd21m6Y"}
             // src={isMobile 
             //   ? "https://player.vimeo.com/video/1078921802?background=1&autopause=0&title=0&byline=0&portrait=0" 
             //   : "https://player.vimeo.com/video/1078294218?background=1&autopause=0&title=0&byline=0&portrait=0"}
