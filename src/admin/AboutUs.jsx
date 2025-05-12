@@ -1,4 +1,3 @@
-import React from 'react'
 import Ourvalues from './components/aboutus/Ourvalues'
 import Timeline from './components/aboutus/Timeline';
 import PeopleBehind from './components/aboutus/PeopleBehind';

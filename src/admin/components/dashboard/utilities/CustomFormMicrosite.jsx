@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Form } from "./CutomTags"; 
 import CustomFormField from "./CustomFormField";
 import CustomButton from "./CutomButton";
-import { useParams } from "react-router-dom";
+import { useParams,useLocation  } from "react-router-dom";
+
 
 const defaultBannerFields = [
   { name: "title", type: "text", label: "Title", col: 6 },
@@ -28,6 +29,7 @@ const CustomFormMicrosite = ({
   const Fields = isBanner ? defaultBannerFields : dynamicFields;
   const [isLoading, setIsLoading] = useState(false);
   const params=useParams();
+  const locationNav=useLocation();
   const project_Id=params['project_id'];
   const visibleFields = Fields.map((field) => {
     const visibilityConfig = fieldVisibility[field.name];
@@ -65,10 +67,11 @@ const CustomFormMicrosite = ({
         updatedForm["project_id"] = project_Id;
       }
       
-      
+              updatedForm["section_type"] = "overview";
+
       setFormData(updatedForm);
     } else {
-      setFormData((prev) => ({ ...prev, is_theme: "1" }));
+      setFormData((prev) => ({ ...prev, is_theme: "1" ,project_id:project_Id,section_type:"overview"}));
     }
   }, [ isBanner, dynamicFields]);
   
@@ -100,6 +103,9 @@ const CustomFormMicrosite = ({
       if(project_Id){
       payload.append('project_id',project_Id);
     }
+
+          payload.append('section_type',"overview");
+
       visibleFields
         .filter((field) => field.condition)
         .forEach((field) => {

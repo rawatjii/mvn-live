@@ -17,6 +17,7 @@
     "@reduxjs/toolkit": "^2.3.0",
     "axios": "^1.8.4",
     "bootstrap": "^5.3.3",
+    "ckeditor4-react": "^5.2.1",
     "g": "^2.0.1",
     "gsap": "npm:@gsap/business@^3.12.5",
     "lottie-react": "^2.4.0",

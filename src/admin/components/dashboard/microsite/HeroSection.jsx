@@ -13,15 +13,14 @@ import { useParams } from "react-router-dom";
 const HeroSection = () => {
     const bannerApi = generateApi("project-banner");
     const [editModalData, setEditModalData] = useState(null);
-    const [addFormType, setAddFormType] = useState('image'); // For add form
-    const [editFormType, setEditFormType] = useState('image'); // For edit form
+    const [addFormType, setAddFormType] = useState('image'); 
+    const [editFormType, setEditFormType] = useState('image');
     const { data, createItem, editItem, deleteItem } = useCrud(bannerApi);
-    const [addTypeInputs, setAddTypeInputs] = useState([]); // For add form inputs
-    const [editTypeInputs, setEditTypeInputs] = useState([]); // For edit form inputs
-    const { project_id } = useParams();
-    const getProjectId = project_id;
+    const [addTypeInputs, setAddTypeInputs] = useState([]); 
+    const [editTypeInputs, setEditTypeInputs] = useState([])
+    const [currentPage, setCurrentPage] = useState(1);
 
-    // Update addTypeInputs based on addFormType
+
     useEffect(() => {
       let updateFileTypes = [];
       switch (addFormType) {
@@ -90,7 +89,6 @@ const HeroSection = () => {
       setAddTypeInputs(updateFileTypes);
     }, [addFormType]);
 
-    // Update editTypeInputs based on editFormType
     useEffect(() => {
       let updateFileTypes = [];
       switch (editFormType) {
@@ -213,10 +211,10 @@ const HeroSection = () => {
     
     const columns = [
       { key: "", label: "S.No." },
-      { key: "image", label: "image/video/json", type: "file" },
+      { key: "is_type", label: "image/json/video/Iframe", type: "file" },
       { key: "alternative_image", label: "Alternative_image", type: "file" },
       { key: "alt", label: "Alt_text", type: "input" },
-      { key: "iframe_link", label: "Iframe Link" },
+
     ];
     
     const handleCreate = (formData) => {
@@ -232,10 +230,9 @@ const HeroSection = () => {
     
     const handleEdit = (row) => {
       setEditModalData(row); 
-      setEditFormType(row.is_type || 'image'); // Initialize edit form type based on row data
+      setEditFormType(row.is_type || 'image'); 
     };
 
-    const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
 
     const paginatedData = data?.slice(
@@ -265,12 +262,15 @@ const HeroSection = () => {
             data={paginatedData}
             onEdit={handleEdit}
             onDelete={handleDelete}
+            startIndex={(currentPage - 1) * itemsPerPage}
+
           />
         </MicroBox>
         <CustomPagination
           currentPage={currentPage}
           totalPages={Math.ceil(data?.length / itemsPerPage)}
           onPageChange={(page) => setCurrentPage(page)}
+
         />
         {editModalData && (
           <CustomModal

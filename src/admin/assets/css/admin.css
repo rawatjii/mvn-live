@@ -465,6 +465,8 @@
 /* style for dashboard end */
 
 .FieldContainer input::placeholder{opacity: 0.3;font-weight: 300;}
+.FieldContainer textarea::placeholder{opacity: 0.3;font-weight: 300;}
+
 /* .sidenav a.active .nav{left: -10px;background-color: ;} */
 body .CustomPaginationContainer button{background-color: transparent!important;padding: 0!important;}
 .InputContain button{border: none;}
