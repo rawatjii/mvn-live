@@ -8,6 +8,20 @@ import CustomModal from "./custom-modal/CustomModal";
 
 import 'react-quill/dist/quill.snow.css';
 
+const modules = {
+  toolbar: [
+    [{ header: [1, 2, 3, false] }],
+    ['bold', 'italic', 'underline', 'strike'],
+    [{ list: 'ordered' }, { list: 'bullet' }],
+    ['link', 'image', 'video'],
+    ['clean'], // remove formatting
+    ['code-block']
+  ],
+  clipboard: {
+    matchVisual: false
+  }
+}
+
 const CustomFormField = ({
   label,
   type = "text",
@@ -136,7 +150,7 @@ const CustomFormField = ({
             </>
         ) : type === 'editor' ? (
             <>
-              <ReactQuill theme="snow" value={quillContent} onChange={(value, delta, source, editor)=>setQuillContent(editor.root.innerHTML)} /> 
+              <ReactQuill theme="snow" value={quillContent} modules={modules} onChange={onChange} /> 
               <div dangerouslySetInnerHTML={{__html:quillContent}} />
               <span className="text-danger">{dataError?.[name]}</span>
             </>

@@ -71,9 +71,10 @@ const CustomForm = ({
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleQuillChange = (name, value) => {
+  const handleQuillChange = (value, delta, source, editor) => {
+    console.log(editor.getContents());
     // const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    // setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleFileChange = (e, isWebpAllowed) => {
