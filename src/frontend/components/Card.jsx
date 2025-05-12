@@ -3,12 +3,13 @@ import { API_URL } from "../../config/config";
 
 const planeIMG = `${API_URL}images/icons/plane.png`;
 
-const CustomCard = React.memo(({ className, title, location, extra, desc, extraTxt, type }) => {
+const CustomCard = React.memo(({ className, title, location, extra, desc, extraTxt, type, showAwards }) => {
   return (
     <div className={`overview_card ${className}`}>
       <div className="diamond_img_strip">
         <img src={planeIMG} className="img-fluid" alt="plane image" /> 
       </div>
+      
       {title && (
         <div className="title">
           <h1 className="pr_name">{title}</h1>
@@ -28,6 +29,12 @@ const CustomCard = React.memo(({ className, title, location, extra, desc, extraT
         <p className={`desc des_style1 text-center w-100 ${type && 'mb-0'}`}>{desc}</p>
       )}
       {extraTxt && <h4 className="extraTxt">{extraTxt}</h4>}
+
+      {/* {showAwards && (
+        <div className="awards">
+          <img src={`${API_URL}mvn-offer.webp`} alt="awards icon" />
+        </div>
+      )} */}
     </div>
   );
 });

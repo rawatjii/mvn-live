@@ -165,7 +165,11 @@ export const data = {
     title: "MVN AERO ONE LUXURY RESIDENCES",
     extra: "AN EPITOME OF GLOBAL LUXURY NOW IN GURUGRAM",
     desc: "Gurugram is set to redefine luxury living with the launch  of MVN ultra-luxurious 5.5 BHK apartments, offering unmatched opulence. Combining the grandeur of Dubai and New York, these residences feature cutting-edge designs, premium amenities, and breathtaking views. Experience an elite lifestyle with sophistication and comfort at its pinnacle, like never before!",
-    counterHeading:true
+    counterHeading:true,
+    showAwards:true,
+    rera:"RERA NO. RC/REP/HARERA/GGM/889/621/2024/116",
+    isDiscountAvailable:true,
+    discountUrl:`${CONFIG.API_URL}patch/discount.webp`
   },
   LargeElevationSection: {
     title: ['Unseen', 'Unheard', 'Unimagined'],
@@ -235,7 +239,8 @@ export const data = {
     path:{
       mobile:CONFIG.API_URL + 'assets/Panther/Mobile/data.json',
       desktop:CONFIG.API_URL + 'assets/Panther/Desktop/data.json'
-    }
+    },
+    showAwards:true,
   },
   landscape:{
     title:'Landscape',
@@ -569,7 +574,7 @@ export const data = {
          desc:'Experience unparalleled privacy and convenience with exclusive entry and exit points designed for residents of MVN, ensuring seamless access and an elite living experience.'
        },
      ],
-     iframe:'https://www.youtube.com/embed/BqcxVd21m6Y?autoplay=1&loop=1&mute=1&playlist=BqcxVd21m6Y'
+    //  iframe:'https://www.youtube.com/embed/BqcxVd21m6Y?autoplay=1&loop=1&mute=1&playlist=BqcxVd21m6Y'
    },
   noPollutionZone:{
       title:'Connections with MVN Mall',
@@ -711,7 +716,7 @@ export const data = {
         mobileFrameCounts:102,
         desktopFrameCounts:102,
       },
-      iframe:'https://www.youtube.com/embed/CbmkQBZuvTw?autoplay=1&loop=1&mute=1&playlist=CbmkQBZuvTw'
+      // iframe:'https://www.youtube.com/embed/CbmkQBZuvTw?autoplay=1&loop=1&mute=1&playlist=CbmkQBZuvTw'
     }
 };
 

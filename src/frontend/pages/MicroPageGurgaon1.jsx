@@ -315,15 +315,15 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             <MicroHero onBannerExit={setIsHeaderFixed} isMainBanner={true} />
           </div> */}
 
-            <div>
-              <LivingRoomVideoGurugram
-                onBannerExit={setIsHeaderFixed} 
-                isMainBanner={true}
-                data={data.living_room}
-                onLoadComplete={() => setLivingRoomLoaded(true)}
-                isMobile={isMobile}
-              />
-            </div>
+          <div>
+            <LivingRoomVideoGurugram
+              onBannerExit={setIsHeaderFixed} 
+              isMainBanner={true}
+              data={data.living_room}
+              onLoadComplete={() => setLivingRoomLoaded(true)}
+              isMobile={isMobile}
+            />
+          </div>
 
           {/* <Suspense fallback="">
             <MicroOverview data={data.overview} />
@@ -344,6 +344,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
               <DownloadBrochure
                 is360Available={false}
                 show360Video={show360Video}
+                showAwards={true}
               />
             </Suspense>
           </div>
@@ -385,6 +386,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
                 data={data.masterBedroom}
                 onLoadComplete={() => setMasterBedroomLoaded(true)}
                 isMobile={isMobile}
+                showAwards={true}
               />
             </div>
           </Suspense>

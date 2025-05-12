@@ -35,7 +35,7 @@ const LottieAnimationSection = React.memo(
     const [loading, setLoading] = useState(false); // Initially set to true
     const [animationData, setAnimationData] = useState(null);
     const { isMobile } = useMatches();
-    const { second_title, desc, path, title = undefined } = data;
+    const { second_title, desc, path, showAwards,  title = undefined } = data;
 
     // Ref for the interseciton observer
     const observerRef = useRef(null);
@@ -212,6 +212,7 @@ const LottieAnimationSection = React.memo(
                         className="px-0 pb-0"
                         title={second_title}
                         desc={desc}
+                        showAwards={showAwards}
                       />
                     </div>
                   </Container>
