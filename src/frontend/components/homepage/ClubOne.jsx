@@ -30,8 +30,8 @@ const ClubOne = ()=>{
           <iframe
             ref={iframeRef}
             src={isMobile 
-              ? "https://www.youtube.com/embed/BqcxVd21m6Y?loop=1&mute=1&playlist=BqcxVd21m6Y" 
-              : "https://www.youtube.com/embed/BqcxVd21m6Y?loop=1&mute=1&playlist=BqcxVd21m6Y"}
+              ? "https://player.vimeo.com/video/1079670411?autopause=0&loop=1&title=0&byline=0&portrait=0" 
+              : "https://player.vimeo.com/video/1079670411?autopause=0&loop=1&title=0&byline=0&portrait=0"}
             // src={isMobile 
             //   ? "https://player.vimeo.com/video/1078921802?background=1&autopause=0&title=0&byline=0&portrait=0" 
             //   : "https://player.vimeo.com/video/1078294218?background=1&autopause=0&title=0&byline=0&portrait=0"}
