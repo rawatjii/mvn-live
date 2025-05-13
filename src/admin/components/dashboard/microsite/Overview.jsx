@@ -77,6 +77,7 @@ const OverviewMicroSite = () => {
 ];
       
  const handleCreate = (formData) => {
+   formData.append("is_type","image")
       createItem(formData);
     };
     
