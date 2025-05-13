@@ -55,9 +55,9 @@ const columns = [
   { key: "id", label: "S.No." },
   { key: "heading", label: "Heading" },
   { key: "description", label: "Description" },
-  { key: "date", label: "Date" },
-  { key: "image", label: "Image" },
-  { key: "mobile_image", label: "Mobile Image" },
+  // { key: "date", label: "Date" },
+  // { key: "image", label: "Image" },
+  // { key: "mobile_image", label: "Mobile Image" },
 ];
 
 const oldData = [
@@ -97,7 +97,7 @@ const AdminBlog = () => {
         />
       </MicroBox>
       <MicroBox>
-        <CustomTitle title="Our Values Table" />
+        <CustomTitle title="All Blogs" />
         <CustomTable
           columns={columns}
           data={paginatedData}

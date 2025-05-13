@@ -16,7 +16,7 @@ import { BACKEND_IMAGE_URL } from "../../../../../config/config";
 const CustomTable = ({ columns, data, onEdit, onDelete, startIndex = 0 }) => {
   const [modalImage, setModalImage] = React.useState(null);
   const [modalText, setModalText] = React.useState(null);
-  const textLength = 1;
+  const textLength = 20;
 
   const truncateText = (text) => {
     if (typeof text !== "string") return text;
@@ -45,7 +45,7 @@ const CustomTable = ({ columns, data, onEdit, onDelete, startIndex = 0 }) => {
               data.map((row, rowIndex) => (
                 <TableRow key={rowIndex}>
                   {columns.map((col, colIndex) => (
-                    <TableBodyColum key={colIndex}>
+                    <TableBodyColum key={colIndex} customClass="text-start px-2">
                       {colIndex === 0 ? (
                         startIndex + rowIndex + 1
                       ) : col.type === "file" ? (
