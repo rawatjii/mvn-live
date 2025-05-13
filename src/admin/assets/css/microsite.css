@@ -1,7 +1,7 @@
 .microsite-area{width: 100%;}
 
 
-.microsite-area .inner-micro-structure{display: flex;justify-content: space-between;width: 100%;}
+.microsite-area .inner-micro-structure{display: flex;justify-content: space-between;width: 100%;flex-wrap: wrap;}
 .microsite-area .inner-micro-structure .left-area{width: 49%;}
 .microsite-area .inner-micro-structure .right-area{width: 49%;}
 .microsite-area .inner-micro-structure .single-box-area{width: 100%;}

@@ -82,6 +82,7 @@ const CustomFormField = ({
                 placeholder={placeholder}
                 className={`form-control ${className}`}
                 required={isRequired}
+                rows="2"
                 {...rest}
               />
               <span className="text-danger">{dataError?.[name]}</span>
