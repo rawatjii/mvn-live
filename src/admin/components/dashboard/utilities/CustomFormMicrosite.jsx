@@ -30,6 +30,7 @@ const CustomFormMicrosite = ({
   const [isLoading, setIsLoading] = useState(false);
   const params=useParams();
   const locationNav=useLocation();
+  const locationPathname=locationNav.pathname.split("/").pop();
   const project_Id=params['project_id'];
   const visibleFields = Fields.map((field) => {
     const visibilityConfig = fieldVisibility[field.name];
@@ -67,7 +68,7 @@ const CustomFormMicrosite = ({
         updatedForm["project_id"] = project_Id;
       }
       
-              updatedForm["section_type"] = "overview";
+              updatedForm["section_type"] =locationPathname;
 
       setFormData(updatedForm);
     } else {
@@ -92,20 +93,18 @@ const CustomFormMicrosite = ({
   
     setFormData((prev) => ({ ...prev, [name]: files[0] }));
   };
-  // alert(project_Id)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    // return
     try {
       const payload = new FormData();
       if(project_Id){
       payload.append('project_id',project_Id);
     }
 
-          payload.append('section_type',"overview");
-
+    
+    payload.append('section_type',locationPathname);
       visibleFields
         .filter((field) => field.condition)
         .forEach((field) => {
@@ -116,8 +115,7 @@ const CustomFormMicrosite = ({
         });
       if (onSubmit) await onSubmit(payload);
       if(!params['project_id']){
-        setFormData({});
-    
+        setFormData({}); 
       }
       setResetKey(Date.now());
     } catch (error) {

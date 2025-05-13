@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { FaRegFileAlt } from "react-icons/fa";
 import { IoMdInformationCircleOutline,IoIosImage } from "react-icons/io";
-import { LuIndianRupee } from "react-icons/lu";
+import { BsBuildingUp } from "react-icons/bs";
 import { GrLocation } from "react-icons/gr";
 import { useParams } from "react-router-dom";
 const MicroSidebar = () => {
@@ -45,12 +45,12 @@ const MicroSidebar = () => {
             </div>
           </NavLink>
 
-          <NavLink to={"pricelist"}>
+          <NavLink to={"elevation"}>
             <div className="nav">
               <div className="icon">
-                <LuIndianRupee fontSize={24} />
+                <BsBuildingUp fontSize={24} />
               </div>
-              <div className="description">Price List</div>
+              <div className="description">Elevation</div>
             </div>
           </NavLink>
 
