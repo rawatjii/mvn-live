@@ -11,6 +11,29 @@ const Overview = ({className}) => {
     <>
       <div className="mobile-view-box">
         <Container>
+          <div className="main_heading_box">
+            <img 
+              src={window.innerWidth <= 768 ? `${API_URL}mobile-line.png` : `${API_URL}desktop-line.png`} 
+              alt="mvn sizes" 
+              className="img-fluid"
+            />
+
+           
+          </div>
+
+          <div className="mb-4 mb-md-5">
+              <h3 className="mt-0 slogan-heading">
+                Most Mesmerizing Digital Experience
+              </h3>
+              <a
+                href={import.meta.env.VITE_APP_URL + "aeroone-gurgaon"}
+                className="btn btn_style3 r_100 mt-3 mt-md-4"
+              > 
+                Click Here
+              </a>
+            </div>
+
+
           <img
             src={`${API_URL}mvn-aeroone-logo-img.webp`}
             alt="mvn aeroone logo"
@@ -19,27 +42,26 @@ const Overview = ({className}) => {
           />
           <h2 className="logo_title">Gurugram</h2>
           <span className="status">New Launch</span>
+          
 
-          {/* <div className="awards">
-            <img src={`${API_URL}mvn-offer.webp`} alt="awards icon" />
+          {/* <div className="main_heading_box">
+            <h1 className="sq-ft-heading">6300 - 12600 <small>sq. ft. Area</small></h1>
+            <h4 className="main_subheading"><span>5.5 BHK</span> One of the <span>Largest Floor Sizes</span> in gurugram</h4>
           </div> */}
 
-          <h3 className="slogan-heading">
-            Behold to Experience the complete view!
-          </h3>
-          <a
-            href={import.meta.env.VITE_APP_URL + "aeroone-gurgaon"}
-            className="btn btn_style3 r_100 mt-3 mt-md-4"
-          >
-            Click Here
-          </a>
+{/* <div className="awards">
+            <img src={`${API_URL}mvn-offer-without-logo.webp`} alt="awards icon" />
+          </div> */}
+
+
+          
         </Container>
       </div>
 
       <section className={`${className} overview_section`} aria-label="Overview Section"> 
         <Row>
           <Col xs={12} md={12} className="about-content">
-            <div className="home-about-content">
+            <div className="home-about-content pb-0">
               <img src={`${API_URL}images/icons/heading-icon-img.webp`} alt="mvn head icon" className="img-fluid title_plane1"/>
               <h4 className="title_style1 text-center">40+ years of delivering trust and projects on time</h4>
               <p className="des_style1 text-center">

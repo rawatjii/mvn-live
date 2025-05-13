@@ -16,6 +16,7 @@ import { useMatches } from "../../theme/theme";
 import MicroAmenities from "../components/MicroPage/Amenities";
 import NoPolutionZone from "../components/MicroPage/NoPolutionZone";
 import View360 from "../components/MicroPage/360";
+import LivingRoomVideoGurugram from "../components/MicroPage/LivingRoomVideoGurugram";
 
 const MicroOverview = React.lazy(() =>
   import("../components/MicroPage/Overview")
@@ -36,9 +37,7 @@ const ParallaxSection = React.lazy(() =>
 const PeacockSection = React.lazy(() =>
   import("../components/MicroPage/PeacockSection")
 );
-const LivingRoomVideoGurugram = React.lazy(() =>
-  import("../components/MicroPage/LivingRoomVideoGurugram")
-);
+
 const PartyVideo = React.lazy(() =>
   import("../components/MicroPage/PartyVideo")
 );
@@ -81,7 +80,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
   const [partyLoaded, setPartyLoaded] = useState(false);
   const [masterBedroomLoaded, setMasterBedroomLoaded] = useState(false);
   const [typologyLoaded, setTypologyLoaded] = useState(false);
-  const [is360Show, setIs360Show] = useState(false);
+  const [is360Show, setIs360Show] = useState(true);
   const smootherRef = useRef(null);
   const sectionRefs = useRef({});
   const { pageSections, projectName } = data;
@@ -312,8 +311,18 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
       <div id="smooth-wrapper">
         <div id="smooth-content">
-          <div ref={bannerRef}>
+          {/* <div ref={bannerRef}>
             <MicroHero onBannerExit={setIsHeaderFixed} isMainBanner={true} />
+          </div> */}
+
+          <div>
+            <LivingRoomVideoGurugram
+              onBannerExit={setIsHeaderFixed} 
+              isMainBanner={true}
+              data={data.living_room}
+              onLoadComplete={() => setLivingRoomLoaded(true)}
+              isMobile={isMobile}
+            />
           </div>
 
           <Suspense fallback="">
@@ -335,6 +344,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
               <DownloadBrochure
                 is360Available={false}
                 show360Video={show360Video}
+                showAwards={true}
               />
             </Suspense>
           </div>
@@ -360,7 +370,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             </Suspense>
           </div>
 
-          <Suspense fallback="">
+          {/* <Suspense fallback="">
             <div>
               <LivingRoomVideoGurugram
                 data={data.living_room}
@@ -368,7 +378,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
                 isMobile={isMobile}
               />
             </div>
-          </Suspense>
+          </Suspense> */}
 
           <Suspense fallback="">
             <div>
@@ -386,6 +396,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
                 data={data.masterBedroom}
                 onLoadComplete={() => setMasterBedroomLoaded(true)}
                 isMobile={isMobile}
+                showAwards={true}
               />
             </div>
           </Suspense>

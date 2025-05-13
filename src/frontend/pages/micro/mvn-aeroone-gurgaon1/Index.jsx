@@ -166,7 +166,10 @@ export const data = {
     extra: "AN EPITOME OF GLOBAL LUXURY NOW IN GURUGRAM",
     desc: "Gurugram is set to redefine luxury living with the launch  of MVN ultra-luxurious 5.5 BHK apartments, offering unmatched opulence. Combining the grandeur of Dubai and New York, these residences feature cutting-edge designs, premium amenities, and breathtaking views. Experience an elite lifestyle with sophistication and comfort at its pinnacle, like never before!",
     counterHeading:true,
+    showAwards:true,
     rera:"RERA NO. RC/REP/HARERA/GGM/889/621/2024/116",
+    isDiscountAvailable:true,
+    discountUrl:`${CONFIG.API_URL}patch/discount.webp`
   },
   LargeElevationSection: {
     title: ['Unseen', 'Unheard', 'Unimagined'],
@@ -196,7 +199,7 @@ export const data = {
   },
   view360:{
     title:'360° VIEW',
-    // second_title:'LIVE. LAUGH. LOUNGE',
+    second_title:'Uninterrupted Horizon, unmatched grandeur, unforgettable vistas',
     // desc:'Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambience, perfect for hosting unforgettable soirees and extravagant gatherings.',
     path:{
       mobile:`${CONFIG.API_URL}images/aero-gurgaon/360/mobile.json`,
@@ -213,11 +216,13 @@ export const data = {
   },
   living_room:{
     Custom_height:"Custom_height",
-    second_title:'OPEN THE DOORS TO EXPANSIVE ELEGANCE AND SPACIOUS LUXURY',
-    desc:'Glide your way through the floor-to-ceiling sliding doors, and step on to the sprawling deck with breathtaking vistas and an air of tranquility.',
+    // second_title:'OPEN THE DOORS TO EXPANSIVE ELEGANCE AND SPACIOUS LUXURY',
+    // desc:'Glide your way through the floor-to-ceiling sliding doors, and step on to the sprawling deck with breathtaking vistas and an air of tranquility.',
     path:{
-      mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/livingRoom/data.json`,
-      desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/livingRoom/data.json`,
+      // mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/livingRoom/data.json`,
+      // desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/livingRoom/data.json`,
+      mobile:`${CONFIG.API_URL}videos/aeroone-gurgaon/living-room.mp4`,
+      desktop:`${CONFIG.API_URL}videos/aeroone-gurgaon/living-room.mp4`,
     }
   },
   party_video:{
@@ -234,7 +239,8 @@ export const data = {
     path:{
       mobile:CONFIG.API_URL + 'assets/Panther/Mobile/data.json',
       desktop:CONFIG.API_URL + 'assets/Panther/Desktop/data.json'
-    }
+    },
+    showAwards:true,
   },
   landscape:{
     title:'Landscape',
@@ -369,7 +375,7 @@ export const data = {
     "Premium emulsion paint finish.",
   ],
   walkthrough: {
-    src: "https://www.youtube.com/embed/9CHcJAveejU?autoplay=1&loop=1&mute=1&playlist=9CHcJAveejU",
+    src: "https://www.youtube.com/embed/9CHcJAveejU?loop=1&mute=1&playlist=9CHcJAveejU",
     // title: "Virtual Tour",
     // title: "Walkthrough",
     second_title:'A GLIMPSE INTO A LIFE EXTRAORDINARY',
@@ -568,7 +574,7 @@ export const data = {
          desc:'Experience unparalleled privacy and convenience with exclusive entry and exit points designed for residents of MVN, ensuring seamless access and an elite living experience.'
        },
      ],
-     iframe:'https://www.youtube.com/embed/BqcxVd21m6Y?autoplay=1&loop=1&mute=1&playlist=BqcxVd21m6Y'
+    //  iframe:'https://www.youtube.com/embed/BqcxVd21m6Y?autoplay=1&loop=1&mute=1&playlist=BqcxVd21m6Y'
    },
   noPollutionZone:{
       title:'Connections with MVN Mall',
@@ -710,7 +716,7 @@ export const data = {
         mobileFrameCounts:102,
         desktopFrameCounts:102,
       },
-      iframe:'https://www.youtube.com/embed/CbmkQBZuvTw?autoplay=1&loop=1&mute=1&playlist=CbmkQBZuvTw'
+      // iframe:'https://www.youtube.com/embed/CbmkQBZuvTw?autoplay=1&loop=1&mute=1&playlist=CbmkQBZuvTw'
     }
 };
 

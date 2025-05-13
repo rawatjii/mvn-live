@@ -37,6 +37,10 @@ const OurTeam = () => {
         who are committed to offering high standards of professional conduct in
         real estate practices.
       </p>
+
+      <div className="awards">
+            <img src={`${API_URL}mvn-offer-without-logo.webp`} alt="awards icon" />
+          </div>
     </section>
   );
 };

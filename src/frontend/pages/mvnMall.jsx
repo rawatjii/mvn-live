@@ -79,7 +79,7 @@ const MvnMall1 = ({ data }) => {
               (sectionRefs.current.downloadBrochure = el)
             }
           >
-            <DownloadBrochure projectName="MVN Mall Dwarka Expressway" />
+            <DownloadBrochure projectName="MVN Mall Dwarka Expressway" showAwards={true} />
           </div>
 
             <CustomIframe data={data.mvnMallVideo} />

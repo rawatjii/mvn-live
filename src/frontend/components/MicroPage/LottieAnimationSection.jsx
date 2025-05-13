@@ -26,6 +26,8 @@ const LottieAnimationSection = React.memo(
     onBannerExit,
     isMainBanner,
     customClass,
+    anClass,
+    isBanner
   }) => {
     const containerRef = useRef(null);
     const titleRef = useRef();
@@ -33,7 +35,7 @@ const LottieAnimationSection = React.memo(
     const [loading, setLoading] = useState(false); // Initially set to true
     const [animationData, setAnimationData] = useState(null);
     const { isMobile } = useMatches();
-    const { second_title, desc, path, title = undefined } = data;
+    const { second_title, desc, path, showAwards,  title = undefined } = data;
 
     // Ref for the interseciton observer
     const observerRef = useRef(null);
@@ -106,7 +108,9 @@ const LottieAnimationSection = React.memo(
 
       const scrollAnimation = ScrollTrigger.create({
         trigger: containerRef.current,
-        start: `top ${isMobile ? "65px" : "top"}`,
+        start: isBanner
+          ? `top ${isMobile ? "top" : "top"}`
+          : `top ${isMobile ? "65px" : "top"}`,
         end: `+=${window.innerHeight * 2}`,
         pin: true,
         scrub: 0.5,
@@ -167,7 +171,7 @@ const LottieAnimationSection = React.memo(
         ) : (
           <>
             <section
-              className="LottieAnimationContainer"
+              className={`LottieAnimationContainer ${anClass}`}
               aria-label="LottieAnimation Section"
             >
               {title && (
@@ -208,6 +212,7 @@ const LottieAnimationSection = React.memo(
                         className="px-0 pb-0"
                         title={second_title}
                         desc={desc}
+                        showAwards={showAwards}
                       />
                     </div>
                   </Container>

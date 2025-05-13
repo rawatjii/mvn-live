@@ -1587,6 +1587,17 @@ a {
     margin: 40px auto 0;
     max-width: 50%;
   }
+
+  .awards{
+    margin: 40px 0;
+    text-align: center;
+
+    img{
+      width: 100%;
+      max-width: 260px;
+    }
+  }
+
 }
 
 /* our_brand_section */
@@ -2803,8 +2814,18 @@ footer {
     width: 80px;
     background: #3d3d3d;
     display: block;
-    margin: 50px auto 0;
+    margin: 50px auto;
     border-radius: 100px;
+  }
+
+  .awards{
+    margin: 40px 0;
+    text-align: center;
+
+    img{
+      width: 100%;
+      max-width: 260px;
+    }
   }
 }
 
@@ -4209,7 +4230,7 @@ footer {
   }
 }
 
-section.section.walkthrough_section iframe { width: 100%;height: 1000px; object-fit: cover; display:flex;}
+section.section.walkthrough_section iframe { width: 100%;height: 1000px; display:flex;}
 table.bg_transparent{
   background:transparent!important;
 
@@ -4250,6 +4271,78 @@ table.bg_transparent{
   }
 }
 
+.sliding_door_section{
+
+  iframe{
+    width:100%;
+    min-height:initial
+  }
+
+  .video_mute_btns{
+    position:absolute;
+    bottom:40px;
+    right:40px;
+    background:#000;
+    height:40px;
+    width:40px;
+    border-radius: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+}
+
+.mobile-view-box{
+
+  .main_heading_box{
+    margin:40px 0;
+    padding:30px 0;
+    text-align: center;
+
+    img{
+
+      max-width: 900px;
+      width:100%;
+    }
+    
+
+    h1{
+      font-size: 50px;
+      font-weight: 100;
+      letter-spacing: 2px;
+      background: -webkit-linear-gradient(#d3c5a8, #e4daab);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      /* color: #fff; */
+
+      small{
+        font-size: 18px;
+        letter-spacing: 1px;
+        font-weight: 400;
+        color: #fff;
+        display: block;
+      }
+    }
+
+    .main_subheading{
+      font-size: 16px;
+      font-weight: 400;
+      color: #fff;
+      margin:0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 25px;
+
+      span{
+        background: -webkit-linear-gradient(#d3c5a8, #e4daab);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+      }
+    }
+  }
+}
 
 .micro_overview{
 
@@ -4259,11 +4352,32 @@ table.bg_transparent{
 
     img{
       width: 100%;
-      max-width: 400px;
+      max-width: 260px;
     }
   }
 }
 
+.micro_overview .discount_patch{
+  display: table;
+  margin: auto;
+  max-width: 160px;
+  position: absolute;
+  top: 130px;
+  right: 150px;
+}
+
+.micro_overview .discount{
+  text-transform: uppercase;
+}
+
+.micro_overview .bar{
+  height: 1px;
+  width: 80px;
+  background: #3d3d3d;
+  display: block;
+  margin: 50px auto;
+  border-radius: 100px; 
+}
 
 
 /* start responsive */
@@ -4860,6 +4974,13 @@ table.bg_transparent{
       font-size: 14px;
       padding: 12px 20px;
     }
+
+    .awards{
+
+      img{
+        max-width: 200px;
+      }
+    }
   }
 
   .overview_card {
@@ -4869,7 +4990,7 @@ table.bg_transparent{
     }
 
     .bar {
-      margin: 35px auto 0;
+      margin: 30px auto;
       width: 60px;
     }
 
@@ -4877,6 +4998,19 @@ table.bg_transparent{
       text-align: center;
       margin-top:15px;
     }
+
+    .awards{
+      margin: 20px 0;
+  
+      img{
+        width: 100%;
+        max-width: 200px;
+      }
+    }
+  }
+
+  .micro_overview .bar{
+    margin: 30px auto;
   }
 
   /* peacock section */
@@ -5018,7 +5152,7 @@ table.bg_transparent{
       width: 100%;
       height: 350px;
       max-width: 100%;
-      object-fit: contain;
+      /* object-fit: contain; */
 
       &:fullscreen {
         width: 100vw; /* Full width of the viewport */
@@ -5421,6 +5555,13 @@ table.bg_transparent{
     #scroll-wrapper{
       top:0!important;
     }
+
+    .video_mute_btns{
+      bottom:20px;
+      right:20px;
+      height:26px;
+      width:26px;
+    }
   }
 
   .micro_overview{
@@ -5547,6 +5688,54 @@ table.bg_transparent{
     }
   }
 
+  .mobile-view-box {
+
+    .main_heading_box{
+      padding:20px 0;
+      margin:10px 0;
+
+      h1{
+        font-size: 30px;
+
+        small{
+
+          font-size: 14px;
+        }
+      }
+
+      .main_subheading{
+        font-size: 14px;
+        line-height: 20px;
+
+      }
+    }
+  }
+
+  .our_team_section{
+
+    .awards{
+      margin: 20px 0;
+
+      img{
+        width: 100%;
+        max-width: 200px;
+      }
+    }
+  }
+
+  .offers_section{
+    padding:0;
+  }
+
+  .micro_overview .discount_patch{
+    position: relative;
+    top: unset;
+    right: unset;
+  }
+
+  .micro_overview .rera-number{
+    margin-top:30px;
+  }
 
 }
 

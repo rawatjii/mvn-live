@@ -17,6 +17,8 @@ const Testimonial = React.lazy(()=>import("../components/homepage/Testimonial"))
 const Enquire = React.lazy(()=>import("../components/homepage/Enquire"));
 const EnquireForm = React.lazy(()=>import("../components/homepage/EnquireForm"));
 const CustomModal = React.lazy(()=>import("../../common/Modal"));
+const ClubOne = React.lazy(()=>import("../components/homepage/ClubOne"));
+const MvnMall = React.lazy(()=>import("../components/homepage/MvnMall"));
 // const Enquire = React.lazy(() =>
 //   new Promise((resolve) =>
 //     setTimeout(() => resolve(import("../components/homepage/Enquire")), 100000)
@@ -25,6 +27,7 @@ const CustomModal = React.lazy(()=>import("../../common/Modal"));
 
 import 'swiper/css';
 import 'swiper/css/navigation';
+import LivingRoomVideoGurugram from "../components/MicroPage/LivingRoomVideoGurugram";
 
 const Homepage = () => {
   const [isShowModal, setIsShowModal] = useState(false);
@@ -142,12 +145,23 @@ const Homepage = () => {
         </Helmet>
 
         <Layout >
+
+          
+
           <Hero />
           <Overview  />
 
-        <Suspense fallback={<Skeleton height="h_70vh" />}>
+        {/* <Suspense fallback={<Skeleton height="h_70vh" />}>
           <Banner1 />
-        </Suspense>
+        </Suspense> */}
+
+<Suspense fallback={<Skeleton />}>
+  <ClubOne />
+</Suspense>
+
+<Suspense fallback={<Skeleton />}>
+  <MvnMall />
+</Suspense>
 
         <Suspense fallback={<Skeleton height="h_100vh" />}>
           <Offer clickHandler={showCustomModal} />
