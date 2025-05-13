@@ -90,7 +90,7 @@ const OverviewMicroSite = () => {
     
     const handleEdit = (row) => {
       setEditModalData(row); 
-      setEditFormType(row.is_type || 'image'); 
+      // setEditFormType(row.is_type || 'image'); 
     };
 
 return (
