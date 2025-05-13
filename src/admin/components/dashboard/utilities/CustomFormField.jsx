@@ -150,7 +150,7 @@ const CustomFormField = ({
             </>
         ) : type === 'editor' ? (
             <>
-              <ReactQuill theme="snow" value={quillContent} modules={modules} onChange={onChange} /> 
+              <ReactQuill name={name} theme="snow" value={value} modules={modules} onChange={(_)=>onChange(name, _)} /> 
               <div dangerouslySetInnerHTML={{__html:quillContent}} />
               <span className="text-danger">{dataError?.[name]}</span>
             </>

@@ -33,8 +33,6 @@ const useCrud = (apiService) => {
 
     createItem: async (item,pagevia) => {
       try {
-        console.log('post data', item);
-        return 
         await apiService.create(item);
         toast.success("Data added successfully!");
         if(pagevia=="basic"){

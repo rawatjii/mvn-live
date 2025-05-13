@@ -71,10 +71,10 @@ const CustomForm = ({
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleQuillChange = (value, delta, source, editor) => {
-    console.log(editor.getContents());
-    // const { name, value } = e.target;
-    // setFormData((prev) => ({ ...prev, [name]: value }));
+  const handleQuillChange = (name, value, delta, source, editor) => {
+    console.log('name', name, 'value', value);
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    
   };
 
   const handleFileChange = (e, isWebpAllowed) => {
@@ -96,7 +96,6 @@ const CustomForm = ({
       visibleFields
       .filter((field) => field.condition)
       .forEach((field) => {
-        debugger
         // if(field.name['description']){
         //   console.log('description value', field.name['description'])
         // }
