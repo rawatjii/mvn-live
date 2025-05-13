@@ -3,11 +3,11 @@ import React from "react";
 import "./custom-modal.css";
 import { IoMdClose } from "react-icons/io";
 
-const CustomModal = ({ isOpen, onClose, title, children }) => {
+const CustomModal = ({ isOpen, onClose, title, children, className }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="ImageModalOverlay" onClick={onClose}>
+    <div className={`ImageModalOverlay ${className}`} onClick={onClose}>
       <div className="ImageModalContent" onClick={(e) => e.stopPropagation()}>
         <div className="ModalHeader">
           {title && <h3 className="ModalTitle">{title}</h3>}

@@ -37,7 +37,6 @@ const Elevation = () => {
   const gelistApi = generateApi("project-elevate-galleries");
   const projectSectionsApi = generateApi("projec-sections");
   const locationNav=useLocation();
-  const locationPathname=locationNav.pathname.split("/").pop();
 
   const {createItem: createElevationItem,} = useCrud(elevationApi);
   const { data: galleryData = [],deleteItem,editItem, loading: galleryLoading,} = useCrud(gelistApi);
@@ -145,6 +144,6 @@ const Elevation = () => {
       )}
     </CustomSection>
   );
-};
+};  
 
-export default Elevation;
+export default Elevation; 

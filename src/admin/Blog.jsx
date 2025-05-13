@@ -11,11 +11,11 @@ import CustomTable from "./components/dashboard/utilities/custom-table/CustomTab
 import CustomPagination from "./components/dashboard/utilities/pagination/CustomPagination";
 import generateApi from "./api/generateApi";
 import useCrud from "./hooks/useCrud";
-// Simulated backend response
+import CustomModal from "./components/dashboard/utilities/custom-modal/CustomModal";// Simulated backend response
 
 const metaFields = [
   { name: "heading", label: "Title", type: "text", col: 4, isRequired: true },
-  { name: "date", label: "Date", type: "date", col: 4, isRequired: true },
+  { name: "date_at", label: "Date", type: "date", col: 4, isRequired: true },
   { name: "alt", label: "Alt Tag", type: "text", col: 4, isRequired: true },
   { name: "image", label: "Image", type: "file", col: 6, isRequired: true },
   {
@@ -51,6 +51,7 @@ const metaFields = [
   },
 ];
 
+
 const columns = [
   { key: "id", label: "S.No." },
   { key: "heading", label: "Heading" },
@@ -71,11 +72,17 @@ const AdminBlog = () => {
   const aboutsApi = generateApi("blog"); // ✅ Adjust endpoint if needed
   const { data, loading, error, createItem, updateItem, deleteItem } =
     useCrud(aboutsApi);
+  const [editModalData, setEditModalData] = useState(null);
 
   console.log(data, "data blog");
 
   const handleCreate = (formData) => createItem(formData);
-  const handleEdit = (row) => updateItem(row.id, row);
+
+  const handleEditSubmit = (formData) => {
+    editItem(editModalData.id, formData); 
+    setEditModalData(null); 
+  };
+
   const handleDelete = (row) => deleteItem(row.id);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
@@ -85,8 +92,11 @@ const AdminBlog = () => {
     currentPage * itemsPerPage
   );
 
+  
+
   return (
-    <CustomSection customClass="d-block">
+    <>
+      <CustomSection customClass="d-block">
       <MicroBox>
         <CustomTitle title="Blog Details" />
         <CustomForm
@@ -94,6 +104,7 @@ const AdminBlog = () => {
           dynamicFields={metaFields}
           onSubmit={handleCreate}
           dataError={error}
+          data={editModalData}
         />
       </MicroBox>
       <MicroBox>
@@ -101,7 +112,11 @@ const AdminBlog = () => {
         <CustomTable
           columns={columns}
           data={paginatedData}
-          onEdit={handleEdit}
+          onEdit={(row) => {
+            scrollTo(0, 0)
+            setEditModalData(row)
+            console.log(row)
+          }}
           onDelete={handleDelete}
         />
       </MicroBox>
@@ -111,6 +126,23 @@ const AdminBlog = () => {
         onPageChange={(page) => setCurrentPage(page)}
       />
     </CustomSection>
+
+      {/* {editModalData && (
+        <CustomModal
+          isOpen={!!editModalData}
+          onClose={() => setEditModalData(null)}
+          title="Edit Blog"
+          className="modal_lg"
+        >
+          <CustomForm
+            isBanner={false}
+            dynamicFields={metaFields}
+            defaultData={editModalData}
+            onSubmit={handleEditSubmit}
+          />
+        </CustomModal>
+      )} */}
+    </>
   );
 };
 

@@ -26,6 +26,9 @@
     width: 90%;
     position: relative;
   }
+  .modal_lg .ImageModalContent{
+    max-width: 1200px;
+  }
   .ImageModalOverlay   .ImageModalContent .ModalHeader{
     margin-bottom: 15px;
     padding-bottom: 10px;

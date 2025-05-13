@@ -51,7 +51,7 @@ import Dashboard from "./admin/Dashboard.jsx";
 import Amenities from "./admin/components/dashboard/microsite/Amenities.jsx";
 import Banner from "./admin/components/dashboard/banner/Banner.jsx";
 import AdminAboutUs from "./admin/AboutUs.jsx";
-// import AdminBlog from "./admin/Blog.jsx";
+import AdminBlog from "./admin/Blog.jsx";
 import AdminCareer from "./admin/Career.jsx";
 import AdminMediaCentre from "./admin/MediaCentre.jsx";
 import AdminContactUs from "./admin/ContactUs.jsx";
@@ -246,7 +246,7 @@ const router = createBrowserRouter([
           { path: "amenities", element: <Amenities /> },
           { path: "page/:pageName", element: <Banner /> },
           { path: "about-us", element: <AdminAboutUs /> },
-          // { path: "blogs", element: <AdminBlog /> },
+          { path: "blogs", element: <AdminBlog /> },
           { path: "career", element: <AdminCareer /> },
           { path: "media-centre", element: <AdminMediaCentre /> },
           { path: "contact-us", element: <AdminContactUs /> },

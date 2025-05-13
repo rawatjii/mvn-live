@@ -23,7 +23,7 @@ const CustomForm = ({
   defaultData,
   dataError,
   setValueVia,
-
+  data
 }) => {
   const Fields = isBanner ? defaultBannerFields : dynamicFields;
   const [isLoading, setIsLoading] = useState(false);
@@ -38,11 +38,15 @@ const CustomForm = ({
       dataError,
     };
   });
-  const [formData, setFormData] = useState(defaultData || {});
+  const [formData, setFormData] = useState(data ? data : defaultData || {});
   const [resetKey, setResetKey] = useState(Date.now());
+
+
   useEffect(()=>{
-    setFormData(defaultData);
-  },[])
+    setFormData(data ? data : defaultData);
+  },[data])
+  
+  console.log('formData', formData);
 
   useEffect(() => {
     const currentFields = isBanner ? defaultBannerFields : dynamicFields;
@@ -123,16 +127,16 @@ const CustomForm = ({
         {visibleFields
           .filter((field) => field.condition !== false)
           .map((field) => (
-            <div className={`${(field.isLeft === true ? '' : `col-${field.col || 12}`)} ${field.type=="hidden"&&"d-none"}`} key={`${resetKey}-${field.name}`}>
-              <CustomFormField
-                {...field}
-                id={`${field.name}_${resetKey}`}
-                name={field.name}
-                value={formData[field.name] || ""}
-                onChange={field.type == "file" ? handleFileChange : field.type == 'editor' ? handleQuillChange : handleChange}
-                resetKey={resetKey}
-              />
-            </div>
+              <div className={`${(field.isLeft === true ? '' : `col-${field.col || 12}`)} ${field.type=="hidden"&&"d-none"}`} key={`${resetKey}-${field.name}`}>
+                <CustomFormField
+                  {...field}
+                  id={`${field.name}_${resetKey}`}
+                  name={field.name}
+                  value={formData[field.name] || ""}
+                  onChange={field.type == "file" ? handleFileChange : field.type == 'editor' ? handleQuillChange : handleChange}
+                  resetKey={resetKey}
+                />
+              </div>
           ))}
       </div>
       <CustomButton 

@@ -79,6 +79,10 @@ padding-right: 2px;}
     stroke: #afafaf;
 }
 
+.image_preview{
+    
+}
+
 select option{background-color: rgb(19 19 29 / 94%)!important;border-bottom: none!important;
 font-family: "Roboto-Regular";font-size: 14px;padding: 5px 15px;}
 .form-control:focus {
