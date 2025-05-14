@@ -69,6 +69,7 @@ const Ourvalues = () => {
           <CustomForm
             isBanner={false}
             dynamicFields={metaFields}
+            defaultData={editModalData}
             onSubmit={handleCreate}
           />
         </MicroBox>
