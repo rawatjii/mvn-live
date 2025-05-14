@@ -77,6 +77,7 @@ const OverviewMicroSite = () => {
 ];
       
  const handleCreate = (formData) => {
+   formData.append("is_type","image")
       createItem(formData);
     };
     
@@ -89,7 +90,7 @@ const OverviewMicroSite = () => {
     
     const handleEdit = (row) => {
       setEditModalData(row); 
-      setEditFormType(row.is_type || 'image'); 
+      // setEditFormType(row.is_type || 'image'); 
     };
 
 return (

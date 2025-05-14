@@ -61,7 +61,7 @@ const Elevation = () => {
 
   const handleCreateMain = async (formData) => {
     try {
-      formData.append("is_type","image")
+      formData.append("is_type",locationPathname)
 
       await createElevationItem(formData);
       console.log("Elevation item created successfully");
