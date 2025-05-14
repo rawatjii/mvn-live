@@ -46,8 +46,11 @@ const CustomFormMicrosite = ({
   const [resetKey, setResetKey] = useState(Date.now());
   useEffect(()=>{
     setFormData(defaultData);
+    // alert("in")
 
-  },[])
+    console.log(defaultData)
+
+  },[defaultData ])
 
   useEffect(() => {
     
