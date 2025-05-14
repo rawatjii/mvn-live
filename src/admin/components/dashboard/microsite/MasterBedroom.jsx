@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { CustomSection, MicroBox } from "../utilities/CutomTags";
 import CustomTitle from "../utilities/CustomTitle";
 import CustomFormMicrosite from "../utilities/CustomFormMicrosite";
@@ -6,29 +6,24 @@ import generateApi from "../../../api/generateApi";
 import useCrud from "../../../hooks/useCrud";
 import { useLocation, useParams } from "react-router-dom";
 
-const Elevation = () => {
+const MasterBedroom = () => {
   const [editData, setEditData] = useState(null);
   const { project_id } = useParams();
   const location = useLocation();
   const locationType = location.pathname.split("/").pop();
-
-  const projectSectionsApi = generateApi("projec-sections", 0);
-  const getEditDataApi = generateApi("show-by-project-with-sectionType");
-
-  const { editItem: editMetadata, createItem } = useCrud(projectSectionsApi);
+  const projectSectionsApi = generateApi("projec-sections");
+  const getEditDataApi= generateApi("show-by-project-with-sectionType",0);
+  const { editItem,createItem } = useCrud(projectSectionsApi);
   const { getEditData } = useCrud(getEditDataApi);
 
-  const mainFields = [
-    { name: "heading", label: "Heading", type: "text", col: 6 },
-    { name: "sub_heading", label: "Sub Heading", type: "text", col: 6 },
-    { name: "image", label: "Banner", type: "file", col: 6 },
-    { name: "alternative_image", label: "Banner Alternate Image", type: "file", col: 6 },
-    { name: "optional_images", label: "Small Image", type: "file", col: 6 },
-    { name: "alt", label: "Alt", placeholder: "Enter Alt", type: "text", col: 6 },
-    { name: "description", label: "Description", type: "textarea", placeholder: "Enter Description", col: 6 },
-  ];
 
-  const fetchEditData = async () => {
+  const fields = [
+    { name: "heading", label: "Heading", type: "text", col: 12 },
+    { name: "description", label: "Description", type: "textarea", placeholder: "Enter Description", col: 12 },
+    { name: "json", label: "Desktop JSON",  type: "file", col: 6},
+    { name: "mb_json", label: "Mobile JSON",  type: "file", col: 6},
+  ];
+ const fetchEditData = async () => {
     const formData = new FormData();
     formData.append("section_type", locationType);
     formData.append("project_id", project_id);
@@ -40,9 +35,9 @@ const Elevation = () => {
     }
   };
 
-  const handleCreateMeta = async (formData) => {
+  const handleCreate = async (formData) => {
     try {
-      formData.append("is_type", "image");
+      formData.append("is_type", "json");
       await createItem(formData);
       await fetchEditData();
     } catch (error) {
@@ -50,32 +45,30 @@ const Elevation = () => {
     }
   };
 
-  const handleEditMeta = async (formData) => {
+  const handleEdit = async (formData) => {
     try {
-      await editMetadata(editData.id, formData);
+      await editItem(editData.id, formData);
       await fetchEditData();
     } catch (error) {
-      console.error("Error updating metadata:", error);
+      console.error("Error updating project section:", error);
     }
   };
-
-  useEffect(() => {
-    fetchEditData();
-  }, []);
-
+  useEffect(()=>{
+    fetchEditData()
+  },[]) 
   return (
     <CustomSection>
       <MicroBox>
         <CustomTitle title="Overview" />
         <CustomFormMicrosite
           isBanner={false}
-          dynamicFields={mainFields}
+          dynamicFields={fields}
           defaultData={editData}
-          onSubmit={editData ? handleEditMeta : handleCreateMeta}
+        onSubmit={editData ? handleEdit : handleCreate}
         />
       </MicroBox>
     </CustomSection>
   );
 };
 
-export default Elevation;
+export default MasterBedroom;

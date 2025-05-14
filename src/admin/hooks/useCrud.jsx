@@ -65,6 +65,22 @@ const useCrud = (apiService) => {
       }
     },
 
+        getEditData: async (item) => {
+        try {
+        const response = await apiService.editGet(item); // Assuming section_type is needed
+        const data = response.data;
+        // toast.success("✅ Value fetched successfully!");
+        return data;
+        } catch (err) {
+        // toast.error("❌ Failed to fetch value.");
+        const errorMessage = err.response?.data?.message || err.message || "Failed to fetch value";
+        // toast.error(`❌ ${errorMessage}`);
+        setError(err);
+        return null;
+        }
+        },
+
+
     deleteItem: async (id) => {
       try {
         await apiService.delete(id);

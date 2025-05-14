@@ -1,0 +1,205 @@
+import { useEffect, useState } from "react";
+import { CustomSection, MicroBox } from "../utilities/CutomTags";
+import CustomTitle from "../utilities/CustomTitle";
+import CustomFormMicrosite from "../utilities/CustomFormMicrosite";
+import generateApi from "../../../api/generateApi";
+import useCrud from "../../../hooks/useCrud";
+import { useLocation, useParams } from "react-router-dom";
+import CustomTable from "../utilities/custom-table/CustomTable";
+import CustomPagination from "../utilities/pagination/CustomPagination";
+
+const SmElevation = () => {
+  const [editData, setEditData] = useState(null);
+  const [editsmElevationData, setEditsmElevationData] = useState(null);
+  const { project_id } = useParams();
+  const location = useLocation();
+  const locationType = location.pathname.split("/").pop();
+  
+  // API endpoints
+  const projectSectionsApi = generateApi("projec-sections");
+  const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
+  const SmElevationApi = generateApi("project-elevate-galleries/elevation");
+  const GalleryApi = generateApi("project-elevate-galleries");
+
+  
+  // CRUD hooks
+  const { editItem, createItem } = useCrud(projectSectionsApi);
+  const {data}=useCrud(GalleryApi);
+  const { 
+    data: smElevationItems, 
+    createItem: smElevationCreateItem, 
+    editItem: smElevationEditItem, 
+    deleteItem,
+    getItems: fetchsmElevationItems
+  } = useCrud(SmElevationApi);
+  
+  const { getEditData } = useCrud(getEditDataApi);
+  
+  // Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
+  // Form fields
+  const metaFields = [
+    { name: "heading", label: "Heading", type: "text", col: 6 },
+    { name: "sub_heading", label: "Sub Heading", type: "text", col: 6 },
+    { name: "description", label: "Description", type: "textarea", placeholder: "Enter Description", col: 12 }
+  ];
+
+  const smElevationFields = [
+    { name: "image", label: "Image", type: "file", col: 6,isRequired:true },
+    { name: "alternative_image", label: "Alternate Image", type: "file", col: 6 },
+    { name: "sm_alternative_image", label: "Image", type: "file", col: 6,isRequired:true },
+    { name: "sm_image", label: "Alternate Image", type: "file", col: 6 },
+    { name: "alt", label: "Alt", type: "text", col: 6, placeholder: "Enter Alt text",isRequired:true },
+  ];
+
+  // Fetch metadata function
+  const fetchMetadata = async () => {
+    const formData = new FormData();
+    formData.append("section_type", locationType);
+    formData.append("project_id", project_id);
+    try {
+      const data = await getEditData(formData);
+      setEditData(data.data);
+    } catch (error) {
+      console.error("Error fetching edit data:", error);
+    }
+  };
+
+  // Fetch smElevation items
+  const fetchAllsmElevationItems = async () => {
+    try {
+      // Adjust parameters as needed for your API
+      await fetchsmElevationItems({ project_id, type: locationType });
+    } catch (error) {
+      console.error("Error fetching smElevation items:", error);
+    }
+  };
+
+  // Handle metadata creation
+  const handleCreateMeta = async (formData) => {
+    try {
+      // formData.append("is_type", "iframe");
+      // formData.append("project_id", project_id);
+      // formData.append("section_type", locationType);
+      await createItem(formData);
+      await fetchMetadata();
+    } catch (error) {
+      console.error("Error creating project section:", error);
+    }
+  };
+
+  // Handle metadata edit
+  const handleEditMeta = async (formData) => {
+    try {
+      await editItem(editData.id, formData);
+      await fetchMetadata();
+    } catch (error) {
+      console.error("Error updating project section:", error);
+    }
+  };
+
+  // Handle smElevation item creation
+  const handleCreatesmElevation = async (formData) => {
+    try {
+      formData.append("is_type", "elevation");
+      // formData.append("project_id", project_id);
+      // formData.append("section_type", locationType);
+      await smElevationCreateItem(formData);
+      await fetchAllsmElevationItems();
+      setEditsmElevationData(null);
+    } catch (error) {
+      console.error("Error creating smElevation item:", error);
+    }
+  };
+
+  // Handle smElevation item edit
+  const handleEditsmElevation = async (formData) => {
+    try {
+            formData.append("is_type", "smElevation");
+      await smElevationEditItem(editsmElevationData.id, formData);
+      await fetchAllsmElevationItems();
+      setEditsmElevationData(null);
+    } catch (error) {
+      console.error("Error updating smElevation item:", error);
+    }
+  };
+
+  // Handle delete
+  const handleDeleteItem = async (id) => {
+    try {
+      await deleteItem(id);
+      await fetchAllsmElevationItems();
+    } catch (error) {
+      console.error("Error deleting smElevation item:", error);
+    }
+  };
+
+  // Handle cancel edit
+  const handleCancelEdit = () => {
+    setEditsmElevationData(null);
+  };
+
+  // Initial data loading
+  useEffect(() => {
+    fetchMetadata();
+    fetchAllsmElevationItems();
+  }, []);
+
+  // Table columns
+  const columns = [
+    { key: "", label: "S.No." },
+    { key: "title", label: "Title", type: "text" },
+    { key: "image", label: "Image", type: "file" },
+    { key: "alternative_image", label: "Alternative Image", type: "file" },
+    { key: "alt", label: "Alt Text", type: "text" },
+  ];
+
+  // Paginate data
+  const paginatedData = data?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
+  return (
+    <CustomSection>
+      <MicroBox>
+        <CustomTitle title="Overview" />
+        <CustomFormMicrosite
+          isBanner={false}
+          dynamicFields={metaFields}
+          defaultData={editData}
+          onSubmit={editData ? handleEditMeta : handleCreateMeta}
+        />
+      </MicroBox>
+      <MicroBox>
+        <CustomTitle title={editsmElevationData ? "Edit smElevation Image" : "Add smElevation Images"} />
+        <CustomFormMicrosite
+          isBanner={false}
+          dynamicFields={smElevationFields}
+          defaultData={editsmElevationData}
+          onSubmit={editsmElevationData ? handleEditsmElevation : handleCreatesmElevation}
+          submitButtonText={editsmElevationData ? "Update" : "Create"}
+          cancelButton={editsmElevationData ? { text: "Cancel", onClick: handleCancelEdit } : null}
+        />
+      </MicroBox>
+      <MicroBox>
+        <CustomTitle title="smElevation Items" />
+        <CustomTable
+          columns={columns}
+          data={paginatedData}
+          onEdit={(row) => {
+            window.scrollTo(0, 0);
+            setEditsmElevationData(row);
+          }}
+          onDelete={(row) => handleDeleteItem(row.id)}
+          startIndex={(currentPage - 1) * itemsPerPage}
+        />
+        <CustomPagination
+          currentPage={currentPage}
+          totalPages={Math.ceil((smElevationItems?.length || 0) / itemsPerPage)}
+          onPageChange={setCurrentPage}
+        />
+      </MicroBox>
+    </CustomSection>
+  );
+};
+
+export default SmElevation;

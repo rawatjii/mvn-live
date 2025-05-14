@@ -4,7 +4,15 @@ import { FaRegFileAlt } from "react-icons/fa";
 import { IoMdInformationCircleOutline,IoIosImage } from "react-icons/io";
 import { BsBuildingUp } from "react-icons/bs";
 import { GrLocation } from "react-icons/gr";
+import { MdVideoSettings,MdOutline360,MdOutlineLiving  } from "react-icons/md";
+import { TbView360Number } from "react-icons/tb";
 import { useParams } from "react-router-dom";
+import { LuPartyPopper } from "react-icons/lu";
+import { MdBedroomParent } from "react-icons/md";
+import { FaUserCog } from "react-icons/fa";
+import { BiLandscape } from "react-icons/bi";
+import { HiOutlineBuildingStorefront } from "react-icons/hi2";
+
 const MicroSidebar = () => {
   const getProject_id=useParams();
   console.log(getProject_id,"asd")
@@ -54,41 +62,71 @@ const MicroSidebar = () => {
             </div>
           </NavLink>
 
-          <NavLink to={"location"}>
+            <NavLink to={"walkthrough"}>
             <div className="nav">
               <div className="icon">
-                <GrLocation  fontSize={24} />
+                <MdVideoSettings  fontSize={24} />
               </div>
-              <div className="description">Location</div>
+              <div className="description">Walkthrough</div>
             </div>
           </NavLink>
 
-          <a href="amenities.html">
+            <NavLink to={"threesixtyview"}>
             <div className="nav">
               <div className="icon">
-                <img src="images/icon/resources.png" />
+                <TbView360Number   fontSize={24} />
               </div>
-              <div className="description">Amenities</div>
+              <div className="description">360°</div>
             </div>
-          </a>
-
-          <a href="floor-plan.html">
+          </NavLink>
+            <NavLink to={"livingroom"}>
             <div className="nav">
               <div className="icon">
-                <img src="images/icon/blueprint.png" />
+                <MdOutlineLiving   fontSize={24} />
               </div>
-              <div className="description">Floor Plan</div>
+              <div className="description">Living Room</div>
             </div>
-          </a>
-
-          <a href="about-builder.html">
+          </NavLink>
+             <NavLink to={"party"}>
             <div className="nav">
               <div className="icon">
-                <img src="images/icon/constructor.png" />{" "}
+                <LuPartyPopper   fontSize={24} />
               </div>
-              <div className="description">Builder</div>
+              <div className="description">Party</div>
             </div>
-          </a>
+          </NavLink>
+          <NavLink to={"masterbedroom"}>
+            <div className="nav">
+              <div className="icon">
+                <MdBedroomParent   fontSize={24} />
+              </div>
+              <div className="description">MasterBedroom</div>
+            </div>
+          </NavLink>
+           <NavLink to={"consultant"}>
+            <div className="nav">
+              <div className="icon">
+                <FaUserCog   fontSize={24} />
+              </div>
+              <div className="description">Consultant</div>
+            </div>
+          </NavLink>
+           <NavLink to={"landscape"}>
+            <div className="nav">
+              <div className="icon">
+                <BiLandscape   fontSize={24} />
+              </div>
+              <div className="description">Land Scape</div>
+            </div>
+          </NavLink>
+            <NavLink to={"sm-elevation"}>
+            <div className="nav">
+              <div className="icon">
+                <HiOutlineBuildingStorefront   fontSize={24} />
+              </div>
+              <div className="description">Small Elevation</div>
+            </div>
+          </NavLink>
           </>}
         </div>
       </section>
