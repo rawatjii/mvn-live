@@ -8,27 +8,28 @@ import { useLocation, useParams } from "react-router-dom";
 import CustomTable from "../utilities/custom-table/CustomTable";
 import CustomPagination from "../utilities/pagination/CustomPagination";
 
-const SmElevation = () => {
+const LocationMap = () => {
   const [editData, setEditData] = useState(null);
-  const [editsmElevationData, setEditsmElevationData] = useState(null);
+  const [editlocationMapData, setEditlocationMapData] = useState(null);
+  const [formType, setFormType] = useState("image");
   const { project_id } = useParams();
   const location = useLocation();
   const locationType = location.pathname.split("/").pop();
   
   // API endpoints
-  const projectSectionsApi = generateApi("projec-sections");
+  const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
-  const SmElevationApi = generateApi("project-elevate-galleries/elevation");
-  const GalleryApi = generateApi("project-elevate-galleries");
-
+  const locationMapApi = generateApi("project-location-advantage");
   
   // CRUD hooks
   const { editItem, createItem } = useCrud(projectSectionsApi);
-  const {deleteItem,fetchAll: fetchsmElevationItems,   editItem: smElevationEditItem,    data: smElevationItems, 
- }=useCrud(GalleryApi);
   const { 
-    createItem: smElevationCreateItem, 
-  } = useCrud(SmElevationApi);
+    data: locationMapItems, 
+    createItem: locationMapCreateItem, 
+    editItem: locationMapEditItem, 
+    deleteItem,
+    getItems: fetchlocationMapItems
+  } = useCrud(locationMapApi);
   
   const { getEditData } = useCrud(getEditDataApi);
   
@@ -38,17 +39,17 @@ const SmElevation = () => {
 
   // Form fields
   const metaFields = [
-    { name: "heading", label: "Heading", type: "text", col: 6 },
-    { name: "sub_heading", label: "Sub Heading", type: "text", col: 6 },
-    { name: "description", label: "Description", type: "textarea", placeholder: "Enter Description", col: 12 }
+    { name: "heading", label: "Heading", type: "text",placeholder:"Enter Heading", col: 6 },
+    { name: "sub_heading", label: "Sub Heading", type: "text",placeholder:"Enter Sub Heading", col: 6 },
+    { name: "image", label: "Image", type: "file", col: 6 },
+    { name: "alternative_image", label: "Alternate Image", type: "file", col: 6 },
+    { name: "alt", label: "Alt", type: "text", col: 12 ,placeholder:"Enter Alt",},
+     { name: "description", label: "Description", type: "textarea",placeholder:"Enter Discription", col: 12 },
   ];
 
-  const smElevationFields = [
-    { name: "image", label: "Image", type: "file", col: 6,isRequired:true },
-    { name: "alternative_image", label: "Alternate Image", type: "file", col: 6 },
-    { name: "sm_alternative_image", label: "Small Image", type: "file", col: 6,isRequired:true },
-    { name: "sm_image", label: "Alternate Image", type: "file", col: 6 },
-    { name: "alt", label: "Alt", type: "text", col: 6, placeholder: "Enter Alt text",isRequired:true },
+  const locationMapFields = [
+        { name: "designation", label: "Designation", type: "text", col: 6,placeholder:"Enter Designation",isRequired:true },
+        { name: "distance", label: "Distance", type: "text", col: 6,placeholder:"Enter Distance",isRequired:true },
   ];
 
   // Fetch metadata function
@@ -64,20 +65,20 @@ const SmElevation = () => {
     }
   };
 
-  // Fetch smElevation items
-  const fetchAllsmElevationItems = async () => {
+  // Fetch locationMap items
+  const fetchAlllocationMapItems = async () => {
     try {
       // Adjust parameters as needed for your API
-      await fetchsmElevationItems({ project_id, type: locationType });
+      await fetchlocationMapItems({ project_id, type: locationType });
     } catch (error) {
-      console.error("Error fetching smElevation items:", error);
+      console.error("Error fetching locationMap items:", error);
     }
   };
 
   // Handle metadata creation
   const handleCreateMeta = async (formData) => {
     try {
-      // formData.append("is_type", "iframe");
+      formData.append("is_type", "image");
       // formData.append("project_id", project_id);
       // formData.append("section_type", locationType);
       await createItem(formData);
@@ -97,29 +98,29 @@ const SmElevation = () => {
     }
   };
 
-  // Handle smElevation item creation
-  const handleCreatesmElevation = async (formData) => {
+  // Handle locationMap item creation
+  const handleCreatelocationMap = async (formData) => {
     try {
-      formData.append("is_type", "elevation");
+      formData.append("is_type", "locationMap");
       // formData.append("project_id", project_id);
       // formData.append("section_type", locationType);
-      await smElevationCreateItem(formData);
-      await fetchAllsmElevationItems();
-      setEditsmElevationData(null);
+      await locationMapCreateItem(formData);
+      await fetchAlllocationMapItems();
+      setEditlocationMapData(null);
     } catch (error) {
-      console.error("Error creating smElevation item:", error);
+      console.error("Error creating locationMap item:", error);
     }
   };
 
-  // Handle smElevation item edit
-  const handleEditsmElevation = async (formData) => {
+  // Handle locationMap item edit
+  const handleEditlocationMap = async (formData) => {
     try {
-            formData.append("is_type", "elevation");
-      await smElevationEditItem(editsmElevationData.id, formData);
-      await fetchAllsmElevationItems();
-      setEditsmElevationData(null);
+            formData.append("is_type", "locationMap");
+      await locationMapEditItem(editlocationMapData.id, formData);
+      await fetchAlllocationMapItems();
+      setEditlocationMapData(null);
     } catch (error) {
-      console.error("Error updating smElevation item:", error);
+      console.error("Error updating locationMap item:", error);
     }
   };
 
@@ -127,34 +128,33 @@ const SmElevation = () => {
   const handleDeleteItem = async (id) => {
     try {
       await deleteItem(id);
-      await fetchAllsmElevationItems();
+      await fetchAlllocationMapItems();
     } catch (error) {
-      console.error("Error deleting smElevation item:", error);
+      console.error("Error deleting locationMap item:", error);
     }
   };
 
   // Handle cancel edit
   const handleCancelEdit = () => {
-    setEditsmElevationData(null);
+    setEditlocationMapData(null);
   };
 
   // Initial data loading
   useEffect(() => {
     fetchMetadata();
-    fetchAllsmElevationItems();
+    fetchAlllocationMapItems();
   }, []);
 
   // Table columns
   const columns = [
     { key: "", label: "S.No." },
-    // { key: "title", label: "Title", type: "text" },
-    { key: "image", label: "Image", type: "file" },
-    { key: "alternative_image", label: "Alternative Image", type: "file" },
-    { key: "alt", label: "Alt Text", type: "text" },
+    { key: "designation", label: "Designation", type: "text" },
+    { key: "distance", label: "Distance", type: "text" },
   ];
 
   // Paginate data
-  const paginatedData = smElevationItems?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
+  const paginatedData = locationMapItems?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
+console.log(locationMapItems)
   return (
     <CustomSection>
       <MicroBox>
@@ -167,31 +167,32 @@ const SmElevation = () => {
         />
       </MicroBox>
       <MicroBox>
-        <CustomTitle title={editsmElevationData ? "Edit smElevation Image" : "Add smElevation Images"} />
+        <CustomTitle title={editlocationMapData ? "Edit floor Plans Details" : "Add floor Plans Details"} />
         <CustomFormMicrosite
           isBanner={false}
-          dynamicFields={smElevationFields}
-          defaultData={editsmElevationData}
-          onSubmit={editsmElevationData ? handleEditsmElevation : handleCreatesmElevation}
-          submitButtonText={editsmElevationData ? "Update" : "Create"}
-          cancelButton={editsmElevationData ? { text: "Cancel", onClick: handleCancelEdit } : null}
+          dynamicFields={locationMapFields}
+          defaultData={editlocationMapData}
+          onSubmit={editlocationMapData ? handleEditlocationMap : handleCreatelocationMap}
+          submitButtonText={editlocationMapData ? "Update" : "Create"}
+          cancelButton={editlocationMapData ? { text: "Cancel", onClick: handleCancelEdit } : null}
         />
       </MicroBox>
       <MicroBox>
-        <CustomTitle title="smElevation Items" />
+        <CustomTitle title="locationMap Items" />
         <CustomTable
           columns={columns}
           data={paginatedData}
           onEdit={(row) => {
             window.scrollTo(0, 0);
-            setEditsmElevationData(row);
+            setEditlocationMapData(row);
+            setFormType(row.is_type || "image");
           }}
           onDelete={(row) => handleDeleteItem(row.id)}
           startIndex={(currentPage - 1) * itemsPerPage}
         />
         <CustomPagination
           currentPage={currentPage}
-          totalPages={Math.ceil((smElevationItems?.length || 0) / itemsPerPage)}
+          totalPages={Math.ceil((locationMapItems?.length || 0) / itemsPerPage)}
           onPageChange={setCurrentPage}
         />
       </MicroBox>
@@ -199,4 +200,4 @@ const SmElevation = () => {
   );
 };
 
-export default SmElevation;
+export default LocationMap;

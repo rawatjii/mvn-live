@@ -4,7 +4,7 @@ import { FaRegFileAlt } from "react-icons/fa";
 import { IoMdInformationCircleOutline,IoIosImage } from "react-icons/io";
 import { BsBuildingUp } from "react-icons/bs";
 import { GrLocation } from "react-icons/gr";
-import { MdVideoSettings,MdOutline360,MdOutlineLiving  } from "react-icons/md";
+import { MdVideoSettings,MdOutline360,MdOutlineLiving,MdOutlineFeaturedPlayList,MdShareLocation,MdStoreMallDirectory    } from "react-icons/md";
 import { TbView360Number } from "react-icons/tb";
 import { useParams } from "react-router-dom";
 import { LuPartyPopper } from "react-icons/lu";
@@ -12,6 +12,9 @@ import { MdBedroomParent } from "react-icons/md";
 import { FaUserCog } from "react-icons/fa";
 import { BiLandscape } from "react-icons/bi";
 import { HiOutlineBuildingStorefront } from "react-icons/hi2";
+import { PiBuildingApartment } from "react-icons/pi";
+import { MdOutlineConstruction } from "react-icons/md";
+import { PiStrategyBold } from "react-icons/pi";
 
 const MicroSidebar = () => {
   const getProject_id=useParams();
@@ -124,9 +127,76 @@ const MicroSidebar = () => {
               <div className="icon">
                 <HiOutlineBuildingStorefront   fontSize={24} />
               </div>
-              <div className="description">Small Elevation</div>
+              <div className="description">SmallElevation</div>
             </div>
           </NavLink>
+           <NavLink to={"apartment"}>
+            <div className="nav">
+              <div className="icon">
+                <PiBuildingApartment   fontSize={24} />
+              </div>
+              <div className="description"> Apartment</div>
+            </div>
+          </NavLink>
+           <NavLink to={"construction"}>
+            <div className="nav">
+              <div className="icon">
+                <MdOutlineConstruction   fontSize={24} />
+              </div>
+              <div className="description"> Construction</div>
+            </div>
+          </NavLink>
+           <NavLink to={"amenities"}>
+            <div className="nav">
+              <div className="icon">
+                <MdOutlineConstruction   fontSize={24} />
+              </div>
+              <div className="description"> Amenities</div>
+            </div>
+          </NavLink>
+              <NavLink to={"typologies"}>
+            <div className="nav">
+              <div className="icon">
+                <MdOutlineFeaturedPlayList   fontSize={24} />
+              </div>
+              <div className="description">Typologies</div>
+            </div>
+          </NavLink>
+            <NavLink to={"floor-plan"}>
+            <div className="nav">
+              <div className="icon">
+                <PiStrategyBold   fontSize={24} />
+              </div>
+              <div className="description">Floor Plan</div>
+            </div>
+          </NavLink>
+          <NavLink to={"location-map"}>
+            <div className="nav">
+              <div className="icon">
+                <MdOutlineConstruction   fontSize={24} />
+              </div>
+              <div className="description">Location Map</div>
+            </div>
+          </NavLink>
+             <NavLink to={"mvn-mall"}>
+            <div className="nav">
+              <div className="icon">
+                <MdShareLocation   fontSize={24} />
+              </div>
+              <div className="description">MVN Mall</div>
+            </div>
+          </NavLink>
+           <NavLink to={"connection-mvn-mall"}>
+            <div className="nav">
+              <div className="icon">
+                <MdStoreMallDirectory   fontSize={24} />
+              </div>
+              <div className="description">Location Map</div>
+            </div>
+          </NavLink>
+       
+          
+          
           </>}
         </div>
       </section>

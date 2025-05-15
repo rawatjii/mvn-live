@@ -8,9 +8,10 @@ import { useLocation, useParams } from "react-router-dom";
 import CustomTable from "../utilities/custom-table/CustomTable";
 import CustomPagination from "../utilities/pagination/CustomPagination";
 
-const SmElevation = () => {
+const ConnectionMVNMall = () => {
   const [editData, setEditData] = useState(null);
-  const [editsmElevationData, setEditsmElevationData] = useState(null);
+  const [editConnectionmvnMallData, setEditConnectionmvnMallData] = useState(null);
+  const [formType, setFormType] = useState("image");
   const { project_id } = useParams();
   const location = useLocation();
   const locationType = location.pathname.split("/").pop();
@@ -18,17 +19,17 @@ const SmElevation = () => {
   // API endpoints
   const projectSectionsApi = generateApi("projec-sections");
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
-  const SmElevationApi = generateApi("project-elevate-galleries/elevation");
-  const GalleryApi = generateApi("project-elevate-galleries");
-
+  const ConnectionmvnMallApi = generateApi("project-amenities");
   
   // CRUD hooks
   const { editItem, createItem } = useCrud(projectSectionsApi);
-  const {deleteItem,fetchAll: fetchsmElevationItems,   editItem: smElevationEditItem,    data: smElevationItems, 
- }=useCrud(GalleryApi);
   const { 
-    createItem: smElevationCreateItem, 
-  } = useCrud(SmElevationApi);
+    data: ConnectionmvnMallItems, 
+    createItem: ConnectionmvnMallCreateItem, 
+    editItem: ConnectionmvnMallEditItem, 
+    deleteItem,
+    getItems: fetchConnectionmvnMallItems
+  } = useCrud(ConnectionmvnMallApi);
   
   const { getEditData } = useCrud(getEditDataApi);
   
@@ -39,16 +40,15 @@ const SmElevation = () => {
   // Form fields
   const metaFields = [
     { name: "heading", label: "Heading", type: "text", col: 6 },
-    { name: "sub_heading", label: "Sub Heading", type: "text", col: 6 },
-    { name: "description", label: "Description", type: "textarea", placeholder: "Enter Description", col: 12 }
   ];
 
-  const smElevationFields = [
+  const ConnectionmvnMallFields = [
+    { name: "heading", label: "Heading", type: "text", col: 6,isRequired:true },
     { name: "image", label: "Image", type: "file", col: 6,isRequired:true },
     { name: "alternative_image", label: "Alternate Image", type: "file", col: 6 },
-    { name: "sm_alternative_image", label: "Small Image", type: "file", col: 6,isRequired:true },
-    { name: "sm_image", label: "Alternate Image", type: "file", col: 6 },
     { name: "alt", label: "Alt", type: "text", col: 6, placeholder: "Enter Alt text",isRequired:true },
+    { name: "short_description", label: "Description", type: "textarea", col: 6,isRequired:true },
+
   ];
 
   // Fetch metadata function
@@ -64,13 +64,13 @@ const SmElevation = () => {
     }
   };
 
-  // Fetch smElevation items
-  const fetchAllsmElevationItems = async () => {
+  // Fetch ConnectionmvnMall items
+  const fetchAllConnectionmvnMallItems = async () => {
     try {
       // Adjust parameters as needed for your API
-      await fetchsmElevationItems({ project_id, type: locationType });
+      await fetchConnectionmvnMallItems({ project_id, type: locationType });
     } catch (error) {
-      console.error("Error fetching smElevation items:", error);
+      console.error("Error fetching ConnectionmvnMall items:", error);
     }
   };
 
@@ -97,29 +97,29 @@ const SmElevation = () => {
     }
   };
 
-  // Handle smElevation item creation
-  const handleCreatesmElevation = async (formData) => {
+  // Handle ConnectionmvnMall item creation
+  const handleCreateConnectionmvnMall = async (formData) => {
     try {
-      formData.append("is_type", "elevation");
+      formData.append("is_type", "connection_mall");
       // formData.append("project_id", project_id);
       // formData.append("section_type", locationType);
-      await smElevationCreateItem(formData);
-      await fetchAllsmElevationItems();
-      setEditsmElevationData(null);
+      await ConnectionmvnMallCreateItem(formData);
+      await fetchAllConnectionmvnMallItems();
+      setEditConnectionmvnMallData(null);
     } catch (error) {
-      console.error("Error creating smElevation item:", error);
+      console.error("Error creating ConnectionmvnMall item:", error);
     }
   };
 
-  // Handle smElevation item edit
-  const handleEditsmElevation = async (formData) => {
+  // Handle ConnectionmvnMall item edit
+  const handleEditConnectionmvnMall = async (formData) => {
     try {
-            formData.append("is_type", "elevation");
-      await smElevationEditItem(editsmElevationData.id, formData);
-      await fetchAllsmElevationItems();
-      setEditsmElevationData(null);
+            formData.append("is_type", "connection_mall");
+      await ConnectionmvnMallEditItem(editConnectionmvnMallData.id, formData);
+      await fetchAllConnectionmvnMallItems();
+      setEditConnectionmvnMallData(null);
     } catch (error) {
-      console.error("Error updating smElevation item:", error);
+      console.error("Error updating ConnectionmvnMall item:", error);
     }
   };
 
@@ -127,34 +127,34 @@ const SmElevation = () => {
   const handleDeleteItem = async (id) => {
     try {
       await deleteItem(id);
-      await fetchAllsmElevationItems();
+      await fetchAllConnectionmvnMallItems();
     } catch (error) {
-      console.error("Error deleting smElevation item:", error);
+      console.error("Error deleting ConnectionmvnMall item:", error);
     }
   };
 
   // Handle cancel edit
   const handleCancelEdit = () => {
-    setEditsmElevationData(null);
+    setEditConnectionmvnMallData(null);
   };
 
   // Initial data loading
   useEffect(() => {
     fetchMetadata();
-    fetchAllsmElevationItems();
+    fetchAllConnectionmvnMallItems();
   }, []);
 
   // Table columns
   const columns = [
     { key: "", label: "S.No." },
-    // { key: "title", label: "Title", type: "text" },
+    { key: "title", label: "Title", type: "text" },
     { key: "image", label: "Image", type: "file" },
     { key: "alternative_image", label: "Alternative Image", type: "file" },
     { key: "alt", label: "Alt Text", type: "text" },
   ];
 
   // Paginate data
-  const paginatedData = smElevationItems?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
+  const paginatedData = ConnectionmvnMallItems?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
   return (
     <CustomSection>
       <MicroBox>
@@ -167,31 +167,32 @@ const SmElevation = () => {
         />
       </MicroBox>
       <MicroBox>
-        <CustomTitle title={editsmElevationData ? "Edit smElevation Image" : "Add smElevation Images"} />
+        <CustomTitle title={editConnectionmvnMallData ? "Edit ConnectionmvnMall Image" : "Add ConnectionmvnMall Images"} />
         <CustomFormMicrosite
           isBanner={false}
-          dynamicFields={smElevationFields}
-          defaultData={editsmElevationData}
-          onSubmit={editsmElevationData ? handleEditsmElevation : handleCreatesmElevation}
-          submitButtonText={editsmElevationData ? "Update" : "Create"}
-          cancelButton={editsmElevationData ? { text: "Cancel", onClick: handleCancelEdit } : null}
+          dynamicFields={ConnectionmvnMallFields}
+          defaultData={editConnectionmvnMallData}
+          onSubmit={editConnectionmvnMallData ? handleEditConnectionmvnMall : handleCreateConnectionmvnMall}
+          submitButtonText={editConnectionmvnMallData ? "Update" : "Create"}
+          cancelButton={editConnectionmvnMallData ? { text: "Cancel", onClick: handleCancelEdit } : null}
         />
       </MicroBox>
       <MicroBox>
-        <CustomTitle title="smElevation Items" />
+        <CustomTitle title="ConnectionmvnMall Items" />
         <CustomTable
           columns={columns}
           data={paginatedData}
           onEdit={(row) => {
             window.scrollTo(0, 0);
-            setEditsmElevationData(row);
+            setEditConnectionmvnMallData(row);
+            setFormType(row.is_type || "image");
           }}
           onDelete={(row) => handleDeleteItem(row.id)}
           startIndex={(currentPage - 1) * itemsPerPage}
         />
         <CustomPagination
           currentPage={currentPage}
-          totalPages={Math.ceil((smElevationItems?.length || 0) / itemsPerPage)}
+          totalPages={Math.ceil((ConnectionmvnMallItems?.length || 0) / itemsPerPage)}
           onPageChange={setCurrentPage}
         />
       </MicroBox>
@@ -199,4 +200,4 @@ const SmElevation = () => {
   );
 };
 
-export default SmElevation;
+export default ConnectionMVNMall;

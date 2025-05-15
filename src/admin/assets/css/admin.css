@@ -470,5 +470,6 @@
 /* .sidenav a.active .nav{left: -10px;background-color: ;} */
 body .CustomPaginationContainer button{background-color: transparent!important;padding: 0!important;}
 .InputContain button{border: none;}
+/* .sidenav{overflow-y: scroll;} */
 .InputContain svg{color:#fff;}
 

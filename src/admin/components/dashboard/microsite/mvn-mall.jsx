@@ -8,27 +8,26 @@ import { useLocation, useParams } from "react-router-dom";
 import CustomTable from "../utilities/custom-table/CustomTable";
 import CustomPagination from "../utilities/pagination/CustomPagination";
 
-const SmElevation = () => {
+const MvnMall = () => {
   const [editData, setEditData] = useState(null);
-  const [editsmElevationData, setEditsmElevationData] = useState(null);
+  const [editmvnMallData, setEditmvnMallData] = useState(null);
   const { project_id } = useParams();
   const location = useLocation();
   const locationType = location.pathname.split("/").pop();
   
   // API endpoints
-  const projectSectionsApi = generateApi("projec-sections");
+  const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
-  const SmElevationApi = generateApi("project-elevate-galleries/elevation");
+  const mvnMallApi = generateApi("project-elevate-galleries/elevation",0);
   const GalleryApi = generateApi("project-elevate-galleries");
 
   
   // CRUD hooks
   const { editItem, createItem } = useCrud(projectSectionsApi);
-  const {deleteItem,fetchAll: fetchsmElevationItems,   editItem: smElevationEditItem,    data: smElevationItems, 
- }=useCrud(GalleryApi);
+  const {    data: mvnMallItem,deleteItem,fetchAll: fetchmvnMallItems,editItem: mvnMallEditItem,}=useCrud(GalleryApi);
   const { 
-    createItem: smElevationCreateItem, 
-  } = useCrud(SmElevationApi);
+    createItem: mvnMallCreateItem, 
+  } = useCrud(mvnMallApi);
   
   const { getEditData } = useCrud(getEditDataApi);
   
@@ -43,7 +42,7 @@ const SmElevation = () => {
     { name: "description", label: "Description", type: "textarea", placeholder: "Enter Description", col: 12 }
   ];
 
-  const smElevationFields = [
+  const mvnMallFields = [
     { name: "image", label: "Image", type: "file", col: 6,isRequired:true },
     { name: "alternative_image", label: "Alternate Image", type: "file", col: 6 },
     { name: "sm_alternative_image", label: "Small Image", type: "file", col: 6,isRequired:true },
@@ -64,13 +63,13 @@ const SmElevation = () => {
     }
   };
 
-  // Fetch smElevation items
-  const fetchAllsmElevationItems = async () => {
+  // Fetch mvnMall items
+  const fetchAllmvnMallItems = async () => {
     try {
       // Adjust parameters as needed for your API
-      await fetchsmElevationItems({ project_id, type: locationType });
+      await fetchmvnMallItems({ project_id, type: locationType });
     } catch (error) {
-      console.error("Error fetching smElevation items:", error);
+      console.error("Error fetching mvnMall items:", error);
     }
   };
 
@@ -97,29 +96,29 @@ const SmElevation = () => {
     }
   };
 
-  // Handle smElevation item creation
-  const handleCreatesmElevation = async (formData) => {
+  // Handle mvnMall item creation
+  const handleCreatemvnMall = async (formData) => {
     try {
-      formData.append("is_type", "elevation");
+      formData.append("is_type", "mall_galleries");
       // formData.append("project_id", project_id);
       // formData.append("section_type", locationType);
-      await smElevationCreateItem(formData);
-      await fetchAllsmElevationItems();
-      setEditsmElevationData(null);
+      await mvnMallCreateItem(formData);
+      await fetchAllmvnMallItems();
+      setEditmvnMallData(null);
     } catch (error) {
-      console.error("Error creating smElevation item:", error);
+      console.error("Error creating mvnMall item:", error);
     }
   };
 
-  // Handle smElevation item edit
-  const handleEditsmElevation = async (formData) => {
+  // Handle mvnMall item edit
+  const handleEditmvnMall = async (formData) => {
     try {
-            formData.append("is_type", "elevation");
-      await smElevationEditItem(editsmElevationData.id, formData);
-      await fetchAllsmElevationItems();
-      setEditsmElevationData(null);
+            formData.append("is_type", "mall_galleries");
+      await mvnMallEditItem(editmvnMallData.id, formData);
+      await fetchAllmvnMallItems();
+      setEditmvnMallData(null);
     } catch (error) {
-      console.error("Error updating smElevation item:", error);
+      console.error("Error updating mvnMall item:", error);
     }
   };
 
@@ -127,21 +126,21 @@ const SmElevation = () => {
   const handleDeleteItem = async (id) => {
     try {
       await deleteItem(id);
-      await fetchAllsmElevationItems();
+      await fetchAllmvnMallItems();
     } catch (error) {
-      console.error("Error deleting smElevation item:", error);
+      console.error("Error deleting mvnMall item:", error);
     }
   };
 
   // Handle cancel edit
   const handleCancelEdit = () => {
-    setEditsmElevationData(null);
+    setEditmvnMallData(null);
   };
 
   // Initial data loading
   useEffect(() => {
     fetchMetadata();
-    fetchAllsmElevationItems();
+    fetchAllmvnMallItems();
   }, []);
 
   // Table columns
@@ -154,7 +153,7 @@ const SmElevation = () => {
   ];
 
   // Paginate data
-  const paginatedData = smElevationItems?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
+  const paginatedData = mvnMallItem?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
   return (
     <CustomSection>
       <MicroBox>
@@ -167,31 +166,31 @@ const SmElevation = () => {
         />
       </MicroBox>
       <MicroBox>
-        <CustomTitle title={editsmElevationData ? "Edit smElevation Image" : "Add smElevation Images"} />
+        <CustomTitle title={editmvnMallData ? "Edit mvnMall Image" : "Add mvnMall Images"} />
         <CustomFormMicrosite
           isBanner={false}
-          dynamicFields={smElevationFields}
-          defaultData={editsmElevationData}
-          onSubmit={editsmElevationData ? handleEditsmElevation : handleCreatesmElevation}
-          submitButtonText={editsmElevationData ? "Update" : "Create"}
-          cancelButton={editsmElevationData ? { text: "Cancel", onClick: handleCancelEdit } : null}
+          dynamicFields={mvnMallFields}
+          defaultData={editmvnMallData}
+          onSubmit={editmvnMallData ? handleEditmvnMall : handleCreatemvnMall}
+          submitButtonText={editmvnMallData ? "Update" : "Create"}
+          cancelButton={editmvnMallData ? { text: "Cancel", onClick: handleCancelEdit } : null}
         />
       </MicroBox>
       <MicroBox>
-        <CustomTitle title="smElevation Items" />
+        <CustomTitle title="mvnMall Items" />
         <CustomTable
           columns={columns}
           data={paginatedData}
           onEdit={(row) => {
             window.scrollTo(0, 0);
-            setEditsmElevationData(row);
+            setEditmvnMallData(row);
           }}
           onDelete={(row) => handleDeleteItem(row.id)}
           startIndex={(currentPage - 1) * itemsPerPage}
         />
         <CustomPagination
           currentPage={currentPage}
-          totalPages={Math.ceil((smElevationItems?.length || 0) / itemsPerPage)}
+          totalPages={Math.ceil((mvnMallItem?.length || 0) / itemsPerPage)}
           onPageChange={setCurrentPage}
         />
       </MicroBox>
@@ -199,4 +198,4 @@ const SmElevation = () => {
   );
 };
 
-export default SmElevation;
+export default MvnMall;
