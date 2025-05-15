@@ -19,12 +19,17 @@ const MvnMall = () => {
   const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
   const mvnMallApi = generateApi("project-elevate-galleries/elevation",0);
-  const GalleryApi = generateApi("project-elevate-galleries");
+  const GalleryApi = generateApi("project-elevate-galleries",0);
 
-  
+    const getApi = generateApi("project-elevate-galleries/mvn-mall");
+
   // CRUD hooks
   const { editItem, createItem } = useCrud(projectSectionsApi);
-  const {    data: mvnMallItem,deleteItem,fetchAll: fetchmvnMallItems,editItem: mvnMallEditItem,}=useCrud(GalleryApi);
+  const { 
+ data: mvnMallItem,
+fetchAll: fetchmvnMallItems
+  } = useCrud(getApi);
+  const {    deleteItem,editItem: mvnMallEditItem,}=useCrud(GalleryApi);
   const { 
     createItem: mvnMallCreateItem, 
   } = useCrud(mvnMallApi);
@@ -140,7 +145,7 @@ const MvnMall = () => {
   // Initial data loading
   useEffect(() => {
     fetchMetadata();
-    fetchAllmvnMallItems();
+    // fetchAllmvnMallItems();
   }, []);
 
   // Table columns

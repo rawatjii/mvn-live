@@ -16,18 +16,20 @@ const SmElevation = () => {
   const locationType = location.pathname.split("/").pop();
   
   // API endpoints
-  const projectSectionsApi = generateApi("projec-sections");
+  const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
   const SmElevationApi = generateApi("project-elevate-galleries/elevation");
-  const GalleryApi = generateApi("project-elevate-galleries");
+  const GalleryApi = generateApi("project-elevate-galleries",0);
 
   
   // CRUD hooks
   const { editItem, createItem } = useCrud(projectSectionsApi);
-  const {deleteItem,fetchAll: fetchsmElevationItems,   editItem: smElevationEditItem,    data: smElevationItems, 
+  const {deleteItem,  editItem: smElevationEditItem,   
  }=useCrud(GalleryApi);
   const { 
     createItem: smElevationCreateItem, 
+    fetchAll: fetchsmElevationItems, 
+     data: smElevationItems, 
   } = useCrud(SmElevationApi);
   
   const { getEditData } = useCrud(getEditDataApi);
@@ -141,7 +143,7 @@ const SmElevation = () => {
   // Initial data loading
   useEffect(() => {
     fetchMetadata();
-    fetchAllsmElevationItems();
+    // fetchAllsmElevationItems();
   }, []);
 
   // Table columns

@@ -17,18 +17,23 @@ const Apartment = () => {
   const locationType = location.pathname.split("/").pop();
   
   // API endpoints
-  const projectSectionsApi = generateApi("projec-sections");
+  const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
-  const apartmentApi = generateApi("project-gallery");
+  const apartmentApi = generateApi("project-gallery",0);
+  const getApi = generateApi("project-gallery/apartment");
   
   // CRUD hooks
   const { editItem, createItem } = useCrud(projectSectionsApi);
+    const { 
+      data: apartmentItems, 
+      fetchAll: fetchapartmentItems
+  } = useCrud(getApi);
   const { 
-    data: apartmentItems, 
+    
     createItem: apartmentCreateItem, 
     editItem: apartmentEditItem, 
     deleteItem,
-    getItems: fetchapartmentItems
+
   } = useCrud(apartmentApi);
   
   const { getEditData } = useCrud(getEditDataApi);
@@ -141,7 +146,7 @@ const Apartment = () => {
   // Initial data loading
   useEffect(() => {
     fetchMetadata();
-    fetchAllapartmentItems();
+    // fetchAllapartmentItems();
   }, []);
 
   // Table columns

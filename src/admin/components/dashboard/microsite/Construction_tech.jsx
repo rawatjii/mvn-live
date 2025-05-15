@@ -17,37 +17,37 @@ const ConstructionTechnology = () => {
   const locationType = location.pathname.split("/").pop();
   
   // API endpoints
-  const projectSectionsApi = generateApi("projec-sections");
+  const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
   const keyHightlightsApi = generateApi("project-key-highlight");
   
   // CRUD hooks
-  const { editItem, createItem } = useCrud(projectSectionsApi);
+  const { editItem, createItem, } = useCrud(projectSectionsApi);
   const { 
     data: construction, 
     createItem: keyHightlightsCreateItem, 
     editItem: keyHightlightsEditItem, 
     deleteItem,
-    getItems: fetchconstruction
+    fetchAll: fetchconstruction
   } = useCrud(keyHightlightsApi);
   
   const { getEditData } = useCrud(getEditDataApi);
-  
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
     // Form fields
-  const metaFields = [
+  const metaFields = [  
     { name: "heading", label: "Heading", type: "text", col: 6 },
     { name: "sub_heading", label: "Sub Heading", type: "text", col: 6 },
+    { name: "short_description", label:"Title", type: "text", col: 12 },
     { name: "video", label: "Upload Video", type: "file", col: 12 },
     { name: "description", label: "Description", type: "textarea", placeholder: "Enter Description", col: 12 }
   ];
 
   const keyHightlightsFields = [
     { name: "heading", label: "Heading", type: "text", col: 12,isRequired:true },
-    { name: "description", label: "Description", type: "textarea", col: 12,isRequired:true },
+    { name: "short_description", label: "Description", type: "textarea", col: 12,isRequired:true },
   ];
 
   // Fetch metadata function
@@ -140,14 +140,14 @@ const ConstructionTechnology = () => {
   // Initial data loading
   useEffect(() => {
     fetchMetadata();
-    fetchAllconstruction();
+    // fetchAllconstruction();
   }, []);
 
   // Table columns
   const columns = [
     { key: "", label: "S.No." },
-    { key: "title", label: "Heading", type: "text" },
-    { key: "description", label: "Description", type: "file" },
+    { key: "heading", label: "Heading", type: "text" },
+    { key: "short_description", label: "Description", type: "text" },
   ];
 
   // Paginate data

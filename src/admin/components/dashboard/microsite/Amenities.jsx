@@ -17,7 +17,7 @@ const Amenities = () => {
   const locationType = location.pathname.split("/").pop();
   
   // API endpoints
-  const projectSectionsApi = generateApi("projec-sections");
+  const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
   const amenitiesApi = generateApi("project-amenities");
   
@@ -147,7 +147,7 @@ const Amenities = () => {
   // Table columns
   const columns = [
     { key: "", label: "S.No." },
-    { key: "title", label: "Title", type: "text" },
+    { key: "heading", label: "Title", type: "text" },
     { key: "image", label: "Image", type: "file" },
     { key: "alternative_image", label: "Alternative Image", type: "file" },
     { key: "alt", label: "Alt Text", type: "text" },

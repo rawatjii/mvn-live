@@ -28,6 +28,8 @@ const BasicMicroSite = () => {
       { name: "name", label: "Project Name", Placeholder: "Enter Project Name", type: "text", col: 6, isRequired: true },
       { name: "slug", label: "Project Slug", Placeholder: "project-slug", type: "text", col: 6, isRequired: true },
       { name: "image", label: "Project image", Placeholder: "Enter Project Typology", type: "file", col: 6 },
+      { name: "batch", label: "Upload Badge", type: "file", col: 6 },
+      { name: "brochure", label: "Upload Brochure", type: "file", col: 6 },
       { name: "alternative_image", label: "Project image", Placeholder: "Enter Project Typology", type: "file", col: 6 },
       { name: "phone_ivr", label: "Phone IVR", Placeholder: "xxxxxxxxxx", type: "text", col: 6, isRequired: true },
       { name: "rera_no", label: "RERA NO", Placeholder: "EX/MM/MM/MM", type: "text", col: 6, isRequired: true },

@@ -28,7 +28,7 @@ const ConnectionMVNMall = () => {
     createItem: ConnectionmvnMallCreateItem, 
     editItem: ConnectionmvnMallEditItem, 
     deleteItem,
-    getItems: fetchConnectionmvnMallItems
+    fetchAll: fetchConnectionmvnMallItems
   } = useCrud(ConnectionmvnMallApi);
   
   const { getEditData } = useCrud(getEditDataApi);
@@ -147,7 +147,7 @@ const ConnectionMVNMall = () => {
   // Table columns
   const columns = [
     { key: "", label: "S.No." },
-    { key: "title", label: "Title", type: "text" },
+    { key: "heading", label: "Title", type: "text" },
     { key: "image", label: "Image", type: "file" },
     { key: "alternative_image", label: "Alternative Image", type: "file" },
     { key: "alt", label: "Alt Text", type: "text" },
