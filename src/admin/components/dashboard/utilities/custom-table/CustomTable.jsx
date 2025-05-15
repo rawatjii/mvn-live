@@ -68,7 +68,7 @@ const CustomTable = ({ columns, data, onEdit, onDelete, startIndex = 0 }) => {
                         ) : // Handle file type columns
                         col.type === "file" ? (
                           row[col.key] ? (
-                            row.is_type === "image" || row.is_type === 1 ? (
+                            row?.is_type == "image" || row.is_type === 1 ? (
                               <img
                                 src={image_preview}
                                 alt="thumbnail"

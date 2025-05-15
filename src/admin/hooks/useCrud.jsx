@@ -68,7 +68,7 @@ const useCrud = (apiService) => {
       }
     },
 
-        getEditData: async (item) => {
+      getEditData: async (item) => {
         try {
         const response = await apiService.editGet(item); // Assuming section_type is needed
         const data = response.data;

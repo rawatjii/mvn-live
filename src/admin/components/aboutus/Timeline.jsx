@@ -41,7 +41,7 @@ const Timeline = () => {
   const [editModalData, setEditModalData] = useState(null);
 
   const aboutsApi = generateApi("timeline");
-  const { data, loading, error, createItem, updateItem, deleteItem } =
+  const { data, loading, error, createItem, editItem, updateItem, deleteItem } =
     useCrud(aboutsApi);
 
   const handleCreate = (formData) => createItem(formData);
@@ -53,8 +53,7 @@ const Timeline = () => {
   };
 
   const handleEditSubmit = (formData) => {
-    updateItem(editModalData.id, formData); // update data
-    setEditModalData(null); // close modal
+    editItem(editModalData.id, formData);
   };
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -69,11 +68,13 @@ const Timeline = () => {
       {/* left box for form */}
       <LeftArea>
         <MicroBox>
-          <CustomTitle title="Qur Timeline From" />
+          <CustomTitle title="Our Timeline Form" />
           <CustomForm
             isBanner={false}
             dynamicFields={metaFields}
             onSubmit={handleCreate}
+            onUpdate={handleEditSubmit}
+            data={editModalData}
           />
         </MicroBox>
       </LeftArea>
@@ -94,36 +95,7 @@ const Timeline = () => {
           onPageChange={(page) => setCurrentPage(page)}
         />
 
-        {/* Edit Modal */}
-        {editModalData && (
-          <CustomModal
-            isOpen={!!editModalData}
-            onClose={() => setEditModalData(null)}
-            title="Edit Timeline"
-          >
-            <CustomForm
-              isBanner={false}
-              dynamicFields={metaFields}
-              defaultData={editModalData}
-              onSubmit={handleEditSubmit}
-            />
-          </CustomModal>
-        )}
-         {/* Edit Modal */}
-        {editModalData && (
-          <CustomModal
-            isOpen={!!editModalData}
-            onClose={() => setEditModalData(null)}
-            title="Edit Timeline"
-          >
-            <CustomForm
-              isBanner={false}
-              dynamicFields={metaFields}
-              defaultData={editModalData}
-              onSubmit={handleEditSubmit}
-            />
-          </CustomModal>
-        )}
+        
       </RightArea>
     </CustomSection>
   );

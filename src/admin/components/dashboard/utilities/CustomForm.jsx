@@ -15,6 +15,7 @@ const defaultBannerFields = [
 const CustomForm = ({
   fieldVisibility = {},
   onSubmit,
+  onUpdate,
   formType = "",
   isBanner = false,
   dynamicFields = [],
@@ -46,8 +47,6 @@ const CustomForm = ({
     setFormData(data ? data : defaultData);
   },[data])
   
-  console.log('formData', formData);
-
   useEffect(() => {
     const currentFields = isBanner ? defaultBannerFields : dynamicFields;
     if (Object.keys(initialData).length > 0) {
@@ -120,9 +119,39 @@ const CustomForm = ({
       setIsLoading(false);
     }
   };
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    
+    try {
+      const payload = new FormData();
+      visibleFields
+      .filter((field) => field.condition)
+      .forEach((field) => {
+        // if(field.name['description']){
+        //   console.log('description value', field.name['description'])
+        // }
+        // return;
+        const value = formData[field.name];
+        if (value != null) {
+          payload.append(field.name, value);
+        }
+      });
+
+      if (onUpdate) await onUpdate(payload);
+  
+      setFormData({});
+      setResetKey(Date.now());
+    } catch (error) {
+      console.error('Form submission error:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
   
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={data ? handleUpdate : handleSubmit}>
       <div className={formType === "block" ? "" : "row"}>
         {visibleFields
           .filter((field) => field.condition !== false)

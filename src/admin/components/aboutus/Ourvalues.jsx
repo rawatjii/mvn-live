@@ -42,8 +42,7 @@ const Ourvalues = () => {
   const handleCreate = (formData) => createItem(formData);
   const handleDelete = (row) => deleteItem(row.id);
   const handleEditSubmit = (formData) => {
-    editItem(editModalData.id, formData); // update data
-    setEditModalData(null); // close modal
+    editItem(editModalData.id, formData);
   };
   const handleEdit = (row) => {
     setEditModalData(row); // open modal
@@ -65,12 +64,14 @@ const Ourvalues = () => {
       {/* left box for form */}
       <LeftArea>
         <MicroBox>
-          <CustomTitle title="Our Values From" />
+          <CustomTitle title="Our Values Form" />
           <CustomForm
             isBanner={false}
             dynamicFields={metaFields}
             defaultData={editModalData}
             onSubmit={handleCreate}
+            onUpdate={handleEditSubmit}
+            data={editModalData}
           />
         </MicroBox>
       </LeftArea>
@@ -92,21 +93,6 @@ const Ourvalues = () => {
           onPageChange={(page) => setCurrentPage(page)}
         />
 
-        {/* Edit Modal */}
-        {editModalData && (
-            <CustomModal
-            isOpen={!!editModalData}
-            onClose={() => setEditModalData(null)}
-            title="Edit Our Values"
-          >
-            <CustomForm
-              isBanner={false}
-              dynamicFields={metaFields}
-              defaultData={editModalData}
-              onSubmit={handleEditSubmit}
-            />
-          </CustomModal>
-        )}
       </RightArea>
     </CustomSection>
   );

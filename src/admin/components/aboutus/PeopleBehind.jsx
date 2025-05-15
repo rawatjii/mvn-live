@@ -42,16 +42,16 @@ const PeopleBehind = () => {
     const [editModalData, setEditModalData] = useState(null);
 
     const aboutsApi = generateApi("team");
-    const { data, loading, error, createItem, updateItem, deleteItem } = useCrud(aboutsApi);
+    const { data, loading, error, createItem, editItem, updateItem, deleteItem } = useCrud(aboutsApi);
   
     const handleCreate = (formData) => createItem(formData);
     // const handleEdit = (row) => updateItem(row.id, row);
     const handleDelete = (row) => deleteItem(row.id);
   
     const handleEditSubmit = (formData) => {
-      updateItem(editModalData.id, formData); // update data
-      setEditModalData(null); // close modal
+      editItem(editModalData.id, formData);
     };
+
     const handleEdit = (row) => {
       setEditModalData(row); // open modal
     };
@@ -73,6 +73,8 @@ const PeopleBehind = () => {
             isBanner={false}
             dynamicFields={metaFields}
             onSubmit={handleCreate}
+            onUpdate={handleEditSubmit}
+            data={editModalData}
           />
         </MicroBox>
       </LeftArea>
@@ -93,21 +95,6 @@ const PeopleBehind = () => {
           onPageChange={(page) => setCurrentPage(page)}
         />
 
-        {/* Edit Modal */}
-        {editModalData && (
-            <CustomModal
-            isOpen={!!editModalData}
-            onClose={() => setEditModalData(null)}
-            title="Edit Team"
-          >
-            <CustomForm
-              isBanner={false}
-              dynamicFields={metaFields}
-              defaultData={editModalData}
-              onSubmit={handleEditSubmit}
-            />
-          </CustomModal>
-        )}
       </RightArea>
     </CustomSection>
   )

@@ -14,7 +14,7 @@ import useCrud from "../../hooks/useCrud";
 
 // Simulated backend response
 const metaFields = [
-  { name: "type", value:"offline_news", label: "Type", type: "hidden", col: 12, isLeft: true},
+  { name: "type", value:"gallery", label: "Type", type: "hidden", col: 12, isLeft: true},
   { name: "alt", label: "Alt Tag", type: "text", col: 12, isLeft: true },
   { name: "image", label: "Image", type: "file", col: 6, isLeft: true },
   {
@@ -40,7 +40,7 @@ const OfflineMedia = () => {
     useCrud(offlineApi);
 
   const handleCreate = (formData) =>{
-    formData.append("type","offline_news")
+    formData.append("type","gallery")
     createItem(formData)};
   // const handleEdit = (row) => updateItem(row.id, row);
   const handleDelete = (row) => deleteItem(row.id);
@@ -58,7 +58,7 @@ const OfflineMedia = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
-  const filteredData = data.filter((item)=>item.type == 'offline_news').map(item=>({
+  const filteredData = data.filter((item)=>item.type == 'gallery').map(item=>({
     ...item,
     is_type:'image'
   }));
@@ -73,7 +73,7 @@ const OfflineMedia = () => {
       {/* left box for form */}
       <LeftArea>
         <MicroBox>
-          <CustomTitle title="Offline Media From" />
+          <CustomTitle title="Gallery Form" />
           <CustomForm
             isBanner={false}
             dynamicFields={metaFields}

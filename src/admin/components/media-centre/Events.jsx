@@ -14,9 +14,7 @@ import useCrud from "../../hooks/useCrud";
 
 // Simulated backend response
 const metaFields = [
-    { name: "type", value:'news', label: "Type", type:'hidden', col: 12, isLeft: true },
-    { name: "heading", label: "Heading", type: "text", col: 12, isLeft: true },
-    { name: "date_at", label: "Date", type: "date", col: 12, isLeft: true },
+    { name: "type", value:'event', label: "Type", type:'hidden', col: 12, isLeft: true },
     { name: "links", label: "Url", type: "text", col: 12, isLeft: true },
     { name: "alt", label: "Alt Tag", type: "text", col: 12, isLeft: true },
   { name: "image", label: "Image", type: "file", col: 6, isLeft: true },
@@ -35,7 +33,7 @@ const columns = [
   { key: "alt", label: "Alt Tag" },
   { key: "image", label: "Image", type: "file" },
 ];
-const OnlineMedia = () => {
+const Events = () => {
     const [editModalData, setEditModalData] = useState(null);
 
     const aboutsApi = generateApi("media-center");
@@ -43,7 +41,7 @@ const OnlineMedia = () => {
       useCrud(aboutsApi);
   
     const handleCreate = (formData) => {
-      formData.append("type","news")
+      formData.append("type","event")
       createItem(formData)
     };
     // const handleEdit = (row) => updateItem(row.id, row);
@@ -60,7 +58,7 @@ const OnlineMedia = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
 
-    const filteredData = data.filter((item)=>item.type == 'news').map(item=>({
+    const filteredData = data.filter((item)=>item.type == 'event').map(item=>({
       ...item,
       is_type:'image'
     }));
@@ -74,7 +72,7 @@ const OnlineMedia = () => {
     {/* left box for form */}
     <LeftArea>
       <MicroBox>
-        <CustomTitle title="Online Media Form" />
+        <CustomTitle title="Events Form" />
         <CustomForm
           isBanner={false}
           dynamicFields={metaFields}
@@ -87,7 +85,7 @@ const OnlineMedia = () => {
     {/* right box for table */}
     <RightArea>
       <MicroBox>
-        <CustomTitle title="Online Media Table" />
+        <CustomTitle title="Events Table" />
         <CustomTable
           columns={columns}
           data={paginatedData}
@@ -106,4 +104,4 @@ const OnlineMedia = () => {
   )
 }
 
-export default OnlineMedia
+export default Events

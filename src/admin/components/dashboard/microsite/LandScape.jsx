@@ -114,7 +114,7 @@ const LandScape = () => {
   // Handle landscape item edit
   const handleEditLandscape = async (formData) => {
     try {
-            formData.append("is_type", "landscape");
+      formData.append("is_type", "landscape");
       await landscapeEditItem(editLandscapeData.id, formData);
       await fetchAllLandscapeItems();
       setEditLandscapeData(null);
