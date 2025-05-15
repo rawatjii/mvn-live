@@ -25,10 +25,10 @@ const Consultant = ()=>{
 
               <ul className="logos justify-content-center">
                 <li>
-                <img src={`${CONFIG.API_URL}assets/micro/consultant/logo2.webp`} alt="mvn consultant logo 2" className="img-fluid logo" loading="lazy" />
+                  <img src={`${CONFIG.API_URL}assets/micro/consultant/logo2.webp`} alt="mvn consultant logo 1" className="img-fluid logo" loading="lazy" />
                 </li>
                 <li>
-                  <img src={`${CONFIG.API_URL}assets/micro/consultant/logo2.webp`} alt="mvn consultant logo 1" className="img-fluid logo" loading="lazy" />
+                <img src={`${CONFIG.API_URL}assets/micro/consultant/logo1.png`} alt="mvn consultant logo 2" className="img-fluid logo" loading="lazy" />
                 </li>
                 <li>
                   <img src={`${CONFIG.API_URL}assets/micro/consultant/logo3.webp`} alt="mvn consultant logo 3" className="img-fluid logo"  loading="lazy"/>
