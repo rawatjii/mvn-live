@@ -46,7 +46,7 @@ const ConstructionTechnology = () => {
   ];
 
   const keyHightlightsFields = [
-    { name: "title", label: "Heading", type: "text", col: 12,isRequired:true },
+    { name: "heading", label: "Heading", type: "text", col: 12,isRequired:true },
     { name: "description", label: "Description", type: "textarea", col: 12,isRequired:true },
   ];
 
