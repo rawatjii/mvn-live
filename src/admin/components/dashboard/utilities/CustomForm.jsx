@@ -132,7 +132,7 @@ const CustomForm = ({
                   {...field}
                   id={`${field.name}_${resetKey}`}
                   name={field.name}
-                  value={formData[field.name] || ""}
+                  value={field.value ? field.value : formData[field.name] || ''}
                   onChange={field.type == "file" ? handleFileChange : field.type == 'editor' ? handleQuillChange : handleChange}
                   resetKey={resetKey}
                 />

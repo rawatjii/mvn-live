@@ -60,7 +60,7 @@
 
 .ActionColum {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     gap: 5px;
 }

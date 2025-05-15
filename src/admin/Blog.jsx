@@ -92,40 +92,39 @@ const AdminBlog = () => {
     currentPage * itemsPerPage
   );
 
-  
+
 
   return (
     <>
       <CustomSection customClass="d-block">
-      <MicroBox>
-        <CustomTitle title="Blog Details" />
-        <CustomForm
-          isBanner={false}
-          dynamicFields={metaFields}
-          onSubmit={handleCreate}
-          dataError={error}
-          data={editModalData}
+        <MicroBox>
+          <CustomTitle title="Blog Details" />
+          <CustomForm
+            isBanner={false}
+            dynamicFields={metaFields}
+            onSubmit={handleCreate}
+            dataError={error}
+            data={editModalData}
+          />
+        </MicroBox>
+        <MicroBox>
+          <CustomTitle title="All Blogs" />
+          <CustomTable
+            columns={columns}
+            data={paginatedData}
+            onEdit={(row) => {
+              scrollTo(0, 0)
+              setEditModalData(row)
+            }}
+            onDelete={handleDelete}
+          />
+        </MicroBox>
+        <CustomPagination
+          currentPage={currentPage}
+          totalPages={Math.ceil(data.length / itemsPerPage)}
+          onPageChange={(page) => setCurrentPage(page)}
         />
-      </MicroBox>
-      <MicroBox>
-        <CustomTitle title="All Blogs" />
-        <CustomTable
-          columns={columns}
-          data={paginatedData}
-          onEdit={(row) => {
-            scrollTo(0, 0)
-            setEditModalData(row)
-            console.log(row)
-          }}
-          onDelete={handleDelete}
-        />
-      </MicroBox>
-      <CustomPagination
-        currentPage={currentPage}
-        totalPages={Math.ceil(data.length / itemsPerPage)}
-        onPageChange={(page) => setCurrentPage(page)}
-      />
-    </CustomSection>
+      </CustomSection>
 
       {/* {editModalData && (
         <CustomModal

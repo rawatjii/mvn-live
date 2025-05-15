@@ -22,7 +22,7 @@ const CustomTable = ({ columns, data, onEdit, onDelete, startIndex = 0 }) => {
   const [modalImage, setModalImage] = React.useState(null);
   const [modalText, setModalText] = React.useState(null);
   const [modalIframe, setModalIframe] = React.useState(null);
-  const textLength = 1;
+  const textLength = 50;
 
   const truncateText = (text) => {
     if (typeof text !== "string") return text;
@@ -32,6 +32,12 @@ const CustomTable = ({ columns, data, onEdit, onDelete, startIndex = 0 }) => {
     }
     return text;
   };
+
+  const stripHtml = (html)=>{
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    return div.textContent || div.innerText || ''
+  }
 
   return (
     <>
@@ -137,10 +143,10 @@ const CustomTable = ({ columns, data, onEdit, onDelete, startIndex = 0 }) => {
                             style={{ cursor: "pointer", color: "#eee" }}
                             onClick={() => setModalText(row[col.key])}
                           >
-                            {truncateText(row[col.key])}
+                            {truncateText(stripHtml(row[col.key]))}
                           </span>
                         ) : (
-                          row[col.key] ?? "-"
+                          stripHtml(row[col.key]) ?? "-"
                         )}
                       </TableBodyColum>
                     );
@@ -165,7 +171,7 @@ const CustomTable = ({ columns, data, onEdit, onDelete, startIndex = 0 }) => {
                 </TableRow>
               ))
             ) : (
-              <TableRow>
+              <TableRow className="text-center">
                 <TableBodyColum
                   colSpan={columns.length + 1}
                   style={{ textAlign: "center", padding: "1rem" }}

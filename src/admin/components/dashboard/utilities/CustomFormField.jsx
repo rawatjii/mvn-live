@@ -44,26 +44,55 @@ const CustomFormField = ({
 }) => {
   const [fileName, setFileName] = useState("");
   const [modalVia, setModalVia] = useState();
+  const [previewUrl, setPreviewUrl] = useState("");
   const [quillContent, setQuillContent] = useState("");
+
+
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setFileName(file ? file.name : "");
+    if(file){
+      // Generate a temporary URL for the selected file
+      const url = URL.createObjectURL(file);
+      setPreviewUrl(url);
+    }else{
+      setPreviewUrl("");
+    }
     onChange(e, isWebpAllowed);
   };
+
   // console.log(value,"defaultData defaultData defaultData")
   useEffect(() => {
     if (type === "file") {
       if (value instanceof File) {
         setFileName(value.name);
+        setPreviewUrl(URL.createObjectURL(value));
       } else if (typeof value === "string" && value) {
         const parts = value.split("/");
         setFileName(parts[parts.length - 1]);
+        setPreviewUrl(`${BACKEND_IMAGE_URL}${value}`);
       } else {
         setFileName("");
+        setPreviewUrl("");
       }
     }
+
+    // Cleanup preview URL to prevent memory leaks
+
+    return () => {
+
+      if (previewUrl && previewUrl.startsWith("blob:")) {
+
+        URL.revokeObjectURL(previewUrl);
+
+      }
+
+    };
   }, [resetKey, value, type]);
   // console.log(type)
+
+  
+
   return (
     <div className={`FieldContainer mb-3 ${isLeft ? "row" : ""} `}>
       <div className={isLeft ? "col-3" : undefined}>

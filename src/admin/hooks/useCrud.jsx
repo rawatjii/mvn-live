@@ -30,7 +30,6 @@ const useCrud = (apiService) => {
     loading,
     error,
     fetchAll,
-
     createItem: async (item,pagevia) => {
       try {
         await apiService.create(item);
@@ -38,17 +37,21 @@ const useCrud = (apiService) => {
         if(pagevia=="basic"){
           navigate("/admin/project-list")
         }
-        await fetchAll(); 
-      } catch (err) {
+        await fetchAll();
+      }
+
+      catch (err) {
+
         console.error('error while create element', err.response?.data?.errors || "Failed to add value");
         const errorMessage = err.response?.data?.errors || err.errors;
+
         if(errorMessage){
           toast.error(`❌ Please fill all the required fields.`);
         }else{
           toast.error("❌ Failed to Create.");
         }
         setError(err.response?.data?.errors);
-        await fetchAll(); 
+        await fetchAll();
       }
     },
 
@@ -68,7 +71,7 @@ const useCrud = (apiService) => {
     deleteItem: async (id) => {
       try {
         await apiService.delete(id);
-        toast.success(" Value deleted successfully!");
+        toast.success(" Data deleted successfully!");
         await fetchAll(); 
       } catch (err) {
         toast.error("❌ Failed to delete value.");

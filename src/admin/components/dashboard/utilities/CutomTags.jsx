@@ -51,14 +51,14 @@ export const CustomSection = ({ children ,customClass}) => (
   export const  TableBody = ({ children }) => (
     <tbody className="CustomTableBody">{children}</tbody>
   );
-  export const TableRow = ({children}) => (
-    <tr className="CustomTableRow">{children}</tr>
+  export const TableRow = ({children, className}) => (
+    <tr className={`CustomTableRow ${className}`}>{children}</tr>
   );
   export const  TableHeadColum = ({ children }) => (
     <th className="CustomHeadColumn">{children}</th>
   );
-  export const  TableBodyColum = ({ children ,customClass}) => (
-    <td className={`CustomBodyColumn ${customClass}`}>{children}</td>
+  export const  TableBodyColum = ({ children ,customClass, ...props}) => (
+    <td className={`CustomBodyColumn ${customClass}`} {...props}>{children}</td>
   );
 
   
