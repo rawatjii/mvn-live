@@ -64,9 +64,15 @@ import MicroSidebar from "./admin/components/ContentLayout/microSidebar/MicroSid
 import OverviewMicroSite from "./admin/components/dashboard/microsite/Overview.jsx";
 import HeroSection from "./admin/components/dashboard/microsite/HeroSection.jsx";
 import ProjectList from "./admin/ProjectList.jsx";
-import FloorPlan from "./admin/components/dashboard/microsite/Elevation.jsx";
-
-
+import Elevation from "./admin/components/dashboard/microsite/Elevation.jsx";
+import Walkthrough from "./admin/components/dashboard/microsite/walkthrough.jsx";
+import ThreesixtyView from "./admin/components/dashboard/microsite/threesixtyView.jsx";
+import LivingRoom from "./admin/components/dashboard/microsite/LivingRoom.jsx";
+import Party from "./admin/components/dashboard/microsite/Party.jsx";
+import MasterBedroom from "./admin/components/dashboard/microsite/MasterBedroom.jsx";
+import Consultant from "./admin/components/dashboard/microsite/Consultant.jsx";
+import LandScape from "./admin/components/dashboard/microsite/LandScape.jsx";
+import SmElevation from "./admin/components/dashboard/microsite/SmElevation.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -262,9 +268,19 @@ const router = createBrowserRouter([
             children:[
             {path:"", element:<BasicMicroSite />},
             {path:"overview", element:<OverviewMicroSite />},
-              {path:"elevation", element:<FloorPlan />},
+            {path:"elevation", element:<Elevation />},
             {path:"banner", element:<HeroSection />},
-          
+            {path:"walkthrough", element:<Walkthrough />},
+            {path:"threesixtyview", element:<ThreesixtyView />},
+            {path:"livingroom", element:<LivingRoom />},
+            {path:"party", element:<Party />},
+            {path:"masterbedroom", element:<MasterBedroom />},
+            {path:"consultant", element:<Consultant />},
+            {path:"landscape", element:<LandScape />},
+            {path:"sm-elevation", element:<SmElevation />},
+
+            
+
             
           ] 
         },  
