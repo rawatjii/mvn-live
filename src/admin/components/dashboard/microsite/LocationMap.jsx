@@ -8,9 +8,9 @@ import { useLocation, useParams } from "react-router-dom";
 import CustomTable from "../utilities/custom-table/CustomTable";
 import CustomPagination from "../utilities/pagination/CustomPagination";
 
-const Amenities = () => {
+const LocationMap = () => {
   const [editData, setEditData] = useState(null);
-  const [editamenitiesData, setEditamenitiesData] = useState(null);
+  const [editlocationMapData, setEditlocationMapData] = useState(null);
   const [formType, setFormType] = useState("image");
   const { project_id } = useParams();
   const location = useLocation();
@@ -19,17 +19,17 @@ const Amenities = () => {
   // API endpoints
   const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
-  const amenitiesApi = generateApi("project-amenities");
+  const locationMapApi = generateApi("project-location-advantage");
   
   // CRUD hooks
   const { editItem, createItem } = useCrud(projectSectionsApi);
   const { 
-    data: amenitiesItems, 
-    createItem: amenitiesCreateItem, 
-    editItem: amenitiesEditItem, 
+    data: locationMapItems, 
+    createItem: locationMapCreateItem, 
+    editItem: locationMapEditItem, 
     deleteItem,
-    getItems: fetchamenitiesItems
-  } = useCrud(amenitiesApi);
+    getItems: fetchlocationMapItems
+  } = useCrud(locationMapApi);
   
   const { getEditData } = useCrud(getEditDataApi);
   
@@ -39,16 +39,17 @@ const Amenities = () => {
 
   // Form fields
   const metaFields = [
-    { name: "heading", label: "Heading", type: "text", col: 6 },
+    { name: "heading", label: "Heading", type: "text",placeholder:"Enter Heading", col: 6 },
+    { name: "sub_heading", label: "Sub Heading", type: "text",placeholder:"Enter Sub Heading", col: 6 },
+    { name: "image", label: "Image", type: "file", col: 6 },
+    { name: "alternative_image", label: "Alternate Image", type: "file", col: 6 },
+    { name: "alt", label: "Alt", type: "text", col: 12 ,placeholder:"Enter Alt",},
+     { name: "description", label: "Description", type: "textarea",placeholder:"Enter Discription", col: 12 },
   ];
 
-  const amenitiesFields = [
-    { name: "heading", label: "Heading", type: "text", col: 6,isRequired:true },
-    { name: "image", label: "Image", type: "file", col: 6,isRequired:true },
-    { name: "alternative_image", label: "Alternate Image", type: "file", col: 6 },
-    { name: "alt", label: "Alt", type: "text", col: 6, placeholder: "Enter Alt text",isRequired:true },
-    { name: "short_description", label: "Description", type: "textarea", col: 6,isRequired:true },
-
+  const locationMapFields = [
+        { name: "designation", label: "Designation", type: "text", col: 6,placeholder:"Enter Designation",isRequired:true },
+        { name: "distance", label: "Distance", type: "text", col: 6,placeholder:"Enter Distance",isRequired:true },
   ];
 
   // Fetch metadata function
@@ -64,20 +65,20 @@ const Amenities = () => {
     }
   };
 
-  // Fetch amenities items
-  const fetchAllamenitiesItems = async () => {
+  // Fetch locationMap items
+  const fetchAlllocationMapItems = async () => {
     try {
       // Adjust parameters as needed for your API
-      await fetchamenitiesItems({ project_id, type: locationType });
+      await fetchlocationMapItems({ project_id, type: locationType });
     } catch (error) {
-      console.error("Error fetching amenities items:", error);
+      console.error("Error fetching locationMap items:", error);
     }
   };
 
   // Handle metadata creation
   const handleCreateMeta = async (formData) => {
     try {
-      // formData.append("is_type", "iframe");
+      formData.append("is_type", "image");
       // formData.append("project_id", project_id);
       // formData.append("section_type", locationType);
       await createItem(formData);
@@ -97,29 +98,29 @@ const Amenities = () => {
     }
   };
 
-  // Handle amenities item creation
-  const handleCreateamenities = async (formData) => {
+  // Handle locationMap item creation
+  const handleCreatelocationMap = async (formData) => {
     try {
-      formData.append("is_type", "amenities");
+      formData.append("is_type", "locationMap");
       // formData.append("project_id", project_id);
       // formData.append("section_type", locationType);
-      await amenitiesCreateItem(formData);
-      await fetchAllamenitiesItems();
-      setEditamenitiesData(null);
+      await locationMapCreateItem(formData);
+      await fetchAlllocationMapItems();
+      setEditlocationMapData(null);
     } catch (error) {
-      console.error("Error creating amenities item:", error);
+      console.error("Error creating locationMap item:", error);
     }
   };
 
-  // Handle amenities item edit
-  const handleEditamenities = async (formData) => {
+  // Handle locationMap item edit
+  const handleEditlocationMap = async (formData) => {
     try {
-            formData.append("is_type", "amenities");
-      await amenitiesEditItem(editamenitiesData.id, formData);
-      await fetchAllamenitiesItems();
-      setEditamenitiesData(null);
+            formData.append("is_type", "locationMap");
+      await locationMapEditItem(editlocationMapData.id, formData);
+      await fetchAlllocationMapItems();
+      setEditlocationMapData(null);
     } catch (error) {
-      console.error("Error updating amenities item:", error);
+      console.error("Error updating locationMap item:", error);
     }
   };
 
@@ -127,34 +128,33 @@ const Amenities = () => {
   const handleDeleteItem = async (id) => {
     try {
       await deleteItem(id);
-      await fetchAllamenitiesItems();
+      await fetchAlllocationMapItems();
     } catch (error) {
-      console.error("Error deleting amenities item:", error);
+      console.error("Error deleting locationMap item:", error);
     }
   };
 
   // Handle cancel edit
   const handleCancelEdit = () => {
-    setEditamenitiesData(null);
+    setEditlocationMapData(null);
   };
 
   // Initial data loading
   useEffect(() => {
     fetchMetadata();
-    fetchAllamenitiesItems();
+    fetchAlllocationMapItems();
   }, []);
 
   // Table columns
   const columns = [
     { key: "", label: "S.No." },
-    { key: "heading", label: "Title", type: "text" },
-    { key: "image", label: "Image", type: "file" },
-    { key: "alternative_image", label: "Alternative Image", type: "file" },
-    { key: "alt", label: "Alt Text", type: "text" },
+    { key: "designation", label: "Designation", type: "text" },
+    { key: "distance", label: "Distance", type: "text" },
   ];
 
   // Paginate data
-  const paginatedData = amenitiesItems?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
+  const paginatedData = locationMapItems?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
+console.log(locationMapItems)
   return (
     <CustomSection>
       <MicroBox>
@@ -167,24 +167,24 @@ const Amenities = () => {
         />
       </MicroBox>
       <MicroBox>
-        <CustomTitle title={editamenitiesData ? "Edit amenities Image" : "Add amenities Images"} />
+        <CustomTitle title={editlocationMapData ? "Edit floor Plans Details" : "Add floor Plans Details"} />
         <CustomFormMicrosite
           isBanner={false}
-          dynamicFields={amenitiesFields}
-          defaultData={editamenitiesData}
-          onSubmit={editamenitiesData ? handleEditamenities : handleCreateamenities}
-          submitButtonText={editamenitiesData ? "Update" : "Create"}
-          cancelButton={editamenitiesData ? { text: "Cancel", onClick: handleCancelEdit } : null}
+          dynamicFields={locationMapFields}
+          defaultData={editlocationMapData}
+          onSubmit={editlocationMapData ? handleEditlocationMap : handleCreatelocationMap}
+          submitButtonText={editlocationMapData ? "Update" : "Create"}
+          cancelButton={editlocationMapData ? { text: "Cancel", onClick: handleCancelEdit } : null}
         />
       </MicroBox>
       <MicroBox>
-        <CustomTitle title="amenities Items" />
+        <CustomTitle title="locationMap Items" />
         <CustomTable
           columns={columns}
           data={paginatedData}
           onEdit={(row) => {
             window.scrollTo(0, 0);
-            setEditamenitiesData(row);
+            setEditlocationMapData(row);
             setFormType(row.is_type || "image");
           }}
           onDelete={(row) => handleDeleteItem(row.id)}
@@ -192,7 +192,7 @@ const Amenities = () => {
         />
         <CustomPagination
           currentPage={currentPage}
-          totalPages={Math.ceil((amenitiesItems?.length || 0) / itemsPerPage)}
+          totalPages={Math.ceil((locationMapItems?.length || 0) / itemsPerPage)}
           onPageChange={setCurrentPage}
         />
       </MicroBox>
@@ -200,4 +200,4 @@ const Amenities = () => {
   );
 };
 
-export default Amenities;
+export default LocationMap;

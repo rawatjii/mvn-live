@@ -8,10 +8,9 @@ import { useLocation, useParams } from "react-router-dom";
 import CustomTable from "../utilities/custom-table/CustomTable";
 import CustomPagination from "../utilities/pagination/CustomPagination";
 
-const Amenities = () => {
+const MvnMall = () => {
   const [editData, setEditData] = useState(null);
-  const [editamenitiesData, setEditamenitiesData] = useState(null);
-  const [formType, setFormType] = useState("image");
+  const [editmvnMallData, setEditmvnMallData] = useState(null);
   const { project_id } = useParams();
   const location = useLocation();
   const locationType = location.pathname.split("/").pop();
@@ -19,17 +18,21 @@ const Amenities = () => {
   // API endpoints
   const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
-  const amenitiesApi = generateApi("project-amenities");
-  
+  const mvnMallApi = generateApi("project-elevate-galleries/elevation",0);
+  const GalleryApi = generateApi("project-elevate-galleries",0);
+
+    const getApi = generateApi("project-elevate-galleries/mvn-mall");
+
   // CRUD hooks
   const { editItem, createItem } = useCrud(projectSectionsApi);
   const { 
-    data: amenitiesItems, 
-    createItem: amenitiesCreateItem, 
-    editItem: amenitiesEditItem, 
-    deleteItem,
-    getItems: fetchamenitiesItems
-  } = useCrud(amenitiesApi);
+ data: mvnMallItem,
+fetchAll: fetchmvnMallItems
+  } = useCrud(getApi);
+  const {    deleteItem,editItem: mvnMallEditItem,}=useCrud(GalleryApi);
+  const { 
+    createItem: mvnMallCreateItem, 
+  } = useCrud(mvnMallApi);
   
   const { getEditData } = useCrud(getEditDataApi);
   
@@ -40,15 +43,16 @@ const Amenities = () => {
   // Form fields
   const metaFields = [
     { name: "heading", label: "Heading", type: "text", col: 6 },
+    { name: "sub_heading", label: "Sub Heading", type: "text", col: 6 },
+    { name: "description", label: "Description", type: "textarea", placeholder: "Enter Description", col: 12 }
   ];
 
-  const amenitiesFields = [
-    { name: "heading", label: "Heading", type: "text", col: 6,isRequired:true },
+  const mvnMallFields = [
     { name: "image", label: "Image", type: "file", col: 6,isRequired:true },
     { name: "alternative_image", label: "Alternate Image", type: "file", col: 6 },
+    { name: "sm_alternative_image", label: "Small Image", type: "file", col: 6,isRequired:true },
+    { name: "sm_image", label: "Alternate Image", type: "file", col: 6 },
     { name: "alt", label: "Alt", type: "text", col: 6, placeholder: "Enter Alt text",isRequired:true },
-    { name: "short_description", label: "Description", type: "textarea", col: 6,isRequired:true },
-
   ];
 
   // Fetch metadata function
@@ -64,13 +68,13 @@ const Amenities = () => {
     }
   };
 
-  // Fetch amenities items
-  const fetchAllamenitiesItems = async () => {
+  // Fetch mvnMall items
+  const fetchAllmvnMallItems = async () => {
     try {
       // Adjust parameters as needed for your API
-      await fetchamenitiesItems({ project_id, type: locationType });
+      await fetchmvnMallItems({ project_id, type: locationType });
     } catch (error) {
-      console.error("Error fetching amenities items:", error);
+      console.error("Error fetching mvnMall items:", error);
     }
   };
 
@@ -97,29 +101,29 @@ const Amenities = () => {
     }
   };
 
-  // Handle amenities item creation
-  const handleCreateamenities = async (formData) => {
+  // Handle mvnMall item creation
+  const handleCreatemvnMall = async (formData) => {
     try {
-      formData.append("is_type", "amenities");
+      formData.append("is_type", "mall_galleries");
       // formData.append("project_id", project_id);
       // formData.append("section_type", locationType);
-      await amenitiesCreateItem(formData);
-      await fetchAllamenitiesItems();
-      setEditamenitiesData(null);
+      await mvnMallCreateItem(formData);
+      await fetchAllmvnMallItems();
+      setEditmvnMallData(null);
     } catch (error) {
-      console.error("Error creating amenities item:", error);
+      console.error("Error creating mvnMall item:", error);
     }
   };
 
-  // Handle amenities item edit
-  const handleEditamenities = async (formData) => {
+  // Handle mvnMall item edit
+  const handleEditmvnMall = async (formData) => {
     try {
-            formData.append("is_type", "amenities");
-      await amenitiesEditItem(editamenitiesData.id, formData);
-      await fetchAllamenitiesItems();
-      setEditamenitiesData(null);
+            formData.append("is_type", "mall_galleries");
+      await mvnMallEditItem(editmvnMallData.id, formData);
+      await fetchAllmvnMallItems();
+      setEditmvnMallData(null);
     } catch (error) {
-      console.error("Error updating amenities item:", error);
+      console.error("Error updating mvnMall item:", error);
     }
   };
 
@@ -127,34 +131,34 @@ const Amenities = () => {
   const handleDeleteItem = async (id) => {
     try {
       await deleteItem(id);
-      await fetchAllamenitiesItems();
+      await fetchAllmvnMallItems();
     } catch (error) {
-      console.error("Error deleting amenities item:", error);
+      console.error("Error deleting mvnMall item:", error);
     }
   };
 
   // Handle cancel edit
   const handleCancelEdit = () => {
-    setEditamenitiesData(null);
+    setEditmvnMallData(null);
   };
 
   // Initial data loading
   useEffect(() => {
     fetchMetadata();
-    fetchAllamenitiesItems();
+    // fetchAllmvnMallItems();
   }, []);
 
   // Table columns
   const columns = [
     { key: "", label: "S.No." },
-    { key: "heading", label: "Title", type: "text" },
+    // { key: "title", label: "Title", type: "text" },
     { key: "image", label: "Image", type: "file" },
     { key: "alternative_image", label: "Alternative Image", type: "file" },
     { key: "alt", label: "Alt Text", type: "text" },
   ];
 
   // Paginate data
-  const paginatedData = amenitiesItems?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
+  const paginatedData = mvnMallItem?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
   return (
     <CustomSection>
       <MicroBox>
@@ -167,32 +171,31 @@ const Amenities = () => {
         />
       </MicroBox>
       <MicroBox>
-        <CustomTitle title={editamenitiesData ? "Edit amenities Image" : "Add amenities Images"} />
+        <CustomTitle title={editmvnMallData ? "Edit mvnMall Image" : "Add mvnMall Images"} />
         <CustomFormMicrosite
           isBanner={false}
-          dynamicFields={amenitiesFields}
-          defaultData={editamenitiesData}
-          onSubmit={editamenitiesData ? handleEditamenities : handleCreateamenities}
-          submitButtonText={editamenitiesData ? "Update" : "Create"}
-          cancelButton={editamenitiesData ? { text: "Cancel", onClick: handleCancelEdit } : null}
+          dynamicFields={mvnMallFields}
+          defaultData={editmvnMallData}
+          onSubmit={editmvnMallData ? handleEditmvnMall : handleCreatemvnMall}
+          submitButtonText={editmvnMallData ? "Update" : "Create"}
+          cancelButton={editmvnMallData ? { text: "Cancel", onClick: handleCancelEdit } : null}
         />
       </MicroBox>
       <MicroBox>
-        <CustomTitle title="amenities Items" />
+        <CustomTitle title="mvnMall Items" />
         <CustomTable
           columns={columns}
           data={paginatedData}
           onEdit={(row) => {
             window.scrollTo(0, 0);
-            setEditamenitiesData(row);
-            setFormType(row.is_type || "image");
+            setEditmvnMallData(row);
           }}
           onDelete={(row) => handleDeleteItem(row.id)}
           startIndex={(currentPage - 1) * itemsPerPage}
         />
         <CustomPagination
           currentPage={currentPage}
-          totalPages={Math.ceil((amenitiesItems?.length || 0) / itemsPerPage)}
+          totalPages={Math.ceil((mvnMallItem?.length || 0) / itemsPerPage)}
           onPageChange={setCurrentPage}
         />
       </MicroBox>
@@ -200,4 +203,4 @@ const Amenities = () => {
   );
 };
 
-export default Amenities;
+export default MvnMall;

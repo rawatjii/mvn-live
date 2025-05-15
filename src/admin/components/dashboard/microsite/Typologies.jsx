@@ -8,9 +8,9 @@ import { useLocation, useParams } from "react-router-dom";
 import CustomTable from "../utilities/custom-table/CustomTable";
 import CustomPagination from "../utilities/pagination/CustomPagination";
 
-const Amenities = () => {
+const Typologies = () => {
   const [editData, setEditData] = useState(null);
-  const [editamenitiesData, setEditamenitiesData] = useState(null);
+  const [edittypologiesData, setEdittypologiesData] = useState(null);
   const [formType, setFormType] = useState("image");
   const { project_id } = useParams();
   const location = useLocation();
@@ -19,17 +19,17 @@ const Amenities = () => {
   // API endpoints
   const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
-  const amenitiesApi = generateApi("project-amenities");
+  const typologiesApi = generateApi("project-typologies");
   
   // CRUD hooks
   const { editItem, createItem } = useCrud(projectSectionsApi);
   const { 
-    data: amenitiesItems, 
-    createItem: amenitiesCreateItem, 
-    editItem: amenitiesEditItem, 
+    data: typologiesItems, 
+    createItem: typologiesCreateItem, 
+    editItem: typologiesEditItem, 
     deleteItem,
-    getItems: fetchamenitiesItems
-  } = useCrud(amenitiesApi);
+    getItems: fetchtypologiesItems
+  } = useCrud(typologiesApi);
   
   const { getEditData } = useCrud(getEditDataApi);
   
@@ -42,13 +42,13 @@ const Amenities = () => {
     { name: "heading", label: "Heading", type: "text", col: 6 },
   ];
 
-  const amenitiesFields = [
-    { name: "heading", label: "Heading", type: "text", col: 6,isRequired:true },
+  const typologiesFields = [
+    { name: "heading", label: "Title", type: "text", col: 6,isRequired:true },
     { name: "image", label: "Image", type: "file", col: 6,isRequired:true },
     { name: "alternative_image", label: "Alternate Image", type: "file", col: 6 },
     { name: "alt", label: "Alt", type: "text", col: 6, placeholder: "Enter Alt text",isRequired:true },
+    { name: "json", label: "Upload JSON", type: "file", col: 6,isRequired:true },
     { name: "short_description", label: "Description", type: "textarea", col: 6,isRequired:true },
-
   ];
 
   // Fetch metadata function
@@ -64,13 +64,13 @@ const Amenities = () => {
     }
   };
 
-  // Fetch amenities items
-  const fetchAllamenitiesItems = async () => {
+  // Fetch typologies items
+  const fetchAlltypologiesItems = async () => {
     try {
       // Adjust parameters as needed for your API
-      await fetchamenitiesItems({ project_id, type: locationType });
+      await fetchtypologiesItems({ project_id, type: locationType });
     } catch (error) {
-      console.error("Error fetching amenities items:", error);
+      console.error("Error fetching typologies items:", error);
     }
   };
 
@@ -97,29 +97,29 @@ const Amenities = () => {
     }
   };
 
-  // Handle amenities item creation
-  const handleCreateamenities = async (formData) => {
+  // Handle typologies item creation
+  const handleCreatetypologies = async (formData) => {
     try {
-      formData.append("is_type", "amenities");
+      formData.append("is_type", "typologies");
       // formData.append("project_id", project_id);
       // formData.append("section_type", locationType);
-      await amenitiesCreateItem(formData);
-      await fetchAllamenitiesItems();
-      setEditamenitiesData(null);
+      await typologiesCreateItem(formData);
+      await fetchAlltypologiesItems();
+      setEdittypologiesData(null);
     } catch (error) {
-      console.error("Error creating amenities item:", error);
+      console.error("Error creating typologies item:", error);
     }
   };
 
-  // Handle amenities item edit
-  const handleEditamenities = async (formData) => {
+  // Handle typologies item edit
+  const handleEdittypologies = async (formData) => {
     try {
-            formData.append("is_type", "amenities");
-      await amenitiesEditItem(editamenitiesData.id, formData);
-      await fetchAllamenitiesItems();
-      setEditamenitiesData(null);
+            formData.append("is_type", "typologies");
+      await typologiesEditItem(edittypologiesData.id, formData);
+      await fetchAlltypologiesItems();
+      setEdittypologiesData(null);
     } catch (error) {
-      console.error("Error updating amenities item:", error);
+      console.error("Error updating typologies item:", error);
     }
   };
 
@@ -127,21 +127,21 @@ const Amenities = () => {
   const handleDeleteItem = async (id) => {
     try {
       await deleteItem(id);
-      await fetchAllamenitiesItems();
+      await fetchAlltypologiesItems();
     } catch (error) {
-      console.error("Error deleting amenities item:", error);
+      console.error("Error deleting typologies item:", error);
     }
   };
 
   // Handle cancel edit
   const handleCancelEdit = () => {
-    setEditamenitiesData(null);
+    setEdittypologiesData(null);
   };
 
   // Initial data loading
   useEffect(() => {
     fetchMetadata();
-    fetchAllamenitiesItems();
+    fetchAlltypologiesItems();
   }, []);
 
   // Table columns
@@ -154,7 +154,8 @@ const Amenities = () => {
   ];
 
   // Paginate data
-  const paginatedData = amenitiesItems?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
+  const paginatedData = typologiesItems?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
+console.log(typologiesItems)
   return (
     <CustomSection>
       <MicroBox>
@@ -167,24 +168,24 @@ const Amenities = () => {
         />
       </MicroBox>
       <MicroBox>
-        <CustomTitle title={editamenitiesData ? "Edit amenities Image" : "Add amenities Images"} />
+        <CustomTitle title={edittypologiesData ? "Edit typologies Details" : "Add typologies Details"} />
         <CustomFormMicrosite
           isBanner={false}
-          dynamicFields={amenitiesFields}
-          defaultData={editamenitiesData}
-          onSubmit={editamenitiesData ? handleEditamenities : handleCreateamenities}
-          submitButtonText={editamenitiesData ? "Update" : "Create"}
-          cancelButton={editamenitiesData ? { text: "Cancel", onClick: handleCancelEdit } : null}
+          dynamicFields={typologiesFields}
+          defaultData={edittypologiesData}
+          onSubmit={edittypologiesData ? handleEdittypologies : handleCreatetypologies}
+          submitButtonText={edittypologiesData ? "Update" : "Create"}
+          cancelButton={edittypologiesData ? { text: "Cancel", onClick: handleCancelEdit } : null}
         />
       </MicroBox>
       <MicroBox>
-        <CustomTitle title="amenities Items" />
+        <CustomTitle title="typologies Items" />
         <CustomTable
           columns={columns}
           data={paginatedData}
           onEdit={(row) => {
             window.scrollTo(0, 0);
-            setEditamenitiesData(row);
+            setEdittypologiesData(row);
             setFormType(row.is_type || "image");
           }}
           onDelete={(row) => handleDeleteItem(row.id)}
@@ -192,7 +193,7 @@ const Amenities = () => {
         />
         <CustomPagination
           currentPage={currentPage}
-          totalPages={Math.ceil((amenitiesItems?.length || 0) / itemsPerPage)}
+          totalPages={Math.ceil((typologiesItems?.length || 0) / itemsPerPage)}
           onPageChange={setCurrentPage}
         />
       </MicroBox>
@@ -200,4 +201,4 @@ const Amenities = () => {
   );
 };
 
-export default Amenities;
+export default Typologies;

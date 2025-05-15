@@ -38,7 +38,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import "./awaneesh.css";
 import "./savan.css";
-import './adarsh.css'
+import './adarsh.css';
+import "./admin/assets/css/microsite.css"
 
 import {bangaloreData} from './frontend/pages/micro/mvn-aeroone-bangalore/Index.jsx';
 import { faridabadData } from "./frontend/pages/micro/Athens/Index.jsx";
@@ -73,6 +74,15 @@ import MasterBedroom from "./admin/components/dashboard/microsite/MasterBedroom.
 import Consultant from "./admin/components/dashboard/microsite/Consultant.jsx";
 import LandScape from "./admin/components/dashboard/microsite/LandScape.jsx";
 import SmElevation from "./admin/components/dashboard/microsite/SmElevation.jsx";
+import Apartment from "./admin/components/dashboard/microsite/Apartment.jsx";
+import ConstructionTechnology from "./admin/components/dashboard/microsite/Construction_tech.jsx";
+import AmenitiesAdmin from "./admin/components/dashboard/microsite/Amenities.jsx";
+import ConnectionMvnMall from "./admin/components/dashboard/microsite/ConnectionMvnmall.jsx";
+import Typologies from "./admin/components/dashboard/microsite/Typologies.jsx";
+import FloorPlans from "./admin/components/dashboard/microsite/FloorPlan.jsx";
+import LocationMap from "./admin/components/dashboard/microsite/LocationMap.jsx";
+import MvnMall from "./admin/components/dashboard/microsite/mvn-mall.jsx";
+// import Apartment from "./admin/components/dashboard/microsite/Apartment.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -278,11 +288,15 @@ const router = createBrowserRouter([
             {path:"consultant", element:<Consultant />},
             {path:"landscape", element:<LandScape />},
             {path:"sm-elevation", element:<SmElevation />},
-
-            
-
-            
-          ] 
+            {path:"apartment", element:<Apartment />}, 
+             {path:"construction", element:<ConstructionTechnology />},  
+            {path:"amenities", element:<AmenitiesAdmin />}, 
+             {path:"connection-mvn-mall", element:<ConnectionMvnMall />},              
+            {path:"typologies", element:<Typologies />}, 
+            {path:"floor-plans", element:<FloorPlans />}, 
+            {path:"location-map", element:<LocationMap />}, 
+            {path:"mvn-mall", element:<MvnMall />}, 
+           ] 
         },  
         ]
       }

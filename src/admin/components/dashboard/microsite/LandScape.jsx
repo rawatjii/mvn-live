@@ -17,18 +17,21 @@ const LandScape = () => {
   const locationType = location.pathname.split("/").pop();
   
   // API endpoints
-  const projectSectionsApi = generateApi("projec-sections");
+  const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
-  const landScapeApi = generateApi("project-gallery");
-  
+  const landScapeApi = generateApi("project-gallery",0);
+    const getApi = generateApi("project-gallery/landscape");
+
   // CRUD hooks
   const { editItem, createItem } = useCrud(projectSectionsApi);
+    const { 
+      data: landscapeItems, 
+      fetchAll: fetchLandscapeItems
+  } = useCrud(getApi);
   const { 
-    data: landscapeItems, 
     createItem: landscapeCreateItem, 
     editItem: landscapeEditItem, 
     deleteItem,
-    getItems: fetchLandscapeItems
   } = useCrud(landScapeApi);
   
   const { getEditData } = useCrud(getEditDataApi);
@@ -141,7 +144,7 @@ const LandScape = () => {
   // Initial data loading
   useEffect(() => {
     fetchMetadata();
-    fetchAllLandscapeItems();
+    // fetchAllLandscapeItems();
   }, []);
 
   // Table columns

@@ -16,21 +16,20 @@ const SmElevation = () => {
   const locationType = location.pathname.split("/").pop();
   
   // API endpoints
-  const projectSectionsApi = generateApi("projec-sections");
+  const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
   const SmElevationApi = generateApi("project-elevate-galleries/elevation");
-  const GalleryApi = generateApi("project-elevate-galleries");
+  const GalleryApi = generateApi("project-elevate-galleries",0);
 
   
   // CRUD hooks
   const { editItem, createItem } = useCrud(projectSectionsApi);
-  const {data}=useCrud(GalleryApi);
+  const {deleteItem,  editItem: smElevationEditItem,   
+ }=useCrud(GalleryApi);
   const { 
-    data: smElevationItems, 
     createItem: smElevationCreateItem, 
-    editItem: smElevationEditItem, 
-    deleteItem,
-    getItems: fetchsmElevationItems
+    fetchAll: fetchsmElevationItems, 
+     data: smElevationItems, 
   } = useCrud(SmElevationApi);
   
   const { getEditData } = useCrud(getEditDataApi);
@@ -49,7 +48,7 @@ const SmElevation = () => {
   const smElevationFields = [
     { name: "image", label: "Image", type: "file", col: 6,isRequired:true },
     { name: "alternative_image", label: "Alternate Image", type: "file", col: 6 },
-    { name: "sm_alternative_image", label: "Image", type: "file", col: 6,isRequired:true },
+    { name: "sm_alternative_image", label: "Small Image", type: "file", col: 6,isRequired:true },
     { name: "sm_image", label: "Alternate Image", type: "file", col: 6 },
     { name: "alt", label: "Alt", type: "text", col: 6, placeholder: "Enter Alt text",isRequired:true },
   ];
@@ -117,7 +116,7 @@ const SmElevation = () => {
   // Handle smElevation item edit
   const handleEditsmElevation = async (formData) => {
     try {
-            formData.append("is_type", "smElevation");
+            formData.append("is_type", "elevation");
       await smElevationEditItem(editsmElevationData.id, formData);
       await fetchAllsmElevationItems();
       setEditsmElevationData(null);
@@ -144,20 +143,20 @@ const SmElevation = () => {
   // Initial data loading
   useEffect(() => {
     fetchMetadata();
-    fetchAllsmElevationItems();
+    // fetchAllsmElevationItems();
   }, []);
 
   // Table columns
   const columns = [
     { key: "", label: "S.No." },
-    { key: "title", label: "Title", type: "text" },
+    // { key: "title", label: "Title", type: "text" },
     { key: "image", label: "Image", type: "file" },
     { key: "alternative_image", label: "Alternative Image", type: "file" },
     { key: "alt", label: "Alt Text", type: "text" },
   ];
 
   // Paginate data
-  const paginatedData = data?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
+  const paginatedData = smElevationItems?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
   return (
     <CustomSection>
       <MicroBox>

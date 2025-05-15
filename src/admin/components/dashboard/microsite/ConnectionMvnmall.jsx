@@ -8,28 +8,28 @@ import { useLocation, useParams } from "react-router-dom";
 import CustomTable from "../utilities/custom-table/CustomTable";
 import CustomPagination from "../utilities/pagination/CustomPagination";
 
-const Amenities = () => {
+const ConnectionMVNMall = () => {
   const [editData, setEditData] = useState(null);
-  const [editamenitiesData, setEditamenitiesData] = useState(null);
+  const [editConnectionmvnMallData, setEditConnectionmvnMallData] = useState(null);
   const [formType, setFormType] = useState("image");
   const { project_id } = useParams();
   const location = useLocation();
   const locationType = location.pathname.split("/").pop();
   
   // API endpoints
-  const projectSectionsApi = generateApi("projec-sections",0);
+  const projectSectionsApi = generateApi("projec-sections");
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
-  const amenitiesApi = generateApi("project-amenities");
+  const ConnectionmvnMallApi = generateApi("project-amenities");
   
   // CRUD hooks
   const { editItem, createItem } = useCrud(projectSectionsApi);
   const { 
-    data: amenitiesItems, 
-    createItem: amenitiesCreateItem, 
-    editItem: amenitiesEditItem, 
+    data: ConnectionmvnMallItems, 
+    createItem: ConnectionmvnMallCreateItem, 
+    editItem: ConnectionmvnMallEditItem, 
     deleteItem,
-    getItems: fetchamenitiesItems
-  } = useCrud(amenitiesApi);
+    fetchAll: fetchConnectionmvnMallItems
+  } = useCrud(ConnectionmvnMallApi);
   
   const { getEditData } = useCrud(getEditDataApi);
   
@@ -42,7 +42,7 @@ const Amenities = () => {
     { name: "heading", label: "Heading", type: "text", col: 6 },
   ];
 
-  const amenitiesFields = [
+  const ConnectionmvnMallFields = [
     { name: "heading", label: "Heading", type: "text", col: 6,isRequired:true },
     { name: "image", label: "Image", type: "file", col: 6,isRequired:true },
     { name: "alternative_image", label: "Alternate Image", type: "file", col: 6 },
@@ -64,13 +64,13 @@ const Amenities = () => {
     }
   };
 
-  // Fetch amenities items
-  const fetchAllamenitiesItems = async () => {
+  // Fetch ConnectionmvnMall items
+  const fetchAllConnectionmvnMallItems = async () => {
     try {
       // Adjust parameters as needed for your API
-      await fetchamenitiesItems({ project_id, type: locationType });
+      await fetchConnectionmvnMallItems({ project_id, type: locationType });
     } catch (error) {
-      console.error("Error fetching amenities items:", error);
+      console.error("Error fetching ConnectionmvnMall items:", error);
     }
   };
 
@@ -97,29 +97,29 @@ const Amenities = () => {
     }
   };
 
-  // Handle amenities item creation
-  const handleCreateamenities = async (formData) => {
+  // Handle ConnectionmvnMall item creation
+  const handleCreateConnectionmvnMall = async (formData) => {
     try {
-      formData.append("is_type", "amenities");
+      formData.append("is_type", "connection_mall");
       // formData.append("project_id", project_id);
       // formData.append("section_type", locationType);
-      await amenitiesCreateItem(formData);
-      await fetchAllamenitiesItems();
-      setEditamenitiesData(null);
+      await ConnectionmvnMallCreateItem(formData);
+      await fetchAllConnectionmvnMallItems();
+      setEditConnectionmvnMallData(null);
     } catch (error) {
-      console.error("Error creating amenities item:", error);
+      console.error("Error creating ConnectionmvnMall item:", error);
     }
   };
 
-  // Handle amenities item edit
-  const handleEditamenities = async (formData) => {
+  // Handle ConnectionmvnMall item edit
+  const handleEditConnectionmvnMall = async (formData) => {
     try {
-            formData.append("is_type", "amenities");
-      await amenitiesEditItem(editamenitiesData.id, formData);
-      await fetchAllamenitiesItems();
-      setEditamenitiesData(null);
+            formData.append("is_type", "connection_mall");
+      await ConnectionmvnMallEditItem(editConnectionmvnMallData.id, formData);
+      await fetchAllConnectionmvnMallItems();
+      setEditConnectionmvnMallData(null);
     } catch (error) {
-      console.error("Error updating amenities item:", error);
+      console.error("Error updating ConnectionmvnMall item:", error);
     }
   };
 
@@ -127,21 +127,21 @@ const Amenities = () => {
   const handleDeleteItem = async (id) => {
     try {
       await deleteItem(id);
-      await fetchAllamenitiesItems();
+      await fetchAllConnectionmvnMallItems();
     } catch (error) {
-      console.error("Error deleting amenities item:", error);
+      console.error("Error deleting ConnectionmvnMall item:", error);
     }
   };
 
   // Handle cancel edit
   const handleCancelEdit = () => {
-    setEditamenitiesData(null);
+    setEditConnectionmvnMallData(null);
   };
 
   // Initial data loading
   useEffect(() => {
     fetchMetadata();
-    fetchAllamenitiesItems();
+    fetchAllConnectionmvnMallItems();
   }, []);
 
   // Table columns
@@ -154,7 +154,7 @@ const Amenities = () => {
   ];
 
   // Paginate data
-  const paginatedData = amenitiesItems?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
+  const paginatedData = ConnectionmvnMallItems?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
   return (
     <CustomSection>
       <MicroBox>
@@ -167,24 +167,24 @@ const Amenities = () => {
         />
       </MicroBox>
       <MicroBox>
-        <CustomTitle title={editamenitiesData ? "Edit amenities Image" : "Add amenities Images"} />
+        <CustomTitle title={editConnectionmvnMallData ? "Edit ConnectionmvnMall Image" : "Add ConnectionmvnMall Images"} />
         <CustomFormMicrosite
           isBanner={false}
-          dynamicFields={amenitiesFields}
-          defaultData={editamenitiesData}
-          onSubmit={editamenitiesData ? handleEditamenities : handleCreateamenities}
-          submitButtonText={editamenitiesData ? "Update" : "Create"}
-          cancelButton={editamenitiesData ? { text: "Cancel", onClick: handleCancelEdit } : null}
+          dynamicFields={ConnectionmvnMallFields}
+          defaultData={editConnectionmvnMallData}
+          onSubmit={editConnectionmvnMallData ? handleEditConnectionmvnMall : handleCreateConnectionmvnMall}
+          submitButtonText={editConnectionmvnMallData ? "Update" : "Create"}
+          cancelButton={editConnectionmvnMallData ? { text: "Cancel", onClick: handleCancelEdit } : null}
         />
       </MicroBox>
       <MicroBox>
-        <CustomTitle title="amenities Items" />
+        <CustomTitle title="ConnectionmvnMall Items" />
         <CustomTable
           columns={columns}
           data={paginatedData}
           onEdit={(row) => {
             window.scrollTo(0, 0);
-            setEditamenitiesData(row);
+            setEditConnectionmvnMallData(row);
             setFormType(row.is_type || "image");
           }}
           onDelete={(row) => handleDeleteItem(row.id)}
@@ -192,7 +192,7 @@ const Amenities = () => {
         />
         <CustomPagination
           currentPage={currentPage}
-          totalPages={Math.ceil((amenitiesItems?.length || 0) / itemsPerPage)}
+          totalPages={Math.ceil((ConnectionmvnMallItems?.length || 0) / itemsPerPage)}
           onPageChange={setCurrentPage}
         />
       </MicroBox>
@@ -200,4 +200,4 @@ const Amenities = () => {
   );
 };
 
-export default Amenities;
+export default ConnectionMVNMall;
