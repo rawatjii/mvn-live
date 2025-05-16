@@ -18,11 +18,10 @@ import image_preview from "../../../../assets/images/img_preview.png";
 import link_image from "../../../../assets/images/link.png";
 import iframe_icon from "../../../../assets/images/link.png"; // Add an iframe icon to your 
 
-const CustomTable = ({ columns, data, onEdit, onDelete, startIndex = 0 }) => {
+const CustomTable = ({ columns, data, onEdit, onDelete, startIndex = 0, textLength=50 }) => {
   const [modalImage, setModalImage] = React.useState(null);
   const [modalText, setModalText] = React.useState(null);
   const [modalIframe, setModalIframe] = React.useState(null);
-  const textLength = 50;
 
   const truncateText = (text) => {
     if (typeof text !== "string") return text;

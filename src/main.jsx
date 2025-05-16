@@ -65,6 +65,7 @@ import MicroSidebar from "./admin/components/ContentLayout/microSidebar/MicroSid
 import OverviewMicroSite from "./admin/components/dashboard/microsite/Overview.jsx";
 import HeroSection from "./admin/components/dashboard/microsite/HeroSection.jsx";
 import ProjectList from "./admin/ProjectList.jsx";
+import Platter from "./admin/components/platter/Platter.jsx";
 import Elevation from "./admin/components/dashboard/microsite/Elevation.jsx";
 import Walkthrough from "./admin/components/dashboard/microsite/walkthrough.jsx";
 import ThreesixtyView from "./admin/components/dashboard/microsite/threesixtyView.jsx";
@@ -82,6 +83,7 @@ import Typologies from "./admin/components/dashboard/microsite/Typologies.jsx";
 import FloorPlans from "./admin/components/dashboard/microsite/FloorPlan.jsx";
 import LocationMap from "./admin/components/dashboard/microsite/LocationMap.jsx";
 import MvnMall from "./admin/components/dashboard/microsite/mvn-mall.jsx";
+import AdminHomepage from './admin/pages/Homepage.jsx'
 // import Apartment from "./admin/components/dashboard/microsite/Apartment.jsx";
 const router = createBrowserRouter([
   {
@@ -260,13 +262,15 @@ const router = createBrowserRouter([
         children: [
           { path: "", element: <Dashboard /> },
           { path: "amenities", element: <Amenities /> },
-          { path: "page/:pageName", element: <Banner /> },
           { path: "about-us", element: <AdminAboutUs /> },
           { path: "blogs", element: <AdminBlog /> },
           { path: "career", element: <AdminCareer /> },
           { path: "media-centre", element: <AdminMediaCentre /> },
           { path: "contact-us", element: <AdminContactUs /> },
           { path: "project-list", element: <ProjectList /> },
+          { path: "platter", element: <Platter /> },
+          { path: "page/index", element: <AdminHomepage /> },
+          { path: "page/:pageName", element: <Banner /> },
           { path: "microsite", element:<MicroSidebar />,
             children:[
             {path:"", element:<BasicMicroSite />},

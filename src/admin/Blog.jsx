@@ -70,17 +70,13 @@ const oldData = [
 
 const AdminBlog = () => {
   const aboutsApi = generateApi("blog"); // ✅ Adjust endpoint if needed
-  const { data, loading, error, createItem, updateItem, deleteItem } =
-    useCrud(aboutsApi);
+  const { data, loading, error, createItem, updateItem, editItem, deleteItem } = useCrud(aboutsApi);
   const [editModalData, setEditModalData] = useState(null);
-
-  console.log(data, "data blog");
 
   const handleCreate = (formData) => createItem(formData);
 
   const handleEditSubmit = (formData) => {
     editItem(editModalData.id, formData); 
-    setEditModalData(null); 
   };
 
   const handleDelete = (row) => deleteItem(row.id);
@@ -91,8 +87,6 @@ const AdminBlog = () => {
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
-
-
 
   return (
     <>
@@ -105,6 +99,7 @@ const AdminBlog = () => {
             onSubmit={handleCreate}
             dataError={error}
             data={editModalData}
+            onUpdate={handleEditSubmit}
           />
         </MicroBox>
         <MicroBox>

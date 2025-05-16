@@ -7,7 +7,6 @@ import {
   FaShareSquare,
   FaEye,
   FaBuilding,
-  FaCalendar,
   FaAngleRight,
   FaIdCard,
   FaCity,
@@ -15,7 +14,7 @@ import {
   FaTwitter,
   FaLinkedinIn,
 } from "react-icons/fa";
-import { IoIosEye, IoMdHome, IoIosAddCircleOutline } from "react-icons/io";
+import { IoIosEye, IoIosAddCircleOutline } from "react-icons/io";
 import { IoAddSharp } from "react-icons/io5";
 import { RiInstagramFill } from "react-icons/ri";
 import { MdOutlineNavigateNext } from "react-icons/md";
@@ -26,12 +25,15 @@ import { IoShareSocial } from "react-icons/io5";
 import { Box, TopBox } from "./components/dashboard/utilities/CutomTags";
 import { RiPagesFill } from "react-icons/ri";
 import { FaImage } from "react-icons/fa";
-import { Link } from "react-router-dom";
+
 
 import { FaUser,  FaPhoneAlt } from "react-icons/fa";
 import { FaRegNewspaper } from "react-icons/fa";
 import { SiBloglovin } from "react-icons/si";
 import { PiBuildingOffice } from "react-icons/pi";
+import TotalProjects from "./components/dashboard/TotalProjects";
+import Testimonials from "./components/dashboard/Testimonials";
+import { Link } from "react-router-dom";
 
 const data = [
   { id: 1, name: "Godrej Properties", hot: true, calculator: true },
@@ -64,35 +66,40 @@ const tableData = [
 
 const otherSection = [
   {
-    name: "State name",
+    name: "Platter",
     icon: <FaCity className="mr-3 box-icon" />,
-    link: "state.html",
+    link: "/admin/platter",
   },
-  {
-    name: "City name",
-    icon: <FaCity className="mr-3 box-icon" />,
-    link: "city.html",
-  },
-  {
-    name: "Location",
-    icon: <FaCity className="mr-3 box-icon" />,
-    link: "location.html",
-  },
-  {
-    name: "Sub Locality",
-    icon: <FaCity className="mr-3 box-icon" />,
-    link: "#",
-  },
-  {
-    name: "Developer Logo",
-    icon: <FaCity className="mr-3 box-icon" />,
-    link: "developer-logo.html",
-  },
-  {
-    name: "Property Type",
-    icon: <FaCity className="mr-3 box-icon" />,
-    link: "property-type.html",
-  },
+  // {
+  //   name: "State name",
+  //   icon: <FaCity className="mr-3 box-icon" />,
+  //   link: "state.html",
+  // },
+  // {
+  //   name: "City name",
+  //   icon: <FaCity className="mr-3 box-icon" />,
+  //   link: "city.html",
+  // },
+  // {
+  //   name: "Location",
+  //   icon: <FaCity className="mr-3 box-icon" />,
+  //   link: "location.html",
+  // },
+  // {
+  //   name: "Sub Locality",
+  //   icon: <FaCity className="mr-3 box-icon" />,
+  //   link: "#",
+  // },
+  // {
+  //   name: "Developer Logo",
+  //   icon: <FaCity className="mr-3 box-icon" />,
+  //   link: "developer-logo.html",
+  // },
+  // {
+  //   name: "Property Type",
+  //   icon: <FaCity className="mr-3 box-icon" />,
+  //   link: "property-type.html",
+  // },
   {
     name: "Amenities Logo",
     image: amenityIcon,
@@ -102,6 +109,11 @@ const otherSection = [
   { name: "Other Page", icon: <FaCity className="mr-3 box-icon" />, link: "#" },
 ];
 const PageCommonSection = [
+  {
+    name: "Home Page",
+    icon: <FaUser className="mr-3 box-icon" />,
+    link: "/admin/page/index",
+  },
   {
     name: "About US",
     icon: <FaUser className="mr-3 box-icon" />,
@@ -129,23 +141,7 @@ const PageCommonSection = [
   }
 ];
 
-// reviews
-const reviews = [
-  {
-    id: 1,
-    name: "Sanjay Kapoor",
-    initial: "S",
-    date: "24 Jun",
-    text: "It has survived not only five centuries, but also the leap into electronic typesetting...",
-  },
-  {
-    id: 2,
-    name: "Renu Singh",
-    initial: "R",
-    date: "24 Jun",
-    text: "It has survived not only five centuries, but also the leap into electronic typesetting...",
-  },
-];
+
 
 // social media
 const socialData = [
@@ -201,52 +197,9 @@ const Dashboard = () => {
           <div className="left-area">
             <div className="inner-left">
               <TopBox>
-                <Box>
-                  <CustomTitle icon={<IoMdHome />} title="Total Project" />
-                  <div className="media">
-                    <span className="no-project">245</span>
-                    <div className="media-body">
-                      <h4>No. of Project</h4>
-                      <ul  className="d-flex align-items-center project_card">
-                        <li>
-                          <Link to="project-list"> View Details</Link>
-                        </li>
-                        <li className="project_btn">
-                          <Link to={`${import.meta.env.VITE_APP_ADMIN_ROOT}microsite`}>
-                            <span>
-                              <IoIosAddCircleOutline />
-                            </span>
-                            <p>Add More Project</p>
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </Box>
+                <TotalProjects />
                 {/* review start */}
-                <Box>
-                  <div className="box-review">
-                    <CustomTitle icon={<FaIdCard />} title="Latest Review" />
-                    {reviews.map((review) => (
-                      <div key={review.id} className="review">
-                        <div className="l-review">
-                          <span>{review.initial}</span>
-                        </div>
-                        <div className="r-review">
-                          <h4>{review.name}</h4>
-                          <p>
-                            {review.text} <a href="#">Read More</a>
-                          </p>
-                          <ul>
-                            <li>
-                              <FaCalendar className="icon" /> {review.date}
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </Box>
+                  <Testimonials />
                 {/* review end */}
               </TopBox>
             </div>
@@ -280,6 +233,8 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
+
+
             <div className="bottom-box">
               <div className="inner-bottom-box">
                 <CustomTitle
@@ -299,9 +254,9 @@ const Dashboard = () => {
                         </span>
                         <div className="media-body">
                           <h5>{item.name}</h5>
-                          <a href={item.link}>
+                          <Link to={item.link}>
                             <span>View Detail</span>
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
