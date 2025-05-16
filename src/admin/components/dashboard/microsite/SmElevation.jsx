@@ -7,6 +7,7 @@ import useCrud from "../../../hooks/useCrud";
 import { useLocation, useParams } from "react-router-dom";
 import CustomTable from "../utilities/custom-table/CustomTable";
 import CustomPagination from "../utilities/pagination/CustomPagination";
+import StatusOrder from "../utilities/Status-order";
 
 const SmElevation = () => {
   const [editData, setEditData] = useState(null);
@@ -15,14 +16,12 @@ const SmElevation = () => {
   const location = useLocation();
   const locationType = location.pathname.split("/").pop();
   
-  // API endpoints
   const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
   const SmElevationApi = generateApi("project-elevate-galleries/elevation");
   const GalleryApi = generateApi("project-elevate-galleries",0);
 
   
-  // CRUD hooks
   const { editItem, createItem } = useCrud(projectSectionsApi);
   const {deleteItem,  editItem: smElevationEditItem,   
  }=useCrud(GalleryApi);
@@ -34,11 +33,9 @@ const SmElevation = () => {
   
   const { getEditData } = useCrud(getEditDataApi);
   
-  // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
-  // Form fields
   const metaFields = [
     { name: "heading", label: "Heading", type: "text", col: 6 },
     { name: "sub_heading", label: "Sub Heading", type: "text", col: 6 },
@@ -53,7 +50,6 @@ const SmElevation = () => {
     { name: "alt", label: "Alt", type: "text", col: 6, placeholder: "Enter Alt text",isRequired:true },
   ];
 
-  // Fetch metadata function
   const fetchMetadata = async () => {
     const formData = new FormData();
     formData.append("section_type", locationType);
@@ -66,22 +62,16 @@ const SmElevation = () => {
     }
   };
 
-  // Fetch smElevation items
   const fetchAllsmElevationItems = async () => {
     try {
-      // Adjust parameters as needed for your API
       await fetchsmElevationItems({ project_id, type: locationType });
     } catch (error) {
       console.error("Error fetching smElevation items:", error);
     }
   };
 
-  // Handle metadata creation
   const handleCreateMeta = async (formData) => {
     try {
-      // formData.append("is_type", "iframe");
-      // formData.append("project_id", project_id);
-      // formData.append("section_type", locationType);
       await createItem(formData);
       await fetchMetadata();
     } catch (error) {
@@ -89,7 +79,6 @@ const SmElevation = () => {
     }
   };
 
-  // Handle metadata edit
   const handleEditMeta = async (formData) => {
     try {
       await editItem(editData.id, formData);
@@ -99,12 +88,9 @@ const SmElevation = () => {
     }
   };
 
-  // Handle smElevation item creation
   const handleCreatesmElevation = async (formData) => {
     try {
       formData.append("is_type", "elevation");
-      // formData.append("project_id", project_id);
-      // formData.append("section_type", locationType);
       await smElevationCreateItem(formData);
       await fetchAllsmElevationItems();
       setEditsmElevationData(null);
@@ -113,10 +99,9 @@ const SmElevation = () => {
     }
   };
 
-  // Handle smElevation item edit
   const handleEditsmElevation = async (formData) => {
     try {
-            formData.append("is_type", "elevation");
+      formData.append("is_type", "elevation");
       await smElevationEditItem(editsmElevationData.id, formData);
       await fetchAllsmElevationItems();
       setEditsmElevationData(null);
@@ -125,7 +110,6 @@ const SmElevation = () => {
     }
   };
 
-  // Handle delete
   const handleDeleteItem = async (id) => {
     try {
       await deleteItem(id);
@@ -135,18 +119,16 @@ const SmElevation = () => {
     }
   };
 
-  // Handle cancel edit
   const handleCancelEdit = () => {
     setEditsmElevationData(null);
   };
 
-  // Initial data loading
   useEffect(() => {
     fetchMetadata();
     // fetchAllsmElevationItems();
   }, []);
 
-  // Table columns
+
   const columns = [
     { key: "", label: "S.No." },
     // { key: "title", label: "Title", type: "text" },
@@ -155,10 +137,11 @@ const SmElevation = () => {
     { key: "alt", label: "Alt Text", type: "text" },
   ];
 
-  // Paginate data
   const paginatedData = smElevationItems?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
   return (
     <CustomSection>
+      <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchMetadata}/>
+
       <MicroBox>
         <CustomTitle title="Overview" />
         <CustomFormMicrosite

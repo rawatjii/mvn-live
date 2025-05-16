@@ -7,40 +7,30 @@ import useCrud from "../../../hooks/useCrud";
 import { useLocation, useParams } from "react-router-dom";
 import CustomTable from "../utilities/custom-table/CustomTable";
 import CustomPagination from "../utilities/pagination/CustomPagination";
+import StatusOrder from "../utilities/Status-order";
+
 
 const LandScape = () => {
   const [editData, setEditData] = useState(null);
   const [editLandscapeData, setEditLandscapeData] = useState(null);
-  const [formType, setFormType] = useState("image");
   const { project_id } = useParams();
   const location = useLocation();
   const locationType = location.pathname.split("/").pop();
   
-  // API endpoints
   const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
   const landScapeApi = generateApi("project-gallery",0);
-    const getApi = generateApi("project-gallery/landscape");
+  const getApi = generateApi("project-gallery/landscape");
 
-  // CRUD hooks
   const { editItem, createItem } = useCrud(projectSectionsApi);
-    const { 
-      data: landscapeItems, 
-      fetchAll: fetchLandscapeItems
-  } = useCrud(getApi);
-  const { 
-    createItem: landscapeCreateItem, 
-    editItem: landscapeEditItem, 
-    deleteItem,
-  } = useCrud(landScapeApi);
+  const {data: landscapeItems, fetchAll: fetchLandscapeItems} = useCrud(getApi);
+  const {createItem: landscapeCreateItem, editItem: landscapeEditItem, deleteItem} = useCrud(landScapeApi);
   
   const { getEditData } = useCrud(getEditDataApi);
   
-  // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
-  // Form fields
   const metaFields = [
     { name: "heading", label: "Heading", type: "text", col: 6 },
     { name: "sub_heading", label: "Sub Heading", type: "text", col: 6 },
@@ -54,7 +44,6 @@ const LandScape = () => {
     { name: "alt", label: "Alt", type: "text", col: 6, placeholder: "Enter Alt text",isRequired:true },
   ];
 
-  // Fetch metadata function
   const fetchMetadata = async () => {
     const formData = new FormData();
     formData.append("section_type", locationType);
@@ -67,22 +56,16 @@ const LandScape = () => {
     }
   };
 
-  // Fetch landscape items
   const fetchAllLandscapeItems = async () => {
     try {
-      // Adjust parameters as needed for your API
       await fetchLandscapeItems({ project_id, type: locationType });
     } catch (error) {
       console.error("Error fetching landscape items:", error);
     }
   };
 
-  // Handle metadata creation
   const handleCreateMeta = async (formData) => {
     try {
-      // formData.append("is_type", "iframe");
-      // formData.append("project_id", project_id);
-      // formData.append("section_type", locationType);
       await createItem(formData);
       await fetchMetadata();
     } catch (error) {
@@ -90,7 +73,6 @@ const LandScape = () => {
     }
   };
 
-  // Handle metadata edit
   const handleEditMeta = async (formData) => {
     try {
       await editItem(editData.id, formData);
@@ -100,12 +82,9 @@ const LandScape = () => {
     }
   };
 
-  // Handle landscape item creation
   const handleCreateLandscape = async (formData) => {
     try {
       formData.append("is_type", "landscape");
-      // formData.append("project_id", project_id);
-      // formData.append("section_type", locationType);
       await landscapeCreateItem(formData);
       await fetchAllLandscapeItems();
       setEditLandscapeData(null);
@@ -114,7 +93,6 @@ const LandScape = () => {
     }
   };
 
-  // Handle landscape item edit
   const handleEditLandscape = async (formData) => {
     try {
             formData.append("is_type", "landscape");
@@ -126,7 +104,6 @@ const LandScape = () => {
     }
   };
 
-  // Handle delete
   const handleDeleteItem = async (id) => {
     try {
       await deleteItem(id);
@@ -136,18 +113,15 @@ const LandScape = () => {
     }
   };
 
-  // Handle cancel edit
   const handleCancelEdit = () => {
     setEditLandscapeData(null);
   };
 
-  // Initial data loading
   useEffect(() => {
     fetchMetadata();
     // fetchAllLandscapeItems();
   }, []);
 
-  // Table columns
   const columns = [
     { key: "", label: "S.No." },
     { key: "title", label: "Title", type: "text" },
@@ -156,11 +130,10 @@ const LandScape = () => {
     { key: "alt", label: "Alt Text", type: "text" },
   ];
 
-  // Paginate data
   const paginatedData = landscapeItems?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
-console.log(landscapeItems)
   return (
-    <CustomSection>
+      <CustomSection>
+          <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchMetadata}/>
       <MicroBox>
         <CustomTitle title="Overview" />
         <CustomFormMicrosite
@@ -189,7 +162,6 @@ console.log(landscapeItems)
           onEdit={(row) => {
             window.scrollTo(0, 0);
             setEditLandscapeData(row);
-            setFormType(row.is_type || "image");
           }}
           onDelete={(row) => handleDeleteItem(row.id)}
           startIndex={(currentPage - 1) * itemsPerPage}

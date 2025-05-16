@@ -7,21 +7,19 @@ import useCrud from "../../../hooks/useCrud";
 import { useLocation, useParams } from "react-router-dom";
 import CustomTable from "../utilities/custom-table/CustomTable";
 import CustomPagination from "../utilities/pagination/CustomPagination";
+import StatusOrder from "../utilities/Status-order";
 
 const FloorPlans = () => {
   const [editData, setEditData] = useState(null);
   const [editfloorPlansData, setEditfloorPlansData] = useState(null);
-  const [formType, setFormType] = useState("image");
   const { project_id } = useParams();
   const location = useLocation();
   const locationType = location.pathname.split("/").pop();
   
-  // API endpoints
   const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
   const floorPlansApi = generateApi("project-floorplan");
   
-  // CRUD hooks
   const { editItem, createItem } = useCrud(projectSectionsApi);
   const { 
     data: floorPlansItems, 
@@ -33,11 +31,9 @@ const FloorPlans = () => {
   
   const { getEditData } = useCrud(getEditDataApi);
   
-  // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
-  // Form fields
   const metaFields = [
     { name: "heading", label: "Heading", type: "text", col: 6 },
   ];
@@ -52,7 +48,6 @@ const FloorPlans = () => {
         { name: "alt", label: "Alt", type: "text", col: 6, placeholder: "Enter Alt text",isRequired:true },
   ];
 
-  // Fetch metadata function
   const fetchMetadata = async () => {
     const formData = new FormData();
     formData.append("section_type", locationType);
@@ -65,22 +60,16 @@ const FloorPlans = () => {
     }
   };
 
-  // Fetch floorPlans items
   const fetchAllfloorPlansItems = async () => {
     try {
-      // Adjust parameters as needed for your API
       await fetchfloorPlansItems({ project_id, type: locationType });
     } catch (error) {
       console.error("Error fetching floorPlans items:", error);
     }
   };
 
-  // Handle metadata creation
   const handleCreateMeta = async (formData) => {
     try {
-      // formData.append("is_type", "iframe");
-      // formData.append("project_id", project_id);
-      // formData.append("section_type", locationType);
       await createItem(formData);
       await fetchMetadata();
     } catch (error) {
@@ -88,7 +77,6 @@ const FloorPlans = () => {
     }
   };
 
-  // Handle metadata edit
   const handleEditMeta = async (formData) => {
     try {
       await editItem(editData.id, formData);
@@ -98,12 +86,9 @@ const FloorPlans = () => {
     }
   };
 
-  // Handle floorPlans item creation
   const handleCreatefloorPlans = async (formData) => {
     try {
       formData.append("is_type", "floorPlans");
-      // formData.append("project_id", project_id);
-      // formData.append("section_type", locationType);
       await floorPlansCreateItem(formData);
       await fetchAllfloorPlansItems();
       setEditfloorPlansData(null);
@@ -112,10 +97,9 @@ const FloorPlans = () => {
     }
   };
 
-  // Handle floorPlans item edit
   const handleEditfloorPlans = async (formData) => {
     try {
-            formData.append("is_type", "floorPlans");
+      formData.append("is_type", "floorPlans");
       await floorPlansEditItem(editfloorPlansData.id, formData);
       await fetchAllfloorPlansItems();
       setEditfloorPlansData(null);
@@ -124,7 +108,6 @@ const FloorPlans = () => {
     }
   };
 
-  // Handle delete
   const handleDeleteItem = async (id) => {
     try {
       await deleteItem(id);
@@ -134,18 +117,15 @@ const FloorPlans = () => {
     }
   };
 
-  // Handle cancel edit
   const handleCancelEdit = () => {
     setEditfloorPlansData(null);
   };
 
-  // Initial data loading
   useEffect(() => {
     fetchMetadata();
     fetchAllfloorPlansItems();
   }, []);
 
-  // Table columns
   const columns = [
     { key: "", label: "S.No." },
     { key: "heading", label: "Title", type: "text" },
@@ -154,11 +134,10 @@ const FloorPlans = () => {
     { key: "alt", label: "Alt Text", type: "text" },
   ];
 
-  // Paginate data
   const paginatedData = floorPlansItems?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
-console.log(floorPlansItems)
   return (
     <CustomSection>
+       <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchMetadata}/>
       <MicroBox>
         <CustomTitle title="Overview" />
         <CustomFormMicrosite
@@ -187,7 +166,6 @@ console.log(floorPlansItems)
           onEdit={(row) => {
             window.scrollTo(0, 0);
             setEditfloorPlansData(row);
-            setFormType(row.is_type || "image");
           }}
           onDelete={(row) => handleDeleteItem(row.id)}
           startIndex={(currentPage - 1) * itemsPerPage}

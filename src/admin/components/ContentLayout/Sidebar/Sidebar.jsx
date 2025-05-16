@@ -5,8 +5,7 @@ import logo2 from "../../../assets/images/logo2.webp";
 
 // icons
 import { AiFillHome } from "react-icons/ai";
-import { FaUser, FaLock, FaPhoneAlt } from "react-icons/fa";
-import { BsCreditCardFill } from "react-icons/bs";
+import { FaUser, FaPhoneAlt } from "react-icons/fa";
 import { FaRegNewspaper } from "react-icons/fa";
 import { SiBloglovin } from "react-icons/si";
 import { PiBuildingOffice } from "react-icons/pi";

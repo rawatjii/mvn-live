@@ -5,6 +5,7 @@ import CustomFormMicrosite from "../utilities/CustomFormMicrosite";
 import generateApi from "../../../api/generateApi";
 import useCrud from "../../../hooks/useCrud";
 import { useLocation, useParams } from "react-router-dom";
+import StatusOrder from "../utilities/Status-order";
 
 const Elevation = () => {
   const [editData, setEditData] = useState(null);
@@ -66,6 +67,7 @@ const Elevation = () => {
   return (
     <CustomSection>
       <MicroBox>
+        <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchEditData}/>
         <CustomTitle title="Overview" />
         <CustomFormMicrosite
           isBanner={false}

@@ -5,6 +5,7 @@ import CustomFormMicrosite from "../utilities/CustomFormMicrosite";
 import generateApi from "../../../api/generateApi";
 import useCrud from "../../../hooks/useCrud";
 import { useLocation, useParams } from "react-router-dom";
+import StatusOrder from "../utilities/Status-order";
 
 const ThreesixtyView = () => {
   const [editData, setEditData] = useState(null);
@@ -15,7 +16,6 @@ const ThreesixtyView = () => {
   const getEditDataApi= generateApi("show-by-project-with-sectionType",0);
   const { getEditData } = useCrud(getEditDataApi);
   const { editItem,createItem } = useCrud(projectSectionsApi);
-  const [successVia,setSuccessVia]=useState(false)
 
   const fields = [
     { name: "heading", label: "Heading", type: "text", col: 6 },
@@ -62,6 +62,7 @@ const ThreesixtyView = () => {
 
   return (
     <CustomSection>
+     <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchEditData}/>
       <MicroBox>
         <CustomTitle title="Overview" />
         <CustomFormMicrosite

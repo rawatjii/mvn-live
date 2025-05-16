@@ -6,7 +6,7 @@ const getAuthHeader = () => {
   return token ? { Authorization: `Bearer ${token}` } : {};
 };
 
-const generateApi = (endpoint,callVia) => {
+const generateApi = (endpoint,callVia,changeEndpointVia) => {
   const baseUrl = `${API_BASE_URL}/${endpoint}`;
 
   return {
@@ -18,7 +18,7 @@ const generateApi = (endpoint,callVia) => {
       }
     },
     create: (data) => axios.post(baseUrl, data, { headers: getAuthHeader() }),
-    update: (id, data) => axios.put(`${baseUrl}/${id}`, data, { headers: getAuthHeader() }),
+    update:changeEndpointVia==1?  (data) => axios.post(`${baseUrl}`, data, { headers: getAuthHeader() }):(id, data) => axios.put(`${baseUrl}/${id}`, data, { headers: getAuthHeader() }),
   delete: (id) => axios.delete(`${baseUrl}/${id}`, { headers: getAuthHeader() }),
     editGet: (data) => axios.post(`${baseUrl}`,data,{ headers: getAuthHeader() })
 

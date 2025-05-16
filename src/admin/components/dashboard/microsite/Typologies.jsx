@@ -7,37 +7,27 @@ import useCrud from "../../../hooks/useCrud";
 import { useLocation, useParams } from "react-router-dom";
 import CustomTable from "../utilities/custom-table/CustomTable";
 import CustomPagination from "../utilities/pagination/CustomPagination";
+import StatusOrder from "../utilities/Status-order";
 
 const Typologies = () => {
   const [editData, setEditData] = useState(null);
   const [edittypologiesData, setEdittypologiesData] = useState(null);
-  const [formType, setFormType] = useState("image");
   const { project_id } = useParams();
   const location = useLocation();
   const locationType = location.pathname.split("/").pop();
   
-  // API endpoints
   const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
   const typologiesApi = generateApi("project-typologies");
   
-  // CRUD hooks
   const { editItem, createItem } = useCrud(projectSectionsApi);
-  const { 
-    data: typologiesItems, 
-    createItem: typologiesCreateItem, 
-    editItem: typologiesEditItem, 
-    deleteItem,
-    getItems: fetchtypologiesItems
-  } = useCrud(typologiesApi);
+  const { data: typologiesItems, createItem: typologiesCreateItem, editItem: typologiesEditItem, deleteItem,getItems: fetchtypologiesItems} = useCrud(typologiesApi);
   
   const { getEditData } = useCrud(getEditDataApi);
   
-  // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
-  // Form fields
   const metaFields = [
     { name: "heading", label: "Heading", type: "text", col: 6 },
   ];
@@ -51,7 +41,6 @@ const Typologies = () => {
     { name: "short_description", label: "Description", type: "textarea", col: 6,isRequired:true },
   ];
 
-  // Fetch metadata function
   const fetchMetadata = async () => {
     const formData = new FormData();
     formData.append("section_type", locationType);
@@ -64,22 +53,16 @@ const Typologies = () => {
     }
   };
 
-  // Fetch typologies items
   const fetchAlltypologiesItems = async () => {
     try {
-      // Adjust parameters as needed for your API
       await fetchtypologiesItems({ project_id, type: locationType });
     } catch (error) {
       console.error("Error fetching typologies items:", error);
     }
   };
 
-  // Handle metadata creation
   const handleCreateMeta = async (formData) => {
     try {
-      // formData.append("is_type", "iframe");
-      // formData.append("project_id", project_id);
-      // formData.append("section_type", locationType);
       await createItem(formData);
       await fetchMetadata();
     } catch (error) {
@@ -87,7 +70,6 @@ const Typologies = () => {
     }
   };
 
-  // Handle metadata edit
   const handleEditMeta = async (formData) => {
     try {
       await editItem(editData.id, formData);
@@ -97,12 +79,9 @@ const Typologies = () => {
     }
   };
 
-  // Handle typologies item creation
   const handleCreatetypologies = async (formData) => {
     try {
       formData.append("is_type", "typologies");
-      // formData.append("project_id", project_id);
-      // formData.append("section_type", locationType);
       await typologiesCreateItem(formData);
       await fetchAlltypologiesItems();
       setEdittypologiesData(null);
@@ -111,7 +90,6 @@ const Typologies = () => {
     }
   };
 
-  // Handle typologies item edit
   const handleEdittypologies = async (formData) => {
     try {
             formData.append("is_type", "typologies");
@@ -123,7 +101,6 @@ const Typologies = () => {
     }
   };
 
-  // Handle delete
   const handleDeleteItem = async (id) => {
     try {
       await deleteItem(id);
@@ -133,18 +110,15 @@ const Typologies = () => {
     }
   };
 
-  // Handle cancel edit
   const handleCancelEdit = () => {
     setEdittypologiesData(null);
   };
 
-  // Initial data loading
   useEffect(() => {
     fetchMetadata();
     fetchAlltypologiesItems();
   }, []);
 
-  // Table columns
   const columns = [
     { key: "", label: "S.No." },
     { key: "heading", label: "Title", type: "text" },
@@ -153,12 +127,12 @@ const Typologies = () => {
     { key: "alt", label: "Alt Text", type: "text" },
   ];
 
-  // Paginate data
   const paginatedData = typologiesItems?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
-console.log(typologiesItems)
   return (
     <CustomSection>
+      <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchMetadata}/>
       <MicroBox>
+
         <CustomTitle title="Overview" />
         <CustomFormMicrosite
           isBanner={false}
@@ -186,7 +160,6 @@ console.log(typologiesItems)
           onEdit={(row) => {
             window.scrollTo(0, 0);
             setEdittypologiesData(row);
-            setFormType(row.is_type || "image");
           }}
           onDelete={(row) => handleDeleteItem(row.id)}
           startIndex={(currentPage - 1) * itemsPerPage}

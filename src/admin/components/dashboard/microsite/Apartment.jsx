@@ -7,42 +7,29 @@ import useCrud from "../../../hooks/useCrud";
 import { useLocation, useParams } from "react-router-dom";
 import CustomTable from "../utilities/custom-table/CustomTable";
 import CustomPagination from "../utilities/pagination/CustomPagination";
+import StatusOrder from "../utilities/Status-order";
 
 const Apartment = () => {
   const [editData, setEditData] = useState(null);
   const [editapartmentData, setEditapartmentData] = useState(null);
-  const [formType, setFormType] = useState("image");
   const { project_id } = useParams();
   const location = useLocation();
   const locationType = location.pathname.split("/").pop();
   
-  // API endpoints
   const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
   const apartmentApi = generateApi("project-gallery",0);
   const getApi = generateApi("project-gallery/apartment");
   
-  // CRUD hooks
   const { editItem, createItem } = useCrud(projectSectionsApi);
-    const { 
-      data: apartmentItems, 
-      fetchAll: fetchapartmentItems
-  } = useCrud(getApi);
-  const { 
-    
-    createItem: apartmentCreateItem, 
-    editItem: apartmentEditItem, 
-    deleteItem,
-
-  } = useCrud(apartmentApi);
+  const {data: apartmentItems,fetchAll: fetchapartmentItems} = useCrud(getApi);
+  const { createItem: apartmentCreateItem,editItem: apartmentEditItem,deleteItem} = useCrud(apartmentApi);
   
   const { getEditData } = useCrud(getEditDataApi);
   
-  // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
-  // Form fields
   const metaFields = [
     { name: "heading", label: "Heading", type: "text", col: 6 },
     { name: "sub_heading", label: "Sub Heading", type: "text", col: 6 },
@@ -56,7 +43,6 @@ const Apartment = () => {
     { name: "alt", label: "Alt", type: "text", col: 6, placeholder: "Enter Alt text",isRequired:true },
   ];
 
-  // Fetch metadata function
   const fetchMetadata = async () => {
     const formData = new FormData();
     formData.append("section_type", locationType);
@@ -69,22 +55,16 @@ const Apartment = () => {
     }
   };
 
-  // Fetch apartment items
   const fetchAllapartmentItems = async () => {
     try {
-      // Adjust parameters as needed for your API
       await fetchapartmentItems({ project_id, type: locationType });
     } catch (error) {
       console.error("Error fetching apartment items:", error);
     }
   };
 
-  // Handle metadata creation
   const handleCreateMeta = async (formData) => {
     try {
-      // formData.append("is_type", "iframe");
-      // formData.append("project_id", project_id);
-      // formData.append("section_type", locationType);
       await createItem(formData);
       await fetchMetadata();
     } catch (error) {
@@ -92,7 +72,6 @@ const Apartment = () => {
     }
   };
 
-  // Handle metadata edit
   const handleEditMeta = async (formData) => {
     try {
       await editItem(editData.id, formData);
@@ -102,12 +81,9 @@ const Apartment = () => {
     }
   };
 
-  // Handle apartment item creation
   const handleCreateapartment = async (formData) => {
     try {
       formData.append("is_type", "apartment");
-      // formData.append("project_id", project_id);
-      // formData.append("section_type", locationType);
       await apartmentCreateItem(formData);
       await fetchAllapartmentItems();
       setEditapartmentData(null);
@@ -116,7 +92,6 @@ const Apartment = () => {
     }
   };
 
-  // Handle apartment item edit
   const handleEditapartment = async (formData) => {
     try {
             formData.append("is_type", "apartment");
@@ -128,7 +103,6 @@ const Apartment = () => {
     }
   };
 
-  // Handle delete
   const handleDeleteItem = async (id) => {
     try {
       await deleteItem(id);
@@ -138,18 +112,14 @@ const Apartment = () => {
     }
   };
 
-  // Handle cancel edit
   const handleCancelEdit = () => {
     setEditapartmentData(null);
   };
 
-  // Initial data loading
   useEffect(() => {
     fetchMetadata();
-    // fetchAllapartmentItems();
   }, []);
 
-  // Table columns
   const columns = [
     { key: "", label: "S.No." },
     { key: "title", label: "Title", type: "text" },
@@ -158,11 +128,11 @@ const Apartment = () => {
     { key: "alt", label: "Alt Text", type: "text" },
   ];
 
-  // Paginate data
   const paginatedData = apartmentItems?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
 console.log(apartmentItems)
   return (
     <CustomSection>
+     <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchMetadata}/>  
       <MicroBox>
         <CustomTitle title="Overview" />
         <CustomFormMicrosite
@@ -191,7 +161,6 @@ console.log(apartmentItems)
           onEdit={(row) => {
             window.scrollTo(0, 0);
             setEditapartmentData(row);
-            setFormType(row.is_type || "image");
           }}
           onDelete={(row) => handleDeleteItem(row.id)}
           startIndex={(currentPage - 1) * itemsPerPage}

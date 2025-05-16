@@ -5,6 +5,7 @@ import generateApi from "../../../api/generateApi";
 import CustomFormMicrosite from "../utilities/CustomFormMicrosite";
 import useCrud from "../../../hooks/useCrud";
 import { useLocation, useParams } from "react-router-dom";
+import StatusOrder from "../utilities/Status-order";
 
 const OverviewMicroSite = () => {
   const [editData, setEditData] = useState(null);
@@ -17,9 +18,7 @@ const OverviewMicroSite = () => {
   const { createItem, editItem } = useCrud(projectSectionApi);
 
 
-
-
-  const formFields = [{
+    const formFields = [{
     sectionName: "Info Details",
     visible: true,
     fields: [
@@ -47,7 +46,7 @@ const OverviewMicroSite = () => {
 
   const handleCreate = async (formData) => {
     try {
-      formData.append("is_type", "json");
+      formData.append("is_type", "image");
       await createItem(formData);
       await fetchEditData();
     } catch (error) {
@@ -70,6 +69,7 @@ const OverviewMicroSite = () => {
   return (
     <CustomSection customClass="d-block">
       <div className="row">
+        <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchEditData}/>
         {formFields.filter(section => section.visible).map(section => (
           <div className="col col-12" key={section.sectionName}>
             <MicroBox>

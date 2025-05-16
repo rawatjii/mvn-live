@@ -7,37 +7,27 @@ import useCrud from "../../../hooks/useCrud";
 import { useLocation, useParams } from "react-router-dom";
 import CustomTable from "../utilities/custom-table/CustomTable";
 import CustomPagination from "../utilities/pagination/CustomPagination";
+import StatusOrder from "../utilities/Status-order";
 
 const ConnectionMVNMall = () => {
   const [editData, setEditData] = useState(null);
   const [editConnectionmvnMallData, setEditConnectionmvnMallData] = useState(null);
-  const [formType, setFormType] = useState("image");
   const { project_id } = useParams();
   const location = useLocation();
   const locationType = location.pathname.split("/").pop();
   
-  // API endpoints
   const projectSectionsApi = generateApi("projec-sections");
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
   const ConnectionmvnMallApi = generateApi("project-amenities");
   
-  // CRUD hooks
   const { editItem, createItem } = useCrud(projectSectionsApi);
-  const { 
-    data: ConnectionmvnMallItems, 
-    createItem: ConnectionmvnMallCreateItem, 
-    editItem: ConnectionmvnMallEditItem, 
-    deleteItem,
-    fetchAll: fetchConnectionmvnMallItems
-  } = useCrud(ConnectionmvnMallApi);
+  const { data: ConnectionmvnMallItems, createItem: ConnectionmvnMallCreateItem, editItem: ConnectionmvnMallEditItem, deleteItem,fetchAll: fetchConnectionmvnMallItems} = useCrud(ConnectionmvnMallApi);
   
   const { getEditData } = useCrud(getEditDataApi);
   
-  // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
-  // Form fields
   const metaFields = [
     { name: "heading", label: "Heading", type: "text", col: 6 },
   ];
@@ -51,7 +41,6 @@ const ConnectionMVNMall = () => {
 
   ];
 
-  // Fetch metadata function
   const fetchMetadata = async () => {
     const formData = new FormData();
     formData.append("section_type", locationType);
@@ -64,22 +53,16 @@ const ConnectionMVNMall = () => {
     }
   };
 
-  // Fetch ConnectionmvnMall items
   const fetchAllConnectionmvnMallItems = async () => {
     try {
-      // Adjust parameters as needed for your API
       await fetchConnectionmvnMallItems({ project_id, type: locationType });
     } catch (error) {
       console.error("Error fetching ConnectionmvnMall items:", error);
     }
   };
 
-  // Handle metadata creation
   const handleCreateMeta = async (formData) => {
     try {
-      // formData.append("is_type", "iframe");
-      // formData.append("project_id", project_id);
-      // formData.append("section_type", locationType);
       await createItem(formData);
       await fetchMetadata();
     } catch (error) {
@@ -87,7 +70,6 @@ const ConnectionMVNMall = () => {
     }
   };
 
-  // Handle metadata edit
   const handleEditMeta = async (formData) => {
     try {
       await editItem(editData.id, formData);
@@ -97,12 +79,9 @@ const ConnectionMVNMall = () => {
     }
   };
 
-  // Handle ConnectionmvnMall item creation
   const handleCreateConnectionmvnMall = async (formData) => {
     try {
       formData.append("is_type", "connection_mall");
-      // formData.append("project_id", project_id);
-      // formData.append("section_type", locationType);
       await ConnectionmvnMallCreateItem(formData);
       await fetchAllConnectionmvnMallItems();
       setEditConnectionmvnMallData(null);
@@ -111,10 +90,9 @@ const ConnectionMVNMall = () => {
     }
   };
 
-  // Handle ConnectionmvnMall item edit
   const handleEditConnectionmvnMall = async (formData) => {
     try {
-            formData.append("is_type", "connection_mall");
+      formData.append("is_type", "connection_mall");
       await ConnectionmvnMallEditItem(editConnectionmvnMallData.id, formData);
       await fetchAllConnectionmvnMallItems();
       setEditConnectionmvnMallData(null);
@@ -123,7 +101,6 @@ const ConnectionMVNMall = () => {
     }
   };
 
-  // Handle delete
   const handleDeleteItem = async (id) => {
     try {
       await deleteItem(id);
@@ -133,18 +110,15 @@ const ConnectionMVNMall = () => {
     }
   };
 
-  // Handle cancel edit
   const handleCancelEdit = () => {
     setEditConnectionmvnMallData(null);
   };
 
-  // Initial data loading
   useEffect(() => {
     fetchMetadata();
     fetchAllConnectionmvnMallItems();
   }, []);
 
-  // Table columns
   const columns = [
     { key: "", label: "S.No." },
     { key: "heading", label: "Title", type: "text" },
@@ -153,10 +127,10 @@ const ConnectionMVNMall = () => {
     { key: "alt", label: "Alt Text", type: "text" },
   ];
 
-  // Paginate data
   const paginatedData = ConnectionmvnMallItems?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
   return (
     <CustomSection>
+      <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchMetadata}/>  
       <MicroBox>
         <CustomTitle title="Overview" />
         <CustomFormMicrosite
@@ -185,7 +159,6 @@ const ConnectionMVNMall = () => {
           onEdit={(row) => {
             window.scrollTo(0, 0);
             setEditConnectionmvnMallData(row);
-            setFormType(row.is_type || "image");
           }}
           onDelete={(row) => handleDeleteItem(row.id)}
           startIndex={(currentPage - 1) * itemsPerPage}

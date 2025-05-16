@@ -77,19 +77,25 @@ select.form-control {
 .sidenav {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   position: fixed;
   right: 0px;
   top: 0px;
+  padding:120px 0;
   height: 100%;
-  width: 80px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width:100px;
+  z-index: 999999;
+  transition: 0.4s all;
+  overflow-y: scroll;
   background: #13131d;
   box-shadow: 0 3px 3px rgb(0 0 0 / 4%), 0 3px 3px rgb(255 255 255 / 17%);
 }
 .sidenav .nav {
   position: relative;
-  display: flex;
-  align-items: center;
+  /* display: flex;
+  align-items: center; */
   z-index: 1000;
   left: 0px;
   transition: all 0.4s ease;
@@ -97,31 +103,44 @@ select.form-control {
   font-family: "Roboto-Regular";
   letter-spacing: 0.8px;
 }
+.sidenav .description{flex:1;white-space: nowrap}
+.sidenav .nav {display: flex; flex-wrap: nowrap;}
+.sidenav.active {width: 25%;}
+  .sidenav.active .toggle::before {transform: translateY(0px) rotate(-405deg);}
+  .sidenav.active .toggle::after {transform: translateY(0px) rotate(225deg);}
 .sidenav .nav.active {
-  left: -10px;
+  /* left: -10px; */
 }
-.sidenav .nav:hover {
+/* .sidenav .nav:hover {
   left: -115px;
-}
+} */
 .sidenav .nav:hover img {
   filter: invert(0);
 }
 .sidenav .description,
 .sidenav .icon {
-  height: 60px;
+  /* height: 60px; */
   line-height: 60px;
   background: #13131d;
 }
-.sidenav .nav.active .description,
-.sidenav .nav.active .icon {
+.sidenav .nav.active {
   background: var(--orange);
 }
+.sidenav .nav:hover {
+    background: var(--orange);
+
+}
+.sidenav .nav.active .description,
+.sidenav .nav.active .icon{
+  background-color: transparent;
+}
 .sidenav .icon {
-  width: 80px;
+  /* width: 80px; */
+  flex:0 0 80px;
   text-align: center;
   color: #e9e9e9;
   font-size: 18px;
-  position: absolute;
+  /* position: absolute; */
   left: 0;
   right: 0;
   top: 0;
@@ -137,11 +156,15 @@ select.form-control {
 }
 .sidenav .description {
   position: relative;
-  left: 80px;
+  /* left: 80px; */
   color: #eee;
-  min-width: 115px;
+  /* min-width: 115px; */
   padding-left: 12px;
   height: 100%;
 }
 
 /* style for dashboard end*/
+
+.sidenav .toggle{    z-index: 9999;
+    top: 44px;
+}

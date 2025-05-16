@@ -60,7 +60,7 @@ export default function Header() {
                 </li>
                 <li onClick={handleLogout}>
                   <IoLogOut className="icon"/>
-                  <sapn className="admin-name">Logout</sapn>
+                  <span className="admin-name">Logout</span>
                 </li>
               </ul>
             </div>
