@@ -61,6 +61,7 @@ const useCrud = (apiService) => {
         toast.success(" Value updated successfully!");
         await fetchAll(); 
       } catch (err) {
+        console.log(err)
         toast.error("❌ Failed to add value.");
         // const errorMessage = err.response?.data?.message || err.message || "Failed to update value";
         // toast.error(`❌ ${errorMessage}`);

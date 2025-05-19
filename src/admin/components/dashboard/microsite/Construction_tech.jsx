@@ -7,21 +7,19 @@ import useCrud from "../../../hooks/useCrud";
 import { useLocation, useParams } from "react-router-dom";
 import CustomTable from "../utilities/custom-table/CustomTable";
 import CustomPagination from "../utilities/pagination/CustomPagination";
+import StatusOrder from "../utilities/Status-order";
 
 const ConstructionTechnology = () => {
   const [editData, setEditData] = useState(null);
   const [editkeyHightlightsData, setEditkeyHightlightsData] = useState(null);
-  const [formType, setFormType] = useState("image");
   const { project_id } = useParams();
   const location = useLocation();
   const locationType = location.pathname.split("/").pop();
   
-  // API endpoints
   const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
   const keyHightlightsApi = generateApi("project-key-highlight");
   
-  // CRUD hooks
   const { editItem, createItem, } = useCrud(projectSectionsApi);
   const { 
     data: construction, 
@@ -32,11 +30,9 @@ const ConstructionTechnology = () => {
   } = useCrud(keyHightlightsApi);
   
   const { getEditData } = useCrud(getEditDataApi);
-  // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
-    // Form fields
   const metaFields = [  
     { name: "heading", label: "Heading", type: "text", col: 6 },
     { name: "sub_heading", label: "Sub Heading", type: "text", col: 6 },
@@ -50,7 +46,6 @@ const ConstructionTechnology = () => {
     { name: "short_description", label: "Description", type: "textarea", col: 12,isRequired:true },
   ];
 
-  // Fetch metadata function
   const fetchMetadata = async () => {
     const formData = new FormData();
     formData.append("section_type", locationType);
@@ -63,22 +58,18 @@ const ConstructionTechnology = () => {
     }
   };
 
-  // Fetch keyHightlights items
   const fetchAllconstruction = async () => {
     try {
-      // Adjust parameters as needed for your API
       await fetchconstruction({ project_id, type: locationType });
     } catch (error) {
       console.error("Error fetching keyHightlights items:", error);
     }
   };
 
-  // Handle metadata creation
+
   const handleCreateMeta = async (formData) => {
     try {
       formData.append("is_type", "video");
-      // formData.append("project_id", project_id);
-      // formData.append("section_type", locationType);
       await createItem(formData);
       await fetchMetadata();
     } catch (error) {
@@ -86,7 +77,6 @@ const ConstructionTechnology = () => {
     }
   };
 
-  // Handle metadata edit
   const handleEditMeta = async (formData) => {
     try {
       await editItem(editData.id, formData);
@@ -96,12 +86,9 @@ const ConstructionTechnology = () => {
     }
   };
 
-  // Handle keyHightlights item creation
   const handleCreatekeyHightlights = async (formData) => {
     try {
       formData.append("is_type", "keyHightlights");
-      // formData.append("project_id", project_id);
-      // formData.append("section_type", locationType);
       await keyHightlightsCreateItem(formData);
       await fetchAllconstruction();
       setEditkeyHightlightsData(null);
@@ -110,7 +97,6 @@ const ConstructionTechnology = () => {
     }
   };
 
-  // Handle keyHightlights item edit
   const handleEditkeyHightlights = async (formData) => {
     try {
             formData.append("is_type", "keyHightlights");
@@ -122,7 +108,6 @@ const ConstructionTechnology = () => {
     }
   };
 
-  // Handle delete
   const handleDeleteItem = async (id) => {
     try {
       await deleteItem(id);
@@ -132,29 +117,25 @@ const ConstructionTechnology = () => {
     }
   };
 
-  // Handle cancel edit
   const handleCancelEdit = () => {
     setEditkeyHightlightsData(null);
   };
 
-  // Initial data loading
   useEffect(() => {
     fetchMetadata();
     // fetchAllconstruction();
   }, []);
 
-  // Table columns
   const columns = [
     { key: "", label: "S.No." },
     { key: "heading", label: "Heading", type: "text" },
     { key: "short_description", label: "Description", type: "text" },
   ];
 
-  // Paginate data
   const paginatedData = construction?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
-console.log(construction)
   return (
     <CustomSection>
+      <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchMetadata}/>  
       <MicroBox>
         <CustomTitle title="Overview" />
         <CustomFormMicrosite
@@ -183,7 +164,6 @@ console.log(construction)
           onEdit={(row) => {
             window.scrollTo(0, 0);
             setEditkeyHightlightsData(row);
-            setFormType(row.is_type || "image");
           }}
           onDelete={(row) => handleDeleteItem(row.id)}
           startIndex={(currentPage - 1) * itemsPerPage}

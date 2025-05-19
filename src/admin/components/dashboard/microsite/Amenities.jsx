@@ -7,11 +7,11 @@ import useCrud from "../../../hooks/useCrud";
 import { useLocation, useParams } from "react-router-dom";
 import CustomTable from "../utilities/custom-table/CustomTable";
 import CustomPagination from "../utilities/pagination/CustomPagination";
+import StatusOrder from "../utilities/Status-order";
 
 const Amenities = () => {
   const [editData, setEditData] = useState(null);
   const [editamenitiesData, setEditamenitiesData] = useState(null);
-  const [formType, setFormType] = useState("image");
   const { project_id } = useParams();
   const location = useLocation();
   const locationType = location.pathname.split("/").pop();
@@ -32,12 +32,9 @@ const Amenities = () => {
   } = useCrud(amenitiesApi);
   
   const { getEditData } = useCrud(getEditDataApi);
-  
-  // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
-  // Form fields
   const metaFields = [
     { name: "heading", label: "Heading", type: "text", col: 6 },
   ];
@@ -51,7 +48,7 @@ const Amenities = () => {
 
   ];
 
-  // Fetch metadata function
+
   const fetchMetadata = async () => {
     const formData = new FormData();
     formData.append("section_type", locationType);
@@ -64,22 +61,18 @@ const Amenities = () => {
     }
   };
 
-  // Fetch amenities items
+
+
   const fetchAllamenitiesItems = async () => {
     try {
-      // Adjust parameters as needed for your API
       await fetchamenitiesItems({ project_id, type: locationType });
     } catch (error) {
       console.error("Error fetching amenities items:", error);
     }
   };
 
-  // Handle metadata creation
   const handleCreateMeta = async (formData) => {
     try {
-      // formData.append("is_type", "iframe");
-      // formData.append("project_id", project_id);
-      // formData.append("section_type", locationType);
       await createItem(formData);
       await fetchMetadata();
     } catch (error) {
@@ -87,7 +80,6 @@ const Amenities = () => {
     }
   };
 
-  // Handle metadata edit
   const handleEditMeta = async (formData) => {
     try {
       await editItem(editData.id, formData);
@@ -97,12 +89,9 @@ const Amenities = () => {
     }
   };
 
-  // Handle amenities item creation
   const handleCreateamenities = async (formData) => {
     try {
       formData.append("is_type", "amenities");
-      // formData.append("project_id", project_id);
-      // formData.append("section_type", locationType);
       await amenitiesCreateItem(formData);
       await fetchAllamenitiesItems();
       setEditamenitiesData(null);
@@ -111,10 +100,9 @@ const Amenities = () => {
     }
   };
 
-  // Handle amenities item edit
   const handleEditamenities = async (formData) => {
     try {
-            formData.append("is_type", "amenities");
+      formData.append("is_type", "amenities");
       await amenitiesEditItem(editamenitiesData.id, formData);
       await fetchAllamenitiesItems();
       setEditamenitiesData(null);
@@ -123,7 +111,6 @@ const Amenities = () => {
     }
   };
 
-  // Handle delete
   const handleDeleteItem = async (id) => {
     try {
       await deleteItem(id);
@@ -133,18 +120,15 @@ const Amenities = () => {
     }
   };
 
-  // Handle cancel edit
   const handleCancelEdit = () => {
     setEditamenitiesData(null);
   };
 
-  // Initial data loading
   useEffect(() => {
     fetchMetadata();
     fetchAllamenitiesItems();
   }, []);
 
-  // Table columns
   const columns = [
     { key: "", label: "S.No." },
     { key: "heading", label: "Title", type: "text" },
@@ -153,10 +137,10 @@ const Amenities = () => {
     { key: "alt", label: "Alt Text", type: "text" },
   ];
 
-  // Paginate data
   const paginatedData = amenitiesItems?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
   return (
     <CustomSection>
+       <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchMetadata}/>  
       <MicroBox>
         <CustomTitle title="Overview" />
         <CustomFormMicrosite
@@ -185,7 +169,6 @@ const Amenities = () => {
           onEdit={(row) => {
             window.scrollTo(0, 0);
             setEditamenitiesData(row);
-            setFormType(row.is_type || "image");
           }}
           onDelete={(row) => handleDeleteItem(row.id)}
           startIndex={(currentPage - 1) * itemsPerPage}

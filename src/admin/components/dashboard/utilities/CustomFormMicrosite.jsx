@@ -64,9 +64,9 @@ const CustomFormMicrosite = ({
           field.type === "file" ? initialData[field.name] || null : initialData[field.name] || "";
       });
       
-      if (!("is_theme" in updatedForm)) {
-        updatedForm["is_theme"] = "1";
-      }
+      // if (!("is_theme" in updatedForm)) {
+      //   updatedForm["is_theme"] = "1";
+      // }
       if (!("project_id" in updatedForm)) {
         updatedForm["project_id"] = project_Id;
       }

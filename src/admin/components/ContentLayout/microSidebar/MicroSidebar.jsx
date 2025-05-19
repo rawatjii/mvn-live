@@ -1,203 +1,98 @@
-import React from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import React, { memo, useState, useRef } from "react";
+import { NavLink, Outlet, useParams } from "react-router-dom";
 import { FaRegFileAlt } from "react-icons/fa";
-import { IoMdInformationCircleOutline,IoIosImage } from "react-icons/io";
+import { IoIosImage, IoMdInformationCircleOutline } from "react-icons/io";
 import { BsBuildingUp } from "react-icons/bs";
-import { GrLocation } from "react-icons/gr";
-import { MdVideoSettings,MdOutline360,MdOutlineLiving,MdOutlineFeaturedPlayList,MdShareLocation,MdStoreMallDirectory    } from "react-icons/md";
+import { MdVideoSettings, MdOutlineLiving, MdOutlineFeaturedPlayList, MdShareLocation, MdStoreMallDirectory, MdBedroomParent } from "react-icons/md";
 import { TbView360Number } from "react-icons/tb";
-import { useParams } from "react-router-dom";
 import { LuPartyPopper } from "react-icons/lu";
-import { MdBedroomParent } from "react-icons/md";
 import { FaUserCog } from "react-icons/fa";
 import { BiLandscape } from "react-icons/bi";
 import { HiOutlineBuildingStorefront } from "react-icons/hi2";
-import { PiBuildingApartment } from "react-icons/pi";
+import { PiBuildingApartment, PiStrategyBold } from "react-icons/pi";
 import { MdOutlineConstruction } from "react-icons/md";
-import { PiStrategyBold } from "react-icons/pi";
+// Import react-bootstrap components
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+
+const navItems = [
+  { to: "", icon: <FaRegFileAlt fontSize={24} />, description: "Basic", exact: true },
+  { to: "banner", icon: <IoIosImage fontSize={28} />, description: "Banner" },
+  { to: "overview", icon: <IoMdInformationCircleOutline fontSize={28} />, description: "Overview" },
+  { to: "elevation", icon: <BsBuildingUp fontSize={24} />, description: "Elevation" },
+  { to: "walkthrough", icon: <MdVideoSettings fontSize={24} />, description: "Walkthrough" },
+  { to: "threesixtyview", icon: <TbView360Number fontSize={24} />, description: "360°" },
+  { to: "livingroom", icon: <MdOutlineLiving fontSize={24} />, description: "Living Room" },
+  { to: "party", icon: <LuPartyPopper fontSize={24} />, description: "Party" },
+  { to: "masterbedroom", icon: <MdBedroomParent fontSize={24} />, description: "MasterBedroom" },
+  { to: "consultant", icon: <FaUserCog fontSize={24} />, description: "Consultant" },
+  { to: "landscape", icon: <BiLandscape fontSize={24} />, description: "Land Scape" },
+  { to: "sm-elevation", icon: <HiOutlineBuildingStorefront fontSize={24} />, description: "SmallElevation" },
+  { to: "apartment", icon: <PiBuildingApartment fontSize={24} />, description: "Apartment" },
+  { to: "construction", icon: <MdOutlineConstruction fontSize={24} />, description: "Construction" },
+  { to: "amenities", icon: <MdOutlineConstruction fontSize={24} />, description: "Amenities" },
+  { to: "typologies", icon: <MdOutlineFeaturedPlayList fontSize={24} />, description: "Typologies" },
+  { to: "floor-plans", icon: <PiStrategyBold fontSize={24} />, description: "Floor Plan" },
+  { to: "location-map", icon: <MdOutlineConstruction fontSize={24} />, description: "Location Map" },
+  { to: "mvn-mall", icon: <MdShareLocation fontSize={24} />, description: "MVN Mall" },
+  { to: "connection-mvn-mall", icon: <MdStoreMallDirectory fontSize={24} />, description: "Connection MVN Mall" },
+];
 
 const MicroSidebar = () => {
-  const getProject_id=useParams();
-  console.log(getProject_id,"asd")
-  // const location=useLocation();
-  // const urlLastSegment=location.split("/").pop();
-  // console.log(urlLastSegment)
-  // console.log()
+  const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
+  const toggleSidebar = () => setSidebarIsOpen(!sidebarIsOpen);
+
+  const { project_id } = useParams();
+
+  // Function to create tooltip
+  const renderTooltip = (content) => (
+    <Tooltip id={`tooltip-${content}`}>
+      {content}
+    </Tooltip>
+  );
+
   return (
     <>
-      <section className="right-side right-sidenav">
-        <div className="sidenav right">
-          <NavLink to={""}>
-            <div className={`nav active`}>
-              <div className="icon">
-                <FaRegFileAlt fontSize={24} />
-              </div>
-              <div className="description">Basic</div>
-            </div>
-          </NavLink>
-          {getProject_id['project_id']
-&&
-          <>
-          <NavLink to={"banner"}>
-            <div className="nav">
-              <div className="icon">
-                <IoIosImage fontSize={28} />
-              </div>
-              <div className="description">Banner</div>
-            </div>
-          </NavLink>
-
-          <NavLink to={"overview"}>
-            <div className="nav">
-              <div className="icon">
-                <IoMdInformationCircleOutline fontSize={28} />
-              </div>
-              <div className="description">Overview</div>
-            </div>
-          </NavLink>
-
-          <NavLink to={"elevation"}>
-            <div className="nav">
-              <div className="icon">
-                <BsBuildingUp fontSize={24} />
-              </div>
-              <div className="description">Elevation</div>
-            </div>
-          </NavLink>
-
-            <NavLink to={"walkthrough"}>
-            <div className="nav">
-              <div className="icon">
-                <MdVideoSettings  fontSize={24} />
-              </div>
-              <div className="description">Walkthrough</div>
-            </div>
-          </NavLink>
-
-            <NavLink to={"threesixtyview"}>
-            <div className="nav">
-              <div className="icon">
-                <TbView360Number   fontSize={24} />
-              </div>
-              <div className="description">360°</div>
-            </div>
-          </NavLink>
-            <NavLink to={"livingroom"}>
-            <div className="nav">
-              <div className="icon">
-                <MdOutlineLiving   fontSize={24} />
-              </div>
-              <div className="description">Living Room</div>
-            </div>
-          </NavLink>
-             <NavLink to={"party"}>
-            <div className="nav">
-              <div className="icon">
-                <LuPartyPopper   fontSize={24} />
-              </div>
-              <div className="description">Party</div>
-            </div>
-          </NavLink>
-          <NavLink to={"masterbedroom"}>
-            <div className="nav">
-              <div className="icon">
-                <MdBedroomParent   fontSize={24} />
-              </div>
-              <div className="description">MasterBedroom</div>
-            </div>
-          </NavLink>
-           <NavLink to={"consultant"}>
-            <div className="nav">
-              <div className="icon">
-                <FaUserCog   fontSize={24} />
-              </div>
-              <div className="description">Consultant</div>
-            </div>
-          </NavLink>
-           <NavLink to={"landscape"}>
-            <div className="nav">
-              <div className="icon">
-                <BiLandscape   fontSize={24} />
-              </div>
-              <div className="description">Land Scape</div>
-            </div>
-          </NavLink>
-            <NavLink to={"sm-elevation"}>
-            <div className="nav">
-              <div className="icon">
-                <HiOutlineBuildingStorefront   fontSize={24} />
-              </div>
-              <div className="description">SmallElevation</div>
-            </div>
-          </NavLink>
-           <NavLink to={"apartment"}>
-            <div className="nav">
-              <div className="icon">
-                <PiBuildingApartment   fontSize={24} />
-              </div>
-              <div className="description"> Apartment</div>
-            </div>
-          </NavLink>
-           <NavLink to={"construction"}>
-            <div className="nav">
-              <div className="icon">
-                <MdOutlineConstruction   fontSize={24} />
-              </div>
-              <div className="description"> Construction</div>
-            </div>
-          </NavLink>
-           <NavLink to={"amenities"}>
-            <div className="nav">
-              <div className="icon">
-                <MdOutlineConstruction   fontSize={24} />
-              </div>
-              <div className="description"> Amenities</div>
-            </div>
-          </NavLink>
-              <NavLink to={"typologies"}>
-            <div className="nav">
-              <div className="icon">
-                <MdOutlineFeaturedPlayList   fontSize={24} />
-              </div>
-              <div className="description">Typologies</div>
-            </div>
-          </NavLink>
-            <NavLink to={"floor-plan"}>
-            <div className="nav">
-              <div className="icon">
-                <PiStrategyBold   fontSize={24} />
-              </div>
-              <div className="description">Floor Plan</div>
-            </div>
-          </NavLink>
-          <NavLink to={"location-map"}>
-            <div className="nav">
-              <div className="icon">
-                <MdOutlineConstruction   fontSize={24} />
-              </div>
-              <div className="description">Location Map</div>
-            </div>
-          </NavLink>
-             <NavLink to={"mvn-mall"}>
-            <div className="nav">
-              <div className="icon">
-                <MdShareLocation   fontSize={24} />
-              </div>
-              <div className="description">MVN Mall</div>
-            </div>
-          </NavLink>
-           <NavLink to={"connection-mvn-mall"}>
-            <div className="nav">
-              <div className="icon">
-                <MdStoreMallDirectory   fontSize={24} />
-              </div>
-              <div className="description">Location Map</div>
-            </div>
-          </NavLink>
-       
+      <section className={`right-side right-sidenav`}>
+        <div className={`sidenav right ${sidebarIsOpen ? 'active' : ''}`}>
+          <OverlayTrigger
+            placement="left"
+            delay={{ show: 250, hide: 100 }}
+            overlay={renderTooltip(sidebarIsOpen ? "Close Sidebar" : "Open Sidebar")}
+          >
+            <button 
+              onClick={toggleSidebar} 
+              className={`toggle ${sidebarIsOpen ? "active" : ""}`}
+            >
+            </button>
+          </OverlayTrigger>
           
-          
-          </>}
+          <div className="nav-container">
+            {navItems.map((item, index) => {
+              if (!project_id && index !== 0) return null;
+              
+              return (
+                <OverlayTrigger
+                  key={item.to}
+                  placement="left"
+                  delay={{ show: 250, hide: 100 }}
+                  overlay={renderTooltip(item.description)}
+                >
+                  {({ ref, ...triggerHandler }) => (
+                    <NavLink
+                      ref={ref}
+                      to={item.to}
+                      end={item.exact}
+                      className={({ isActive }) => `nav ${isActive ? 'active' : ''}`}
+                      {...triggerHandler}
+                    >
+                      <div className="icon">{item.icon}</div>
+                      <div className="description">{item.description}</div>
+                    </NavLink>
+                  )}
+                </OverlayTrigger>
+              );
+            })}
+          </div>
         </div>
       </section>
       <Outlet />
@@ -205,4 +100,4 @@ const MicroSidebar = () => {
   );
 };
 
-export default MicroSidebar;
+export default memo(MicroSidebar);

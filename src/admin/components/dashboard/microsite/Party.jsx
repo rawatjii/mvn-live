@@ -5,7 +5,7 @@ import CustomFormMicrosite from "../utilities/CustomFormMicrosite";
 import generateApi from "../../../api/generateApi";
 import useCrud from "../../../hooks/useCrud";
 import { useLocation, useParams } from "react-router-dom";
-
+import StatusOrder from "../utilities/Status-order";
 const Party = () => {
   const [editData, setEditData] = useState(null);
   const { project_id } = useParams();
@@ -60,6 +60,7 @@ const Party = () => {
   },[])
   return (
     <CustomSection>
+       <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchEditData}/>
       <MicroBox>
         <CustomTitle title="Overview" />
         <CustomFormMicrosite

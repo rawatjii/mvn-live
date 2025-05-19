@@ -125,7 +125,7 @@ const AdminContactUs = ()=>{
                         <Form.Group as={Col} md="4" className="mb_15 form-group">
                             <Form.Label htmlFor="address">Address*</Form.Label>
                             <Form.Control autoComplete="off"  id="address" ref={addressRef} className="goldenBorder" type="text" placeholder="Enter address" />
-                            {/* <textarea className="form-control" required type="text"  name="address"  /> */}
+                        {/* <textarea className="form-control" required type="text"  name="address"  /> */}
                             {errors.address && <div className="errMsg text-danger">{errors.address}</div>}
                         </Form.Group>
 

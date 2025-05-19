@@ -194,7 +194,9 @@ const CustomFormField = ({
                 className="form-control w-100"
                 onChange={onChange}
                 value={value}
+                required
               >
+                <option value="" selected>Select value</option>
                 {options?.map((option, index) => (
                   <option key={index} value={option.value}>
                     {option.label}

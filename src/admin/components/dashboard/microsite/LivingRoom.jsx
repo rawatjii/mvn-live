@@ -5,6 +5,7 @@ import CustomFormMicrosite from "../utilities/CustomFormMicrosite";
 import generateApi from "../../../api/generateApi";
 import useCrud from "../../../hooks/useCrud";
 import { useLocation, useParams } from "react-router-dom";
+import StatusOrder from "../utilities/Status-order";
 
 const LivingRoom = () => {
   const [editData, setEditData] = useState(null);
@@ -20,7 +21,7 @@ const LivingRoom = () => {
   const fields = [
     { name: "heading", label: "Heading", type: "text", col: 12 },
     { name: "image", label: "Upload Image",  type: "file", col: 6 },
-     { name: "alternative_image", label: "Alternate Image",  type: "file", col: 6 },
+    { name: "alternative_image", label: "Alternate Image",  type: "file", col: 6 },
     { name: "json", label: "Upload JSON",  type: "file", col: 12},
     { name: "description", label: "Description", type: "textarea", placeholder: "Enter Description", col: 12 }
   ];
@@ -60,6 +61,7 @@ const LivingRoom = () => {
   },[]) 
   return (
     <CustomSection>
+     <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchEditData}/>
       <MicroBox>
         <CustomTitle title="Overview" />
         <CustomFormMicrosite
