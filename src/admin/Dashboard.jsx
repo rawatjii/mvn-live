@@ -33,6 +33,7 @@ import { SiBloglovin } from "react-icons/si";
 import { PiBuildingOffice } from "react-icons/pi";
 import TotalProjects from "./components/dashboard/TotalProjects";
 import Testimonials from "./components/dashboard/Testimonials";
+import Pages from './components/dashboard/Pages/Index'
 import { Link } from "react-router-dom";
 
 const data = [
@@ -234,12 +235,18 @@ const Dashboard = () => {
               </div>
             </div>
 
+            <div className="bottom-box">
+              <div className="inner-bottom-box">
+                <Pages />
+              </div>
+            </div>
+
 
             <div className="bottom-box">
               <div className="inner-bottom-box">
                 <CustomTitle
                   icon={<RiPagesFill />}
-                  title=" Page Sections"
+                  title=" Page Sections 1"
                 />
                 <div className="inner-other">
                   {PageCommonSection.map((item, index) => (

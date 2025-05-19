@@ -84,6 +84,7 @@ import FloorPlans from "./admin/components/dashboard/microsite/FloorPlan.jsx";
 import LocationMap from "./admin/components/dashboard/microsite/LocationMap.jsx";
 import MvnMall from "./admin/components/dashboard/microsite/mvn-mall.jsx";
 import AdminHomepage from './admin/pages/Homepage.jsx'
+import SinglePage from "./admin/pages/Index.jsx";
 // import Apartment from "./admin/components/dashboard/microsite/Apartment.jsx";
 const router = createBrowserRouter([
   {
@@ -263,14 +264,14 @@ const router = createBrowserRouter([
           { path: "", element: <Dashboard /> },
           { path: "amenities", element: <Amenities /> },
           { path: "about-us", element: <AdminAboutUs /> },
-          { path: "blogs", element: <AdminBlog /> },
+          // { path: "page/blog", element: <AdminBlog /> },
           { path: "career", element: <AdminCareer /> },
           { path: "media-centre", element: <AdminMediaCentre /> },
           { path: "contact-us", element: <AdminContactUs /> },
           { path: "project-list", element: <ProjectList /> },
           { path: "platter", element: <Platter /> },
-          { path: "page/index", element: <AdminHomepage /> },
-          { path: "page/:pageName", element: <Banner /> },
+          // { path: "page/index", element: <AdminHomepage /> },
+          { path: "page/:pageName", element: <SinglePage /> },
           { path: "microsite", element:<MicroSidebar />,
             children:[
             {path:"", element:<BasicMicroSite />},

@@ -24,7 +24,7 @@ export default function Sidebar() {
     { title: "Dashboard", icon: <AiFillHome size={24} />, link: "/admin" },
     { title: "About Us", icon: <FaUser size={20} />, link: "/admin/about-us" },
     { title: "Media Centre", icon: <FaRegNewspaper size={20} />, link: "/admin/media-centre" },
-    { title: "Blogs", icon: <SiBloglovin size={22} />, link: "/admin/blogs" },
+    { title: "Blogs", icon: <SiBloglovin size={22} />, link: "/admin/page/blog" },
     { title: "Career", icon: <PiBuildingOffice size={22} />, link: "/admin/career" },
     { title: "Contact Us", icon: <FaPhoneAlt size={20} />, link: "/contact-us" },
   ];
