@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { CustomSection, MicroBox } from "../components/dashboard/utilities/CutomTags";
+import {
+  CustomSection,
+  MicroBox,
+} from "../components/dashboard/utilities/CutomTags";
 import CustomTitle from "../components/dashboard/utilities/CustomTitle";
 import CustomForm from "../components/dashboard/utilities/CustomForm";
 import { useParams } from "react-router-dom";
@@ -13,37 +16,38 @@ const SinglePage = () => {
   const [formSections, setFormSections] = useState([]);
 
   const handleSectionSubmit = (formData) => {
-        for (let [key, value] of formData.entries()) {
+    for (let [key, value] of formData.entries()) {
       console.log(`${key}:`, value instanceof File ? value.name : value);
     }
-        console.log("✅ Form data processed successfully");
+    console.log("✅ Form data processed successfully");
   };
-  
+
   useEffect(() => {
     if (!data) return;
-    
-    const processedSections = data.map((section) => {
+
+    const processedSections = data.map((section, index) => {
+      const sectionFields = JSON.parse(section.fields_name);
       const sectionPermissions = JSON.parse(section.section_permissions);
-            const enabledPermissions = Object.entries(sectionPermissions)
-        .filter(([_, value]) => value === 'true')
-        .map(([key]) => {
-          const formattedLabel = key.split('_').join(' ');
-          
-          return {
-            name: key,
-            label: formattedLabel,
-            type: key.includes('image') ? 'file' : 'text',
-            col: 4,
-            isRequired: true
-          };
-        });
-      
+      const enabledPermissions = Object.entries(sectionFields).filter(
+        ([key, value]) => {
+          return sectionPermissions[key] == undefined || sectionPermissions[key] == "true";
+        }
+      ).map(([key, value]) => {
+         return {
+              name: value,
+              label: value,
+              type: key.includes("image") ? "file" : "text",
+              col: 4,
+              isRequired: true,
+            };
+      })
+
       return {
         name: section.name,
-        data: enabledPermissions
+        data: enabledPermissions,
       };
     });
-    
+
     setFormSections(processedSections);
   }, [data]);
 
@@ -54,7 +58,7 @@ const SinglePage = () => {
           <CustomTitle title={section.name} />
           <CustomForm
             dynamicFields={section.data}
-            onSubmit={(formData) => handleSectionSubmit(section.name, formData)}
+            onSubmit={(formData) => handleSectionSubmit(section.page_type, section.name, formData)}
           />
         </MicroBox>
       ))}
