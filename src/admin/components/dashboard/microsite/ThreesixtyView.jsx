@@ -21,6 +21,8 @@ const ThreesixtyView = () => {
     { name: "heading", label: "Heading", type: "text", col: 6 },
     { name: "sub_heading", label: "Sub Heading", type: "text", col: 6 },
     { name: "json", label: "Upload JSON", type: "file", col: 12 },
+    // { name: "json", label: "Upload JSON", type: "file", col: 12 },
+
     // { name: "description", label: "Description", type: "textarea", placeholder: "Enter Description", col: 12 }
   ];
 
@@ -64,7 +66,7 @@ const ThreesixtyView = () => {
     <CustomSection>
      <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchEditData}/>
       <MicroBox>
-        <CustomTitle title="Overview" />
+        <CustomTitle title="360 View" />
         <CustomFormMicrosite
           isBanner={false}
           dynamicFields={fields}

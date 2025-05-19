@@ -38,10 +38,12 @@ const LandScape = () => {
   ];
 
   const landscapeFields = [
-    { name: "title", label: "Title", type: "text", col: 6,isRequired:true },
+    { name: "title", label: "Title", type: "text", col: 12,isRequired:true },
     { name: "image", label: "Image", type: "file", col: 6,isRequired:true },
     { name: "alternative_image", label: "Alternate Image", type: "file", col: 6 },
-    { name: "alt", label: "Alt", type: "text", col: 6, placeholder: "Enter Alt text",isRequired:true },
+    { name: "sm_image", label: "Small Image", type: "file", col: 6 },
+    { name: "sm_alternative_image", label: "Small Alternative Image", type: "file", col: 6 },
+    { name: "alt", label: "Alt", type: "text", col: 12, placeholder: "Enter Alt text",isRequired:true },
   ];
 
   const fetchMetadata = async () => {

@@ -21,7 +21,8 @@ const Consultant = () => {
     { name: "description", label: "Description", type: "textarea", placeholder: "Enter Description", col: 12 },
     { name: "image", label: "Upload profile Image", type: "file", col: 6 },
     { name: "alternative_image", label: "Alternative Image", type: "file", col: 6 },
-    { name: "optional_images", label: "Logo Image", type: "file", col: 6 },
+      { name: "alt", label: "Alt", type: "text", col: 12 },
+    { name: "optional_images", label: "Logo Image", type: "file", col: 12 },
   ];
 
   const fetchEditData = async () => {

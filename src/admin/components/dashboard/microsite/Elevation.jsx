@@ -66,9 +66,10 @@ const Elevation = () => {
 
   return (
     <CustomSection>
+             <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchEditData}/>
+
       <MicroBox>
-        <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchEditData}/>
-        <CustomTitle title="Overview" />
+        <CustomTitle title="Elevation" />
         <CustomFormMicrosite
           isBanner={false}
           dynamicFields={mainFields}

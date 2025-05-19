@@ -43,25 +43,23 @@ const CustomFormField = ({
   ...rest
 }) => {
   const [fileName, setFileName] = useState("");
-  const [modalVia, setModalVia] = useState();
+  const [modalVia, setModalVia] = useState(false);
   const [previewUrl, setPreviewUrl] = useState("");
   const [quillContent, setQuillContent] = useState("");
-
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setFileName(file ? file.name : "");
-    if(file){
+    if (file) {
       // Generate a temporary URL for the selected file
       const url = URL.createObjectURL(file);
       setPreviewUrl(url);
-    }else{
+    } else {
       setPreviewUrl("");
     }
     onChange(e, isWebpAllowed);
   };
 
-  // console.log(value,"defaultData defaultData defaultData")
   useEffect(() => {
     if (type === "file") {
       if (value instanceof File) {
@@ -78,23 +76,15 @@ const CustomFormField = ({
     }
 
     // Cleanup preview URL to prevent memory leaks
-
     return () => {
-
       if (previewUrl && previewUrl.startsWith("blob:")) {
-
         URL.revokeObjectURL(previewUrl);
-
       }
-
     };
   }, [resetKey, value, type]);
-  // console.log(type)
-
-  
 
   return (
-    <div className={`FieldContainer mb-3 ${isLeft ? "row" : ""} `}>
+    <div className={`FieldContainer mb-3 ${isLeft ? "row" : ""}`}>
       <div className={isLeft ? "col-3" : undefined}>
         {type !== "hidden" && (
           <label htmlFor={name} className="label">{`${label}${
@@ -136,55 +126,47 @@ const CustomFormField = ({
                   className="d-none"
                   {...rest}
                 />
-                
-                {value && (
-                  <>
-                    
-                    <CustomModal
-                      isOpen={modalVia}
-                      onClose={() => setModalVia(false)}
-                    >
-                      <img
-                        src={BACKEND_IMAGE_URL + value}
-                        alt=""
-                        className="w-100"
-                      />
-                    </CustomModal>
-                  </>
-                )}
               </div>
-              {value && (
-                  <>
-                      <div className="image_preview mt-2 position-relative" style={{width:'100px', border:'1px solid #45464f', borderRadius:'2px', padding:'8px', cursor:'pointer'}} onClick={() => setModalVia(true)}>
-                        <img
-                          src={BACKEND_IMAGE_URL + value}
-                          alt=""
-                          className="w-100"
-                        />
-                        <span className="overlay position-absolute" style={{background:'rgba(0 0 0 / 30%)', height:'100%', width:'100%', left:'0', top:'0'}}></span>
-                        <button
-                          type="button"
-                          className="bg-transparent p-0 position-absolute"
-                          
-                          style={{top:'50%', left:'50%', transform:'translate(-50%, -50%)', zIndex:'9'}}
-                        >
-                          <BsEye />
-                        </button>
-
-                      </div>
-
-                      <CustomModal
-                      isOpen={modalVia}
-                      onClose={() => setModalVia(false)}
-                      >
-                      <img
-                        src={BACKEND_IMAGE_URL + value}
-                        alt=""
-                        className="w-100"
-                      />
-                      </CustomModal>
-                  </>
-                )}
+              {previewUrl && (
+                <div
+                  className="image_preview mt-2 position-relative"
+                  style={{
+                    width: "100px",
+                    border: "1px solid #45464f",
+                    borderRadius: "2px",
+                    padding: "8px",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => setModalVia(true)}
+                >
+                  <img src={previewUrl} alt="Preview" className="w-100" />
+                  <span
+                    className="overlay position-absolute"
+                    style={{
+                      background: "rgba(0, 0, 0, 0.3)",
+                      height: "100%",
+                      width: "100%",
+                      left: "0",
+                      top: "0",
+                    }}
+                  ></span>
+                  <button
+                    type="button"
+                    className="bg-transparent p-0 position-absolute"
+                    style={{
+                      top: "50%",
+                      left: "50%",
+                      transform: "translate(-50%, -50%)",
+                      zIndex: "9",
+                    }}
+                  >
+                    <BsEye />
+                  </button>
+                </div>
+              )}
+              <CustomModal isOpen={modalVia} onClose={() => setModalVia(false)}>
+                <img src={previewUrl} alt="Preview" className="w-100" />
+              </CustomModal>
               <span className="text-danger">{dataError?.[name]}</span>
             </>
           ) : type === "select" ? (
@@ -196,7 +178,9 @@ const CustomFormField = ({
                 value={value}
                 required
               >
-                <option value="" selected>Select value</option>
+                <option value="" selected>
+                  Select value
+                </option>
                 {options?.map((option, index) => (
                   <option key={index} value={option.value}>
                     {option.label}
@@ -253,7 +237,7 @@ const CustomFormField = ({
                 type={type}
                 name={name}
                 value={
-                  type == "date" && value
+                  type === "date" && value
                     ? new Date(value).toISOString().split("T")[0]
                     : value
                 }

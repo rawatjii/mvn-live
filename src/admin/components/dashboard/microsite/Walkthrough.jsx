@@ -63,7 +63,7 @@ const { getEditData } = useCrud(getEditDataApi);
     <CustomSection>
      <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchEditData}/>
       <MicroBox>
-        <CustomTitle title="Overview" />
+        <CustomTitle title="Walk Through" />
         <CustomFormMicrosite
           isBanner={false}
           dynamicFields={fields}

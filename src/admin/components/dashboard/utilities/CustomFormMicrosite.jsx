@@ -117,9 +117,8 @@ const CustomFormMicrosite = ({
           }
         });
       if (onSubmit) await onSubmit(payload);
-      if(!params['project_id']){
         setFormData({}); 
-      }
+      // }
       setResetKey(Date.now());
     } catch (error) {
       console.error('Form submission error:', error);
