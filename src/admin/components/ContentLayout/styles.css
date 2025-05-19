@@ -108,12 +108,7 @@ select.form-control {
 .sidenav.active {width: 25%;}
   .sidenav.active .toggle::before {transform: translateY(0px) rotate(-405deg);}
   .sidenav.active .toggle::after {transform: translateY(0px) rotate(225deg);}
-.sidenav .nav.active {
-  /* left: -10px; */
-}
-/* .sidenav .nav:hover {
-  left: -115px;
-} */
+
 .sidenav .nav:hover img {
   filter: invert(0);
 }

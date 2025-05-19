@@ -63,7 +63,7 @@ const LivingRoom = () => {
     <CustomSection>
      <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchEditData}/>
       <MicroBox>
-        <CustomTitle title="Overview" />
+        <CustomTitle title="Living Room" />
         <CustomFormMicrosite
           isBanner={false}
           dynamicFields={fields}

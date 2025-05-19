@@ -33,8 +33,8 @@ const MvnMall = () => {
   const itemsPerPage = 5;
 
   const metaFields = [
-    { name: "heading", label: "Heading", type: "text", col: 6 },
-    { name: "sub_heading", label: "Sub Heading", type: "text", col: 6 },
+    { name: "heading", label: "Heading", type: "text", col: 12 },
+    // { name: "sub_heading", label: "Sub Heading", type: "text", col: 6 },
     { name: "description", label: "Description", type: "textarea", placeholder: "Enter Description", col: 12 }
   ];
 

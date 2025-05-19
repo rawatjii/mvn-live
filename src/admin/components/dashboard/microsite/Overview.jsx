@@ -22,12 +22,12 @@ const OverviewMicroSite = () => {
     sectionName: "Info Details",
     visible: true,
     fields: [
-      { name: "image", label: "Image", type: "file", col: 4 },
-      { name: "alternative_image", label: "Alternative Image", type: "file", col: 4 },
-      { name: "alt", label: "Alt text", type: "text", col: 4, isRequired: true },
+      // { name: "image", label: "Image", type: "file", col: 4 },
+      // { name: "alternative_image", label: "Alternative Image", type: "file", col: 4 },
+      // { name: "alt", label: "Alt text", type: "text", col: 4},
       { name: "heading", label: "Heading", type: "text", placeholder: "Enter Heading", col: 6, isRequired: true },
       { name: "sub_heading", label: "Sub Heading", type: "text", placeholder: "Enter Sub Heading", col: 6 },
-      { name: "additional_heading", label: "Additional Heading", type: "text", placeholder: "Enter Additional Heading", col: 6 },
+      { name: "short_description", label: "Additional Heading", type: "text", placeholder: "Enter Additional Heading", col: 6 },
       { name: "description", label: "Description", type: "textarea", placeholder: "Enter Description", col: 6 }
     ]
   }];
@@ -46,7 +46,7 @@ const OverviewMicroSite = () => {
 
   const handleCreate = async (formData) => {
     try {
-      formData.append("is_type", "image");
+      // formData.append("is_type", "image");
       await createItem(formData);
       await fetchEditData();
     } catch (error) {

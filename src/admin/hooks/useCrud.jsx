@@ -58,7 +58,7 @@ const useCrud = (apiService) => {
     editItem: async (id, item) => {
       try {
         await apiService.update(id, item);
-        toast.success(" Value updated successfully!");
+        toast.success("Value updated successfully!");
         await fetchAll(); 
       } catch (err) {
         console.log(err)

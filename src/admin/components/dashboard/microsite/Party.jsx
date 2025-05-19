@@ -62,7 +62,7 @@ const Party = () => {
     <CustomSection>
        <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchEditData}/>
       <MicroBox>
-        <CustomTitle title="Overview" />
+        <CustomTitle title="Party" />
         <CustomFormMicrosite
           isBanner={false}
           dynamicFields={fields}
