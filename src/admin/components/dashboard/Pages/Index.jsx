@@ -25,7 +25,7 @@ export default function pages() {
               <FaRegNewspaper className="mr-3 box-icon" />
               </span>
               <div className="media-body">
-                <h5>{item.name}</h5>
+                <h5>{item.page_name}</h5>
                   <Link to={`${import.meta.env.VITE_APP_ADMIN_ROOT}page/${item.slug}`}>
                     <span>View Detail</span>
                   </Link>

@@ -30,9 +30,9 @@ const useCrud = (apiService) => {
     loading,
     error,
     fetchAll,
-    createItem: async (item,pagevia) => {
+    createItem: async (item,pagevia, pageName, sectionName) => {
       try {
-        await apiService.create(item);
+        await apiService.create(item, pageName, sectionName);
         toast.success("Data added successfully!");
         if(pagevia=="basic"){
           navigate("/admin/project-list")

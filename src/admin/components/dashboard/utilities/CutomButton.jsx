@@ -8,8 +8,8 @@ const CustomButton = ({ text = "Button", className = "", onClick, isLoading = fa
       >
         {isLoading ? (
           <div className="d-flex  align-items-center">Loading...
-          <div class="spinner-border m-2" role="status">
-          <span class="visually-hidden">Loading...</span>
+          <div className="spinner-border m-2" role="status">
+          <span className="visually-hidden">Loading...</span>
         </div>
         </div>
         ) : (

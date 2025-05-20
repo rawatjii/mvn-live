@@ -51,18 +51,18 @@ const FeatureSection = ({ data }) => {
         <div className="row">
             <div className="col-lg-6">
                 
-          <div class="box-title m-v">
-        <h1 class="main-title">{title}</h1>
-        <p class="main-pera">{desc}</p>
+          <div className="box-title m-v">
+        <h1 className="main-title">{title}</h1>
+        <p className="main-pera">{desc}</p>
       </div>
       <img
         className="d-v elevation reveal"
         src={src}
         alt="Elevation feature"
       />
-        <div class="m-v overlap" >
-    <img class="elevation bg-elevation" src={bgImg} alt="elevation background image"/>
-     <img class="elevation fr-elevation" src={src} alt='elevation front image'/>      
+        <div className="m-v overlap" >
+    <img className="elevation bg-elevation" src={bgImg} alt="elevation background image"/>
+     <img className="elevation fr-elevation" src={src} alt='elevation front image'/>      
   </div>
             </div>
             <div className="col-lg-6">

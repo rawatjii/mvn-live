@@ -51,7 +51,7 @@ const CustomFile = ({ id, rest, name, onCustomChange }) => {
         style={{ display: "flex", flexWrap: "wrap", marginTop: "10px" }}
       >
         {imagePreviews.map((imgSrc, index) => (
-          <div class="img-box" style={{ position: "relative", borderRadius:'5px', border: '1px solid rgba(255, 255, 255, 0.2)', overflow:'hidden', padding:'2px' }} key={index}>
+          <div className="img-box" style={{ position: "relative", borderRadius:'5px', border: '1px solid rgba(255, 255, 255, 0.2)', overflow:'hidden', padding:'2px' }} key={index}>
             <img
               key={index}
               src={imgSrc.url}

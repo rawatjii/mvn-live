@@ -19,7 +19,7 @@ const metaFields = [
   { name: "alt", label: "Alt Tag", type: "text", col: 4, isRequired: true },
   { name: "image", label: "Image", type: "file", col: 6, isRequired: true },
   {
-    name: "mobile_image",
+    name: "mb_image",
     label: "Mobile Image",
     type: "file",
     col: 6,
@@ -34,7 +34,7 @@ const metaFields = [
     isRequired: true,
   },
   {
-    name: "mobile_alternative_image",
+    name: "mb_alternative_image",
     label: "Mobile Alternative Image",
     type: "file",
     col: 6,

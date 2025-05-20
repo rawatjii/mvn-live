@@ -264,7 +264,7 @@ const router = createBrowserRouter([
           { path: "", element: <Dashboard /> },
           { path: "amenities", element: <Amenities /> },
           { path: "about-us", element: <AdminAboutUs /> },
-          // { path: "page/blog", element: <AdminBlog /> },
+          { path: "blogs", element: <AdminBlog /> },
           { path: "career", element: <AdminCareer /> },
           { path: "media-centre", element: <AdminMediaCentre /> },
           { path: "contact-us", element: <AdminContactUs /> },

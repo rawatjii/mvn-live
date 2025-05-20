@@ -17,7 +17,7 @@ import subscribeBtn from '../assets/images/icons/subscribe_btn.webp';
 
 const Footer = () => {
   const channelUrl = CONFIG.YOUTUBE_URL;
-  const baseUrl = import.meta.env.VITE_APP_URL;
+  const baseUrl = CONFIG.FRONTEND_URL;
 
   return (
     <footer>

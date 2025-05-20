@@ -16,6 +16,10 @@ export const API_BASE_URL = import.meta.env.VITE_APP_API_BASE_URL
 export const FRONTEND_API_BASE_URL = import.meta.env.VITE_APP_FRONTEND_API_BASE_URL
 export const BACKEND_IMAGE_URL = import.meta.env.VITE_APP_BACKEND_IMAGE_URL
 
+export const FRONTEND_URL = import.meta.env.VITE_APP_FRONTEND_URL
+
+export const DEFAULT_IMAGE = IMAGE_URL+'no_image.jpg'
+
 
 
 

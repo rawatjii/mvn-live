@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { blogData } from "../../../data/blogsdata";
 import { FRONTEND_API_BASE_URL, BACKEND_IMAGE_URL } from "../../../config/config";
@@ -7,25 +7,27 @@ export default function BlogLists() {
   const [blogData, setBlogData] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const data = await fetch(`${FRONTEND_API_BASE_URL}blog`);
-        const response = await data.json();
+  const fetchData = useCallback(async () => {
+    setLoading(true);
+    try {
+      const data = await fetch(`${FRONTEND_API_BASE_URL}blog`);
+      const response = await data.json();
 
-        if (!response.status) {
-          throw new Error("Error while fetching data");
-        }
-
-        setBlogData(response.data);
-      } catch (err) {
-        console.log(err.message);
-      } finally {
-        setLoading(false);
+      if (!response.status) {
+        throw new Error("Error while fetching data");
       }
-    };
 
+      setBlogData(response.data);
+
+    } catch (err) {
+      console.log(err.message);
+      setBlogData([]);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
     fetchData();
   }, []);
 
@@ -48,14 +50,22 @@ export default function BlogLists() {
                         className="img-fluid"
                         src={BACKEND_IMAGE_URL+el.image}
                         alt="mvn blog image"
+                        onError={(e)=>{
+                          e.target.onerror = null;
+                          e.target.src = "/assets/images/no_image.jpg";
+                        }}
                       />
                     </div>
                     <div className="blog-platter-detail">
-                      <h4>{el.title}</h4>
+                      <h4>{el.heading}</h4>
                       <div className="blog-platter-detail-btn">
-                        <p>{el.date}</p>
+                        <p>{new Date(el.created_at).toLocaleDateString('default', {
+                          day:'numeric',
+                          month:'long',
+                          year: 'numeric'
+                        })}</p>
                         <Link
-                          to={`/blogs/details/${el.slug}`}
+                          to={`/blogs/details/${el.slug}?key=${el.id}`}
                           className="btn btn_style2"
                           onClick={() => {
                             localStorage.setItem("selectedBlog", i);

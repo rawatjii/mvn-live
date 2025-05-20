@@ -12,14 +12,17 @@ import useCrud from "../hooks/useCrud";
 const SinglePage = () => {
   const { pageName } = useParams();
   const singlePageApi = generateApi(`page-section/${pageName}`);
-  const { data } = useCrud(singlePageApi);
+  const {  data, loading, error, createItem, updateItem, editItem, deleteItem } = useCrud(singlePageApi);
   const [formSections, setFormSections] = useState([]);
 
-  const handleSectionSubmit = (formData) => {
-    for (let [key, value] of formData.entries()) {
-      console.log(`${key}:`, value instanceof File ? value.name : value);
-    }
-    console.log("✅ Form data processed successfully");
+  const handleSectionSubmit = (formData, name) => {
+    // for (let [key, value] of formData.entries()) {
+    //   console.log(`${key}:`, value instanceof File ? value.name : value);
+    // }
+    // console.log("✅ Form data processed successfully");
+    formData.append("page", pageName);
+    formData.append("page_type", name);
+    return createItem(formData,);
   };
 
   useEffect(() => {
@@ -51,6 +54,8 @@ const SinglePage = () => {
     setFormSections(processedSections);
   }, [data]);
 
+  console.log('formSections',formSections);
+
   return (
     <CustomSection customClass="d-block">
       {formSections.map((section, index) => (
@@ -58,7 +63,7 @@ const SinglePage = () => {
           <CustomTitle title={section.name} />
           <CustomForm
             dynamicFields={section.data}
-            onSubmit={(formData) => handleSectionSubmit(section.page_type, section.name, formData)}
+            onSubmit={(formData) => handleSectionSubmit(formData, section.name)}
           />
         </MicroBox>
       ))}
