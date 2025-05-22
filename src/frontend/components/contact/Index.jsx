@@ -3,14 +3,18 @@ import SecTitle from "../../../common/SecTitle/Index";
 
 import supportIcon from '../../assets/images/icons/contact/support.png';
 import * as CONFIG from '../../../config/config'
+import useFetchData from "../../utils/apiHelper";
 
-const ContactPage = ()=>{
+const ContactPage = ({page})=>{
+
+    const { data:contactData, loading } = useFetchData(`page/page-section/${page}`);
+
     return(
         <section className="section contact-us-section " aria-label="Contact Us Section">
             <Container>
                 <SecTitle className="text-center color style1 mb_30 page-header-main-heading">
                     <img src={supportIcon} alt="mvn support icon" className="img-fluid supportIcon" />
-                    <h4 className="title title_style1 text-center">Call or Visit us at One of our locations</h4>
+                    <h4 className="title title_style1 text-center">{contactData?.[1]?.heading}</h4>
                 </SecTitle>
 
                 <p className="detail_title">Write <span>T</span>o us</p>

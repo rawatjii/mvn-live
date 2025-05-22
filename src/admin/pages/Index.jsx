@@ -11,18 +11,23 @@ import useCrud from "../hooks/useCrud";
 
 const SinglePage = () => {
   const { pageName } = useParams();
+  const sectionApi = generateApi(`page-section-list`);
   const singlePageApi = generateApi(`page-section/${pageName}`);
+  const editData = generateApi(`page-section-list/contact-banner`);
+
   const {  data, loading, error, createItem, updateItem, editItem, deleteItem } = useCrud(singlePageApi);
   const [formSections, setFormSections] = useState([]);
-
+  const {  data: sectionData, loading: sectionLoading, error: sectionError, createItem: sectionCreateItem, updateItem: sectionUpdateItem, editItem: sectionEditItem, deleteItem: sectionDeleteItem } = useCrud(sectionApi);
+  const {  data: editSectionData} = useCrud(editData);
+  
   const handleSectionSubmit = (formData, name) => {
     // for (let [key, value] of formData.entries()) {
     //   console.log(`${key}:`, value instanceof File ? value.name : value);
     // }
     // console.log("✅ Form data processed successfully");
     formData.append("page", pageName);
-    formData.append("page_type", name);
-    return createItem(formData,);
+    formData.append("page_section", name);
+    return sectionCreateItem(formData);
   };
 
   useEffect(() => {
@@ -37,7 +42,7 @@ const SinglePage = () => {
         }
       ).map(([key, value]) => {
          return {
-              name: value,
+              name: key,
               label: value,
               type: key.includes("image") ? "file" : "text",
               col: 4,
@@ -62,6 +67,7 @@ const SinglePage = () => {
         <MicroBox key={`section-${index}`}>
           <CustomTitle title={section.name} />
           <CustomForm
+            defaultData={editSectionData}
             dynamicFields={section.data}
             onSubmit={(formData) => handleSectionSubmit(formData, section.name)}
           />

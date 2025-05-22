@@ -46,7 +46,7 @@ function Blog() {
   return (
     <Layout>
       <div className="blog_page inner_section" ref={containerRef}>
-        <MicroBanner bg={BlogImg} data={breadcrumbs} />
+        <MicroBanner page_section="blog-banner" page="blog" bg={BlogImg} data={breadcrumbs} />
         <div className="micro_content">
           <div className="micro_data">
             <div className="content_col position-relative page-header-main-heading">

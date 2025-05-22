@@ -66,11 +66,11 @@ const ContactUs = () => {
   return (
     <>
       <Layout>
-        <MicroBanner bg={bannerBg} data={breadcrumbs} />
+        <MicroBanner page_section="contact-banner" page="contact-us" bg={bannerBg} data={breadcrumbs} />
         <div className="micro_content">
           <div className="micro_data">
               <Suspense fallback="loading">
-                <ContactPage />
+                <ContactPage page="contact-us" />
                   <div className="flex-footer-form">
                   <Enquire />
                   <EnquireForm projectName={'MVN Infrastructure'}/>

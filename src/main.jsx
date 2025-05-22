@@ -85,6 +85,7 @@ import LocationMap from "./admin/components/dashboard/microsite/LocationMap.jsx"
 import MvnMall from "./admin/components/dashboard/microsite/mvn-mall.jsx";
 import AdminHomepage from './admin/pages/Homepage.jsx'
 import SinglePage from "./admin/pages/Index.jsx";
+import AdminWorkCulture from "./admin/WorkCulture.jsx";
 // import Apartment from "./admin/components/dashboard/microsite/Apartment.jsx";
 const router = createBrowserRouter([
   {
@@ -265,6 +266,7 @@ const router = createBrowserRouter([
           { path: "amenities", element: <Amenities /> },
           { path: "about-us", element: <AdminAboutUs /> },
           { path: "blogs", element: <AdminBlog /> },
+          { path: "work-culture", element: <AdminWorkCulture /> },
           { path: "career", element: <AdminCareer /> },
           { path: "media-centre", element: <AdminMediaCentre /> },
           { path: "contact-us", element: <AdminContactUs /> },

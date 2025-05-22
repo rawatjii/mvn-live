@@ -1,16 +1,26 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Container, Breadcrumb } from "react-bootstrap";
 import LazyLoad from "react-lazyload";
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
 import './microBanner.css';
+import useFetchData from "../../utils/apiHelper";
+import { BACKEND_IMAGE_URL } from "../../../config/config";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const MicroBanner = ({bg, data})=>{
+const MicroBanner = ({page_section, page, bg, data})=>{
   const titleRef = useRef();
   const linksRef = useRef();
+  const [microBannerData, setMicroBannerData] = useState(null)
+
+  const { data:bannerData, loading } = useFetchData(`page/page-section/${page}`);
+  
+  useEffect(()=>{
+    const banner = bannerData?.filter((el)=> el.page_section == page_section)
+    setMicroBannerData(banner?.[0])
+  }, [bannerData])
 
   useEffect(()=>{
     // breadcrumb animation
@@ -35,9 +45,13 @@ const MicroBanner = ({bg, data})=>{
     <>
       <section className="section micro_banner" aria-label="Banner Section">
         <Container>
-        <img src={bg} alt="mvn micro banner background image" className="img-fluid microbanner_bg" />
-          <h2 ref={titleRef} className="microTitle" >{data.title}</h2>
-          <p className="microContent">{data.content}</p>
+          <picture className="microbanner_bg">
+            <source srcset={window.innerWidth <= 768 ? BACKEND_IMAGE_URL+microBannerData?.mb_image : BACKEND_IMAGE_URL+microBannerData?.image} type="image/webp" />
+            <img src={window.innerWidth <= 768 ? BACKEND_IMAGE_URL+microBannerData?.mb_alternative_image : BACKEND_IMAGE_URL+microBannerData?.alternative_image} alt="Description of the image" />
+          </picture>
+          {/* <img src={window.innerWidth <= 768 ? BACKEND_IMAGE_URL+microBannerData?.mb_image : BACKEND_IMAGE_URL+microBannerData?.image} alt="mvn micro banner background image" className="img-fluid microbanner_bg" /> */}
+          <h2 ref={titleRef} className="microTitle" >{microBannerData?.heading}</h2>
+          <p className="microContent">{microBannerData?.sub_heading && microBannerData?.sub_heading}</p>
         </Container>
       </section>
       <section className="breadcrumb_section" aria-label="Breadcrumb Section">

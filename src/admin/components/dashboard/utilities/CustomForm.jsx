@@ -41,7 +41,7 @@ const CustomForm = ({
   });
   const [formData, setFormData] = useState(data ? data : defaultData || {});
   const [resetKey, setResetKey] = useState(Date.now());
-
+console.log(defaultData)
 
   useEffect(()=>{
     setFormData(data ? data : defaultData);

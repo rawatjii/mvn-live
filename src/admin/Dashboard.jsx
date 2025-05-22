@@ -111,9 +111,9 @@ const otherSection = [
 ];
 const PageCommonSection = [
   {
-    name: "Home Page",
+    name: "Work Culture",
     icon: <FaUser className="mr-3 box-icon" />,
-    link: "/admin/page/index",
+    link: "/admin/work-culture",
   },
   {
     name: "About US",
@@ -246,7 +246,7 @@ const Dashboard = () => {
               <div className="inner-bottom-box">
                 <CustomTitle
                   icon={<RiPagesFill />}
-                  title=" Page Sections 1"
+                  title="Other Pages"
                 />
                 <div className="inner-other">
                   {PageCommonSection.map((item, index) => (
