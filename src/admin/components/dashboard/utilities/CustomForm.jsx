@@ -41,7 +41,6 @@ const CustomForm = ({
   });
   const [formData, setFormData] = useState(data ? data : defaultData || {});
   const [resetKey, setResetKey] = useState(Date.now());
-console.log(defaultData)
 
   useEffect(()=>{
     setFormData(data ? data : defaultData);
@@ -75,7 +74,6 @@ console.log(defaultData)
   };
 
   const handleQuillChange = (name, value, delta, source, editor) => {
-    console.log('name', name, 'value', value);
     setFormData((prev) => ({ ...prev, [name]: value }));
     
   };

@@ -274,7 +274,7 @@ function MediaCenter() {
   return (
     <Layout>
       <div className="media_center">
-        <MicroBanner bg={MediaImg} data={breadcrumbs} />
+        <MicroBanner page_section="media-banner" page="media-center" bg={MediaImg} data={breadcrumbs} />
         <section className="section media-news-section pb-0" aria-label="Media Center Section">
           <div className="micro_content">
             <div className="micro_data">

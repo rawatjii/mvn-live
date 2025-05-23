@@ -12,23 +12,27 @@ import useCrud from "../hooks/useCrud";
 const SinglePage = () => {
   const { pageName } = useParams();
   const sectionApi = generateApi(`page-section-list`);
+  const editSectionApi = generateApi(`distnict-page-section-list/${pageName}`);
   const singlePageApi = generateApi(`page-section/${pageName}`);
-  const editData = generateApi(`page-section-list/contact-banner`);
+  // const editData = generateApi(`page-section-list/contact-banner`);
 
   const {  data, loading, error, createItem, updateItem, editItem, deleteItem } = useCrud(singlePageApi);
   const [formSections, setFormSections] = useState([]);
   const {  data: sectionData, loading: sectionLoading, error: sectionError, createItem: sectionCreateItem, updateItem: sectionUpdateItem, editItem: sectionEditItem, deleteItem: sectionDeleteItem } = useCrud(sectionApi);
-  const {  data: editSectionData} = useCrud(editData);
+  // const {  data: editSectionData} = useCrud(editData);
+  const {  data: editSectionData} = useCrud(editSectionApi);
   
   const handleSectionSubmit = (formData, name) => {
-    // for (let [key, value] of formData.entries()) {
-    //   console.log(`${key}:`, value instanceof File ? value.name : value);
-    // }
-    // console.log("✅ Form data processed successfully");
     formData.append("page", pageName);
     formData.append("page_section", name);
-    return sectionCreateItem(formData);
+    debugger
+    // return sectionCreateItem(formData);
   };
+
+  const updateHandler = (formData, name)=>{
+    console.log('formData',JSON.parse(formData));
+    
+  }
 
   useEffect(() => {
     if (!data) return;
@@ -59,20 +63,28 @@ const SinglePage = () => {
     setFormSections(processedSections);
   }, [data]);
 
-  console.log('formSections',formSections);
-
   return (
     <CustomSection customClass="d-block">
-      {formSections.map((section, index) => (
-        <MicroBox key={`section-${index}`}>
+      {formSections.map((section, index) => {
+
+        // Find matching editSection data
+        const matchedEditSection = editSectionData.find((editSection)=>{
+          return editSection.page_section == section.name;
+        })
+
+        const defaultValues = matchedEditSection ? matchedEditSection : undefined;
+
+        return <MicroBox key={`section-${index}`}>
           <CustomTitle title={section.name} />
-          <CustomForm
-            defaultData={editSectionData}
-            dynamicFields={section.data}
-            onSubmit={(formData) => handleSectionSubmit(formData, section.name)}
-          />
-        </MicroBox>
-      ))}
+            <CustomForm
+              defaultData={defaultValues}
+              dynamicFields={section.data}
+              onSubmit={defaultValues ? (formData) => updateHandler(formData, section.name) : (formData) => handleSectionSubmit(formData, section.name)}
+            />
+          </MicroBox>
+
+        
+      })}
     </CustomSection>
   );
 };
