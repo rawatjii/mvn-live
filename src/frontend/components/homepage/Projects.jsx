@@ -4,47 +4,33 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import AnImage from "../../../common/animations/Image/Index";
 
-import mvnMallImg from "../../assets/images/projects/mvn-mall.webp";
-import mvnAerooneImg from "../../assets/images/projects/mvn-aeroone.webp";
-import mvnAerooneBangaloreImg from "../../assets/images/projects/mvn-bangalore-project.webp";
-import mvnMallImgDesktop from "../../assets/images/projects/project-img-3.webp";
-import mvnAerooneImgDesktop from "../../assets/images/projects/mvn-aeroone.webp";
-import mvnAerooneBangaloreImgDesktop from "../../assets/images/projects/mvn-bangalore-project.webp";
-import arrowIcon from "../../assets/images/icons/arrow.png";
-import planeIcon from "../../assets/images/icons/heading-icon-img.webp";
-import mvnWatermarkLogo from '../../assets/images/watermark/mvn_mall.webp';
-
-import mvnAeroworldBg from '../../assets/images/homepage/projects/mvn-aeroworld-bg.webp';
-import mvnAeroworldBgSm from '../../assets/images/homepage/projects/mvn-aeroworld-bg-sm.webp';
-
-import mvnBangaloreBg from '../../assets/images/homepage/projects/bangalore/bangalore-project-map.webp';
-import mvnBangaloreBgSm from '../../assets/images/homepage/projects/bangalore/bangalore-project-map-sm.webp';
+import { API_URL } from "../../../config/config";
 
 const projectsData = [
   {
-    mobile: mvnAerooneImg,
-    desktop: mvnAerooneImgDesktop,
+    mobile: `${API_URL}images/projects/mvn-aeroone.webp`,
+    desktop: `${API_URL}images/projects/mvn-aeroone.webp`,
     name: "MVN AERO ONE RESIDENCES",
     location: "Gurugram",
     otherPage: false,
     link: "aeroone-gurgaon"
   },
   {
-    mobile: mvnMallImg,
-    desktop: mvnMallImgDesktop,
+    mobile: `${API_URL}images/projects/mvn-mall.webp`,
+    desktop: `${API_URL}images/projects/project-img-3.webp`,
     name: "Mvn Mall",
     location: "Gurugram",
     otherPage: true,
-    link: 'mvn-mall-1',
+    link: 'mvn-mall',
     watermark:true,
   },
   {
-    mobile: mvnAerooneBangaloreImg,
-    desktop: mvnAerooneBangaloreImgDesktop,
+    mobile: `${API_URL}images/projects/mvn-bangalore-project.webp`,
+    desktop: `${API_URL}images/projects/mvn-bangalore-project.webp`,
     name: "Mvn AERO ONE",
     location: "Bangalore",
     otherPage: true,
-    link: 'aeroone-bangalore1'
+    link: 'aeroone-bangalore'
   },
 ];
 
@@ -84,11 +70,9 @@ const Projects = () => {
       <section className="section projects_section_new pb-0" aria-label="Project Section">
         <Container>
           <Row className="mx_-8">
-
-
             <div className="col-md-12 col-12 heading_div">
               <img
-                src={planeIcon}
+                src={`${API_URL}images/icons/heading-icon-img.webp`}
                 alt="mvn plane icon"
                 className="img-fluid title_plane1"
               />
@@ -100,12 +84,12 @@ const Projects = () => {
               <div className="box_with_overlay col-md-4">
                 <div className="box_with_overlay_in">
                   <img
-                    src={mvnAeroworldBg}
+                    src={`${API_URL}images/homepage/projects/mvn-aeroworld-bg.webp`}
                     alt="project map image"
                     className="img-fluid img_bg d-lg-block d-none"
                   />
                   <img
-                    src={mvnAeroworldBgSm}
+                    src={`${API_URL}images/homepage/projects/mvn-aeroworld-bg-sm.webp`}
                     alt="project map image"
                     className="img-fluid img_bg d-lg-none d-block"
                   />
@@ -139,7 +123,7 @@ const Projects = () => {
                         </Link>
                         {item.watermark && (
                           <div className="watermark">
-                            <img src={mvnWatermarkLogo} alt="mvn mall logo" className="img-fluid" />
+                            <img src={`${API_URL}images/watermark/mvn_mall.webp`} alt="mvn mall logo" className="img-fluid" />
                           </div>
                         )}
                       </AnImage>
@@ -148,7 +132,7 @@ const Projects = () => {
                         <Link className="pro_link text-capitalize" to={item.link}>
                           view detail
                           <img
-                            src={arrowIcon}
+                            src={`${API_URL}images/icons/arrow.png`}
                             alt="mvn arrow icon"
                             className="img-fluid icon"
                           />
@@ -164,12 +148,12 @@ const Projects = () => {
               <div className="box_with_overlay col-md-4">
                 <div className="box_with_overlay_in">
                   <img
-                    src={mvnBangaloreBg}
+                    src={`${API_URL}images/homepage/projects/bangalore/bangalore-project-map.webp`}
                     alt="Bangalore project map image"
                     className="img-fluid img_bg d-lg-block d-none"
                   />
                   <img
-                    src={mvnBangaloreBgSm}
+                    src={`${API_URL}images/homepage/projects/bangalore/bangalore-project-map-sm.webp`}
                     alt="Bangalore project map image"
                     className="img-fluid img_bg d-lg-none d-block"
                   />
@@ -204,7 +188,7 @@ const Projects = () => {
                         <Link className="pro_link text-capitalize" to={item.link}>
                           view detail
                           <img
-                            src={arrowIcon}
+                            src={`${API_URL}images/icons/arrow.png`}
                             alt="mvn arrow icon"
                             className="img-fluid icon"
                           />

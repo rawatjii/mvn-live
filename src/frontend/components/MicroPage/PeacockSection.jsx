@@ -6,7 +6,6 @@ import LottieAnimationSection from "./LottieAnimationSection";
 
 import Watermark from "../../../common/watermark/Index";
 import ScrollDown from "../../../common/scrollDown/Index";
-import peacokImg from "../../assets/loader/peacock.webp"
 
 const PeacockSection = React.memo(({ data}) => {
   const { isMobile } = useMatches();

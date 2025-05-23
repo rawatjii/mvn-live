@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, Suspense } from "react";
 import MicroOverview from "../components/MicroPage/Overview";
 import MicroAmenities from "../components/MicroPage/Amenities";
 import MicroLocationMap from "../components/MicroPage/LocationMap";
@@ -14,7 +14,8 @@ import MicroHeader from "../components/MicroHeader";
 import ImagesGallery from "../components/MicroPage/ImagesGallery";
 import SliderTypology from "../components/MicroPage/bangalore/SliderTypology";
 import AthensBanner from "../components/MicroPage/athens/AthensBanner";
-import FeatureSection from "../components/MicroPage/athens/FeatureSection";
+const FeatureSection = React.lazy(() => import("../components/MicroPage/athens/FeatureSection"));
+const ParallaxSection = React.lazy(() => import("../../common/ParallaxSection"));
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
  
@@ -194,7 +195,7 @@ const MicroPageGurgaonPhase2 = ({ data, loadingCount, setLoadingCount }) => {
               (sectionRefs.current.downloadBrochure = el)
             }
           >
-            <DownloadBrochure name="DOWNLOAD MVN ATHENS ID BROCHURE" />
+            <DownloadBrochure name="DOWNLOAD MVN ATHENS ID BROCHURE" projectName="MVN Athens Gurgaon PH-2" />
           </div>
           <div
             ref={(el) =>
@@ -208,15 +209,18 @@ const MicroPageGurgaonPhase2 = ({ data, loadingCount, setLoadingCount }) => {
               (sectionRefs.current.features = el)
             }
           >
-          
-          <FeatureSection data={data.features}/>
+          <Suspense>
+            <FeatureSection data={data.features}/>
+          </Suspense>
           </div>
 
           <div
             ref={(el) =>
               (sectionRefs.current.MicroAmenities = el)
             }>
-            <MicroAmenities section_data={data.amenities} />
+              <Suspense>
+                <ParallaxSection section_data={data.amenities} />
+              </Suspense>
           </div>
 
           <div
@@ -247,7 +251,7 @@ const MicroPageGurgaonPhase2 = ({ data, loadingCount, setLoadingCount }) => {
               </div>
               <div className="col-sm-6 px-0">
                 <EnquireForm
-                  projectName={"MVN Aeroone"}
+                  projectName={"MVN Athens Gurgaon PH-2"}
                 />
               </div>
             </div>

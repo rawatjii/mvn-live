@@ -1,8 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import MicroBanner from "../components/MicroBanner/Index";
-import Desktopmicro_bg from "../assets/images/blogs/1865.jpg";
-import BlogImg from "../assets/images/blogs/blog.jpg";
-
 import { Container } from "react-bootstrap";
 import SecTitle from "../../common/SecTitle/Index";
 

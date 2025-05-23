@@ -1,43 +1,43 @@
 import React from "react";
-import * as CONFIG from '../../../../config/config';
 import MvnMall1 from "../../mvnMall";
-import headerDesktopImg from '../../../assets/images/mvn-mall/header/sidebar.webp';
-import bannerImg from '../../../assets/images/mvn-mall/banner/banner.webp';
-import bannerImgSm from '../../../assets/images/mvn-mall/banner/banner_sm.webp';
-import landscapeImg1 from '../../../assets/images/mvn-mall/landscape/1.webp';
-import landscapeImgSm1 from '../../../assets/images/mvn-mall/landscape/1_sm.webp';
-import landscapeImg2 from '../../../assets/images/mvn-mall/landscape/2.webp';
-import landscapeImgSm2 from '../../../assets/images/mvn-mall/landscape/2_sm.webp';
-import landscapeImg3 from '../../../assets/images/mvn-mall/landscape/3.webp';
-import landscapeImgSm3 from '../../../assets/images/mvn-mall/landscape/3_sm.webp';
+import { API_URL } from "../../../../config/config";
+const headerDesktopImg = `${API_URL}images/mvn-mall/header/sidebar.webp`;
+const bannerImg = `${API_URL}images/mvn-mall/banner/banner.webp`;
+const bannerImgSm = `${API_URL}images/mvn-mall/banner/banner_sm.webp`;
+const landscapeImg1 = `${API_URL}images/mvn-mall/landscape/1.webp`;
+const landscapeImgSm1 = `${API_URL}images/mvn-mall/landscape/1_sm.webp`;
+const landscapeImg2 = `${API_URL}images/mvn-mall/landscape/2.webp`;
+const landscapeImgSm2 = `${API_URL}images/mvn-mall/landscape/2_sm.webp`;
+const landscapeImg3 = `${API_URL}images/mvn-mall/landscape/3.webp`;
+const landscapeImgSm3 = `${API_URL}images/mvn-mall/landscape/3_sm.webp`;
 
 // gallery images
-import galleryImg1 from '../../../assets/images/mvn-mall/gallery/gallery1.webp'
-import galleryImgSm1 from '../../../assets/images/mvn-mall/gallery/gallery1_sm.webp'
-import galleryImg2 from '../../../assets/images/mvn-mall/gallery/gallery2.webp'
-import galleryImgSm2 from '../../../assets/images/mvn-mall/gallery/gallery2_sm.webp'
-import galleryImg3 from '../../../assets/images/mvn-mall/gallery/gallery3.webp'
-import galleryImgSm3 from '../../../assets/images/mvn-mall/gallery/gallery3_sm.webp'
+const galleryImg1 = `${API_URL}images/mvn-mall/gallery/gallery1.webp`
+const galleryImgSm1 = `${API_URL}images/mvn-mall/gallery/gallery1_sm.webp`
+const galleryImg2 = `${API_URL}images/mvn-mall/gallery/gallery2.webp`
+const galleryImgSm2 = `${API_URL}images/mvn-mall/gallery/gallery2_sm.webp`
+const galleryImg3 = `${API_URL}images/mvn-mall/gallery/gallery3.webp`
+const galleryImgSm3 = `${API_URL}images/mvn-mall/gallery/gallery3_sm.webp`
 
 // amenities images start
-import fantasyGarden from "../../../assets/images/mvn-mall/amenities/fantasy-garden.webp"
-import leisureLane from "../../../assets/images/mvn-mall/amenities/leisure_lane.webp"
-import characterCorner from "../../../assets/images/mvn-mall/amenities/character_corner.webp"
-import virtualVortex from "../../../assets/images/mvn-mall/amenities/vertual-vortex.webp"
-import performancePlaza from "../../../assets/images/mvn-mall/amenities/performance_plaza.webp"
-import visionaryVault from "../../../assets/images/mvn-mall/amenities/visionary_vault.webp"
-import movieHub from "../../../assets/images/mvn-mall/amenities/movie_hub.webp"
-import gamerGalaxy from "../../../assets/images/mvn-mall/amenities/gamer_galaxy.webp"
-import flavourStreet from "../../../assets/images/mvn-mall/amenities/flavour_street.webp"
-import dineDistrict from "../../../assets/images/mvn-mall/amenities/dine_district.webp"
-import artisanNook from "../../../assets/images/mvn-mall/amenities/artisan_nook.webp"
-import homeDecor from "../../../assets/images/mvn-mall/amenities/home_decor.webp"
-import innovationStation from "../../../assets/images/mvn-mall/amenities/inovasion_station.webp"
-import zenZone from "../../../assets/images/mvn-mall/amenities/zen_zone.webp"
+const fantasyGarden = `${API_URL}images/mvn-mall/amenities/fantasy-garden.webp`
+const leisureLane = `${API_URL}images/mvn-mall/amenities/leisure_lane.webp`
+const characterCorner = `${API_URL}images/mvn-mall/amenities/character_corner.webp`
+const virtualVortex = `${API_URL}images/mvn-mall/amenities/vertual-vortex.webp`
+const performancePlaza = `${API_URL}images/mvn-mall/amenities/performance_plaza.webp`
+const visionaryVault = `${API_URL}images/mvn-mall/amenities/visionary_vault.webp`
+const movieHub = `${API_URL}images/mvn-mall/amenities/movie_hub.webp`
+const gamerGalaxy = `${API_URL}images/mvn-mall/amenities/gamer_galaxy.webp`
+const flavourStreet = `${API_URL}images/mvn-mall/amenities/flavour_street.webp`
+const dineDistrict = `${API_URL}images/mvn-mall/amenities/dine_district.webp`
+const artisanNook = `${API_URL}images/mvn-mall/amenities/artisan_nook.webp`
+const homeDecor = `${API_URL}images/mvn-mall/amenities/home_decor.webp`
+const innovationStation = `${API_URL}images/mvn-mall/amenities/inovasion_station.webp`
+const zenZone = `${API_URL}images/mvn-mall/amenities/zen_zone.webp`
 // amenities images end
 
 // location images start
-import locationMapDesktop from "../../../assets/images/mvn-mall/location-map/location-map.webp"
+const locationMapDesktop = `${API_URL}images/mvn-mall/location-map/location-map.webp`
 // location images end
 
 export const mvnMallData = {
@@ -83,7 +83,11 @@ export const mvnMallData = {
     title: "MVN Mall",
     extra: "The Pinnacle of Luxury Shopping",
     desc: "Experience unparalleled elegance at MVN Mall , where world-class brands converge in an architecturally stunning setting. Indulge in a curated selection of premium boutiques, gourmet dining, and exclusive entertainment options, redefining luxury retail.",
+    rera:"RERA NO. RC/REP/HARERA/GGM/889/621/2024/116",
+    discountUrl:`${API_URL}patch/discount.webp`,
+    isDiscountAvailable:true,
   },
+  mvnMallVideo:"https://www.youtube.com/embed/CbmkQBZuvTw?loop=1&mute=1&playlist=CbmkQBZuvTw",
   landscape:{
     title:'Landscapes',
     desc:'A mesmerizing fusion of art and nature, MVN Mall landscape unfolds like a masterpiece, cascading water features, sculpted green terraces, and ambient lighting create an atmosphere of serene grandeur.',
@@ -324,7 +328,7 @@ export const mvnMallData = {
 const MvnMall = () => {
   window.scrollTo(0,0)
   return (
-    <MvnMall1 data={mvnMallData}  projectName={'mvn-mall-1'}/>
+    <MvnMall1 data={mvnMallData}  projectName={'mvn-mall'}/>
   )
 };
 

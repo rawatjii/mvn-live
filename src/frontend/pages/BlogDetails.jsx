@@ -11,6 +11,8 @@ import Layout from "../components/Layout";
 import { BACKEND_IMAGE_URL, FRONTEND_API_BASE_URL } from "../../config/config";
 import RelatedBlogs from "../components/blog/RelatedBlogs";
 
+const Desktopmicro_bg = `${API_URL}images/blogs/blog.jpg`;
+
 function BlogDetails() {
   window.scrollTo(0, 0);
   // const selectedBlog = useSelector((state) => state.blogs.selectedBlog);

@@ -2,118 +2,101 @@ import React, { useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 import SecTitle from "../../../common/SecTitle/Index";
 
-import { gsap } from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
+import { gsap } from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
-import mvnSchoolSec17 from '../../assets/images/timeline/mvnschool-sector-17.webp';
-import mvnSchoolAravali from '../../assets/images/timeline/mvnschool-aravalihills.webp';
-import athenFaridabad from '../../assets/images/timeline/athens-faridabad-2008.webp';
-import gopalInstitute from '../../assets/images/timeline/gopalsharma-institute-of-engineering-and-technology-palwal.webp';
-import mvnSchoolPalwal from '../../assets/images/timeline/mvn-school-palwal.webp';
-import mvnSchoolKhambi from '../../assets/images/timeline/mvn-school-khambi.webp';
-import mvnUniversityPalwal from '../../assets/images/timeline/mvn-university-palwal.webp';
-import mvninfrastructureathensSohna from '../../assets/images/timeline/mvninfrastructure-athens-sohna.webp';
-import mvnschoolSec88 from '../../assets/images/timeline/mvnschool-sec88.webp';
-import mvninfrastructureAthensSohna from '../../assets/images/timeline/mvn-infrastructure-athens-sohna-phase-two.webp';
-import mvnaerooneBangalore from '../../assets/images/timeline/mvn-aeroone-bangalore.webp';
-import mvnaeroonebengaluru from '../../assets/images/timeline/mvn-aeroone-bengaluru.webp';
-import mvnschoolsportsacademy from '../../assets/images/timeline/mvn-school-sports-academy.webp';
-import aeroonegurgaon from '../../assets/images/timeline/aeroone_gurgaon.webp';
-
-
-
-// import planeIcon from '../../assets/images/icons/plane2.webp';
-import diamondIcon from "../../assets/images/icons/heading-icon-img.webp";
-import timelineBg from '../../assets/images/timeline/bg.webp'
 import LazyLoad from "react-lazyload";
-import headingIconImg from "../../assets/images/icons/heading-icon-img.webp";
+import { API_URL } from "../../../config/config";
 
 const data = [
   {
-    img: mvnSchoolSec17,
-    year: '1983',
-    title: 'MVN School',
-    location: 'Sector-17, Faridabad'
+    img: `${API_URL}images/timeline/mvnschool-sector-17.webp`,
+    year: "1983",
+    title: "MVN School",
+    location: "Sector-17, Faridabad",
   },
   {
-    img: mvnSchoolAravali,
-    year: '2000',
-    title: 'MVN School',
-    location: 'Aravali Hills, Faridabad'
+    img: `${API_URL}images/timeline/mvnschool-aravalihills.webp`,
+    year: "2000",
+    title: "MVN School",
+    location: "Aravali Hills, Faridabad",
   },
   {
-    img: athenFaridabad,
-    year: '2008',
-    title: 'Luxury Apartments | Project by Gopal Global Developers Pvt Ltd',
-    location: 'MVN Athens, Faridabad'
+    img: `${API_URL}images/timeline/athens-faridabad-2008.webp`,
+    year: "2008",
+    title: "Luxury Apartments | Project by Gopal Global Developers Pvt Ltd",
+    location: "MVN Athens, Faridabad",
   },
   {
-    img: gopalInstitute,
-    year: '2008',
-    title: 'MVN Athens, Faridabad | Luxury Apartments | Project by Gopal Global Developers Pvt Ltd',
-    location: 'Palwal, Haryana'
+    img: `${API_URL}images/timeline/gopalsharma-institute-of-engineering-and-technology-palwal.webp`,
+    year: "2008",
+    title:
+      "MVN Athens, Faridabad | Luxury Apartments | Project by Gopal Global Developers Pvt Ltd",
+    location: "Palwal, Haryana",
   },
   {
-    img: mvnSchoolPalwal,
-    year: '2009',
-    title: 'MVN School',
-    location: 'Haryana'
+    img: `${API_URL}images/timeline/mvn-school-palwal.webp`,
+    year: "2009",
+    title: "MVN School",
+    location: "Haryana",
   },
   {
-    img: mvnSchoolKhambi,
-    year: '2009',
-    title: 'Gopal Sharma Modern Vidya Niketan School ',
-    location: 'Khambi'
+    img: `${API_URL}images/timeline/mvn-school-khambi.webp`,
+    year: "2009",
+    title: "Gopal Sharma Modern Vidya Niketan School ",
+    location: "Khambi",
   },
   {
-    img: mvnUniversityPalwal,
-    year: '2012',
-    title: 'MVN University',
-    location: 'Haryana'
+    img: `${API_URL}images/timeline/mvn-university-palwal.webp`,
+    year: "2012",
+    title: "MVN University",
+    location: "Haryana",
   },
   {
-    img: mvninfrastructureathensSohna,
-    year: '2014',
-    title: 'MVN Athens | Residential Apartments | Project by MVN Infrastructure Pvt Ltd ',
-    location: '(Phase-I), Gurugram'
+    img: `${API_URL}images/timeline/mvninfrastructure-athens-sohna.webp`,
+    year: "2014",
+    title:
+      "MVN Athens | Residential Apartments | Project by MVN Infrastructure Pvt Ltd ",
+    location: "(Phase-I), Gurugram",
   },
   {
-    img: mvnschoolSec88,
-    year: '2017',
-    title: 'MVN School',
-    location: 'Sector-88, Greater Faridabad'
+    img: `${API_URL}images/timeline/mvnschool-sec88.webp`,
+    year: "2017",
+    title: "MVN School",
+    location: "Sector-88, Greater Faridabad",
   },
   {
-    img: mvninfrastructureAthensSohna,
-    year: '2019',
-    title: 'MVN Athens | Residential Apartments | Project by MVN Infrastructure Pvt Ltd',
-    location: '(Phase-II), Gurugram'
+    img: `${API_URL}images/timeline/mvn-infrastructure-athens-sohna-phase-two.webp`,
+    year: "2019",
+    title:
+      "MVN Athens | Residential Apartments | Project by MVN Infrastructure Pvt Ltd",
+    location: "(Phase-II), Gurugram",
   },
   {
-    img: mvnaerooneBangalore,
-    year: '2021',
-    title: 'MVN Aero One | Luxury Residential Apartments | Project by MF Farmlands Pvt Ltd',
-    location: 'Bengaluru'
+    img: `${API_URL}images/timeline/mvn-aeroone-bangalore.webp`,
+    year: "2021",
+    title:
+      "MVN Aero One | Luxury Residential Apartments | Project by MF Farmlands Pvt Ltd",
+    location: "Bengaluru",
   },
   {
-    img: mvnaeroonebengaluru,
-    year: '2023',
-    title: 'MVN Aeroone | Luxury Apartments',
-    location: '(Phase-II) Bengaluru'
+    img: `${API_URL}images/timeline/mvn-aeroone-bengaluru.webp`,
+    year: "2023",
+    title: "MVN Aeroone | Luxury Apartments",
+    location: "(Phase-II) Bengaluru",
   },
   {
-    img: mvnschoolsportsacademy,
-    year: '2023',
-    title: 'MVN School Sports Academy',
-    location: 'Sector - 88, Greater Faridabad'
+    img: `${API_URL}images/timeline/mvn-school-sports-academy.webp`,
+    year: "2023",
+    title: "MVN School Sports Academy",
+    location: "Sector - 88, Greater Faridabad",
   },
   {
-    img: aeroonegurgaon,
-    year: '2024',
-    title: 'MVN Aero One Gurugram',
-    location: 'Dwarka Expressway, Sector-37D, Gurugram'
-  }
-
+    img: `${API_URL}images/timeline/aeroone_gurgaon.webp`,
+    year: "2024",
+    title: "MVN Aero One Gurugram",
+    location: "Dwarka Expressway, Sector-37D, Gurugram",
+  },
 ];
 
 gsap.registerPlugin(ScrollTrigger);
@@ -232,34 +215,60 @@ const Timeline = () => {
   };
 
   return (
-    <section className="section timeline_section pb-0" aria-label="Timeline Section">
+    <section
+      className="section timeline_section pb-0"
+      aria-label="Timeline Section"
+    >
       <LazyLoad className="timeline_bg">
-        <img src={timelineBg} alt="mvn timeline background image" className="img-fluid bg" />
+        <img
+          src={`${API_URL}images/timeline/bg.webp`}
+          alt="mvn timeline background image"
+          className="img-fluid bg"
+        />
       </LazyLoad>
 
       <Container>
         <div className="heading_div mb_60 mb_sm_30">
-          <img src={headingIconImg} alt="mvn overview image" className="img-fluid title_plane1" loading="lazy" />
+          <img
+            src={`${API_URL}images/icons/heading-icon-img.webp`}
+            alt="mvn overview image"
+            className="img-fluid title_plane1"
+            loading="lazy"
+          />
           <h4 ref={titleRef} className="title title_style1 text-center">
-          Our Timeline
+            Our Timeline
           </h4>
         </div>
         <ul ref={timelineRef} className="timeline_content">
-        <li ref={planeRef} className="plane">
-            <img src={diamondIcon} alt="mvn plan icon" className="img-fluid plan_icon" loading="lazy" />
-          </li> 
+          <li ref={planeRef} className="plane">
+            <img
+              src={`${API_URL}images/icons/heading-icon-img.webp`}
+              alt="mvn plan icon"
+              className="img-fluid plan_icon"
+              loading="lazy"
+            />
+          </li>
           {data.map((item, index) => (
-            <li key={index} className={`single ${index % 2 !== 0 ? 'right' : ''}`}>
-              <div ref={(el) => (imageRefs.current[index] = el)} className="thumbnail">
+            <li
+              key={index}
+              className={`single ${index % 2 !== 0 ? "right" : ""}`}
+            >
+              <div
+                ref={(el) => (imageRefs.current[index] = el)}
+                className="thumbnail"
+              >
                 <img
                   src={item.img}
                   alt="mvn timeline image"
                   className="img-fluid"
                   onLoad={handleImageLoad}
-                   loading="lazy"
+                  loading="lazy"
                 />
               </div>
-              <div ref={(el) => (contentRefs.current[index] = el)} className="content">
+              <div
+                ref={(el) => (contentRefs.current[index] = el)}
+                className="content"
+              >
                 <p className="year">{item.year}</p>
                 <p className="title">{item.title}</p>
                 <p className="location">{item.location}</p>
@@ -270,6 +279,6 @@ const Timeline = () => {
       </Container>
     </section>
   );
-}
+};
 
 export default Timeline;

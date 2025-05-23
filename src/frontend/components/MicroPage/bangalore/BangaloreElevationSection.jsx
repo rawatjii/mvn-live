@@ -1,11 +1,14 @@
 import React, { useEffect, useRef } from "react";
 import { Container } from "react-bootstrap";
-import frontDesktopImg from "../../../assets/bangalore/elegence/fr-front1.png";
+
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CustomCard from "../../Card";
-import "./bangalore_elevation_section.css";
 import Watermark from "../../../../common/watermark/Index";
+import "./bangalore_elevation_section.css";
+import { API_URL } from "../../../../config/config";
+
+const frontDesktopImg = `${API_URL}bangalore/elegence/fr-front1.png`;
 
 gsap.registerPlugin(ScrollTrigger);
 

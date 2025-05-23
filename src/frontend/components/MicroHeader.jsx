@@ -4,17 +4,19 @@ import Nav from "react-bootstrap/Nav";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import * as CONFIG from "root/config/config";
 import React, { useEffect, useState } from "react";
-import subscribeBtn from '../assets/images/icons/subscribe_btn.webp';
-import CloseBtnimg from '../assets/images/icons/close.png';
-import "./Header.css";
 import { otherPages, otherProjects, otherDetails, socialMedia } from '../../data/headerdata';
 import { useMatches } from "../../theme/theme";
+import { API_URL } from "../../config/config";
+import "./Header.css";
 
+const subscribeBtn = `${API_URL}images/icons/subscribe_btn.webp`;
+const CloseBtnimg = `${API_URL}images/icons/close.png`;
 
 
 const MicroHeader = ({ scrollToSection, data, isFixed }) => {
   const [scrolled, setScrolled] = useState(false);
   const [isMicro, setIsMicro] = useState(false);
+  const [isBangaloreProject, setIsBangaloreProject] = useState(false);
 
   const { sidebar_section, sidebarAsset } = data;
   const channelUrl = CONFIG.YOUTUBE_URL;
@@ -23,8 +25,12 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
   const { isMobile } = useMatches();
 
   useEffect(() => {
-    if (pathname.includes("aeroone-gurgaon") || pathname.includes("mvn-mall") || pathname.includes("aeroone-bangalore1") || pathname.includes("mvn-athens-faridabad") || pathname.includes("/mvn-athens-gurgaon-phase-2") || pathname.includes("/mvn-athens-gurgaon-phase-1")) {
+    if (pathname.includes("aeroone-gurgaon") || pathname.includes("mvn-mall") || pathname.includes("aeroone-bangalore") || pathname.includes("mvn-athens-faridabad") || pathname.includes("/mvn-athens-gurgaon-phase-2") || pathname.includes("/mvn-athens-gurgaon-phase-1")) {
       setIsMicro(true);
+    }
+
+    if(pathname.includes("aeroone-bangalore")){
+      setIsBangaloreProject(true);
     }
 
     const handleScroll = () => {
@@ -57,13 +63,13 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
       <Container>
         <Navbar.Brand className="logo">
           <Link onClick={() => toggleMenu("close")}>
-            <img src={CONFIG.IMAGE_URL + "logo_white.webp"} alt="mvn logo" className="img-fluid d-none d-md-block" fetchpriority="high" />
-            <img src={CONFIG.IMAGE_URL + "logo_white.webp"} alt="mvn logo" className="img-fluid d-md-none" fetchpriority="high" />
+            <img src={`${API_URL}assets/logo_white.webp`} alt="mvn logo" className="img-fluid d-none d-md-block" fetchpriority="high" />
+            <img src={`${API_URL}assets/logo_white.webp`} alt="mvn logo" className="img-fluid d-md-none" fetchpriority="high" />
           </Link>
         </Navbar.Brand>
         <div className="right">
           <a href={`tel:${otherDetails.contact}`} className="call_btn">
-            <img src={CONFIG.IMAGE_URL + 'icons/call.png'} alt="mvn call icon" />
+            <img src={`${API_URL}assets/icons/call.png`} alt="mvn call icon" />
           </a>
           <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={() => toggleMenu("show")} className="navbar-toggle">
             <span className="icon"></span>
@@ -82,7 +88,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
               <div className="menu-area">
                 <div className="top_head">
                   <Link onClick={() => toggleMenu("close")}>
-                    <img src={CONFIG.IMAGE_URL + "logo_white.webp"} className="logo" alt="mvn logo" />
+                    <img src={`${API_URL}assets/logo_white.webp`} className="logo" alt="mvn logo" />
                   </Link>
                   <span className="close d-md-none" onClick={() => toggleMenu("close")}>&times;</span>
                 </div>
@@ -143,10 +149,11 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                       </div>
                     </div>
                   </div>
+                  
                   <div className="top-area">
                     <div className="inner-logo d-none d-md-block">
                       <p><span>Office:</span> {otherDetails.address}</p>
-                      <p><span>Talk:</span> {otherDetails.contact}</p>
+                      <p><span>Talk:</span> {!isBangaloreProject ? otherDetails.contact : '+91 9164001177'}</p>
                     </div>
                     <ul className="sub_menu">
                       <li>
@@ -155,7 +162,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                           {socialMedia.map((socialIcon, index) => (
                             <li key={index}>
                               <Link to={socialIcon.link} target="_blank" onClick={() => toggleMenu("close")} className={socialIcon.className}>
-                                <img src={`${CONFIG.IMAGE_URL + socialIcon.imgUrl}`} alt={socialIcon.alt} />
+                                <img src={socialIcon.imgUrl} alt={socialIcon.alt} />
                               </Link>
                             </li>
                           ))}

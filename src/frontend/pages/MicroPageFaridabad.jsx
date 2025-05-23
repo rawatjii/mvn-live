@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, Suspense } from "react";
 import MicroOverview from "../components/MicroPage/Overview";
 import MicroAmenities from "../components/MicroPage/Amenities";
 import MicroLocationMap from "../components/MicroPage/LocationMap";
@@ -14,6 +14,7 @@ import MicroHeader from "../components/MicroHeader";
 import ImagesGallery from "../components/MicroPage/ImagesGallery";
 import SliderTypology from "../components/MicroPage/bangalore/SliderTypology";
 import AthensBanner from "../components/MicroPage/athens/AthensBanner";
+const ParallaxSection = React.lazy(()=>import("../../common/ParallaxSection"));
  
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -192,7 +193,7 @@ const MicroPageFaridabad = ({ data, loadingCount, setLoadingCount }) => {
               (sectionRefs.current.downloadBrochure = el)
             }
           >
-            <DownloadBrochure name="DOWNLOAD MVN ATHENS ID BROCHURE" />
+            <DownloadBrochure name="DOWNLOAD MVN ATHENS ID BROCHURE" projectName="MVN Athens Faridabad" />
           </div>
           <div
             ref={(el) =>
@@ -206,7 +207,9 @@ const MicroPageFaridabad = ({ data, loadingCount, setLoadingCount }) => {
             ref={(el) =>
               (sectionRefs.current.MicroAmenities = el)
             }>
-            <MicroAmenities section_data={data.amenities} />
+              <Suspense>
+            <ParallaxSection section_data={data.amenities} />
+              </Suspense>
           </div>
 
           <div
@@ -237,7 +240,7 @@ const MicroPageFaridabad = ({ data, loadingCount, setLoadingCount }) => {
               </div>
               <div className="col-sm-6 px-0">
                 <EnquireForm
-                  projectName={"MVN Aeroone"}
+                  projectName={"MVN Athens Faridabad"}
                 />
               </div>
             </div>

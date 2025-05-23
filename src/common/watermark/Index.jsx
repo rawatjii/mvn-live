@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import mvnMallLogo from '../../frontend/assets/images/mvn-mall/mvn-mall-logo.webp';
-import athensFaridabadLogo from '../../frontend/assets/images/athens-faridabad/athens-logo.png';
 
 import * as CONFIG from '../../config/config';
 import { useLocation } from 'react-router-dom';
 import './watermark.css';
+
+const mvnMallLogo = `${CONFIG.API_URL}images/mvn-mall/mvn-mall-logo.webp`;
+const athensFaridabadLogo = `${CONFIG.API_URL}images/athens-faridabad/athens-logo.png`;
 
 const Watermark = ({className, type, isMvnLogo, customClass})=>{
   const [isAeroGurgaon, setIsAeroGurgaon] = useState(false);
@@ -20,7 +21,7 @@ const Watermark = ({className, type, isMvnLogo, customClass})=>{
     }else if(location.pathname.includes('mvn-mall')){
       setLogoUrl(mvnMallLogo);
     } else {
-      setLogoUrl(`${CONFIG.IMAGE_URL}mvn-aeroone-logo-img.webp`);
+      setLogoUrl(`${CONFIG.API_URL}assets/mvn-aeroone-logo-img.webp`);
       setIsAeroGurgaon(true)
     }
   }, [location])
@@ -35,7 +36,7 @@ const Watermark = ({className, type, isMvnLogo, customClass})=>{
         <div className="Watermark_artistic">Artistic Impression</div>
 
         {isMvnLogo ? (
-          <div className={`Watermark_logo ${isAeroGurgaon ? 'aeroGurgaon_logo' : null}`}><img src={`${CONFIG.IMAGE_URL}mvn_mall.webp`} alt="logo image" /></div>
+          <div className={`Watermark_logo ${isAeroGurgaon ? 'aeroGurgaon_logo' : null}`}><img src={`${CONFIG.API_URL}assets/mvn_mall.webp`} alt="logo image" /></div>
         ) : (
           <div className={`Watermark_logo ${isAeroGurgaon ? 'aeroGurgaon_logo' : null}`}><img src={logoUrl} alt="logo image" /></div>
         )}

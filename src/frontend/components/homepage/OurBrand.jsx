@@ -2,30 +2,24 @@ import React, { useEffect, useRef, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import LazyLoad from "react-lazyload";
 
-import commitmentIcon from "../../assets/images/icons/brand/handshake.gif";
-import excellenceIcon from "../../assets/images/icons/brand/growth.gif";
-import customizedIcon from "../../assets/images/icons/brand/hand.gif";
-import MobilebrandBG from "../../assets/images/icons/brand/our-brand-ethos-bg.webp";
-import DesktopbrandBG from "../../assets/images/icons/brand/our-brand-ethos-bg.webp";
-import headingIconImg from "../../assets/images/icons/heading-icon-img.webp";
-import LeftSideBanner from "../../assets/images/icons/brand/our-brand-ethos-bg-2.webp";
 import { useMatches } from "../../../theme/theme";
+import { API_URL } from "../../../config/config";
 
 const brandData = [
   {
     title: "Commitment",
     para: `MVN develops and heightens competencies that show a realtor's dedication to code of Ethics & Standards of Practice.`,
-    icon: commitmentIcon,
+    icon: `${API_URL}images/icons/brand/handshake.gif`,
   },
   {
     title: "Excellence",
     para: `We deliver our clients with quality services and aim to exceed expectations in everything we offer.`,
-    icon: excellenceIcon,
+    icon: `${API_URL}images/icons/brand/growth.gif`,
   },
   {
     title: "Customized Solutions",
     para: `We offer customer-focused solutions with a high level of accountability, and offer the highest level of honesty and expertise.`,
-    icon: customizedIcon,
+    icon: `${API_URL}images/icons/brand/hand.gif`,
   },
 ];
 
@@ -39,7 +33,11 @@ const OurBrand = () => {
     <section className="section our_brand_section" aria-label="Brand Section">
       <LazyLoad>
         <img
-          src={isMobile ? MobilebrandBG : DesktopbrandBG}
+          src={
+            isMobile
+              ? `${API_URL}images/icons/brand/our-brand-ethos-bg.webp`
+              : `${API_URL}images/icons/brand/our-brand-ethos-bg.webp`
+          }
           alt="mvn brand background image"
           className="brand_bg"
           loading="lazy"
@@ -48,7 +46,7 @@ const OurBrand = () => {
 
       <LazyLoad>
         <img
-          src={LeftSideBanner}
+          src={`${API_URL}images/icons/brand/our-brand-ethos-bg-2.webp`}
           alt="mvn brand background image"
           className="brand_bg brand_bg-2"
           loading="lazy"
@@ -58,7 +56,7 @@ const OurBrand = () => {
       <Container>
         <div className="heading_div  mb_60 mb_sm_30">
           <img
-            src={headingIconImg}
+            src={`${API_URL}images/icons/heading-icon-img.webp`}
             alt="mvn brand heading icon"
             className="img-fluid title_plane1"
             loading="lazy"

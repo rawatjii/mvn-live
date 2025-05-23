@@ -3,6 +3,8 @@ import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import ScrollSmoother from "gsap/ScrollSmoother";
 import MicroHeader from "../components/MicroHeader";
+import { API_URL } from "../../config/config";
+const ParallaxSection = React.lazy(()=>import("../../common/ParallaxSection"));
 const MicroOverview = React.lazy(()=>import("../components/MicroPage/Overview"));
 const MicroAmenities = React.lazy(()=>import("../components/MicroPage/Amenities"));
 const MicroLocationMap = React.lazy(()=>import("../components/MicroPage/LocationMap"));
@@ -16,9 +18,10 @@ const ScrollTriggerFrames = React.lazy(()=>import("../components/MicroPage/Scrol
 const LottieAnimationSection = React.lazy(()=>import("../components/MicroPage/LottieAnimationSection"));
 const BangaloreElevationSection = React.lazy(()=>import("../components/MicroPage/bangalore/BangaloreElevationSection"));
 const SliderTypology = React.lazy(()=>import("../components/MicroPage/bangalore/SliderTypology"));
-import bannerImg from "../assets/bangalore/laoder/banner.png"
-import livingRoomImg from "../assets/bangalore/laoder/living-room.webp"
-import masterBedroomImg from "../assets/bangalore/laoder/master-bedroom.webp"
+
+const bannerImg =  `${API_URL}bangalore/laoder/banner.png`
+const livingRoomImg = `${API_URL}bangalore/laoder/living-room.webp`
+const masterBedroomImg = `${API_URL}bangalore/laoder/master-bedroom.webp`
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -108,7 +111,7 @@ const MicroPageBangalore = ({ data, loadingCount, setLoadingCount }) => {
             }
           >
           <Suspense fallback="">
-            <DownloadBrochure name="Download MVN AERO ONE ID Brochure" />
+            <DownloadBrochure name="Download MVN AERO ONE ID Brochure" projectName="MVN Aeroone Bangalore" />
             </Suspense>
           </div>
           <div
@@ -172,7 +175,7 @@ const MicroPageBangalore = ({ data, loadingCount, setLoadingCount }) => {
               (sectionRefs.current.MicroAmenities = el)
             }>
           <Suspense fallback="">
-            <MicroAmenities section_data={data.amenities} />
+            <ParallaxSection section_data={data.amenities} />
             </Suspense>
           </div>
 
@@ -208,7 +211,7 @@ const MicroPageBangalore = ({ data, loadingCount, setLoadingCount }) => {
               </div>
               <div className="col-sm-6 px-0">
                 <EnquireForm
-                  projectName={"MVN Aeroone"}
+                  projectName={"MVN Aeroone Bangalore"}
                 />
               </div>
             </div>

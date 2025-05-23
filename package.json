@@ -16,6 +16,7 @@
     "@lottiefiles/react-lottie-player": "^3.5.4",
     "@reduxjs/toolkit": "^2.3.0",
     "axios": "^1.8.4",
+    "@vimeo/player": "^2.26.0",
     "bootstrap": "^5.3.3",
     "ckeditor4-react": "^5.2.1",
     "g": "^2.0.1",

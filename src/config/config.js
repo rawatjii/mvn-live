@@ -10,6 +10,7 @@ export const IMAGE_URL_ATHENS_GURGAON_PHASE_1 = import.meta.env.VITE_APP_IMAGE_U
 export const IMAGE_URL_ATHENS_GURGAON_PHASE_2 = import.meta.env.VITE_APP_IMAGE_URL_ATHENS_GURGAON_PHASE_2;
 export const IMAGE_URL_MVL_MALL = import.meta.env.VITE_APP_IMAGE_URL_MVN_MALL;
 export const YOUTUBE_URL = import.meta.env.VITE_APP_YOUTUBE_LINK
+export const API_URL = import.meta.env.VITE_APP_API_URL
 
 // for api
 export const API_BASE_URL = import.meta.env.VITE_APP_API_BASE_URL

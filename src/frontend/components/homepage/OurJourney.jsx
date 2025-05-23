@@ -4,16 +4,7 @@ import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import LazyLoad from "react-lazyload";
 
-// Import icons
-import diamondIcon from "../../assets/images/icons/heading-icon-img.webp";
-import expIcon from "../../assets/images/icons/journey/new-icons/Helmet-.gif";
-import citiesIcon from "../../assets/images/icons/journey/new-icons/building.gif";
-import completeProjectsIcon from "../../assets/images/icons/journey/new-icons/handshake.gif";
-import ongoingProjectsIcon from "../../assets/images/icons/journey/new-icons/crane.gif";
-import millionSqftIcon from "../../assets/images/icons/journey/new-icons/ruler.gif";
-import deliveryIcon from "../../assets/images/icons/journey/new-icons/calendar.gif";
-import headingIconImg from "../../assets/images/icons/heading-icon-img.webp";
-import FooterBgImg from "../../assets/images/our-story-bg.webp"; // Corrected path
+import { API_URL } from "../../../config/config";
 
 // Register ScrollTrigger plugin with GSAP
 gsap.registerPlugin(ScrollTrigger);
@@ -23,12 +14,12 @@ const OurJourney = () => {
   const contentRef = useRef([]);
   const journeyRef = useRef();
   const [journeyData] = useState([
-    { icon: expIcon, title: "Years Experience", value: "40+" },
-    { icon: citiesIcon, title: "Cities", value: "04" },
-    { icon: completeProjectsIcon, value: "09", title: "Completed Projects" },
-    { icon: ongoingProjectsIcon, value: "04", title: "Ongoing Projects" },
-    { icon: millionSqftIcon, title: "Million Square Feet", value: "7.2" },
-    { icon: deliveryIcon, title: "On-time Delivery", value: "100%" }, // Updated to include %
+    { icon: `${API_URL}images/icons/journey/new-icons/Helmet-.gif`, title: "Years Experience", value: "40+" },
+    { icon: `${API_URL}images/icons/journey/new-icons/building.gif`, title: "Cities", value: "04" },
+    { icon: `${API_URL}images/icons/journey/new-icons/handshake.gif`, value: "09", title: "Completed Projects" },
+    { icon: `${API_URL}images/icons/journey/new-icons/crane.gif`, value: "04", title: "Ongoing Projects" },
+    { icon: `${API_URL}images/icons/journey/new-icons/ruler.gif`, title: "Million Square Feet", value: "7.2" },
+    { icon: `${API_URL}images/icons/journey/new-icons/calendar.gif`, title: "On-time Delivery", value: "100%" }, // Updated to include %
   ]);
 
   // Function to initialize animations
@@ -120,12 +111,12 @@ const OurJourney = () => {
   return (
     <section className="section journey_section pb-0" aria-label="Journey Section">
       <LazyLoad height={200}>
-        <img src={FooterBgImg} alt="mvn about background image" className="img-fluid about_bg" />
+        <img src={`${API_URL}images/our-story-bg.webp`} alt="mvn about background image" className="img-fluid about_bg" />
       </LazyLoad>
 
       <Container>
         <div className="heading_div mb_60 mb_sm_30">
-          <img src={headingIconImg} alt="mvn infrastructure heading icon" className="img-fluid title_plane1" />
+          <img src={`${API_URL}images/icons/heading-icon-img.webp`} alt="mvn infrastructure heading icon" className="img-fluid title_plane1" />
           <h4 ref={titleRef} className="title title_style1 text-center">
             {/* <span>Our Infrastructure </span> */}
             Our Infrastructure Real Estate Journey
@@ -135,7 +126,7 @@ const OurJourney = () => {
         <ul ref={journeyRef} className="journey_content">
           <li className="plane">
             <img
-              src={diamondIcon}
+              src={`${API_URL}images/icons/heading-icon-img.webp`}
               alt="mvn plan icon"
               className="img-fluid diamond_icon"
             />

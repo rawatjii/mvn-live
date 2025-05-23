@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from 'react';
-import desktopBanner from '../../assets/images/aero-gurgaon/hero/desktop.webp';
-import mobileBanner from '../../assets/images/aero-gurgaon/hero/mobile.webp';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { API_URL } from '../../../config/config';
+const desktopBanner = `${API_URL}images/aero-gurgaon/hero/desktop.webp`;
+const mobileBanner = `${API_URL}images/aero-gurgaon/hero/mobile.webp`;
+
 gsap.registerPlugin(ScrollTrigger);
-
-
 
 const MicroHero = ({onBannerExit, isMainBanner}) => {
   const sectionRef = useRef(null);

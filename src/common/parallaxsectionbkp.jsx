@@ -1,14 +1,15 @@
 import React, { useEffect, useRef, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Watermark from "../../../common/watermark/Index";
-import { useMatches } from "../../../theme/theme";
+import Watermark from "../common/watermark/Index";
+import { useMatches } from "../theme/theme";
 import { Container } from "react-bootstrap";
-import CustomCard from "../Card";
+import CustomCard from "../frontend/components/Card";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Amenities({ section_data }) {
+function ParallaxSection({ section_data }) {
   const { isMobile } = useMatches();
   const sectionsRef = useRef([]); // Array to hold section refs
   const triggersRef = useRef([]); // Array to hold ScrollTrigger instances
@@ -184,4 +185,4 @@ function Amenities({ section_data }) {
   );
 }
 
-export default React.memo(Amenities);
+export default React.memo(ParallaxSection);

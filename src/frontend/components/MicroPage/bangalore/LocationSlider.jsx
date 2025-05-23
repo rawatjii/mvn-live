@@ -5,8 +5,9 @@ import "swiper/css/navigation";
 // import { Navigation } from 'swiper/modules';
 import "./location_slider.css";
 import { Container } from "react-bootstrap";
-import * as CONFIG from "../../../../config/config";
-import locationIcon from "../../../assets/bangalore/icon/location.png";
+import { API_URL } from "../../../../config/config";
+
+const locationIcon = `${API_URL}bangalore/icon/location.png`;
 
 const LocationSlider = ({ data }) => {
   const { sliderItems, chunks } = data;

@@ -3,8 +3,6 @@ import InitialLoading from "../frontend/skeleton/Initial/Index";
 import PropTypes from "prop-types";
 import * as CONFIG from '../config/config';
 
-import bangaloreImg from "../frontend/assets/bangalore/laoder/banner.png"
-
 const FrontendRoute = ({children, loaderType})=>{
   const [loaderImage, setLoaderImage] = useState({
     desktop:null,
@@ -14,51 +12,51 @@ const FrontendRoute = ({children, loaderType})=>{
   useEffect(()=>{
     if(loaderType == 'homepage'){
       setLoaderImage({
-        desktop: CONFIG.IMAGE_URL + 'loader/homepage/desktop.webp',
-        mobile: CONFIG.IMAGE_URL + 'loader/homepage/mobile.webp',
+        desktop: `${CONFIG.API_URL}assets/loader/homepage/desktop-homepage.webp`,
+        mobile: `${CONFIG.API_URL}assets/loader/homepage/mobile-homepage.webp`,
       })
     }else if(loaderType == "aeroone-gurgaon"){
       setLoaderImage({
-        desktop: CONFIG.IMAGE_URL + 'loader/aeroone-gurgaon/desktop.webp',
-        mobile: CONFIG.IMAGE_URL + 'loader/aeroone-gurgaon/mobile.webp',
+        desktop: `${CONFIG.API_URL}assets/loader/aeroone-gurgaon/desktop.webp`,
+        mobile: `${CONFIG.API_URL}assets/loader/aeroone-gurgaon/mobile.webp`,
       })
-    }else if(loaderType == "aeroone-bangalore1"){
+    }else if(loaderType == "aeroone-bangalore"){
       setLoaderImage({
-        desktop: bangaloreImg,
-        mobile: bangaloreImg,
+        desktop: `${CONFIG.API_URL}bangalore/laoder/banner.png`,
+        mobile: `${CONFIG.API_URL}bangalore/laoder/banner.png`,
       })
     }else if(loaderType == "about-us"){
       setLoaderImage({
-        desktop: CONFIG.IMAGE_URL + 'loader/about-us/desktop.webp',
-        mobile: CONFIG.IMAGE_URL + 'loader/about-us/mobile.webp',
+        desktop: `${CONFIG.API_URL}assets/loader/about-us/desktop.webp`,
+        mobile: `${CONFIG.API_URL}assets/loader/about-us/mobile.webp`,
       })
     }else if(loaderType == 'media-centre'){
       setLoaderImage({
-        desktop: CONFIG.IMAGE_URL + 'loader/media-centre/desktop.webp',
-        mobile: CONFIG.IMAGE_URL + 'loader/media-centre/mobile.webp',
+        desktop: `${CONFIG.API_URL}assets/loader/media-centre/desktop.webp`,
+        mobile: `${CONFIG.API_URL}assets/loader/media-centre/mobile.webp`,
       })
     }else if(loaderType == 'blogs'){
       setLoaderImage({
-        desktop: CONFIG.IMAGE_URL + 'loader/blogs/desktop.webp',
-        mobile: CONFIG.IMAGE_URL + 'loader/blogs/mobile.webp',
+        desktop: `${CONFIG.API_URL}assets/loader/blogs/desktop.webp`,
+        mobile: `${CONFIG.API_URL}assets/loader/blogs/mobile.webp`,
       })
     }
     else if(loaderType == 'blog-detail'){
       setLoaderImage({
-        desktop: CONFIG.IMAGE_URL + 'loader/blogs/detail/desktop.webp',
-        mobile: CONFIG.IMAGE_URL + 'loader/blogs/detail/mobile.webp',
+        desktop: `${CONFIG.API_URL}assets/loader/blogs/detail/desktop.webp`,
+        mobile: `${CONFIG.API_URL}assets/loader/blogs/detail/mobile.webp`,
       })
     }
     else if(loaderType == 'career'){
       setLoaderImage({
-        desktop: CONFIG.IMAGE_URL + 'loader/career/desktop.webp',
-        mobile: CONFIG.IMAGE_URL + 'loader/career/mobile.webp',
+        desktop: `${CONFIG.API_URL}assets/loader/career/desktop.webp`,
+        mobile: `${CONFIG.API_URL}assets/loader/career/mobile.webp`,
       })
     }
     else if(loaderType == 'contact-us'){
       setLoaderImage({
-        desktop: CONFIG.IMAGE_URL + 'loader/contact-us/desktop.webp',
-        mobile: CONFIG.IMAGE_URL + 'loader/contact-us/mobile.webp',
+        desktop: `${CONFIG.API_URL}assets/loader/contact-us/desktop.webp`,
+        mobile: `${CONFIG.API_URL}assets/loader/contact-us/mobile.webp`,
       })
     }
   }, [loaderType])

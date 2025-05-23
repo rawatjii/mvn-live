@@ -1,93 +1,96 @@
 import React from "react";
 import * as CONFIG from '../../../../config/config';
-import bgImgMB from '../../../assets/images/aero-gurgaon/largeBg1Sm.webp'
-import bgImgDesk from '../../../assets/images/aero-gurgaon/largeBg1.png'
-import absDesk from '../../../assets/images/aero-gurgaon/building_sm.webp'
-import building_sm from '../../../assets/images/aero-gurgaon/building_sm.webp';
-import headerSidebarDesktopImg from '../../../assets/images/aero-gurgaon/header/sidebar.webp';
-import peacockDesktopImg from '../../../assets/images/aero-gurgaon/Peacock/peacock.webp';
-import yogaDeck from '../../../assets/images/aero-gurgaon/renders/landscape/yoga_deck.webp';
-import yogaDeckSm from '../../../assets/images/aero-gurgaon/renders/landscape/yoga_deck_sm.webp';
-import swimmingPool from '../../../assets/images/aero-gurgaon/renders/landscape/swimming_pool.webp';
-import swimmingPoolSm from '../../../assets/images/aero-gurgaon/renders/landscape/swimming_pool_sm.webp';
-import pargola from '../../../assets/images/aero-gurgaon/renders/landscape/pargola.webp';
-import pargolaSm from '../../../assets/images/aero-gurgaon/renders/landscape/pargola_sm.webp';
-import tennis from '../../../assets/images/aero-gurgaon/renders/landscape/tennis.webp';
-import tennisSm from '../../../assets/images/aero-gurgaon/renders/landscape/tennis_sm.webp';
-import landscape from '../../../assets/images/aero-gurgaon/renders/landscape/landscape.webp';
-import landscapeSm from '../../../assets/images/aero-gurgaon/renders/landscape/landscape_sm.webp';
+const bgImgMB = `${CONFIG.API_URL}images/aero-gurgaon/largeBg1Sm.webp`
+const bgImgDesk = `${CONFIG.API_URL}images/aero-gurgaon/largeBg1.png`
+const absDesk = `${CONFIG.API_URL}images/aero-gurgaon/building_sm.webp`
+const building_sm = `${CONFIG.API_URL}images/aero-gurgaon/building_sm.webp`;
+const headerSidebarDesktopImg = `${CONFIG.API_URL}images/aero-gurgaon/header/sidebar.webp`;
+const peacockDesktopImg = `${CONFIG.API_URL}images/aero-gurgaon/Peacock/peacock.webp`;
+const yogaDeck = `${CONFIG.API_URL}images/aero-gurgaon/renders/landscape/yoga_deck.webp`;
+const yogaDeckSm = `${CONFIG.API_URL}images/aero-gurgaon/renders/landscape/yoga_deck_sm.webp`;
+const swimmingPool = `${CONFIG.API_URL}images/aero-gurgaon/renders/landscape/swimming_pool.webp`;
+const swimmingPoolSm = `${CONFIG.API_URL}images/aero-gurgaon/renders/landscape/swimming_pool_sm.webp`;
+const pargola = `${CONFIG.API_URL}images/aero-gurgaon/renders/landscape/pargola.webp`;
+const pargolaSm = `${CONFIG.API_URL}images/aero-gurgaon/renders/landscape/pargola_sm.webp`;
+const tennis = `${CONFIG.API_URL}images/aero-gurgaon/renders/landscape/tennis.webp`;
+const tennisSm = `${CONFIG.API_URL}images/aero-gurgaon/renders/landscape/tennis_sm.webp`;
+const landscape = `${CONFIG.API_URL}images/aero-gurgaon/renders/landscape/landscape.webp`;
+const landscapeSm = `${CONFIG.API_URL}images/aero-gurgaon/renders/landscape/landscape_sm.webp`;
 
 // elevation images
-import elevationImg1 from '../../../assets/images/aero-gurgaon/renders/elevation/1.webp';
-import elevationImgSm1 from '../../../assets/images/aero-gurgaon/renders/elevation/1_sm.webp';
-import elevationImg2 from '../../../assets/images/aero-gurgaon/renders/elevation/2.webp';
-import elevationImgSm2 from '../../../assets/images/aero-gurgaon/renders/elevation/2_sm.webp';
-import elevationImg3 from '../../../assets/images/aero-gurgaon/renders/elevation/3.webp';
-import elevationImgSm3 from '../../../assets/images/aero-gurgaon/renders/elevation/3_sm.webp';
+const elevationImg1 = `${CONFIG.API_URL}images/aero-gurgaon/renders/elevation/1.webp`;
+const elevationImgSm1 = `${CONFIG.API_URL}images/aero-gurgaon/renders/elevation/1_sm.webp`;
+const elevationImg2 = `${CONFIG.API_URL}images/aero-gurgaon/renders/elevation/2.webp`;
+const elevationImgSm2 = `${CONFIG.API_URL}images/aero-gurgaon/renders/elevation/2_sm.webp`;
+const elevationImg3 = `${CONFIG.API_URL}images/aero-gurgaon/renders/elevation/3.webp`;
+const elevationImgSm3 = `${CONFIG.API_URL}images/aero-gurgaon/renders/elevation/3_sm.webp`;
 
 // apartment images
-import apartmentImg5 from '../../../assets/images/aero-gurgaon/renders/apartment/5.webp';
-import apartmentImgSm5 from '../../../assets/images/aero-gurgaon/renders/apartment/5_sm.webp';
-import apartmentImg7 from '../../../assets/images/aero-gurgaon/renders/apartment/7.webp';
-import apartmentImgSm7 from '../../../assets/images/aero-gurgaon/renders/apartment/7_sm.webp';
-import apartmentImg8 from '../../../assets/images/aero-gurgaon/renders/apartment/8.webp';
-import apartmentImgSm8 from '../../../assets/images/aero-gurgaon/renders/apartment/8_sm.webp';
-import apartmentImg6 from '../../../assets/images/aero-gurgaon/renders/apartment/6.webp';
-import apartmentImgSm6 from '../../../assets/images/aero-gurgaon/renders/apartment/6_sm.webp';
-import apartmentImg9 from '../../../assets/images/aero-gurgaon/renders/apartment/9.webp';
-import apartmentImgSm9 from '../../../assets/images/aero-gurgaon/renders/apartment/9_sm.webp';
-import apartmentImg2 from '../../../assets/images/aero-gurgaon/renders/apartment/2.webp';
-import apartmentImgSm2 from '../../../assets/images/aero-gurgaon/renders/apartment/2_sm.webp';
-import apartmentImg1 from '../../../assets/images/aero-gurgaon/renders/apartment/1.webp';
-import apartmentImgSm1 from '../../../assets/images/aero-gurgaon/renders/apartment/1_sm.webp';
-import apartmentImg3 from '../../../assets/images/aero-gurgaon/renders/apartment/3.webp';
-import apartmentImgSm3 from '../../../assets/images/aero-gurgaon/renders/apartment/3_sm.webp';
-import apartmentImg4 from '../../../assets/images/aero-gurgaon/renders/apartment/4.webp';
-import apartmentImgSm4 from '../../../assets/images/aero-gurgaon/renders/apartment/4_sm.webp';
+const apartmentImg5 = `${CONFIG.API_URL}images/aero-gurgaon/renders/apartment/5.webp`;
+const apartmentImgSm5 = `${CONFIG.API_URL}images/aero-gurgaon/renders/apartment/5_sm.webp`;
+const apartmentImg7 = `${CONFIG.API_URL}images/aero-gurgaon/renders/apartment/7.webp`;
+const apartmentImgSm7 = `${CONFIG.API_URL}images/aero-gurgaon/renders/apartment/7_sm.webp`;
+const apartmentImg8 = `${CONFIG.API_URL}images/aero-gurgaon/renders/apartment/8.webp`;
+const apartmentImgSm8 = `${CONFIG.API_URL}images/aero-gurgaon/renders/apartment/8_sm.webp`;
+const apartmentImg6 = `${CONFIG.API_URL}images/aero-gurgaon/renders/apartment/6.webp`;
+const apartmentImgSm6 = `${CONFIG.API_URL}images/aero-gurgaon/renders/apartment/6_sm.webp`;
+const apartmentImg9 = `${CONFIG.API_URL}images/aero-gurgaon/renders/apartment/9.webp`;
+const apartmentImgSm9 = `${CONFIG.API_URL}images/aero-gurgaon/renders/apartment/9_sm.webp`;
+const apartmentImg2 = `${CONFIG.API_URL}images/aero-gurgaon/renders/apartment/2.webp`;
+const apartmentImgSm2 = `${CONFIG.API_URL}images/aero-gurgaon/renders/apartment/2_sm.webp`;
+const apartmentImg1 = `${CONFIG.API_URL}images/aero-gurgaon/renders/apartment/1.webp`;
+const apartmentImgSm1 = `${CONFIG.API_URL}images/aero-gurgaon/renders/apartment/1_sm.webp`;
+const apartmentImg3 = `${CONFIG.API_URL}images/aero-gurgaon/renders/apartment/3.webp`;
+const apartmentImgSm3 = `${CONFIG.API_URL}images/aero-gurgaon/renders/apartment/3_sm.webp`;
+const apartmentImg4 = `${CONFIG.API_URL}images/aero-gurgaon/renders/apartment/4.webp`;
+const apartmentImgSm4 = `${CONFIG.API_URL}images/aero-gurgaon/renders/apartment/4_sm.webp`;
+
+// construction technology
+const constructionTechnologyVideo = `${CONFIG.API_URL}images/aero-gurgaon/construction-technology.mp4`;
 
 // amenities
-import clubhouse from '../../../assets/images/aero-gurgaon/amenities/clubhouse.webp';
-import clubhouseSm from '../../../assets/images/aero-gurgaon/amenities/clubhouseSm.webp';
-import business from '../../../assets/images/aero-gurgaon/amenities/business.webp';
-import businessSm from '../../../assets/images/aero-gurgaon/amenities/businessSm.webp';
-import library from '../../../assets/images/aero-gurgaon/amenities/library.webp';
-import librarySm from '../../../assets/images/aero-gurgaon/amenities/librarySm.webp';
-import lounge from '../../../assets/images/aero-gurgaon/amenities/lounge.webp';
-import loungeSm from '../../../assets/images/aero-gurgaon/amenities/loungeSm.webp';
-import kids from '../../../assets/images/aero-gurgaon/amenities/kids.webp';
-import kidsSm from '../../../assets/images/aero-gurgaon/amenities/kidsSm.webp';
-import gym from '../../../assets/images/aero-gurgaon/amenities/gym.webp';
-import gymSm from '../../../assets/images/aero-gurgaon/amenities/gymSm.webp';
-import spa from '../../../assets/images/aero-gurgaon/amenities/spa.webp';
-import spaSm from '../../../assets/images/aero-gurgaon/amenities/spaSm.webp';
-import theater from '../../../assets/images/aero-gurgaon/amenities/theater.webp';
-import theaterSm from '../../../assets/images/aero-gurgaon/amenities/theaterSm.webp';
-import centralGreen from '../../../assets/images/aero-gurgaon/amenities/central-green.webp';
-import centralGreenSm from '../../../assets/images/aero-gurgaon/amenities/central-green_sm.webp';
-import entryexit from '../../../assets/images/aero-gurgaon/amenities/entryexit.webp';
-import entryexitSm from '../../../assets/images/aero-gurgaon/amenities/entryexit_sm.webp';
+const clubhouse = `${CONFIG.API_URL}images/aero-gurgaon/amenities/clubhouse.webp`;
+const clubhouseSm = `${CONFIG.API_URL}images/aero-gurgaon/amenities/clubhouseSm.webp`;
+const business = `${CONFIG.API_URL}images/aero-gurgaon/amenities/business.webp`;
+const businessSm = `${CONFIG.API_URL}images/aero-gurgaon/amenities/businessSm.webp`;
+const library = `${CONFIG.API_URL}images/aero-gurgaon/amenities/library.webp`;
+const librarySm = `${CONFIG.API_URL}images/aero-gurgaon/amenities/librarySm.webp`;
+const lounge = `${CONFIG.API_URL}images/aero-gurgaon/amenities/lounge.webp`;
+const loungeSm = `${CONFIG.API_URL}images/aero-gurgaon/amenities/loungeSm.webp`;
+const kids = `${CONFIG.API_URL}images/aero-gurgaon/amenities/kids.webp`;
+const kidsSm = `${CONFIG.API_URL}images/aero-gurgaon/amenities/kidsSm.webp`;
+const gym = `${CONFIG.API_URL}images/aero-gurgaon/amenities/gym.webp`;
+const gymSm = `${CONFIG.API_URL}images/aero-gurgaon/amenities/gymSm.webp`;
+const spa = `${CONFIG.API_URL}images/aero-gurgaon/amenities/spa.webp`;
+const spaSm = `${CONFIG.API_URL}images/aero-gurgaon/amenities/spaSm.webp`;
+const theater = `${CONFIG.API_URL}images/aero-gurgaon/amenities/theater.webp`;
+const theaterSm = `${CONFIG.API_URL}images/aero-gurgaon/amenities/theaterSm.webp`;
+const centralGreen = `${CONFIG.API_URL}images/aero-gurgaon/amenities/central-green.webp`;
+const centralGreenSm = `${CONFIG.API_URL}images/aero-gurgaon/amenities/central-green_sm.webp`;
+const entryexit = `${CONFIG.API_URL}images/aero-gurgaon/amenities/entryexit.webp`;
+const entryexitSm = `${CONFIG.API_URL}images/aero-gurgaon/amenities/entryexit_sm.webp`;
 
 // no pollution
-import office from '../../../assets/images/aero-gurgaon/no-pollution/desktop/office.webp';
-import officeSm from '../../../assets/images/aero-gurgaon/no-pollution/office.webp';
-import shopping from '../../../assets/images/aero-gurgaon/no-pollution/desktop/shopping.webp';
-import shoppingSm from '../../../assets/images/aero-gurgaon/no-pollution/shopping.webp';
-import entertainment from '../../../assets/images/aero-gurgaon/no-pollution/desktop/entertainment.webp';
-import entertainmentSm from '../../../assets/images/aero-gurgaon/no-pollution/entertainment.webp';
-import sports from '../../../assets/images/aero-gurgaon/no-pollution/desktop/sports.webp';
-import sportsSm from '../../../assets/images/aero-gurgaon/no-pollution/sports.webp';
-import cinema from '../../../assets/images/aero-gurgaon/no-pollution/desktop/cinema.webp';
-import cinemaSm from '../../../assets/images/aero-gurgaon/no-pollution/cinema.webp';
+const office = `${CONFIG.API_URL}images/aero-gurgaon/no-pollution/desktop/office.webp`;
+const officeSm = `${CONFIG.API_URL}images/aero-gurgaon/no-pollution/office.webp`;
+const shopping = `${CONFIG.API_URL}images/aero-gurgaon/no-pollution/desktop/shopping.webp`;
+const shoppingSm = `${CONFIG.API_URL}images/aero-gurgaon/no-pollution/shopping.webp`;
+const entertainment = `${CONFIG.API_URL}images/aero-gurgaon/no-pollution/desktop/entertainment.webp`;
+const entertainmentSm = `${CONFIG.API_URL}images/aero-gurgaon/no-pollution/entertainment.webp`;
+const sports = `${CONFIG.API_URL}images/aero-gurgaon/no-pollution/desktop/sports.webp`;
+const sportsSm = `${CONFIG.API_URL}images/aero-gurgaon/no-pollution/sports.webp`;
+const cinema = `${CONFIG.API_URL}images/aero-gurgaon/no-pollution/desktop/cinema.webp`;
+const cinemaSm = `${CONFIG.API_URL}images/aero-gurgaon/no-pollution/cinema.webp`;
 
 // location
-import locationMap from '../../../assets/images/aero-gurgaon/location/location_map.webp';
-import locationMapSm from '../../../assets/images/aero-gurgaon/location/location-map_sm.webp';
+const locationMap = `${CONFIG.API_URL}images/aero-gurgaon/location/location_map.webp`;
+const locationMapSm = `${CONFIG.API_URL}images/aero-gurgaon/location/location-map_sm.webp`;
 
 
 // floor plan
-import penthouse from '../../../assets/images/aero-gurgaon/floorPlan/penthouse/1.webp';
-import floor360 from '../../../assets/images/aero-gurgaon/floorPlan/360/1.webp';
-import floor270 from '../../../assets/images/aero-gurgaon/floorPlan/270/1.webp';
+const penthouse = `${CONFIG.API_URL}images/aero-gurgaon/floorPlan/penthouse/1.webp`;
+const floor360 = `${CONFIG.API_URL}images/aero-gurgaon/floorPlan/360/1.webp`;
+const floor270 = `${CONFIG.API_URL}images/aero-gurgaon/floorPlan/270/1.webp`;
 
 import "./aeroGuragaon.css";
 import MicroPageGurgaon1 from "../../MicroPageGurgaon1";
@@ -162,7 +165,11 @@ export const data = {
     title: "MVN AERO ONE LUXURY RESIDENCES",
     extra: "AN EPITOME OF GLOBAL LUXURY NOW IN GURUGRAM",
     desc: "Gurugram is set to redefine luxury living with the launch  of MVN ultra-luxurious 5.5 BHK apartments, offering unmatched opulence. Combining the grandeur of Dubai and New York, these residences feature cutting-edge designs, premium amenities, and breathtaking views. Experience an elite lifestyle with sophistication and comfort at its pinnacle, like never before!",
-
+    counterHeading:true,
+    showAwards:true,
+    rera:"RERA NO. RC/REP/HARERA/GGM/889/621/2024/116",
+    isDiscountAvailable:true,
+    discountUrl:`${CONFIG.API_URL}patch/discount.webp`
   },
   LargeElevationSection: {
     title: ['Unseen', 'Unheard', 'Unimagined'],
@@ -190,6 +197,15 @@ export const data = {
     desc: "Dive into your own private pool with a grand view, just a few steps away from your living room",
     isVdo: true,
   },
+  view360:{
+    title:'360° VIEW',
+    second_title:'Uninterrupted Horizon, unmatched grandeur, unforgettable vistas',
+    // desc:'Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambience, perfect for hosting unforgettable soirees and extravagant gatherings.',
+    path:{
+      mobile:`${CONFIG.API_URL}images/aero-gurgaon/360/mobile.json`,
+      desktop:`${CONFIG.API_URL}images/aero-gurgaon/360/desktop.json`,
+    }
+  },
   peacock_section:{
     second_title:'EXPERIENCE THE GRANDEUR OF THE LIVING ROOM WITH 360° PANORAMIC VIEWS',
     desc:'Step into a living room where nature’s vibrant splendor enchants, blending elegance and serenity for both relaxation and gatherings.',
@@ -197,14 +213,16 @@ export const data = {
       mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/Peacock/data.json`,
       desktop:peacockDesktopImg,
     }
-},
+  },
   living_room:{
     Custom_height:"Custom_height",
-    second_title:'OPEN THE DOORS TO EXPANSIVE ELEGANCE AND SPACIOUS LUXURY',
-    desc:'Glide your way through the floor-to-ceiling sliding doors, and step on to the sprawling deck with breathtaking vistas and an air of tranquility.',
+    // second_title:'OPEN THE DOORS TO EXPANSIVE ELEGANCE AND SPACIOUS LUXURY',
+    // desc:'Glide your way through the floor-to-ceiling sliding doors, and step on to the sprawling deck with breathtaking vistas and an air of tranquility.',
     path:{
-      mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/livingRoom/data.json`,
-      desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/livingRoom/data.json`,
+      // mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/livingRoom/data.json`,
+      // desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/livingRoom/data.json`,
+      mobile:`${CONFIG.API_URL}videos/aeroone-gurgaon/living-room.mp4`,
+      desktop:`${CONFIG.API_URL}videos/aeroone-gurgaon/living-room.mp4`,
     }
   },
   party_video:{
@@ -219,9 +237,10 @@ export const data = {
     second_title: "BEDROOM Platinum",
     desc: "Your own sphere of serenity crafted artfully for the ultimate retreat into blissful moments of privacy.",
     path:{
-      mobile:CONFIG.IMAGE_URL + 'Panther/Mobile/data.json',
-      desktop:CONFIG.IMAGE_URL + 'Panther/Desktop/data.json'
-    }
+      mobile:CONFIG.API_URL + 'assets/Panther/Mobile/data.json',
+      desktop:CONFIG.API_URL + 'assets/Panther/Desktop/data.json'
+    },
+    showAwards:true,
   },
   landscape:{
     title:'Landscape',
@@ -344,6 +363,9 @@ export const data = {
         ],
     imageClassName:'apartment-section-img',
   },
+  construction_technology:{
+    videoUrl:constructionTechnologyVideo,
+  },
   highlights: [
     "Power backup for common facilities.",
     "Italian/Imported Marble flooring.",
@@ -353,7 +375,7 @@ export const data = {
     "Premium emulsion paint finish.",
   ],
   walkthrough: {
-    src: "https://www.youtube.com/embed/9CHcJAveejU?si=Sr3K9ETfhxeyjrOW",
+    src: "https://www.youtube.com/embed/9CHcJAveejU?loop=1&mute=1&playlist=9CHcJAveejU",
     // title: "Virtual Tour",
     // title: "Walkthrough",
     second_title:'A GLIMPSE INTO A LIFE EXTRAORDINARY',
@@ -552,7 +574,7 @@ export const data = {
          desc:'Experience unparalleled privacy and convenience with exclusive entry and exit points designed for residents of MVN, ensuring seamless access and an elite living experience.'
        },
      ],
-      
+    //  iframe:'https://www.youtube.com/embed/BqcxVd21m6Y?autoplay=1&loop=1&mute=1&playlist=BqcxVd21m6Y'
    },
   noPollutionZone:{
       title:'Connections with MVN Mall',
@@ -598,7 +620,7 @@ export const data = {
           desc:'Have a blockbuster of a time, without ever missing a show due to traffic. Catch up with all the superhits at the theatres below in the MVN mall.'
         },
       ],
-       
+      
     },
   highlight:{
     isshow: true,
@@ -619,13 +641,6 @@ export const data = {
       desktop:locationMap,
       mobile:locationMapSm
     },
-    //     yasho bhoomi
-    // indira gandhi international airport
-    // diplomatic enclave
-    // palam vihar 
-    // gurgaon railway station
-    // dlf cyber city 
-    // world global city
     locationData: [
       {
         distance: '0 km',
@@ -655,7 +670,9 @@ export const data = {
         distance: '29.7 kms',
         title: 'IGI Airport',
       },
-    ]
+    ],
+    second_title:'THE LOCATION AS INVITING AS ITS ALLURE',
+    desc:'Located at the prime 22km stone on Dwarka Expressway, Gurugram, MVN Aero One sits on the growth corridor at the first and only drop of the 23km elevated expressway. Strategically positioned at downtown Gurugram.'
   },
   floorPlan:{
       title:'Floor Plan',
@@ -692,13 +709,14 @@ export const data = {
     mvnMall:{
       Custom_height:"Custom_height",
       path:{
-        mobilePath:`../../assets/images/mvn-mall/mvn-mall/`,
-        desktopPath:`../../assets/images/mvn-mall/mvn-mall/`,
+        mobilePath:`${CONFIG.API_URL}assets/mvn-mall/mvn-mall/`,
+        desktopPath:`${CONFIG.API_URL}assets/mvn-mall/mvn-mall/`,
       },
       frameCounts:{
         mobileFrameCounts:102,
         desktopFrameCounts:102,
-      }
+      },
+      // iframe:'https://www.youtube.com/embed/CbmkQBZuvTw?autoplay=1&loop=1&mute=1&playlist=CbmkQBZuvTw'
     }
 };
 

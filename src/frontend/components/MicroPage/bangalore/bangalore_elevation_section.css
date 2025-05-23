@@ -23,7 +23,7 @@
     margin-top: 58px;
     display: flex;
     justify-content: center;
-    background: url(../../../assets/images/aero-bangalore/lg_elevation-bg.png) no-repeat;
+    background: url('https://img.websitedesigningcompany.co.in/public/images/aero-bangalore/lg_elevation-bg.png') no-repeat;
     background-size: 100% 98%;
     background-position: bottom;
 }
@@ -86,7 +86,7 @@
     margin-top: 58px;
     display: flex;
     justify-content: center;
-    background: url(../../../assets/bangalore/elegence/lg_elevation-bg.png) no-repeat;
+    background: url('https://img.websitedesigningcompany.co.in/public/bangalore/elegence/lg_elevation-bg.png') no-repeat;
     background-size: 100% 98%;
     background-position: bottom;
     height: calc(100vh - 79px);

@@ -5,12 +5,9 @@ import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import LazyLoad from "react-lazyload";
 
-import bg from "../../assets/images/about/building_bg.png";
-import Desktopabout_img from "../../assets/images/about/desktopabout_img.webp";
-import Mobileabout_img from "../../assets/images/about/desktopabout_img.webp";
 import AnImage from "../../../common/animations/Image/Index";
-import OverviewIcon from "../../assets/images/icons/heading-icon-img.webp";
 import { useMatches } from "../../../theme/theme";
+import { API_URL } from "../../../config/config";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -72,18 +69,15 @@ const Overview = () => {
 
 <>
 
-
-
-
     <section className="section about_overview pb-0" aria-label="Overview Section">
       <div className="content_col position-relative page-header-main-heading">
         <LazyLoad>
-          <img src={bg} alt="mvn about background" className="img-fluid about_bg" />
+          <img src={`${API_URL}images/about/building_bg.png`} alt="mvn about background" className="img-fluid about_bg" />
         </LazyLoad>
 
         <Container>
           <div className="heading_div mb_60 mb_sm_30">
-            <img src={OverviewIcon} alt="mvn overview image" className="img-fluid title_plane1"/>
+            <img src={`${API_URL}images/icons/heading-icon-img.webp`} alt="mvn overview image" className="img-fluid title_plane1"/>
             <h4 ref={titleRef} className="title title_style1 text-center">
               Building spaces <span>that help you grow</span>
             </h4>
@@ -109,7 +103,7 @@ const Overview = () => {
       {/* Image changes based on screen size */}
       <AnImage ref={imageRef} className="img_col">
         <img
-          src={isMobile ? Mobileabout_img : Desktopabout_img}
+          src={isMobile ? `${API_URL}images/about/desktopabout_img.webp` : `${API_URL}images/about/desktopabout_img.webp`}
           alt="mvn about background"
           className="img-fluid about_img"
         />
