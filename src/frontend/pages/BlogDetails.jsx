@@ -1,15 +1,14 @@
-import React,{useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import MicroBanner from "../components/MicroBanner/Index";
 import { API_URL } from "../../config/config";
 
-
-import { Container,  } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
-
-import {blogData} from '../../data/blogsdata';
+import { blogData } from "../../data/blogsdata";
 import Layout from "../components/Layout";
+import { Helmet } from "react-helmet";
 
 const Desktopmicro_bg = `${API_URL}images/blogs/blog.jpg`;
 
@@ -17,9 +16,10 @@ function BlogDetails() {
   window.scrollTo(0, 0);
   // const selectedBlog = useSelector((state) => state.blogs.selectedBlog);
   const [selectedBlog, setSelectedBlog] = useState({});
-  const [newLoadingCount, setNewLoadingCount] = useState(Number(localStorage.getItem('count')));
+  const [newLoadingCount, setNewLoadingCount] = useState(
+    Number(localStorage.getItem("count"))
+  );
   const { slug } = useParams();
-
 
   const breadcrumbs = {
     title: "Blogs",
@@ -34,62 +34,62 @@ function BlogDetails() {
     ],
   };
 
-
   const findBlogBySlug = (slug) => {
-    return  blogData.find((blog) => blog.slug === slug);
-
+    return blogData.find((blog) => blog.slug === slug);
   };
 
   useEffect(() => {
     // Side effect code here
-  const result=findBlogBySlug(slug);
-  setSelectedBlog(result);
+    const result = findBlogBySlug(slug);
+    setSelectedBlog(result);
   }, [slug]);
 
   useEffect(() => {
-    setNewLoadingCount(Number(localStorage.getItem('count')));
-  }, [localStorage.getItem('count')]);
+    setNewLoadingCount(Number(localStorage.getItem("count")));
+  }, [localStorage.getItem("count")]);
   return (
-    <Layout>
-      <div className="blog_page">
-        <MicroBanner bg={Desktopmicro_bg} data={breadcrumbs} />
-        <Container className="text-center py-5">
-        </Container>
-        <div className="container">
-          <div className="row row-gap-3">
-          <div className="col-sm-12 col-md-8 col-lg-8">
-  
-          <div className="">
-              <img
-                src={selectedBlog?.img}
-                alt="mvn blog image"
-                className="w-100 rounded-3"
-              />
-            </div>
-            <div>
-                  {selectedBlog?.description?.map((item)=>{
-                    return <>
-                    <div className="mb-2">
-                      
-                    <h2 className="blog-detail-page-heading" dangerouslySetInnerHTML={{ __html: item.heading }} ></h2> 
-                    <div className="blog-deatail-page-description" dangerouslySetInnerHTML={{ __html: item.description }} />
-
-                    </div>
-                    </>
+    <>
+      <Helmet>
+        <title>{selectedBlog?.meta_title}</title>
+        <meta name="description" content={selectedBlog?.meta_description} />
+        <link rel="canonical" href={selectedBlog?.colonical} />
+      </Helmet>
+      <Layout>
+        <div className="blog_page">
+          <MicroBanner bg={Desktopmicro_bg} data={breadcrumbs} />
+          <Container className="text-center py-5"></Container>
+          <div className="container">
+            <div className="row row-gap-3">
+              <div className="col-sm-12 col-md-8 col-lg-8">
+                <div className="">
+                  <img
+                    src={selectedBlog?.img}
+                    alt="mvn blog image"
+                    className="w-100 rounded-3"
+                  />
+                </div>
+                <div>
+                  {selectedBlog?.description?.map((item) => {
+                    return (
+                      <>
+                        <div className="mb-2">
+                          <h2
+                            className="blog-detail-page-heading"
+                            dangerouslySetInnerHTML={{ __html: item.heading }}
+                          ></h2>
+                          <div
+                            className="blog-deatail-page-description"
+                            dangerouslySetInnerHTML={{ __html: item.description }}
+                          />
+                        </div>
+                      </>
+                    );
                   })}
-
-
-
-            
-            </div>
-            
-
-
-          </div>
-          <div className="col-sm-12 col-md-4 col-lg-4">
-
-                  <div className="row">
-                <h3>Related Blogs</h3>
+                </div>
+              </div>
+              <div className="col-sm-12 col-md-4 col-lg-4">
+                <div className="row">
+                  <h3>Related Blogs</h3>
                   {blogData &&
                     blogData.map((el, i) => (
                       <div
@@ -98,13 +98,20 @@ function BlogDetails() {
                       >
                         <div className="blog-platter-box">
                           <div className="blog-platter-img">
-                            <img className="img-fluid" src={el.img} alt="mvn blog image" />
+                            <img
+                              className="img-fluid"
+                              src={el.img}
+                              alt="mvn blog image"
+                            />
                           </div>
                           <div className="blog-platter-detail">
                             <h4>{el.title}</h4>
                             <div className="blog-platter-detail-btn">
                               <p>{el.date}</p>
-                              <Link className="btn btn_style2"   to={`/blogs/${el.slug}`}>
+                              <Link
+                                className="btn btn_style2"
+                                to={`/blogs/${el.slug}`}
+                              >
                                 View Details
                               </Link>
                             </div>
@@ -112,16 +119,13 @@ function BlogDetails() {
                         </div>
                       </div>
                     ))}
-
-  </div>
-
-
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </Layout>
-    
+      </Layout>
+    </>
   );
 }
 

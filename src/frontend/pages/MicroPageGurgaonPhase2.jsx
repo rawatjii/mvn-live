@@ -68,6 +68,36 @@ const MicroPageGurgaonPhase2 = ({ data, loadingCount, setLoadingCount }) => {
 
       
       <Helmet>
+
+        <title> MVN Athens Phase-2 | Modern Residences in Sector-5, Sohna, Gurugram </title>
+        <meta name="keywords" content="MVN Athens Phase-2, MVN Athens Sohna, MVN Athens Gurugram, Residential projects in Sohna, Flats in Sector-5 Sohna, Affordable housing Sohna Gurugram" />
+        <meta name="description" content="MVN Athens Phase-2 in Sector-5, Sohna, Gurugram offers stylish, well-connected homes with modern amenities for a comfortable lifestyle." />
+        <link rel="canonical" href="https://www.mvn.in/mvn-athens-gurgaon-phase-2" />
+        <meta name="distribution" content="Global" />
+        <meta name="Language" content="English" />
+        <meta name="doc-type" content="Public" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="MVN Athens Gurugram" />  
+        <meta name="googlebot" content="all, index, follow" />
+        <meta name="YahooSeeker" content="all, index, follow" />
+        <meta name="msnbot" content="all, index, follow" />
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="revisit-after" content="1 days" />
+        <meta name="rating" content="safe for kids" />
+        <meta name="expires" content="never" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="MVN Athens Phase-2 | Modern Residences in Sector-5, Sohna, Gurugram" />
+        <meta property="og:description" content="MVN Athens Phase-2, MVN Athens Sohna, MVN Athens Gurugram, Residential projects in Sohna, Flats in Sector-5 Sohna, Affordable housing Sohna Gurugram." />
+        <meta property="og:url" content="https://www.mvn.in/mvn-athens-gurgaon-phase-2" />
+        <meta property="og:site_name" content="MVN Athens Gurugram" />
+        <meta property="og:image" content="https://img.websitedesigningcompany.co.in/public/assets/logo_white.webp" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@MVN_infra" />        
+        <meta name="twitter:title" content="MVN Athens Phase-2 | Modern Residences in Sector-5, Sohna, Gurugram" />
+        <meta name="twitter:description" content="MVN Athens Phase-2 in Sector-5, Sohna, Gurugram offers stylish, well-connected homes with modern amenities for a comfortable lifestyle." />
+        <meta name="twitter:creator" content="@MVN_infra" />
+        <meta name="twitter:image" content="https://img.websitedesigningcompany.co.in/public/assets/logo_white.webp" />
+
         <script>
           {`
             window.dataLayer = window.dataLayer || [];

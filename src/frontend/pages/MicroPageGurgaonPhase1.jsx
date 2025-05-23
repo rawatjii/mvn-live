@@ -69,34 +69,34 @@ const MicroPageGurgaonPhase1 = ({ data, loadingCount, setLoadingCount }) => {
       
       <Helmet>
 
-      <title> MVN Athens Phase 1 | Premium Residences in Sector-5, Sohna, Gurugram </title>
-      <meta name="keywords" content="MVN Athens Phase 1, MVN Athens Gurugram, MVN Athens Sector 5 Sohna, 2 BHK apartment, MVN Infrastructure" />
-      <meta name="description" content="MVN Athens Phase 1 offers modern homes in Sector-5, Sohna, Gurugram with great amenities and connectivity. Delivery before time, Affordable luxury." />
-      <link rel="canonical" href="https://www.mvn.in/mvn-athens-gurgaon-phase-1" />
-      <meta name="distribution" content="Global" />
-      <meta name="Language" content="English" />
-      <meta name="doc-type" content="Public" />
-      <meta name="robots" content="index, follow" />
-      <meta name="author" content="MVN Mall Gurugram" />  
-      <meta name="googlebot" content="all, index, follow" />
-      <meta name="YahooSeeker" content="all, index, follow" />
-      <meta name="msnbot" content="all, index, follow" />
-      <meta name="HandheldFriendly" content="true" />
-      <meta name="revisit-after" content="1 days" />
-      <meta name="rating" content="safe for kids" />
-      <meta name="expires" content="never" />
-      <meta property="og:type" content="website" />
-      <meta property="og:title" content="MVN Athens Phase 1 | Premium Residences in Sector-5, Sohna, Gurugram" />
-      <meta property="og:description" content="MVN Athens Phase 1 offers modern homes in Sector-5, Sohna, Gurugram with great amenities and connectivity. Delivery before time, Affordable luxury." />
-      <meta property="og:url" content="https://www.mvn.in/mvn-athens-gurgaon-phase-1" />
-      <meta property="og:site_name" content="MVN Mall Gurugram" />
-      <meta property="og:image" content="https://img.websitedesigningcompany.co.in/public/assets/logo_white.webp" />
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:site" content="@MVN_infra" />        
-      <meta name="twitter:title" content="MVN Athens Phase 1 | Premium Residences in Sector-5, Sohna, Gurugram" />
-      <meta name="twitter:description" content="MVN Athens Phase 1 offers modern homes in Sector-5, Sohna, Gurugram with great amenities and connectivity. Delivery before time, Affordable luxury." />
-      <meta name="twitter:creator" content="@MVN_infra" />
-      <meta name="twitter:image" content="https://img.websitedesigningcompany.co.in/public/assets/logo_white.webp" />
+        <title> MVN Athens Phase 1 | Premium Residences in Sector-5, Sohna, Gurugram </title>
+        <meta name="keywords" content="MVN Athens Phase 1, MVN Athens Gurugram, MVN Athens Sector 5 Sohna, 2 BHK apartment, MVN Infrastructure" />
+        <meta name="description" content="MVN Athens Phase 1 offers modern homes in Sector-5, Sohna, Gurugram with great amenities and connectivity. Delivery before time, Affordable luxury." />
+        <link rel="canonical" href="https://www.mvn.in/mvn-athens-gurgaon-phase-1" />
+        <meta name="distribution" content="Global" />
+        <meta name="Language" content="English" />
+        <meta name="doc-type" content="Public" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="MVN Athens Gurugram" />  
+        <meta name="googlebot" content="all, index, follow" />
+        <meta name="YahooSeeker" content="all, index, follow" />
+        <meta name="msnbot" content="all, index, follow" />
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="revisit-after" content="1 days" />
+        <meta name="rating" content="safe for kids" />
+        <meta name="expires" content="never" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="MVN Athens Phase 1 | Premium Residences in Sector-5, Sohna, Gurugram" />
+        <meta property="og:description" content="MVN Athens Phase 1 offers modern homes in Sector-5, Sohna, Gurugram with great amenities and connectivity. Delivery before time, Affordable luxury." />
+        <meta property="og:url" content="https://www.mvn.in/mvn-athens-gurgaon-phase-1" />
+        <meta property="og:site_name" content="MVN Athens Gurugram" />
+        <meta property="og:image" content="https://img.websitedesigningcompany.co.in/public/assets/logo_white.webp" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@MVN_infra" />        
+        <meta name="twitter:title" content="MVN Athens Phase 1 | Premium Residences in Sector-5, Sohna, Gurugram "/>
+        <meta name="twitter:description" content="MVN Athens Phase 1 offers modern homes in Sector-5, Sohna, Gurugram with great amenities and connectivity. Delivery before time, Affordable luxury." />
+        <meta name="twitter:creator" content="@MVN_infra" />
+        <meta name="twitter:image" content="https://img.websitedesigningcompany.co.in/public/assets/logo_white.webp" />
 
         <script>
           {`

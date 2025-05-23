@@ -46,8 +46,20 @@ export const blogData = [
           `,
       },
     ],
+    meta_title:
+      "Experience Ultra Luxury Living with MVN Aero One | Gurugram",
+    meta_description:
+      "Live the pinnacle of luxury at MVN Aero One Gurugram. Explore premium amenities and world-class residences designed for a sophisticated lifestyle.",
+    colonical:
+      "https://www.mvn.in/blogs/experience-the-pinnacle-of-ultra-luxury-living-with-mvn-aero-one",
   },
   {
+    meta_title:
+      "MVN AeroOne Gurugram: Redefining Luxury Living in Gurugram",
+    meta_description:
+      "Discover MVN AeroOne, a landmark project redefining luxury living in Gurugram with spacious designs, elite amenities, and prime location advantages.",
+    colonical:
+      "https://www.mvn.in/blogs/mvn-aeroone-gurugram-by-mvn-redefining-luxury-living-in-gurugram",
     title: "MVN AeroOne Gurugram by MVN: Redefining Luxury Living in Gurugram",
     slug: "mvn-aeroone-gurugram-by-mvn-redefining-luxury-living-in-gurugram",
     img: `${API_URL}images/blogs/blog_11.webp`,
@@ -149,6 +161,12 @@ The future of luxury living is here, and it's soaring above Gurugram's skyline. 
   },
 
   {
+    meta_title:
+      "Dwarka Expressway: Transforming Urban Connectivity & Real Estate",
+    meta_description:
+      "Explore how Dwarka Expressway is reshaping urban connectivity and boosting real estate dynamics, making it a hotspot for property investment.",
+    colonical:
+      "https://www.mvn.in/blogs/dwarka-expressway-redefining-urban-connectivity-and-real-estate-dynamics",
     title:
       "Dwarka Expressway Redefining Urban Connectivity And Real Estate Dynamics",
     slug: "dwarka-expressway-redefining-urban-connectivity-and-real-estate-dynamics",
@@ -211,6 +229,12 @@ Whether you're looking for luxury living, commercial investment opportunities, o
     ],
   },
   {
+    meta_title:
+      "Why Real Estate Remains a Top Investment Choice?: Benefits & Opportunities",
+    meta_description:
+      "Discover why real estate is a preferred investment option. Explore key benefits and opportunities that make property investment rewarding and secure.",
+    colonical:
+      "https://www.mvn.in/blogs/why-real-estate-remains-a-top-investment-choice-key-benefits-and-opportunities",
     title:
       "Why Real Estate Remains a Top Investment Choice: Key Benefits and Opportunities",
     slug: "why-real-estate-remains-a-top-investment-choice-key-benefits-and-opportunities",

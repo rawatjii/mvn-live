@@ -67,6 +67,37 @@ const MicroPageFaridabad = ({ data, loadingCount, setLoadingCount }) => {
 
       
       <Helmet>
+
+        <title> MVN Athens Ballabgarh | Premium Residential Project in Faridabad </title>
+          <meta name="keywords" content="MVN Athens Ballabgarh, MVN Athens Faridabad, Residential projects in Ballabgarh, Flats in Ballabgarh Faridabad, mvn Infrastructure projects" />
+          <meta name="description" content="MVN Athens in Ballabgarh, Faridabad offers well-designed residential apartments with modern amenities, excellent connectivity, and a comfortable living environment." />
+          <link rel="canonical" href="https://www.mvn.in/mvn-athens-faridabad" />
+          <meta name="distribution" content="Global" />
+          <meta name="Language" content="English" />
+          <meta name="doc-type" content="Public" />
+          <meta name="robots" content="index, follow" />
+          <meta name="author" content="MVN Athens Faridabad" />  
+          <meta name="googlebot" content="all, index, follow" />
+          <meta name="YahooSeeker" content="all, index, follow" />
+          <meta name="msnbot" content="all, index, follow" />
+          <meta name="HandheldFriendly" content="true" />
+          <meta name="revisit-after" content="1 days" />
+          <meta name="rating" content="safe for kids" />
+          <meta name="expires" content="never" />
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content="MVN Athens Ballabgarh | Premium Residential Project in Faridabad "/>
+          <meta property="og:description" content="MVN Athens in Ballabgarh, Faridabad offers well-designed residential apartments with modern amenities, excellent connectivity, and a comfortable living environment." />
+          <meta property="og:url" content="https://www.mvn.in/mvn-athens-faridabad" />
+          <meta property="og:site_name" content="MVN Athens Faridabad" />
+          <meta property="og:image" content="https://img.websitedesigningcompany.co.in/public/assets/logo_white.webp" />
+          <meta name="twitter:card" content="summary" />
+          <meta name="twitter:site" content="@MVN_infra" />        
+          <meta name="twitter:title" content="MVN Athens Ballabgarh | Premium Residential Project in Faridabad" />
+          <meta name="twitter:description" content="MVN Athens in Ballabgarh, Faridabad offers well-designed residential apartments with modern amenities, excellent connectivity, and a comfortable living environment." />
+          <meta name="twitter:creator" content="@MVN_infra" />
+          <meta name="twitter:image" content="https://img.websitedesigningcompany.co.in/public/assets/logo_white.webp" />
+
+
         <script>
           {`
             window.dataLayer = window.dataLayer || [];
