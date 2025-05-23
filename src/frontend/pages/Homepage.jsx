@@ -74,14 +74,14 @@ const Homepage = () => {
           <meta property="og:description" content="Best Developers in Gurgaon. 5.5 BHK Largest floor sizes in Gurugram. 40+ years of delivering trust and projects on time. MVN Infrastructure." />
           <meta property="og:url" content="https://www.mvn.in/" />
           <meta property="og:site_name" content="MVN Infrastructure" />
-          <meta property="og:image" content="https://mvn.in/assets/images/mvn.webp" />
+          <meta property="og:image" content="https://mvn.in/assets/images/logo.png" />
 
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:site" content="@MVN_infra" />    
           <meta name="twitter:title" content="Best Property Developers in Gurugram| MVN Infrastructure" />
           <meta name="twitter:description" content="Best Developers in Gurgaon. 5.5 BHK Largest floor sizes in Gurugram. 40+ years of delivering trust and projects on time. MVN Infrastructure." />
           <meta name="twitter:creator" content="@MVN_infra" />
-          <meta name="twitter:image" content="https://mvn.in/assets/images/mvn.webp" />
+          <meta name="twitter:image" content="https://mvn.in/assets/images/logo.png" />
 
           <script type="application/ld+json">
             {`
