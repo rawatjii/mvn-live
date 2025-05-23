@@ -22,9 +22,9 @@ const Overview = ({className}) => {
           </div>
 
           <div className="mb-4 mb-md-5">
-              <h3 className="mt-0 slogan-heading">
+              <h1 className="mt-0 slogan-heading">
                 Most Mesmerizing Digital Experience
-              </h3>
+              </h1>
               <a
                 href={import.meta.env.VITE_APP_URL + "aeroone-gurgaon"}
                 className="btn btn_style3 r_100 mt-3 mt-md-4"
