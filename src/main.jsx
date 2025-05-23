@@ -86,6 +86,7 @@ import MvnMall from "./admin/components/dashboard/microsite/mvn-mall.jsx";
 import AdminHomepage from './admin/pages/Homepage.jsx'
 import SinglePage from "./admin/pages/Index.jsx";
 import AdminWorkCulture from "./admin/WorkCulture.jsx";
+import MicroPageLayout from "./frontend/pages/micro/Index.jsx";
 // import Apartment from "./admin/components/dashboard/microsite/Apartment.jsx";
 const router = createBrowserRouter([
   {
@@ -105,6 +106,14 @@ const router = createBrowserRouter([
         element: (
           <FrontendRoute loaderType="about-us" >
             <AboutUs />
+          </FrontendRoute>
+        ),
+      },
+      {
+        path: ":project",
+        element: (
+          <FrontendRoute loaderType="aeroone-gurgaon">
+            <MicroPageLayout data={data} />
           </FrontendRoute>
         ),
       },

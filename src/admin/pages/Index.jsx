@@ -11,6 +11,8 @@ import useCrud from "../hooks/useCrud";
 
 const SinglePage = () => {
   const { pageName } = useParams();
+  const [updateApi, setUpdateApi] = useState(null);
+
   const sectionApi = generateApi(`page-section-list`);
   const editSectionApi = generateApi(`distnict-page-section-list/${pageName}`);
   const singlePageApi = generateApi(`page-section/${pageName}`);
@@ -22,6 +24,8 @@ const SinglePage = () => {
   // const {  data: editSectionData} = useCrud(editData);
   const {  data: editSectionData} = useCrud(editSectionApi);
   
+  const { editItem:updateFormData } = useCrud(updateApi);
+  
   const handleSectionSubmit = (formData, name) => {
     formData.append("page", pageName);
     formData.append("page_section", name);
@@ -30,8 +34,16 @@ const SinglePage = () => {
   };
 
   const updateHandler = (formData, name)=>{
-    console.log('formData',JSON.parse(formData));
-    
+    setUpdateApi(generateApi(`page-section-list/${name}`));
+
+    return (formData)=> updateFormData(formData)
+
+    // console.log('updateApi',updateApi);
+    // return;
+    // return updateItem(formData)
+
+
+
   }
 
   useEffect(() => {
