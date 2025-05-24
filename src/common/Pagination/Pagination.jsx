@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './pagination.css';
 import * as CONFIG from 'root/config/config'
+import { API_URL } from '../../config/config';
 
-import chevronLeftIcon from '../../frontend/assets/images/icons/chevron_left.svg';
-import chevronRightIcon from '../../frontend/assets/images/icons/chevron_right.svg';
+const chevronLeftIcon = `${API_URL}images/icons/chevron_left.svg`;
+const chevronRightIcon = `${API_URL}images/icons/chevron_right.svg`;
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   // Generate an array of page numbers from 1 to totalPages

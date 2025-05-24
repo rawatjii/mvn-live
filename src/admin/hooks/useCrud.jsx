@@ -13,12 +13,16 @@ const useCrud = (apiService) => {
     setLoading(true);
     try {
       const res = await apiService.get();
-      setData(res.data.data);
+      const fetchedData = res?.data?.data || []; // Fallback to empty array if data is undefined
+      setData(fetchedData);
+      setLoading(false);
+      return fetchedData; // Return the data explicitly
     } catch (err) {
       console.error("❌ Fetch error:", err);
       setError(err);
+      setLoading(false);
+      throw err; // Throw error to allow calling code to handle it
     }
-    setLoading(false);
   };
 
   useEffect(() => {
@@ -58,8 +62,9 @@ const useCrud = (apiService) => {
     editItem: async (id, item) => {
       try {
         await apiService.update(id, item);
-        toast.success("Value updated successfully!");
+        // console.log(fetchAll())
         await fetchAll(); 
+        toast.success("Value updated successfully!");
       } catch (err) {
         console.log(err)
         toast.error("❌ Failed to add value.");
@@ -72,6 +77,23 @@ const useCrud = (apiService) => {
       getEditData: async (item) => {
         try {
         const response = await apiService.editGet(item); // Assuming section_type is needed
+        const data = response.data;
+        // toast.success("✅ Value fetched successfully!");
+        return data;
+        } catch (err) {
+        // toast.error("❌ Failed to fetch value.");
+        const errorMessage = err.response?.data?.message || err.message || "Failed to fetch value";
+        // toast.error(`❌ ${errorMessage}`);
+        setError(err);
+        return null;
+        }
+        },
+
+        
+
+      getMultiEditdata: async (item) => {
+        try {
+        const response = await apiService.editMultApiCall(item); // Assuming section_type is needed
         const data = response.data;
         // toast.success("✅ Value fetched successfully!");
         return data;

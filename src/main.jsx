@@ -47,12 +47,7 @@ import "./savan.css";
 import './adarsh.css';
 import "./admin/assets/css/microsite.css"
 
-import {bangaloreData} from './frontend/pages/micro/mvn-aeroone-bangalore/Index.jsx';
-import { faridabadData } from "./frontend/pages/micro/Athens/Index.jsx";
-import { athensGurgaonPhase1Data } from "./frontend/pages/micro/athens-gurgaon-phase-1/Index.jsx";
-import { athensGurgaonPhase2Data } from "./frontend/pages/micro/athens-gurgaon-phase-2/Index.jsx";
-import { mvnMallData } from "./frontend/pages/micro/mvnMall/Index.jsx";
-import MvnMall1 from "./frontend/pages/mvnMall.jsx";
+
 import AdminLayout from "./admin/components/ContentLayout/AdminLayout.jsx";
 import Dashboard from "./admin/Dashboard.jsx";
 import Amenities from "./admin/components/dashboard/microsite/Amenities.jsx";
@@ -93,6 +88,7 @@ import AdminHomepage from './admin/pages/Homepage.jsx'
 import SinglePage from "./admin/pages/Index.jsx";
 import AdminWorkCulture from "./admin/WorkCulture.jsx";
 import MicroPageLayout from "./frontend/pages/micro/Index.jsx";
+import MicroPage from "./frontend/pages/Micro.jsx";
 // import Apartment from "./admin/components/dashboard/microsite/Apartment.jsx";
 const router = createBrowserRouter([
   {
@@ -116,10 +112,10 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: ":project",
+        path: ":projectName",
         element: (
           <FrontendRoute loaderType="aeroone-gurgaon">
-            <MicroPageLayout data={data} />
+            <MicroPage data={data} />
           </FrontendRoute>
         ),
       },

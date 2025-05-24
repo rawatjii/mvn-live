@@ -7,11 +7,14 @@ const getAuthHeader = () => {
 };
 
 const generateApi = (endpoint,callVia,changeEndpointVia) => {
+
+
+  console.log(endpoint)
   const baseUrl = `${API_BASE_URL}/${endpoint}`;
 
   return {
     get: () => {
-        if(callVia!=0){
+    if(callVia!=0){
       const headers = getAuthHeader();
       console.log("🔐 Request Headers:", headers); 
       return axios.get(baseUrl, { headers });
@@ -19,8 +22,10 @@ const generateApi = (endpoint,callVia,changeEndpointVia) => {
     },
     create: (data) => axios.post(baseUrl, data, { headers: getAuthHeader() }),
     update:changeEndpointVia==1?  (data) => axios.post(`${baseUrl}`, data, { headers: getAuthHeader() }):(id, data) => axios.put(`${baseUrl}/${id}`, data, { headers: getAuthHeader() }),
-  delete: (id) => axios.delete(`${baseUrl}/${id}`, { headers: getAuthHeader() }),
-    editGet: (data) => axios.post(`${baseUrl}`,data,{ headers: getAuthHeader() })
+    delete: (id) => axios.delete(`${baseUrl}/${id}`, { headers: getAuthHeader() }),
+    editGet: (data) => axios.post(`${baseUrl}`,data,{ headers: getAuthHeader() }),
+    editMultApiCall: (data) => axios.get(`${baseUrl}`,{ headers: getAuthHeader() })
+
 
   };
 };

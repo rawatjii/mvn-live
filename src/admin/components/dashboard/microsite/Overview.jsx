@@ -46,7 +46,6 @@ const OverviewMicroSite = () => {
 
   const handleCreate = async (formData) => {
     try {
-      // formData.append("is_type", "image");
       await createItem(formData);
       await fetchEditData();
     } catch (error) {

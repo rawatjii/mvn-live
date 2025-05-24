@@ -11,41 +11,62 @@ import useCrud from "../hooks/useCrud";
 
 const SinglePage = () => {
   const { pageName } = useParams();
-  const [updateApi, setUpdateApi] = useState(null);
+  const [editData, setEditData] = useState(null);
 
-  const sectionApi = generateApi(`page-section-list`);
-  const editSectionApi = generateApi(`distnict-page-section-list/${pageName}`);
+  const editSectionApi = generateApi(`distnict-page-section-list/${pageName}`,0);
   const singlePageApi = generateApi(`page-section/${pageName}`);
-  // const editData = generateApi(`page-section-list/contact-banner`);
 
-  const {  data, loading, error, createItem, updateItem, editItem, deleteItem } = useCrud(singlePageApi);
+  const getEditDataApi = generateApi("page-section-list", 0);
+
+
+  const {data} = useCrud(singlePageApi); //form
+  const {data: editSectionData,getMultiEditdata} = useCrud(editSectionApi); //preflldata
+ 
+  const { editItem:updateFormData,createItem } = useCrud(getEditDataApi); //update
+
+
+
   const [formSections, setFormSections] = useState([]);
-  const {  data: sectionData, loading: sectionLoading, error: sectionError, createItem: sectionCreateItem, updateItem: sectionUpdateItem, editItem: sectionEditItem, deleteItem: sectionDeleteItem } = useCrud(sectionApi);
-  // const {  data: editSectionData} = useCrud(editData);
-  const {  data: editSectionData} = useCrud(editSectionApi);
-  
-  const { editItem:updateFormData } = useCrud(updateApi);
-  
-  const handleSectionSubmit = (formData, name) => {
-    formData.append("page", pageName);
-    formData.append("page_section", name);
-    debugger
-    // return sectionCreateItem(formData);
+
+
+
+  const fetchEditData = async () => {
+    // alert("im")
+
+ 
+    try {
+      const data = await getMultiEditdata();
+        setEditData(data.data);
+    } catch (error) {
+      console.error("Error fetching edit data:", error);
+    }
   };
 
-  const updateHandler = (formData, name)=>{
-    setUpdateApi(generateApi(`page-section-list/${name}`));
+  const handleCreate = async (formData,name) => {
+    try {
+      formData.append("page_section",name);
+      formData.append("page",pageName)
 
-    return (formData)=> updateFormData(formData)
+      await createItem(formData);
+      await fetchEditData();
+    } catch (error) {
+      console.error("Error creating project section:", error);
+    }
+  };
 
-    // console.log('updateApi',updateApi);
-    // return;
-    // return updateItem(formData)
+  const handleEdit = async (name,formData) => {
+    try {
+      await updateFormData(name, formData);
 
+      await fetchEditData();
+    } catch (error) {
+      console.error("Error updating project section:", error);
+    }
+  };
+  useEffect(()=>{
+    fetchEditData()
 
-
-  }
-
+  },[]) 
   useEffect(() => {
     if (!data) return;
 
@@ -75,26 +96,26 @@ const SinglePage = () => {
     setFormSections(processedSections);
   }, [data]);
 
+ 
+
   return (
     <CustomSection customClass="d-block">
-      {formSections.map((section, index) => {
-
-        // Find matching editSection data
-        const matchedEditSection = editSectionData.find((editSection)=>{
+      {formSections.map((section, index) => 
+      {
+        const matchedEditSection = editData.find((editSection)=>{
           return editSection.page_section == section.name;
         })
 
-        const defaultValues = matchedEditSection ? matchedEditSection : undefined;
-
+        const defaultValues = matchedEditSection;
         return <MicroBox key={`section-${index}`}>
           <CustomTitle title={section.name} />
             <CustomForm
               defaultData={defaultValues}
               dynamicFields={section.data}
-              onSubmit={defaultValues ? (formData) => updateHandler(formData, section.name) : (formData) => handleSectionSubmit(formData, section.name)}
+              onSubmit={defaultValues ? (formData) => handleEdit(section.name,formData) : (formData) => handleCreate(formData,section.name)}
+              editVia={true}
             />
           </MicroBox>
-
         
       })}
     </CustomSection>

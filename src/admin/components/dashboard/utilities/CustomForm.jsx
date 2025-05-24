@@ -24,6 +24,7 @@ const CustomForm = ({
   defaultData,
   dataError,
   setValueVia,
+  editVia,
   data
 }) => {
   const Fields = isBanner ? defaultBannerFields : dynamicFields;
@@ -108,7 +109,10 @@ const CustomForm = ({
       });
 
       if (onSubmit) await onSubmit(payload);
-  
+  // alert("in")
+  if(editVia){
+    return
+  }
       setFormData({});
       setResetKey(Date.now());
     } catch (error) {
@@ -129,7 +133,7 @@ const CustomForm = ({
       .forEach((field) => {
         // if(field.name['description']){
         //   console.log('description value', field.name['description'])
-        // }
+        // }  
         // return;
         const value = formData[field.name];
         if (value != null) {
@@ -138,7 +142,7 @@ const CustomForm = ({
       });
 
       if (onUpdate) await onUpdate(payload);
-  
+      // alert("in")
       setFormData({});
       setResetKey(Date.now());
     } catch (error) {

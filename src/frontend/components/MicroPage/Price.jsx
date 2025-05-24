@@ -5,9 +5,12 @@ import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import Button from "../../../common/Button/Button";
 
-import bgImg from '../../assets/images/price/bg.webp';
 import LazyLoad from "react-lazyload";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { API_URL } from "../../../config/config";
+
+
+const bgImg = `${API_URL}images/price/bg.webp`;
 import 'swiper/css'
 import 'swiper/css/navigation'
 import { Navigation } from "swiper/modules";

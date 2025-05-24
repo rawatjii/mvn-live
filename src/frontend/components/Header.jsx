@@ -6,8 +6,6 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import * as CONFIG from "root/config/config";
 import { useEffect, useRef, useState } from "react";
 
-import MenuSideVideo from "../assets/images/hero/tiger.mp4";
-
 import "./Header.css";
 
 import Button from "../../common/Button/Button";
