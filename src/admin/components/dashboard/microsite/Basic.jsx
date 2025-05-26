@@ -32,7 +32,7 @@ const BasicMicroSite = () => {
       { name: "brochure", label: "Upload Brochure", type: "file", col: 6 },
       { name: "alternative_image", label: "Alternate Project image",type: "file", col: 6 },
       { name: "phone_ivr", label: "Phone IVR", Placeholder: "xxxxxxxxxx", type: "text", col: 6, isRequired: true },
-      { name: "rera_no", label: "RERA NO", Placeholder: "EX/MM/MM/MM", type: "text", col: 6, isRequired: true },
+      { name: "rera_no", label: "RERA NO", Placeholder: "EX/MM/MM/MM", type: "text", col: 6, isRequired: false },
       { name: "meta_title", label: "Meta Title", Placeholder: "Enter Meta Title", type: "text", col: 6 },
       { name: "meta_keyword", label: "Meta Keyword", Placeholder: "Enter Meta Keyword", type: "text", col: 6 },
       { name: "meta_description", label: "Meta Description", Placeholder: "Enter Meta Description", type: "text", col: 6 }

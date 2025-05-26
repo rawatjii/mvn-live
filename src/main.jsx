@@ -101,7 +101,7 @@ const router = createBrowserRouter([
           <FrontendRoute loaderType="homepage">
             <Homepage />
           </FrontendRoute>
-        ), 
+      ), 
       },
       {
         path: "about-us",
@@ -119,14 +119,14 @@ const router = createBrowserRouter([
           </FrontendRoute>
         ),
       },
-      {
-        path: "aeroone-gurgaon",
-        element: (
-          <FrontendRoute loaderType="aeroone-gurgaon">
-            <MicroPageGurgaon1 data={data} />
-          </FrontendRoute>
-        ),
-      },
+      // {
+      //   path: "aeroone-gurgaon",
+      //   element: (
+      //     <FrontendRoute loaderType="aeroone-gurgaon">
+      //       <MicroPageGurgaon1 data={data} />
+      //     </FrontendRoute>
+      //   ),
+      // },
       {
         path: "aeroone-bangalore",
         element: (
@@ -135,14 +135,14 @@ const router = createBrowserRouter([
           </FrontendRoute>
         ),
       },
-      {
-        path: "mvn-athens-faridabad",
-        element: (
-          <FrontendRoute loaderType="mvn-athens-faridabad">
-            <MicroPageFaridabad data={faridabadData} />
-          </FrontendRoute>
-        ),
-      },
+      // {
+      //   path: "mvn-athens-faridabad",
+      //   element: (
+      //     <FrontendRoute loaderType="mvn-athens-faridabad">
+      //       <MicroPageFaridabad data={faridabadData} />
+      //     </FrontendRoute>
+      //   ),
+      // },
       {
         path: "mvn-athens-gurgaon-phase-1",
         element: (

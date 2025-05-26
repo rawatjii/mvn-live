@@ -9,6 +9,7 @@ import lottie from "lottie-web";
 import { useMatches } from "../../../theme/theme";
 import ScrollDown from "../../../common/scrollDown/Index";
 import Logomark from "../../../common/logomark/Index";
+import { BACKEND_IMAGE_URL } from "../../../config/config";
 
 // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -35,7 +36,9 @@ const LottieAnimationSection = React.memo(
     const [loading, setLoading] = useState(false); // Initially set to true
     const [animationData, setAnimationData] = useState(null);
     const { isMobile } = useMatches();
-    const { second_title, desc, path, showAwards,  title = undefined } = data;
+    const { sub_heading, description, json, showAwards, section_type, heading = undefined } = data;
+
+    console.log('section_type',section_type);
 
     // Ref for the interseciton observer
     const observerRef = useRef(null);
@@ -71,7 +74,7 @@ const LottieAnimationSection = React.memo(
     useEffect(() => {
       const loadAnimationData = async () => {
         try {
-          const jsonPath = isMobile ? path.mobile : path.desktop;
+          const jsonPath = isMobile ? BACKEND_IMAGE_URL + json : BACKEND_IMAGE_URL + json;
           const response = await fetch(jsonPath);
           const data = await response.json();
 
@@ -83,7 +86,7 @@ const LottieAnimationSection = React.memo(
       };
 
       loadAnimationData();
-    }, [isMobile, path]);
+    }, [isMobile, json]);
 
     // Initialize Lottie and ScrollTrigger
     useEffect(() => {
@@ -174,9 +177,9 @@ const LottieAnimationSection = React.memo(
               className={`LottieAnimationContainer ${anClass}`}
               aria-label="LottieAnimation Section"
             >
-              {title && (
+              {(section_type !== 'party' && section_type !== 'masterbedroom' )&& heading && (
                 <div className="heading_div mb_60 mb_sm_30">
-                  <h4 className="title title_style1 text-center">{title}</h4>
+                  <h4 className="title title_style1 text-center">{heading}</h4>
                 </div>
               )}
               <div ref={containerRef}>
@@ -189,7 +192,8 @@ const LottieAnimationSection = React.memo(
                         ref={lottieContainerRef}
                         className={`Animation_height ${
                           isMainBanner && "isMainBanner"
-                        } ${data.Custom_height}`}
+                        } 
+                        ${data.Custom_height}`}
                         style={{
                           backgroundImage: `url(${backgroundImg})`,
                           backgroundSize: "cover",
@@ -205,13 +209,13 @@ const LottieAnimationSection = React.memo(
                 </div>
                 {separateScroll && <ScrollDown className="color-black" />}
                 {/* {type && type == 'style1' && <ScrollDown className="color-black" />} */}
-                {(second_title || desc) && (
+                {(sub_heading || description) && (
                   <Container>
                     <div className="about">
                       <CustomCard
                         className="px-0 pb-0"
-                        title={second_title}
-                        desc={desc}
+                        title={(section_type == 'party' || section_type == 'masterbedroom') ? heading : sub_heading}
+                        desc={description}
                         showAwards={showAwards}
                       />
                     </div>

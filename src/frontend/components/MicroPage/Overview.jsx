@@ -5,7 +5,7 @@ import { API_URL } from "../../../config/config";
 
 const diamondIMG = `${API_URL}images/icons/plane1.png`;
 
-const MicroOverview = React.memo(({ data }) => {
+const MicroOverview = React.memo(({rera, data }) => {
   const [count1, setCount1] = useState(0);
   const [count2, setCount2] = useState(0);
   const [count3, setCount3] = useState(0);
@@ -69,7 +69,7 @@ const MicroOverview = React.memo(({ data }) => {
     };
   }, [ended1, ended2, ended3]);
 
-  const { title, location, extra, desc ,rera ,counterHeading, bankDetails, showAwards, discountUrl, isDiscountAvailable } = data;
+  const { heading, sub_heading, description, short_description ,counterHeading, bankDetails, showAwards, discountUrl, isDiscountAvailable } = data;
 
   return (
     <section className="section micro_overview text-center pb-0 pt-4" aria-label="Overview Section">
@@ -80,22 +80,22 @@ const MicroOverview = React.memo(({ data }) => {
               <img src={diamondIMG} className="img-fluid" alt="diamond image" />
             </div>
             <div className="title">
-              {title && <h1 className="pr_name">{title}</h1>}
-              {location && <h6 className="location">{location}</h6>}
+              {heading && <h1 className="pr_name">{heading}</h1>}
+              {/* {location && <h6 className="location">{location}</h6>} */}
             </div>
           </div>
 
-          {extra && <p className="extra">{extra}</p>}
+          {sub_heading && <p className="extra">{sub_heading}</p>}
 
           <div className="aboutUs-box">
-            {desc && Array.isArray(desc) ? (
-              desc.map((el, i) => (
+            {description && Array.isArray(description) ? (
+              description.map((el, i) => (
                 <p className="desc des_style1 text-center" key={`desc-${i}`}>
                   {el}
                 </p>
               ))
             ) : (
-              <p className="des_style1 text-center">{desc}</p>
+              <p className="des_style1 text-center">{description}</p>
             )}
           </div>
 
@@ -107,7 +107,7 @@ const MicroOverview = React.memo(({ data }) => {
 
           {counterHeading && 
             <>
-          <p className="counter-heading">5.5 BHK One of the Largest Apartments in Gurugram</p>
+          <p className="counter-heading">{short_description}</p>
 
           <div className="counter-flex-box">
             <div className="flex-box" ref={ref1}>
@@ -150,7 +150,7 @@ const MicroOverview = React.memo(({ data }) => {
           </>
         ) : (
           <>
-            {rera && <p className="rera-number des_style1 text-center">{rera}</p>}
+            {rera && <p className="rera-number des_style1 text-center">{`RERA NO. ${rera}`}</p>}
           </>
         )}
 
