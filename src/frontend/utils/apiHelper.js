@@ -24,6 +24,8 @@ const useFetchData = (endpoint) => {
         throw new Error("Error while fetching data");
       }
 
+      console.log('response.records',response.records);
+
       setData(response.data);
       return response.data;
 

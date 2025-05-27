@@ -34,6 +34,8 @@ import HeroSection from "../components/MicroPage/Hero/Index";
 import YtIframe from "../components/MicroPage/YtIframe";
 import DownloadBrochure from "../components/MicroPage/DownloadBrochure";
 import View360 from "../components/MicroPage/360";
+import Consultant from "../components/MicroPage/Consultant";
+import ImagesGallery from "../components/MicroPage/ImagesGallery";
 
 const headerSidebarDesktopImg = `${API_URL}images/aero-gurgaon/header/sidebar.webp`;
 
@@ -216,12 +218,22 @@ const MicroPage = () => {
 
               if(section.section_type == 'masterbedroom'){
                 return <div ref={(el) => (sectionRefs.current.party = el)}>
-                  <Suspense fallback="">
                     <PeacockSection
                       data={section}
                       onLoadComplete={() => setPeacockLoaded(true)}
                     />
-                  </Suspense>
+                </div>
+              }
+
+              if(section.section_type == 'consultant'){
+                return <div ref={(el) => (sectionRefs.current.consultant = el)}>
+                    <Consultant data={section} />
+                </div>
+              }
+
+              if(section.section_type == 'landscape' || section.section_type == 'sm-elevation' || section.section_type == 'apartment'){
+                return <div ref={(el) => (sectionRefs.current.MicroLandscape = el)}>
+                  <ImagesGallery data={section} />
                 </div>
               }
 

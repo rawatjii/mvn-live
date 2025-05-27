@@ -20,8 +20,8 @@ const ThreesixtyView = () => {
   const fields = [
     { name: "heading", label: "Heading", type: "text", col: 6 },
     { name: "sub_heading", label: "Sub Heading", type: "text", col: 6 },
-    { name: "json", label: "Upload JSON", type: "file", col: 12 },
-    // { name: "json", label: "Upload JSON", type: "file", col: 12 },
+    { name: "json", label: "Upload JSON", type: "file", col: 6 },
+    { name: "mb_json", label: "Upload Mobile JSON", type: "file", col: 6 },
 
     // { name: "description", label: "Description", type: "textarea", placeholder: "Enter Description", col: 12 }
   ];
