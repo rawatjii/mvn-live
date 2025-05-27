@@ -18,7 +18,7 @@ function ParallaxSection({ section_data }) {
   const iframeRef = useRef(null);
 
   const { pathname } = useLocation();
-  const { title, data, second_title, desc, iframe } = section_data || {};
+  const { heading, data, second_title, desc, iframe } = section_data || {};
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const [imageUrls, setImageUrls] = useState([]);
@@ -173,7 +173,7 @@ function ParallaxSection({ section_data }) {
     <div className="section amenities_section main_am bottom_content parallax_section pb-0">
       <div className="cards-container">
         <div className="heading_div mb_60 mb_sm_30">
-          <h4 className="title title_style1 text-center">{title}</h4>
+          <h4 className="title title_style1 text-center">{heading}</h4>
         </div>
 
         {/* walkthrough */}
@@ -239,7 +239,7 @@ function ParallaxSection({ section_data }) {
   const renderDesktopView = () => (
     <div className="section main_am parallax_section pb-0">
       <div className="heading_div mb_60 mb_sm_30">
-        <h4 className="title title_style1 text-center">{title}</h4>
+        <h4 className="title title_style1 text-center">{heading}</h4>
       </div>
 
       {/* walkthrough */}

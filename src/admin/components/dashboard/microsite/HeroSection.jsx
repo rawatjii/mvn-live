@@ -6,15 +6,18 @@ import generateApi from "../../../api/generateApi";
 import useCrud from "../../../hooks/useCrud";
 import CustomTable from "../utilities/custom-table/CustomTable";
 import CustomPagination from "../utilities/pagination/CustomPagination";
+import { useParams } from "react-router-dom";
 
 const HeroSection = () => {
-  const bannerApi = generateApi("project-banner");
+  const {project_id} = useParams()
   const { data, createItem, editItem, deleteItem } = useCrud(bannerApi);
   const [formType, setFormType] = useState("image");
   const [editModalData, setEditModalData] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [typeInputs, setTypeInputs] = useState([]);
   const itemsPerPage = 5;
+  
+  const bannerApi = generateApi("project-banner");
 
   useEffect(() => {
     setTypeInputs(
@@ -65,6 +68,8 @@ const HeroSection = () => {
     },
   ];
 
+
+  console.log('project_id',project_id);
   const paginatedData = data?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   return (

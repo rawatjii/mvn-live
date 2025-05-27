@@ -6,24 +6,26 @@ import CustomCard from '../Card';
 
 export default function ConstructionTechnology({data}) {
 
+  const {heading, video, sub_heading, description, short_description} = data;
+
   return (
     <section className='section constructionTech_section pb-0' aria-label="Construction Tech Section">
       <Container>
         <div className="heading_div mb_60 mb_sm_30">
-          <h4 className="title title_style1 text-center">Construction Technology</h4>
+          <h4 className="title title_style1 text-center">{heading}</h4>
         </div>
         
-        <video src={data.videoUrl} autoPlay  muted playsInline loop controls  className='img-fluid' />
+        <video src={CONFIG.BACKEND_IMAGE_URL + video} autoPlay  muted playsInline loop controls  className='img-fluid' />
 
         <div className='about'>
           <CustomCard
             className="px-0"
-            title="Forging Future Foundations with Precision and Speed" 
-            desc="In the fast-evolving world of construction, efficiency, durability, and adaptability are paramount. Aluminum Formwork emerges as a groundbreaking system, reshaping how residential and mass housing projects are constructed. This advanced technique, crafted from robust and lightweight aluminum components, offers unparalleled precision, rapid execution, and exceptional sustainability." 
+            title={sub_heading}
+            desc={description}
           />
         </div>
 
-        <h4 className='title_style2 mb_30 mb_sm_20 text-center'>Features Of Aluminum Formwork</h4>
+        <h4 className='title_style2 mb_30 mb_sm_20 text-center'>{short_description}</h4>
 
         <Row className='mx_-60'>
           <Col md={6} className='mt-2 mt-md-0 px_60'>

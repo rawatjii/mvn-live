@@ -25,11 +25,11 @@ const MicroLocationMap = ({ data }) => {
   const sizeRefs = useRef([]);
   const [isLocationMapOpen, setIsLocationMapOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const { mapIMG, title, second_title, desc, locationSlider, modalIframe } =
+  const { mapIMG, heading, second_title, desc, locationSlider, modalIframe, image, sub_heading, description } =
     data;
 
   const locationMapImg = [
-    { src: data.mapIMG.desktop, asset: data.mapIMG.desktop },
+    { src: CONFIG.BACKEND_IMAGE_URL + image, asset: CONFIG.BACKEND_IMAGE_URL + image },
   ];
 
   const handleClose = () => setShowModal(false);
@@ -103,7 +103,7 @@ const MicroLocationMap = ({ data }) => {
     >
       <Container>
         <div className="heading_div mb_60 mb_sm_30">
-          <h4 className="title title_style1 text-center">Location Map</h4>
+          <h4 className="title title_style1 text-center">{heading}</h4>
         </div>
       </Container>
 
@@ -126,13 +126,13 @@ const MicroLocationMap = ({ data }) => {
 
               <div onClick={() => setIsLocationMapOpen(true)}>
                 <img
-                  src={mapIMG.desktop}
+                  src={CONFIG.BACKEND_IMAGE_URL + image}
                   alt="desktop map"
                   className="img-fluid d-none d-md-block"
                   loading="lazy"
                 />
                 <img
-                  src={mapIMG.mobile}
+                src={CONFIG.BACKEND_IMAGE_URL + image}
                   alt="mobile map"
                   className="img-fluid d-md-none"
                   loading="lazy"
@@ -143,7 +143,7 @@ const MicroLocationMap = ({ data }) => {
         </div>
 
         <Container className="desktop_fluid_container">
-          <h4 className="title style2">{title}</h4>
+          <h4 className="title style2">Location Advantages</h4>
           {data.locationData && (
             <ul className="location_points">
               <span className="left_road"></span>
@@ -164,8 +164,8 @@ const MicroLocationMap = ({ data }) => {
         <div className="about">
           <CustomCard
             className="px-0 pb-0"
-            title={second_title || ""}
-            desc={desc || ""}
+            title={sub_heading || ""}
+            desc={description || ""}
           />
         </div>
       </Container>
@@ -173,7 +173,7 @@ const MicroLocationMap = ({ data }) => {
       <Lightbox
         open={isLocationMapOpen}
         close={() => setIsLocationMapOpen(false)}
-        slides={[{ src: data.mapIMG.desktop }]}
+        slides={[{ src: CONFIG.BACKEND_IMAGE_URL + image }]}
         plugins={[Zoom]}
         carousel={{
           finite: locationMapImg.length <= 1, // Prevent looping if there’s only one image
