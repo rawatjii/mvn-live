@@ -68,6 +68,7 @@ function BlogDetails() {
                     className="w-100 rounded-3"
                   />
                 </div>
+                <div className="blog-deatail-page-description my-5" dangerouslySetInnerHTML={{__html: selectedBlog?.content}}></div>
                 <div>
                   {selectedBlog?.description?.map((item) => {
                     return (
@@ -82,9 +83,40 @@ function BlogDetails() {
                             dangerouslySetInnerHTML={{ __html: item.description }}
                           />
                         </div>
+
+                        {item?.table && (
+                          <div dangerouslySetInnerHTML={{__html:item.table}}></div>
+                        )}
+
+                        <div className="my-4">
+
+                          {item?.otherContents?.map((otherItem)=>{
+                            return (
+                              <div className="mb-4">
+                                <h5
+                                    className="mb-3"
+                                    dangerouslySetInnerHTML={{ __html: otherItem.title }}
+                                  ></h5> 
+                                  <div
+                                    className="blog-deatail-page-description"
+                                    dangerouslySetInnerHTML={{ __html: otherItem.para }}
+                                  />
+
+                                  <div className="mt-3">
+                                    {otherItem.points && otherItem.points.map((point)=>{
+                                      return <li dangerouslySetInnerHTML={{__html:point}}></li>
+                                    })}
+                                  </div>
+                                  
+                              </div>
+                            )
+                          })}
+
+                        </div>
                       </>
                     );
                   })}
+               
                 </div>
               </div>
               <div className="col-sm-12 col-md-4 col-lg-4">
