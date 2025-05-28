@@ -151,6 +151,8 @@ const CustomForm = ({
       setIsLoading(false);
     }
   };
+
+  console.log('dynamicFields',dynamicFields);
   
   return (
     <Form onSubmit={data ? handleUpdate : handleSubmit}>
@@ -163,6 +165,7 @@ const CustomForm = ({
                   {...field}
                   id={`${field.name}_${resetKey}`}
                   name={field.name}
+                  type={field.type}
                   value={field.value ? field.value : formData[field.name] || ''}
                   onChange={field.type == "file" ? handleFileChange : field.type == 'editor' ? handleQuillChange : handleChange}
                   resetKey={resetKey}

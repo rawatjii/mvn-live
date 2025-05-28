@@ -90,6 +90,7 @@ const SinglePage = () => {
       return {
         name: section.name,
         data: enabledPermissions,
+        type:section.name == "home-banner" && 'select'
       };
     });
 
@@ -97,12 +98,13 @@ const SinglePage = () => {
   }, [data]);
 
  
+    console.log('formSections',formSections)
 
   return (
     <CustomSection customClass="d-block">
       {formSections.map((section, index) => 
       {
-        const matchedEditSection = editData.find((editSection)=>{
+        const matchedEditSection = editData?.find((editSection)=>{
           return editSection.page_section == section.name;
         })
 
@@ -112,6 +114,7 @@ const SinglePage = () => {
             <CustomForm
               defaultData={defaultValues}
               dynamicFields={section.data}
+              type={section.type}
               onSubmit={defaultValues ? (formData) => handleEdit(section.name,formData) : (formData) => handleCreate(formData,section.name)}
               editVia={true}
             />

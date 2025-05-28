@@ -28,11 +28,15 @@ const MvnMall = React.lazy(()=>import("../components/homepage/MvnMall"));
 import 'swiper/css';
 import 'swiper/css/navigation';
 import LivingRoomVideoGurugram from "../components/MicroPage/LivingRoomVideoGurugram";
+import useFetchData from "../utils/apiHelper";
+import Intro from "../components/homepage/Intro";
 
 const Homepage = () => {
   const [isShowModal, setIsShowModal] = useState(false);
   const [isOffer, setIsOffer] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  const { data: homepageData, loading } = useFetchData(`page/page-section/home`);
   
   const isHideModal = () => {
     setIsShowModal(false);
@@ -47,6 +51,12 @@ const Homepage = () => {
       setIsShowModal(true);
     }
   }, []);
+
+  console.log('homepageData',homepageData);
+
+  if (loading) return <div className="text-center py-5">Loading...</div>;
+  if (!loading && homepageData && homepageData.length === 0)
+    return <div className="text-center py-5">No records found</div>;
 
   return (
     <>
@@ -146,26 +156,20 @@ const Homepage = () => {
 
         <Layout >
 
+
+        {homepageData?.map((section, secIndex)=>{
+          if(section.page_section == 'home-banner') return <Hero data={section} />
+
+          if(section.page_section == 'home-area') return <Intro data={section} />
           
+          if(section.page_section == 'home-introduction') return <Overview data={section} />
 
-          <Hero />
-          <Overview  />
+          if(section.page_section == 'home-overview') return <ClubOne data={section} />
 
-        {/* <Suspense fallback={<Skeleton height="h_70vh" />}>
-          <Banner1 />
-        </Suspense> */}
+          if(section.page_section == 'home-shopping') return <MvnMall data={section} />
 
-<Suspense fallback={<Skeleton />}>
-  <ClubOne />
-</Suspense>
-
-<Suspense fallback={<Skeleton />}>
-  <MvnMall />
-</Suspense>
-
-        <Suspense fallback={<Skeleton height="h_100vh" />}>
-          <Offer clickHandler={showCustomModal} />
-        </Suspense>
+          if(section.page_section == 'home-video') return <Offer data={section} clickHandler={showCustomModal} />
+        })}
 
         <Suspense fallback={<Skeleton height="h_200vh" />}>
           <Projects />

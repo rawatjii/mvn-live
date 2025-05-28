@@ -35,6 +35,7 @@ import TotalProjects from "./components/dashboard/TotalProjects";
 import Testimonials from "./components/dashboard/Testimonials";
 import Pages from './components/dashboard/Pages/Index'
 import { Link } from "react-router-dom";
+import { FRONTEND_URL } from "../config/config";
 
 const data = [
   { id: 1, name: "Godrej Properties", hot: true, calculator: true },
@@ -111,9 +112,9 @@ const otherSection = [
 ];
 const PageCommonSection = [
   {
-    name: "Work Culture",
+    name: "Verticals",
     icon: <FaUser className="mr-3 box-icon" />,
-    link: "/admin/work-culture",
+    link: "admin/verticals",
   },
   {
     name: "About US",
@@ -246,7 +247,7 @@ const Dashboard = () => {
               <div className="inner-bottom-box">
                 <CustomTitle
                   icon={<RiPagesFill />}
-                  title="Other Pages"
+                  title="Other Sections"
                 />
                 <div className="inner-other">
                   {PageCommonSection.map((item, index) => (
@@ -261,7 +262,7 @@ const Dashboard = () => {
                         </span>
                         <div className="media-body">
                           <h5>{item.name}</h5>
-                          <Link to={item.link}>
+                          <Link to={FRONTEND_URL + item.link}>
                             <span>View Detail</span>
                           </Link>
                         </div>
