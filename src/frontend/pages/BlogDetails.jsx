@@ -64,7 +64,7 @@ function BlogDetails() {
                 <div className="">
                   <img
                     src={selectedBlog?.img}
-                    alt="mvn blog image"
+                    alt={selectedBlog.alt ? selectedBlog.alt : "mvn blog image"}
                     className="w-100 rounded-3"
                   />
                 </div>
@@ -133,7 +133,7 @@ function BlogDetails() {
                             <img
                               className="img-fluid"
                               src={el.img}
-                              alt="mvn blog image"
+                              alt={el.alt ? el.alt : "mvn blog image"}
                             />
                           </div>
                           <div className="blog-platter-detail">

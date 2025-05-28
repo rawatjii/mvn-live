@@ -5,8 +5,9 @@ export const blogData = [
   // repeat
   {
     title: "What Challenges Are Faced By Commercial Real Estate Companies Today?",
+    alt:"Challenges Faced By Commercial Real Estate Companies",
     slug: "challenges-faced-by-commercial-real-estate",
-    img: `${API_URL}images/blogs/blog_13.webp`,
+    img: `${API_URL}images/blogs/challenges_faced.webp`,
     date: "25 May, 2025",
     link: "",
     content: [
@@ -85,8 +86,9 @@ In this article, we will learn about the challenges faced by commercial real est
   },
   {
     title: "Best Commercial Property Types for Investment Benefits",
+    alt:"Commercial Property Types for Investment Benefits",
     slug: "best-commercial-properties-types-for-investment",
-    img: `${API_URL}images/blogs/blog_13.webp`,
+    img: `${API_URL}images/blogs/commercial_property_types.webp`,
     date: "15 May, 2025",
     link: "",
     content: [
@@ -188,8 +190,9 @@ In this article, we will learn about the challenges faced by commercial real est
   },
   {
     title: "Residential vs Commercial Property Investment in Gurgaon",
+    alt:"Residential vs Commercial Property Investment",
     slug: "residential-vs-commercial-property-investment-in-gurgaon",
-    img: `${API_URL}images/blogs/blog_13.webp`,
+    img: `${API_URL}images/blogs/residential_commercial.webp`,
     date: "01 May, 2025",
     link: "",
     content: [

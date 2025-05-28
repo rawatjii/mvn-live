@@ -64,7 +64,7 @@ function Blog() {
                   <div className="col-sm-4" key={`blog-${i}`}>
                     <div className="blog-platter-box">
                       <div className="blog-platter-img">
-                        <img className="img-fluid" src={el.img} alt="mvn blog image" />
+                        <img className="img-fluid" src={el.img} alt={el.alt ? el.alt : "mvn blog image"} />
                       </div>
                       <div className="blog-platter-detail">
                         <h4>{el.title}</h4>
