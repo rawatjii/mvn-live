@@ -3,7 +3,7 @@ import { API_URL } from "../config/config";
 
 export const blogData = [
   // repeat
-  {
+  /*{
     title: "What Challenges Are Faced By Commercial Real Estate Companies Today?",
     alt:"Challenges Faced By Commercial Real Estate Companies",
     slug: "challenges-faced-by-commercial-real-estate",
@@ -380,7 +380,7 @@ In this article, we will learn about the challenges faced by commercial real est
       "Live the pinnacle of luxury at MVN Aero One Gurugram. Explore premium amenities and world-class residences designed for a sophisticated lifestyle.",
     colonical:
       "https://www.mvn.in/blogs/experience-the-pinnacle-of-ultra-luxury-living-with-mvn-aero-one",
-  },
+  },*/
   {
     meta_title:
       "MVN AeroOne Gurugram: Redefining Luxury Living in Gurugram",
