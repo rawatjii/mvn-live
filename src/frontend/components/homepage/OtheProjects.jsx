@@ -5,7 +5,8 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
 
 import { useMatches } from "../../../theme/theme";
-import { API_URL } from "../../../config/config";
+import { API_URL, BACKEND_IMAGE_URL } from "../../../config/config";
+import useFetchData from "../../utils/apiHelper";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -42,6 +43,12 @@ const OtherProjects = React.memo(
     const imageDivRefs = useRef([]);
     const { isMobile } = useMatches();
     const [imagesLoaded, setImagesLoaded] = useState(0);
+
+    const {heading} = data;
+
+
+    const { data:otherProjectsData, loading } = useFetchData("verticals");
+    
 
     const initializeAnimations = useCallback(() => {
       if (otherProjects.length > 0) {
@@ -89,6 +96,10 @@ const OtherProjects = React.memo(
     const handleImageLoad = () => {
       setImagesLoaded((prev) => prev + 1);
     };
+    
+
+    if(loading) return <div className="text-center py-5">Loading...</div>;
+    if(!loading && otherProjectsData && otherProjectsData.length === 0) return <div className="text-center py-5">No records found</div>;
 
     return (
       <section
@@ -103,17 +114,17 @@ const OtherProjects = React.memo(
               className="img-fluid title_plane1"
             />
             <h4 ref={titleRef} className="title title_style1 text-center">
-              Other Verticals
+              {heading}
             </h4>
           </div>
 
           <Row>
-            {otherProjects?.map((item, index) => (
+            {otherProjectsData?.map((item, index) => (
               <Col key={index} xs={12} md={4} lg={4} className="single_col">
                 <div className="single">
                   <div className="top">
-                    <h5 className="name">{item.name}</h5>
-                    <Link to={item.link} target="_blank">
+                    <h5 className="name">{item.heading}</h5>
+                    <Link to={item.links} target="_blank">
                       <img
                         src={`${API_URL}images/icons/arrow.png`}
                         alt="mvn arrow icon"
@@ -131,8 +142,8 @@ const OtherProjects = React.memo(
                   <img
                     src={
                       isMobile
-                        ? item.thumbnails.mobile
-                        : item.thumbnails.desktop
+                        ? BACKEND_IMAGE_URL + item.image
+                        : BACKEND_IMAGE_URL + item.image
                     }
                     alt="mvn projects image"
                     className="img-fluid other-project-img"

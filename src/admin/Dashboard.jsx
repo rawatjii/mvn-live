@@ -117,6 +117,16 @@ const PageCommonSection = [
     link: "admin/verticals",
   },
   {
+    name: "Infrastructure",
+    icon: <FaUser className="mr-3 box-icon" />,
+    link: "admin/infrastructure",
+  },
+  {
+    name: "Brand Ethos",
+    icon: <FaUser className="mr-3 box-icon" />,
+    link: "admin/brand-ethos",
+  },
+  {
     name: "About US",
     icon: <FaUser className="mr-3 box-icon" />,
     link: "/admin/page/about-us",

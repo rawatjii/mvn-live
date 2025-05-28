@@ -1,11 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import { Container, Row } from "react-bootstrap";
-import { API_URL } from "../../../config/config";
+import { API_URL, BACKEND_IMAGE_URL } from "../../../config/config";
 
-const OurTeam = () => {
+const OurTeam = React.memo(({data}) => {
   const titleRef = useRef();
   const imageRef = useRef();
   const contentRef = useRef();
+
+  const {heading, short_description, image, alternative_image} = data;
 
   return (
     <section className="section our_team_section" aria-label="Team Section">
@@ -19,23 +21,19 @@ const OurTeam = () => {
               loading="lazy"
             />
             <h4 ref={titleRef} className="title title_style1 text-center">
-              People Behind
+              {heading}
             </h4>
           </div>
         </Row>
       </Container>
 
-      <img
-        src={`${API_URL}images/team/team.webp`}
-        alt="mvn team image"
-        className="img-fluid team_img"
-        loading="lazy"
-      />
+      <picture>
+        <source srcset={BACKEND_IMAGE_URL + image} />
+        <img src={BACKEND_IMAGE_URL + alternative_image} alt="mvn team image" className="img-fluid team_img" loading="lazy" />
+      </picture>
 
       <p ref={contentRef} className="des_style1 text-center">
-        MVN Infrastructure is backed up by a team of experienced professionals
-        who are committed to offering high standards of professional conduct in
-        real estate practices.
+        {short_description}
       </p>
 
       <div className="awards">
@@ -43,6 +41,6 @@ const OurTeam = () => {
           </div>
     </section>
   );
-};
+});
 
 export default OurTeam;

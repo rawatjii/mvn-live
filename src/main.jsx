@@ -90,6 +90,8 @@ import AdminWorkCulture from "./admin/WorkCulture.jsx";
 import MicroPageLayout from "./frontend/pages/micro/Index.jsx";
 import MicroPage from "./frontend/pages/Micro.jsx";
 import Verticals from "./admin/Verticals.jsx";
+import Infrastructure from "./admin/Infrastructure.jsx";
+import BrandEthos from "./admin/brandEthos.jsx";
 // import Apartment from "./admin/components/dashboard/microsite/Apartment.jsx";
 const router = createBrowserRouter([
   {
@@ -278,6 +280,8 @@ const router = createBrowserRouter([
           { path: "amenities", element: <Amenities /> },
           { path: "about-us", element: <AdminAboutUs /> },
           { path: "verticals", element: <Verticals /> },
+          { path: "infrastructure", element: <Infrastructure /> },
+          { path: "brand-ethos", element: <BrandEthos /> },
           { path: "blogs", element: <AdminBlog /> },
           { path: "work-culture", element: <AdminWorkCulture /> },
           { path: "career", element: <AdminCareer /> },

@@ -4,12 +4,13 @@ import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import LazyLoad from "react-lazyload";
 
-import { API_URL } from "../../../config/config";
+import { API_URL, BACKEND_IMAGE_URL } from "../../../config/config";
+import useFetchData from "../../utils/apiHelper";
 
 // Register ScrollTrigger plugin with GSAP
 gsap.registerPlugin(ScrollTrigger);
 
-const OurJourney = () => {
+const OurJourney = React.memo(({data}) => {
   const titleRef = useRef();
   const contentRef = useRef([]);
   const journeyRef = useRef();
@@ -21,6 +22,10 @@ const OurJourney = () => {
     { icon: `${API_URL}images/icons/journey/new-icons/ruler.gif`, title: "Million Square Feet", value: "7.2" },
     { icon: `${API_URL}images/icons/journey/new-icons/calendar.gif`, title: "On-time Delivery", value: "100%" }, // Updated to include %
   ]);
+
+  const {heading} = data;
+
+  const { data:infraData, loading } = useFetchData("infrastructure");
 
   // Function to initialize animations
   const initializeAnimations = useCallback(() => {
@@ -60,7 +65,7 @@ const OurJourney = () => {
           items,
           { innerText: 0 },
           {
-            innerText: (i) => journeyData[i].value,
+            innerText: (i) => infraData[i].value,
             duration: 5,
             ease: "power1.in",
             snap: { innerText: 0.1 },
@@ -68,7 +73,7 @@ const OurJourney = () => {
             modifiers: {
               innerText: (value) => {
                 const numericValue = parseFloat(value);
-                const isPercentage = journeyData.some(
+                const isPercentage = infraData.some(
                   (data) => data.value === value && value.includes("%")
                 );
 
@@ -94,7 +99,7 @@ const OurJourney = () => {
   const updateStaticValues = () => {
     const items = document.querySelectorAll(".count");
     items.forEach((item, index) => {
-      item.innerText = journeyData[index].value;
+      item.innerText = infraData[index].value;
     });
   };
 
@@ -108,6 +113,11 @@ const OurJourney = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []); // Initialize on mount
 
+  
+
+  if(loading) return <div className="text-center py-5">Loading...</div>;
+  if(!loading && infraData && infraData.length === 0) return <div className="text-center py-5">No records found</div>;
+
   return (
     <section className="section journey_section pb-0" aria-label="Journey Section">
       <LazyLoad height={200}>
@@ -119,7 +129,7 @@ const OurJourney = () => {
           <img src={`${API_URL}images/icons/heading-icon-img.webp`} alt="mvn infrastructure heading icon" className="img-fluid title_plane1" />
           <h4 ref={titleRef} className="title title_style1 text-center">
             {/* <span>Our Infrastructure </span> */}
-            Our Infrastructure Real Estate Journey
+            {heading}
           </h4>
         </div>
 
@@ -131,7 +141,7 @@ const OurJourney = () => {
               className="img-fluid diamond_icon"
             />
           </li>
-          {journeyData?.map((item, index) => (
+          {infraData?.map((item, index) => (
             <li
               className={`single ${index % 2 !== 0 ? "right" : ""}`}
               key={index}
@@ -142,13 +152,13 @@ const OurJourney = () => {
               >
                 <div className="top">
                   <img
-                    src={item.icon}
+                    src={BACKEND_IMAGE_URL + item.image}
                     alt="mvn journey icon"
                     className="img-fluid icon"
                   />
                   <p className="count">0</p> {/* Start with 0 */}
                 </div>
-                <p className="title">{item.title}</p>
+                <p className="title">{item.heading}</p>
               </div>
             </li>
           ))}
@@ -156,6 +166,6 @@ const OurJourney = () => {
       </Container>
     </section>
   );
-};
+});
 
 export default OurJourney;

@@ -169,27 +169,19 @@ const Homepage = () => {
           if(section.page_section == 'home-shopping') return <MvnMall data={section} />
 
           if(section.page_section == 'home-video') return <Offer data={section} clickHandler={showCustomModal} />
+
+          if(section.page_section == 'home-verticals') return <OtherProjects data={section}/>
+
+          if(section.page_section == 'home-infrastructure') return <OurJourney data={section}/>
+
+          if(section.page_section == 'home-people-behind') return <OurTeam data={section}/>
+
+          if(section.page_section == 'home-brand-ethos') return <OurBrand data={section}/>
         })}
 
-        <Suspense fallback={<Skeleton height="h_200vh" />}>
+        {/* <Suspense fallback={<Skeleton height="h_200vh" />}>
           <Projects />
-        </Suspense>
-        
-        <Suspense fallback={<Skeleton height="h_70vh h_sm_130vh" />}>
-          <OtherProjects />
-        </Suspense>
-
-        <Suspense fallback={<Skeleton height="h_70vh h_sm_150vh" />}>
-          <OurJourney />
-        </Suspense>
-
-        <Suspense fallback={<Skeleton height="h_150vh h_sm_70vh" />}>
-          <OurTeam />
-        </Suspense>
-
-        <Suspense fallback={<Skeleton height="h_100vh h_sm_130vh" />}>
-          <OurBrand />
-        </Suspense>
+        </Suspense> */}
 
         <Suspense fallback={<Skeleton height="h_90vh" />}>
           <Testimonial />

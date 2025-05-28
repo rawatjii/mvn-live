@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import LazyLoad from "react-lazyload";
 
 import { useMatches } from "../../../theme/theme";
-import { API_URL } from "../../../config/config";
+import { API_URL, BACKEND_IMAGE_URL } from "../../../config/config";
 
 const brandData = [
   {
@@ -23,34 +23,39 @@ const brandData = [
   },
 ];
 
-const OurBrand = () => {
+const OurBrand = React.memo(({ data }) => {
   const { isMobile } = useMatches();
 
   const titleRef = useRef();
   const dataRefs = useRef([]);
 
+  const {heading, image, alternative_image, alt} = data;
+
   return (
     <section className="section our_brand_section" aria-label="Brand Section">
       <LazyLoad>
-        <img
-          src={
+        <picture>
+          <source srcset={BACKEND_IMAGE_URL + alternative_image} />
+          <img src={
             isMobile
-              ? `${API_URL}images/icons/brand/our-brand-ethos-bg.webp`
-              : `${API_URL}images/icons/brand/our-brand-ethos-bg.webp`
+              ? BACKEND_IMAGE_URL + image
+              : BACKEND_IMAGE_URL + image
           }
           alt="mvn brand background image"
           className="brand_bg"
-          loading="lazy"
-        />
+          loading="lazy" />
+        </picture>
+        
       </LazyLoad>
 
       <LazyLoad>
-        <img
-          src={`${API_URL}images/icons/brand/our-brand-ethos-bg-2.webp`}
-          alt="mvn brand background image"
-          className="brand_bg brand_bg-2"
-          loading="lazy"
-        />
+        <picture>
+          <source srcset={BACKEND_IMAGE_URL + image} />
+          <img src={BACKEND_IMAGE_URL + alternative_image}
+            alt="mvn brand background image"
+            className="brand_bg brand_bg-2"
+            loading="lazy" />
+        </picture>
       </LazyLoad>
 
       <Container>
@@ -62,7 +67,7 @@ const OurBrand = () => {
             loading="lazy"
           />
           <h4 ref={titleRef} className="title title_style1 text-center">
-            Our Brand Ethos
+           {heading}
           </h4>
         </div>
 
@@ -96,6 +101,6 @@ const OurBrand = () => {
       </Container>
     </section>
   );
-};
+});
 
 export default OurBrand;
