@@ -31,7 +31,7 @@ export default function ProjectList() {
       };
       
       const handleEdit = (row) => {
-        navigate(`/admin/microsite/${row.id}`)
+        navigate(`/admin/microsite/${row.id}?theme=${row.is_theme}`)
       };
       
       const handleDelete = (row) => deleteItem(row.id);

@@ -127,6 +127,11 @@ const PageCommonSection = [
     link: "admin/brand-ethos",
   },
   {
+    name: "Testimonials",
+    icon: <FaUser className="mr-3 box-icon" />,
+    link: "admin/testimonials",
+  },
+  {
     name: "About US",
     icon: <FaUser className="mr-3 box-icon" />,
     link: "/admin/page/about-us",

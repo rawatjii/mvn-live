@@ -25,7 +25,8 @@ const CustomForm = ({
   dataError,
   setValueVia,
   editVia,
-  data
+  data,
+  emptyData
 }) => {
   const Fields = isBanner ? defaultBannerFields : dynamicFields;
   const [isLoading, setIsLoading] = useState(false);
@@ -145,6 +146,7 @@ const CustomForm = ({
       // alert("in")
       setFormData({});
       setResetKey(Date.now());
+      emptyData()
     } catch (error) {
       console.error('Form submission error:', error);
     } finally {
@@ -166,7 +168,7 @@ const CustomForm = ({
                   id={`${field.name}_${resetKey}`}
                   name={field.name}
                   type={field.type}
-                  value={field.value ? field.value : formData[field.name] || ''}
+                  value={field.value ? field.value : formData?.[field.name] || ''}
                   onChange={field.type == "file" ? handleFileChange : field.type == 'editor' ? handleQuillChange : handleChange}
                   resetKey={resetKey}
                 />

@@ -92,6 +92,7 @@ import MicroPage from "./frontend/pages/Micro.jsx";
 import Verticals from "./admin/Verticals.jsx";
 import Infrastructure from "./admin/Infrastructure.jsx";
 import BrandEthos from "./admin/brandEthos.jsx";
+import Testimonials from "./admin/Testimonials.jsx";
 // import Apartment from "./admin/components/dashboard/microsite/Apartment.jsx";
 const router = createBrowserRouter([
   {
@@ -282,6 +283,7 @@ const router = createBrowserRouter([
           { path: "verticals", element: <Verticals /> },
           { path: "infrastructure", element: <Infrastructure /> },
           { path: "brand-ethos", element: <BrandEthos /> },
+          { path: "testimonials", element: <Testimonials /> },
           { path: "blogs", element: <AdminBlog /> },
           { path: "work-culture", element: <AdminWorkCulture /> },
           { path: "career", element: <AdminCareer /> },

@@ -177,15 +177,17 @@ const Homepage = () => {
           if(section.page_section == 'home-people-behind') return <OurTeam data={section}/>
 
           if(section.page_section == 'home-brand-ethos') return <OurBrand data={section}/>
+
+          if(section.page_section == 'home-client-says') return <Testimonial data={section}/>
         })}
 
         {/* <Suspense fallback={<Skeleton height="h_200vh" />}>
           <Projects />
         </Suspense> */}
 
-        <Suspense fallback={<Skeleton height="h_90vh" />}>
+        {/* <Suspense fallback={<Skeleton height="h_90vh" />}>
           <Testimonial />
-        </Suspense>
+        </Suspense> */}
         
 
         <div className="flex-footer-form">

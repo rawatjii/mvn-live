@@ -10,14 +10,14 @@ import { useParams } from "react-router-dom";
 
 const HeroSection = () => {
   const {project_id} = useParams()
-  const { data, createItem, editItem, deleteItem } = useCrud(bannerApi);
   const [formType, setFormType] = useState("image");
   const [editModalData, setEditModalData] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [typeInputs, setTypeInputs] = useState([]);
   const itemsPerPage = 5;
-  
   const bannerApi = generateApi("project-banner");
+  const { data, createItem, editItem, deleteItem } = useCrud(bannerApi);
+  
 
   useEffect(() => {
     setTypeInputs(
