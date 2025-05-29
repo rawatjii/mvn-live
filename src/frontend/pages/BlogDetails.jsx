@@ -68,7 +68,19 @@ function BlogDetails() {
                     className="w-100 rounded-3"
                   />
                 </div>
-                <div className="blog-deatail-page-description my-5" dangerouslySetInnerHTML={{__html: selectedBlog?.content}}></div>
+
+                <div className="mt-4 mb-2">
+                  <h1
+                    className="blog-detail-page-heading"
+                    dangerouslySetInnerHTML={{ __html: selectedBlog?.title }}
+                  ></h1>
+                  <div
+                    className="blog-deatail-page-description"
+                    dangerouslySetInnerHTML={{ __html: selectedBlog?.content }}
+                  />
+                </div>
+
+                {/* <div className="blog-deatail-page-description my-5" dangerouslySetInnerHTML={{__html: selectedBlog?.content}}></div> */}
                 <div>
                   {selectedBlog?.description?.map((item) => {
                     return (

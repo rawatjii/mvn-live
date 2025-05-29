@@ -394,17 +394,12 @@ In this article, we will learn about the challenges faced by commercial real est
     date: "25 November, 2024",
     link: "",
     content: [
-      `MVN AeroOne Gurugram—luxurious residences perched high above the city—are synonymous with opulence and exclusivity in major global cities like New York, Dubai, and Singapore.These architectural marvels, often occupying the highest floors of premium skyscrapers, offer panoramic views, unparalleled privacy, and amenities fit for royalty`,
+      `MVN AeroOne Gurugram—luxurious residences perched high above the city—are synonymous with opulence and exclusivity in major global cities like New York, Dubai, and Singapore. These architectural marvels, often occupying the highest floors of premium skyscrapers, offer panoramic views, unparalleled privacy, and amenities fit for royalty. Now, MVN is bringing this epitome of luxury to Gurugram, introducing a lifestyle never seen before in India's real estate market. 
+          <br>
+          Prepare to experience something extraordinary: Sky Villas by MVN AeroOne Gurugram, where the extravagance of international high-rise living meets the dynamism of Gurugram's skyline.`,
     ],
     description: [
-      {
-        heading:
-          "MVN AeroOne Gurugram by MVN: Redefining Luxury Living in Gurugram",
-        description: `MVN AeroOne Gurugram—luxurious residences perched high above the city—are synonymous with opulence and exclusivity in major global cities like New York, Dubai, and Singapore. These architectural marvels, often occupying the highest floors of premium skyscrapers, offer panoramic views, unparalleled privacy, and amenities fit for royalty. Now, MVN is bringing this epitome of luxury to Gurugram, introducing a lifestyle never seen before in India's real estate market. 
-          <br>
-          Prepare to experience something extraordinary: Sky Villas by MVN AeroOne Gurugram, where the extravagance of international high-rise living meets the dynamism of Gurugram's skyline.
-          `,
-      },
+      
       {
         heading: `1. Sky Villas Across the Globe: A Benchmark in Opulence`,
         description: `Internationally, sky villas are the hallmark of luxury. From Dubai's iconic Burj Khalifa residences to New York's Billionaires' Row penthouses, these homes offer exclusivity, world-class interiors, and breathtaking vistas. In Singapore, sky villas in Marina Bay Sands provide private infinity pools, concierge services, and direct access to high-end shopping and entertainment.
@@ -505,11 +500,11 @@ The future of luxury living is here, and it's soaring above Gurugram's skyline. 
       `Stretching over 29 kilometers, the Dwarka Expressway is a trailblazer in India's urban transportation landscape. Strategically designed to decongest NH-48 and enhance connectivity between Delhi and Gurugram, this eight-lane elevated motorway is much more than a road; it is a symbol of urban evolution. Completed in phases, it has already begun transforming travel and real estate in the National Capital Region (NCR), making it a magnet for investors, developers, and homebuyers alike.`,
     ],
     description: [
-      {
-        heading:
-          "Dwarka Expressway Redefining Urban Connectivity And Real Estate Dynamics",
-        description: `Stretching over 29 kilometers, the Dwarka Expressway is a trailblazer in India's urban transportation landscape. Strategically designed to decongest NH-48 and enhance connectivity between Delhi and Gurugram, this eight-lane elevated motorway is much more than a road; it is a symbol of urban evolution. Completed in phases, it has already begun transforming travel and real estate in the National Capital Region (NCR), making it a magnet for investors, developers, and homebuyers alike.`,
-      },
+      // {
+      //   heading:
+      //     "Dwarka Expressway Redefining Urban Connectivity And Real Estate Dynamics",
+      //   description: `Stretching over 29 kilometers, the Dwarka Expressway is a trailblazer in India's urban transportation landscape. Strategically designed to decongest NH-48 and enhance connectivity between Delhi and Gurugram, this eight-lane elevated motorway is much more than a road; it is a symbol of urban evolution. Completed in phases, it has already begun transforming travel and real estate in the National Capital Region (NCR), making it a magnet for investors, developers, and homebuyers alike.`,
+      // },
       {
         heading: `The Connectivity Boost`,
         description: `Dwarka Expressway connects Shiv Murti in Delhi to the Kherki Daula Toll Plaza in Gurugram, creating a seamless corridor between key urban hubs. Its strategic layout includes a 3.6 km shallow tunnel providing direct access to Terminal 3 of Indira Gandhi International Airport, dramatically reducing travel time for frequent flyers and international travellers. By offering an alternative route to the highly congested NH-48, the expressway has alleviated long-standing traffic woes in the regiom.
@@ -570,14 +565,7 @@ Whether you're looking for luxury living, commercial investment opportunities, o
     date: "16 April, 2024",
     link: "",
     content: [
-      `The Real Estate market has always been dominant over others because of the tremendous returns it offers to its investors. Land is always considered as the major asset of the individual because the value only grows with time.`,
-      ,
-    ],
-    description: [
-      {
-        heading:
-          "Why Real Estate Remains a Top Investment Choice: Key Benefits and Opportunities",
-        description: `The Real Estate market has always been dominant over others because of the tremendous returns it offers to its investors. Land is always considered as the major asset of the individual because the value only grows with time. There is a well-known phrase, "safe as a house" and it's actually true. According to research by AMP, Indian property has increased in value at a rate comparable to that of the stock market since 1947 – an average of 11.4% per annum – in defiance of a succession of wars, disasters, recessions, and crises.
+      `The Real Estate market has always been dominant over others because of the tremendous returns it offers to its investors. Land is always considered as the major asset of the individual because the value only grows with time. There is a well-known phrase, "safe as a house" and it's actually true. According to research by AMP, Indian property has increased in value at a rate comparable to that of the stock market since 1947 – an average of 11.4% per annum – in defiance of a succession of wars, disasters, recessions, and crises.
 <br>
 <br>
 Real Estate saw a downfall last year due to the pandemic, and builders have incurred huge losses on their projects as no one was investing in the property. Still, the trust in the Real Estate market hasn't been shackled a bit, the reason being the capacity of this sector to create wonders for the people. 
@@ -588,12 +576,10 @@ The best thing about Real Estate is you don't need specialist knowledge to start
 <br>
 <br>
 
-Let's focus our attention on the reasons that will show why investing in real estate is a good option for you.
-
-
-
-`,
-      },
+Let's focus our attention on the reasons that will show why investing in real estate is a good option for you.`,
+      ,
+    ],
+    description: [
       {
         heading: "Reasons to Invest in Real Estate Market",
         description: `<ul>
