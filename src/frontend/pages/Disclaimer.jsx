@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import MicroBanner from "../components/MicroBanner/Index";
 import Layout from "../components/Layout";
 import { API_URL } from "../../config/config";
+import { Helmet } from "react-helmet";
 
 const Desktopmicro_bg = `${API_URL}images/disclaimer-head-bg-desktop.jpg`;
 
@@ -21,6 +22,11 @@ const Disclaimer = () => {
 
   return (
     <>
+      <Helmet>
+      <title>MVN Disclaimer | Terms of Use for Our Real Estate Website</title>
+      <meta name="description" content="Review MVN Infrastructure’s disclaimer outlining the terms and conditions for using our real estate website. Understand your rights and responsibilities as a visitor."></meta>
+      <link rel="canonical" href="https://www.mvn.in/disclaimer" />
+      </Helmet>
       <Layout>
         <MicroBanner bg={microBg} data={breadcrumbs} />
 

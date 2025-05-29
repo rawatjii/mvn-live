@@ -5,6 +5,7 @@ import Enquire from '../components/homepage/Enquire';
 import EnquireForm from '../components/homepage/EnquireForm';
 import Layout from "../components/Layout";
 import { API_URL } from "../../config/config";
+import { Helmet } from "react-helmet";
 
 const MobilebannerBg = `${API_URL}images/contact/head-banner_bg.webp`;
 const DesktopbannerBg = `${API_URL}images/contact/head-banner_bg-2.webp`;
@@ -50,6 +51,11 @@ const ContactUs = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Contact MVN | Get in Touch with Our Real Estate Experts</title>
+        <meta name="description" content="Reach out to MVN for inquiries about residential and commercial real estate projects. Contact our team for sales, support, or partnership opportunities across India."></meta>
+        <link rel="canonical" href="https://www.mvn.in/contact-us" />
+      </Helmet>
       <Layout>
         <MicroBanner bg={bannerBg} data={breadcrumbs} />
         <div className="micro_content">

@@ -4,6 +4,7 @@ import { API_URL } from "../../config/config";
 import { Container } from "react-bootstrap";
 import Layout from "../components/Layout";
 import "../../dinesh.css";
+import { Helmet } from "react-helmet";
 
 const CultureImg = `${API_URL}images/career/image.jpg`;
 const peopleDevelopmentImg = `${API_URL}images/career/peaple-d.png`;
@@ -40,7 +41,13 @@ function Career() {
     setNewLoadingCount(Number(localStorage.getItem("count")));
   }, [localStorage.getItem("count")]);
   return (
-    <Layout>
+    <>
+      <Helmet>
+        <title>Careers at MVN | Real Estate Jobs & Opportunities</title>
+        <meta name="description" content="Join MVN, one of India’s leading real estate developers. Explore career opportunities in project management, sales, engineering, and more. Build your future with MVN."></meta>
+        <link rel="canonical" href="https://www.mvn.in/career" />
+      </Helmet>
+      <Layout>
       <div className="career_page inner_section">
         <MicroBanner bg={CareerImg} data={breadcrumbs} />
 
@@ -252,6 +259,7 @@ function Career() {
         </div>
       </div>
     </Layout>
+    </>
   );
 }
 

@@ -11,6 +11,7 @@ const EnquireForm = React.lazy(()=>import("../components/homepage/EnquireForm"))
 import Layout from "../components/Layout";
 
 import { API_URL } from "../../config/config";
+import { Helmet } from "react-helmet";
 
 const AboutUs = () => {
   window.scrollTo(0, 0);
@@ -50,6 +51,13 @@ const AboutUs = () => {
 
   return (
     <>
+      <Helmet>
+        <title>About MVN | Trusted Real Estate Developers in India</title>
+        <meta name="description" content="Learn about MVN’s legacy as a trusted real estate company in India. Discover our vision, values, and commitment to delivering quality residential and commercial projects."></meta>
+        <link rel="canonical" href="https://www.mvn.in/about-us" />
+      </Helmet>
+
+
       <Layout>
         <MicroBanner bg={microBg} data={breadcrumbs} />
 

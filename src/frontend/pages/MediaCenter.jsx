@@ -10,6 +10,7 @@ import GallerySlider from "../components/GallerySlider";
 import PressRelease from "../components/PressRelease";
 
 import Layout from "../components/Layout";
+import { Helmet } from "react-helmet";
 
 function MediaCenter() {
   window.scrollTo(0, 0);
@@ -220,7 +221,13 @@ function MediaCenter() {
   }, [localStorage.getItem('count')]);
 
   return (
-    <Layout>
+    <>
+    <Helmet>
+    <title>MVN Media Centre | Latest News, Updates & Press Releases</title>
+    <meta name="description" content="Get the latest news and media updates from MVN. Stay informed about our projects, milestones, and industry insights in the real estate sector."></meta>
+    <link rel="canonical" href="https://www.mvn.in/media-centre" />
+    </Helmet>
+      <Layout>
       <div className="media_center">
         <MicroBanner bg={`${CONFIG.API_URL}images/mediacenter/mediaimg.jpg`} data={breadcrumbs} />
         <section className="section media-news-section pb-0" aria-label="Media Center Section">
@@ -385,6 +392,8 @@ function MediaCenter() {
         </div>
       </div>
     </Layout>
+    </>
+    
     
   );
 }

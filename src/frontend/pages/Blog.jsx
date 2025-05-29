@@ -8,6 +8,7 @@ import { setSelectedBlog } from "../../redux/blogsSlice";
 import { blogData } from "../../data/blogsdata";
 import Layout from "../components/Layout";
 import { API_URL } from "../../config/config";
+import { Helmet } from "react-helmet";
 
 const BlogImg = `${API_URL}images/blogs/blog.jpg`;
 const headingIconImg = `${API_URL}images/icons/heading-icon-img.webp`;
@@ -39,7 +40,13 @@ function Blog() {
     ],
   };
   return (
-    <Layout>
+    <>
+      <Helmet>
+        <title>MVN Real Estate Blog | Insights on Luxury Living & Market Trends</title>
+        <meta name="description" content="Explore expert insights on luxury real estate, investment opportunities, and urban development trends. Stay updated with MVN's latest projects and industry news."></meta>
+        <link rel="canonical" href="https://www.mvn.in/blogs" />
+      </Helmet>
+      <Layout>
       <div className="blog_page inner_section" ref={containerRef} >
         <MicroBanner bg={BlogImg} data={breadcrumbs} />
         <div className="micro_content">
@@ -94,6 +101,7 @@ function Blog() {
         
       </div>
     </Layout>
+    </>
     
   );
 }
