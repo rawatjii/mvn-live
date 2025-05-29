@@ -94,7 +94,7 @@ const MicroSidebar = () => {
                   key={item.slug}
                   placement="left"
                   delay={{ show: 250, hide: 100 }}
-                  overlay={renderTooltip(item.description)}
+                  overlay={renderTooltip(item.name)}
                 >
                   {({ ref, ...triggerHandler }) => (
                     <NavLink

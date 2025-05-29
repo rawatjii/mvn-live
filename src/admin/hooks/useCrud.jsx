@@ -59,12 +59,18 @@ const useCrud = (apiService) => {
       }
     },
 
-    editItem: async (id, item) => {
+    editItem: async (id, item, pagevia) => {
       try {
         await apiService.update(id, item);
         // console.log(fetchAll())
-        await fetchAll(); 
+        
+        const selectedTheme = await item.get('is_theme');
+
+        if(pagevia=="basic"){
+          navigate(`/admin/microsite/${id}?theme=${selectedTheme}`)
+        }
         toast.success("Value updated successfully!");
+        await fetchAll(); 
       } catch (err) {
         console.log(err)
         toast.error("❌ Failed to add value.");

@@ -4,14 +4,16 @@ import CustomTitle from "../utilities/CustomTitle";
 import CustomForm from "../utilities/CustomFormMicrosite";
 import generateApi from "../../../api/generateApi";
 import useCrud from "../../../hooks/useCrud";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 
 const BasicMicroSite = () => {
   const [platter, setplatter] = useState([]);
   const { project_id } = useParams();
+  const [searchParams] = useSearchParams();
   const editData = generateApi(`project/${project_id}`);
   const basicApi = generateApi(`project`);
   const { data } = useCrud(editData);
+  const themeId = searchParams.get('theme');
   const { createItem, editItem, deleteItem, editGet } = useCrud(basicApi);
 
   useEffect(() => {
@@ -40,7 +42,7 @@ const BasicMicroSite = () => {
   };
 
   const handleCreate = formData => createItem(formData, "basic");
-  const handleEditSubmit = formData => editItem(project_id, formData);
+  const handleEditSubmit = formData => editItem(project_id, formData, "basic");
 
   if (project_id && data.length === 0) return null;
 
