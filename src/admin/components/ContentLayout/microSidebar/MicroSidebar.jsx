@@ -20,8 +20,9 @@ import { PiBuildingApartment, PiStrategyBold } from "react-icons/pi";
 import { MdOutlineConstruction } from "react-icons/md";
 // Import react-bootstrap components
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
-import useFetchData from "../../../../frontend/utils/apiHelper";
 import { VITE_APP_URL } from "../../../../config/config";
+import generateApi from "../../../api/generateApi";
+import useCrud from "../../../hooks/useCrud";
 
 // const navItems = [
 //   { to: "", icon: <FaRegFileAlt fontSize={24} />, description: "Basic", exact: true },
@@ -55,9 +56,8 @@ const MicroSidebar = () => {
   const [searchParams] = useSearchParams();
   const themeId = searchParams.get("theme");
 
-  const { data, loading } = useFetchData(
-    `admin/project-section-list?is_theme=${themeId}`
-  );
+  const basicApi = generateApi(`project-section-list?is_theme=${themeId}`);
+  const { data, loading, error, createItem, editItem, deleteItem } =useCrud(basicApi);
 
   // Function to create tooltip
   const renderTooltip = (content) => (
@@ -67,8 +67,6 @@ const MicroSidebar = () => {
   // useEffect(() => {
   //   setNavItems(data);
   // }, [themeId, data]);
-
-  console.log('navItems',data);
 
   return (
     <>
@@ -88,7 +86,7 @@ const MicroSidebar = () => {
           </OverlayTrigger>
 
           <div className="nav-container">
-            {data && data.length > 0 && data.map((item, index) => {
+            {data?.map((item, index) => {
               if (!project_id && index !== 0) return null;
 
               return (
@@ -101,14 +99,14 @@ const MicroSidebar = () => {
                   {({ ref, ...triggerHandler }) => (
                     <NavLink
                       ref={ref}
-                      to={VITE_APP_URL + item.slug}
+                      to={VITE_APP_URL + `admin/microsite/${project_id}/${item.slug}?theme=${themeId}`}
                       end="true"
                       className={({ isActive }) =>
                         `nav ${isActive ? "active" : ""}`
                       }
                       {...triggerHandler}
                     >
-                      <div className="icon">{item.icon}</div>
+                      <div className="icon"><FaRegFileAlt fontSize={24} /></div>
                       <div className="description">{item.name}</div>
                     </NavLink>
                   )}
