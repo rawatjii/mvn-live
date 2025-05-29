@@ -14,7 +14,7 @@ const modules = {
     ["bold", "italic", "underline", "strike"],
     [{ list: "ordered" }, { list: "bullet" }],
     ["link", "image", "video"],
-    ["clean"], // remove formatting
+    ["clean"],
     ["code-block"],
   ],
   clipboard: {
