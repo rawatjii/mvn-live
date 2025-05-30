@@ -15,9 +15,20 @@ const HeroSection = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [typeInputs, setTypeInputs] = useState([]);
   const itemsPerPage = 5;
-  const bannerApi = generateApi("project-banner");
-  const { data, createItem, editItem, deleteItem } = useCrud(bannerApi);
+  const bannerApi = generateApi(`project-banner/${project_id}/banner`);
+  const editDataApi = generateApi(`project-banner`);
+  const [editData, setEditData] = useState(null);
+
+  const { 
+    data, 
+    createItem, 
+    deleteItem,
+    getItems,
+    getEditData 
+  } = useCrud(bannerApi);
   
+  const {editItem } = useCrud(editDataApi);
+// console.log()
 
   useEffect(() => {
     setTypeInputs(
@@ -68,8 +79,39 @@ const HeroSection = () => {
     },
   ];
 
+  const fetchEditData = async () => {
+    const formData = new FormData();
+    formData.append("section_type", locationType);
+    formData.append("project_id", project_id);
+    try {
+      const data = await getEditData(formData);
+      setEditData(data.data);
+    } catch (error) {
+      console.error("Error fetching edit data:", error);
+    }
+  };
 
-  console.log('project_id',project_id);
+  const handleCreate = async (formData) => {
+    try {
+      await createItem(formData);
+      await fetchEditData();
+    } catch (error) {
+      console.error("Error creating project section:", error);
+    }
+  };
+
+  const handleEdit = async (formData) => {
+    try {
+      await editItem(editData.id, formData);
+      await fetchEditData();
+    } catch (error) {
+      console.error("Error updating project section:", error);
+    }
+  };
+  useEffect(()=>{
+    fetchEditData()
+  },[]) 
+
   const paginatedData = data?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   return (
@@ -80,17 +122,12 @@ const HeroSection = () => {
             <MicroBox key={section.sectionName}>
               <CustomTitle title={section.sectionName} />
               <CustomForm
-                dynamicFields={section.fields}
-                defaultData={editModalData}
+                dynamicFields={section.fields}  
+                defaultData={editData}
                 setValueVia={setFormType}
-                onSubmit={
-                  editModalData
-                    ? (formData) => {
-                        editItem(editModalData.id, formData);
-                        setEditModalData(null);
-                      }
-                    : createItem
-                }
+                onSubmit={editData ? handleEdit : handleCreate}
+
+                // onUpdate={handleEditSubmit}
               />
             </MicroBox>
           )
@@ -101,9 +138,8 @@ const HeroSection = () => {
           columns={columns}
           data={paginatedData}
           onEdit={(row) => {
-            scrollTo(0, 0);
-            setEditModalData(row);
-            setFormType(row.is_type || "image");
+            window.scrollTo(0, 0);
+            setEditData(row);
           }}
           onDelete={(row) => deleteItem(row.id)}
           startIndex={(currentPage - 1) * itemsPerPage}

@@ -69,6 +69,8 @@ const MicroOverview = React.memo(({rera, data }) => {
     };
   }, [ended1, ended2, ended3]);
 
+  console.log('page dat', data)
+
   const { heading, sub_heading, description, short_description ,counterHeading, bankDetails, showAwards, discountUrl, isDiscountAvailable } = data;
 
   return (

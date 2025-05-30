@@ -7,7 +7,7 @@ const useCrud = (apiService) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const fetchAll = async () => {
     setLoading(true);
@@ -34,24 +34,24 @@ const useCrud = (apiService) => {
     loading,
     error,
     fetchAll,
-    createItem: async (item,pagevia, pageName, sectionName) => {
+    createItem: async (item, pagevia, pageName, sectionName) => {
       try {
         await apiService.create(item, pageName, sectionName);
         toast.success("Data added successfully!");
-        if(pagevia=="basic"){
-          navigate("/admin/project-list")
+        if (pagevia == "basic") {
+          navigate("/admin/project-list");
         }
         await fetchAll();
-      }
-
-      catch (err) {
-
-        console.error('error while create element', err.response?.data?.errors || "Failed to add value");
+      } catch (err) {
+        console.error(
+          "error while create element",
+          err.response?.data?.errors || "Failed to add value"
+        );
         const errorMessage = err.response?.data?.errors || err.errors;
 
-        if(errorMessage){
+        if (errorMessage) {
           toast.error(`❌ Please fill all the required fields.`);
-        }else{
+        } else {
           toast.error("❌ Failed to Create.");
         }
         setError(err.response?.data?.errors);
@@ -63,16 +63,16 @@ const useCrud = (apiService) => {
       try {
         await apiService.update(id, item);
         // console.log(fetchAll())
-        
-        const selectedTheme = await item.get('is_theme');
 
-        if(pagevia=="basic"){
-          navigate(`/admin/microsite/${id}?theme=${selectedTheme}`)
+        const selectedTheme = await item.get("is_theme");
+
+        if (pagevia == "basic") {
+          navigate(`/admin/microsite/${id}?theme=${selectedTheme}`);
         }
         toast.success("Value updated successfully!");
-        await fetchAll(); 
+        await fetchAll();
       } catch (err) {
-        console.log(err)
+        console.log(err);
         toast.error("❌ Failed to add value.");
         // const errorMessage = err.response?.data?.message || err.message || "Failed to update value";
         // toast.error(`❌ ${errorMessage}`);
@@ -80,44 +80,43 @@ const useCrud = (apiService) => {
       }
     },
 
-      getEditData: async (item) => {
-        try {
+    getEditData: async (item) => {
+      try {
         const response = await apiService.editGet(item); // Assuming section_type is needed
         const data = response.data;
         // toast.success("✅ Value fetched successfully!");
         return data;
-        } catch (err) {
+      } catch (err) {
         // toast.error("❌ Failed to fetch value.");
-        const errorMessage = err.response?.data?.message || err.message || "Failed to fetch value";
+        const errorMessage =
+          err.response?.data?.message || err.message || "Failed to fetch value";
         // toast.error(`❌ ${errorMessage}`);
         setError(err);
         return null;
-        }
-        },
+      }
+    },
 
-        
-
-      getMultiEditdata: async (item) => {
-        try {
+    getMultiEditdata: async (item) => {
+      try {
         const response = await apiService.editMultApiCall(item); // Assuming section_type is needed
         const data = response.data;
         // toast.success("✅ Value fetched successfully!");
         return data;
-        } catch (err) {
+      } catch (err) {
         // toast.error("❌ Failed to fetch value.");
-        const errorMessage = err.response?.data?.message || err.message || "Failed to fetch value";
+        const errorMessage =
+          err.response?.data?.message || err.message || "Failed to fetch value";
         // toast.error(`❌ ${errorMessage}`);
         setError(err);
         return null;
-        }
-        },
-
+      }
+    },
 
     deleteItem: async (id) => {
       try {
         await apiService.delete(id);
         toast.success(" Data deleted successfully!");
-        await fetchAll(); 
+        await fetchAll();
       } catch (err) {
         toast.error("❌ Failed to delete value.");
         setError(err);

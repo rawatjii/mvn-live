@@ -86,6 +86,49 @@ const MicroSidebar = () => {
           </OverlayTrigger>
 
           <div className="nav-container">
+            
+
+              <OverlayTrigger
+                  placement="left"
+                  delay={{ show: 250, hide: 100 }}
+                  overlay={renderTooltip('Basic')}
+                >
+                  {({ ref, ...triggerHandler }) => (
+                    <NavLink
+                      ref={ref}
+                      to={VITE_APP_URL + `admin/microsite/${project_id}?theme=${themeId}`}
+                      end="true"
+                      className={({ isActive }) =>
+                        `nav ${isActive ? "active" : ""}`
+                      }
+                      {...triggerHandler}
+                    >
+                      <div className="icon"><FaRegFileAlt fontSize={24} /></div>
+                      <div className="description">Basic</div>
+                    </NavLink>
+                  )}
+              </OverlayTrigger>
+
+              <OverlayTrigger
+                  placement="left"
+                  delay={{ show: 250, hide: 100 }}
+                  overlay={renderTooltip('Banner')}
+                >
+                  {({ ref, ...triggerHandler }) => (
+                    <NavLink
+                      ref={ref}
+                      to={VITE_APP_URL + `admin/microsite/${project_id}/banner?theme=${themeId}`}
+                      end="true"
+                      className={({ isActive }) =>
+                        `nav ${isActive ? "active" : ""}`
+                      }
+                      {...triggerHandler}
+                    >
+                      <div className="icon"><FaRegFileAlt fontSize={24} /></div>
+                      <div className="description">Banner</div>
+                    </NavLink>
+                  )}
+              </OverlayTrigger>
             {data?.map((item, index) => {
               if (!project_id && index !== 0) return null;
 
