@@ -47,7 +47,7 @@ const DownloadBrochure = React.memo(
             className="btn btn_style3 r_100"
             onClick={handleOpenBrochureModal}
           >
-            {name=="MVN Aero One" ? "Download MVN ID Brochure" : name}
+            {name=="MVN Aero One" || name=="MVN Mall" ? "Download MVN ID Brochure" : name}
           </Button>
           {is360Available && (
             <Button

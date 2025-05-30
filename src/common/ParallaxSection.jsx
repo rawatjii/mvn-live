@@ -7,6 +7,7 @@ import { Container } from "react-bootstrap";
 import CustomCard from "../frontend/components/Card";
 import * as CONFIG from "../config/config";
 import { useLocation } from "react-router-dom";
+import useFetchData from "../frontend/utils/apiHelper";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,10 +19,13 @@ function ParallaxSection({ section_data }) {
   const iframeRef = useRef(null);
 
   const { pathname } = useLocation();
-  const { heading, data, second_title, desc, iframe } = section_data || {};
+  const { heading, data, second_title, desc, iframe, project_id, section_type } = section_data || {};
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const [imageUrls, setImageUrls] = useState([]);
+
+  const { data:projectData, loading:projectLoading } = useFetchData(`project/${project_id}/${section_type}`);
+
 
   // Memoized ratio calculation
   const getRatio = useCallback(
@@ -62,6 +66,9 @@ function ParallaxSection({ section_data }) {
         ScrollTrigger.refresh();
       }
     };
+
+    console.log(' parallad section_data', section_data);
+    
 
     const preloadImages = () => {
       imageUrls.forEach((url) => {
@@ -199,9 +206,15 @@ function ParallaxSection({ section_data }) {
 
         {/* parallax */}
 
-        {data?.map((single, index) => (
+        {projectData?.map((single, index) => (
           <div key={index} className="col-sm-12 col-lg-4">
             <div className="card center">
+              <picture>
+                <source media="(min-width:650px)" srcset="img_pink_flowers.jpg" />
+                <source media="(min-width:465px)" srcset="img_white_flower.jpg" />
+                <img src="img_orange_flowers.jpg" alt="Flowers" style="width:auto;" />
+              </picture>
+
               <img
                 src={single.path?.mobile}
                 alt={`mvn amenities ${index}`}
@@ -263,7 +276,7 @@ function ParallaxSection({ section_data }) {
       )}
 
       {/* parallax */}
-      {data?.map((amenity, i) => (
+      {projectData?.map((amenity, i) => (
         <section
           key={i}
           className="parallax"

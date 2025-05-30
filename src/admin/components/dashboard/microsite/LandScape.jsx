@@ -9,41 +9,68 @@ import CustomTable from "../utilities/custom-table/CustomTable";
 import CustomPagination from "../utilities/pagination/CustomPagination";
 import StatusOrder from "../utilities/Status-order";
 
-
 const LandScape = () => {
   const [editData, setEditData] = useState(null);
   const [editLandscapeData, setEditLandscapeData] = useState(null);
   const { project_id } = useParams();
   const location = useLocation();
   const locationType = location.pathname.split("/").pop();
-  
-  const projectSectionsApi = generateApi("projec-sections",0);
+
+  const projectSectionsApi = generateApi("projec-sections", 0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
-  const landScapeApi = generateApi("project-gallery",0);
-  const getApi = generateApi("project-gallery/landscape");
+  const landScapeApi = generateApi("project-gallery", 0);
+  const getApi = generateApi(`project-gallery/${project_id}/landscape`);
 
   const { editItem, createItem } = useCrud(projectSectionsApi);
-  const {data: landscapeItems, fetchAll: fetchLandscapeItems} = useCrud(getApi);
-  const {createItem: landscapeCreateItem, editItem: landscapeEditItem, deleteItem} = useCrud(landScapeApi);
-  
+  const { data: landscapeItems, fetchAll: fetchLandscapeItems } =
+    useCrud(getApi);
+  const {
+    createItem: landscapeCreateItem,
+    editItem: landscapeEditItem,
+    deleteItem,
+  } = useCrud(landScapeApi);
+
   const { getEditData } = useCrud(getEditDataApi);
-  
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
   const metaFields = [
     { name: "heading", label: "Heading", type: "text", col: 6 },
     { name: "sub_heading", label: "Sub Heading", type: "text", col: 6 },
-    { name: "description", label: "Description", type: "textarea", placeholder: "Enter Description", col: 12 }
+    {
+      name: "description",
+      label: "Description",
+      type: "textarea",
+      placeholder: "Enter Description",
+      col: 12,
+    },
   ];
 
   const landscapeFields = [
-    { name: "title", label: "Title", type: "text", col: 12,isRequired:true },
-    { name: "image", label: "Image", type: "file", col: 6,isRequired:true },
-    { name: "alternative_image", label: "Alternate Image", type: "file", col: 6 },
+    { name: "title", label: "Title", type: "text", col: 12 },
+    { name: "image", label: "Image", type: "file", col: 6, isRequired: true },
+    {
+      name: "alternative_image",
+      label: "Alternate Image",
+      type: "file",
+      col: 6,
+    },
     { name: "sm_image", label: "Small Image", type: "file", col: 6 },
-    { name: "sm_alternative_image", label: "Small Alternative Image", type: "file", col: 6 },
-    { name: "alt", label: "Alt", type: "text", col: 12, placeholder: "Enter Alt text",isRequired:true },
+    {
+      name: "sm_alternative_image",
+      label: "Small Alternative Image",
+      type: "file",
+      col: 6,
+    },
+    {
+      name: "alt",
+      label: "Alt",
+      type: "text",
+      col: 12,
+      placeholder: "Enter Alt text",
+      isRequired: true,
+    },
   ];
 
   const fetchMetadata = async () => {
@@ -132,12 +159,20 @@ const LandScape = () => {
     { key: "alt", label: "Alt Text", type: "text" },
   ];
 
-  const paginatedData = landscapeItems?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
+  const paginatedData =
+    landscapeItems?.slice(
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage
+    ) || [];
   return (
-      <CustomSection>
-          <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchMetadata}/>
+    <CustomSection>
+      <StatusOrder
+        sectionId={editData?.id}
+        editData={editData}
+        fetchEditData={fetchMetadata}
+      />
       <MicroBox>
-        <CustomTitle title="Overview" />
+        <CustomTitle title="Landscape" />
         <CustomFormMicrosite
           isBanner={false}
           dynamicFields={metaFields}
@@ -146,14 +181,24 @@ const LandScape = () => {
         />
       </MicroBox>
       <MicroBox>
-        <CustomTitle title={editLandscapeData ? "Edit Landscape Image" : "Add Landscape Images"} />
+        <CustomTitle
+          title={
+            editLandscapeData ? "Edit Landscape Image" : "Add Landscape Images"
+          }
+        />
         <CustomFormMicrosite
           isBanner={false}
           dynamicFields={landscapeFields}
           defaultData={editLandscapeData}
-          onSubmit={editLandscapeData ? handleEditLandscape : handleCreateLandscape}
+          onSubmit={
+            editLandscapeData ? handleEditLandscape : handleCreateLandscape
+          }
           submitButtonText={editLandscapeData ? "Update" : "Create"}
-          cancelButton={editLandscapeData ? { text: "Cancel", onClick: handleCancelEdit } : null}
+          cancelButton={
+            editLandscapeData
+              ? { text: "Cancel", onClick: handleCancelEdit }
+              : null
+          }
         />
       </MicroBox>
       <MicroBox>

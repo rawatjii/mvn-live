@@ -75,6 +75,7 @@ import Party from "./admin/components/dashboard/microsite/Party.jsx";
 import MasterBedroom from "./admin/components/dashboard/microsite/MasterBedroom.jsx";
 import Consultant from "./admin/components/dashboard/microsite/Consultant.jsx";
 import LandScape from "./admin/components/dashboard/microsite/LandScape.jsx";
+import Galleries from "./admin/components/dashboard/microsite/Gallery.jsx";
 import SmElevation from "./admin/components/dashboard/microsite/SmElevation.jsx";
 import Apartment from "./admin/components/dashboard/microsite/Apartment.jsx";
 import ConstructionTechnology from "./admin/components/dashboard/microsite/Construction_tech.jsx";
@@ -313,6 +314,8 @@ const router = createBrowserRouter([
             {path:"masterbedroom", element:<MasterBedroom />},
             {path:"consultant", element:<Consultant />},
             {path:"landscape", element:<LandScape />},
+            {path:"landscapes", element:<LandScape />},
+            {path:"galleries", element:<Galleries />},
             {path:"sm-elevation", element:<SmElevation />},
             {path:"apartment", element:<Apartment />}, 
              {path:"construction", element:<ConstructionTechnology />},  

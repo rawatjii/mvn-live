@@ -235,7 +235,7 @@ const MicroPage = () => {
                 </div>
               }
 
-              if(section.section_type == 'landscape' || section.section_type == 'sm-elevation' || section.section_type == 'apartment'){
+              if(section.section_type == 'landscape' || section.section_type == 'galleries' || section.section_type == 'landscapes' || section.section_type == 'sm-elevation' || section.section_type == 'apartment'){
                 return <div ref={(el) => (sectionRefs.current.MicroLandscape = el)}>
                   <ImagesGallery data={section} />
                 </div>

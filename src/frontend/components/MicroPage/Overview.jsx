@@ -1,11 +1,12 @@
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { Container } from "react-bootstrap";
-import Table from 'react-bootstrap/Table';
+import Table from "react-bootstrap/Table";
 import { API_URL } from "../../../config/config";
+import CustomIframe from "./CustomIframe";
 
 const diamondIMG = `${API_URL}images/icons/plane1.png`;
 
-const MicroOverview = React.memo(({rera, data }) => {
+const MicroOverview = React.memo(({ rera, data }) => {
   const [count1, setCount1] = useState(0);
   const [count2, setCount2] = useState(0);
   const [count3, setCount3] = useState(0);
@@ -69,117 +70,164 @@ const MicroOverview = React.memo(({rera, data }) => {
     };
   }, [ended1, ended2, ended3]);
 
-  console.log('page dat', data)
+  console.log("page dat", data);
 
-  const { heading, sub_heading, description, short_description ,counterHeading, bankDetails, showAwards, discountUrl, isDiscountAvailable } = data;
+  const {
+    heading,
+    sub_heading,
+    description,
+    short_description,
+    counterHeading,
+    bankDetails,
+    showAwards,
+    discountUrl,
+    isDiscountAvailable,
+  } = data;
 
   return (
-    <section className="section micro_overview text-center pb-0 pt-4" aria-label="Overview Section">
-      <Container>
-        <div className="overview_card px-0 pb-0">
-          <div className="aboutUs-card_heading">
-            <div className="diamond_img_strip">
-              <img src={diamondIMG} className="img-fluid" alt="diamond image" />
+    <>
+      <section
+        className="section micro_overview text-center pb-0 pt-4"
+        aria-label="Overview Section"
+      >
+        <Container>
+          <div className="overview_card px-0 pb-0">
+            <div className="aboutUs-card_heading">
+              <div className="diamond_img_strip">
+                <img
+                  src={diamondIMG}
+                  className="img-fluid"
+                  alt="diamond image"
+                />
+              </div>
+              <div className="title">
+                {heading && <h1 className="pr_name">{heading}</h1>}
+                {/* {location && <h6 className="location">{location}</h6>} */}
+              </div>
             </div>
-            <div className="title">
-              {heading && <h1 className="pr_name">{heading}</h1>}
-              {/* {location && <h6 className="location">{location}</h6>} */}
+
+            {sub_heading && <p className="extra">{sub_heading}</p>}
+
+            <div className="aboutUs-box">
+              {description && Array.isArray(description) ? (
+                description.map((el, i) => (
+                  <p className="desc des_style1 text-center" key={`desc-${i}`}>
+                    {el}
+                  </p>
+                ))
+              ) : (
+                <p className="des_style1 text-center">{description}</p>
+              )}
             </div>
-          </div>
 
-          {sub_heading && <p className="extra">{sub_heading}</p>}
-
-          <div className="aboutUs-box">
-            {description && Array.isArray(description) ? (
-              description.map((el, i) => (
-                <p className="desc des_style1 text-center" key={`desc-${i}`}>
-                  {el}
-                </p>
-              ))
-            ) : (
-              <p className="des_style1 text-center">{description}</p>
-            )}
-          </div>
-
-          {/* {showAwards && (
+            {/* {showAwards && (
             <div className="awards">
               <img src={`${API_URL}mvn-offer.webp`} alt="awards icon" />
             </div>
           )} */}
 
-          {counterHeading && 
-            <>
-          <p className="counter-heading">{short_description}</p>
-
-          <div className="counter-flex-box">
-            <div className="flex-box" ref={ref1}>
-              <h4>
-                <span className="counter">{count1}</span> <span className="sqft">sq.ft.</span>
-              </h4>
-            </div>
-            <div className="flex-box" ref={ref2}>
-              <h4>
-                <span className="counter">{count2}</span> <span className="sqft">sq.ft.</span>
-              </h4>
-            </div>
-            <div className="flex-box" ref={ref3}>
-              <h4>
-                <span className="counter">{count3}</span> <span className="sqft">sq.ft.</span>
-              </h4>
-            </div>
-          </div>
-
-          <span className="bar"></span>
-          </>}
-        </div>
-
-        {/* {discountUrl ? <img src={discountUrl} className="img-fluid discount_patch" /> : undefined} */}
-        {!counterHeading && isDiscountAvailable && <span className="bar"></span>}
-
-        {isDiscountAvailable ? <p  className="des_style1 text-center discount">2% discount for Indian Armed Forces Personnel</p> : undefined}
-
-        {isDiscountAvailable ? <span className="bar"></span> : undefined}
-
-        {Array.isArray(rera) ? (
-          <>
-            {rera && (
+            {counterHeading && (
               <>
-                {rera.map((el, i) => (
-                  <p key={i} className="rera-number des_style1 text-center mb-2">{el}</p>
-                ))}
+                <p className="counter-heading">{short_description}</p>
+
+                <div className="counter-flex-box">
+                  <div className="flex-box" ref={ref1}>
+                    <h4>
+                      <span className="counter">{count1}</span>{" "}
+                      <span className="sqft">sq.ft.</span>
+                    </h4>
+                  </div>
+                  <div className="flex-box" ref={ref2}>
+                    <h4>
+                      <span className="counter">{count2}</span>{" "}
+                      <span className="sqft">sq.ft.</span>
+                    </h4>
+                  </div>
+                  <div className="flex-box" ref={ref3}>
+                    <h4>
+                      <span className="counter">{count3}</span>{" "}
+                      <span className="sqft">sq.ft.</span>
+                    </h4>
+                  </div>
+                </div>
+
+                <span className="bar"></span>
               </>
             )}
-          </>
-        ) : (
-          <>
-            {rera && <p className="rera-number des_style1 text-center">{`RERA NO. ${rera}`}</p>}
-          </>
-        )}
+          </div>
 
-        {bankDetails && Object.keys(bankDetails).length > 0 && (
-          <>
-            <Table bordered hover className="bg_transparent mt-5 mb-0" style={{fontSize:'14px'}}>
-              <thead>
-                <tr>
-                  <th>Bank A/C Name</th>
-                  <th>HDFC A/C NO</th>
-                  <th>IFSC CODE</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>{bankDetails.acName}</td>
-                  <td>{bankDetails.acNo}</td>
-                  <td>{bankDetails.ifscCode}</td>
-                </tr>
-              </tbody>
-            </Table>
-            <small className="d-block text-start fw-light" style={{fontSize:'12px'}}>*Project Approved By All Leading Banks.</small>
-          </>
-        )}
-          
-      </Container>
-    </section>
+          {/* {discountUrl ? <img src={discountUrl} className="img-fluid discount_patch" /> : undefined} */}
+          {!counterHeading && short_description && (
+            <span className="bar"></span>
+          )}
+
+          {short_description && (
+            <p className="des_style1 text-center discount">
+              {short_description}
+            </p>
+          )}
+
+          {short_description ? <span className="bar"></span> : undefined}
+
+          {Array.isArray(rera) ? (
+            <>
+              {rera && (
+                <>
+                  {rera.map((el, i) => (
+                    <p
+                      key={i}
+                      className="rera-number des_style1 text-center mb-2"
+                    >
+                      {el}
+                    </p>
+                  ))}
+                </>
+              )}
+            </>
+          ) : (
+            <>
+              {rera && (
+                <p className="rera-number des_style1 text-center">{`RERA NO. ${rera}`}</p>
+              )}
+            </>
+          )}
+
+          {bankDetails && Object.keys(bankDetails).length > 0 && (
+            <>
+              <Table
+                bordered
+                hover
+                className="bg_transparent mt-5 mb-0"
+                style={{ fontSize: "14px" }}
+              >
+                <thead>
+                  <tr>
+                    <th>Bank A/C Name</th>
+                    <th>HDFC A/C NO</th>
+                    <th>IFSC CODE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{bankDetails.acName}</td>
+                    <td>{bankDetails.acNo}</td>
+                    <td>{bankDetails.ifscCode}</td>
+                  </tr>
+                </tbody>
+              </Table>
+              <small
+                className="d-block text-start fw-light"
+                style={{ fontSize: "12px" }}
+              >
+                *Project Approved By All Leading Banks.
+              </small>
+            </>
+          )}
+        </Container>
+      </section>
+
+      <CustomIframe data="https://www.youtube.com/embed/CbmkQBZuvTw?loop=1&mute=1&playlist=CbmkQBZuvTw" />
+    </>
   );
 });
 

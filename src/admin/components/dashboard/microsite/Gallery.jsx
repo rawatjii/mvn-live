@@ -9,45 +9,69 @@ import CustomTable from "../utilities/custom-table/CustomTable";
 import CustomPagination from "../utilities/pagination/CustomPagination";
 import StatusOrder from "../utilities/Status-order";
 
-const Amenities = () => {
+const Gallery = () => {
   const [editData, setEditData] = useState(null);
-  const [editamenitiesData, setEditamenitiesData] = useState(null);
+  const [editLandscapeData, setEditLandscapeData] = useState(null);
   const { project_id } = useParams();
   const location = useLocation();
   const locationType = location.pathname.split("/").pop();
-  
-  // API endpoints
-  const projectSectionsApi = generateApi("projec-sections",0);
+
+  const projectSectionsApi = generateApi("projec-sections", 0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
-  const amenitiesApi = generateApi(`project/${project_id}/amenities`);
-  
-  // CRUD hooks
+  const landScapeApi = generateApi("project-gallery", 0);
+  const getApi = generateApi(`project-gallery/${project_id}/galleries`);
+
   const { editItem, createItem } = useCrud(projectSectionsApi);
-  const { 
-    data: amenitiesItems, 
-    createItem: amenitiesCreateItem, 
-    editItem: amenitiesEditItem, 
+  const { data: landscapeItems, fetchAll: fetchLandscapeItems } =
+    useCrud(getApi);
+  const {
+    createItem: landscapeCreateItem,
+    editItem: landscapeEditItem,
     deleteItem,
-    getItems: fetchamenitiesItems
-  } = useCrud(amenitiesApi);
-  
+  } = useCrud(landScapeApi);
+
   const { getEditData } = useCrud(getEditDataApi);
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
   const metaFields = [
     { name: "heading", label: "Heading", type: "text", col: 6 },
+    { name: "sub_heading", label: "Sub Heading", type: "text", col: 6 },
+    {
+      name: "description",
+      label: "Description",
+      type: "textarea",
+      placeholder: "Enter Description",
+      col: 12,
+    },
   ];
 
-  const amenitiesFields = [
-    { name: "heading", label: "Heading", type: "text", col: 6,isRequired:true },
-    { name: "image", label: "Image", type: "file", col: 6,isRequired:true },
-    { name: "alternative_image", label: "Alternate Image", type: "file", col: 6 },
-    { name: "alt", label: "Alt", type: "text", col: 6, placeholder: "Enter Alt text",isRequired:true },
-    { name: "short_description", label: "Description", type: "textarea", col: 6,isRequired:true },
-
+  const landscapeFields = [
+    { name: "title", label: "Title", type: "text", col: 12 },
+    { name: "image", label: "Image", type: "file", col: 6, isRequired: true },
+    {
+      name: "alternative_image",
+      label: "Alternate Image",
+      type: "file",
+      col: 6,
+    },
+    { name: "sm_image", label: "Small Image", type: "file", col: 6 },
+    {
+      name: "sm_alternative_image",
+      label: "Small Alternative Image",
+      type: "file",
+      col: 6,
+    },
+    {
+      name: "alt",
+      label: "Alt",
+      type: "text",
+      col: 12,
+      placeholder: "Enter Alt text",
+      isRequired: true,
+    },
   ];
-
 
   const fetchMetadata = async () => {
     const formData = new FormData();
@@ -61,13 +85,11 @@ const Amenities = () => {
     }
   };
 
-
-
-  const fetchAllamenitiesItems = async () => {
+  const fetchAllLandscapeItems = async () => {
     try {
-      await fetchamenitiesItems({ project_id, type: locationType });
+      await fetchLandscapeItems({ project_id, type: locationType });
     } catch (error) {
-      console.error("Error fetching amenities items:", error);
+      console.error("Error fetching landscape items:", error);
     }
   };
 
@@ -89,60 +111,68 @@ const Amenities = () => {
     }
   };
 
-  const handleCreateamenities = async (formData) => {
+  const handleCreateLandscape = async (formData) => {
     try {
-      formData.append("is_type", "amenities");
-      await amenitiesCreateItem(formData);
-      await fetchAllamenitiesItems();
-      setEditamenitiesData(null);
+      formData.append("is_type", "galleries");
+      await landscapeCreateItem(formData);
+      await fetchAllLandscapeItems();
+      setEditLandscapeData(null);
     } catch (error) {
-      console.error("Error creating amenities item:", error);
+      console.error("Error creating landscape item:", error);
     }
   };
 
-  const handleEditamenities = async (formData) => {
+  const handleEditLandscape = async (formData) => {
     try {
-      formData.append("is_type", "amenities");
-      await amenitiesEditItem(editamenitiesData.id, formData);
-      await fetchAllamenitiesItems();
-      setEditamenitiesData(null);
+      formData.append("is_type", "galleries");
+      await landscapeEditItem(editLandscapeData.id, formData);
+      await fetchAllLandscapeItems();
+      setEditLandscapeData(null);
     } catch (error) {
-      console.error("Error updating amenities item:", error);
+      console.error("Error updating landscape item:", error);
     }
   };
 
   const handleDeleteItem = async (id) => {
     try {
       await deleteItem(id);
-      await fetchAllamenitiesItems();
+      await fetchAllLandscapeItems();
     } catch (error) {
-      console.error("Error deleting amenities item:", error);
+      console.error("Error deleting landscape item:", error);
     }
   };
 
   const handleCancelEdit = () => {
-    setEditamenitiesData(null);
+    setEditLandscapeData(null);
   };
 
   useEffect(() => {
     fetchMetadata();
-    fetchAllamenitiesItems();
+    // fetchAllLandscapeItems();
   }, []);
 
   const columns = [
     { key: "", label: "S.No." },
-    { key: "heading", label: "Title", type: "text" },
+    { key: "title", label: "Title", type: "text" },
     { key: "image", label: "Image", type: "file" },
     { key: "alternative_image", label: "Alternative Image", type: "file" },
     { key: "alt", label: "Alt Text", type: "text" },
   ];
 
-  const paginatedData = amenitiesItems?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
+  const paginatedData =
+    landscapeItems?.slice(
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage
+    ) || [];
   return (
     <CustomSection>
-       <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchMetadata}/>  
+      <StatusOrder
+        sectionId={editData?.id}
+        editData={editData}
+        fetchEditData={fetchMetadata}
+      />
       <MicroBox>
-        <CustomTitle title="Overview" />
+        <CustomTitle title="Gallery" />
         <CustomFormMicrosite
           isBanner={false}
           dynamicFields={metaFields}
@@ -151,31 +181,41 @@ const Amenities = () => {
         />
       </MicroBox>
       <MicroBox>
-        <CustomTitle title={editamenitiesData ? "Edit amenities Image" : "Add amenities Images"} />
+        <CustomTitle
+          title={
+            editLandscapeData ? "Edit Gallery Image" : "Add Gallery Images"
+          }
+        />
         <CustomFormMicrosite
           isBanner={false}
-          dynamicFields={amenitiesFields}
-          defaultData={editamenitiesData}
-          onSubmit={editamenitiesData ? handleEditamenities : handleCreateamenities}
-          submitButtonText={editamenitiesData ? "Update" : "Create"}
-          cancelButton={editamenitiesData ? { text: "Cancel", onClick: handleCancelEdit } : null}
+          dynamicFields={landscapeFields}
+          defaultData={editLandscapeData}
+          onSubmit={
+            editLandscapeData ? handleEditLandscape : handleCreateLandscape
+          }
+          submitButtonText={editLandscapeData ? "Update" : "Create"}
+          cancelButton={
+            editLandscapeData
+              ? { text: "Cancel", onClick: handleCancelEdit }
+              : null
+          }
         />
       </MicroBox>
       <MicroBox>
-        <CustomTitle title="amenities Items" />
+        <CustomTitle title="Galleries Items" />
         <CustomTable
           columns={columns}
           data={paginatedData}
           onEdit={(row) => {
             window.scrollTo(0, 0);
-            setEditamenitiesData(row);
+            setEditLandscapeData(row);
           }}
           onDelete={(row) => handleDeleteItem(row.id)}
           startIndex={(currentPage - 1) * itemsPerPage}
         />
         <CustomPagination
           currentPage={currentPage}
-          totalPages={Math.ceil((amenitiesItems?.length || 0) / itemsPerPage)}
+          totalPages={Math.ceil((landscapeItems?.length || 0) / itemsPerPage)}
           onPageChange={setCurrentPage}
         />
       </MicroBox>
@@ -183,4 +223,4 @@ const Amenities = () => {
   );
 };
 
-export default Amenities;
+export default Gallery;
