@@ -15,12 +15,8 @@ const Desktopmicro_bg = `${API_URL}images/blogs/blog.jpg`;
 
 function BlogDetails() {
   window.scrollTo(0, 0);
-  // const selectedBlog = useSelector((state) => state.blogs.selectedBlog);
   const [selectedBlog, setSelectedBlog] = useState({});
   const [loading, setLoading] = useState(false);
-  // const [newLoadingCount, setNewLoadingCount] = useState(
-  //   Number(localStorage.getItem("count"))
-  // );
   const { slug } = useParams();
   const location = useLocation();
 

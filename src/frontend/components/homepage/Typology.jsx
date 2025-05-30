@@ -27,8 +27,8 @@ const Typology = React.memo(({ onLoadComplete }) => {
   const contentRefs = useRef([]);
   const imageContentRefs = useRef([]);
   const [images, setImages] = useState([]);
-  const [loading, setLoading] = useState(true); // Loader state
-  const [loadingComplete, setLoadingComplete] = useState(false); // State to track when all images are loaded
+  const [loading, setLoading] = useState(true);
+  const [loadingComplete, setLoadingComplete] = useState(false);
   const { isMobile } = useMatches();
   const isLaptop = window.innerWidth <= 1400;
 
@@ -40,10 +40,8 @@ const Typology = React.memo(({ onLoadComplete }) => {
   ];
 
   useEffect(() => {
-    // Only preload images once totalFrames is set
     if (totalFrames === 0 || isImagesLoaded.current) return;
 
-    // Preload images
     const loadedImages = [];
     let loadedCount = 0;
 
@@ -53,14 +51,13 @@ const Typology = React.memo(({ onLoadComplete }) => {
         ? `${API_URL}assets/micro/aeroone-gurgaon/mobiles/${i}.webp`
         : `${API_URL}assets/micro/aeroone-gurgaon/mobiles/${i}.webp`;
 
-      // Track when each image loads
       img.onload = () => {
         loadedCount++;
         if (loadedCount === totalFrames) {
-          setImages(loadedImages); // Set images after all are loaded
-          setLoading(false); // Hide loader
-          isImagesLoaded.current = true; // Mark as loaded
-          setLoadingComplete(true); // Mark loading as complete
+          setImages(loadedImages); 
+          setLoading(false);
+          isImagesLoaded.current = true; 
+          setLoadingComplete(true);
           onLoadComplete();
         }
       };
@@ -68,6 +65,89 @@ const Typology = React.memo(({ onLoadComplete }) => {
       loadedImages.push(img);
     }
   }, []);
+
+
+
+   useEffect(() => {
+        const loadAnimationData = async () => {
+          try {
+            const jsonPath = isMobile ? BACKEND_IMAGE_URL + json : BACKEND_IMAGE_URL + json;
+            const response = await fetch(jsonPath);
+            const data = await response.json();
+  
+            setAnimationData(data); 
+          } catch (error) {
+            console.error("Error loading animation data:", error);
+            setLoading(false); 
+          }
+        };
+  
+        loadAnimationData();
+      }, [isMobile, json]);
+
+      useEffect(() => {
+      if (
+        !animationData ||
+        !lottieContainerRef.current ||
+        !containerRef.current
+      )
+        return;
+
+      const lottieAnimation = lottie.loadAnimation({
+        container: lottieContainerRef.current,
+        animationData,
+        renderer: "canvas",
+        loop: false,
+        autoplay: false,
+        rendererSettings: {
+          preserveAspectRatio: "xMidYMid slice",
+          clearCanvas: true,
+        },
+      });
+
+      const scrollAnimation = ScrollTrigger.create({
+        trigger: containerRef.current,
+        start: isBanner
+          ? `top ${isMobile ? "top" : "top"}`
+          : `top ${isMobile ? "65px" : "top"}`,
+        end: `+=${window.innerHeight * 2}`,
+        pin: true,
+        scrub: 0.5,
+        onUpdate: (self) => {
+          const progress = self.progress;
+          const totalFrames = lottieAnimation.totalFrames;
+          const frameIndex = Math.floor(progress * (totalFrames - 1));
+          lottieAnimation.goToAndStop(frameIndex, true);
+        },
+        onLeave: () => {
+          lottieAnimation.goToAndStop(lottieAnimation.totalFrames - 1, true);
+        },
+        onLeaveBack: () => {
+          lottieAnimation.goToAndStop(0, true);
+        },
+      });
+      if (isMainBanner) {
+        ScrollTrigger.create({
+          trigger: containerRef.current,
+          start: "bottom top",
+          toggleActions: "play none none reverse",
+          onEnterBack: () => onBannerExit(false),
+          onLeave: () => onBannerExit(true),
+        });
+      }
+
+      lottieAnimation.addEventListener("DOMLoaded", () => {
+        console.log("Lottie animation is fully loaded.");
+        setLoading(false); 
+        onLoadComplete && onLoadComplete(); 
+      });
+
+      return () => { 
+        scrollAnimation.kill();
+        lottieAnimation.destroy();
+      };
+    }, [animationData, onLoadComplete]);
+
 
   useEffect(() => {
     if (loading || !loadingComplete || images.length !== totalFrames) return;
@@ -95,7 +175,6 @@ const Typology = React.memo(({ onLoadComplete }) => {
           totalFrames - 1
         );
       
-        // ✅ Fix null errors by checking existence
         frameRefs.current.forEach((img, index) => {
           if (img) img.style.display = index === frameIndex ? "block" : "none";
         });
@@ -127,16 +206,18 @@ const Typology = React.memo(({ onLoadComplete }) => {
     };
   }, [loading, images, totalFrames, loadingComplete]);
 
+
+  
+
   return (
     <>
       <section ref={containerRef} className="section typology_section pb-0" aria-label="Typology Section">
         <div className="heading_div mb_60 mb_sm_30">
           <h4 className="title title_style1 text-center">Typologies</h4>
         </div>
-        {/* Images section */}
         <div className="images">
-          {images.map((img, index) => (
-            <img
+          {/* {images.map((img, index) => {
+         return   <img
               key={index}
               ref={(el) => (frameRefs.current[index] = el)}
               src={img.src}
@@ -144,14 +225,21 @@ const Typology = React.memo(({ onLoadComplete }) => {
               className="frame"
               style={{ display: index === 0 ? "block" : "none" }}
             />
-          ))}
+          })} */}
+
+
+            <img
+              src={lottieContainerRef}
+              alt={`Frame`}
+              className="frame"
+            />
+
 
           <div className="typology_arrow">
             <div className="line"></div>
           </div>
         </div>
 
-        {/* Content boxes */}
         <div className="typology_content">
           <div className="typology-before-line">
             <div className="diamond_img_strip">

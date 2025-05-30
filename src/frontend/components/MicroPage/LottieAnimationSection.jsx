@@ -41,7 +41,6 @@ const LottieAnimationSection = React.memo(
     console.log('section_type',section_type);
 
     // Ref for the interseciton observer
-    const observerRef = useRef(null);
 
     // Lazy load animation data when section comes into view
 
