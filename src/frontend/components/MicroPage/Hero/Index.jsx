@@ -55,7 +55,7 @@ const HeroSection = ({ projectId, onBannerExit, isMainBanner }) => {
         <div className="AthensBanner" ref={sectionRef}>
           <img
             src={BACKEND_IMAGE_URL+data[0].image}
-            alt="Desktop Banner"
+            alt={data[0].alt}
             className="d-none d-md-block"
           />
           <img src={data[0].mobile} alt="Mobile  Banner" className="d-md-none" />

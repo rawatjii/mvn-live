@@ -219,14 +219,14 @@ const router = createBrowserRouter([
           </FrontendRoute>
         ),
       },
-      {
-        path: "mvn-mall",
-        element: (
-          <FrontendRoute  loaderType="mvn-mall-1">
-          <MvnMall1 data={mvnMallData}/>
-          </FrontendRoute>
-        ),
-      },
+      // {
+      //   path: "mvn-mall",
+      //   element: (
+      //     <FrontendRoute  loaderType="mvn-mall-1">
+      //     <MvnMall1 data={mvnMallData}/>
+      //     </FrontendRoute>
+      //   ),
+      // },
       {
         path: "disclaimer",
         element: (
