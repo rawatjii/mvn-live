@@ -10,16 +10,24 @@ import { BACKEND_IMAGE_URL } from "../../../config/config";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const MicroBanner = ({page_section, page, bg, data})=>{
+const MicroBanner = ({page_section, page, data, type})=>{
   const titleRef = useRef();
   const linksRef = useRef();
-  const [microBannerData, setMicroBannerData] = useState(null)
+  const [microBannerData, setMicroBannerData] = useState(null);
 
-  const { data:bannerData, loading } = useFetchData(`page/page-section/${page}`);
+  const fetchUrl = type == 'blog' ? `blog/${page}` : `page/page-section/${page}`;
+
+  const { data:bannerData, loading } = useFetchData(fetchUrl);
+
+  console.log('bannerData',bannerData);
   
   useEffect(()=>{
-    const banner = bannerData?.filter((el)=> el.page_section == page_section)
-    setMicroBannerData(banner?.[0])
+    if(type != 'blog'){
+      const banner = bannerData?.filter((el)=> el.page_section == page_section)
+      setMicroBannerData(banner?.[0])
+    }else{
+      setMicroBannerData(bannerData)
+    }
   }, [bannerData])
 
   useEffect(() => {
@@ -43,6 +51,9 @@ const MicroBanner = ({page_section, page, bg, data})=>{
       "+=0.5"
     );
   }, []);
+
+  console.log('blog type', page);
+  
 
   return (
     <>

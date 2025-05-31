@@ -19,11 +19,13 @@ const LocationMap = () => {
   const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
   const locationMapApi = generateApi("project-location-advantage");
+  const locationDataApi = generateApi(`project-location-advantage/${project_id}`);
   
   const { editItem, createItem } = useCrud(projectSectionsApi);
   const {data: locationMapItems, createItem: locationMapCreateItem, editItem: locationMapEditItem, deleteItem,getItems: fetchlocationMapItems} = useCrud(locationMapApi);
   
   const { getEditData } = useCrud(getEditDataApi);
+  const { data:getLocationAdvantageData } = useCrud(locationDataApi);
   
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
@@ -127,12 +129,12 @@ const LocationMap = () => {
     { key: "distance", label: "Distance", type: "text" },
   ];
 
-  const paginatedData = locationMapItems?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
+  const paginatedData = getLocationAdvantageData?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
   return (
     <CustomSection>
       <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchMetadata}/>
       <MicroBox>
-        <CustomTitle title="Overview" />
+        <CustomTitle title="Location Map" />
         <CustomFormMicrosite
           isBanner={false}
           dynamicFields={metaFields}

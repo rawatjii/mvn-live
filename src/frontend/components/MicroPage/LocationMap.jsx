@@ -16,6 +16,7 @@ import "yet-another-react-lightbox/styles.css";
 
 import CustomCard from "../Card";
 import LocationSlider from "./bangalore/LocationSlider";
+import LocationAdvantes from "./LocationAdvantes";
 
 gsap.registerPlugin(ScrollTrigger);
 const MicroLocationMap = ({ data }) => {
@@ -25,7 +26,7 @@ const MicroLocationMap = ({ data }) => {
   const sizeRefs = useRef([]);
   const [isLocationMapOpen, setIsLocationMapOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const { mapIMG, heading, second_title, desc, locationSlider, modalIframe, image, sub_heading, description } =
+  const { project_id, heading, second_title, desc, locationSlider, modalIframe, image, sub_heading, description } =
     data;
 
   const locationMapImg = [
@@ -96,6 +97,9 @@ const MicroLocationMap = ({ data }) => {
     });
   }, []);
 
+  console.log('mvnmall data',data);
+  
+
   return (
     <section
       className="section location_map_section pb-0"
@@ -144,18 +148,7 @@ const MicroLocationMap = ({ data }) => {
 
         <Container className="desktop_fluid_container">
           <h4 className="title style2">Location Advantages</h4>
-          {data.locationData && (
-            <ul className="location_points">
-              <span className="left_road"></span>
-              <span className="top_road"></span>
-              {data.locationData.map((item, index) => (
-                <li key={index}>
-                  <h3 className="distance">{item.distance}</h3>
-                  <p>{item.title}</p>
-                </li>
-              ))}
-            </ul>
-          )}
+          <LocationAdvantes project_id={project_id} />
         </Container>
       </div>
       {locationSlider && <LocationSlider data={data} />}

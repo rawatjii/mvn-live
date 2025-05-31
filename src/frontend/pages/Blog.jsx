@@ -1,16 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import MicroBanner from "../components/MicroBanner/Index";
 import { Container } from "react-bootstrap";
-import SecTitle from "../../common/SecTitle/Index";
-
-import headingIconImg from "../assets/images/icons/heading-icon-img.webp";
-
 import { useDispatch } from "react-redux";
-import { setSelectedBlog } from "../../redux/blogsSlice";
-import ScrollToTop from "./../../common/ScrollToTop";
-import InitialLoading from "../skeleton/Initial/Index";
 import Layout from "../components/Layout";
 import BlogLists from "../components/blog/BlogLists";
+import { API_URL } from "../../config/config";
+
+const headingIconImg = `${API_URL}images/icons/heading-icon-img.webp`;
 
 function Blog() {
   window.scrollTo(0, 0);
@@ -43,7 +39,7 @@ function Blog() {
   return (
     <Layout>
       <div className="blog_page inner_section" ref={containerRef}>
-        <MicroBanner page_section="blog-banner" page="blog" bg={BlogImg} data={breadcrumbs} />
+        <MicroBanner page_section="blog-banner" page="blog" data={breadcrumbs} />
         <div className="micro_content">
           <div className="micro_data">
             <div className="content_col position-relative page-header-main-heading">

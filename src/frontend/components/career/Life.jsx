@@ -1,11 +1,7 @@
 import React from "react";
-import CultureImg from "../../assets/images/career/image.jpg";
-import peopleDevelopmentImg from "../../assets/images/career/peaple-d.png";
-import RewardsImg from "../../assets/images/career/rewards.png";
-import ligemvnImg from "../../assets/images/career/lifeatmvn.webp";
-import BlankIMG from "../../assets/images/career/bg.png";
 import useFetchData from "../../utils/apiHelper";
-import { BACKEND_IMAGE_URL } from "../../../config/config";
+import { API_URL, BACKEND_IMAGE_URL } from "../../../config/config";
+const BlankIMG = `${API_URL}images/career/bg.png`;
 
 const LifeAtMvn = () => {
 

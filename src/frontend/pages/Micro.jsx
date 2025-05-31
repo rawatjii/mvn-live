@@ -38,6 +38,7 @@ import Consultant from "../components/MicroPage/Consultant";
 import ImagesGallery from "../components/MicroPage/ImagesGallery";
 import ConstructionTechnology from "../components/MicroPage/ConstructionTechnology";
 import ParallaxSection from "../../common/ParallaxSection";
+import Footer from "../components/Footer";
 
 const headerSidebarDesktopImg = `${API_URL}images/aero-gurgaon/header/sidebar.webp`;
 
@@ -144,7 +145,7 @@ const MicroPage = () => {
     };
   }, [basicData, projectSections]);
 
-  console.log('projectSections',projectSections)
+  console.log("projectSections", projectSections);
 
   if (loading) return <div className="text-center py-5">Loading...</div>;
   if (!loading && basicData && basicData.length === 0)
@@ -166,104 +167,142 @@ const MicroPage = () => {
             projectSections.map((section, secIndex) => {
               if (section.section_type == "overview") {
                 return (
-                  <div
-                    ref={(el) =>
-                      (sectionRefs.current.microOverview = el)
-                    }
-                  >
+                  <div ref={(el) => (sectionRefs.current.microOverview = el)}>
                     <MicroOverview rera={basicData?.rera_no} data={section} />
                   </div>
                 );
               }
-              if(section.section_type == "elevation") return <LargeElevationSection data={section} />
-              if(section.section_type == "walkthrough"){
-                return <div ref={(el) => (sectionRefs.current.Walkthrough = el)}>
-                  <YtIframe data={section} subs_btn={true} />
-                </div>
+              if (section.section_type == "elevation")
+                return <LargeElevationSection data={section} />;
+              if (section.section_type == "walkthrough") {
+                return (
+                  <div ref={(el) => (sectionRefs.current.Walkthrough = el)}>
+                    <YtIframe data={section} subs_btn={true} />
+                  </div>
+                );
               }
-              
             })}
 
-            <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
-              <DownloadBrochure
-                showAwards={basicData?.batch}
-                name={basicData?.name}
-              />
-            </div>
+          <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
+            <DownloadBrochure
+              showAwards={basicData?.batch}
+              name={basicData?.name}
+            />
+          </div>
 
-            {projectSections && projectSections.map((section, secIndex) => {
-              if(section.section_type == 'threesixtyview') return  <View360
-                  data={section}
-                  onLoadComplete={() => ScrollTrigger.refresh()}
-                  // isMobile={isMobile}
-                />
+          {projectSections &&
+            projectSections.map((section, secIndex) => {
+              if (section.section_type == "threesixtyview")
+                return (
+                  <View360
+                    data={section}
+                    onLoadComplete={() => ScrollTrigger.refresh()}
+                    // isMobile={isMobile}
+                  />
+                );
 
-              if(section.section_type == 'livingroom'){
-                return <div ref={(el) => (sectionRefs.current.LIVINGROOM = el)}>
-                  <Suspense fallback="">
+              if (section.section_type == "livingroom") {
+                return (
+                  <div ref={(el) => (sectionRefs.current.LIVINGROOM = el)}>
+                    <Suspense fallback="">
+                      <PeacockSection
+                        data={section}
+                        onLoadComplete={() => setPeacockLoaded(true)}
+                      />
+                    </Suspense>
+                  </div>
+                );
+              }
+
+              if (section.section_type == "party") {
+                return (
+                  <div ref={(el) => (sectionRefs.current.party = el)}>
+                    <Suspense fallback="">
+                      <PeacockSection
+                        data={section}
+                        onLoadComplete={() => setPeacockLoaded(true)}
+                      />
+                    </Suspense>
+                  </div>
+                );
+              }
+
+              if (section.section_type == "masterbedroom") {
+                return (
+                  <div ref={(el) => (sectionRefs.current.party = el)}>
                     <PeacockSection
                       data={section}
                       onLoadComplete={() => setPeacockLoaded(true)}
                     />
-                  </Suspense>
-                </div>
+                  </div>
+                );
               }
 
-              if(section.section_type == 'party'){
-                return <div ref={(el) => (sectionRefs.current.party = el)}>
-                  <Suspense fallback="">
-                    <PeacockSection
-                      data={section}
-                      onLoadComplete={() => setPeacockLoaded(true)}
-                    />
-                  </Suspense>
-                </div>
-              }
-
-              if(section.section_type == 'masterbedroom'){
-                return <div ref={(el) => (sectionRefs.current.party = el)}>
-                    <PeacockSection
-                      data={section}
-                      onLoadComplete={() => setPeacockLoaded(true)}
-                    />
-                </div>
-              }
-
-              if(section.section_type == 'consultant'){
-                return <div ref={(el) => (sectionRefs.current.consultant = el)}>
+              if (section.section_type == "consultant") {
+                return (
+                  <div ref={(el) => (sectionRefs.current.consultant = el)}>
                     <Consultant data={section} />
-                </div>
+                  </div>
+                );
               }
 
-              if(section.section_type == 'landscape' || section.section_type == 'galleries' || section.section_type == 'landscapes' || section.section_type == 'sm-elevation' || section.section_type == 'apartment'){
-                return <div ref={(el) => (sectionRefs.current.MicroLandscape = el)}>
-                  <ImagesGallery data={section} />
-                </div>
+              if (
+                section.section_type == "landscape" ||
+                section.section_type == "galleries" ||
+                section.section_type == "landscapes" ||
+                section.section_type == "sm-elevation" ||
+                section.section_type == "apartment"
+              ) {
+                return (
+                  <div ref={(el) => (sectionRefs.current.MicroLandscape = el)}>
+                    <ImagesGallery data={section} />
+                  </div>
+                );
               }
 
-              if(section.section_type == 'construction'){
-                return <div
-                ref={(el) => (sectionRefs.current.constructionTechnology = el)}
-              >
-                <ConstructionTechnology data={section} />
-              </div>
+              if (section.section_type == "construction") {
+                return (
+                  <div
+                    ref={(el) =>
+                      (sectionRefs.current.constructionTechnology = el)
+                    }
+                  >
+                    <ConstructionTechnology data={section} />
+                  </div>
+                );
               }
 
-              if(section.section_type == 'amenities'){
-                return <div ref={(el) => (sectionRefs.current.MicroAmenities = el)}>
-                <ParallaxSection section_data={section} />
-              </div>
+              if (section.section_type == "amenities") {
+                return (
+                  <div ref={(el) => (sectionRefs.current.MicroAmenities = el)}>
+                    <ParallaxSection section_data={section} />
+                  </div>
+                );
               }
 
-              if(section.section_type == 'location-map'){
-                return <div ref={(el) => (sectionRefs.current.MicroLocationMap = el)}>
-                <MicroLocationMap data={section} />
-              </div>
+              if (section.section_type == "location-map") {
+                return (
+                  <div
+                    ref={(el) => (sectionRefs.current.MicroLocationMap = el)}
+                  >
+                    <MicroLocationMap data={section} />
+                  </div>
+                );
               }
-
             })}
 
-           
+          <div className="container-fluid micro_footer">
+            <div className="row ">
+              <div className="col-sm-6 px-0">
+                <Enquire />
+              </div>
+              <div className="col-sm-6 px-0">
+                <EnquireForm projectName={projectName} />
+              </div>
+            </div>
+          </div>
+
+          <Footer />
 
           {/*
           {data.rera && data.rera.isshow === true && <Rera data={data.rera} />}

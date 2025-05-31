@@ -19,7 +19,7 @@ function ParallaxSection({ section_data }) {
   const iframeRef = useRef(null);
 
   const { pathname } = useLocation();
-  const { heading, data, second_title, desc, iframe, project_id, section_type } = section_data || {};
+  const { heading, data, second_title, description, iframe, project_id, section_type } = section_data || {};
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const [imageUrls, setImageUrls] = useState([]);
@@ -39,15 +39,15 @@ function ParallaxSection({ section_data }) {
 
   // collect all image url to preload
   useEffect(() => {
-    if (data) {
-      const urls = data.reduce((acc, item) => {
-        if (isMobile && item.path?.mobile) acc.push(item.path.mobile);
-        if (!isMobile && item.path?.desktop) acc.push(item.path.desktop);
+    if (projectData) {
+      const urls = projectData.reduce((acc, item) => {
+        if (isMobile && item.image) acc.push(item.image);
+        if (!isMobile && item.image) acc.push(item.image);
         return acc;
       }, []);
       setImageUrls([...new Set(urls)]);
     }
-  }, [data, isMobile]);
+  }, [projectData, isMobile]);
 
   // Preload images and update loading status
   useEffect(() => {
@@ -66,8 +66,6 @@ function ParallaxSection({ section_data }) {
         ScrollTrigger.refresh();
       }
     };
-
-    console.log(' parallad section_data', section_data);
     
 
     const preloadImages = () => {
@@ -89,7 +87,7 @@ function ParallaxSection({ section_data }) {
 
   // Setup GSAP animations
   const setupAnimations = useCallback(() => {
-    if (!data || !sectionsRef.current.length || isMobile) return;
+    if (!projectData || !sectionsRef.current.length || isMobile) return;
 
     // Clear existing triggers before setting up new ones
     triggersRef.current.forEach((trigger) => trigger?.kill());
@@ -98,9 +96,13 @@ function ParallaxSection({ section_data }) {
     triggersRef.current = sectionsRef.current
       .map((section, i) => {
         const bg = section?.querySelector(".bg");
-        if (!bg || !data[i]?.path?.desktop) return null;
+        if (!bg || !projectData[i]?.image) return null;
 
-        const imageUrl = `url(${data[i].path.desktop})`;
+        console.log('projectDataprojectData',projectData);
+
+        const normalizedImagePath = projectData[i].image.replace(/\\/g, '/');
+        const imageUrl = `url(${CONFIG.BACKEND_IMAGE_URL}${normalizedImagePath})`;
+        // const imageUrl = `url(${CONFIG.BACKEND_IMAGE_URL + projectData[i].image})`;
         bg.style.backgroundImage = imageUrl;
 
         const defaultBgPos =
@@ -129,11 +131,11 @@ function ParallaxSection({ section_data }) {
       .filter(Boolean);
 
     ScrollTrigger.refresh(); // Explicitly refresh after setup
-  }, [data, isMobile, getRatio]);
+  }, [projectData, isMobile, getRatio]);
 
   // Run animations only after images are loaded
   useEffect(() => {
-    if (imagesLoaded && !isMobile && data && sectionsRef.current.length) {
+    if (imagesLoaded && !isMobile && projectData && sectionsRef.current.length) {
       setupAnimations();
 
       const handleResize = () => {
@@ -148,7 +150,7 @@ function ParallaxSection({ section_data }) {
         ScrollTrigger.refresh();
       };
     }
-  }, [imagesLoaded, isMobile, data, setupAnimations]);
+  }, [imagesLoaded, isMobile, projectData, setupAnimations]);
 
   // lazy load youtube ifram
   useEffect(()=>{
@@ -287,11 +289,11 @@ function ParallaxSection({ section_data }) {
             <Watermark className="left" />
           </div>
           <div className="content">
-            <span className="am-name mx-auto">{amenity.name}</span>
+            <span className="am-name mx-auto">{amenity.heading}</span>
             <p className="desc des_style1 text-center mt-2 w-100">
-              {Array.isArray(amenity.desc)
-                ? amenity.desc.join(" ")
-                : amenity.desc}
+              {Array.isArray(amenity.short_description)
+                ? amenity.short_description.join(" ")
+                : amenity.short_description}
             </p>
           </div>
         </section>
@@ -327,13 +329,13 @@ function ParallaxSection({ section_data }) {
         style={{ visibility: imagesLoaded ? "visible" : "hidden" }}
       >
         {isMobile ? renderMobileView() : renderDesktopView()}
-        {(second_title || desc) && (
+        {(second_title || description) && (
           <Container>
             <div className="about">
               <CustomCard
                 className="px-0 pb-0"
                 title={second_title || ""}
-                desc={desc || ""}
+                desc={description || ""}
               />
             </div>
           </Container>

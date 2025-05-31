@@ -10,6 +10,10 @@ import GallerySlider from "../components/GallerySlider";
 import PressRelease from "../components/PressRelease";
 
 import Layout from "../components/Layout";
+import OfflineMedia from "../components/OfflineMedia";
+import OnlineMedia from "../components/OnlineMedia";
+import useFetchData from "../utils/apiHelper";
+import Events from "../components/Events";
 
 function MediaCenter() {
   window.scrollTo(0, 0);
@@ -18,6 +22,8 @@ function MediaCenter() {
   const mvnLOGO = CONFIG.IMAGE_URL + "logo_white.webp";
   const titleRef = useRef();
   const desRefs = useRef([]);
+
+  const { data:galleryData, loading } = useFetchData("media-center/gallery");
 
   const breadcrumbs = {
     title: "Media Centre",
@@ -222,7 +228,7 @@ function MediaCenter() {
   return (
     <Layout>
       <div className="media_center">
-        <MicroBanner page_section="media-banner" page="media-center" bg={MediaImg} data={breadcrumbs} />
+        <MicroBanner page_section="media-banner" page="media-center"  data={breadcrumbs} />
         <section className="section media-news-section pb-0" aria-label="Media Center Section">
           <div className="micro_content">
             <div className="micro_data">
@@ -250,13 +256,7 @@ function MediaCenter() {
                   </h4>
                 </div>
                 <div className="media-news_offline">
-                
-
-                  <GallerySlider
-                    data={newsImages}
-                    slidesPerView={2}
-                    navigation={true}
-                  />
+                  <OfflineMedia data={newsImages} />
                 </div>
               </div>
 
@@ -268,34 +268,9 @@ function MediaCenter() {
                     Online Media News
                     </h4>
                   </div>
-                  {onlineNews &&
-                    onlineNews.map((item, index) => (
-                      <article
-                        className="awa_card awa_shadow"
-                        key={`news-${index}`}
-                      >
-                        <div>
-                          <img src={item.img} alt="item image" />
-                        </div>
+                  
 
-                        <div>
-                          <p>{item.title}</p>
-                          <div className="awa_posted d-md-flex justify-content-between align-items-center">
-                            <span className="text-capitalize">
-                              <time>{item.postedDate}</time>
-                            </span>
-
-                            <a
-                              href={`${item.url}`}
-                              className="text-capitalize  "
-                              target="_blank"
-                            >
-                              View Details
-                            </a>
-                          </div>
-                        </div>
-                      </article>
-                    ))}
+                  <OnlineMedia />
                 </div>
               </div>
             </div>
@@ -327,7 +302,7 @@ function MediaCenter() {
               </h4>
             </div>
             <GallerySlider
-              data={ourGallery}
+              data={galleryData}
               slidesPerView={3}
               spaceBetween={20}
               navigation={true}
@@ -344,30 +319,8 @@ function MediaCenter() {
             </div>
             
             <div className="row">
-              {ourEvents &&
-                ourEvents.map((item, index) => (
-                  <div className="col-sm-4" key={`event-${index}`}>
-                    <div className="media-event-content">
-                      <a
-                        href={item.IframeLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <img
-                          src={item.videobanner}
-                          alt={`mvn events ${index}`}
-                          className="img-fluid event-video-banner"
-                        />
-                      
-                      <img
-                        src={`${CONFIG.API_URL}images/mediacenter/play-button.png`}
-                        alt={`mvn events ${index}`}
-                        className="img-fluid play-icon"
-                      />
-                      </a>
-                    </div>
-                  </div>
-                ))}
+              <Events />
+              
             </div>
           </div>
         </section>

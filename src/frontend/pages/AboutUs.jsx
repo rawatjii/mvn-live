@@ -51,7 +51,7 @@ const AboutUs = () => {
   return (
     <>
       <Layout>
-        <MicroBanner bg={microBg} data={breadcrumbs} />
+        <MicroBanner page_section="about-banner" data={breadcrumbs} page="about" />
 
         <div className="micro_content">
           <div className="micro_data">

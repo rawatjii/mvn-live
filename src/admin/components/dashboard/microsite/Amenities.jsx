@@ -36,7 +36,8 @@ const Amenities = () => {
   const itemsPerPage = 5;
 
   const metaFields = [
-    { name: "heading", label: "Heading", type: "text", col: 6 },
+    { name: "heading", label: "Heading", type: "text", col: 12 },
+    { name: "description", label: "Description", type: "textarea", col: 12 },
   ];
 
   const amenitiesFields = [
@@ -142,7 +143,7 @@ const Amenities = () => {
     <CustomSection>
        <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchMetadata}/>  
       <MicroBox>
-        <CustomTitle title="Overview" />
+        <CustomTitle title="Amenities" />
         <CustomFormMicrosite
           isBanner={false}
           dynamicFields={metaFields}

@@ -134,27 +134,27 @@ const PageCommonSection = [
   {
     name: "About US",
     icon: <FaUser className="mr-3 box-icon" />,
-    link: "/admin/page/about-us",
+    link: "admin/about-us",
   },
   {
     name: "Media Centre",
     icon: <FaRegNewspaper className="mr-3 box-icon" />,
-    link: "/admin/page/media-centre",
+    link: "admin/media-centre",
   },
   {
     name: "Blogs",
     icon: <SiBloglovin className="mr-3 box-icon" />,
-    link: "/admin/page/blogs",
+    link: "admin/blogs",
   },
   {
     name: "Career",
     icon: <PiBuildingOffice className="mr-3 box-icon" />,
-    link: "/admin/page/career",
+    link: "admin/career",
   },
   {
     name: "Contact US",
     icon: <FaPhoneAlt className="mr-3 box-icon" />,
-    link: "/admin/page/contact-us",
+    link: "admin/contact-us",
   }
 ];
 
