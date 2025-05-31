@@ -4,14 +4,19 @@ import SecTitle from "../../../common/SecTitle/Index";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-import { API_URL } from "../../../config/config";
+import { API_URL, BACKEND_IMAGE_URL } from "../../../config/config";
+import useFetchData from "../../utils/apiHelper";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Philosophy = () => {
+const Philosophy = ({data}) => {
   const titleRef = useRef();
   const miniTitleRefs = useRef([]);
   const desRefs = useRef([]);
+
+  const {heading} = data;
+
+  const { data:valuesData, loading } = useFetchData("our-value");
 
   useEffect(() => {
     // Title animation
@@ -82,7 +87,7 @@ const Philosophy = () => {
             loading="lazy"
           />
           <h4 ref={titleRef} className="title title_style1 text-center">
-            Our Philosophy
+            {heading}
           </h4>
         </div>
 
@@ -152,46 +157,24 @@ const Philosophy = () => {
                   />
                   Our Values
                 </h4>
+
+
                 <ul
                   ref={(el) => (desRefs.current[2] = el)}
                   className="our-values-ul-icon"
                 >
-                  <li>
-                    <img
-                      src={`${API_URL}images/about/growth.gif`}
-                      alt="mvn Enrich lives"
-                      className="img-fluid values-ul-icon"
-                      loading="lazy"
-                    />
-                    Enrich lives
-                  </li>
-                  <li>
-                    <img
-                      src={`${API_URL}images/about/growth-2.gif`}
-                      alt="mvn Empower ambitions"
-                      className="img-fluid values-ul-icon"
-                      loading="lazy"
-                    />
-                    Empower ambitions
-                  </li>
-                  <li>
-                    <img
-                      src={`${API_URL}images/about/Idea.gif`}
-                      alt="mvn Drive innovation"
-                      className="img-fluid values-ul-icon"
-                      loading="lazy"
-                    />
-                    Drive innovation
-                  </li>
-                  <li>
-                    <img
-                      src={`${API_URL}images/about/Verified.gif`}
-                      alt="mvn Inspire quality"
-                      className="img-fluid values-ul-icon"
-                      loading="lazy"
-                    />
-                    Inspire quality
-                  </li>
+                    {valuesData?.map((el, index)=>(
+                        <li key={index}>
+                          <img
+                            src={BACKEND_IMAGE_URL + el.image}
+                            alt="mvn Enrich lives"
+                            className="img-fluid values-ul-icon"
+                            loading="lazy"
+                          />
+                          {el.heading}
+                        </li>
+                    ))}
+                  
                 </ul>
               </li>
             </ul>

@@ -94,6 +94,9 @@ import Verticals from "./admin/Verticals.jsx";
 import Infrastructure from "./admin/Infrastructure.jsx";
 import BrandEthos from "./admin/brandEthos.jsx";
 import Testimonials from "./admin/Testimonials.jsx";
+import OurValues from "./admin/OurValues.jsx";
+import Timeline from "./admin/components/aboutus/Timeline.jsx";
+import Team from "./admin/components/aboutus/Team.jsx";
 // import Apartment from "./admin/components/dashboard/microsite/Apartment.jsx";
 const router = createBrowserRouter([
   {
@@ -285,6 +288,9 @@ const router = createBrowserRouter([
           { path: "infrastructure", element: <Infrastructure /> },
           { path: "brand-ethos", element: <BrandEthos /> },
           { path: "testimonials", element: <Testimonials /> },
+          { path: "our-values", element: <OurValues /> },
+          { path: "timeline", element: <Timeline /> },
+          { path: "team", element: <Team /> },
           { path: "blogs", element: <AdminBlog /> },
           { path: "work-culture", element: <AdminWorkCulture /> },
           { path: "career", element: <AdminCareer /> },
