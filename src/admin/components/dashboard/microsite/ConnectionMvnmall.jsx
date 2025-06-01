@@ -18,7 +18,7 @@ const ConnectionMVNMall = () => {
   
   const projectSectionsApi = generateApi("projec-sections");
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
-  const ConnectionmvnMallApi = generateApi("project-amenities");
+  const ConnectionmvnMallApi = generateApi(`project/${project_id}/connection_mall`);
   
   const { editItem, createItem } = useCrud(projectSectionsApi);
   const { data: ConnectionmvnMallItems, createItem: ConnectionmvnMallCreateItem, editItem: ConnectionmvnMallEditItem, deleteItem,fetchAll: fetchConnectionmvnMallItems} = useCrud(ConnectionmvnMallApi);
@@ -132,7 +132,7 @@ const ConnectionMVNMall = () => {
     <CustomSection>
       <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchMetadata}/>  
       <MicroBox>
-        <CustomTitle title="Overview" />
+        <CustomTitle title="Connection With MVN Mall" />
         <CustomFormMicrosite
           isBanner={false}
           dynamicFields={metaFields}
@@ -141,7 +141,7 @@ const ConnectionMVNMall = () => {
         />
       </MicroBox>
       <MicroBox>
-        <CustomTitle title={editConnectionmvnMallData ? "Edit ConnectionmvnMall Image" : "Add ConnectionmvnMall Images"} />
+        <CustomTitle title={editConnectionmvnMallData ? "Edit Connection Mvn Mall Image" : "Add Connection mvn Mall Images"} />
         <CustomFormMicrosite
           isBanner={false}
           dynamicFields={ConnectionmvnMallFields}
@@ -152,7 +152,7 @@ const ConnectionMVNMall = () => {
         />
       </MicroBox>
       <MicroBox>
-        <CustomTitle title="ConnectionmvnMall Items" />
+        <CustomTitle title="Connection mvn Mall Items" />
         <CustomTable
           columns={columns}
           data={paginatedData}

@@ -39,6 +39,7 @@ import ImagesGallery from "../components/MicroPage/ImagesGallery";
 import ConstructionTechnology from "../components/MicroPage/ConstructionTechnology";
 import ParallaxSection from "../../common/ParallaxSection";
 import Footer from "../components/Footer";
+import MvnMall from "../components/MicroPage/MvnMall";
 
 const headerSidebarDesktopImg = `${API_URL}images/aero-gurgaon/header/sidebar.webp`;
 
@@ -272,7 +273,7 @@ const MicroPage = () => {
                 );
               }
 
-              if (section.section_type == "amenities") {
+              if (section.section_type == "amenities" || section.section_type == "connection-mall") {
                 return (
                   <div ref={(el) => (sectionRefs.current.MicroAmenities = el)}>
                     <ParallaxSection section_data={section} />
@@ -286,6 +287,16 @@ const MicroPage = () => {
                     ref={(el) => (sectionRefs.current.MicroLocationMap = el)}
                   >
                     <MicroLocationMap data={section} />
+                  </div>
+                );
+              }
+
+              if (section.section_type == "mvn-mall") {
+                return (
+                  <div
+                    ref={(el) => (sectionRefs.current.MicroLocationMap = el)}
+                  >
+                    <MvnMall data={section} />
                   </div>
                 );
               }
