@@ -191,7 +191,7 @@ const MicroPage = () => {
 
           {projectSections &&
             projectSections.map((section, secIndex) => {
-              if (section.section_type == "threesixtyview")
+              if (section.section_type == "360-views"){
                 return (
                   <View360
                     sectionId={section.section_type + secIndex}
@@ -200,6 +200,8 @@ const MicroPage = () => {
                     // isMobile={isMobile}
                   />
                 );
+              }
+                
 
               if (section.section_type == "livingroom") {
                 return (
