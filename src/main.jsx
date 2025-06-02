@@ -97,6 +97,7 @@ import Testimonials from "./admin/Testimonials.jsx";
 import OurValues from "./admin/OurValues.jsx";
 import Timeline from "./admin/components/aboutus/Timeline.jsx";
 import Team from "./admin/components/aboutus/Team.jsx";
+import Sizes from "./admin/components/dashboard/microsite/Sizes.jsx";
 // import Apartment from "./admin/components/dashboard/microsite/Apartment.jsx";
 const router = createBrowserRouter([
   {
@@ -311,10 +312,11 @@ const router = createBrowserRouter([
             children:[
             {path:"", element:<BasicMicroSite />},
             {path:"overview", element:<OverviewMicroSite />},
+            {path:"sizes", element:<Sizes />},
             {path:"elevation", element:<Elevation />},
             {path:"banner", element:<HeroSection />},
             {path:"walkthrough", element:<Walkthrough />},
-            {path:"threesixtyview", element:<ThreesixtyView />},
+            {path:"360-views", element:<ThreesixtyView />},
             {path:"livingroom", element:<LivingRoom />},
             {path:"party", element:<Party />},
             {path:"masterbedroom", element:<MasterBedroom />},

@@ -12,10 +12,10 @@ const ThreesixtyView = () => {
   const { project_id } = useParams();
   const location = useLocation();
   const locationType = location.pathname.split("/").pop();
-  const projectSectionsApi = generateApi("projec-sections",0);
-  const getEditDataApi= generateApi("show-by-project-with-sectionType",0);
+  const projectSectionsApi = generateApi("projec-sections", 0);
+  const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
   const { getEditData } = useCrud(getEditDataApi);
-  const { editItem,createItem } = useCrud(projectSectionsApi);
+  const { editItem, createItem } = useCrud(projectSectionsApi);
 
   const fields = [
     { name: "heading", label: "Heading", type: "text", col: 6 },
@@ -26,9 +26,7 @@ const ThreesixtyView = () => {
     // { name: "description", label: "Description", type: "textarea", placeholder: "Enter Description", col: 12 }
   ];
 
-
-
-   const fetchEditData = async () => {
+  const fetchEditData = async () => {
     const formData = new FormData();
     formData.append("section_type", locationType);
     formData.append("project_id", project_id);
@@ -58,13 +56,17 @@ const ThreesixtyView = () => {
       console.error("Error updating project section:", error);
     }
   };
-  useEffect(()=>{
-    fetchEditData()
-  },[])
+  useEffect(() => {
+    fetchEditData();
+  }, []);
 
   return (
     <CustomSection>
-     <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchEditData}/>
+      <StatusOrder
+        sectionId={editData?.id}
+        editData={editData}
+        fetchEditData={fetchEditData}
+      />
       <MicroBox>
         <CustomTitle title="360 View" />
         <CustomFormMicrosite

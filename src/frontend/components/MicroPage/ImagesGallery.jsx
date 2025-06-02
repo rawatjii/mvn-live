@@ -20,9 +20,11 @@ import { BACKEND_IMAGE_URL } from "../../../config/config";
 
   const { data:projectData, loading:projectLoading } = useFetchData(`project/${project_id}/${section_type}`);
 
+  console.log('projectData:', projectData);
+
   // Memoized mapped slides for Lightbox
   const slides = useMemo(
-    () => projectData?.map((img) => ({ src: img.image })),
+    () => projectData?.map((img) => ({ src: BACKEND_IMAGE_URL + img.image })),
     [projectData]
   );
 

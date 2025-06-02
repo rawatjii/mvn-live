@@ -119,7 +119,7 @@ const MvnMall = ({ data }) => {
             </div>
           )}
 
-          <ZoomOutImage dataFrames={data} />
+          {/* <ZoomOutImage dataFrames={data} /> */}
 
           <div ref={secRef}>
             <div className="image_animation">

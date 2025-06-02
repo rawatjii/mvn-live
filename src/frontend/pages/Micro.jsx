@@ -146,8 +146,6 @@ const MicroPage = () => {
     };
   }, [basicData, projectSections]);
 
-  console.log("projectSections", projectSections);
-
   if (loading) return <div className="text-center py-5">Loading...</div>;
   if (!loading && basicData && basicData.length === 0)
     return <div className="text-center py-5">No records found</div>;
@@ -196,6 +194,7 @@ const MicroPage = () => {
               if (section.section_type == "threesixtyview")
                 return (
                   <View360
+                    sectionId={section.section_type + secIndex}
                     data={section}
                     onLoadComplete={() => ScrollTrigger.refresh()}
                     // isMobile={isMobile}

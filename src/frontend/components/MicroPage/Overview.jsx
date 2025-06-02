@@ -226,7 +226,7 @@ const MicroOverview = React.memo(({ rera, data }) => {
         </Container>
       </section>
 
-      <CustomIframe data="https://www.youtube.com/embed/CbmkQBZuvTw?loop=1&mute=1&playlist=CbmkQBZuvTw" />
+      {/* <CustomIframe data="https://www.youtube.com/embed/CbmkQBZuvTw?loop=1&mute=1&playlist=CbmkQBZuvTw" /> */}
     </>
   );
 });

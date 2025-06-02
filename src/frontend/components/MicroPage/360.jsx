@@ -5,7 +5,7 @@ import { API_URL } from "../../../config/config";
 
 const partyImg = `${API_URL}assets/loader/party.jpg`
 
-const View360 = React.memo(({ data, onLoadComplete }) => {
+const View360 = React.memo(({ data, onLoadComplete, sectionId }) => {
   const { isMobile } = useMatches();
 
 
@@ -14,7 +14,7 @@ const View360 = React.memo(({ data, onLoadComplete }) => {
       {/* Loading progress */}
       {/* {loading && <PeacockLoader progress={progress} />} */}
 
-      <LottieAnimationSection onLoadComplete={onLoadComplete} backgroundImg={partyImg} data={data} logomark={isMobile ? "left sm" : "left"} position="0" />
+      <LottieAnimationSection sectionId={sectionId} onLoadComplete={onLoadComplete} backgroundImg={partyImg} data={data} logomark={isMobile ? "left sm" : "left"} position="0" />
     </div>
   );
 });

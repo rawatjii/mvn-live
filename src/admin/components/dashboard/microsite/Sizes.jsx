@@ -7,7 +7,7 @@ import useCrud from "../../../hooks/useCrud";
 import { useLocation, useParams } from "react-router-dom";
 import StatusOrder from "../utilities/Status-order";
 
-const OverviewMicroSite = () => {
+const Sizes = () => {
   const [editData, setEditData] = useState(null);
   const { project_id } = useParams();
   const location = useLocation();
@@ -19,16 +19,11 @@ const OverviewMicroSite = () => {
 
 
     const formFields = [{
-    sectionName: "Overview Details",
+    sectionName: "Size Details",
     visible: true,
     fields: [
-      // { name: "image", label: "Image", type: "file", col: 4 },
-      // { name: "alternative_image", label: "Alternative Image", type: "file", col: 4 },
-      // { name: "alt", label: "Alt text", type: "text", col: 4},
       { name: "heading", label: "Heading", type: "text", placeholder: "Enter Heading", col: 6, isRequired: true },
-      { name: "sub_heading", label: "Sub Heading", type: "text", placeholder: "Enter Sub Heading", col: 6 },
-      { name: "short_description", label: "Additional Heading", type: "text", placeholder: "Enter Additional Heading", col: 6 },
-      { name: "description", label: "Description", type: "textarea", placeholder: "Enter Description", col: 6 }
+      { name: "sub_heading", label: "Sizes", type: "text", placeholder: "Enter Sizes", col: 6 },
     ]
   }];
 
@@ -87,4 +82,4 @@ const OverviewMicroSite = () => {
   );
 };
 
-export default OverviewMicroSite;
+export default Sizes;
