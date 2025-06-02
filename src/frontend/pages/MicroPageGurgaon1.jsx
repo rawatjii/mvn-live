@@ -55,7 +55,7 @@ const ImageGallery = React.lazy(() =>
 const ConstructionTechnology = React.lazy(() =>
   import("../components/MicroPage/ConstructionTechnology")
 );
-const Typology = React.lazy(() => import("../components/homepage/Typology"));
+const Typology = React.lazy(() => import("../components/homepage/Typology-new-02-06-25"));
 const MicroFloorPlan = React.lazy(() =>
   import("../components/MicroPage/FloorPlan")
 );
