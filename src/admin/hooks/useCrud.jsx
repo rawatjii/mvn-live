@@ -3,16 +3,16 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
-const useCrud = (apiService) => {
+const useCrud = (apiService,via) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const fetchAll = async () => {
+  const fetchAll = async (custom_url) => {
     setLoading(true);
     try {
-      const res = await apiService.get();
+      const res = await apiService.get(custom_url);
       const fetchedData = res?.data?.data || []; // Fallback to empty array if data is undefined
       setData(fetchedData);
       setLoading(false);
@@ -34,14 +34,19 @@ const useCrud = (apiService) => {
     loading,
     error,
     fetchAll,
-    createItem: async (item, pagevia, pageName, sectionName) => {
+    createItem: async (item, pagevia, pageName, sectionName, custom_url) => {
       try {
+        
         await apiService.create(item, pageName, sectionName);
         toast.success("Data added successfully!");
         if (pagevia == "basic") {
           navigate("/admin/project-list");
         }
-        await fetchAll();
+        if(!custom_url){
+          await fetchAll();
+        }else{
+          await fetchAll(custom_url);
+        }
       } catch (err) {
         console.error(
           "error while create element",

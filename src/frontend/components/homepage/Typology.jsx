@@ -1,89 +1,88 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import lottie from "lottie-web";
 import Watermark from '../../../common/watermark/Index';
-import { API_URL } from "../../../config/config";
+import { API_URL, BACKEND_IMAGE_URL } from "../../../config/config";
 import { useMatches } from "../../../theme/theme";
 
 const PlaneIcon = `${API_URL}images/icons/plane.png`;
 const typo1 = `${API_URL}images/typologies/270/1.webp`;
 const typo2 = `${API_URL}images/typologies/270/2.webp`;
 const typo3 = `${API_URL}images/typologies/270/3.webp`;
-
 const typo4 = `${API_URL}images/typologies/360/1.webp`;
 const typo5 = `${API_URL}images/typologies/360/2.webp`;
 const typo6 = `${API_URL}images/typologies/360/3.webp`;
-
 const typo7 = `${API_URL}images/typologies/penthouse/1.webp`;
 const typo8 = `${API_URL}images/typologies/penthouse/2.webp`;
 const typo9 = `${API_URL}images/typologies/penthouse/3.webp`;
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Typology = React.memo(({ onLoadComplete }) => {
+const Typology = React.memo(({ onLoadComplete, data }) => {
   const containerRef = useRef(null);
-  const frameRefs = useRef([]);
-  const isImagesLoaded = useRef(false);
+  const lottieRef = useRef(null);
+  const animationRef = useRef(null);
   const contentRefs = useRef([]);
   const imageContentRefs = useRef([]);
-  const [images, setImages] = useState([]);
-  const [loading, setLoading] = useState(true); // Loader state
-  const [loadingComplete, setLoadingComplete] = useState(false); // State to track when all images are loaded
+  const [loading, setLoading] = React.useState(true);
+  const [loadingComplete, setLoadingComplete] = React.useState(false);
+  const [totalFrames, setTotalFrames] = React.useState(0);
   const { isMobile } = useMatches();
   const isLaptop = window.innerWidth <= 1400;
 
-  let totalFrames = isMobile ? 327 : 327;
-  let segments = [
-    { contentIndex: 0, startFrame: 0, endFrame: 125 },
-    { contentIndex: 1, startFrame: 126, endFrame: 275 },
-    { contentIndex: 2, startFrame: 276, endFrame: 327 },
-  ];
+  const {heading, json} = data;
 
   useEffect(() => {
-    // Only preload images once totalFrames is set
-    if (totalFrames === 0 || isImagesLoaded.current) return;
+    // Load Lottie animation
+    animationRef.current = lottie.loadAnimation({
+      container: lottieRef.current,
+      renderer: "canvas",
+      loop: false,
+      autoplay: false,
+      path: `${BACKEND_IMAGE_URL}${json}`,
+    });
 
-    // Preload images
-    const loadedImages = [];
-    let loadedCount = 0;
+    animationRef.current.addEventListener("data_ready", () => {
+      // Dynamically set totalFrames from Lottie animation
+      setTotalFrames(animationRef.current.totalFrames || 1); // Fallback to 1 to avoid division by zero
+      setLoading(false);
+      setLoadingComplete(true);
+      onLoadComplete();
+    });
 
-    for (let i = 1; i <= totalFrames; i++) {
-      const img = new Image();
-      img.src = isMobile
-        ? `${API_URL}assets/micro/aeroone-gurgaon/mobiles/${i}.webp`
-        : `${API_URL}assets/micro/aeroone-gurgaon/mobiles/${i}.webp`;
+    return () => {
+      if (animationRef.current) {
+        animationRef.current.destroy();
+      }
+    };
+  }, [onLoadComplete, json]);
 
-      // Track when each image loads
-      img.onload = () => {
-        loadedCount++;
-        if (loadedCount === totalFrames) {
-          setImages(loadedImages); // Set images after all are loaded
-          setLoading(false); // Hide loader
-          isImagesLoaded.current = true; // Mark as loaded
-          setLoadingComplete(true); // Mark loading as complete
-          onLoadComplete();
-        }
-      };
-
-      loadedImages.push(img);
-    }
-  }, []);
+  // Define segments based on totalFrames
+  const segments = React.useMemo(() => {
+    if (totalFrames === 0) return [];
+    const third = Math.floor(totalFrames / 3);
+    return [
+      { contentIndex: 0, startFrame: 0, endFrame: third },
+      { contentIndex: 1, startFrame: third + 1, endFrame: 2 * third },
+      { contentIndex: 2, startFrame: 2 * third + 1, endFrame: totalFrames - 1 },
+    ];
+  }, [totalFrames]);
 
   useEffect(() => {
-    if (loading || !loadingComplete || images.length !== totalFrames) return;
+    if (loading || !loadingComplete || totalFrames === 0) return;
 
     ScrollTrigger.create({
       trigger: containerRef.current,
       start: "top top",
-      end: `+=${window.innerHeight * 2}`,
+      end: `+=${containerRef.current.offsetHeight * 2}`, // Extended scroll distance for slower animation
       pin: true,
-      scrub: 0.2,
+      scrub: 1, // Smoother transitions
       onUpdate: (self) => {
         const segmentIndex = Math.min(
           Math.floor(self.progress * segments.length),
           segments.length - 1
         );
-      
         const segment = segments[segmentIndex];
         const segmentProgress =
           (self.progress - segmentIndex / segments.length) * segments.length;
@@ -94,20 +93,22 @@ const Typology = React.memo(({ onLoadComplete }) => {
             ),
           totalFrames - 1
         );
-      
-        // ✅ Fix null errors by checking existence
-        frameRefs.current.forEach((img, index) => {
-          if (img) img.style.display = index === frameIndex ? "block" : "none";
-        });
-      
+
+        // Control Lottie animation frame
+        if (animationRef.current) {
+          animationRef.current.goToAndStop(frameIndex, true);
+        }
+
+        // Update content visibility
         contentRefs.current.forEach((el, i) => {
           if (el) el.style.display = i === segment.contentIndex ? "block" : "none";
         });
-      
+
         imageContentRefs.current.forEach((el, i) => {
           if (el) el.style.display = i === segment.contentIndex ? "block" : "none";
         });
-      
+
+        // Update arrow position
         const typologyArrow = document.querySelector(".typology_arrow");
         if (typologyArrow) {
           let topValue;
@@ -118,40 +119,33 @@ const Typology = React.memo(({ onLoadComplete }) => {
           }
           typologyArrow.style.top = `${topValue}px`;
         }
-      }
-      
+      },
     });
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, [loading, images, totalFrames, loadingComplete]);
+  }, [loading, loadingComplete, totalFrames, segments, isLaptop]);
 
   return (
     <>
       <section ref={containerRef} className="section typology_section pb-0" aria-label="Typology Section">
         <div className="heading_div mb_60 mb_sm_30">
-          <h4 className="title title_style1 text-center">Typologies</h4>
+          <h4 className="title title_style1 text-center">{data.heading}</h4>
         </div>
-        {/* Images section */}
-        <div className="images">
-          {images.map((img, index) => (
-            <img
-              key={index}
-              ref={(el) => (frameRefs.current[index] = el)}
-              src={img.src}
-              alt={`Frame ${index}`}
-              className="frame"
-              style={{ display: index === 0 ? "block" : "none" }}
-            />
-          ))}
 
+        <div className="images">
+          <div
+            ref={lottieRef}
+            className="frame"
+            style={{ height: "460px", maxHeight: "500px" }}
+          />
           <div className="typology_arrow">
             <div className="line"></div>
           </div>
         </div>
 
-        {/* Content boxes */}
+
         <div className="typology_content">
           <div className="typology-before-line">
             <div className="diamond_img_strip">

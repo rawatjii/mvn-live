@@ -288,7 +288,7 @@ const MicroPage = () => {
               if (section.section_type == "typologies" ) {
                 return (
                   <div ref={(el) => (sectionRefs.current.MicroAmenities = el)}>
-                    <Typology section_data={section} onLoadComplete={() => setTypologyLoaded(true)} />
+                    <Typology data={section} onLoadComplete={() => setTypologyLoaded(true)} />
                   </div>
                 );
               }
