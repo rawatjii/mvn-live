@@ -34,7 +34,7 @@ const projectsData = [
   },
 ];
 
-const Projects = () => {
+const Projects = ({data}) => {
 
   const imageDivRefs = useRef([]);
   const titleRef = useRef();
@@ -64,6 +64,8 @@ const Projects = () => {
     ? [projectsData[2]]
     : [projectsData[2]]
 
+    console.log('project data', data);
+    
 
   return (
     <>
@@ -76,8 +78,8 @@ const Projects = () => {
                 alt="mvn plane icon"
                 className="img-fluid title_plane1"
               />
-              <h4 className="title title_style1 text-center" ref={titleRef}>Explore Our Projects</h4>
-              <article className="des_style1 text-center" ref={desRef}>MVN Infrastructure introduces MVN Aero One Residences, the largest ultra-luxury apartments in Delhi NCR, located at the 22-kilometer stone on Dwarka Expressway.</article>
+              <h4 className="title title_style1 text-center" ref={titleRef}>{data.heading}</h4>
+              <article className="des_style1 text-center" ref={desRef}>{data.short_description}</article>
             </div>
 
             <div className="project_div d-flex flex-wrap">

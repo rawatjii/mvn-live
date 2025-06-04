@@ -22,13 +22,12 @@ const OverviewMicroSite = () => {
     sectionName: "Overview Details",
     visible: true,
     fields: [
-      // { name: "image", label: "Image", type: "file", col: 4 },
-      // { name: "alternative_image", label: "Alternative Image", type: "file", col: 4 },
-      // { name: "alt", label: "Alt text", type: "text", col: 4},
       { name: "heading", label: "Heading", type: "text", placeholder: "Enter Heading", col: 6, isRequired: true },
       { name: "sub_heading", label: "Sub Heading", type: "text", placeholder: "Enter Sub Heading", col: 6 },
-      { name: "short_description", label: "Additional Heading", type: "text", placeholder: "Enter Additional Heading", col: 6 },
-      { name: "description", label: "Description", type: "textarea", placeholder: "Enter Description", col: 6 }
+      { name: "short_description", label: "Additional Heading", type: "text", placeholder: "Enter Additional Heading", col: 4 },
+      { name: "alt", label: "Sizes Heading", type: "text", col: 4, placeholder: "Enter Sizes Heading",},
+      { name: "iframe", label: "Sizes", type: "text", placeholder: "Enter Description", col: 4 },
+      { name: "description", label: "Description", type: "textarea", placeholder: "Enter Description", col: 6 },
     ]
   }];
 

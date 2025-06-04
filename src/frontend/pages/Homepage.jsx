@@ -1,4 +1,4 @@
-import React, { useState, Suspense, useCallback} from "react";
+import React, { useState, Suspense, useCallback } from "react";
 import { Helmet } from "react-helmet";
 
 import Layout from "../components/Layout";
@@ -6,27 +6,35 @@ import Skeleton from "../../common/Loader/skeleton/Index";
 
 import Hero from "../components/homepage/Hero";
 import Overview from "../components/homepage/Overview";
-const Banner1 = React.lazy(()=>import("../components/homepage/Banner1"));
-const Offer = React.lazy(()=>import("../components/homepage/Offer"));
-const Projects = React.lazy(()=>import("../components/homepage/Projects"));
-const OtherProjects = React.lazy(()=>import("../components/homepage/OtheProjects"));
-const OurJourney = React.lazy(()=>import("../components/homepage/OurJourney"));
-const OurTeam = React.lazy(()=>import("../components/homepage/OurTeam"));
-const OurBrand = React.lazy(()=>import("../components/homepage/OurBrand"));
-const Testimonial = React.lazy(()=>import("../components/homepage/Testimonial"));
-const Enquire = React.lazy(()=>import("../components/homepage/Enquire"));
-const EnquireForm = React.lazy(()=>import("../components/homepage/EnquireForm"));
-const CustomModal = React.lazy(()=>import("../../common/Modal"));
-const ClubOne = React.lazy(()=>import("../components/homepage/ClubOne"));
-const MvnMall = React.lazy(()=>import("../components/homepage/MvnMall"));
+const Banner1 = React.lazy(() => import("../components/homepage/Banner1"));
+const Offer = React.lazy(() => import("../components/homepage/Offer"));
+const Projects = React.lazy(() => import("../components/homepage/Projects"));
+const OtherProjects = React.lazy(() =>
+  import("../components/homepage/OtheProjects")
+);
+const OurJourney = React.lazy(() =>
+  import("../components/homepage/OurJourney")
+);
+const OurTeam = React.lazy(() => import("../components/homepage/OurTeam"));
+const OurBrand = React.lazy(() => import("../components/homepage/OurBrand"));
+const Testimonial = React.lazy(() =>
+  import("../components/homepage/Testimonial")
+);
+const Enquire = React.lazy(() => import("../components/homepage/Enquire"));
+const EnquireForm = React.lazy(() =>
+  import("../components/homepage/EnquireForm")
+);
+const CustomModal = React.lazy(() => import("../../common/Modal"));
+const ClubOne = React.lazy(() => import("../components/homepage/ClubOne"));
+const MvnMall = React.lazy(() => import("../components/homepage/MvnMall"));
 // const Enquire = React.lazy(() =>
 //   new Promise((resolve) =>
 //     setTimeout(() => resolve(import("../components/homepage/Enquire")), 100000)
 //   )
 // );
 
-import 'swiper/css';
-import 'swiper/css/navigation';
+import "swiper/css";
+import "swiper/css/navigation";
 import LivingRoomVideoGurugram from "../components/MicroPage/LivingRoomVideoGurugram";
 import useFetchData from "../utils/apiHelper";
 import Intro from "../components/homepage/Intro";
@@ -36,23 +44,25 @@ const Homepage = () => {
   const [isOffer, setIsOffer] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-  const { data: homepageData, loading } = useFetchData(`page/page-section/home`);
-  
+  const { data: homepageData, loading } = useFetchData(
+    `page/page-section/home`
+  );
+
   const isHideModal = () => {
     setIsShowModal(false);
-    setIsOffer(false)
+    setIsOffer(false);
   };
 
-  const showCustomModal = useCallback((offer)=>{
-    if(offer){
-      setIsOffer(true)
+  const showCustomModal = useCallback((offer) => {
+    if (offer) {
+      setIsOffer(true);
       setIsShowModal(true);
-    }else{
+    } else {
       setIsShowModal(true);
     }
   }, []);
 
-  console.log('homepageData',homepageData);
+  console.log("homepageData", homepageData);
 
   if (loading) return <div className="text-center py-5">Loading...</div>;
   if (!loading && homepageData && homepageData.length === 0)
@@ -60,41 +70,69 @@ const Homepage = () => {
 
   return (
     <>
-        <Helmet>
-          <title>Best Property Developers in Gurugram| MVN Infrastructure</title>
-          <meta name="description" content="Best Developers in Gurgaon. 5.5 BHK Largest floor sizes in Gurugram. 40+ years of delivering trust and projects on time. MVN Infrastructure." />
-          <meta name="keywords" content="MVN Infrastructure, MVN Gurgaon, MVN MALL Gurugram, MVN aero one, 5BHK in Gurgaon, Aero one, MVN Bangalore, mvn.in, MVN Developer." />
-          <link rel="preload" as="image" href="/assets/images/logo_white.webp" />
-          <link rel="preload" as="image" href="/assets/images/homepage/hero/hero_img_sm.webp" />
-          <link rel="canonical" href="https://www.mvn.in/" />
-          <meta name="distribution" content="Global" />
-          <meta name="Language" content="English" />
-          <meta name="doc-type" content="Public" />
-          <meta name="robots" content="index, follow" />
-          <meta name="author" content="MVN Infrastructure" />
-          <meta name="googlebot" content="all, index, follow" />
-          <meta name="YahooSeeker" content="all, index, follow" />
-          <meta name="msnbot" content="all, index, follow" />
-          <meta name="HandheldFriendly" content="true" />
-          <meta name="revisit-after" content="1 days" />
-          <meta name="rating" content="safe for kids" />
-          <meta name="expires" content="never" />
-          <meta property="og:type" content="website" />
-          <meta property="og:title" content="Best Property Developers in Gurugram| MVN Infrastructure" />
-          <meta property="og:description" content="Best Developers in Gurgaon. 5.5 BHK Largest floor sizes in Gurugram. 40+ years of delivering trust and projects on time. MVN Infrastructure." />
-          <meta property="og:url" content="https://www.mvn.in/" />
-          <meta property="og:site_name" content="MVN Infrastructure" />
-          <meta property="og:image" content="https://mvn.in/assets/images/logo.png" />
+      <Helmet>
+        <title>Best Property Developers in Gurugram| MVN Infrastructure</title>
+        <meta
+          name="description"
+          content="Best Developers in Gurgaon. 5.5 BHK Largest floor sizes in Gurugram. 40+ years of delivering trust and projects on time. MVN Infrastructure."
+        />
+        <meta
+          name="keywords"
+          content="MVN Infrastructure, MVN Gurgaon, MVN MALL Gurugram, MVN aero one, 5BHK in Gurgaon, Aero one, MVN Bangalore, mvn.in, MVN Developer."
+        />
+        <link rel="preload" as="image" href="/assets/images/logo_white.webp" />
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/images/homepage/hero/hero_img_sm.webp"
+        />
+        <link rel="canonical" href="https://www.mvn.in/" />
+        <meta name="distribution" content="Global" />
+        <meta name="Language" content="English" />
+        <meta name="doc-type" content="Public" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="MVN Infrastructure" />
+        <meta name="googlebot" content="all, index, follow" />
+        <meta name="YahooSeeker" content="all, index, follow" />
+        <meta name="msnbot" content="all, index, follow" />
+        <meta name="HandheldFriendly" content="true" />
+        <meta name="revisit-after" content="1 days" />
+        <meta name="rating" content="safe for kids" />
+        <meta name="expires" content="never" />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="Best Property Developers in Gurugram| MVN Infrastructure"
+        />
+        <meta
+          property="og:description"
+          content="Best Developers in Gurgaon. 5.5 BHK Largest floor sizes in Gurugram. 40+ years of delivering trust and projects on time. MVN Infrastructure."
+        />
+        <meta property="og:url" content="https://www.mvn.in/" />
+        <meta property="og:site_name" content="MVN Infrastructure" />
+        <meta
+          property="og:image"
+          content="https://mvn.in/assets/images/logo.png"
+        />
 
-          <meta name="twitter:card" content="summary" />
-          <meta name="twitter:site" content="@MVN_infra" />    
-          <meta name="twitter:title" content="Best Property Developers in Gurugram| MVN Infrastructure" />
-          <meta name="twitter:description" content="Best Developers in Gurgaon. 5.5 BHK Largest floor sizes in Gurugram. 40+ years of delivering trust and projects on time. MVN Infrastructure." />
-          <meta name="twitter:creator" content="@MVN_infra" />
-          <meta name="twitter:image" content="https://mvn.in/assets/images/logo.png" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@MVN_infra" />
+        <meta
+          name="twitter:title"
+          content="Best Property Developers in Gurugram| MVN Infrastructure"
+        />
+        <meta
+          name="twitter:description"
+          content="Best Developers in Gurgaon. 5.5 BHK Largest floor sizes in Gurugram. 40+ years of delivering trust and projects on time. MVN Infrastructure."
+        />
+        <meta name="twitter:creator" content="@MVN_infra" />
+        <meta
+          name="twitter:image"
+          content="https://mvn.in/assets/images/logo.png"
+        />
 
-          <script type="application/ld+json">
-            {`
+        <script type="application/ld+json">
+          {`
               {
                 "@context": "https://schema.org",
                 "@type": "RealEstateAgent",
@@ -130,10 +168,10 @@ const Homepage = () => {
                 
               }
             `}
-            </script>
+        </script>
 
-            <script type="application/ld+json">
-              {`
+        <script type="application/ld+json">
+          {`
                 {
                 "@context": "https://schema.org",
                 "@type": "Organization",
@@ -150,45 +188,50 @@ const Homepage = () => {
                 ]
               }
               `}
-            </script>
+        </script>
+      </Helmet>
 
-        </Helmet>
+      <Layout>
+        {homepageData?.map((section, secIndex) => {
+          if (section.page_section == "home-banner")
+            return <Hero data={section} key={secIndex + section.id} />;
 
-        <Layout >
+          if (section.page_section == "home-area")
+            return <Intro data={section} key={secIndex + section.id} />;
 
+          if (section.page_section == "home-introduction")
+            return <Overview data={section} key={secIndex + section.id} />;
 
-        {homepageData?.map((section, secIndex)=>{
-          if(section.page_section == 'home-banner') return <Hero data={section} />
+          if (section.page_section == "home-overview")
+            return <ClubOne data={section} key={secIndex + section.id} />;
 
-          if(section.page_section == 'home-area') return <Intro data={section} />
-          
-          if(section.page_section == 'home-introduction') return <Overview data={section} />
+          if (section.page_section == "home-shopping")
+            return <MvnMall data={section} key={secIndex + section.id} />;
 
-          if(section.page_section == 'home-overview') return <ClubOne data={section} />
+          if (section.page_section == "home-video")
+            return <Offer data={section} clickHandler={showCustomModal} key={secIndex + section.id} />;
 
-          if(section.page_section == 'home-shopping') return <MvnMall data={section} />
+          if (section.page_section == "home-project")
+            return <Projects data={section} clickHandler={showCustomModal} key={secIndex + section.id} />;
 
-          if(section.page_section == 'home-video') return <Offer data={section} clickHandler={showCustomModal} />
+          if (section.page_section == "home-verticals")
+            return <OtherProjects data={section} key={secIndex + section.id} />;
 
-          if(section.page_section == 'home-verticals') return <OtherProjects data={section}/>
+          if (section.page_section == "home-infrastructure")
+            return <OurJourney data={section} key={secIndex + section.id} />;
 
-          if(section.page_section == 'home-infrastructure') return <OurJourney data={section}/>
+          if (section.page_section == "home-people-behind")
+            return <OurTeam data={section} key={secIndex + section.id} />;
 
-          if(section.page_section == 'home-people-behind') return <OurTeam data={section}/>
+          if (section.page_section == "home-brand-ethos")
+            return <OurBrand data={section} key={secIndex + section.id} />;
 
-          if(section.page_section == 'home-brand-ethos') return <OurBrand data={section}/>
-
-          if(section.page_section == 'home-client-says') return <Testimonial data={section}/>
+          if (section.page_section == "home-client-says")
+            return <Testimonial data={section} key={secIndex + section.id} />;
         })}
-
-        {/* <Suspense fallback={<Skeleton height="h_200vh" />}>
-          <Projects />
-        </Suspense> */}
-
         {/* <Suspense fallback={<Skeleton height="h_90vh" />}>
           <Testimonial />
         </Suspense> */}
-        
 
         <div className="flex-footer-form">
           <Suspense fallback={<Skeleton height="h_50vh h_sm_30vh" />}>
@@ -201,12 +244,16 @@ const Homepage = () => {
         </div>
 
         <Suspense fallback={<div>Loading...</div>}>
-          <CustomModal hide={isHideModal} show={isShowModal} type="enquire" projectName="MVN Aeroone" isOffer={isOffer}  />
+          <CustomModal
+            hide={isHideModal}
+            show={isShowModal}
+            type="enquire"
+            projectName="MVN Aeroone"
+            isOffer={isOffer}
+          />
         </Suspense>
-
       </Layout>
     </>
-    
   );
 };
 

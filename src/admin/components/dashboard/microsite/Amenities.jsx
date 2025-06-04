@@ -20,6 +20,7 @@ const Amenities = () => {
   const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
   const amenitiesApi = generateApi(`project/${project_id}/amenities`);
+  const projectAmApi = generateApi(`project-amenities`);
   
   // CRUD hooks
   const { editItem, createItem } = useCrud(projectSectionsApi);
@@ -30,6 +31,9 @@ const Amenities = () => {
     deleteItem,
     getItems: fetchamenitiesItems
   } = useCrud(amenitiesApi);
+  const { 
+    createItem: amCreateItem, 
+  } = useCrud(projectAmApi);
   
   const { getEditData } = useCrud(getEditDataApi);
   const [currentPage, setCurrentPage] = useState(1);
@@ -93,7 +97,7 @@ const Amenities = () => {
   const handleCreateamenities = async (formData) => {
     try {
       formData.append("is_type", "amenities");
-      await amenitiesCreateItem(formData);
+      await amCreateItem(formData);
       await fetchAllamenitiesItems();
       setEditamenitiesData(null);
     } catch (error) {

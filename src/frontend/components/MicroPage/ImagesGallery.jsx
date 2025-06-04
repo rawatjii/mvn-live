@@ -11,14 +11,14 @@ import Logomark from "../../../common/logomark/Index";
 import useFetchData from "../../utils/apiHelper";
 import { BACKEND_IMAGE_URL } from "../../../config/config";
 
- function ImagesGallery({ data }) {
+ function ImagesGallery({ data, section_name }) {
   const sectionsRef = useRef(null);
   const [index, setIndex] = useState(-1);
   const imageDivRefs = useRef([]);
   const [imagesLoaded, setImagesLoaded] = useState(0);
   const { heading, sub_heading, description, secondTitle, imageClassName, project_id, section_type } = data;
 
-  const { data:projectData, loading:projectLoading } = useFetchData(`project/${project_id}/${section_type}`);
+  const { data:projectData, loading:projectLoading } = useFetchData(`project/${project_id}/${section_name ? section_name : section_type}`);
 
   console.log('projectData:', projectData);
 
@@ -175,4 +175,4 @@ import { BACKEND_IMAGE_URL } from "../../../config/config";
   );
 }
 
-export default React.memo(ImagesGallery);
+export default ImagesGallery;

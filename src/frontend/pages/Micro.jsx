@@ -40,6 +40,8 @@ import ConstructionTechnology from "../components/MicroPage/ConstructionTechnolo
 import ParallaxSection from "../../common/ParallaxSection";
 import Footer from "../components/Footer";
 import MvnMall from "../components/MicroPage/MvnMall";
+import MicroSizes from "../components/MicroPage/Sizes";
+import Typology from "../components/homepage/Typology";
 
 const headerSidebarDesktopImg = `${API_URL}images/aero-gurgaon/header/sidebar.webp`;
 
@@ -171,6 +173,7 @@ const MicroPage = () => {
                   </div>
                 );
               }
+
               if (section.section_type == "elevation")
                 return <LargeElevationSection data={section} />;
               if (section.section_type == "walkthrough") {
@@ -257,7 +260,7 @@ const MicroPage = () => {
               ) {
                 return (
                   <div ref={(el) => (sectionRefs.current.MicroLandscape = el)}>
-                    <ImagesGallery data={section} />
+                    <ImagesGallery section_name={section.section_type == "landscape" ? 'landscapes' : section.section_type == "sm-elevation" ? 'elevation' : ''} data={section} />
                   </div>
                 );
               }
@@ -278,6 +281,14 @@ const MicroPage = () => {
                 return (
                   <div ref={(el) => (sectionRefs.current.MicroAmenities = el)}>
                     <ParallaxSection section_data={section} />
+                  </div>
+                );
+              }
+
+              if (section.section_type == "typologies" ) {
+                return (
+                  <div ref={(el) => (sectionRefs.current.MicroAmenities = el)}>
+                    <Typology section_data={section} onLoadComplete={() => setTypologyLoaded(true)} />
                   </div>
                 );
               }
