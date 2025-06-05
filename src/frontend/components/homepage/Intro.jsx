@@ -10,6 +10,7 @@ const Intro = React.memo(({ data }) => {
     sub_heading,
     short_description,
     image,
+    mb_image,
     alternative_image,
     alt,
   } = data;
@@ -22,7 +23,7 @@ const Intro = React.memo(({ data }) => {
             <img
               src={
                 window.innerWidth <= 768
-                  ? `${BACKEND_IMAGE_URL + image}`
+                  ? `${BACKEND_IMAGE_URL + mb_image}`
                   : `${BACKEND_IMAGE_URL + image}`
               }
               alt={alt}

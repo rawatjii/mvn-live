@@ -5,6 +5,7 @@ import lottie from "lottie-web";
 import Watermark from '../../../common/watermark/Index';
 import { API_URL, BACKEND_IMAGE_URL } from "../../../config/config";
 import { useMatches } from "../../../theme/theme";
+import useFetchData from "../../utils/apiHelper";
 
 const PlaneIcon = `${API_URL}images/icons/plane.png`;
 const typo1 = `${API_URL}images/typologies/270/1.webp`;
@@ -30,6 +31,8 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
   const [totalFrames, setTotalFrames] = React.useState(0);
   const { isMobile } = useMatches();
   const isLaptop = window.innerWidth <= 1400;
+
+  const { data:typologyData, loading:typologyLoading } = useFetchData(`project/${data.project_id}/typologies`);
 
   const {heading, json} = data;
 
@@ -127,6 +130,9 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
     };
   }, [loading, loadingComplete, totalFrames, segments, isLaptop]);
 
+  console.log('typologyData',typologyData);
+  
+
   return (
     <>
       <section ref={containerRef} className="section typology_section pb-0" aria-label="Typology Section">
@@ -157,132 +163,38 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
               />
             </div>
 
-            <div
-              ref={(el) => (contentRefs.current[0] = el)}
-              className="content-box"
-              style={{ display: "block" }}
-            >
-              <h1>Penthouse</h1>
-              <p>
-                Elevate your lifestyle to new heights with these extraordinary
-                duplex residences, where two levels of unmatched luxury unfold
-                before you. With impeccable attention to detail and a focus on
-                privacy and exclusivity, these residences embody the pinnacle of
-                sophisticated living, where only the most discerning will
-                reside.
-              </p>
-            </div>
+            {
+              typologyData && typologyData?.map((item, index)=>(
+                <div
+                  ref={(el) => (contentRefs.current[index] = el)}
+                  className="content-box"
+                  style={{ display: "block" }}
+                >
+                  <h1>{item.heading}</h1>
+                  <p>
+                    {item.short_description}
+                  </p>
+                </div>
+              ))
+            }
 
-            <div
-              ref={(el) => (contentRefs.current[1] = el)}
-              className="content-box"
-              style={{ display: "none" }}
-            >
-              <h1>360 degree Panoramic Apartment</h1>
-              <p>
-                At an impressive 12600 sq.ft., the simplex flats offer a
-                commanding 360-degree panoramic vista, presenting a boundless
-                world of elegance. This is where space, design, and nature
-                converge in perfect harmony.
-              </p>
-            </div>
-
-            <div
-              ref={(el) => (contentRefs.current[2] = el)}
-              className="content-box"
-              style={{ display: "none" }}
-            >
-              <h1>270 degree Panoramic Apartment</h1>
-              <p>
-                Spanning an expansive 6300 sq.ft., these exquisite residences
-                offer a captivating 270-degree panoramic view, seamlessly
-                blending breathtaking vistas with unmatched sophistication.
-              </p>
-            </div>
           </div>
         </div>
 
         <div className="desktop-view-typo-images">
-          <div
-            ref={(el) => (imageContentRefs.current[0] = el)}
-            className="typologies-images"
-            style={{ display: "block" }}
-          >
-            <span className="image-1">
-              <img
-                className="img-fluid"
-                src={typo1}
-                alt="mvn typology 1"
-                loading="lazy"
-              />
-              <Watermark />
-            </span>
-            <img
-              className="image-2"
-              src={typo2}
-              alt="mvn typology 2"
-              loading="lazy"
-            />
-            <img
-              className="image-3"
-              src={typo3}
-              alt="mvn typology 3"
-              loading="lazy"
-            />
-          </div>
-
-          <div
-            ref={(el) => (imageContentRefs.current[1] = el)}
-            className="typologies-images"
-            style={{ display: "none" }}
-          >
-            <img
-              className="image-1"
-              src={typo4}
-              alt="mvn typology 1"
-              loading="lazy"
-            />
-            <img
-              className="image-2"
-              src={typo5}
-              alt="mvn typology 2"
-              loading="lazy"
-            />
-            <img
-              className="image-3"
-              src={typo6}
-              alt="mvn typology 3"
-              loading="lazy"
-            />
-          </div>
-
-          <div
-            ref={(el) => (imageContentRefs.current[2] = el)}
-            className="typologies-images"
-            style={{ display: "none" }}
-          >
-            <img
-              className="image-1 img-fluid"
-              src={typo7}
-              alt="mvn typology 1"
-              loading="lazy"
-            />
-            <span className="image-2">
-              <img
-                className="img-fluid"
-                src={typo8}
-                alt="mvn typology 2"
-                loading="lazy"
-              />
-              <Watermark className="left" />
-            </span>
-            <img
-              className="image-3"
-              src={typo9}
-              alt="mvn typology 3"
-              loading="lazy"
-            />
-          </div>
+          {typologyData && typologyData?.map((item, index)=>(
+            <div
+                ref={(el) => (imageContentRefs.current[index] = el)}
+                className="typologies-images"
+                style={{ display: "block" }}
+              >
+                <picture>
+                  <source srcset={BACKEND_IMAGE_URL + item.image} />
+                  <img className="img-fluid" src={BACKEND_IMAGE_URL + item.alternative_image} alt={item.alt} loading="lazy" />
+                </picture>
+              </div>
+          ))}
+          
         </div>
       </section>
     </>
