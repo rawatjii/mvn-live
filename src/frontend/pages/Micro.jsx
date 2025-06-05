@@ -42,6 +42,7 @@ import Footer from "../components/Footer";
 import MvnMall from "../components/MicroPage/MvnMall";
 import MicroSizes from "../components/MicroPage/Sizes";
 import Typology from "../components/homepage/Typology";
+import CustomIframe from "../components/MicroPage/CustomIframe";
 
 const headerSidebarDesktopImg = `${API_URL}images/aero-gurgaon/header/sidebar.webp`;
 
@@ -194,6 +195,16 @@ const MicroPage = () => {
 
           {projectSections &&
             projectSections.map((section, secIndex) => {
+
+              if (section.section_type == "overview" && section.yt_url){
+                return (
+                  <CustomIframe
+                    data={section.yt_url}
+                    // isMobile={isMobile}
+                  />
+                );
+              }
+
               if (section.section_type == "360-views"){
                 return (
                   <View360
@@ -260,7 +271,7 @@ const MicroPage = () => {
               ) {
                 return (
                   <div ref={(el) => (sectionRefs.current.MicroLandscape = el)}>
-                    <ImagesGallery section_name={section.section_type == "landscape" ? 'landscapes' : section.section_type == "sm-elevation" ? 'elevation' : ''} data={section} />
+                    <ImagesGallery section_name={section.section_type == "landscape" ? 'landscapes' : section.section_type == "sm-elevation" ? 'elevation' : ''} data={section} showTitle={section.section_type == "landscapes" || section.section_type == "galleries"  ? false : true} />
                   </div>
                 );
               }

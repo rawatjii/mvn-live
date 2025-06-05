@@ -53,7 +53,7 @@ const OurJourney = React.memo(({data}) => {
         trigger: journeyRef.current,
         start: "top 80%", // Start animation when section comes into view
         onEnter: () => {
-          const items = document.querySelectorAll(".count");
+          const items = document.querySelectorAll(".countVal");
           gsap.fromTo(
             items,
             { innerText: 0 },
@@ -92,7 +92,7 @@ const OurJourney = React.memo(({data}) => {
 
   // Function to statically update values
   const updateStaticValues = () => {
-    const items = document.querySelectorAll(".count");
+    const items = document.querySelectorAll(".countVal");
     items.forEach((item, index) => {
       item.innerText = infraData?.[index]?.value;
     });
@@ -153,7 +153,7 @@ const OurJourney = React.memo(({data}) => {
                     alt="mvn journey icon"
                     className="img-fluid icon"
                   />
-                  <p className="count">0</p> {/* Start with 0 */}
+                  <p className="count"><span className="countVal">0</span>{item.symbol ? item.symbol : undefined}</p> {/* Start with 0 */}
                 </div>
                 <p className="title">{item.heading}</p>
               </div>

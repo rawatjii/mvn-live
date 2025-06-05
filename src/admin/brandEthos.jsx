@@ -16,17 +16,9 @@ import CustomModal from "./components/dashboard/utilities/custom-modal/CustomMod
 // Simulated backend response
 const metaFields = [
   { name: "heading", label: "Title", type: "text", col: 12, isLeft: true },
-  { name: "alt", label: "Alt Tag", type: "text", col: 12, isLeft: true },
   { name: "image", label: "Image", type: "file", col: 6, isLeft: true },
-  {
-    name: "alternative_image",
-    label: "Alternative Image",
-    type: "file",
-    col: 6,
-    isLeft: true,
-  },
-  { name: "value", label: "Value", type: "text", col: 6, isLeft: true },
-  { name: "symbol", label: "Symbol", type: "text", col: 6, isLeft: true },
+  { name: "alt", label: "Alt Tag", type: "text", col: 12, isLeft: true },
+  { name: "description", label: "Description", type: "textarea", col: 12, isLeft: true },
 ];
 
 const columns = [
@@ -66,7 +58,7 @@ const BrandEthos = () => {
       {/* left box for form */}
       <LeftArea>
         <MicroBox>
-          <CustomTitle title="Our Values Form" />
+          <CustomTitle title="Brand Ethos Form" />
           <CustomForm
             isBanner={false}
             dynamicFields={metaFields}
@@ -80,7 +72,7 @@ const BrandEthos = () => {
       {/* right box for table */}
       <RightArea>
         <MicroBox>
-          <CustomTitle title="Our Values Table" />
+          <CustomTitle title="Brand Ethos Table" />
           <CustomTable
             columns={columns}
             data={paginatedData}

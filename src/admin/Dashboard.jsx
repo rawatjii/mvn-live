@@ -18,13 +18,13 @@ import { IoIosEye, IoIosAddCircleOutline } from "react-icons/io";
 import { IoAddSharp } from "react-icons/io5";
 import { RiInstagramFill } from "react-icons/ri";
 import { MdOutlineNavigateNext } from "react-icons/md";
-import amenityIcon from "/assets/icons/amenity.png";
 import CustomTitle from "./components/dashboard/utilities/CustomTitle";
 import { IoLogoMicrosoft } from "react-icons/io5";
 import { IoShareSocial } from "react-icons/io5";
 import { Box, TopBox } from "./components/dashboard/utilities/CutomTags";
 import { RiPagesFill } from "react-icons/ri";
 import { FaImage } from "react-icons/fa";
+const amenityIcon = "/assets/icons/amenity.png";
 
 
 import { FaUser,  FaPhoneAlt } from "react-icons/fa";

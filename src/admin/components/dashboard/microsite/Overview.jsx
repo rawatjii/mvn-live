@@ -27,7 +27,8 @@ const OverviewMicroSite = () => {
       { name: "short_description", label: "Additional Heading", type: "text", placeholder: "Enter Additional Heading", col: 4 },
       { name: "alt", label: "Sizes Heading", type: "text", col: 4, placeholder: "Enter Sizes Heading",},
       { name: "iframe", label: "Sizes", type: "text", placeholder: "Enter Description", col: 4 },
-      { name: "description", label: "Description", type: "textarea", placeholder: "Enter Description", col: 6 },
+      { name: "yt_url", label: "Youtube Url", type: "text", placeholder: "Enter Youtube Url", col: 4 },
+      { name: "description", label: "Description", type: "textarea", placeholder: "Enter Description", col: 8 },
     ]
   }];
 

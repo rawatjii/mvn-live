@@ -7,7 +7,7 @@ const OurTeam = React.memo(({data}) => {
   const imageRef = useRef();
   const contentRef = useRef();
 
-  const {heading, short_description, image, alternative_image} = data;
+  const {heading, short_description, image, alternative_image, alt} = data;
 
   return (
     <section className="section our_team_section" aria-label="Team Section">
@@ -29,7 +29,7 @@ const OurTeam = React.memo(({data}) => {
 
       <picture>
         <source srcset={BACKEND_IMAGE_URL + image} />
-        <img src={BACKEND_IMAGE_URL + alternative_image} alt="mvn team image" className="img-fluid team_img" loading="lazy" />
+        <img src={BACKEND_IMAGE_URL + alternative_image} alt={alt} className="img-fluid team_img" loading="lazy" />
       </picture>
 
       <p ref={contentRef} className="des_style1 text-center">

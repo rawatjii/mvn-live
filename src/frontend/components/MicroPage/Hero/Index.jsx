@@ -53,12 +53,11 @@ const HeroSection = ({ projectId, onBannerExit, isMainBanner }) => {
     >
       {data && data[0]?.is_type == "image" ? (
         <div className="AthensBanner" ref={sectionRef}>
-          <img
-            src={BACKEND_IMAGE_URL+data[0].image}
-            alt={data[0].alt}
-            className="d-none d-md-block"
-          />
-          <img src={data[0].mobile} alt="Mobile  Banner" className="d-md-none" />
+          <picture>
+            <source srcset={BACKEND_IMAGE_URL+data[0].image}/>
+            <img src={BACKEND_IMAGE_URL+data[0].alternative_image} alt={data[0].alt} className="img-fluid" />
+          </picture>
+          
         </div>
       ) : data && data[0]?.is_type == 'iframe' ? (
         <div

@@ -82,9 +82,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
   return (
     <Navbar
       expand="false"
-      className={`${isFixed ? "fixed" : ""} ${isMicro ? "micro_nav" : ""} ${
-        data.athens_header
-      }`}
+      className={`${isFixed ? "fixed" : ""} ${isMicro ? "micro_nav" : ""} ${data.athens_header}`}
       role="navbar"
     >
       <Container>

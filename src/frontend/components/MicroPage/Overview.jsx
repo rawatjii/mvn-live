@@ -30,8 +30,8 @@ const MicroOverview = React.memo(({ rera, data }) => {
     showAwards,
     discountUrl,
     isDiscountAvailable,
-    alt, 
-    iframe
+    alt,
+    iframe,
   } = data;
 
   const isScrolledIntoView = useCallback((elem) => {
@@ -134,7 +134,7 @@ const MicroOverview = React.memo(({ rera, data }) => {
 
                 {iframe && (
                   <div className="counter-flex-box">
-                    {iframe.split(',').map((item, index)=>(
+                    {iframe.split(",").map((item, index) => (
                       <div className="flex-box" ref={ref1}>
                         <h4>
                           <span className="counter">{item}</span>{" "}
@@ -142,9 +142,8 @@ const MicroOverview = React.memo(({ rera, data }) => {
                         </h4>
                       </div>
                     ))}
-                    
 
-{/*                     
+                    {/*                     
                     <div className="flex-box" ref={ref2}>
                       <h4>
                         <span className="counter">{count2}</span>{" "}
@@ -159,18 +158,13 @@ const MicroOverview = React.memo(({ rera, data }) => {
                     </div> */}
                   </div>
                 )}
-
-                
-
               </>
             )}
-            {!alt && (
-            <span className="bar"></span>
-            )}
+            {!alt && <span className="bar"></span>}
           </div>
 
           {/* {discountUrl ? <img src={discountUrl} className="img-fluid discount_patch" /> : undefined} */}
-          {!counterHeading && short_description && (
+          {counterHeading && short_description && (
             <span className="bar"></span>
           )}
 

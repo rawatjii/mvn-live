@@ -4,42 +4,26 @@ import LazyLoad from "react-lazyload";
 
 import { useMatches } from "../../../theme/theme";
 import { API_URL, BACKEND_IMAGE_URL } from "../../../config/config";
-
-const brandData = [
-  {
-    title: "Commitment",
-    para: `MVN develops and heightens competencies that show a realtor's dedication to code of Ethics & Standards of Practice.`,
-    icon: `${API_URL}images/icons/brand/handshake.gif`,
-  },
-  {
-    title: "Excellence",
-    para: `We deliver our clients with quality services and aim to exceed expectations in everything we offer.`,
-    icon: `${API_URL}images/icons/brand/growth.gif`,
-  },
-  {
-    title: "Customized Solutions",
-    para: `We offer customer-focused solutions with a high level of accountability, and offer the highest level of honesty and expertise.`,
-    icon: `${API_URL}images/icons/brand/hand.gif`,
-  },
-];
+import useFetchData from "../../utils/apiHelper";
 
 const OurBrand = React.memo(({ data }) => {
   const { isMobile } = useMatches();
 
   const titleRef = useRef();
   const dataRefs = useRef([]);
-
-  const {heading, image, alternative_image, alt} = data;
+  
+  const {heading, image, alternative_image, alt, mb_image} = data;
+  const { data:blogData, loading } = useFetchData("ethos");
 
   return (
     <section className="section our_brand_section" aria-label="Brand Section">
       <LazyLoad>
         <picture>
-          <source srcset={BACKEND_IMAGE_URL + alternative_image} />
+          <source srcset={BACKEND_IMAGE_URL + mb_image} />
           <img src={
             isMobile
-              ? BACKEND_IMAGE_URL + image
-              : BACKEND_IMAGE_URL + image
+              ? BACKEND_IMAGE_URL + mb_image
+              : BACKEND_IMAGE_URL + mb_image
           }
           alt="mvn brand background image"
           className="brand_bg"
@@ -74,7 +58,7 @@ const OurBrand = React.memo(({ data }) => {
         <div className="brand_content">
           <Row>
             <div className="inner-ethos">
-              {brandData?.map((item, index) => (
+              {blogData?.map((item, index) => (
                 <div key={index} className="box">
                   <div
                     ref={(el) => (dataRefs.current[index] = el)}
@@ -82,15 +66,15 @@ const OurBrand = React.memo(({ data }) => {
                   >
                     <div className="icon">
                       <img
-                        src={item.icon}
-                        alt="mvn brand icon"
+                        src={BACKEND_IMAGE_URL + item.image}
+                        alt={item.alt}
                         className="img-fluid"
                         loading="lazy"
                       />
                     </div>
                     <div className="content">
-                      <h4 className="title">{item.title}</h4>
-                      <p>{item.para}</p>
+                      <h4 className="title">{item.heading}</h4>
+                      <p>{item.description}</p>
                     </div>
                   </div>
                 </div>
