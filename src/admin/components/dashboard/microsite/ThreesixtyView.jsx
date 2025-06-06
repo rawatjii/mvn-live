@@ -7,7 +7,7 @@ import useCrud from "../../../hooks/useCrud";
 import { useLocation, useParams } from "react-router-dom";
 import StatusOrder from "../utilities/Status-order";
 
-const ThreesixtyView = () => {
+const ThreesixtyView = () => {    
   const [editData, setEditData] = useState(null);
   const { project_id } = useParams();
   const location = useLocation();
