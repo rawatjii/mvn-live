@@ -6,7 +6,8 @@ import { useMatches } from "../../../theme/theme";
 import { GoMute } from "react-icons/go";
 import { GoUnmute } from "react-icons/go";
 import { IoVolumeMute } from "react-icons/io5";
-import Player from '@vimeo/player';
+import Player from "@vimeo/player";
+import { API_URL } from "../../../config/config";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,6 +17,7 @@ const LivingRoomVideoGurugram = React.memo(
     const iframeRef = useRef(null);
     const { isMobile } = useMatches();
     const [isMute, setIsMute] = useState(true);
+    const [isVideoPlaying, setIsVideoPlaying] = useState(false);
     const videoRef = useRef(null);
     const [vimeoPlayer, setVimeoPlayer] = useState(null);
 
@@ -34,11 +36,25 @@ const LivingRoomVideoGurugram = React.memo(
     useEffect(() => {
       if (iframeRef.current && !vimeoPlayer) {
         const player = new Player(iframeRef.current);
-    
-        // Do NOT set volume immediately
-        // That breaks autoplay on iOS
-    
         setVimeoPlayer(player);
+
+        // Listen for the 'play' event to detect when the video is ready
+        player.on('play', ()=>{
+          setIsVideoPlaying(true);
+        })
+
+        // fallback
+        player.on('timeupdate', ()=>{
+          setIsVideoPlaying(true);
+        })
+      }
+
+      // cleanup
+      return()=>{
+        if(vimeoPlayer){
+          vimeoPlayer.off('play');
+          vimeoPlayer.off('timeupdate');
+        }
       }
     }, [iframeRef, vimeoPlayer]);
 
@@ -55,61 +71,52 @@ const LivingRoomVideoGurugram = React.memo(
       });
     };
 
-
-
     return (
       <div
         className="section sliding_door_section py-0 mb-md-5 mb-2"
         ref={sectionRef}
         id="peacockSection"
       >
-        {/* Loading progress */}
-        {/* {loading && <PeacockLoader progress={progress} />} */}
-
-        {/* <video
-          src={data.path.desktop}
-          loop={true}
-          muted={isMute}
-          autoPlay={true}
-          width="100%"
-          playsInline
-        /> */}
-        <div style={{ position: "relative", paddingBottom: '56.25%', overflow: "hidden" }}>
+        <div
+          style={{
+            position: "relative",
+            paddingBottom: "56.25%",
+            overflow: "hidden",
+          }}
+        >
+            {/* Background image displayed until video is loaded */}
+            {!isVideoPlaying && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  backgroundImage: window.innerWidth > 768 ? `url(${API_URL}images/aero-gurgaon/hero/video_desktop_bg.webp)` : `url(${API_URL}images/aero-gurgaon/hero/video_sm_bg.webp)`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  zIndex: 1,
+                }}
+                aria-hidden="true"
+              />
+            )}
           <iframe
             ref={iframeRef}
             src="https://player.vimeo.com/video/1078294218?background=1&autopause=0&title=0&byline=0&portrait=0"
             frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
-            style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+            }}
             title="MVN Aero One Walkthrough"
           />
         </div>
-
-        {/* <div className="video_mute_btns" onClick={updateMuteStatus} title={isMute ? "Unmute" : "Mute"}>
-          {isMute ? <GoUnmute size={isMobile ? 16 : 20} /> : <GoMute size={isMobile ? 16 : 20} />}
-        </div> */}
-
-        {/* {window.innerWidth > 767 ? (
-          <LottieAnimationSection
-            data={data}
-            logomark={isMobile ? `left sm` : `left`}
-            anClass="pt-0"
-            isBanner={true}
-          />
-        ) : (
-          <iframe
-            src="https://www.youtube.com/embed/9CHcJAveejU?autoplay=1&mute=1&loop=1&playlist=9CHcJAveejU"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="autoplay; fullscreen; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-            width="1000"
-            height="500"
-            playsInline
-          ></iframe>
-        )} */}
       </div>
     );
   }

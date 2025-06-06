@@ -83,7 +83,7 @@ const Homepage = () => {
           <meta name="twitter:creator" content="@MVN_infra" />
           <meta name="twitter:image" content="https://mvn.in/assets/images/logo.png" />
 
-          <script type="application/ld+json">
+          <script async type="application/ld+json">
             {`
               {
                 "@context": "https://schema.org",
@@ -122,7 +122,7 @@ const Homepage = () => {
             `}
             </script>
 
-            <script type="application/ld+json">
+            <script async type="application/ld+json">
               {`
                 {
                 "@context": "https://schema.org",

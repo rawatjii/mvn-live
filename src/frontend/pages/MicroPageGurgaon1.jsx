@@ -181,7 +181,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
           name="keywords"
           content="MVN Aero one Gurgaon, MVN MALL Gurugram, MVN Aero one, 5BHK in Gurugram, Aero one, MVN Bangalore, mvn.in, MVN Infrastructure, MVN Gurgaon, MVN Developer"
         />
-        <script>
+        <script async>
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag() { dataLayer.push(arguments); }
@@ -193,7 +193,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
           src="https://www.googletagmanager.com/gtag/js?id=G-P7MQ5KWWGL"
         ></script>
 
-        <script>
+        <script async>
           {`
             gtag('js', new Date());
             gtag('config', 'G-P7MQ5KWWGL');
@@ -207,7 +207,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
           src="https://www.googletagmanager.com/gtag/js?id=G-T7YNXS59XR"
         ></script>
 
-        <script>
+        <script async>
           {`
             gtag('js', new Date());
 
@@ -222,7 +222,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
           src="https://www.googletagmanager.com/gtag/js?id=AW-11490416244"
         ></script>
 
-        <script>
+        <script async>
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -234,7 +234,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
         {/* Meta Pixel Code */}
 
-        <script>
+        <script async>
           {`
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -259,7 +259,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
           async
           src="https://www.googletagmanager.com/gtag/js?id=AW-11490416244"
         ></script>
-        <script>
+        <script async>
           {`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
@@ -269,7 +269,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             `}
         </script>
 
-        <script>
+        <script async>
           {`
                 <script type='text/javascript'>
                 window._tfa = window._tfa || [];
@@ -286,13 +286,13 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
               `}
         </script>
 
-        <script>
+        <script async>
           {`
               (function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"187169642", enableAutoSpaTracking: true};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");
             `}
         </script>
 
-        <script type="text/javascript">
+        <script async type="text/javascript">
           {`
               (function(c,l,a,r,i,t,y){
                   c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
