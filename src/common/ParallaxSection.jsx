@@ -218,30 +218,24 @@ function ParallaxSection({ section_data }) {
               </picture> */}
 
               <img
-                src={single.path?.mobile}
-                alt={`mvn amenities ${index}`}
-                className="img-fluid d-md-none"
-                loading="lazy"
-              />
-              <img
-                src={single.path?.desktop}
-                alt={`mvn amenities ${index}`}
-                className="img-fluid d-none d-md-block"
+                src={CONFIG.BACKEND_IMAGE_URL + single.image}
+                alt={single.alt}
+                className="img-fluid"
                 loading="lazy"
               />
               <Watermark />
             </div>
             <div className="content">
-              <span className="am-name mx-auto">{single.name}</span>
+              <span className="am-name mx-auto">{single.heading}</span>
               {Array.isArray(single.desc) ? (
-                single.desc.map((desc, idx) => (
+                single.short_description.map((desc, idx) => (
                   <p key={idx} className="desc des_style1 text-center mt-3">
-                    {desc}
+                    {short_description}
                   </p>
                 ))
               ) : (
                 <p className="desc des_style1 text-center mt-3 w-100">
-                  {single.desc}
+                  {single.short_description}
                 </p>
               )}
             </div>
