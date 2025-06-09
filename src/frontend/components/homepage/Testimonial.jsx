@@ -133,6 +133,7 @@ const Testimonial = () => {
           className="swiper-button-next"
           role="button"
           aria-label="next button"
+          tabIndex="0"
         ></div>
       </Container>
     </section>

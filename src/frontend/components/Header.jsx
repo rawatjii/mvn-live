@@ -218,7 +218,7 @@ const Header = () => {
                               </ul>
                             </li>
                             <li>
-                              <img src={subscribeBtn} alt="subscribe button image" role="button" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} />
+                              <img src={subscribeBtn} alt="subscribe button image" role="button" tabIndex="0" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} />
                             </li>
                         </ul>
                       </div>

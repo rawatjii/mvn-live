@@ -36,9 +36,9 @@ const Watermark = ({className, type, isMvnLogo, customClass})=>{
         <div className="Watermark_artistic">Artistic Impression</div>
 
         {isMvnLogo ? (
-          <div className={`Watermark_logo ${isAeroGurgaon ? 'aeroGurgaon_logo' : null}`}><img src={`${CONFIG.API_URL}assets/mvn_mall.webp`} alt="logo image" /></div>
+          <div className={`Watermark_logo ${isAeroGurgaon ? 'aeroGurgaon_logo' : null}`}><img src={`${CONFIG.API_URL}assets/mvn_mall.webp`} alt="mvn logo image" /></div>
         ) : (
-          <div className={`Watermark_logo ${isAeroGurgaon ? 'aeroGurgaon_logo' : null}`}><img src={logoUrl} alt="logo image" /></div>
+          <div className={`Watermark_logo ${isAeroGurgaon ? 'aeroGurgaon_logo' : null}`}><img src={logoUrl} alt="mvn logo image" /></div>
         )}
         
         

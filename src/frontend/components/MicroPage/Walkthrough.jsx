@@ -68,7 +68,7 @@ const Walkthrough = React.memo(({ data }) => {
       </div>
 
       <a href={channelUrl} target="_blank" className="d-table mx-auto mt-4">
-        <img src={subscribeImg} alt="mvn subscribe btn" className="img-fluid subscribe_style1" />
+        <img src={subscribeImg} role="button" tabIndex="0" alt="mvn subscribe btn" className="img-fluid subscribe_style1" />
       </a> 
 
       <Container>

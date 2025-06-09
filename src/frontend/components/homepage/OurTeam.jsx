@@ -39,7 +39,7 @@ const OurTeam = () => {
       </p>
 
       <div className="awards">
-            <img src={`${API_URL}mvn-offer-without-logo.webp`} alt="awards icon" />
+            <img src={`${API_URL}mvn-offer-without-logo.webp`} alt="mvn awards icon" />
           </div>
     </section>
   );

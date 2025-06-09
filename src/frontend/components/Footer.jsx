@@ -121,7 +121,7 @@ const Footer = () => {
                   <div className="right-b">
                     <div className="box">
                       <span>
-                        <img src={subscribeBtn} alt="subscribe button" role="button" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} />
+                        <img role="button" tabIndex="0" src={subscribeBtn} alt="subscribe button" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} />
                       </span>
                     </div>
                   </div>

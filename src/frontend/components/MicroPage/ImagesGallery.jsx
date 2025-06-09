@@ -36,7 +36,7 @@ import Logomark from "../../../common/logomark/Index";
       
       return (
         <div className="col-sm-12 col-md-4 col-lg-4" key={idx}>
-          <div className="card center" onClick={() => setIndex(idx)}>
+          <div className="card center" role="button" tabindex="0" onClick={() => setIndex(idx)}>
             <div className="img">
               <Watermark className={image.watermark} />
               <AnImage ref={imageRef}>

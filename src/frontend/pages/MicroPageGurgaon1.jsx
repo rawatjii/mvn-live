@@ -17,6 +17,7 @@ import MicroAmenities from "../components/MicroPage/Amenities";
 import NoPolutionZone from "../components/MicroPage/NoPolutionZone";
 import View360 from "../components/MicroPage/360";
 import LivingRoomVideoGurugram from "../components/MicroPage/LivingRoomVideoGurugram";
+import LazyLoadComponent from "../../common/LazyLoadComponent";
 
 const MicroOverview = React.lazy(() =>
   import("../components/MicroPage/Overview")
@@ -317,7 +318,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
           <div>
             <LivingRoomVideoGurugram
-              onBannerExit={setIsHeaderFixed} 
+              onBannerExit={setIsHeaderFixed}
               isMainBanner={true}
               data={data.living_room}
               onLoadComplete={() => setLivingRoomLoaded(true)}
@@ -325,62 +326,46 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             />
           </div>
 
-          <Suspense fallback="">
-            <MicroOverview data={data.overview} />
-          </Suspense>
+          <MicroOverview data={data.overview} />
+          <LargeElevationSection data={data.LargeElevationSection} />
 
-          <Suspense fallback="">
-            <LargeElevationSection data={data.LargeElevationSection} />
-          </Suspense>
-
-          <div ref={(el) => (sectionRefs.current.Walkthrough = el)}>
-            <Suspense fallback="">
+          <LazyLoadComponent margin="200px" debugName="Walkthrough">
+            <div ref={(el) => (sectionRefs.current.Walkthrough = el)}>
               <Walkthrough data={data.walkthrough} />
-            </Suspense>
-          </div>
+            </div>
+          </LazyLoadComponent>
 
-          <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
-            <Suspense fallback="">
+          <LazyLoadComponent margin="200px" debugName="DownloadBrochure">
+            <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
               <DownloadBrochure
                 is360Available={false}
                 show360Video={show360Video}
                 showAwards={true}
               />
-            </Suspense>
-          </div>
+            </div>
+          </LazyLoadComponent>
 
-          <Suspense fallback="">
-          {is360Show ? (
-            <View360
-              data={data.view360}
-              onLoadComplete={() => ScrollTrigger.refresh()}
-              isMobile={isMobile}
-            />
-          ) : null}
-          </Suspense>
-          
+          <LazyLoadComponent margin="200px" debugName="View360">
+            {is360Show ? (
+              <View360
+                data={data.view360}
+                onLoadComplete={() => ScrollTrigger.refresh()}
+                isMobile={isMobile}
+              />
+            ) : null}
+          </LazyLoadComponent>
 
-          <div ref={(el) => (sectionRefs.current.LIVINGROOM = el)}>
-            <Suspense fallback="">
+          <LazyLoadComponent margin="200px" debugName="PeacockSection">
+            <div ref={(el) => (sectionRefs.current.LIVINGROOM = el)}>
               <PeacockSection
                 data={data.peacock_section}
                 onLoadComplete={() => setPeacockLoaded(true)}
                 isMobile={isMobile}
               />
-            </Suspense>
-          </div>
-
-          {/* <Suspense fallback="">
-            <div>
-              <LivingRoomVideoGurugram
-                data={data.living_room}
-                onLoadComplete={() => setLivingRoomLoaded(true)}
-                isMobile={isMobile}
-              />
             </div>
-          </Suspense> */}
+          </LazyLoadComponent>
 
-          <Suspense fallback="">
+          <LazyLoadComponent margin="200px" debugName="PartyVideo">
             <div>
               <PartyVideo
                 data={data.party_video}
@@ -388,9 +373,9 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
                 isMobile={isMobile}
               />
             </div>
-          </Suspense>
+          </LazyLoadComponent>
 
-          <Suspense fallback="">
+          <LazyLoadComponent margin="200px" debugName="MasterBedroom">
             <div>
               <MasterBedroom
                 data={data.masterBedroom}
@@ -399,97 +384,99 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
                 showAwards={true}
               />
             </div>
-          </Suspense>
+          </LazyLoadComponent>
 
-          <Suspense fallback="">
+          <LazyLoadComponent margin="200px" debugName="Consultant">
             <div ref={(el) => (sectionRefs.current.consultant = el)}>
               <Consultant data={data.consultant} />
             </div>
-          </Suspense>
+          </LazyLoadComponent>
 
-          <Suspense fallback="">
+          <LazyLoadComponent margin="200px" debugName="MicroLandscape">
             <div ref={(el) => (sectionRefs.current.MicroLandscape = el)}>
               <ImageGallery data={data.landscape} />
             </div>
-          </Suspense>
+          </LazyLoadComponent>
 
-          <Suspense fallback="">
+          <LazyLoadComponent margin="200px" debugName="MicroElevation">
             <div ref={(el) => (sectionRefs.current.MicroElevation = el)}>
               <ImageGallery data={data.microElevation} />
             </div>
-          </Suspense>
+          </LazyLoadComponent>
 
-          <Suspense fallback="">
+          <LazyLoadComponent margin="200px" debugName="MicroApartment">
             <div ref={(el) => (sectionRefs.current.MicroApartment = el)}>
               <ImageGallery data={data.microApartment} />
             </div>
-          </Suspense>
+          </LazyLoadComponent>
 
-          <Suspense fallback="">
+          <LazyLoadComponent margin="200px" debugName="ConstructionTechnology">
             <div
               ref={(el) => (sectionRefs.current.constructionTechnology = el)}
             >
               <ConstructionTechnology data={data.construction_technology} />
             </div>
-          </Suspense>
+          </LazyLoadComponent>
 
-          <div ref={(el) => (sectionRefs.current.MicroAmenities = el)}>
-            <ParallaxSection section_data={data.amenities} />
-          </div>
+          <LazyLoadComponent margin="200px" debugName="MicroAmenities">
+            <div ref={(el) => (sectionRefs.current.MicroAmenities = el)}>
+              <ParallaxSection section_data={data.amenities} />
+            </div>
+          </LazyLoadComponent>
 
-          <Suspense fallback="">
+          <LazyLoadComponent margin="200px" debugName="MicroTypology">
             <div ref={(el) => (sectionRefs.current.MicroTypology = el)}>
               <Typology onLoadComplete={() => setTypologyLoaded(true)} />
             </div>
-          </Suspense>
+          </LazyLoadComponent>
 
-          <Suspense fallback="">
+          <LazyLoadComponent margin="200px" debugName="MicroFloorPlan">
             <div ref={(el) => (sectionRefs.current.MicroFloorPlan = el)}>
               <MicroFloorPlan data={data.floorPlan} />
             </div>
-          </Suspense>
+          </LazyLoadComponent>
 
-          <Suspense fallback="">
+          <LazyLoadComponent margin="200px" debugName="MicroLocationMap">
             <div ref={(el) => (sectionRefs.current.MicroLocationMap = el)}>
               <MicroLocationMap data={data.locationAdvantage} />
             </div>
-          </Suspense>
+          </LazyLoadComponent>
 
-          <Suspense fallback="">
+          <LazyLoadComponent margin="200px" debugName="MvnMall">
             <div ref={(el) => (sectionRefs.current.MVNMALL = el)}>
               <MvnMall data={data.mvnMall} />
             </div>
-          </Suspense>
+          </LazyLoadComponent>
 
-          {/* <div ref={(el) => (sectionRefs.current.NoPolutionZone = el)}>
-              <NoPolutionZone section_data={data.noPollutionZone} />
-            </div> */}
+          <LazyLoadComponent margin="200px" debugName="NoPolutionZone">
+            <div ref={(el) => (sectionRefs.current.NoPolutionZone = el)}>
+              <ParallaxSection section_data={data.noPollutionZone} />
+            </div>
+          </LazyLoadComponent>
 
-          <div ref={(el) => (sectionRefs.current.NoPolutionZone = el)}>
-            <ParallaxSection section_data={data.noPollutionZone} />
-          </div>
-
-          <div
-            className="container-fluid micro_footer"
-            ref={(el) => (sectionRefs.current.Enuqiry = el)}
-          >
-            <div className="row ">
-              <div className="col-sm-6 px-0">
-                <Suspense fallback="">
-                  <Enquire />
-                </Suspense>
-              </div>
-              <div className="col-sm-6 px-0">
-                <Suspense fallback="">
-                  <EnquireForm projectName={"MVN Aeroone"} />
-                </Suspense>
+          <LazyLoadComponent margin="200px" debugName="FooterForm">
+            <div
+              className="container-fluid micro_footer"
+              ref={(el) => (sectionRefs.current.Enuqiry = el)}
+            >
+              <div className="row ">
+                <div className="col-sm-6 px-0">
+                  <Suspense fallback="">
+                    <Enquire />
+                  </Suspense>
+                </div>
+                <div className="col-sm-6 px-0">
+                  <Suspense fallback="">
+                    <EnquireForm projectName={"MVN Aeroone"} />
+                  </Suspense>
+                </div>
               </div>
             </div>
-          </div>
+          </LazyLoadComponent>
 
-          <Suspense fallback="">
+          <LazyLoadComponent>
             <Footer />
-          </Suspense>
+          </LazyLoadComponent>
         </div>
       </div>
 

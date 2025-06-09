@@ -61,7 +61,7 @@ const Header = (props) => {
           <div className="logo">
             <img
               src={CONFIG.IMAGE_URL + "logo.webp"}
-              alt="logo image"
+              alt="mvn logo image"
               className="img-fluid logo"
             />
           </div>

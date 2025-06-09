@@ -721,11 +721,9 @@ border-bottom: 1px solid rgb(42 42 42 / 49%);text-decoration: none;letter-spacin
 
 .location_map_section {
     & .locationMapContent {
-        & .location_points {
-            .top_road {
-                width: 400%;
-                left: -100%;
-            }
+        .top_road {
+            width: 400%;
+            left: -100%;
         }
     }
 }

@@ -113,6 +113,8 @@ const MicroLocationMap = ({ data }) => {
             <div className="thumbnail">
               <button
                 type="button"
+                role="button"
+                tabIndex="0"
                 className="location_btn"
                 onClick={handleShow}
               >
@@ -144,10 +146,12 @@ const MicroLocationMap = ({ data }) => {
 
         <Container className="desktop_fluid_container">
           <h4 className="title style2">{title}</h4>
+          <div className="road">
+            <span className="left_road"></span>
+            <span className="top_road"></span>
+          </div>
           {data.locationData && (
             <ul className="location_points">
-              <span className="left_road"></span>
-              <span className="top_road"></span>
               {data.locationData.map((item, index) => (
                 <li key={index}>
                   <h3 className="distance">{item.distance}</h3>

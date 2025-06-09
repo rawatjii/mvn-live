@@ -46,8 +46,8 @@ export const otherDetails = {
 };
 
 export const socialMedia = [
-  { imgUrl: `${API_URL}assets/icons/social/fb.png`, alt: 'mvn-facebook-icon', link: 'https://www.facebook.com/officialmvninfra/', className: 'fb_icon' },
-  { imgUrl: `${API_URL}assets/icons/social/instagram.png`, alt: 'mvn-instagram-icon', link: 'https://www.instagram.com/mvn_infrastructure/', className: 'insta_icon' },
-  { imgUrl: `${API_URL}assets/icons/social/linkedin.png`, alt: 'mvn-linkedin-icon', link: 'https://www.linkedin.com/company/mvn-infrastructure/', className: 'linkedin_icon' },
-  { imgUrl: `${API_URL}assets/icons/social/youtube.png`, alt: 'mvn-youtube-icon', link: 'https://www.youtube.com/@MVNInfrastructures', className: 'yt_icon' },
+  { imgUrl: `${API_URL}assets/icons/social/fb.png`, alt: 'Follow MVN on facebook', link: 'https://www.facebook.com/officialmvninfra/', className: 'fb_icon' },
+  { imgUrl: `${API_URL}assets/icons/social/instagram.png`, alt: 'Follow MVN on instagram', link: 'https://www.instagram.com/mvn_infrastructure/', className: 'insta_icon' },
+  { imgUrl: `${API_URL}assets/icons/social/linkedin.png`, alt: 'Follow MVN on linkedin', link: 'https://www.linkedin.com/company/mvn-infrastructure/', className: 'linkedin_icon' },
+  { imgUrl: `${API_URL}assets/icons/social/youtube.png`, alt: 'Follow MVN on youtube', link: 'https://www.youtube.com/@MVNInfrastructures', className: 'yt_icon' },
 ];
