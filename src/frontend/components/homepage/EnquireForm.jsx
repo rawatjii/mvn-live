@@ -88,6 +88,7 @@ const EnquireForm = ({ career, projectName }) => {
                 id="name"
                 type="text"
                 name="name"
+                className="input_style1"
                 placeholder="Your Name:"
                 value={formDetails.name ?? ""}
                 onChange={handleFormChange}
@@ -103,6 +104,7 @@ const EnquireForm = ({ career, projectName }) => {
                 id="email"
                 type="email"
                 name="email"
+                className="input_style1"
                 placeholder="Your E-Mail:"
                 value={formDetails.email ?? ""}
                 onChange={handleFormChange}
@@ -118,6 +120,7 @@ const EnquireForm = ({ career, projectName }) => {
                 id="number"
                 type="number"
                 name="number"
+                className="input_style1"
                 placeholder="Your Phone:"
                 value={formDetails.number ?? ""}
                 onChange={(e) => {
@@ -140,6 +143,7 @@ const EnquireForm = ({ career, projectName }) => {
                     id="designation"
                     type="text"
                     name="designation"
+                    className="input_style1"
                     placeholder="Designation"
                     onChange={handleFormChange}
                     autoComplete="off" 
@@ -154,6 +158,7 @@ const EnquireForm = ({ career, projectName }) => {
                     type="text"
                     name="experience"
                     placeholder="Experience"
+                    className="input_style1"
                     onChange={handleFormChange}
                     autoComplete="off" 
                   />
@@ -169,6 +174,7 @@ const EnquireForm = ({ career, projectName }) => {
                 id="message"
                 type="text"
                 name="message"
+                className="input_style1"
                 placeholder="Your Message:"
                 value={formDetails.message ?? ""}
                 onChange={handleFormChange}
@@ -186,6 +192,7 @@ const EnquireForm = ({ career, projectName }) => {
                     id="resume"
                     type="file"
                     name="resume"
+                    className="input_style1"
                     placeholder="Your Resume"
                     onChange={handleFormChange}
                     autoComplete="off" 

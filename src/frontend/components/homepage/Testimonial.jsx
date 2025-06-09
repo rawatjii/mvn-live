@@ -1,15 +1,15 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { Container } from "react-bootstrap";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
 
+import { API_URL } from "../../../config/config";
+
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
-import { API_URL } from "../../../config/config";
 
 const testimonialData = [
   {
@@ -41,6 +41,9 @@ const testimonialData = [
 const Testimonial = () => {
   const titleRef = useRef();
   const contentRef = useRef();
+
+  console.log('testimonial section');
+  
 
   return (
     <section

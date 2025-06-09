@@ -278,7 +278,12 @@ fieldset:disabled {
   border: 1px solid var(--theme_primary_color)
 }
 
-.btn.btn_style3 {
+.btn.btn_style2:focus{
+  border: 1px solid #fff;
+}
+
+.btn.btn_style3,
+.btn.btn_style3:active {
   color: #000;
   background: var(--theme_primary_color);
   /* border: 1px solid var(--theme_primary_color); */
@@ -288,6 +293,10 @@ fieldset:disabled {
   &:hover{
     background: var(--theme_primary_dark_color);
   }
+}
+
+.btn.btn_style3:focus{
+  border:1px solid #fff;
 }
 
 .btn.btn_style4 {
@@ -4379,6 +4388,11 @@ table.bg_transparent{
   border-radius: 100px; 
 }
 
+video:focus {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
 
 /* start responsive */
 /* by bhupendra */
@@ -6166,4 +6180,9 @@ table.bg_transparent{
 div input:focus{
   border: 1px solid #000 !important;
 }
+
+.input_style1:focus{
+  border-color:#fff!important
+}
+
 /* new css for input */
