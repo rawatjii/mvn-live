@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import {useInView} from 'react-intersection-observer';
 
-const LazyLoadComponent = ({children, margin, debugName})=>{
+const LazyLoadComponent = ({children, margin, debugName, smootherRef})=>{
   const {ref, inView} = useInView({
     triggerOnce:true,
     threshold:0,
@@ -11,13 +11,17 @@ const LazyLoadComponent = ({children, margin, debugName})=>{
 
   useEffect(() => {
     if (inView) {
-      const scrollY = window.scrollY || smootherRef.current?.offset() || 0;
+      const scrollY = window.scrollY || smootherRef?.current?.offset() || 0;
       setTimeout(() => {
         ScrollTrigger.refresh();
-        window.scrollTo(0, scrollY); // Restore scroll position
+        if (smootherRef?.current) {
+          smootherRef.current.scrollTo(scrollY, false);
+        } else {
+          window.scrollTo(0, scrollY);
+        }
       }, 100);
     }
-  }, [inView, debugName]);
+  }, [inView, debugName, smootherRef]);
 
   return(
     <div ref={ref}>

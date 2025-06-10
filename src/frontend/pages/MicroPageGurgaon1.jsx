@@ -329,13 +329,13 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
           <MicroOverview data={data.overview} />
           <LargeElevationSection data={data.LargeElevationSection} />
 
-          <LazyLoadComponent margin="200px" debugName="Walkthrough">
+          <LazyLoadComponent margin="200px" debugName="Walkthrough" smootherRef={smootherRef}>
             <div ref={(el) => (sectionRefs.current.Walkthrough = el)}>
               <Walkthrough data={data.walkthrough} />
             </div>
           </LazyLoadComponent>
 
-          <LazyLoadComponent margin="200px" debugName="DownloadBrochure">
+          <LazyLoadComponent margin="200px" debugName="DownloadBrochure" smootherRef={smootherRef}>
             <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
               <DownloadBrochure
                 is360Available={false}
@@ -345,7 +345,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             </div>
           </LazyLoadComponent>
 
-          <LazyLoadComponent margin="200px" debugName="View360">
+          <LazyLoadComponent margin="200px" debugName="View360" smootherRef={smootherRef}>
             {is360Show ? (
               <View360
                 data={data.view360}
@@ -355,7 +355,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             ) : null}
           </LazyLoadComponent>
 
-          <LazyLoadComponent margin="200px" debugName="PeacockSection">
+          <LazyLoadComponent margin="200px" debugName="PeacockSection" smootherRef={smootherRef}>
             <div ref={(el) => (sectionRefs.current.LIVINGROOM = el)}>
               <PeacockSection
                 data={data.peacock_section}
@@ -365,7 +365,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             </div>
           </LazyLoadComponent>
 
-          <LazyLoadComponent margin="200px" debugName="PartyVideo">
+          <LazyLoadComponent margin="200px" debugName="PartyVideo" smootherRef={smootherRef}>
             <div>
               <PartyVideo
                 data={data.party_video}
@@ -375,7 +375,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             </div>
           </LazyLoadComponent>
 
-          <LazyLoadComponent margin="200px" debugName="MasterBedroom">
+          <LazyLoadComponent margin="200px" debugName="MasterBedroom" smootherRef={smootherRef}>
             <div>
               <MasterBedroom
                 data={data.masterBedroom}
@@ -386,31 +386,31 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             </div>
           </LazyLoadComponent>
 
-          <LazyLoadComponent margin="200px" debugName="Consultant">
+          <LazyLoadComponent margin="200px" debugName="Consultant" smootherRef={smootherRef}>
             <div ref={(el) => (sectionRefs.current.consultant = el)}>
               <Consultant data={data.consultant} />
             </div>
           </LazyLoadComponent>
 
-          <LazyLoadComponent margin="200px" debugName="MicroLandscape">
+          <LazyLoadComponent margin="200px" debugName="MicroLandscape" smootherRef={smootherRef}>
             <div ref={(el) => (sectionRefs.current.MicroLandscape = el)}>
               <ImageGallery data={data.landscape} />
             </div>
           </LazyLoadComponent>
 
-          <LazyLoadComponent margin="200px" debugName="MicroElevation">
+          <LazyLoadComponent margin="200px" debugName="MicroElevation" smootherRef={smootherRef}>
             <div ref={(el) => (sectionRefs.current.MicroElevation = el)}>
               <ImageGallery data={data.microElevation} />
             </div>
           </LazyLoadComponent>
 
-          <LazyLoadComponent margin="200px" debugName="MicroApartment">
+          <LazyLoadComponent margin="200px" debugName="MicroApartment" smootherRef={smootherRef}>
             <div ref={(el) => (sectionRefs.current.MicroApartment = el)}>
               <ImageGallery data={data.microApartment} />
             </div>
           </LazyLoadComponent>
 
-          <LazyLoadComponent margin="200px" debugName="ConstructionTechnology">
+          <LazyLoadComponent margin="200px" debugName="ConstructionTechnology" smootherRef={smootherRef}>
             <div
               ref={(el) => (sectionRefs.current.constructionTechnology = el)}
             >
@@ -418,43 +418,43 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             </div>
           </LazyLoadComponent>
 
-          <LazyLoadComponent margin="200px" debugName="MicroAmenities">
+          <LazyLoadComponent margin="200px" debugName="MicroAmenities" smootherRef={smootherRef}>
             <div ref={(el) => (sectionRefs.current.MicroAmenities = el)}>
               <ParallaxSection section_data={data.amenities} />
             </div>
           </LazyLoadComponent>
 
-          <LazyLoadComponent margin="200px" debugName="MicroTypology">
+          <LazyLoadComponent margin="200px" debugName="MicroTypology" smootherRef={smootherRef}>
             <div ref={(el) => (sectionRefs.current.MicroTypology = el)}>
               <Typology onLoadComplete={() => setTypologyLoaded(true)} />
             </div>
           </LazyLoadComponent>
 
-          <LazyLoadComponent margin="200px" debugName="MicroFloorPlan">
+          <LazyLoadComponent margin="200px" debugName="MicroFloorPlan" smootherRef={smootherRef}>
             <div ref={(el) => (sectionRefs.current.MicroFloorPlan = el)}>
               <MicroFloorPlan data={data.floorPlan} />
             </div>
           </LazyLoadComponent>
 
-          <LazyLoadComponent margin="200px" debugName="MicroLocationMap">
+          <LazyLoadComponent margin="200px" debugName="MicroLocationMap" smootherRef={smootherRef}>
             <div ref={(el) => (sectionRefs.current.MicroLocationMap = el)}>
               <MicroLocationMap data={data.locationAdvantage} />
             </div>
           </LazyLoadComponent>
 
-          <LazyLoadComponent margin="200px" debugName="MvnMall">
+          <LazyLoadComponent margin="200px" debugName="MvnMall" smootherRef={smootherRef}>
             <div ref={(el) => (sectionRefs.current.MVNMALL = el)}>
               <MvnMall data={data.mvnMall} />
             </div>
           </LazyLoadComponent>
 
-          <LazyLoadComponent margin="200px" debugName="NoPolutionZone">
+          <LazyLoadComponent margin="200px" debugName="NoPolutionZone" smootherRef={smootherRef}>
             <div ref={(el) => (sectionRefs.current.NoPolutionZone = el)}>
               <ParallaxSection section_data={data.noPollutionZone} />
             </div>
           </LazyLoadComponent>
 
-          <LazyLoadComponent margin="200px" debugName="FooterForm">
+          <LazyLoadComponent margin="200px" debugName="FooterForm" smootherRef={smootherRef}>
             <div
               className="container-fluid micro_footer"
               ref={(el) => (sectionRefs.current.Enuqiry = el)}
@@ -474,7 +474,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             </div>
           </LazyLoadComponent>
 
-          <LazyLoadComponent>
+          <LazyLoadComponent smootherRef={smootherRef}>
             <Footer />
           </LazyLoadComponent>
         </div>

@@ -330,7 +330,7 @@ In this article, we will learn about the challenges faced by commercial real est
       "Compare residential vs commercial property investment in Gurgaon. Learn the key advantages, returns, and risks to make a wise, profitable investment decision today.",
     colonical:
       "https://www.mvn.in/blogs/residential-vs-commercial-property-investment-in-gurgaon",
-  },
+  },*/
   {
     title: "Experience the Pinnacle of Ultra-Luxury Living with  MVN Aero One",
     slug: "experience-the-pinnacle-of-ultra-luxury-living-with-mvn-aero-one",
@@ -380,7 +380,7 @@ In this article, we will learn about the challenges faced by commercial real est
       "Live the pinnacle of luxury at MVN Aero One Gurugram. Explore premium amenities and world-class residences designed for a sophisticated lifestyle.",
     colonical:
       "https://www.mvn.in/blogs/experience-the-pinnacle-of-ultra-luxury-living-with-mvn-aero-one",
-  },*/
+  },
   {
     meta_title:
       "MVN AeroOne Gurugram: Redefining Luxury Living in Gurugram",
