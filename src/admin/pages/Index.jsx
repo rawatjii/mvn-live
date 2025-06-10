@@ -17,23 +17,14 @@ const SinglePage = () => {
   const singlePageApi = generateApi(`page-section/${pageName}`);
 
   const getEditDataApi = generateApi("page-section-list", 0);
-
-
   const {data} = useCrud(singlePageApi); //form
   const {data: editSectionData,getMultiEditdata} = useCrud(editSectionApi); //preflldata
- 
   const { editItem:updateFormData,createItem } = useCrud(getEditDataApi); //update
-
-
-
   const [formSections, setFormSections] = useState([]);
-
 
 
   const fetchEditData = async () => {
     // alert("im")
-
- 
     try {
       const data = await getMultiEditdata();
         setEditData(data.data);
