@@ -38,6 +38,7 @@ import "swiper/css/navigation";
 import LivingRoomVideoGurugram from "../components/MicroPage/LivingRoomVideoGurugram";
 import useFetchData from "../utils/apiHelper";
 import Intro from "../components/homepage/Intro";
+import LazyLoadComponent from "../../common/LazyLoadComponent";
 
 const Homepage = () => {
   const [isShowModal, setIsShowModal] = useState(false);
@@ -203,45 +204,41 @@ const Homepage = () => {
             return <Overview data={section} key={secIndex + section.id} />;
 
           if (section.page_section == "home-overview")
-            return <ClubOne data={section} key={secIndex + section.id} />;
+            return <LazyLoadComponent><ClubOne data={section} key={secIndex + section.id} /></LazyLoadComponent>;
 
           if (section.page_section == "home-shopping")
-            return <MvnMall data={section} key={secIndex + section.id} />;
+            return <LazyLoadComponent><MvnMall data={section} key={secIndex + section.id} /></LazyLoadComponent>;
 
           if (section.page_section == "home-video")
-            return <Offer data={section} clickHandler={showCustomModal} key={secIndex + section.id} />;
+            return <LazyLoadComponent><Offer data={section} clickHandler={showCustomModal} key={secIndex + section.id} /></LazyLoadComponent>;
 
           if (section.page_section == "home-project")
-            return <Projects data={section} clickHandler={showCustomModal} key={secIndex + section.id} />;
+            return <LazyLoadComponent><Projects data={section} clickHandler={showCustomModal} key={secIndex + section.id} /></LazyLoadComponent>;
 
           if (section.page_section == "home-verticals")
-            return <OtherProjects data={section} key={secIndex + section.id} />;
+            return <LazyLoadComponent><OtherProjects data={section} key={secIndex + section.id} /></LazyLoadComponent>;
 
           if (section.page_section == "home-infrastructure")
-            return <OurJourney data={section} key={secIndex + section.id} />;
+            return <LazyLoadComponent><OurJourney data={section} key={secIndex + section.id} /></LazyLoadComponent>;
 
           if (section.page_section == "home-people-behind")
-            return <OurTeam data={section} key={secIndex + section.id} />;
+            return <LazyLoadComponent><OurTeam data={section} key={secIndex + section.id} /></LazyLoadComponent>;
 
           if (section.page_section == "home-brand-ethos")
-            return <OurBrand data={section} key={secIndex + section.id} />;
+            return <LazyLoadComponent><OurBrand data={section} key={secIndex + section.id} /></LazyLoadComponent>;
 
           if (section.page_section == "home-client-says")
-            return <Testimonial data={section} key={secIndex + section.id} />;
+            return <LazyLoadComponent><Testimonial data={section} key={secIndex + section.id} /></LazyLoadComponent>;
         })}
         {/* <Suspense fallback={<Skeleton height="h_90vh" />}>
           <Testimonial />
         </Suspense> */}
-
-        <div className="flex-footer-form">
-          <Suspense fallback={<Skeleton height="h_50vh h_sm_30vh" />}>
-            <Enquire />
-          </Suspense>
-
-          <Suspense fallback={<Skeleton height="h_50vh h_sm_70vh" />}>
-            <EnquireForm projectName={"MVN Infrastructure"} />
-          </Suspense>
-        </div>
+        <LazyLoadComponent>
+          <div className="flex-footer-form">
+              <Enquire />
+              <EnquireForm projectName={"MVN Infrastructure"} />
+          </div>
+        </LazyLoadComponent>
 
         <Suspense fallback={<div>Loading...</div>}>
           <CustomModal
