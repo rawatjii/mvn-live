@@ -108,7 +108,7 @@ const otherSection = [
     icon: <FaCity className="mr-3 box-icon" />,
     link: "/admin/amenities",
   },
-  { name: "Other Page", icon: <FaCity className="mr-3 box-icon" />, link: "#" },
+  // { name: "Other Page", icon: <FaCity className="mr-3 box-icon" />, link: "#" },
 ];
 const PageCommonSection = [
   {
