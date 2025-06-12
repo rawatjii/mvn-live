@@ -113,7 +113,7 @@ const Projects = ({ data }) => {
 
                 <div className="projects_flex_row d-flex flex-wrap col-md-8 col-12">
                   {value.map((item, valueIndex) => (
-                    <div className="project_box col-md-6 col-12" key={valueIndex}>
+                    <div className={`project_box ${index == 0 && 'col-md-6'} col-12`} key={valueIndex}>
                       <div className="project_box_in">
                         <AnImage
                           ref={(el) => (imageDivRefs.current[valueIndex] = el)}
