@@ -503,11 +503,11 @@ In this article, we will learn about the challenges faced by commercial real est
       },
     ],
     meta_title:
-      "Experience Ultra Luxury Living with MVN Aero One | Gurugram",
+      "MVN Aero One in Gurgaon: The Ultimate Residential Choice for 2025",
     meta_description:
-      "Live the pinnacle of luxury at MVN Aero One Gurugram. Explore premium amenities and world-class residences designed for a sophisticated lifestyle.",
+      "Discover why MVN Aero One in Gurgaon is the ultimate residential choice for 2025. Explore luxury living with spacious layouts, premium amenities, and prime connectivity in Gurgaon’s fastest-growing neighborhood.",
     colonical:
-      "https://www.mvn.in/blogs/experience-the-pinnacle-of-ultra-luxury-living-with-mvn-aero-one",
+      "https://www.mvn.in/blogs/mvn-aero-one-gurgaon-2025-residences",
   },
   {
     title: "Experience the Pinnacle of Ultra-Luxury Living with  MVN Aero One",
