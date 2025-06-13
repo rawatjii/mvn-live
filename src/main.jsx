@@ -330,7 +330,7 @@ const router = createBrowserRouter([
             {path:"amenities", element:<AmenitiesAdmin />}, 
              {path:"connection-mall", element:<ConnectionMvnMall />},              
             {path:"typologies", element:<Typologies />}, 
-            {path:"floor-plans", element:<FloorPlans />}, 
+            {path:"floor-plan", element:<FloorPlans />}, 
             {path:"location-map", element:<LocationMap />}, 
             {path:"mvn-mall", element:<MvnMall />}, 
            ] 
