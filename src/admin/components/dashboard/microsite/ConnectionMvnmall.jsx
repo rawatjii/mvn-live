@@ -43,7 +43,7 @@ const ConnectionMVNMall = () => {
 
   const fetchMetadata = async () => {
     const formData = new FormData();
-    formData.append("section_type", locationType);
+    formData.append("section_type", "connection-mall");
     formData.append("project_id", project_id);
     try {
       const data = await getEditData(formData);

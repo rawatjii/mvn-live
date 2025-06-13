@@ -132,6 +132,8 @@ const MicroSidebar = () => {
             {data?.map((item, index) => {
               if (!project_id && index !== 0) return null;
 
+              if(item.slug === 'location-advantage') return null;
+
               return (
                 <OverlayTrigger
                   key={item.slug}
