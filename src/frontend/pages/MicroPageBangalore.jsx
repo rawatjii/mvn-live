@@ -4,6 +4,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import ScrollSmoother from "gsap/ScrollSmoother";
 import MicroHeader from "../components/MicroHeader";
 import { API_URL } from "../../config/config";
+import { Helmet } from "react-helmet";
 const ParallaxSection = React.lazy(()=>import("../../common/ParallaxSection"));
 const MicroOverview = React.lazy(()=>import("../components/MicroPage/Overview"));
 const MicroAmenities = React.lazy(()=>import("../components/MicroPage/Amenities"));
@@ -71,7 +72,10 @@ const MicroPageBangalore = ({ data, loadingCount, setLoadingCount }) => {
 
   return (
     <>
-
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow"></meta>
+        <meta name="googlebot" content="all, noindex, nofollow" />
+      </Helmet>
 
       <MicroHeader scrollToSection={scrollToSection} data={data.header} isFixed={ isHeaderFixed }/>
       <div id="smooth-wrapper">

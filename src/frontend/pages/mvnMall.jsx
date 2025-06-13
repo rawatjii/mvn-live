@@ -55,7 +55,10 @@ const MvnMall1 = ({ data }) => {
 
   return (
     <>
-
+      <Helmet>
+      <meta name="robots" content="noindex, nofollow" />
+      <meta name="googlebot" content="all, noindex, nofollow" />
+      </Helmet>
    
       <MicroHeader scrollToSection={scrollToSection} data={data.header} isFixed={ isHeaderFixed }/>
       <div id="smooth-wrapper">

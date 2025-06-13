@@ -68,6 +68,8 @@ const MicroPageGurgaonPhase1 = ({ data, loadingCount, setLoadingCount }) => {
 
       
       <Helmet>
+      <meta name="robots" content="noindex, nofollow" />
+      <meta name="googlebot" content="all, noindex, nofollow" />
         <script>
           {`
             window.dataLayer = window.dataLayer || [];
