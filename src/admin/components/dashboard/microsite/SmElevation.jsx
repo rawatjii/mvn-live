@@ -18,7 +18,7 @@ const SmElevation = () => {
   
   const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
-  const SmElevationApi = generateApi("project-elevate-galleries/elevation");
+  const SmElevationApi = generateApi(`project-elevate-galleries/${project_id}/elevation`);
   const GalleryApi = generateApi("project-elevate-galleries",0);
 
   
@@ -52,7 +52,7 @@ const SmElevation = () => {
 
   const fetchMetadata = async () => {
     const formData = new FormData();
-    formData.append("section_type", locationType);
+    formData.append("section_type", 'sm-elevation');
     formData.append("project_id", project_id);
     try {
       const data = await getEditData(formData);

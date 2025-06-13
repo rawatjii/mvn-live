@@ -19,7 +19,7 @@ const Apartment = () => {
   const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
   const apartmentApi = generateApi("project-gallery",0);
-  const getApi = generateApi("project-gallery/apartment");
+  const getApi = generateApi(`project-gallery/${project_id}/apartment`);
   
   const { editItem, createItem } = useCrud(projectSectionsApi);
   const {data: apartmentItems,fetchAll: fetchapartmentItems} = useCrud(getApi);

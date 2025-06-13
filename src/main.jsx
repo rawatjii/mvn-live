@@ -326,7 +326,7 @@ const router = createBrowserRouter([
             {path:"galleries", element:<Galleries />},
             {path:"elevation", element:<SmElevation />},
             {path:"apartment", element:<Apartment />}, 
-             {path:"construction", element:<ConstructionTechnology />},  
+             {path:"construction-technology", element:<ConstructionTechnology />},  
             {path:"amenities", element:<AmenitiesAdmin />}, 
              {path:"connection-mall", element:<ConnectionMvnMall />},              
             {path:"typologies", element:<Typologies />}, 
