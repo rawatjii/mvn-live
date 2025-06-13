@@ -326,11 +326,11 @@ const router = createBrowserRouter([
             {path:"galleries", element:<Galleries />},
             {path:"elevation", element:<SmElevation />},
             {path:"apartment", element:<Apartment />}, 
-             {path:"construction-technology", element:<ConstructionTechnology />},  
+             {path:"construction", element:<ConstructionTechnology />},  
             {path:"amenities", element:<AmenitiesAdmin />}, 
              {path:"connection-mall", element:<ConnectionMvnMall />},              
             {path:"typologies", element:<Typologies />}, 
-            {path:"floor-plan", element:<FloorPlans />}, 
+            {path:"floor-plans", element:<FloorPlans />}, 
             {path:"location-map", element:<LocationMap />}, 
             {path:"mvn-mall", element:<MvnMall />}, 
            ] 

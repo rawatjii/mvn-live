@@ -28,7 +28,7 @@ const ThreesixtyView = () => {
 
   const fetchEditData = async () => {
     const formData = new FormData();
-    formData.append("section_type", "360-views");
+    formData.append("section_type", "ThreesixtyView");
     formData.append("project_id", project_id);
     try {
       const data = await getEditData(formData);
