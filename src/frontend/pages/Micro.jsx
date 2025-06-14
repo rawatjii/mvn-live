@@ -2,47 +2,28 @@ import React, { Suspense, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScrollSmoother from "gsap/ScrollSmoother";
-import MicroHero from "../components/MicroPage/Hero";
-import MicroOverview from "../components/MicroPage/Overview";
-import MicroHighlights from "../components/MicroPage/Highlights";
-import MicroPrice from "../components/MicroPage/Price";
-import MicroAmenities from "../components/MicroPage/Amenities";
-import MicroMasterPlan from "../components/MicroPage/MasterPlan";
-import MicroFloorPlan from "../components/MicroPage/FloorPlan";
-import MicroLocationMap from "../components/MicroPage/LocationMap";
-import Enquire from "../components/homepage/Enquire";
-import EnquireForm from "../components/homepage/EnquireForm";
-import PeacockSection from "../components/MicroPage/PeacockSection";
-import Video2 from "../components/MicroPage/Video2";
-import PartyVideo from "../components/MicroPage/PartyVideo";
-import MasterBedroom from "../components/MicroPage/MasterBedroom";
-import Slides from "../components/MicroPage/Slides";
-import Walkthrough from "../components/MicroPage/Walkthrough";
-import LargeElevationSection from "../components/MicroPage/LargeElevationSection";
-import Renders from "../components/MicroPage/Renders";
-import NoPolutionZone from "../components/MicroPage/NoPolutionZone";
-import Rera from "../components/MicroPage/Rera";
-import LivingRoomVideo from "../components/MicroPage/LivingRoomVideo";
-import GallerySlider from "../components/GallerySlider";
-import SecTitle from "../../common/SecTitle/Index";
 import MicroHeader from "../components/MicroHeader";
-import { API_URL } from "../../config/config";
-import { useParams } from "react-router-dom";
-import useFetchData from "../utils/apiHelper";
-import IframeSection from "../components/MicroPage/IframeSection";
 import HeroSection from "../components/MicroPage/Hero/Index";
+import MicroOverview from "../components/MicroPage/Overview";
+import LargeElevationSection from "../components/MicroPage/LargeElevationSection";
 import YtIframe from "../components/MicroPage/YtIframe";
 import DownloadBrochure from "../components/MicroPage/DownloadBrochure";
+import CustomIframe from "../components/MicroPage/CustomIframe";
 import View360 from "../components/MicroPage/360";
+import PeacockSection from "../components/MicroPage/PeacockSection";
 import Consultant from "../components/MicroPage/Consultant";
 import ImagesGallery from "../components/MicroPage/ImagesGallery";
 import ConstructionTechnology from "../components/MicroPage/ConstructionTechnology";
 import ParallaxSection from "../../common/ParallaxSection";
-import Footer from "../components/Footer";
+import MicroLocationMap from "../components/MicroPage/LocationMap";
 import MvnMall from "../components/MicroPage/MvnMall";
-import MicroSizes from "../components/MicroPage/Sizes";
 import Typology from "../components/homepage/Typology";
-import CustomIframe from "../components/MicroPage/CustomIframe";
+import Enquire from "../components/homepage/Enquire";
+import EnquireForm from "../components/homepage/EnquireForm";
+import Footer from "../components/Footer";
+import { API_URL } from "../../config/config";
+import { useParams } from "react-router-dom";
+import useFetchData from "../utils/apiHelper";
 import LazyLoadComponent from "../../common/LazyLoadComponent";
 
 const headerSidebarDesktopImg = `${API_URL}images/aero-gurgaon/header/sidebar.webp`;
@@ -126,6 +107,17 @@ const MicroPage = () => {
     `project/${basicData?.id}/project-section`
   );
 
+  // Sort projectSections by seq
+  // const sortedProjectSections = projectSections
+  //   ? [...projectSections].sort((a, b) => a.seq - b.seq)
+  //   : [];
+
+  // useEffect(() => {
+  //   if (sortedProjectSections.length > 0) {
+  //     console.log(sortedProjectSections, "Sorted Project Sections");
+  //   }
+  // }, [sortedProjectSections]);
+
   const scrollToSection = (sectionKey) => {
     const target = sectionRefs.current[sectionKey];
     if (target && smootherRef.current) {
@@ -148,7 +140,7 @@ const MicroPage = () => {
         smootherRef.current = null;
       }
     };
-  }, [basicData, projectSections]);
+  }, [basicData,projectSections]);
 
   if (loading) return <div className="text-center py-5">Loading...</div>;
   if (!loading && basicData && basicData.length === 0)
@@ -161,154 +153,125 @@ const MicroPage = () => {
         data={headerData}
         isFixed={isHeaderFixed}
       />
-
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <HeroSection projectId={basicData?.id} />
 
-          {projectSections &&
-            projectSections.map((section, secIndex) => {
-              const sectionKey = `${section.section_type}_${secIndex}`;
-              return(
-                <React.Fragment key={sectionKey}>
-                  {section.section_type === "overview" && (
+          {projectSections?.map((section, secIndex) => {
+            const sectionKey = `${section.section_type}_${secIndex}`;
+            return (
+              <React.Fragment key={sectionKey}>
+                {section.section_type === "overview" && (
+                  <LazyLoadComponent margin="200px" debugName="overview">
                     <div ref={(el) => (sectionRefs.current.microOverview = el)}>
                       <MicroOverview rera={basicData?.rera_no} data={section} />
+                      {section.yt_url && <CustomIframe data={section.yt_url} />}
                     </div>
-                  )}
-                  
-                  {section.section_type === "elevation" && (
-                    <LazyLoadComponent
-                      margin="200px"
-                      debugName="elevation"
-                    >
-                      <div ref={(el) => (sectionRefs.current[`elevation_${secIndex}`] = el)}>
-                        <LargeElevationSection data={section} />
-                      </div>
-                    </LazyLoadComponent>
-                  )}
-
-                  {section.section_type === "walkthrough" && (
-                    <LazyLoadComponent
-                      margin="200px"
-                      debugName="walkthrough"
-                    >
-                      <div ref={(el) => (sectionRefs.current.Walkthrough = el)}>
-                        <YtIframe data={section} subs_btn={true} />
-                      </div>
-                    </LazyLoadComponent>
-                  )}
-
-                </React.Fragment>
-              )
-            })}
-
-            {projectSections && (
-              <LazyLoadComponent margin="200px" debugName="downloadBrochure">
-                <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
-                  <DownloadBrochure
-                    showAwards={basicData?.batch}
-                    name={basicData?.name}
-                  />
-                </div>
-              </LazyLoadComponent>
-            )}
-          
-
-          {projectSections &&
-            projectSections.map((section, secIndex) => {
-
-              if (section.section_type == "overview" && section.yt_url){
-                return (
-                  <LazyLoadComponent margin="200px" debugName={section.section_type} >
-                    <CustomIframe
-                      data={section.yt_url}
-                    />
                   </LazyLoadComponent>
-                );
-              }
+                )}
 
-              if (section.section_type == "threesixtyview"){
-                return (
-                  <LazyLoadComponent margin="200px" debugName={section.section_type} >
+                {section.section_type === "elevation" && (
+                  <LazyLoadComponent margin="200px" debugName="elevation">
+                    <div
+                      ref={(el) =>
+                        (sectionRefs.current[`elevation_${secIndex}`] = el)
+                      }
+                    >
+                      <LargeElevationSection data={section} />
+                    </div>
+                  </LazyLoadComponent>
+                )}
+
+
+
+                {section.section_type === "walkthrough" && (
+                  <LazyLoadComponent margin="200px" debugName="walkthrough">
+                    <div ref={(el) => (sectionRefs.current.Walkthrough = el)}>
+                      <YtIframe data={section} subs_btn={true} />
+                    </div>
+                  </LazyLoadComponent>
+                )}
+              {secIndex==3&&projectSections?.length > 0 && (
+                        <LazyLoadComponent margin="200px" debugName="downloadBrochure">
+                          <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
+                            <DownloadBrochure
+                              showAwards={basicData?.batch}
+                              name={basicData?.name}
+                            />
+                          </div>
+                        </LazyLoadComponent>
+                      )}
+                {section.section_type === "threesixtyview" && (
+                  <LazyLoadComponent margin="200px" debugName="threesixtyview">
                     <View360
                       sectionId={section.section_type + secIndex}
                       data={section}
                       onLoadComplete={() => ScrollTrigger.refresh()}
                     />
                   </LazyLoadComponent>
-                );
-              }
-                
+                )}
 
-              if (section.section_type == "livingroom") {
-                return (
-                  <LazyLoadComponent margin="200px" debugName={section.section_type} >
+                {section.section_type === "livingroom" && (
+                  <LazyLoadComponent margin="200px" debugName="livingroom">
                     <div ref={(el) => (sectionRefs.current.LIVINGROOM = el)}>
-                      <PeacockSection
-                        data={section}
-                        onLoadComplete={() => setPeacockLoaded(true)}
-                      />
+                      <PeacockSection data={section} />
                     </div>
                   </LazyLoadComponent>
-                );
-              }
+                )}
 
-              if (section.section_type == "party") {
-                return (
-                  <LazyLoadComponent margin="200px" debugName={section.section_type} >
+                {section.section_type === "party" && (
+                  <LazyLoadComponent margin="200px" debugName="party">
                     <div ref={(el) => (sectionRefs.current.party = el)}>
-                      <PeacockSection
-                        data={section}
-                        onLoadComplete={() => setPeacockLoaded(true)}
-                      />
+                      <PeacockSection data={section} />
                     </div>
                   </LazyLoadComponent>
-                );
-              }
+                )}
 
-              if (section.section_type == "masterbedroom") {
-                return (
-                  <LazyLoadComponent margin="200px" debugName={section.section_type} >
-                    <div ref={(el) => (sectionRefs.current.party = el)}>
-                      <PeacockSection
-                        data={section}
-                        onLoadComplete={() => setPeacockLoaded(true)}
-                      />
+                {section.section_type === "masterbedroom" && (
+                  <LazyLoadComponent margin="200px" debugName="masterbedroom">
+                    <div ref={(el) => (sectionRefs.current.masterbedroom = el)}>
+                      <PeacockSection data={section} />
                     </div>
                   </LazyLoadComponent>
-                );
-              }
+                )}
 
-              if (section.section_type == "consultant") {
-                return (
-                  <LazyLoadComponent margin="200px" debugName={section.section_type} >
+                {section.section_type === "consultant" && (
+                  <LazyLoadComponent margin="200px" debugName="consultant">
                     <div ref={(el) => (sectionRefs.current.consultant = el)}>
                       <Consultant data={section} />
                     </div>
                   </LazyLoadComponent>
-                );
-              }
+                )}
 
-              if (
-                section.section_type == "landscape" ||
-                section.section_type == "galleries" ||
-                section.section_type == "landscapes" ||
-                section.section_type == "sm-elevation" ||
-                section.section_type == "apartment"
-              ) {
-                return (
-                  <LazyLoadComponent margin="200px" debugName={section.section_type} >
+                {(section.section_type === "landscape" ||
+                  section.section_type === "galleries" ||
+                  section.section_type === "landscapes" ||
+                  section.section_type === "sm-elevation" ||
+                  section.section_type === "apartment") && (
+                  <LazyLoadComponent margin="200px" debugName={section.section_type}>
                     <div ref={(el) => (sectionRefs.current.MicroLandscape = el)}>
-                      <ImagesGallery section_name={section.section_type == "landscape" ? 'landscapes' : section.section_type == "sm-elevation" ? 'elevation' : ''} data={section} showTitle={section.section_type == "landscapes" || section.section_type == "galleries"  ? false : true} />
+                      <ImagesGallery
+                        section_name={
+                          section.section_type === "landscape"
+                            ? "landscapes"
+                            : section.section_type === "sm-elevation"
+                            ? "elevation"
+                            : ""
+                        }
+                        data={section}
+                        showTitle={
+                          section.section_type === "landscapes" ||
+                          section.section_type === "galleries"
+                            ? false
+                            : true
+                        }
+                      />
                     </div>
                   </LazyLoadComponent>
-                );
-              }
+                )}
 
-              if (section.section_type == "construction") {
-                return (
-                  <LazyLoadComponent margin="200px" debugName={section.section_type} >
+                {section.section_type === "construction" && (
+                  <LazyLoadComponent margin="200px" debugName="construction">
                     <div
                       ref={(el) =>
                         (sectionRefs.current.constructionTechnology = el)
@@ -317,83 +280,68 @@ const MicroPage = () => {
                       <ConstructionTechnology data={section} />
                     </div>
                   </LazyLoadComponent>
-                  
-                );
-              }
+                )}
 
-              if (section.section_type == "amenities" || section.section_type == "connection-mall") {
-                return (
-                  <LazyLoadComponent margin="200px" debugName={section.section_type} >
+                {(section.section_type === "amenities" ||
+                  section.section_type === "connection-mall") && (
+                  <LazyLoadComponent margin="200px" debugName={section.section_type}>
                     <div ref={(el) => (sectionRefs.current.MicroAmenities = el)}>
                       <ParallaxSection section_data={section} />
                     </div>
                   </LazyLoadComponent>
-                  
-                );
-              }
+                )}
 
-              if (section.section_type == "typologies" ) {
-                return (
-                  <LazyLoadComponent margin="200px" debugName={section.section_type} >
-                    <div ref={(el) => (sectionRefs.current.MicroAmenities = el)}>
-                      <Typology data={section} onLoadComplete={() => setTypologyLoaded(true)} />
+                {section.section_type === "typologies" && (
+                  <LazyLoadComponent margin="200px" debugName="typologies">
+                    <div ref={(el) => (sectionRefs.current.MicroTypology = el)}>
+                      <Typology data={section} />
                     </div>
                   </LazyLoadComponent>
-                  
-                );
-              }
+                )}
 
-              if (section.section_type == "location-map") {
-                return (
-                  <LazyLoadComponent margin="200px" debugName={section.section_type} >
+                {section.section_type === "location-map" && (
+                  <LazyLoadComponent margin="200px" debugName="location-map">
                     <div
                       ref={(el) => (sectionRefs.current.MicroLocationMap = el)}
                     >
                       <MicroLocationMap data={section} />
                     </div>
                   </LazyLoadComponent>
-                  
-                );
-              }
+                )}
 
-              if (section.section_type == "mvn-mall") {
-                return (
-                  <LazyLoadComponent margin="200px" debugName={section.section_type} >
-                    <div
-                      ref={(el) => (sectionRefs.current.MicroLocationMap = el)}
-                    >
+                {section.section_type === "mvn-mall" && (
+                  <LazyLoadComponent margin="200px" debugName="mvn-mall">
+                    <div ref={(el) => (sectionRefs.current.MVNMALL = el)}>
                       <MvnMall data={section} />
                     </div>
                   </LazyLoadComponent>
-                  
-                );
-              }
-            })}
+                )}
+              </React.Fragment>
+            );
+          })}
 
-            {projectSections && (
-              <>
-                <LazyLoadComponent margin="200px">
-                  <div className="container-fluid micro_footer">
-                    <div className="row ">
-                      <div className="col-sm-6 px-0">
-                        <Enquire />
-                      </div>
-                      <div className="col-sm-6 px-0">
-                        <EnquireForm projectName={projectName} />
-                      </div>
+        
+
+          {projectSections?.length > 0 && (
+            <>
+              <LazyLoadComponent margin="200px">
+                <div className="container-fluid micro_footer">
+                  <div className="row">
+                    <div className="col-sm-6 px-0">
+                      <Enquire />
+                    </div>
+                    <div className="col-sm-6 px-0">
+                      <EnquireForm projectName={projectName} />
                     </div>
                   </div>
-                </LazyLoadComponent>
+                </div>
+              </LazyLoadComponent>
 
-                <LazyLoadComponent margin="200px">
-                  <Footer />
-                </LazyLoadComponent>
-              </>
-            )}
-
-            
-
-          
+              <LazyLoadComponent margin="200px">
+                <Footer />
+              </LazyLoadComponent>
+            </>
+          )}
         </div>
       </div>
     </>
