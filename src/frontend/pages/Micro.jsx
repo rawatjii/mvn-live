@@ -228,7 +228,7 @@ const MicroPage = () => {
                 );
               }
 
-              if (section.section_type == "360-views"){
+              if (section.section_type == "threesixtyview"){
                 return (
                   <LazyLoadComponent margin="200px" debugName={section.section_type} >
                     <View360

@@ -75,7 +75,7 @@ const LandScape = () => {
 
   const fetchMetadata = async () => {
     const formData = new FormData();
-    formData.append("section_type", locationType);
+    formData.append("section_type", "landscape");
     formData.append("project_id", project_id);
     try {
       const data = await getEditData(formData);

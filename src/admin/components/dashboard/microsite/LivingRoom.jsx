@@ -28,7 +28,7 @@ const LivingRoom = () => {
 
  const fetchEditData = async () => {
     const formData = new FormData();
-    formData.append("section_type", 'livingroom');
+    formData.append("section_type", 'Peacock');
     formData.append("project_id", project_id);
     try {
       const data = await getEditData(formData);
