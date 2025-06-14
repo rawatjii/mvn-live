@@ -27,12 +27,12 @@ const Amenities = () => {
   const { 
     data: amenitiesItems, 
     createItem: amenitiesCreateItem, 
-    editItem: amenitiesEditItem, 
-    deleteItem,
     getItems: fetchamenitiesItems
   } = useCrud(amenitiesApi);
   const { 
     createItem: amCreateItem, 
+    editItem: amenitiesEditItem, 
+    deleteItem,
   } = useCrud(projectAmApi);
   
   const { getEditData } = useCrud(getEditDataApi);
