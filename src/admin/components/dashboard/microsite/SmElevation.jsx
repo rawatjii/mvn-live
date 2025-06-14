@@ -18,7 +18,8 @@ const SmElevation = () => {
   
   const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
-  const SmElevationApi = generateApi(`project-elevate-galleries/${project_id}/elevation`);
+  const SmElevationApi = generateApi(`project-elevate-galleries/elevation`);
+  const SmElevationApi1 = generateApi(`project-elevate-galleries/${project_id}/elevation`);
   const GalleryApi = generateApi("project-elevate-galleries",0);
 
   
@@ -27,9 +28,12 @@ const SmElevation = () => {
  }=useCrud(GalleryApi);
   const { 
     createItem: smElevationCreateItem, 
+  } = useCrud(SmElevationApi);
+
+  const { 
     fetchAll: fetchsmElevationItems, 
      data: smElevationItems, 
-  } = useCrud(SmElevationApi);
+  } = useCrud(SmElevationApi1);
   
   const { getEditData } = useCrud(getEditDataApi);
   
