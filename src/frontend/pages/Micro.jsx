@@ -38,6 +38,7 @@ import Consultant from "../components/MicroPage/Consultant";
 import ImagesGallery from "../components/MicroPage/ImagesGallery";
 import ConstructionTechnology from "../components/MicroPage/ConstructionTechnology";
 import ParallaxSection from "../../common/ParallaxSection";
+import Typology from "../components/homepage/Typology";
 
 const headerSidebarDesktopImg = `${API_URL}images/aero-gurgaon/header/sidebar.webp`;
 
@@ -249,6 +250,9 @@ const MicroPage = () => {
               </div>
               }
 
+           
+               
+
               if(section.section_type == 'amenities'){
                 return <div ref={(el) => (sectionRefs.current.MicroAmenities = el)}>
                 <ParallaxSection section_data={section} />
@@ -264,7 +268,11 @@ const MicroPage = () => {
             })}
 
            
-
+  <div
+              >
+                <Typology  />
+              </div>
+              
           {/*
           {data.rera && data.rera.isshow === true && <Rera data={data.rera} />}
           {data.LargeElevationSection &&

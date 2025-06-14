@@ -18,7 +18,7 @@ const Typologies = () => {
   
   const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
-  const typologiesApi = generateApi("project-typologies");
+  const typologiesApi = generateApi(`project-typologies`);
   
   const { editItem, createItem } = useCrud(projectSectionsApi);
   const { data: typologiesItems, createItem: typologiesCreateItem, editItem: typologiesEditItem, deleteItem,getItems: fetchtypologiesItems} = useCrud(typologiesApi);

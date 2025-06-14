@@ -4,6 +4,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Watermark from '../../../common/watermark/Index';
 import { API_URL } from "../../../config/config";
 import { useMatches } from "../../../theme/theme";
+import LottieAnimationSection from "../MicroPage/LottieAnimationSection";
+
 
 const PlaneIcon = `${API_URL}images/icons/plane.png`;
 const typo1 = `${API_URL}images/typologies/270/1.webp`;
@@ -22,14 +24,19 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Typology = React.memo(({ onLoadComplete }) => {
   const containerRef = useRef(null);
+  const lottieContainerRef=useRef(null);
   const frameRefs = useRef([]);
   const isImagesLoaded = useRef(false);
   const contentRefs = useRef([]);
   const imageContentRefs = useRef([]);
+  const [animationData, setAnimationData] = useState(null);
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadingComplete, setLoadingComplete] = useState(false);
   const { isMobile } = useMatches();
+  const [data, setData] = useState([]);
+
+  
   const isLaptop = window.innerWidth <= 1400;
 
   let totalFrames = isMobile ? 327 : 327;
@@ -66,148 +73,155 @@ const Typology = React.memo(({ onLoadComplete }) => {
     }
   }, []);
 
-
-
-   useEffect(() => {
-        const loadAnimationData = async () => {
-          try {
-            const jsonPath = isMobile ? BACKEND_IMAGE_URL + json : BACKEND_IMAGE_URL + json;
-            const response = await fetch(jsonPath);
-            const data = await response.json();
-  
-            setAnimationData(data); 
-          } catch (error) {
-            console.error("Error loading animation data:", error);
-            setLoading(false); 
-          }
-        };
-  
-        loadAnimationData();
-      }, [isMobile, json]);
-
-      useEffect(() => {
-      if (
-        !animationData ||
-        !lottieContainerRef.current ||
-        !containerRef.current
-      )
-        return;
-
-      const lottieAnimation = lottie.loadAnimation({
-        container: lottieContainerRef.current,
-        animationData,
-        renderer: "canvas",
-        loop: false,
-        autoplay: false,
-        rendererSettings: {
-          preserveAspectRatio: "xMidYMid slice",
-          clearCanvas: true,
-        },
-      });
-
-      const scrollAnimation = ScrollTrigger.create({
-        trigger: containerRef.current,
-        start: isBanner
-          ? `top ${isMobile ? "top" : "top"}`
-          : `top ${isMobile ? "65px" : "top"}`,
-        end: `+=${window.innerHeight * 2}`,
-        pin: true,
-        scrub: 0.5,
-        onUpdate: (self) => {
-          const progress = self.progress;
-          const totalFrames = lottieAnimation.totalFrames;
-          const frameIndex = Math.floor(progress * (totalFrames - 1));
-          lottieAnimation.goToAndStop(frameIndex, true);
-        },
-        onLeave: () => {
-          lottieAnimation.goToAndStop(lottieAnimation.totalFrames - 1, true);
-        },
-        onLeaveBack: () => {
-          lottieAnimation.goToAndStop(0, true);
-        },
-      });
-      if (isMainBanner) {
-        ScrollTrigger.create({
-          trigger: containerRef.current,
-          start: "bottom top",
-          toggleActions: "play none none reverse",
-          onEnterBack: () => onBannerExit(false),
-          onLeave: () => onBannerExit(true),
-        });
-      }
-
-      lottieAnimation.addEventListener("DOMLoaded", () => {
-        console.log("Lottie animation is fully loaded.");
-        setLoading(false); 
-        onLoadComplete && onLoadComplete(); 
-      });
-
-      return () => { 
-        scrollAnimation.kill();
-        lottieAnimation.destroy();
-      };
-    }, [animationData, onLoadComplete]);
-
-
   useEffect(() => {
-    if (loading || !loadingComplete || images.length !== totalFrames) return;
-
-    ScrollTrigger.create({
-      trigger: containerRef.current,
-      start: "top top",
-      end: `+=${window.innerHeight * 2}`,
-      pin: true,
-      scrub: 0.2,
-      onUpdate: (self) => {
-        const segmentIndex = Math.min(
-          Math.floor(self.progress * segments.length),
-          segments.length - 1
-        );
-      
-        const segment = segments[segmentIndex];
-        const segmentProgress =
-          (self.progress - segmentIndex / segments.length) * segments.length;
-        const frameIndex = Math.min(
-          segment.startFrame +
-            Math.floor(
-              segmentProgress * (segment.endFrame - segment.startFrame)
-            ),
-          totalFrames - 1
-        );
-      
-        frameRefs.current.forEach((img, index) => {
-          if (img) img.style.display = index === frameIndex ? "block" : "none";
-        });
-      
-        contentRefs.current.forEach((el, i) => {
-          if (el) el.style.display = i === segment.contentIndex ? "block" : "none";
-        });
-      
-        imageContentRefs.current.forEach((el, i) => {
-          if (el) el.style.display = i === segment.contentIndex ? "block" : "none";
-        });
-      
-        const typologyArrow = document.querySelector(".typology_arrow");
-        if (typologyArrow) {
-          let topValue;
-          if (isLaptop) {
-            topValue = segmentIndex === 0 ? 65 : segmentIndex === 1 ? 215 : 260;
-          } else {
-            topValue = segmentIndex === 0 ? 70 : segmentIndex === 1 ? 220 : 265;
-          }
-          typologyArrow.style.top = `${topValue}px`;
-        }
-      }
-      
-    });
-
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, [loading, images, totalFrames, loadingComplete]);
+    fetch('/assets/data.json') // Path relative to the public folder
+      .then((response) => response.json())
+      .then((jsonData) => setData(jsonData))
+      .catch((error) => console.error('Error fetching JSON:', error));
+  }, []);
 
 
+  //  useEffect(() => {
+  //       const loadAnimationData = async () => {
+  //         try {
+  //           const jsonPath =data;
+  //           const response = await fetch(jsonPath);
+  //           const data = await response.json();
   
+  //           setAnimationData(data); 
+  //         } catch (error) {
+  //           console.error("Error loading animation data:", error);
+  //           setLoading(false); 
+  //         }
+  //       };
+  
+  //       loadAnimationData();
+  //     }, [isMobile, data]);
+
+  //     useEffect(() => {
+        
+  //     if (
+  //       !animationData ||
+  //       !lottieContainerRef.current ||
+  //       !containerRef.current
+  //     )
+  //       return;
+
+  //     const lottieAnimation = lottie.loadAnimation({
+  //       container: lottieContainerRef.current,
+  //       animationData,
+  //       renderer: "canvas",
+  //       loop: false,
+  //       autoplay: false,
+  //       rendererSettings: {
+  //         preserveAspectRatio: "xMidYMid slice",
+  //         clearCanvas: true,
+  //       },
+  //     });
+
+  //     const scrollAnimation = ScrollTrigger.create({
+  //       trigger: containerRef.current,
+  //       start: isBanner
+  //         ? `top ${isMobile ? "top" : "top"}`
+  //         : `top ${isMobile ? "65px" : "top"}`,
+  //       end: `+=${window.innerHeight * 2}`,
+  //       pin: true,
+  //       scrub: 0.5,
+  //       onUpdate: (self) => {
+  //         const progress = self.progress;
+  //         const totalFrames = lottieAnimation.totalFrames;
+  //         const frameIndex = Math.floor(progress * (totalFrames - 1));
+  //         lottieAnimation.goToAndStop(frameIndex, true);
+  //       },
+  //       onLeave: () => {
+  //         lottieAnimation.goToAndStop(lottieAnimation.totalFrames - 1, true);
+  //       },
+  //       onLeaveBack: () => {
+  //         lottieAnimation.goToAndStop(0, true);
+  //       },
+  //     });
+  //     if (isMainBanner) {
+  //       ScrollTrigger.create({
+  //         trigger: containerRef.current,
+  //         start: "bottom top",
+  //         toggleActions: "play none none reverse",
+  //         onEnterBack: () => onBannerExit(false),
+  //         onLeave: () => onBannerExit(true),
+  //       });
+  //     }
+
+  //     lottieAnimation.addEventListener("DOMLoaded", () => {
+  //       console.log("Lottie animation is fully loaded.");
+  //       setLoading(false); 
+  //       onLoadComplete && onLoadComplete(); 
+  //     });
+
+  //     return () => { 
+  //       scrollAnimation.kill();
+  //       lottieAnimation.destroy();
+  //     };
+  //   }, [animationData, onLoadComplete]);
+
+
+  // useEffect(() => {
+  //   if (loading || !loadingComplete || images.length !== totalFrames) return;
+
+  //   ScrollTrigger.create({
+  //     trigger: containerRef.current,
+  //     start: "top top",
+  //     end: `+=${window.innerHeight * 2}`,
+  //     pin: true,
+  //     scrub: 0.2,
+  //     onUpdate: (self) => {
+  //       const segmentIndex = Math.min(
+  //         Math.floor(self.progress * segments.length),
+  //         segments.length - 1
+  //       );
+      
+  //       const segment = segments[segmentIndex];
+  //       const segmentProgress =
+  //         (self.progress - segmentIndex / segments.length) * segments.length;
+  //       const frameIndex = Math.min(
+  //         segment.startFrame +
+  //           Math.floor(
+  //             segmentProgress * (segment.endFrame - segment.startFrame)
+  //           ),
+  //         totalFrames - 1
+  //       );
+      
+  //       frameRefs.current.forEach((img, index) => {
+  //         if (img) img.style.display = index === frameIndex ? "block" : "none";
+  //       });
+      
+  //       contentRefs.current.forEach((el, i) => {
+  //         if (el) el.style.display = i === segment.contentIndex ? "block" : "none";
+  //       });
+      
+  //       imageContentRefs.current.forEach((el, i) => {
+  //         if (el) el.style.display = i === segment.contentIndex ? "block" : "none";
+  //       });
+      
+  //       const typologyArrow = document.querySelector(".typology_arrow");
+  //       if (typologyArrow) {
+  //         let topValue;
+  //         if (isLaptop) {
+  //           topValue = segmentIndex === 0 ? 65 : segmentIndex === 1 ? 215 : 260;
+  //         } else {
+  //           topValue = segmentIndex === 0 ? 70 : segmentIndex === 1 ? 220 : 265;
+  //         }
+  //         typologyArrow.style.top = `${topValue}px`;
+  //       }
+  //     }
+      
+  //   });
+
+  //   return () => {
+  //     ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+  //   };
+  // }, [loading, images, totalFrames, loadingComplete]);
+
+
+  // console.log(data,"data data data data")
 
   return (
     <>
@@ -216,25 +230,12 @@ const Typology = React.memo(({ onLoadComplete }) => {
           <h4 className="title title_style1 text-center">Typologies</h4>
         </div>
         <div className="images">
-          {/* {images.map((img, index) => {
-         return   <img
-              key={index}
-              ref={(el) => (frameRefs.current[index] = el)}
-              src={img.src}
-              alt={`Frame ${index}`}
-              className="frame"
-              style={{ display: index === 0 ? "block" : "none" }}
-            />
-          })} */}
-
-
-            <img
-              src={lottieContainerRef}
-              alt={`Frame`}
-              className="frame"
-            />
-
-
+            <LottieAnimationSection     
+            customClass="style2"
+            data={data}
+            position="0"
+            logomark="sm style4"
+            watermark="style4"/>
           <div className="typology_arrow">
             <div className="line"></div>
           </div>
@@ -384,3 +385,4 @@ const Typology = React.memo(({ onLoadComplete }) => {
 });
 
 export default Typology;
+
