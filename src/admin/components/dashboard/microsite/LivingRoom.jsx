@@ -13,7 +13,7 @@ const LivingRoom = () => {
   const location = useLocation();
   const locationType = location.pathname.split("/").pop();
   const projectSectionsApi = generateApi("projec-sections");
-  const getEditDataApi= generateApi("show-by-project-with-sectionType",0);
+  const getEditDataApi= generateApi("show-by-project-with-sectionType",0); 
   const { editItem,createItem } = useCrud(projectSectionsApi);
   const { getEditData } = useCrud(getEditDataApi);
 
@@ -28,7 +28,7 @@ const LivingRoom = () => {
 
  const fetchEditData = async () => {
     const formData = new FormData();
-    formData.append("section_type", locationType);
+    formData.append("section_type", 'Peacock');
     formData.append("project_id", project_id);
     try {
       const data = await getEditData(formData);

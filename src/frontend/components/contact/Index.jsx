@@ -41,10 +41,10 @@ const ContactPage = ({ page }) => {
             </span>
             <span className="txt">
               <a
-                href="mailto:info@mvngroup.in"
-                aria-label="Email us at info@mvngroup.in"
+                href={`mailto:${contactData?.[2]?.heading.trim()}`}
+                aria-label={`Email us at ${contactData?.[2]?.heading.trim()}`}
               >
-                info@mvngroup.in
+                {contactData?.[2]?.heading.trim()}
               </a>
             </span>
           </li>
@@ -58,10 +58,10 @@ const ContactPage = ({ page }) => {
             </span>
             <span className="txt">
               <a
-                href="tel:+917996000196"
-                aria-label="Call us at (+91) 799 6000 196"
+                href={`tel:${contactData?.[2]?.sub_heading}`}
+                aria-label={`Call us at ${contactData?.[2]?.sub_heading}`}
               >
-                (+91) 799 6000 196
+                {contactData?.[2]?.sub_heading}
               </a>
             </span>
           </li>
@@ -74,9 +74,7 @@ const ContactPage = ({ page }) => {
               />
             </span>
             <span className="txt">
-              MVN AERO ONE, C/o Awfis, 7th Floor, Gate No. 3 &4 Ambience Mall,
-              Ambience Island, NH-8, DLF Phase-3, Sector-24, Gurugram |
-              CIN:ACA-4678 | PAN:ABWFM8415E
+              {contactData?.[2]?.short_description}
             </span>
           </li>
         </ul>

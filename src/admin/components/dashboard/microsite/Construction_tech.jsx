@@ -18,7 +18,7 @@ const ConstructionTechnology = () => {
   
   const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
-  const keyHightlightsApi = generateApi("project-key-highlight");
+  const keyHightlightsApi = generateApi(`project-key-highlight/${project_id}`);
   
   const { editItem, createItem, } = useCrud(projectSectionsApi);
   const { 
@@ -48,7 +48,7 @@ const ConstructionTechnology = () => {
 
   const fetchMetadata = async () => {
     const formData = new FormData();
-    formData.append("section_type", locationType);
+    formData.append("section_type", "construction");
     formData.append("project_id", project_id);
     try {
       const data = await getEditData(formData);

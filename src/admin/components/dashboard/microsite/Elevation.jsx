@@ -13,6 +13,7 @@ const Elevation = () => {
   const location = useLocation();
   const locationType = location.pathname.split("/").pop();
 
+
   const projectSectionsApi = generateApi("projec-sections", 0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType");
 
@@ -31,7 +32,7 @@ const Elevation = () => {
 
   const fetchEditData = async () => {
     const formData = new FormData();
-    formData.append("section_type", locationType);
+    formData.append("section_type", 'elevation');
     formData.append("project_id", project_id);
     try {
       const data = await getEditData(formData);

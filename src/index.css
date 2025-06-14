@@ -1166,6 +1166,7 @@ a {
 }
 
 .navbar.micro_nav{
+  background: linear-gradient(to bottom, #000, #ede7e710);
 
   .inner-bottom-area{
 

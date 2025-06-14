@@ -68,13 +68,14 @@ import HeroSection from "./admin/components/dashboard/microsite/HeroSection.jsx"
 import ProjectList from "./admin/ProjectList.jsx";
 import Platter from "./admin/components/platter/Platter.jsx";
 import Elevation from "./admin/components/dashboard/microsite/Elevation.jsx";
-import Walkthrough from "./admin/components/dashboard/microsite/walkthrough.jsx";
-import ThreesixtyView from "./admin/components/dashboard/microsite/threesixtyView.jsx";
+import Walkthrough from "./admin/components/dashboard/microsite/Walkthrough.jsx";
+import ThreesixtyView from "./admin/components/dashboard/microsite/ThreesixtyView.jsx";
 import LivingRoom from "./admin/components/dashboard/microsite/LivingRoom.jsx";
 import Party from "./admin/components/dashboard/microsite/Party.jsx";
 import MasterBedroom from "./admin/components/dashboard/microsite/MasterBedroom.jsx";
 import Consultant from "./admin/components/dashboard/microsite/Consultant.jsx";
 import LandScape from "./admin/components/dashboard/microsite/LandScape.jsx";
+import Galleries from "./admin/components/dashboard/microsite/Gallery.jsx";
 import SmElevation from "./admin/components/dashboard/microsite/SmElevation.jsx";
 import Apartment from "./admin/components/dashboard/microsite/Apartment.jsx";
 import ConstructionTechnology from "./admin/components/dashboard/microsite/Construction_tech.jsx";
@@ -93,6 +94,10 @@ import Verticals from "./admin/Verticals.jsx";
 import Infrastructure from "./admin/Infrastructure.jsx";
 import BrandEthos from "./admin/brandEthos.jsx";
 import Testimonials from "./admin/Testimonials.jsx";
+import OurValues from "./admin/OurValues.jsx";
+import Timeline from "./admin/components/aboutus/Timeline.jsx";
+import Team from "./admin/components/aboutus/Team.jsx";
+import Sizes from "./admin/components/dashboard/microsite/Sizes.jsx";
 // import Apartment from "./admin/components/dashboard/microsite/Apartment.jsx";
 const router = createBrowserRouter([
   {
@@ -284,6 +289,9 @@ const router = createBrowserRouter([
           { path: "infrastructure", element: <Infrastructure /> },
           { path: "brand-ethos", element: <BrandEthos /> },
           { path: "testimonials", element: <Testimonials /> },
+          { path: "our-values", element: <OurValues /> },
+          { path: "timeline", element: <Timeline /> },
+          { path: "team", element: <Team /> },
           { path: "blogs", element: <AdminBlog /> },
           { path: "work-culture", element: <AdminWorkCulture /> },
           { path: "career", element: <AdminCareer /> },
@@ -304,22 +312,25 @@ const router = createBrowserRouter([
             children:[
             {path:"", element:<BasicMicroSite />},
             {path:"overview", element:<OverviewMicroSite />},
-            {path:"elevation", element:<Elevation />},
+            {path:"sizes", element:<Sizes />},
+            {path:"large-elevation", element:<Elevation />},
             {path:"banner", element:<HeroSection />},
-            {path:"walkthrough", element:<Walkthrough />},
-            {path:"threesixtyview", element:<ThreesixtyView />},
-            {path:"livingroom", element:<LivingRoom />},
+            {path:"workthrough", element:<Walkthrough />},
+            {path:"360-views", element:<ThreesixtyView />},
+            {path:"Peacock", element:<LivingRoom />},
             {path:"party", element:<Party />},
-            {path:"masterbedroom", element:<MasterBedroom />},
-            {path:"consultant", element:<Consultant />},
+            {path:"master-Bed-room", element:<MasterBedroom />},
+            {path:"architect", element:<Consultant />},
             {path:"landscape", element:<LandScape />},
-            {path:"sm-elevation", element:<SmElevation />},
+            {path:"landscapes", element:<LandScape />},
+            {path:"galleries", element:<Galleries />},
+            {path:"elevation", element:<SmElevation />},
             {path:"apartment", element:<Apartment />}, 
-             {path:"construction", element:<ConstructionTechnology />},  
+             {path:"construction-technology", element:<ConstructionTechnology />},  
             {path:"amenities", element:<AmenitiesAdmin />}, 
-             {path:"connection-mvn-mall", element:<ConnectionMvnMall />},              
+             {path:"connection-mall", element:<ConnectionMvnMall />},              
             {path:"typologies", element:<Typologies />}, 
-            {path:"floor-plans", element:<FloorPlans />}, 
+            {path:"floor-plan", element:<FloorPlans />}, 
             {path:"location-map", element:<LocationMap />}, 
             {path:"mvn-mall", element:<MvnMall />}, 
            ] 

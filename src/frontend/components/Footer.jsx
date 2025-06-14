@@ -5,6 +5,7 @@ import LazyLoad from "react-lazyload";
 import * as CONFIG from '../../config/config';
 
 import { otherProjects, otherPages, otherDetails,socialMedia } from "../../data/headerdata";
+import useFetchData from "../utils/apiHelper";
 
 // import twitterIcon from '../assets/images/icons/social/twitter.png';
 // import linkedinIcon from '../assets/images/icons/social/linkedin.png';
@@ -18,6 +19,8 @@ const Footer = () => {
   const [isBangaloreProject, setIsBangaloreProject] = useState(false);
 
   const {pathname} = useLocation();
+
+  const { data: pageLinks, loading } = useFetchData("platter-project");
 
   const channelUrl = CONFIG.YOUTUBE_URL;
   const baseUrl = CONFIG.FRONTEND_URL;
@@ -46,7 +49,26 @@ const Footer = () => {
                 <div className="box">
                   <h4>Projects</h4>
                   <ul>
-                    {otherProjects && otherProjects.map((singleProject, index)=>(
+                    {
+                      pageLinks &&
+                      Object.entries(pageLinks).length > 0 &&
+                      Object.entries(pageLinks).map(([key, value], index)=>(
+                        <li key={index}>
+                          {value.length > 0 && (
+                            <>
+                              <span >{key}</span>
+                              {value.map((project, idx) => (
+                                  <NavLink key={idx} to={CONFIG.VITE_APP_URL + project.slug}>
+                                    {project.name}
+                                  </NavLink>
+                              ))}
+                            </>
+                          )}
+                          
+                        </li>
+                      ))
+                    }
+                    {/* {otherProjects && otherProjects.map((singleProject, index)=>(
                       <li key={index}>
                         <span >{singleProject.location}</span>
                         {
@@ -61,7 +83,7 @@ const Footer = () => {
                             })
                           }
                       </li>
-                    ))}
+                    ))} */}
                   </ul>
                 </div>
 

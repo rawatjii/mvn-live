@@ -16,10 +16,10 @@ import CustomModal from "../dashboard/utilities/custom-modal/CustomModal";
 // Simulated backend response
 const metaFields = [
   { name: "name", label: "Name", type: "text", col: 12, isLeft: true },
-  { name: "year", label: "Year", type: "text", col: 12, isLeft: true },
-  { name: "address", label: "Address", type: "text", col: 12, isLeft: true },
-  { name: "alt", label: "Alt Tag", type: "text", col: 12, isLeft: true },
+  { name: "designation", label: "Designation", type: "text", col: 12, isLeft: true },
   { name: "image", label: "Image", type: "file", col: 6, isLeft: true },
+  { name: "alt", label: "Alt Tag", type: "text", col: 12, isLeft: true },
+  { name: "description", label: "Description", type: "textarea", col: 12, isLeft: true },
   // {
   //   name: "alternative_image",
   //   label: "Alternative Image",
@@ -32,15 +32,14 @@ const metaFields = [
 const columns = [
   { key: "id", label: "S.No." },
   { key: "name", label: "Title" },
-  { key: "year", label: "Year" },
-  { key: "address", label: "Address" },
+  { key: "designation", label: "Designation" },
   { key: "image", label: "Image", type: "file" },
 ];
 
-const Timeline = () => {
+const Team = () => {
   const [editModalData, setEditModalData] = useState(null);
 
-  const aboutsApi = generateApi("timeline");
+  const aboutsApi = generateApi("team");
   const { data, loading, error, createItem, editItem, updateItem, deleteItem } =
     useCrud(aboutsApi);
 
@@ -68,7 +67,7 @@ const Timeline = () => {
       {/* left box for form */}
       <LeftArea>
         <MicroBox>
-          <CustomTitle title="Our Timeline Form" />
+          <CustomTitle title="Our Team Form" />
           <CustomForm
             isBanner={false}
             dynamicFields={metaFields}
@@ -81,7 +80,7 @@ const Timeline = () => {
       {/* right box for table */}
       <RightArea>
         <MicroBox>
-          <CustomTitle title="Qur Timeline Table" />
+          <CustomTitle title="Qur Team Table" />
           <CustomTable
             columns={columns}
             data={paginatedData}
@@ -101,4 +100,4 @@ const Timeline = () => {
   );
 };
 
-export default Timeline;
+export default Team;

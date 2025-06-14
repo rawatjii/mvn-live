@@ -9,41 +9,68 @@ import CustomTable from "../utilities/custom-table/CustomTable";
 import CustomPagination from "../utilities/pagination/CustomPagination";
 import StatusOrder from "../utilities/Status-order";
 
-const Apartment = () => {
+const Gallery = () => {
   const [editData, setEditData] = useState(null);
-  const [editapartmentData, setEditapartmentData] = useState(null);
+  const [editLandscapeData, setEditLandscapeData] = useState(null);
   const { project_id } = useParams();
   const location = useLocation();
   const locationType = location.pathname.split("/").pop();
-  
-  const projectSectionsApi = generateApi("projec-sections",0);
+
+  const projectSectionsApi = generateApi("projec-sections", 0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
-  const apartmentApi = generateApi("project-gallery",0);
-  const getApi = generateApi(`project-gallery/${project_id}/apartment`);
-  
+  const landScapeApi = generateApi("project-gallery", 0);
+  const getApi = generateApi(`project-gallery/${project_id}/galleries`);
+
   const { editItem, createItem } = useCrud(projectSectionsApi);
-  const {data: apartmentItems,fetchAll: fetchapartmentItems} = useCrud(getApi);
-  const { createItem: apartmentCreateItem,editItem: apartmentEditItem,deleteItem} = useCrud(apartmentApi);
-  
+  const { data: landscapeItems, fetchAll: fetchLandscapeItems } =
+    useCrud(getApi);
+  const {
+    createItem: landscapeCreateItem,
+    editItem: landscapeEditItem,
+    deleteItem,
+  } = useCrud(landScapeApi);
+
   const { getEditData } = useCrud(getEditDataApi);
-  
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
   const metaFields = [
     { name: "heading", label: "Heading", type: "text", col: 6 },
     { name: "sub_heading", label: "Sub Heading", type: "text", col: 6 },
-    { name: "description", label: "Description", type: "textarea", placeholder: "Enter Description", col: 12 }
+    {
+      name: "description",
+      label: "Description",
+      type: "textarea",
+      placeholder: "Enter Description",
+      col: 12,
+    },
   ];
 
-  const apartmentFields = [
-    { name: "title", label: "Title", type: "text", col: 12,isRequired:true },
-    { name: "image", label: "Image", type: "file", col: 6,isRequired:true },
-    { name: "alternative_image", label: "Alternate Image", type: "file", col: 6 },
-        { name: "sm_image", label: "Small Image", type: "file", col: 6 },
-    { name: "sm_alternative_image", label: "Small Alternative Image", type: "file", col: 6 },
-        { name: "alt", label: "Alt", type: "text", col: 6, placeholder: "Enter Alt text",isRequired:true },
-
+  const landscapeFields = [
+    { name: "title", label: "Title", type: "text", col: 12 },
+    { name: "image", label: "Image", type: "file", col: 6, isRequired: true },
+    {
+      name: "alternative_image",
+      label: "Alternate Image",
+      type: "file",
+      col: 6,
+    },
+    { name: "sm_image", label: "Small Image", type: "file", col: 6 },
+    {
+      name: "sm_alternative_image",
+      label: "Small Alternative Image",
+      type: "file",
+      col: 6,
+    },
+    {
+      name: "alt",
+      label: "Alt",
+      type: "text",
+      col: 12,
+      placeholder: "Enter Alt text",
+      isRequired: true,
+    },
   ];
 
   const fetchMetadata = async () => {
@@ -58,11 +85,11 @@ const Apartment = () => {
     }
   };
 
-  const fetchAllapartmentItems = async () => {
+  const fetchAllLandscapeItems = async () => {
     try {
-      await fetchapartmentItems({ project_id, type: locationType });
+      await fetchLandscapeItems({ project_id, type: locationType });
     } catch (error) {
-      console.error("Error fetching apartment items:", error);
+      console.error("Error fetching landscape items:", error);
     }
   };
 
@@ -84,43 +111,44 @@ const Apartment = () => {
     }
   };
 
-  const handleCreateapartment = async (formData) => {
+  const handleCreateLandscape = async (formData) => {
     try {
-      formData.append("is_type", "apartment");
-      await apartmentCreateItem(formData);
-      await fetchAllapartmentItems();
-      setEditapartmentData(null);
+      formData.append("is_type", "galleries");
+      await landscapeCreateItem(formData);
+      await fetchAllLandscapeItems();
+      setEditLandscapeData(null);
     } catch (error) {
-      console.error("Error creating apartment item:", error);
+      console.error("Error creating landscape item:", error);
     }
   };
 
-  const handleEditapartment = async (formData) => {
+  const handleEditLandscape = async (formData) => {
     try {
-            formData.append("is_type", "apartment");
-      await apartmentEditItem(editapartmentData.id, formData);
-      await fetchAllapartmentItems();
-      setEditapartmentData(null);
+      formData.append("is_type", "galleries");
+      await landscapeEditItem(editLandscapeData.id, formData);
+      await fetchAllLandscapeItems();
+      setEditLandscapeData(null);
     } catch (error) {
-      console.error("Error updating apartment item:", error);
+      console.error("Error updating landscape item:", error);
     }
   };
 
   const handleDeleteItem = async (id) => {
     try {
       await deleteItem(id);
-      await fetchAllapartmentItems();
+      await fetchAllLandscapeItems();
     } catch (error) {
-      console.error("Error deleting apartment item:", error);
+      console.error("Error deleting landscape item:", error);
     }
   };
 
   const handleCancelEdit = () => {
-    setEditapartmentData(null);
+    setEditLandscapeData(null);
   };
 
   useEffect(() => {
     fetchMetadata();
+    // fetchAllLandscapeItems();
   }, []);
 
   const columns = [
@@ -131,13 +159,20 @@ const Apartment = () => {
     { key: "alt", label: "Alt Text", type: "text" },
   ];
 
-  const paginatedData = apartmentItems?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
-console.log(apartmentItems)
+  const paginatedData =
+    landscapeItems?.slice(
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage
+    ) || [];
   return (
     <CustomSection>
-     <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchMetadata}/>  
+      <StatusOrder
+        sectionId={editData?.id}
+        editData={editData}
+        fetchEditData={fetchMetadata}
+      />
       <MicroBox>
-        <CustomTitle title="Overview" />
+        <CustomTitle title="Gallery" />
         <CustomFormMicrosite
           isBanner={false}
           dynamicFields={metaFields}
@@ -146,31 +181,41 @@ console.log(apartmentItems)
         />
       </MicroBox>
       <MicroBox>
-        <CustomTitle title={editapartmentData ? "Edit apartment Image" : "Add apartment Images"} />
+        <CustomTitle
+          title={
+            editLandscapeData ? "Edit Gallery Image" : "Add Gallery Images"
+          }
+        />
         <CustomFormMicrosite
           isBanner={false}
-          dynamicFields={apartmentFields}
-          defaultData={editapartmentData}
-          onSubmit={editapartmentData ? handleEditapartment : handleCreateapartment}
-          submitButtonText={editapartmentData ? "Update" : "Create"}
-          cancelButton={editapartmentData ? { text: "Cancel", onClick: handleCancelEdit } : null}
+          dynamicFields={landscapeFields}
+          defaultData={editLandscapeData}
+          onSubmit={
+            editLandscapeData ? handleEditLandscape : handleCreateLandscape
+          }
+          submitButtonText={editLandscapeData ? "Update" : "Create"}
+          cancelButton={
+            editLandscapeData
+              ? { text: "Cancel", onClick: handleCancelEdit }
+              : null
+          }
         />
       </MicroBox>
       <MicroBox>
-        <CustomTitle title="apartment Items" />
+        <CustomTitle title="Galleries Items" />
         <CustomTable
           columns={columns}
           data={paginatedData}
           onEdit={(row) => {
             window.scrollTo(0, 0);
-            setEditapartmentData(row);
+            setEditLandscapeData(row);
           }}
           onDelete={(row) => handleDeleteItem(row.id)}
           startIndex={(currentPage - 1) * itemsPerPage}
         />
         <CustomPagination
           currentPage={currentPage}
-          totalPages={Math.ceil((apartmentItems?.length || 0) / itemsPerPage)}
+          totalPages={Math.ceil((landscapeItems?.length || 0) / itemsPerPage)}
           onPageChange={setCurrentPage}
         />
       </MicroBox>
@@ -178,4 +223,4 @@ console.log(apartmentItems)
   );
 };
 
-export default Apartment;
+export default Gallery;

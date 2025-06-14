@@ -18,18 +18,21 @@ const Typologies = () => {
   
   const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
-  const typologiesApi = generateApi(`project-typologies`);
+  const typologiesApi = generateApi(`project-typologies/${project_id}`);
+  const editTypologyApi = generateApi(`project-typologies`, 0);
   
   const { editItem, createItem } = useCrud(projectSectionsApi);
-  const { data: typologiesItems, createItem: typologiesCreateItem, editItem: typologiesEditItem, deleteItem,getItems: fetchtypologiesItems} = useCrud(typologiesApi);
+  const { data: typologiesItems,  editItem: typologiesEditItem,fetchAll: fetchtypologiesItems} = useCrud(typologiesApi); 
   
   const { getEditData } = useCrud(getEditDataApi);
+  const {createItem: typologiesCreateItem, editItem:typoEdit,deleteItem } = useCrud(editTypologyApi);
   
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
   const metaFields = [
     { name: "heading", label: "Heading", type: "text", col: 6 },
+    { name: "json", label: "JSON", type: "file", col: 6 },
   ];
 
   const typologiesFields = [
@@ -37,8 +40,8 @@ const Typologies = () => {
     { name: "image", label: "Image", type: "file", col: 6,isRequired:true },
     { name: "alternative_image", label: "Alternate Image", type: "file", col: 6 },
     { name: "alt", label: "Alt", type: "text", col: 6, placeholder: "Enter Alt text",isRequired:true },
-    { name: "json", label: "Upload JSON", type: "file", col: 6,isRequired:true },
-    { name: "short_description", label: "Description", type: "textarea", col: 6,isRequired:true },
+    // { name: "json", label: "Upload JSON", type: "file", col: 6,isRequired:true },
+    { name: "short_description", label: "Description", type: "textarea", col: 12,isRequired:true },
   ];
 
   const fetchMetadata = async () => {
@@ -55,7 +58,7 @@ const Typologies = () => {
 
   const fetchAlltypologiesItems = async () => {
     try {
-      await fetchtypologiesItems({ project_id, type: locationType });
+      await fetchtypologiesItems();
     } catch (error) {
       console.error("Error fetching typologies items:", error);
     }
@@ -93,7 +96,7 @@ const Typologies = () => {
   const handleEdittypologies = async (formData) => {
     try {
             formData.append("is_type", "typologies");
-      await typologiesEditItem(edittypologiesData.id, formData);
+      await typoEdit(edittypologiesData.id, formData);
       await fetchAlltypologiesItems();
       setEdittypologiesData(null);
     } catch (error) {
@@ -133,7 +136,7 @@ const Typologies = () => {
       <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchMetadata}/>
       <MicroBox>
 
-        <CustomTitle title="Overview" />
+        <CustomTitle title="Typology Details" />
         <CustomFormMicrosite
           isBanner={false}
           dynamicFields={metaFields}

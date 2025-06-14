@@ -14,14 +14,6 @@ const OurJourney = React.memo(({data}) => {
   const titleRef = useRef();
   const contentRef = useRef([]);
   const journeyRef = useRef();
-  const [journeyData] = useState([
-    { icon: `${API_URL}images/icons/journey/new-icons/Helmet-.gif`, title: "Years Experience", value: "40+" },
-    { icon: `${API_URL}images/icons/journey/new-icons/building.gif`, title: "Cities", value: "04" },
-    { icon: `${API_URL}images/icons/journey/new-icons/handshake.gif`, value: "09", title: "Completed Projects" },
-    { icon: `${API_URL}images/icons/journey/new-icons/crane.gif`, value: "04", title: "Ongoing Projects" },
-    { icon: `${API_URL}images/icons/journey/new-icons/ruler.gif`, title: "Million Square Feet", value: "7.2" },
-    { icon: `${API_URL}images/icons/journey/new-icons/calendar.gif`, title: "On-time Delivery", value: "100%" }, // Updated to include %
-  ]);
 
   const {heading} = data;
 
@@ -56,62 +48,67 @@ const OurJourney = React.memo(({data}) => {
     });
 
     // Counter animation with % handling
-    ScrollTrigger.create({
-      trigger: journeyRef.current,
-      start: "top 80%", // Start animation when section comes into view
-      onEnter: () => {
-        const items = document.querySelectorAll(".count");
-        gsap.fromTo(
-          items,
-          { innerText: 0 },
-          {
-            innerText: (i) => infraData[i].value,
-            duration: 5,
-            ease: "power1.in",
-            snap: { innerText: 0.1 },
-            stagger: 0.1,
-            modifiers: {
-              innerText: (value) => {
-                const numericValue = parseFloat(value);
-                const isPercentage = infraData.some(
-                  (data) => data.value === value && value.includes("%")
-                );
-
-                if (isPercentage) {
-                  // Append % if the value includes %
-                  return numericValue.toFixed(0) + "%";
-                }
-
-                // Handle float or integer formatting
-                return numericValue % 1 !== 0
-                  ? numericValue.toFixed(1)
-                  : numericValue.toString();
+    if(infraData && infraData.length > 0){
+      ScrollTrigger.create({
+        trigger: journeyRef.current,
+        start: "top 80%", // Start animation when section comes into view
+        onEnter: () => {
+          const items = document.querySelectorAll(".countVal");
+          gsap.fromTo(
+            items,
+            { innerText: 0 },
+            {
+              innerText: (i) => infraData?.[i]?.value || 0,
+              duration: 5,
+              ease: "power1.in",
+              snap: { innerText: 0.1 },
+              stagger: 0.1,
+              modifiers: {
+                innerText: (value) => {
+                  const numericValue = parseFloat(value);
+                  const isPercentage = infraData.some(
+                    (data) => data.value === value && data.value.includes("%")
+                  );
+  
+                  if (isPercentage) {
+                    // Append % if the value includes %
+                    return numericValue.toFixed(0) + "%";
+                  }
+  
+                  // Handle float or integer formatting
+                  return numericValue % 1 !== 0
+                    ? numericValue.toFixed(1)
+                    : numericValue.toString();
+                },
               },
-            },
-            onComplete: () => updateStaticValues(), // Static update after animation
-          }
-        );
-      },
-    });
-  }, []);
+              onComplete: () => updateStaticValues(), // Static update after animation
+            }
+          );
+        },
+      });
+    }
+    
+  }, [infraData]);
 
   // Function to statically update values
   const updateStaticValues = () => {
-    const items = document.querySelectorAll(".count");
+    const items = document.querySelectorAll(".countVal");
     items.forEach((item, index) => {
-      item.innerText = infraData[index].value;
+      item.innerText = infraData?.[index]?.value;
     });
   };
 
   useEffect(() => {
-    initializeAnimations();
+    if(!loading && infraData){
+      initializeAnimations();
+    }
     const handleResize = () => {
       ScrollTrigger.refresh();
     };
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []); // Initialize on mount
+  }, [loading, infraData]); // Initialize on mount
 
   
 
@@ -156,7 +153,7 @@ const OurJourney = React.memo(({data}) => {
                     alt="mvn journey icon"
                     className="img-fluid icon"
                   />
-                  <p className="count">0</p> {/* Start with 0 */}
+                  <p className="count"><span className="countVal">0</span>{item.symbol ? item.symbol : undefined}</p> {/* Start with 0 */}
                 </div>
                 <p className="title">{item.heading}</p>
               </div>

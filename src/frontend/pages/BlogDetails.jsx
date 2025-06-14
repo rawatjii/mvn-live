@@ -1,17 +1,12 @@
 import React, { useState, useEffect, useCallback } from "react";
 import MicroBanner from "../components/MicroBanner/Index";
-import Desktopmicro_bg from "../assets/images/blogs/blog.jpg";
 import { Container } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
-import { blogData } from "../../data/blogsdata";
-import InitialLoading from "../skeleton/Initial/Index";
 import Layout from "../components/Layout";
 import { BACKEND_IMAGE_URL, FRONTEND_API_BASE_URL } from "../../config/config";
 import RelatedBlogs from "../components/blog/RelatedBlogs";
-
-const Desktopmicro_bg = `${API_URL}images/blogs/blog.jpg`;
 
 function BlogDetails() {
   window.scrollTo(0, 0);
@@ -65,7 +60,7 @@ function BlogDetails() {
   return (
     <Layout>
       <div className="blog_page">
-        <MicroBanner bg={Desktopmicro_bg} data={breadcrumbs} />
+        <MicroBanner type="blog" page={slug} data={breadcrumbs} />
         <Container className="text-center py-5"></Container>
         <div className="container">
           <div className="row row-gap-3">

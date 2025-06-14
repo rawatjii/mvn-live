@@ -20,7 +20,7 @@ const MvnMall = () => {
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
   const mvnMallApi = generateApi("project-elevate-galleries/elevation",0);
   const GalleryApi = generateApi("project-elevate-galleries",0);
-  const getApi = generateApi("project-elevate-galleries/mvn-mall");
+  const getApi = generateApi(`project-elevate-galleries/${project_id}/mall_galleries`);
 
   const { editItem, createItem } = useCrud(projectSectionsApi);
   const {data: mvnMallItem,fetchAll: fetchmvnMallItems} = useCrud(getApi);
@@ -41,8 +41,8 @@ const MvnMall = () => {
   const mvnMallFields = [
     { name: "image", label: "Image", type: "file", col: 6,isRequired:true },
     { name: "alternative_image", label: "Alternate Image", type: "file", col: 6 },
-    { name: "sm_alternative_image", label: "Small Image", type: "file", col: 6,isRequired:true },
-    { name: "sm_image", label: "Alternate Image", type: "file", col: 6 },
+    { name: "sm_alternative_image", label: "Mobile Image", type: "file", col: 6,isRequired:true },
+    { name: "sm_image", label: "Mobile Alternate Image", type: "file", col: 6 },
     { name: "alt", label: "Alt", type: "text", col: 6, placeholder: "Enter Alt text",isRequired:true },
   ];
 
@@ -137,7 +137,7 @@ const MvnMall = () => {
     <CustomSection>
       <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchMetadata}/>
       <MicroBox>
-        <CustomTitle title="Overview" />
+        <CustomTitle title="Mvn Mall" />
         <CustomFormMicrosite
           isBanner={false}
           dynamicFields={metaFields}

@@ -18,13 +18,13 @@ import { IoIosEye, IoIosAddCircleOutline } from "react-icons/io";
 import { IoAddSharp } from "react-icons/io5";
 import { RiInstagramFill } from "react-icons/ri";
 import { MdOutlineNavigateNext } from "react-icons/md";
-import amenityIcon from "/assets/icons/amenity.png";
 import CustomTitle from "./components/dashboard/utilities/CustomTitle";
 import { IoLogoMicrosoft } from "react-icons/io5";
 import { IoShareSocial } from "react-icons/io5";
 import { Box, TopBox } from "./components/dashboard/utilities/CutomTags";
 import { RiPagesFill } from "react-icons/ri";
 import { FaImage } from "react-icons/fa";
+const amenityIcon = "/assets/icons/amenity.png";
 
 
 import { FaUser,  FaPhoneAlt } from "react-icons/fa";
@@ -108,7 +108,7 @@ const otherSection = [
     icon: <FaCity className="mr-3 box-icon" />,
     link: "/admin/amenities",
   },
-  { name: "Other Page", icon: <FaCity className="mr-3 box-icon" />, link: "#" },
+  // { name: "Other Page", icon: <FaCity className="mr-3 box-icon" />, link: "#" },
 ];
 const PageCommonSection = [
   {
@@ -132,30 +132,20 @@ const PageCommonSection = [
     link: "admin/testimonials",
   },
   {
-    name: "About US",
+    name: "Our Values",
     icon: <FaUser className="mr-3 box-icon" />,
-    link: "/admin/page/about-us",
+    link: "admin/our-values",
   },
   {
-    name: "Media Centre",
-    icon: <FaRegNewspaper className="mr-3 box-icon" />,
-    link: "/admin/page/media-centre",
+    name: "Timeline",
+    icon: <FaUser className="mr-3 box-icon" />,
+    link: "admin/timeline",
   },
   {
-    name: "Blogs",
-    icon: <SiBloglovin className="mr-3 box-icon" />,
-    link: "/admin/page/blogs",
+    name: "Team",
+    icon: <FaUser className="mr-3 box-icon" />,
+    link: "admin/team",
   },
-  {
-    name: "Career",
-    icon: <PiBuildingOffice className="mr-3 box-icon" />,
-    link: "/admin/page/career",
-  },
-  {
-    name: "Contact US",
-    icon: <FaPhoneAlt className="mr-3 box-icon" />,
-    link: "/admin/page/contact-us",
-  }
 ];
 
 

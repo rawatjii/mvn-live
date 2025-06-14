@@ -38,7 +38,12 @@ import Consultant from "../components/MicroPage/Consultant";
 import ImagesGallery from "../components/MicroPage/ImagesGallery";
 import ConstructionTechnology from "../components/MicroPage/ConstructionTechnology";
 import ParallaxSection from "../../common/ParallaxSection";
+import Footer from "../components/Footer";
+import MvnMall from "../components/MicroPage/MvnMall";
+import MicroSizes from "../components/MicroPage/Sizes";
 import Typology from "../components/homepage/Typology";
+import CustomIframe from "../components/MicroPage/CustomIframe";
+import LazyLoadComponent from "../../common/LazyLoadComponent";
 
 const headerSidebarDesktopImg = `${API_URL}images/aero-gurgaon/header/sidebar.webp`;
 
@@ -145,8 +150,6 @@ const MicroPage = () => {
     };
   }, [basicData, projectSections]);
 
-  console.log('projectSections',projectSections)
-
   if (loading) return <div className="text-center py-5">Loading...</div>;
   if (!loading && basicData && basicData.length === 0)
     return <div className="text-center py-5">No records found</div>;
@@ -165,193 +168,232 @@ const MicroPage = () => {
 
           {projectSections &&
             projectSections.map((section, secIndex) => {
-              if (section.section_type == "overview") {
+              const sectionKey = `${section.section_type}_${secIndex}`;
+              return(
+                <React.Fragment key={sectionKey}>
+                  {section.section_type === "overview" && (
+                    <div ref={(el) => (sectionRefs.current.microOverview = el)}>
+                      <MicroOverview rera={basicData?.rera_no} data={section} />
+                    </div>
+                  )}
+                  
+                  {section.section_type === "elevation" && (
+                    <LazyLoadComponent
+                      margin="200px"
+                      debugName="elevation"
+                    >
+                      <div ref={(el) => (sectionRefs.current[`elevation_${secIndex}`] = el)}>
+                        <LargeElevationSection data={section} />
+                      </div>
+                    </LazyLoadComponent>
+                  )}
+
+                  {section.section_type === "walkthrough" && (
+                    <LazyLoadComponent
+                      margin="200px"
+                      debugName="walkthrough"
+                    >
+                      <div ref={(el) => (sectionRefs.current.Walkthrough = el)}>
+                        <YtIframe data={section} subs_btn={true} />
+                      </div>
+                    </LazyLoadComponent>
+                  )}
+
+                </React.Fragment>
+              )
+            })}
+
+            {projectSections && (
+              <LazyLoadComponent margin="200px" debugName="downloadBrochure">
+                <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
+                  <DownloadBrochure
+                    showAwards={basicData?.batch}
+                    name={basicData?.name}
+                  />
+                </div>
+              </LazyLoadComponent>
+            )}
+          
+
+          {projectSections &&
+            projectSections.map((section, secIndex) => {
+
+              if (section.section_type == "overview" && section.yt_url){
                 return (
-                  <div
-                    ref={(el) =>
-                      (sectionRefs.current.microOverview = el)
-                    }
-                  >
-                    <MicroOverview rera={basicData?.rera_no} data={section} />
-                  </div>
+                  <LazyLoadComponent margin="200px" debugName={section.section_type} >
+                    <CustomIframe
+                      data={section.yt_url}
+                    />
+                  </LazyLoadComponent>
                 );
               }
-              if(section.section_type == "elevation") return <LargeElevationSection data={section} />
-              if(section.section_type == "walkthrough"){
-                return <div ref={(el) => (sectionRefs.current.Walkthrough = el)}>
-                  <YtIframe data={section} subs_btn={true} />
-                </div>
+
+              if (section.section_type == "threesixtyview"){
+                return (
+                  <LazyLoadComponent margin="200px" debugName={section.section_type} >
+                    <View360
+                      sectionId={section.section_type + secIndex}
+                      data={section}
+                      onLoadComplete={() => ScrollTrigger.refresh()}
+                    />
+                  </LazyLoadComponent>
+                );
               }
-              
+                
+
+              if (section.section_type == "livingroom") {
+                return (
+                  <LazyLoadComponent margin="200px" debugName={section.section_type} >
+                    <div ref={(el) => (sectionRefs.current.LIVINGROOM = el)}>
+                      <PeacockSection
+                        data={section}
+                        onLoadComplete={() => setPeacockLoaded(true)}
+                      />
+                    </div>
+                  </LazyLoadComponent>
+                );
+              }
+
+              if (section.section_type == "party") {
+                return (
+                  <LazyLoadComponent margin="200px" debugName={section.section_type} >
+                    <div ref={(el) => (sectionRefs.current.party = el)}>
+                      <PeacockSection
+                        data={section}
+                        onLoadComplete={() => setPeacockLoaded(true)}
+                      />
+                    </div>
+                  </LazyLoadComponent>
+                );
+              }
+
+              if (section.section_type == "masterbedroom") {
+                return (
+                  <LazyLoadComponent margin="200px" debugName={section.section_type} >
+                    <div ref={(el) => (sectionRefs.current.party = el)}>
+                      <PeacockSection
+                        data={section}
+                        onLoadComplete={() => setPeacockLoaded(true)}
+                      />
+                    </div>
+                  </LazyLoadComponent>
+                );
+              }
+
+              if (section.section_type == "consultant") {
+                return (
+                  <LazyLoadComponent margin="200px" debugName={section.section_type} >
+                    <div ref={(el) => (sectionRefs.current.consultant = el)}>
+                      <Consultant data={section} />
+                    </div>
+                  </LazyLoadComponent>
+                );
+              }
+
+              if (
+                section.section_type == "landscape" ||
+                section.section_type == "galleries" ||
+                section.section_type == "landscapes" ||
+                section.section_type == "sm-elevation" ||
+                section.section_type == "apartment"
+              ) {
+                return (
+                  <LazyLoadComponent margin="200px" debugName={section.section_type} >
+                    <div ref={(el) => (sectionRefs.current.MicroLandscape = el)}>
+                      <ImagesGallery section_name={section.section_type == "landscape" ? 'landscapes' : section.section_type == "sm-elevation" ? 'elevation' : ''} data={section} showTitle={section.section_type == "landscapes" || section.section_type == "galleries"  ? false : true} />
+                    </div>
+                  </LazyLoadComponent>
+                );
+              }
+
+              if (section.section_type == "construction") {
+                return (
+                  <LazyLoadComponent margin="200px" debugName={section.section_type} >
+                    <div
+                      ref={(el) =>
+                        (sectionRefs.current.constructionTechnology = el)
+                      }
+                    >
+                      <ConstructionTechnology data={section} />
+                    </div>
+                  </LazyLoadComponent>
+                  
+                );
+              }
+
+              if (section.section_type == "amenities" || section.section_type == "connection-mall") {
+                return (
+                  <LazyLoadComponent margin="200px" debugName={section.section_type} >
+                    <div ref={(el) => (sectionRefs.current.MicroAmenities = el)}>
+                      <ParallaxSection section_data={section} />
+                    </div>
+                  </LazyLoadComponent>
+                  
+                );
+              }
+
+              if (section.section_type == "typologies" ) {
+                return (
+                  <LazyLoadComponent margin="200px" debugName={section.section_type} >
+                    <div ref={(el) => (sectionRefs.current.MicroAmenities = el)}>
+                      <Typology data={section} onLoadComplete={() => setTypologyLoaded(true)} />
+                    </div>
+                  </LazyLoadComponent>
+                  
+                );
+              }
+
+              if (section.section_type == "location-map") {
+                return (
+                  <LazyLoadComponent margin="200px" debugName={section.section_type} >
+                    <div
+                      ref={(el) => (sectionRefs.current.MicroLocationMap = el)}
+                    >
+                      <MicroLocationMap data={section} />
+                    </div>
+                  </LazyLoadComponent>
+                  
+                );
+              }
+
+              if (section.section_type == "mvn-mall") {
+                return (
+                  <LazyLoadComponent margin="200px" debugName={section.section_type} >
+                    <div
+                      ref={(el) => (sectionRefs.current.MicroLocationMap = el)}
+                    >
+                      <MvnMall data={section} />
+                    </div>
+                  </LazyLoadComponent>
+                  
+                );
+              }
             })}
 
-            <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
-              <DownloadBrochure
-                showAwards={basicData?.batch}
-                name={basicData?.name}
-              />
-            </div>
+            {projectSections && (
+              <>
+                <LazyLoadComponent margin="200px">
+                  <div className="container-fluid micro_footer">
+                    <div className="row ">
+                      <div className="col-sm-6 px-0">
+                        <Enquire />
+                      </div>
+                      <div className="col-sm-6 px-0">
+                        <EnquireForm projectName={projectName} />
+                      </div>
+                    </div>
+                  </div>
+                </LazyLoadComponent>
 
-            {projectSections && projectSections.map((section, secIndex) => {
-              if(section.section_type == 'threesixtyview') return  <View360
-                  data={section}
-                  onLoadComplete={() => ScrollTrigger.refresh()}
-                  // isMobile={isMobile}
-                />
-
-              if(section.section_type == 'livingroom'){
-                return <div ref={(el) => (sectionRefs.current.LIVINGROOM = el)}>
-                  <Suspense fallback="">
-                    <PeacockSection
-                      data={section}
-                      onLoadComplete={() => setPeacockLoaded(true)}
-                    />
-                  </Suspense>
-                </div>
-              }
-
-              if(section.section_type == 'party'){
-                return <div ref={(el) => (sectionRefs.current.party = el)}>
-                  <Suspense fallback="">
-                    <PeacockSection
-                      data={section}
-                      onLoadComplete={() => setPeacockLoaded(true)}
-                    />
-                  </Suspense>
-                </div>
-              }
-
-              if(section.section_type == 'masterbedroom'){
-                return <div ref={(el) => (sectionRefs.current.party = el)}>
-                    <PeacockSection
-                      data={section}
-                      onLoadComplete={() => setPeacockLoaded(true)}
-                    />
-                </div>
-              }
-
-              if(section.section_type == 'consultant'){
-                return <div ref={(el) => (sectionRefs.current.consultant = el)}>
-                    <Consultant data={section} />
-                </div>
-              }
-
-              if(section.section_type == 'landscape' || section.section_type == 'sm-elevation' || section.section_type == 'apartment'){
-                return <div ref={(el) => (sectionRefs.current.MicroLandscape = el)}>
-                  <ImagesGallery data={section} />
-                </div>
-              }
-
-              if(section.section_type == 'construction'){
-                return <div
-                ref={(el) => (sectionRefs.current.constructionTechnology = el)}
-              >
-                <ConstructionTechnology data={section} />
-              </div>
-              }
-
-           
-               
-
-              if(section.section_type == 'amenities'){
-                return <div ref={(el) => (sectionRefs.current.MicroAmenities = el)}>
-                <ParallaxSection section_data={section} />
-              </div>
-              }
-
-              if(section.section_type == 'location-map'){
-                return <div ref={(el) => (sectionRefs.current.MicroLocationMap = el)}>
-                <MicroLocationMap data={section} />
-              </div>
-              }
-
-            })}
-
-           
-  <div
-              >
-                <Typology  />
-              </div>
-              
-          {/*
-          {data.rera && data.rera.isshow === true && <Rera data={data.rera} />}
-          {data.LargeElevationSection &&
-            data.LargeElevationSection.isAllow === true && (
-              <LargeElevationSection data={data.LargeElevationSection} />
+                <LazyLoadComponent margin="200px">
+                  <Footer />
+                </LazyLoadComponent>
+              </>
             )}
-          {data.video1 && data.video1.isVdo === true && (
-            <PeacockSection data={data} />
-          )}
-          /~ {data.video2.isVdo === true && <Video2 data={data} />} ~/
-          {data.living_room_video && data.living_room_video.isVdo === true && (
-            <LivingRoomVideo data={data} />
-          )}
-          {data.video3 && data.video3.isVdo === true && (
-            <PartyVideo data={data} />
-          )}
 
-          {data.masterBedroom && data.masterBedroom.isVdo === true && (
-            <MasterBedroom data={data} />
-          )}
+            
 
-          {data.walkthrough && data.walkthrough.isshow === true && (
-            <Walkthrough data={data} />
-          )}
-          {data.highlightbg && data.highlightbg.isshow ? (
-            <div
-              style={{ backgroundImage: `url(${data.highlightbg.img})` }}
-              className="highlightbg"
-            >
-              <MicroHighlights data={data.highlight} />
-            </div>
-          ) : (
-            <MicroHighlights data={data.highlight} />
-          )}
-
-          <MicroPrice />
-          {data.amenities && <MicroAmenities data={data.amenities} />}
-          <div className="container">
-            <div className="row">
-              <div className="col-sm-6">
-                <MicroMasterPlan data={data.masterImage} />
-              </div>
-              <div className="col-sm-6">
-                <MicroFloorPlan data={data.floorPlan} />
-              </div>
-            </div>
-          </div>
-
-          <MicroLocationMap data={data.locationAdvantage} />
-          {data.gallery && (
-            <div className="container py-5 my-5">
-              <SecTitle className="text-center color style1">
-                <h4 className="title">Gallery</h4>
-              </SecTitle>
-              {data.gallery && data.gallery.isshow === true && (
-                <GallerySlider
-                  data={data.gallery}
-                  slidesPerView={3}
-                  spaceBetween={20}
-                  navigation={true}
-                />
-              )}
-            </div>
-          )}
-
-          {data.Slides && data.Slides.isshow === true && (
-            <Slides data={data.Slides} />
-          )}
-
-          <div className="container-fluid micro_footer">
-            <div className="row ">
-              <div className="col-sm-6 px-0">
-                <Enquire />
-              </div>
-              <div className="col-sm-6 px-0">
-                <EnquireForm projectName={projectName} />
-              </div>
-            </div>
-          </div>*/}
+          
         </div>
       </div>
     </>

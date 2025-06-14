@@ -325,13 +325,9 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             />
           </div>
 
-          <Suspense fallback="">
             <MicroOverview data={data.overview} />
-          </Suspense>
 
-          <Suspense fallback="">
             <LargeElevationSection data={data.LargeElevationSection} />
-          </Suspense>
 
           <div ref={(el) => (sectionRefs.current.Walkthrough = el)}>
             <Suspense fallback="">

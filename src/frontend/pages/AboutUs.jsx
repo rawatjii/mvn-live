@@ -11,11 +11,14 @@ const EnquireForm = React.lazy(()=>import("../components/homepage/EnquireForm"))
 import Layout from "../components/Layout";
 
 import { API_URL } from "../../config/config";
+import useFetchData from "../utils/apiHelper";
 
 const AboutUs = () => {
   window.scrollTo(0, 0);
   
   const [microBg, setMicroBg] = useState(`${API_URL}images/about/about-head-bg-desktop.webp`);
+
+  const { data, loading } = useFetchData("page/page-section/about");
   
   const breadcrumbs = {
     title: 'About Us',
@@ -51,15 +54,14 @@ const AboutUs = () => {
   return (
     <>
       <Layout>
-        <MicroBanner bg={microBg} data={breadcrumbs} />
+        <MicroBanner page_section="about-banner" data={breadcrumbs} page="about" />
 
         <div className="micro_content">
           <div className="micro_data">
-            <AboutOverview />
-
-            <Suspense fallback="">
-              <Philosophy />
-            </Suspense>
+            {data?.map((el, index)=>{
+              if(el.page_section == 'about-overview') return <AboutOverview data={el} />
+              if(el.page_section == 'about-philosophy') return <Philosophy data={el} />
+            })}
 
             <Suspense fallback="">
               <Timeline />

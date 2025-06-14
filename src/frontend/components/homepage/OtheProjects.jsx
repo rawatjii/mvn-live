@@ -10,32 +10,32 @@ import useFetchData from "../../utils/apiHelper";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const otherProjects = [
-  {
-    name: "MVN School",
-    thumbnails: {
-      mobile: `${API_URL}images/other-projects/mvn-school.webp`,
-      desktop: `${API_URL}images/other-projects/mvn-school-desktop.webp`,
-    },
-    link: "https://www.mvneducation.com/sector-17/",
-  },
-  {
-    name: "MVN University",
-    thumbnails: {
-      mobile: `${API_URL}images/other-projects/mvn-university.webp`,
-      desktop: `${API_URL}images/other-projects/mvn-university-desktop.webp`,
-    },
-    link: "https://www.mvn.edu.in/",
-  },
-  {
-    name: "MVN Sports Academy",
-    thumbnails: {
-      mobile: `${API_URL}images/other-projects/mvn-sports-academy-desktop-2.webp`,
-      desktop: `${API_URL}images/other-projects/mvn-sports-academy-desktop-2.webp`,
-    },
-    link: "https://www.mvn88.com/exercise-sports-academy/",
-  },
-];
+// const otherProjects = [
+//   {
+//     name: "MVN School",
+//     thumbnails: {
+//       mobile: `${API_URL}images/other-projects/mvn-school.webp`,
+//       desktop: `${API_URL}images/other-projects/mvn-school-desktop.webp`,
+//     },
+//     link: "https://www.mvneducation.com/sector-17/",
+//   },
+//   {
+//     name: "MVN University",
+//     thumbnails: {
+//       mobile: `${API_URL}images/other-projects/mvn-university.webp`,
+//       desktop: `${API_URL}images/other-projects/mvn-university-desktop.webp`,
+//     },
+//     link: "https://www.mvn.edu.in/",
+//   },
+//   {
+//     name: "MVN Sports Academy",
+//     thumbnails: {
+//       mobile: `${API_URL}images/other-projects/mvn-sports-academy-desktop-2.webp`,
+//       desktop: `${API_URL}images/other-projects/mvn-sports-academy-desktop-2.webp`,
+//     },
+//     link: "https://www.mvn88.com/exercise-sports-academy/",
+//   },
+// ];
 
 const OtherProjects = React.memo(
   ({ data, title, subTitle, mobContent = 12 }) => {
@@ -51,7 +51,7 @@ const OtherProjects = React.memo(
     
 
     const initializeAnimations = useCallback(() => {
-      if (otherProjects.length > 0) {
+      if (otherProjectsData.length > 0) {
         gsap.from(titleRef.current, {
           y: 50,
           opacity: 1,
@@ -82,7 +82,7 @@ const OtherProjects = React.memo(
         ScrollTrigger.refresh();
       };
 
-      if (imagesLoaded === otherProjects.length) {
+      if (imagesLoaded === otherProjectsData?.length) {
         setTimeout(() => {
           initializeAnimations();
           ScrollTrigger.refresh();
@@ -99,7 +99,7 @@ const OtherProjects = React.memo(
     
 
     if(loading) return <div className="text-center py-5">Loading...</div>;
-    if(!loading && otherProjectsData && otherProjectsData.length === 0) return <div className="text-center py-5">No records found</div>;
+    if(!loading && otherProjectsData && otherProjectsData?.length === 0) return <div className="text-center py-5">No records found</div>;
 
     return (
       <section
@@ -139,20 +139,11 @@ const OtherProjects = React.memo(
                     </div>
                   )}
 
-                  <img
-                    src={
-                      isMobile
-                        ? BACKEND_IMAGE_URL + item.image
-                        : BACKEND_IMAGE_URL + item.image
-                    }
-                    alt="mvn projects image"
-                    className="img-fluid other-project-img"
-                    onLoad={handleImageLoad}
-                  />
+                  <picture>
+                    <source srcset={BACKEND_IMAGE_URL + item.image} />
+                    <img src={BACKEND_IMAGE_URL + item.alternative_image} alt="mvn projects image" className="img-fluid other-project-img w-100" onLoad={handleImageLoad} />
+                  </picture>
 
-                  {/* <AnImage ref={(el) => (imageDivRefs.current[index] = el)}>
-                  
-                </AnImage> */}
                 </div>
               </Col>
             ))}

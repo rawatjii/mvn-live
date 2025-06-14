@@ -4,57 +4,48 @@ import {
   LeftArea,
   MicroBox,
   RightArea,
-} from "../dashboard/utilities/CutomTags";
-import CustomTitle from "../dashboard/utilities/CustomTitle";
-import CustomForm from "../dashboard/utilities/CustomForm";
-import CustomTable from "../dashboard/utilities/custom-table/CustomTable";
-import CustomPagination from "../dashboard/utilities/pagination/CustomPagination";
-import generateApi from "../../api/generateApi";
-import useCrud from "../../hooks/useCrud";
-import CustomModal from "../dashboard/utilities/custom-modal/CustomModal";
+} from "./components/dashboard/utilities/CutomTags";
+import CustomTitle from "./components/dashboard/utilities/CustomTitle";
+import CustomForm from "./components/dashboard/utilities/CustomForm";
+import CustomTable from "./components/dashboard/utilities/custom-table/CustomTable";
+import CustomPagination from "./components/dashboard/utilities/pagination/CustomPagination";
+import generateApi from "./api/generateApi";
+import useCrud from "./hooks/useCrud";
+import CustomModal from "./components/dashboard/utilities/custom-modal/CustomModal";
 
 // Simulated backend response
 const metaFields = [
-  { name: "name", label: "Name", type: "text", col: 12, isLeft: true },
-  { name: "year", label: "Year", type: "text", col: 12, isLeft: true },
-  { name: "address", label: "Address", type: "text", col: 12, isLeft: true },
-  { name: "alt", label: "Alt Tag", type: "text", col: 12, isLeft: true },
+  { name: "heading", label: "Title", type: "text", col: 12, isLeft: true },
   { name: "image", label: "Image", type: "file", col: 6, isLeft: true },
-  // {
-  //   name: "alternative_image",
-  //   label: "Alternative Image",
-  //   type: "file",
-  //   col: 6,
-  //   isLeft: true,
-  // },
+  { name: "alt", label: "Alt Tag", type: "text", col: 12, isLeft: true },
 ];
 
 const columns = [
-  { key: "id", label: "S.No." },
-  { key: "name", label: "Title" },
-  { key: "year", label: "Year" },
-  { key: "address", label: "Address" },
+  { key: "", label: "S.No." },
+  { key: "heading", label: "Title" },
+  { key: "alt", label: "Alt" },
   { key: "image", label: "Image", type: "file" },
 ];
 
-const Timeline = () => {
+const OurValues = React.memo(() => {
   const [editModalData, setEditModalData] = useState(null);
 
-  const aboutsApi = generateApi("timeline");
-  const { data, loading, error, createItem, editItem, updateItem, deleteItem } =
-    useCrud(aboutsApi);
+  const valuesApi = generateApi("our-values");
+  const { data, loading, error, createItem, editItem, deleteItem } =useCrud(valuesApi);
 
   const handleCreate = (formData) => createItem(formData);
-  // const handleEdit = (row) => updateItem(row.id, row);
   const handleDelete = (row) => deleteItem(row.id);
-
+  const handleEditSubmit = (formData) => {
+    editItem(editModalData.id, formData);
+  };
   const handleEdit = (row) => {
     setEditModalData(row); // open modal
   };
 
-  const handleEditSubmit = (formData) => {
-    editItem(editModalData.id, formData);
-  };
+  const emptyData = ()=>{
+    setEditModalData(null)
+  }
+
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
@@ -63,30 +54,35 @@ const Timeline = () => {
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
+
+
   return (
     <CustomSection customClass="">
       {/* left box for form */}
       <LeftArea>
         <MicroBox>
-          <CustomTitle title="Our Timeline Form" />
+          <CustomTitle title="Our Values Form" />
           <CustomForm
             isBanner={false}
             dynamicFields={metaFields}
+            defaultData={editModalData}
             onSubmit={handleCreate}
             onUpdate={handleEditSubmit}
             data={editModalData}
+            emptyData={emptyData}
           />
         </MicroBox>
       </LeftArea>
       {/* right box for table */}
       <RightArea>
         <MicroBox>
-          <CustomTitle title="Qur Timeline Table" />
+          <CustomTitle title="Our Values Table" />
           <CustomTable
             columns={columns}
             data={paginatedData}
-            onEdit={handleEdit} // ✅
+            onEdit={handleEdit} 
             onDelete={handleDelete}
+            // startIndex={(currentPage - 1) * itemsPerPage}
           />
         </MicroBox>
         <CustomPagination
@@ -95,10 +91,9 @@ const Timeline = () => {
           onPageChange={(page) => setCurrentPage(page)}
         />
 
-        
       </RightArea>
     </CustomSection>
   );
-};
+});
 
-export default Timeline;
+export default OurValues;

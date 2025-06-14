@@ -1,23 +1,7 @@
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import MicroBanner from "../components/MicroBanner/Index";
-
-import careerbg from "../assets/images/career/tables-chairs-office.png";
-import ContactPage from "../components/contact/Index";
-import Enquire from "../components/homepage/Enquire";
-import EnquireForm from "../components/homepage/EnquireForm";
-import { Container } from "react-bootstrap";
-import SecTitle from "../../common/SecTitle/Index";
-
-import supportIcon from "../assets/images/icons/contact/career.png";
-import careerIMG from "../assets/images/career/career.png";
-
-import leftArrow from "../assets/images/career/left-arrow.png";
-
-import LazyLoad from "react-lazyload";
 import "../../dinesh.css";
 
-import CareerImg from "../assets/images/career/career-img.jpg";
-import InitialLoading from "../skeleton/Initial/Index";
 import Layout from "../components/Layout";
 import CareerOverview from "../components/career/Overview";
 import LifeAtMvn from "../components/career/Life";
@@ -53,7 +37,6 @@ function Career() {
         <MicroBanner
           page_section="career-banner"
           page="career"
-          bg={CareerImg}
           data={breadcrumbs}
         />
 

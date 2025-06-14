@@ -7,7 +7,7 @@ import useFetchData from "../../utils/apiHelper";
 
 const diamondIMG = `${API_URL}images/icons/plane1.png`;
 
-const MicroOverview = React.memo(({ rera, data }) => {
+const MicroSizes = React.memo(({ rera, data }) => {
   const [count1, setCount1] = useState(0);
   const [count2, setCount2] = useState(0);
   const [count3, setCount3] = useState(0);
@@ -30,8 +30,6 @@ const MicroOverview = React.memo(({ rera, data }) => {
     showAwards,
     discountUrl,
     isDiscountAvailable,
-    alt,
-    iframe,
   } = data;
 
   const isScrolledIntoView = useCallback((elem) => {
@@ -128,43 +126,38 @@ const MicroOverview = React.memo(({ rera, data }) => {
             </div>
           )} */}
 
-            {alt && (
+            {counterHeading && (
               <>
-                <p className="counter-heading">{alt}</p>
+                <p className="counter-heading">{short_description}</p>
 
-                {iframe && (
-                  <div className="counter-flex-box">
-                    {iframe.split(",").map((item, index) => (
-                      <div className="flex-box" ref={ref1}>
-                        <h4>
-                          <span className="counter">{item}</span>{" "}
-                          <span className="sqft">sq.ft.</span>
-                        </h4>
-                      </div>
-                    ))}
-
-                    {/*                     
-                    <div className="flex-box" ref={ref2}>
-                      <h4>
-                        <span className="counter">{count2}</span>{" "}
-                        <span className="sqft">sq.ft.</span>
-                      </h4>
-                    </div>
-                    <div className="flex-box" ref={ref3}>
-                      <h4>
-                        <span className="counter">{count3}</span>{" "}
-                        <span className="sqft">sq.ft.</span>
-                      </h4>
-                    </div> */}
+                <div className="counter-flex-box">
+                  <div className="flex-box" ref={ref1}>
+                    <h4>
+                      <span className="counter">{count1}</span>{" "}
+                      <span className="sqft">sq.ft.</span>
+                    </h4>
                   </div>
-                )}
+                  <div className="flex-box" ref={ref2}>
+                    <h4>
+                      <span className="counter">{count2}</span>{" "}
+                      <span className="sqft">sq.ft.</span>
+                    </h4>
+                  </div>
+                  <div className="flex-box" ref={ref3}>
+                    <h4>
+                      <span className="counter">{count3}</span>{" "}
+                      <span className="sqft">sq.ft.</span>
+                    </h4>
+                  </div>
+                </div>
+
+                <span className="bar"></span>
               </>
             )}
-            {!alt && <span className="bar"></span>}
           </div>
 
           {/* {discountUrl ? <img src={discountUrl} className="img-fluid discount_patch" /> : undefined} */}
-          {counterHeading && short_description && (
+          {!counterHeading && short_description && (
             <span className="bar"></span>
           )}
 
@@ -238,4 +231,4 @@ const MicroOverview = React.memo(({ rera, data }) => {
   );
 });
 
-export default MicroOverview;
+export default MicroSizes;

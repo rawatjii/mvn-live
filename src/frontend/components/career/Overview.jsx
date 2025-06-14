@@ -1,7 +1,8 @@
 import React, { Suspense, useRef } from "react";
 import { Container } from "react-bootstrap";
-import headingIconImg from "../../assets/images/icons/heading-icon-img.webp"
 import useFetchData from "../../utils/apiHelper";
+import { API_URL } from "../../../config/config";
+const headingIconImg = `${API_URL}images/icons/heading-icon-img.webp`
 
 const CareerOverview = ({page}) => {
   const titleRef = useRef();
@@ -27,7 +28,7 @@ const CareerOverview = ({page}) => {
               className="des_style1 text-center"
               ref={(el) => (desRefs.current[0] = el)}
             >
-              {careerData?.[1]?.description}
+              {careerData?.[1]?.short_description}
             </p>
           </Container>
         </div>

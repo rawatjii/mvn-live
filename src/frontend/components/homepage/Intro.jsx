@@ -10,6 +10,7 @@ const Intro = React.memo(({ data }) => {
     sub_heading,
     short_description,
     image,
+    mb_image,
     alternative_image,
     alt,
   } = data;
@@ -31,7 +32,7 @@ const Intro = React.memo(({ data }) => {
           </div>
 
           <div className="mb-4 mb-md-5">
-            <h3 className="mt-0 slogan-heading">{heading}</h3>
+            <h3 className="mt-0 slogan-heading">{heading + '1'}</h3>
             <a
               href={import.meta.env.VITE_APP_URL + "aeroone-gurgaon"}
               className="btn btn_style3 r_100 mt-3 mt-md-4"

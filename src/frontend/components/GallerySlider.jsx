@@ -6,15 +6,13 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { Navigation } from 'swiper/modules';
 import Watermark from "../../common/watermark/Index";
+import { BACKEND_IMAGE_URL } from "../../config/config";
 
 function GallerySlider({ data, slidesPerView, spaceBetween, navigation }) {
     const [open, setOpen] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    const images = data.galleryData;
-
-    console.log('images', images);
-    
+    const images = data?.galleryData ? data.galleryData : data;
 
     return (
         <div className="gallery_slider">
@@ -41,7 +39,7 @@ function GallerySlider({ data, slidesPerView, spaceBetween, navigation }) {
                         <div className="position-relative sliderBg">
                             <Watermark className="left" />
                             <img
-                                src={image.src}
+                                src={image?.src ? image?.src : BACKEND_IMAGE_URL + image.image}
                                 alt={image.alt}
                                 style={{ width: "100%", cursor: "pointer" }}
                                 onClick={() => {

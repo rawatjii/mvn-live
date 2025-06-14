@@ -6,7 +6,8 @@ import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 import LazyLoad from "react-lazyload";
-import { API_URL } from "../../../config/config";
+import { API_URL, BACKEND_IMAGE_URL } from "../../../config/config";
+import useFetchData from "../../utils/apiHelper";
 
 const data = [
   {
@@ -110,6 +111,8 @@ const Timeline = () => {
 
   const [imagesLoaded, setImagesLoaded] = useState(0);
 
+  const { data, loading } = useFetchData("timeline");
+
   const initializeAnimations = () => {
     // Title animation
     gsap.from(titleRef.current, {
@@ -198,7 +201,7 @@ const Timeline = () => {
   };
 
   useEffect(() => {
-    if (imagesLoaded === data.length) {
+    if (imagesLoaded === data?.length) {
       setTimeout(() => {
         initializeAnimations();
         ScrollTrigger.refresh();
@@ -248,7 +251,7 @@ const Timeline = () => {
               loading="lazy"
             />
           </li>
-          {data.map((item, index) => (
+          {data?.map((item, index) => (
             <li
               key={index}
               className={`single ${index % 2 !== 0 ? "right" : ""}`}
@@ -258,8 +261,8 @@ const Timeline = () => {
                 className="thumbnail"
               >
                 <img
-                  src={item.img}
-                  alt="mvn timeline image"
+                  src={BACKEND_IMAGE_URL + item.image}
+                  alt={item.alt}
                   className="img-fluid"
                   onLoad={handleImageLoad}
                   loading="lazy"
@@ -270,8 +273,8 @@ const Timeline = () => {
                 className="content"
               >
                 <p className="year">{item.year}</p>
-                <p className="title">{item.title}</p>
-                <p className="location">{item.location}</p>
+                <p className="title">{item.name}</p>
+                <p className="location">{item.address}</p>
               </div>
             </li>
           ))}

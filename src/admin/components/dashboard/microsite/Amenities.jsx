@@ -19,7 +19,8 @@ const Amenities = () => {
   // API endpoints
   const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
-  const amenitiesApi = generateApi("project-amenities");
+  const amenitiesApi = generateApi(`project/${project_id}/amenities`);
+  const projectAmApi = generateApi(`project-amenities`);
   
   // CRUD hooks
   const { editItem, createItem } = useCrud(projectSectionsApi);
@@ -30,13 +31,17 @@ const Amenities = () => {
     deleteItem,
     getItems: fetchamenitiesItems
   } = useCrud(amenitiesApi);
+  const { 
+    createItem: amCreateItem, 
+  } = useCrud(projectAmApi);
   
   const { getEditData } = useCrud(getEditDataApi);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
   const metaFields = [
-    { name: "heading", label: "Heading", type: "text", col: 6 },
+    { name: "heading", label: "Heading", type: "text", col: 12 },
+    { name: "description", label: "Description", type: "textarea", col: 12 },
   ];
 
   const amenitiesFields = [
@@ -92,7 +97,7 @@ const Amenities = () => {
   const handleCreateamenities = async (formData) => {
     try {
       formData.append("is_type", "amenities");
-      await amenitiesCreateItem(formData);
+      await amCreateItem(formData);
       await fetchAllamenitiesItems();
       setEditamenitiesData(null);
     } catch (error) {
@@ -142,7 +147,7 @@ const Amenities = () => {
     <CustomSection>
        <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchMetadata}/>  
       <MicroBox>
-        <CustomTitle title="Overview" />
+        <CustomTitle title="Amenities" />
         <CustomFormMicrosite
           isBanner={false}
           dynamicFields={metaFields}
