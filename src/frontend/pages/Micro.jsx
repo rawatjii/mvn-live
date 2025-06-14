@@ -102,6 +102,7 @@ const MicroPage = () => {
   const sectionRefs = useRef({});
   const { projectName } = useParams();
 
+
   const { data: basicData, loading } = useFetchData(`project/${projectName}`);
   const { data: projectSections, loading: sectionsLoading } = useFetchData(
     `project/${basicData?.id}/project-section`
