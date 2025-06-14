@@ -98,9 +98,10 @@ const FloorPlans = () => {
   };
 
   const handleEditfloorPlans = async (formData) => {
+    debugger
     try {
       formData.append("is_type", "floorPlans");
-      await floorPlansEditItem(editfloorPlansData.id, formData);
+      await floorPlansEditItem(editfloorPlansData.id, formData, '', "true");
       await fetchAllfloorPlansItems();
       setEditfloorPlansData(null);
     } catch (error) {
@@ -110,7 +111,7 @@ const FloorPlans = () => {
 
   const handleDeleteItem = async (id) => {
     try {
-      await deleteItem(id);
+      await deleteItem(id, "true");
       await fetchAllfloorPlansItems();
     } catch (error) {
       console.error("Error deleting floorPlans item:", error);

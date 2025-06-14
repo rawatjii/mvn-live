@@ -19,15 +19,19 @@ const ConstructionTechnology = () => {
   const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
   const keyHightlightsApi = generateApi(`project-key-highlight/${project_id}`);
+  const keyHightlightsApi1 = generateApi(`project-key-highlight`);
   
   const { editItem, createItem, } = useCrud(projectSectionsApi);
   const { 
     data: construction, 
+    fetchAll: fetchconstruction
+  } = useCrud(keyHightlightsApi);
+
+  const { 
     createItem: keyHightlightsCreateItem, 
     editItem: keyHightlightsEditItem, 
     deleteItem,
-    fetchAll: fetchconstruction
-  } = useCrud(keyHightlightsApi);
+  } = useCrud(keyHightlightsApi1);
   
   const { getEditData } = useCrud(getEditDataApi);
   const [currentPage, setCurrentPage] = useState(1);
@@ -89,7 +93,7 @@ const ConstructionTechnology = () => {
   const handleCreatekeyHightlights = async (formData) => {
     try {
       formData.append("is_type", "keyHightlights");
-      await keyHightlightsCreateItem(formData);
+      await keyHightlightsCreateItem(formData, "true");
       await fetchAllconstruction();
       setEditkeyHightlightsData(null);
     } catch (error) {
