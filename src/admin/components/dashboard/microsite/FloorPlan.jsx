@@ -111,7 +111,7 @@ const FloorPlans = () => {
 
   const handleDeleteItem = async (id) => {
     try {
-      await deleteItem(id);
+      await deleteItem(id, "true");
       await fetchAllfloorPlansItems();
     } catch (error) {
       console.error("Error deleting floorPlans item:", error);

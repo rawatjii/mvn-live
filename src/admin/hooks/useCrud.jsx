@@ -117,9 +117,9 @@ const useCrud = (apiService,via) => {
       }
     },
 
-    deleteItem: async (id) => {
+    deleteItem: async (id, isDelete) => {
       try {
-        await apiService.delete(id);
+        await apiService.delete(id, isDelete);
         toast.success(" Data deleted successfully!");
         await fetchAll();
       } catch (err) {
