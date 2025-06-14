@@ -98,9 +98,10 @@ const FloorPlans = () => {
   };
 
   const handleEditfloorPlans = async (formData) => {
+    debugger
     try {
       formData.append("is_type", "floorPlans");
-      await floorPlansEditItem(editfloorPlansData.id, formData);
+      await floorPlansEditItem(editfloorPlansData.id, formData, '', "true");
       await fetchAllfloorPlansItems();
       setEditfloorPlansData(null);
     } catch (error) {

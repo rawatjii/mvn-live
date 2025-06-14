@@ -64,9 +64,9 @@ const useCrud = (apiService,via) => {
       }
     },
 
-    editItem: async (id, item, pagevia) => {
+    editItem: async (id, item, pagevia, isUpdate) => {
       try {
-        await apiService.update(id, item);
+        await apiService.update(id, item, isUpdate);
         // console.log(fetchAll())
 
         const selectedTheme = await item.get("is_theme");
