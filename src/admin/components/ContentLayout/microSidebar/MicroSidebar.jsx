@@ -27,26 +27,26 @@ import useCrud from "../../../hooks/useCrud";
 const navItems = [
   // { to: "", icon: <FaRegFileAlt fontSize={24} />, description: "Basic", exact: true },
   // { to: "banner", icon: <IoIosImage fontSize={28} />, description: "Banner" },
-  { to: "overview", icon: <IoMdInformationCircleOutline fontSize={28} />, description: "Overview" },
-  { to: "overview", icon: <IoMdInformationCircleOutline fontSize={28} />, description: "Overview" },
-  { to: "elevation", icon: <BsBuildingUp fontSize={24} />, description: "Elevation" },
-  { to: "walkthrough", icon: <MdVideoSettings fontSize={24} />, description: "Walkthrough" },
-  { to: "threesixtyview", icon: <TbView360Number fontSize={24} />, description: "360°" },
-  { to: "livingroom", icon: <MdOutlineLiving fontSize={24} />, description: "Living Room" },
-  { to: "party", icon: <LuPartyPopper fontSize={24} />, description: "Party" },
-  { to: "masterbedroom", icon: <MdBedroomParent fontSize={24} />, description: "MasterBedroom" },
-  { to: "consultant", icon: <FaUserCog fontSize={24} />, description: "Consultant" },
-  { to: "landscape", icon: <BiLandscape fontSize={24} />, description: "Land Scape" },
-  { to: "sm-elevation", icon: <HiOutlineBuildingStorefront fontSize={24} />, description: "SmallElevation" },
-  { to: "apartment", icon: <PiBuildingApartment fontSize={24} />, description: "Apartment" },
-  { to: "construction", icon: <MdOutlineConstruction fontSize={24} />, description: "Construction" },
-  { to: "amenities", icon: <MdOutlineConstruction fontSize={24} />, description: "Amenities" },
-  { to: "typologies", icon: <MdOutlineFeaturedPlayList fontSize={24} />, description: "Typologies" },
-  { to: "floor-plans", icon: <PiStrategyBold fontSize={24} />, description: "Floor Plan" },
-  { to: "location-map", icon: <MdOutlineConstruction fontSize={24} />, description: "Location Map" },
-  { to: "mvn-mall", icon: <MdShareLocation fontSize={24} />, description: "MVN Mall" },
-  { to: "connection-mvn-mall", icon: <MdStoreMallDirectory fontSize={24} />, description: "Connection MVN Mall" },
-  { to: "connection-mvn-mall", icon: <MdStoreMallDirectory fontSize={24} />, description: "Connection MVN Mall" },
+  { name: "Overview", icon: <IoMdInformationCircleOutline fontSize={28} /> },
+  { name: "Large Elevation", icon: <BsBuildingUp fontSize={24} /> },
+  { name: "Walkthrough", icon: <MdVideoSettings fontSize={24} /> },
+  { name: "360 Views", icon: <TbView360Number fontSize={24} /> },
+  { name: "Peacock", icon: <MdOutlineLiving fontSize={24} /> },
+  { name: "Party", icon: <LuPartyPopper fontSize={24} /> },
+  { name: "Master Bed Room", icon: <MdBedroomParent fontSize={24} />},
+  { name: "Architect", icon: <FaUserCog fontSize={24} /> },
+  { name: "Landscapes", icon: <BiLandscape fontSize={24} /> },
+  { name: "Elevation", icon: <HiOutlineBuildingStorefront fontSize={24} /> },
+  { name: "Apartment", icon: <PiBuildingApartment fontSize={24} /> },
+  { name: "Construction Technology", icon: <MdOutlineConstruction fontSize={24} />},
+  { name: "Amenities", icon: <MdOutlineConstruction fontSize={24} /> },
+  { name: "Typologies", icon: <MdOutlineFeaturedPlayList fontSize={24} /> },
+  { name: "Floor Plan", icon: <PiStrategyBold fontSize={24} />},
+  { name: "Location Map", icon: <MdOutlineConstruction fontSize={24} /> },
+  { name: "Mvn Mall", icon: <MdShareLocation fontSize={24} /> },
+  { name: "Connection Mall", icon: <MdStoreMallDirectory fontSize={24} /> },
+  { name: "Gallery", icon: <IoIosImage fontSize={28} /> },
+  { name: "Key Highlights", icon: <IoMdInformationCircleOutline fontSize={28} /> },
 ];
 
 const MicroSidebar = () => {
@@ -152,8 +152,13 @@ const MicroSidebar = () => {
                       }
                       {...triggerHandler}
                     >
-                      
-                      <div className="icon">{navItems[index]?.icon}</div>
+                      {/* {Object.} */}
+                      <div className="icon">
+                        {navItems.map((navItem, index)=>{
+                          if(navItem.name == item.name){
+                            return navItem.icon;
+                          }
+                        })}</div>
                       <div className="description">{item.name}</div>
                     </NavLink>
                   )}

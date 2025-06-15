@@ -7,6 +7,7 @@ import Lightbox from "yet-another-react-lightbox";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
+import { BACKEND_IMAGE_URL } from '../../../../config/config';
 
 const CustomSlider = ({slides, className}) => {
     const [index, setIndex] = useState(-1);
@@ -33,12 +34,12 @@ const CustomSlider = ({slides, className}) => {
               <div className="carousel-item_in">
                 <img
                   // data-speed="clamp(0.9)"
-                  src={slide.src}
+                  src={BACKEND_IMAGE_URL +slide.image}
                   alt={`Slide ${index + 1}`}
                   onClick={() => setIndex(index)}
                 />
                 <div className="carousel-caption">
-                  <h1 className="main-title">{slide.title}</h1>
+                  <h1 className="main-title">{slide.heading}</h1>
                   {slide.area && (<span>Area: {slide.area}</span>)}
                   <div className="link">
                     <a href={slide.link}>View Details</a>

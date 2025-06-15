@@ -25,6 +25,7 @@ import { API_URL } from "../../config/config";
 import { useParams } from "react-router-dom";
 import useFetchData from "../utils/apiHelper";
 import LazyLoadComponent from "../../common/LazyLoadComponent";
+import SliderTypology from "../components/MicroPage/bangalore/SliderTypology";
 
 const headerSidebarDesktopImg = `${API_URL}images/aero-gurgaon/header/sidebar.webp`;
 
@@ -314,6 +315,14 @@ const MicroPage = () => {
                   <LazyLoadComponent margin="200px" debugName="mvn-mall">
                     <div ref={(el) => (sectionRefs.current.MVNMALL = el)}>
                       <MvnMall data={section} />
+                    </div>
+                  </LazyLoadComponent>
+                )}
+
+                {section.section_type === "floor-plan" && (
+                  <LazyLoadComponent margin="200px" debugName="floor-plan">
+                    <div ref={(el) => (sectionRefs.current.MVNMALL = el)}>
+                      <SliderTypology data={section} />
                     </div>
                   </LazyLoadComponent>
                 )}

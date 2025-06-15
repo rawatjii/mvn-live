@@ -18,16 +18,20 @@ const FloorPlans = () => {
   
   const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
-  const floorPlansApi = generateApi(`project-floorplan/${project_id}`);
+  const floorPlansApi = generateApi(`project-floorplan`);
+  const floorPlansApi1 = generateApi(`project-floorplan/${project_id}`);
   
   const { editItem, createItem } = useCrud(projectSectionsApi);
   const { 
-    data: floorPlansItems, 
     createItem: floorPlansCreateItem, 
-    editItem: floorPlansEditItem, 
     deleteItem,
-    getItems: fetchfloorPlansItems
   } = useCrud(floorPlansApi);
+
+  const { 
+    data: floorPlansItems, 
+    getItems: fetchfloorPlansItems,
+    editItem: floorPlansEditItem, 
+  } = useCrud(floorPlansApi1);
   
   const { getEditData } = useCrud(getEditDataApi);
   
@@ -35,14 +39,15 @@ const FloorPlans = () => {
   const itemsPerPage = 5;
 
   const metaFields = [
-    { name: "heading", label: "Heading", type: "text", col: 6 },
+    { name: "heading", label: "Heading", type: "text", col: 12 },
+    { name: "description", label: "Description", type: "textarea", col: 12 },
   ];
 
   const floorPlansFields = [
         { name: "heading", label: "Title", type: "text", col: 6,isRequired:true },
         { name: "unit_type", label: "Unit Type", type: "text", col: 6,isRequired:true },
         { name: "area", label: "Area", type: "text", col: 6,isRequired:true },
-        { name: "sizes", label: "Size", type: "text", col: 6,isRequired:true },
+        { name: "sizes", label: "Size", type: "text", col: 6 },
         { name: "image", label: "Image", type: "file", col: 6,isRequired:true },
         { name: "alternative_image", label: "Alternate Image", type: "file", col: 6 },
         { name: "alt", label: "Alt", type: "text", col: 6, placeholder: "Enter Alt text",isRequired:true },
@@ -50,7 +55,7 @@ const FloorPlans = () => {
 
   const fetchMetadata = async () => {
     const formData = new FormData();
-    formData.append("section_type", "floor-plans");
+    formData.append("section_type", "floor-plan");
     formData.append("project_id", project_id);
     try {
       const data = await getEditData(formData);
@@ -88,7 +93,6 @@ const FloorPlans = () => {
 
   const handleCreatefloorPlans = async (formData) => {
     try {
-      formData.append("is_type", "floorPlans");
       await floorPlansCreateItem(formData);
       await fetchAllfloorPlansItems();
       setEditfloorPlansData(null);
@@ -100,7 +104,6 @@ const FloorPlans = () => {
   const handleEditfloorPlans = async (formData) => {
     debugger
     try {
-      formData.append("is_type", "floorPlans");
       await floorPlansEditItem(editfloorPlansData.id, formData, '', "true");
       await fetchAllfloorPlansItems();
       setEditfloorPlansData(null);
@@ -111,7 +114,7 @@ const FloorPlans = () => {
 
   const handleDeleteItem = async (id) => {
     try {
-      await deleteItem(id, "true");
+      await deleteItem(id);
       await fetchAllfloorPlansItems();
     } catch (error) {
       console.error("Error deleting floorPlans item:", error);
