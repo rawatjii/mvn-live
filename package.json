@@ -1,6 +1,7 @@
 {
   "name": "nvm-react",
   "homepage": "https://beta1.mvn.in/",
+  "proxy":"https://mvnbackend.gtftechnologies.com",
   "private": true,
   "version": "0.0.0",
   "type": "module",

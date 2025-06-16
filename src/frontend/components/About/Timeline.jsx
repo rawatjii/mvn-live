@@ -102,7 +102,7 @@ const data = [
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Timeline = () => {
+const Timeline = ({data}) => {
   const titleRef = useRef();
   const contentRefs = useRef([]);
   const imageRefs = useRef([]);
@@ -111,7 +111,9 @@ const Timeline = () => {
 
   const [imagesLoaded, setImagesLoaded] = useState(0);
 
-  const { data, loading } = useFetchData("timeline");
+  const {heading} = data;
+
+  const { data:timelineData, loading } = useFetchData("timeline");
 
   const initializeAnimations = () => {
     // Title animation
@@ -201,7 +203,7 @@ const Timeline = () => {
   };
 
   useEffect(() => {
-    if (imagesLoaded === data?.length) {
+    if (imagesLoaded === timelineData?.length) {
       setTimeout(() => {
         initializeAnimations();
         ScrollTrigger.refresh();
@@ -239,7 +241,7 @@ const Timeline = () => {
             loading="lazy"
           />
           <h4 ref={titleRef} className="title title_style1 text-center">
-            Our Timeline
+            {heading}
           </h4>
         </div>
         <ul ref={timelineRef} className="timeline_content">
@@ -251,7 +253,7 @@ const Timeline = () => {
               loading="lazy"
             />
           </li>
-          {data?.map((item, index) => (
+          {timelineData?.map((item, index) => (
             <li
               key={index}
               className={`single ${index % 2 !== 0 ? "right" : ""}`}

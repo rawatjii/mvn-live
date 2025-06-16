@@ -17,7 +17,7 @@ const Overview = React.memo(({ data }) => {
   const imageRef = useRef();
   const { isMobile } = useMatches();
 
-  const {heading, short_description, description, image, alternative_image} = data;
+  const {heading, short_description, description, image, alternative_image, alt} = data;
 
   useEffect(() => {
     // Title animation
@@ -112,7 +112,7 @@ const Overview = React.memo(({ data }) => {
         <AnImage ref={imageRef} className="img_col">
           <picture>
             <source srcset={BACKEND_IMAGE_URL + image} />
-            <img src={BACKEND_IMAGE_URL + alternative_image} alt="mvn about background" className="img-fluid about_img" />
+            <img src={BACKEND_IMAGE_URL + alternative_image} alt={alt} className="img-fluid about_img" />
           </picture>
         </AnImage>
       </section>

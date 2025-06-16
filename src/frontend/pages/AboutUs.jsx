@@ -61,15 +61,9 @@ const AboutUs = () => {
             {data?.map((el, index)=>{
               if(el.page_section == 'about-overview') return <AboutOverview data={el} />
               if(el.page_section == 'about-philosophy') return <Philosophy data={el} />
+              if(el.page_section == 'about-timeline') return <Timeline data={el} />
+              if(el.page_section == 'about-behind') return <OurTeam data={el} />
             })}
-
-            <Suspense fallback="">
-              <Timeline />
-            </Suspense>
-
-            <Suspense fallback="">
-              <OurTeam />
-            </Suspense>
 
             <div className="flex-footer-form">
               <Suspense fallback="">

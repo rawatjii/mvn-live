@@ -34,7 +34,7 @@ const OurTeamData = [
   },
 ];
 
-const OurTeam = () => {
+const OurTeam = ({data}) => {
   const [show, setShow] = useState(false);
   const [selectedPerson, setSelectedPerson] = useState(null);
 
@@ -44,7 +44,8 @@ const OurTeam = () => {
     setShow(true);
   };
 
-  const { data, loading } = useFetchData("team");
+  const {heading} = data;
+  const { data:teamData, loading } = useFetchData("team");
 
   return (
     <section className="our-team-section" aria-label="Our Team Section">
@@ -58,11 +59,11 @@ const OurTeam = () => {
             className="img-fluid title_plane1"
             loading="lazy"
           />
-          <h4 className="title title_style1 text-center">People Behind</h4>
+          <h4 className="title title_style1 text-center">{heading}</h4>
         </div>
 
         <Row>
-          {data?.slice(0, 3).map((member) => (
+          {teamData?.slice(0, 3).map((member) => (
             <Col xs={12} md={4} lg={4} key={member.id}>
               <div className="ourteamCard">
                 <div className="profile-pic">
@@ -92,7 +93,7 @@ const OurTeam = () => {
 
         {/* Row for the remaining members */}
         <Row>
-          {data?.slice(3).map((member, index) => (
+          {teamData?.slice(3).map((member, index) => (
             <Col xs={12} md={4} lg={4} key={member.id}>
               <div className="ourteamCard">
                 <div className="profile-pic">
