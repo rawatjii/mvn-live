@@ -74,7 +74,7 @@ const LottieAnimationSection = React.memo(
     useEffect(() => {
       const loadAnimationData = async () => {
         try {
-          const jsonPath = isMobile ? BACKEND_IMAGE_URL + json : BACKEND_IMAGE_URL + json;
+          const jsonPath = isMobile ? json : json;
           const response = await fetch(jsonPath);
           const data = await response.json();
 
