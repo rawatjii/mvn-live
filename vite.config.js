@@ -19,5 +19,14 @@ export default defineConfig({
       root:path.resolve(__dirname, 'src/'),
       common:path.resolve(__dirname, 'src/common')
     }
-  }
+  },
+  server: {
+    proxy: {
+      '/uploads': {
+        target: 'https://mvnbackend.gtftechnologies.com',
+        changeOrigin: true,
+        secure: false
+      }
+    }
+  },
 })
