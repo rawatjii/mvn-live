@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/uploads/(.*)",
+      "destination": "https://mvnbackend.gtftechnologies.com/uploads/$1"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
