@@ -61,7 +61,7 @@ const MicroBanner = ({page_section, page, data, type})=>{
         <Container>
           <picture className="microbanner_bg">
             <source srcset={window.innerWidth <= 768 ? BACKEND_IMAGE_URL+microBannerData?.mb_image : BACKEND_IMAGE_URL+microBannerData?.image} type="image/webp" />
-            <img src={window.innerWidth <= 768 ? BACKEND_IMAGE_URL+microBannerData?.mb_alternative_image : BACKEND_IMAGE_URL+microBannerData?.alternative_image} alt="Description of the image" />
+            <img src={window.innerWidth <= 768 ? BACKEND_IMAGE_URL+microBannerData?.mb_alternative_image : BACKEND_IMAGE_URL+microBannerData?.alternative_image} alt={microBannerData?.alt} />
           </picture>
           {/* <img src={window.innerWidth <= 768 ? BACKEND_IMAGE_URL+microBannerData?.mb_image : BACKEND_IMAGE_URL+microBannerData?.image} alt="mvn micro banner background image" className="img-fluid microbanner_bg" /> */}
           <h2 ref={titleRef} className="microTitle" >{microBannerData?.heading}</h2>

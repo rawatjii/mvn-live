@@ -136,14 +136,14 @@ const router = createBrowserRouter([
       //     </FrontendRoute>
       //   ),
       // },
-      {
-        path: "aeroone-bangalore",
-        element: (
-          <FrontendRoute loaderType="aeroone-bangalore" >
-            <MicroPageBangalore data={bangaloreData} />
-          </FrontendRoute>
-        ),
-      },
+      // {
+      //   path: "aeroone-bangalore",
+      //   element: (
+      //     <FrontendRoute loaderType="aeroone-bangalore" >
+      //       <MicroPageBangalore data={bangaloreData} />
+      //     </FrontendRoute>
+      //   ),
+      // },
       // {
       //   path: "mvn-athens-faridabad",
       //   element: (
@@ -152,22 +152,22 @@ const router = createBrowserRouter([
       //     </FrontendRoute>
       //   ),
       // },
-      {
-        path: "mvn-athens-gurgaon-phase-1",
-        element: (
-          <FrontendRoute loaderType="mvn-athens-gurgaon-phase-1">
-            <MicroPageGurgaonPhase1 data={athensGurgaonPhase1Data} />
-          </FrontendRoute>
-        ),
-      },
-      {
-        path: "mvn-athens-gurgaon-phase-2",
-        element: (
-          <FrontendRoute loaderType="mvn-athens-gurgaon-phase-2">
-            <MicroPageGurgaonPhase2 data={athensGurgaonPhase2Data} />
-          </FrontendRoute>
-        ),
-      },
+      // {
+      //   path: "mvn-athens-gurgaon-phase-1",
+      //   element: (
+      //     <FrontendRoute loaderType="mvn-athens-gurgaon-phase-1">
+      //       <MicroPageGurgaonPhase1 data={athensGurgaonPhase1Data} />
+      //     </FrontendRoute>
+      //   ),
+      // },
+      // {
+      //   path: "mvn-athens-gurgaon-phase-2",
+      //   element: (
+      //     <FrontendRoute loaderType="mvn-athens-gurgaon-phase-2">
+      //       <MicroPageGurgaonPhase2 data={athensGurgaonPhase2Data} />
+      //     </FrontendRoute>
+      //   ),
+      // },
       {
         path: "media-centre",
         element: (
