@@ -8,7 +8,6 @@ const partyImg = `${API_URL}assets/loader/party.jpg`
 const View360 = React.memo(({ data, onLoadComplete, sectionId }) => {
   const { isMobile } = useMatches();
 
-  console.log('360 data', data);
   
 
   return (

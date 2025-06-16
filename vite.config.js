@@ -11,6 +11,15 @@ export default defineConfig({
     environment:'jsdom', //simulate a browser environment
     setupFiles: './setupTests.js',
   },
+   server: {
+    proxy: {
+      '/uploads': {
+        target: 'https://mvnbackend.gtftechnologies.com',
+        changeOrigin: true,
+        secure: false
+      }
+    }
+  },
   // json:{
   //   stringify:true,
   // },
