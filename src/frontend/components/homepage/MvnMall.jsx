@@ -5,7 +5,7 @@ const MvnMall = ({data})=>{
   const iframeRef = useRef(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-  const { heading, short_description, alt } = data;
+  const { heading, short_description, alt, links } = data;
 
   // Add event listener for window resize
   React.useEffect(() => {
@@ -28,9 +28,7 @@ const MvnMall = ({data})=>{
         <div style={{ position: "relative", paddingBottom: isMobile ? '56.25%' : '56.25%', overflow: "hidden" }}>
           <iframe
             ref={iframeRef}
-            src={isMobile 
-              ? "https://www.youtube.com/embed/CbmkQBZuvTw?loop=1&mute=1&playlist=CbmkQBZuvTw" 
-              : "https://www.youtube.com/embed/CbmkQBZuvTw?loop=1&mute=1&playlist=CbmkQBZuvTw"}
+            src={links}
             frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen

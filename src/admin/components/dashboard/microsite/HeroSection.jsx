@@ -15,19 +15,18 @@ const HeroSection = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [typeInputs, setTypeInputs] = useState([]);
   const itemsPerPage = 5;
-  const bannerApi = generateApi(`project-banner`);
+  const bannerApi = generateApi(`project-banner/${project_id}/banner`);
   const editDataApi = generateApi(`project-banner`);
   const [editData, setEditData] = useState(null);
 
   const { 
     data, 
-    createItem, 
-    deleteItem,
-    getItems,
-    getEditData 
   } = useCrud(bannerApi);
   
-  const {editItem } = useCrud(editDataApi);
+  const {editItem, 
+    createItem, 
+    deleteItem,
+    getEditData  } = useCrud(editDataApi);
 // console.log()
 
   useEffect(() => {

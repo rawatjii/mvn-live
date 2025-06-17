@@ -26,6 +26,7 @@ import { useParams } from "react-router-dom";
 import useFetchData from "../utils/apiHelper";
 import LazyLoadComponent from "../../common/LazyLoadComponent";
 import SliderTypology from "../components/MicroPage/bangalore/SliderTypology";
+import FeatureSection from "../components/MicroPage/athens/FeatureSection";
 
 const headerSidebarDesktopImg = `${API_URL}images/aero-gurgaon/header/sidebar.webp`;
 
@@ -213,7 +214,7 @@ const MicroPage = () => {
                   </LazyLoadComponent>
                 )}
 
-                {section.section_type === "livingroom" && (
+                {section.section_type === "Peacock" && (
                   <LazyLoadComponent margin="200px" debugName="livingroom">
                     <div ref={(el) => (sectionRefs.current.LIVINGROOM = el)}>
                       <PeacockSection data={section} />
@@ -268,6 +269,18 @@ const MicroPage = () => {
                             : true
                         }
                       />
+                    </div>
+                  </LazyLoadComponent>
+                )}
+
+                {section.section_type === "key-highlights" && (
+                  <LazyLoadComponent margin="200px" debugName="keyHighlights">
+                    <div
+                      ref={(el) =>
+                        (sectionRefs.current.constructionTechnology = el)
+                      }
+                    >
+                      <FeatureSection data={section}/>
                     </div>
                   </LazyLoadComponent>
                 )}

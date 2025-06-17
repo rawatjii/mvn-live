@@ -141,7 +141,7 @@ const OtherProjects = React.memo(
 
                   <picture>
                     <source srcset={BACKEND_IMAGE_URL + item.image} />
-                    <img src={BACKEND_IMAGE_URL + item.alternative_image} alt="mvn projects image" className="img-fluid other-project-img w-100" onLoad={handleImageLoad} />
+                    <img src={BACKEND_IMAGE_URL + item.alternative_image} alt={item.alt} className="img-fluid other-project-img w-100" onLoad={handleImageLoad} />
                   </picture>
 
                 </div>

@@ -5,7 +5,7 @@ const ClubOne = ({ data }) => {
   const iframeRef = useRef(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-  const { heading, short_description, alt } = data;
+  const { heading, short_description, alt, links } = data;
 
   // Add event listener for window resize
   React.useEffect(() => {
@@ -41,9 +41,7 @@ const ClubOne = ({ data }) => {
           <iframe
             ref={iframeRef}
             src={
-              isMobile
-                ? "https://www.youtube.com/embed/BqcxVd21m6Y?loop=1&mute=1&playlist=BqcxVd21m6Y"
-                : "https://www.youtube.com/embed/BqcxVd21m6Y?loop=1&mute=1&playlist=BqcxVd21m6Y"
+              links 
             }
             // src={isMobile
             //   ? "https://player.vimeo.com/video/1078921802?background=1&autopause=0&title=0&byline=0&portrait=0"

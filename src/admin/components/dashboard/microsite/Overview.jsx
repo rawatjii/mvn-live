@@ -13,19 +13,19 @@ const OverviewMicroSite = () => {
   const location = useLocation();
   const locationType = location.pathname.split("/").pop();
   const projectSectionApi = generateApi("projec-sections");
-  const getEditDataApi= generateApi("show-by-project-with-sectionType",0);
-  const {getEditData} = useCrud(getEditDataApi);
+  const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
+  const { getEditData } = useCrud(getEditDataApi);
   const { createItem, editItem } = useCrud(projectSectionApi);
 
 
-    const formFields = [{
+  const formFields = [{
     sectionName: "Overview Details",
     visible: true,
     fields: [
       { name: "heading", label: "Heading", type: "text", placeholder: "Enter Heading", col: 6, isRequired: true },
       { name: "sub_heading", label: "Sub Heading", type: "text", placeholder: "Enter Sub Heading", col: 6 },
       { name: "short_description", label: "Additional Heading", type: "text", placeholder: "Enter Additional Heading", col: 4 },
-      { name: "alt", label: "Sizes Heading", type: "text", col: 4, placeholder: "Enter Sizes Heading",},
+      { name: "alt", label: "Sizes Heading", type: "text", col: 4, placeholder: "Enter Sizes Heading", },
       { name: "iframe", label: "Sizes", type: "text", placeholder: "Enter Description", col: 4 },
       { name: "yt_url", label: "Youtube Url", type: "text", placeholder: "Enter Youtube Url", col: 4 },
       { name: "description", label: "Description", type: "textarea", placeholder: "Enter Description", col: 8 },
@@ -61,14 +61,14 @@ const OverviewMicroSite = () => {
       console.error("Error updating project section:", error);
     }
   };
-  useEffect(()=>{
+  useEffect(() => {
     fetchEditData()
-  },[]) 
+  }, [])
 
   return (
     <CustomSection customClass="d-block">
       <div className="row">
-        <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchEditData}/>
+        <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchEditData} />
         {formFields.filter(section => section.visible).map(section => (
           <div className="col col-12" key={section.sectionName}>
             <MicroBox>
@@ -77,7 +77,7 @@ const OverviewMicroSite = () => {
                 dynamicFields={section.fields}
                 defaultData={editData}
                 isBanner={false}
-                  onSubmit={editData ? handleEdit : handleCreate}
+                onSubmit={editData ? handleEdit : handleCreate}
               />
             </MicroBox>
           </div>

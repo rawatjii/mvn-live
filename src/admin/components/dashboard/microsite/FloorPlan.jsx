@@ -46,7 +46,7 @@ const FloorPlans = () => {
   const floorPlansFields = [
         { name: "heading", label: "Title", type: "text", col: 6,isRequired:true },
         { name: "unit_type", label: "Unit Type", type: "text", col: 6,isRequired:true },
-        { name: "area", label: "Area", type: "text", col: 6,isRequired:true },
+        { name: "area", label: "Area", type: "text", col: 6 },
         { name: "sizes", label: "Size", type: "text", col: 6 },
         { name: "image", label: "Image", type: "file", col: 6,isRequired:true },
         { name: "alternative_image", label: "Alternate Image", type: "file", col: 6 },

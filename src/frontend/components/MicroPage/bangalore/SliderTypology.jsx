@@ -16,7 +16,7 @@ const SliderTypology = ({ data }) => {
       </div>
       <Container>
         <Tabs defaultActiveKey="0" id="typology-tabs" className="mb-3 pb-0">
-          {floorPlanData?.map((key, index) => (
+          {floorPlanData?.filter((item, index, self)=> index == self.findIndex(t=>t.unit_type == item.unit_type)).map((key, index) => (
             <Tab eventKey={index} title={key.unit_type} key={key}>
               <CustomSlider className="typology_slider" slides={floorPlanData?.filter((item)=>item.unit_type == key.unit_type)} />
             </Tab>

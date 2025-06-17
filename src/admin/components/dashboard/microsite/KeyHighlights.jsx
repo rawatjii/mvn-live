@@ -9,7 +9,7 @@ import CustomTable from "../utilities/custom-table/CustomTable";
 import CustomPagination from "../utilities/pagination/CustomPagination";
 import StatusOrder from "../utilities/Status-order";
 
-const LocationMap = () => {
+const KeyHighlights = () => {
   const [editData, setEditData] = useState(null);
   const [editlocationMapData, setEditlocationMapData] = useState(null);
   const { project_id } = useParams();
@@ -18,14 +18,14 @@ const LocationMap = () => {
   
   const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
-  const locationMapApi = generateApi("project-location-advantage");
-  const locationDataApi = generateApi(`project-location-advantage/${project_id}`);
+  const locationMapApi = generateApi("project-key-highlight");
+  const locationDataApi = generateApi(`project-key-highlight/${project_id}`);
   
   const { editItem, createItem } = useCrud(projectSectionsApi);
-  const {data: locationMapItems, createItem: locationMapCreateItem, editItem: locationMapEditItem, deleteItem,getItems: fetchlocationMapItems} = useCrud(locationMapApi);
+  const {data: locationMapItems, createItem: keyHighlightCreateItem, editItem: locationMapEditItem, deleteItem,getItems: fetchlocationMapItems} = useCrud(locationMapApi);
   
   const { getEditData } = useCrud(getEditDataApi);
-  const { data:getLocationAdvantageData } = useCrud(locationDataApi);
+  const { data:getKeyHighlightsData } = useCrud(locationDataApi);
   
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
@@ -33,20 +33,19 @@ const LocationMap = () => {
   const metaFields = [
     { name: "heading", label: "Heading", type: "text",placeholder:"Enter Heading", col: 6 },
     { name: "sub_heading", label: "Sub Heading", type: "text",placeholder:"Enter Sub Heading", col: 6 },
-    { name: "image", label: "Image", type: "file", col: 6 },
-    { name: "alternative_image", label: "Alternate Image", type: "file", col: 6 },
-    { name: "alt", label: "Alt", type: "text", col: 12 ,placeholder:"Enter Alt",},
-     { name: "description", label: "Description", type: "textarea",placeholder:"Enter Discription", col: 12 },
+    { name: "image", label: "Image", type: "file", col: 4 },
+    { name: "alternative_image", label: "Alternate Image", type: "file", col: 4 },
+    { name: "optional_images", label: "Mob Background Image", type: "file", col: 4 },
+    { name: "alt", label: "Alt", type: "text", col:12 ,placeholder:"Enter Alt",},
   ];
 
   const locationMapFields = [
-        { name: "designation", label: "Designation", type: "text", col: 6,placeholder:"Enter Designation",isRequired:true },
-        { name: "distance", label: "Distance", type: "text", col: 6,placeholder:"Enter Distance",isRequired:true },
+        { name: "heading", label: "Point Title", type: "text", col: 12,placeholder:"Enter Point",isRequired:true },
   ];
 
   const fetchMetadata = async () => {
     const formData = new FormData();
-    formData.append("section_type", locationType);
+    formData.append("section_type", "key-highlights");
     formData.append("project_id", project_id);
     try {
       const data = await getEditData(formData);
@@ -66,7 +65,6 @@ const LocationMap = () => {
 
   const handleCreateMeta = async (formData) => {
     try {
-      formData.append("is_type", "image");
       await createItem(formData);
       await fetchMetadata();
     } catch (error) {
@@ -83,10 +81,10 @@ const LocationMap = () => {
     }
   };
 
-  const handleCreatelocationMap = async (formData) => {
+  const handleCreateFeaturePoint = async (formData) => {
     try {
-      formData.append("is_type", "locationMap");
-      await locationMapCreateItem(formData);
+      // formData.append("is_type", "locationMap");
+      await keyHighlightCreateItem(formData);
       await fetchAlllocationMapItems();
       setEditlocationMapData(null);
     } catch (error) {
@@ -125,16 +123,15 @@ const LocationMap = () => {
 
   const columns = [
     { key: "", label: "S.No." },
-    { key: "designation", label: "Designation", type: "text" },
-    { key: "distance", label: "Distance", type: "text" },
+    { key: "heading", label: "Point Title", type: "text" },
   ];
 
-  const paginatedData = getLocationAdvantageData?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
+  const paginatedData = getKeyHighlightsData?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
   return (
     <CustomSection>
       <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchMetadata}/>
       <MicroBox>
-        <CustomTitle title="Location Map" />
+        <CustomTitle title="Features" />
         <CustomFormMicrosite
           isBanner={false}
           dynamicFields={metaFields}
@@ -143,18 +140,18 @@ const LocationMap = () => {
         />
       </MicroBox>
       <MicroBox>
-        <CustomTitle title={editlocationMapData ? "Edit location map Details" : "Add location map Details"} />
+        <CustomTitle title={editlocationMapData ? "Edit Feature Points" : "Add Feature Points"} />
         <CustomFormMicrosite
           isBanner={false}
           dynamicFields={locationMapFields}
           defaultData={editlocationMapData}
-          onSubmit={editlocationMapData ? handleEditlocationMap : handleCreatelocationMap}
+          onSubmit={editlocationMapData ? handleEditlocationMap : handleCreateFeaturePoint}
           submitButtonText={editlocationMapData ? "Update" : "Create"}
           cancelButton={editlocationMapData ? { text: "Cancel", onClick: handleCancelEdit } : null}
         />
       </MicroBox>
       <MicroBox>
-        <CustomTitle title="location Map Items" />
+        <CustomTitle title="Features Items" />
         <CustomTable
           columns={columns}
           data={paginatedData}
@@ -167,7 +164,7 @@ const LocationMap = () => {
         />
         <CustomPagination
           currentPage={currentPage}
-          totalPages={Math.ceil((getLocationAdvantageData?.length || 0) / itemsPerPage)}
+          totalPages={Math.ceil((getKeyHighlightsData?.length || 0) / itemsPerPage)}
           onPageChange={setCurrentPage}
         />
       </MicroBox>
@@ -175,4 +172,4 @@ const LocationMap = () => {
   );
 };
 
-export default LocationMap;
+export default KeyHighlights;

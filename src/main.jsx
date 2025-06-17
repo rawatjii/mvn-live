@@ -98,6 +98,7 @@ import OurValues from "./admin/OurValues.jsx";
 import Timeline from "./admin/components/aboutus/Timeline.jsx";
 import Team from "./admin/components/aboutus/Team.jsx";
 import Sizes from "./admin/components/dashboard/microsite/Sizes.jsx";
+import KeyHighlights from "./admin/components/dashboard/microsite/KeyHighlights.jsx";
 // import Apartment from "./admin/components/dashboard/microsite/Apartment.jsx";
 const router = createBrowserRouter([
   {
@@ -332,6 +333,7 @@ const router = createBrowserRouter([
             {path:"typologies", element:<Typologies />}, 
             {path:"floor-plan", element:<FloorPlans />}, 
             {path:"location-map", element:<LocationMap />}, 
+            {path:"key-highlights", element:<KeyHighlights />}, 
             {path:"mvn-mall", element:<MvnMall />}, 
            ] 
         },  

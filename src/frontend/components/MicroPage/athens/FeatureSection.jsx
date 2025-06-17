@@ -3,9 +3,13 @@ import PropTypes from 'prop-types';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import "./feature_section.css";
+import { BACKEND_IMAGE_URL } from '../../../../config/config';
+import useFetchData from '../../../utils/apiHelper';
 
 const FeatureSection = ({ data }) => {
-  const{title,desc,src,list,bgImg}=data;
+  const { heading, sub_heading, image, alternative_image, alt, optional_images, project_id } = data;
+  const { data:keyHighlightsData, loading } = useFetchData(`project/${project_id}/key-highlight`);
+
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -48,43 +52,43 @@ const FeatureSection = ({ data }) => {
 
   return (
     <section className="feature" aria-label="Feature Section">
-        <div className="row">
-            <div className="col-lg-6">
-                
+      <div className="row">
+        <div className="col-lg-6">
+
           <div className="box-title m-v">
-        <h1 className="main-title">{title}</h1>
-        <p className="main-pera">{desc}</p>
-      </div>
-      <img
-        className="d-v elevation reveal"
-        src={src}
-        alt="Elevation feature"
-      />
-        <div className="m-v overlap" >
-    <img className="elevation bg-elevation" src={bgImg} alt="elevation background image"/>
-     <img className="elevation fr-elevation" src={src} alt='elevation front image'/>      
-  </div>
+            <h1 className="main-title">{heading}</h1>
+            <p className="main-pera">{sub_heading}</p>
+          </div>
+          <picture className='d-v'>
+            <source srcset={BACKEND_IMAGE_URL + alternative_image} />
+            <img className="d-v elevation reveal" src={BACKEND_IMAGE_URL + image} alt="Elevation feature" />
+          </picture>
+          
+          <div className="m-v overlap" >
+            <img className="elevation bg-elevation" src={BACKEND_IMAGE_URL + optional_images} alt="elevation background image" />
+            <img className="elevation fr-elevation" src={BACKEND_IMAGE_URL + image} alt='elevation front image' />
+          </div>
+        </div>
+        <div className="col-lg-6">
+          <div className="elevation-content">
+            <div className="container">
+              <div className="inner-box" data-speed="clamp(0.9)">
+                <h1 className="main-title d-v">{heading}</h1>
+                <p className="main-pera d-v">{sub_heading}</p>
+
+
+                <ul>
+                  {keyHighlightsData?.map((feature, index) => (
+                    <li key={index}>{feature.heading}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <div className="col-lg-6">
-            <div className="elevation-content">
-        <div className="container">
-          <div className="inner-box" data-speed="clamp(0.9)">
-            <h1 className="main-title d-v">{title}</h1>
-            <p className="main-pera d-v">{desc}</p>
-
-
-            <ul>
-              {list.map((feature, index) => (
-                <li key={index}>{feature}</li>
-              ))}
-            </ul>
           </div>
         </div>
       </div>
-            </div>
-        </div>
 
-  
+
     </section>
   );
 };
