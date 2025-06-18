@@ -15,7 +15,7 @@ const PeacockSection = React.memo(({ data }) => {
 
   return (
     <>
-      {!image && json ? (
+      {(!image && json) || isMobile ? (
         <>
           <LottieAnimationSection
             customClass="style2"

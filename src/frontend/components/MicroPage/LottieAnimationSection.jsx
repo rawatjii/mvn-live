@@ -38,8 +38,6 @@ const LottieAnimationSection = React.memo(
     const { isMobile } = useMatches();
     const { sub_heading, description, json, showAwards, section_type, heading = undefined } = data;
 
-    console.log('section_type',section_type);
-
     // Ref for the interseciton observer
     const observerRef = useRef(null);
 
@@ -177,13 +175,13 @@ const LottieAnimationSection = React.memo(
               className={`LottieAnimationContainer ${anClass}`}
               aria-label="LottieAnimation Section"
             >
-              {(section_type !== 'party' && section_type !== 'masterbedroom' )&& heading && (
+              {(section_type !== 'party' && section_type !== 'masterbedroom'&& section_type !== 'Peacock' )&& heading && (
                 <div className="heading_div mb_60 mb_sm_30">
                   <h4 className="title title_style1 text-center">{heading}</h4>
                 </div>
               )}
               <div ref={containerRef}>
-                <div className="frames_content">
+                <div className={`frames_content ${(section_type == 'Peacock' || section_type == 'party' || section_type == 'masterbedroom') ? 'frames_content1' : undefined}`}>
                   <div className="position-relative h_sm_100">
                     <div className="position-relative h_sm_100">
                       <Watermark customClass={customClass} />
@@ -214,7 +212,7 @@ const LottieAnimationSection = React.memo(
                     <div className="about">
                       <CustomCard
                         className="px-0 pb-0"
-                        title={(section_type == 'party' || section_type == 'masterbedroom') ? heading : sub_heading}
+                        title={(section_type == 'party' || section_type == 'masterbedroom' || section_type == 'Peacock') ? heading : sub_heading}
                         desc={description}
                         showAwards={showAwards}
                       />

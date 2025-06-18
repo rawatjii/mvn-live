@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import lottie from "lottie-web";
-import Watermark from '../../../common/watermark/Index';
+import Watermark from "../../../common/watermark/Index";
 import { API_URL, BACKEND_IMAGE_URL } from "../../../config/config";
 import { useMatches } from "../../../theme/theme";
 import useFetchData from "../../utils/apiHelper";
@@ -32,9 +32,11 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
   const { isMobile } = useMatches();
   const isLaptop = window.innerWidth <= 1400;
 
-  const { data:typologyData, loading:typologyLoading } = useFetchData(`project/${data.project_id}/typologies`);
+  const { data: typologyData, loading: typologyLoading } = useFetchData(
+    `project/${data.project_id}/typologies`
+  );
 
-  const {heading, json} = data;
+  const { heading, json } = data;
 
   useEffect(() => {
     // Load Lottie animation
@@ -104,11 +106,13 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
 
         // Update content visibility
         contentRefs.current.forEach((el, i) => {
-          if (el) el.style.display = i === segment.contentIndex ? "block" : "none";
+          if (el)
+            el.style.display = i === segment.contentIndex ? "block" : "none";
         });
 
         imageContentRefs.current.forEach((el, i) => {
-          if (el) el.style.display = i === segment.contentIndex ? "block" : "none";
+          if (el)
+            el.style.display = i === segment.contentIndex ? "block" : "none";
         });
 
         // Update arrow position
@@ -130,12 +134,15 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
     };
   }, [loading, loadingComplete, totalFrames, segments, isLaptop]);
 
-  console.log('typologyData',typologyData);
-  
+  console.log("typologyData", typologyData);
 
   return (
     <>
-      <section ref={containerRef} className="section typology_section pb-0" aria-label="Typology Section">
+      <section
+        ref={containerRef}
+        className="section typology_section pb-0"
+        aria-label="Typology Section"
+      >
         <div className="heading_div mb_60 mb_sm_30">
           <h4 className="title title_style1 text-center">{data.heading}</h4>
         </div>
@@ -151,7 +158,6 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
           </div>
         </div>
 
-
         <div className="typology_content">
           <div className="typology-before-line">
             <div className="diamond_img_strip">
@@ -163,38 +169,39 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
               />
             </div>
 
-            {
-              typologyData && typologyData?.map((item, index)=>(
+            {typologyData &&
+              typologyData?.map((item, index) => (
                 <div
                   ref={(el) => (contentRefs.current[index] = el)}
                   className="content-box"
                   style={{ display: "block" }}
                 >
                   <h1>{item.heading}</h1>
-                  <p>
-                    {item.short_description}
-                  </p>
+                  <p>{item.short_description}</p>
                 </div>
-              ))
-            }
-
+              ))}
           </div>
         </div>
 
         <div className="desktop-view-typo-images">
-          {typologyData && typologyData?.map((item, index)=>(
-            <div
+          {typologyData &&
+            typologyData?.map((item, index) => (
+              <div
                 ref={(el) => (imageContentRefs.current[index] = el)}
                 className="typologies-images"
                 style={{ display: "block" }}
               >
                 <picture>
                   <source srcset={BACKEND_IMAGE_URL + item.image} />
-                  <img className="img-fluid" src={BACKEND_IMAGE_URL + item.alternative_image} alt={item.alt} loading="lazy" />
+                  <img
+                    className="img-fluid"
+                    src={BACKEND_IMAGE_URL + item.alternative_image}
+                    alt={item.alt}
+                    loading="lazy"
+                  />
                 </picture>
               </div>
-          ))}
-          
+            ))}
         </div>
       </section>
     </>

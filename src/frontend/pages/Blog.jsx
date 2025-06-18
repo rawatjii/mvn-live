@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import Layout from "../components/Layout";
 import BlogLists from "../components/blog/BlogLists";
 import { API_URL } from "../../config/config";
+import useFetchData from "../utils/apiHelper";
 
 const headingIconImg = `${API_URL}images/icons/heading-icon-img.webp`;
 
@@ -13,6 +14,7 @@ function Blog() {
   const [newLoadingCount, setNewLoadingCount] = useState(
     Number(localStorage.getItem("count"))
   );
+  const { data, loading } = useFetchData("page/page-section/blog");
 
   const dispatch = useDispatch();
   const titleRef = useRef();
@@ -51,7 +53,7 @@ function Blog() {
                     className="img-fluid title_plane1"
                   />
                   <h4 ref={titleRef} className="title title_style1 text-center">
-                    Perspectives That Redefine: Welcome to Our Blogs
+                    {data?.[1].heading}
                   </h4>
                 </div>
               </Container>

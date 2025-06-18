@@ -5017,6 +5017,11 @@ table.bg_transparent{
 
   /* peacock section */
 
+  .frames_content.frames_content1{
+    height: 100vh;
+    position: relative;
+  }
+
   .peacock_section {
 
     .about{
