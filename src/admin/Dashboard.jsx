@@ -36,6 +36,7 @@ import Testimonials from "./components/dashboard/Testimonials";
 import Pages from './components/dashboard/Pages/Index'
 import { Link } from "react-router-dom";
 import { FRONTEND_URL } from "../config/config";
+import ProjectLists from "./components/dashboard/ProjectLists";
 
 const data = [
   { id: 1, name: "Godrej Properties", hot: true, calculator: true },
@@ -355,60 +356,7 @@ const Dashboard = () => {
             {/* <!----------right-area---------> */}
 
             <div className="inner-left">
-              <div className="box">
-                <h6>
-                  <i className="fa fa-building" aria-hidden="true"></i> Project
-                  List
-                </h6>
-                <div className="inner-table switch-table">
-                  <table className="table">
-                    <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>Hot</th>
-                        <th>Calculator</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {items.map((item) => (
-                        <tr key={item.id}>
-                          <td
-                            className={
-                              item.name === "Godrej Properties"
-                                ? "name-heading"
-                                : ""
-                            }
-                          >
-                            {item.name}
-                          </td>
-                          <td>
-                            <label className="switch">
-                              <input
-                                type="checkbox"
-                                checked={item.hot}
-                                onChange={() => handleToggle(item.id, "hot")}
-                              />
-                              <span className="slider round"></span>
-                            </label>
-                          </td>
-                          <td>
-                            <label className="switch">
-                              <input
-                                type="checkbox"
-                                checked={item.calculator}
-                                onChange={() =>
-                                  handleToggle(item.id, "calculator")
-                                }
-                              />
-                              <span className="slider round"></span>
-                            </label>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+              <ProjectLists items={items} />
             </div>
             {/* <!----------right-area---------> */}
           </div>
