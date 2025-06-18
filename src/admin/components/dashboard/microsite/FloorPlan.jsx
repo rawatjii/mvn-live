@@ -11,6 +11,7 @@ import StatusOrder from "../utilities/Status-order";
 
 const FloorPlans = () => {
   const [editData, setEditData] = useState(null);
+  const [selectedTheme, setSelectedTheme] = useState(1);
   const [editfloorPlansData, setEditfloorPlansData] = useState(null);
   const { project_id } = useParams();
   const location = useLocation();
@@ -39,7 +40,18 @@ const FloorPlans = () => {
   const itemsPerPage = 5;
 
   const metaFields = [
-    { name: "heading", label: "Heading", type: "text", col: 12 },
+    { name: "heading", label: "Heading", type: "text", col: 6 },
+    { name: "is_type", label: "Theme", type: "select", col: 6, options:[
+      {
+        label:'Theme 1',
+        value:1,
+      },
+      {
+        label:'Theme 2',
+        value:2,
+      }
+    ] , 
+    selectedVal:selectedTheme},
     { name: "description", label: "Description", type: "textarea", col: 12 },
   ];
 
@@ -83,6 +95,10 @@ const FloorPlans = () => {
   };
 
   const handleEditMeta = async (formData) => {
+    // console.log('formData11',formData);
+    // for(let [key, value] of formData.entries()){
+    //   console.log(`${key}:`, value);
+    // }
     try {
       await editItem(editData.id, formData);
       await fetchMetadata();
@@ -143,12 +159,13 @@ const FloorPlans = () => {
     <CustomSection>
        <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchMetadata}/>
       <MicroBox>
-        <CustomTitle title="Overview" />
+        <CustomTitle title="Floor Plan Overview" />
         <CustomFormMicrosite
           isBanner={false}
           dynamicFields={metaFields}
           defaultData={editData}
           onSubmit={editData ? handleEditMeta : handleCreateMeta}
+          setValueVia={setSelectedTheme}
         />
       </MicroBox>
       <MicroBox>

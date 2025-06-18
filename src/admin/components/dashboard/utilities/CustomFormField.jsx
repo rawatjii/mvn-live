@@ -177,10 +177,10 @@ const CustomFormField = ({
                 name={name}
                 className="form-control w-100"
                 onChange={onChange}
-                value={value}
+                value={selectedVal ? selectedVal : value}
                 required
               >
-                <option value="" selected>
+                <option value="" disabled>
                   Select value
                 </option>
                 {options?.map((option, index) => (

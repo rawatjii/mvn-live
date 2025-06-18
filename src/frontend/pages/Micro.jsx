@@ -27,6 +27,7 @@ import useFetchData from "../utils/apiHelper";
 import LazyLoadComponent from "../../common/LazyLoadComponent";
 import SliderTypology from "../components/MicroPage/bangalore/SliderTypology";
 import FeatureSection from "../components/MicroPage/athens/FeatureSection";
+import MicroFloorPlan from "../components/MicroPage/FloorPlan";
 
 const headerSidebarDesktopImg = `${API_URL}images/aero-gurgaon/header/sidebar.webp`;
 
@@ -335,7 +336,7 @@ const MicroPage = () => {
                 {section.section_type === "floor-plan" && (
                   <LazyLoadComponent margin="200px" debugName="floor-plan">
                     <div ref={(el) => (sectionRefs.current.MVNMALL = el)}>
-                      <SliderTypology data={section} />
+                      {section.is_type == 'video' ? <MicroFloorPlan data={section} /> : <SliderTypology data={section} />}
                     </div>
                   </LazyLoadComponent>
                 )}

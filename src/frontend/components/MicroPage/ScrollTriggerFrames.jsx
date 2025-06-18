@@ -10,7 +10,7 @@ import { debounce } from "lodash"; // Add lodash debounce for optimized resize
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ScrollTriggerFrames = ({ isMvnLogo, data, onLoadComplete, onBannerExit, isMainBanner }) => {
+const ScrollTriggerFrames = ({ isMvnLogo, data, onLoadComplete, onBannerExit, isMainBanner, ...props }) => {
   const canvasRef = useRef(null);
   const sectionRef = useRef(null);
   const [images, setImages] = useState([]);
@@ -31,15 +31,13 @@ const ScrollTriggerFrames = ({ isMvnLogo, data, onLoadComplete, onBannerExit, is
   }, [isMainBanner, onBannerExit]);
 
   const totalFramesMobile = useMemo(
-    () => (isMobile ? data.frameCounts.mobileFrameCounts : data.frameCounts.desktopFrameCounts),
-    [isMobile, data.frameCounts]
+    () => (isMobile ? props.mobileFrameCounts : props.desktopFrameCounts),
+    [isMobile, props.mobileFrameCounts, props.desktopFrameCounts]
   );
 
-  console.log(data.path.mobilePath,"PATH");
-  console.log(data.path.desktopPath,"PATH");
   const imagePath = useMemo(
-    () => (isMobile ? data.path.mobilePath : data.path.desktopPath),
-    [isMobile, data.path]
+    () => props.path,
+    [isMobile, props.path]
   );
 
   const cardData = useMemo(

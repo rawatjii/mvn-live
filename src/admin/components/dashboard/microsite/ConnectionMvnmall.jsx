@@ -19,9 +19,11 @@ const ConnectionMVNMall = () => {
   const projectSectionsApi = generateApi("projec-sections");
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
   const ConnectionmvnMallApi = generateApi(`project/${project_id}/connection_mall`);
+  const ConnectionmvnMallApi1 = generateApi(`project-amenities`);
   
   const { editItem, createItem } = useCrud(projectSectionsApi);
-  const { data: ConnectionmvnMallItems, createItem: ConnectionmvnMallCreateItem, editItem: ConnectionmvnMallEditItem, deleteItem,fetchAll: fetchConnectionmvnMallItems} = useCrud(ConnectionmvnMallApi);
+  const { data: ConnectionmvnMallItems} = useCrud(ConnectionmvnMallApi);
+  const {createItem: ConnectionmvnMallCreateItem,fetchAll: fetchConnectionmvnMallItems,  editItem: ConnectionmvnMallEditItem,  deleteItem} = useCrud(ConnectionmvnMallApi1);
   
   const { getEditData } = useCrud(getEditDataApi);
   

@@ -12,6 +12,7 @@ import "swiper/css";
 import "yet-another-react-lightbox/styles.css";
 
 import CustomModal from "../../../common/Modal";
+import useFetchData from "../../utils/apiHelper";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,8 +21,10 @@ const MicroFloorPlan = React.memo(({ data }) => {
   const [index, setIndex] = useState(-1);
   const [isShowModal, setIsShowModal] = useState(false);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
-
-  const { floorPlanData, title } = data;
+  
+  
+  const { heading, project_id } = data;
+  const { data:floorPlanData, loading } = useFetchData(`project/${project_id}/floor-plan`);
 
   const showModal = useCallback(() => {
     setIsShowModal(true);
@@ -55,18 +58,47 @@ const MicroFloorPlan = React.memo(({ data }) => {
   return (
     <section className="section floor_plan_section pb-0" aria-label="Floor Plan Section">
       <div className="heading_div mb_60 mb_sm_30">
-        <h4 className="title title_style1 text-center" ref={titleRef}>{title}</h4>
+        <h4 className="title title_style1 text-center" ref={titleRef}>{heading}</h4>
       </div>
 
       <Container>
         {isDesktop ? (
           <div className="floor_plan_data">
-            {floorPlanData.map((item, index) => (
+            {floorPlanData?.map((item, index) => (
               <div key={index} className="accordion-item open">
-                <h2 className="accordion-header">{item.title}</h2>
+                <h2 className="accordion-header">{item.heading}</h2>
                 <div className="accordion-body">
                   <Swiper pagination={true} className="mySwiper">
-                    {item.thumbnail.map((image, index) => (
+                    {!Array.isArray(item.image) ? (
+                      <SwiperSlide>
+                      <div
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          position: "relative",
+                        }}
+                      >
+                        <img src={item.image} alt="mvn floor plan image" loading="lazy" />
+                        <div
+                          style={{
+                            position: "absolute",
+                            top: 0,
+                            left: 0,
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            background: '#00000030'
+                          }}
+                        >
+                          <Button type="submit" className="btn_style3 r_100" onClick={showModal}>
+                            View Layouts
+                          </Button>
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                    ) : item.image.map((image, index) => (
                       <SwiperSlide key={image.src + index}>
                         <div
                           style={{
@@ -102,13 +134,42 @@ const MicroFloorPlan = React.memo(({ data }) => {
             ))}
           </div>
         ) : (
-          <Accordion defaultActiveKey={floorPlanData.map((_, i) => i.toString())} className="floor_plan_data">
-            {floorPlanData.map((item, index) => (
+          <Accordion defaultActiveKey={floorPlanData?.map((_, i) => i.toString())} className="floor_plan_data">
+            {floorPlanData?.map((item, index) => (
               <Accordion.Item key={index} eventKey={index.toString()} >
-                <Accordion.Header>{item.title}</Accordion.Header>
+                <Accordion.Header>{item.heading}</Accordion.Header>
                 <Accordion.Body>
                 <Swiper pagination={true} className="mySwiper">
-                  {item.thumbnail.map((image, index) => (
+                  {!Array.isArray(item.image) ? (
+                    <SwiperSlide>
+                    <div
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        position: "relative",
+                      }}
+                    >
+                      <img src={item.image} alt="mvn floor plan image" loading="lazy" />
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: 0,
+                          left: 0,
+                          width: "100%",
+                          height: "100%",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          background: '#00000030'
+                        }}
+                      >
+                        <Button type="submit" className="btn_style3" onClick={showModal}>
+                          View Layouts
+                        </Button>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                  ) : item.image.map((image, index) => (
                     <SwiperSlide>
                       <div
                         style={{
@@ -151,15 +212,15 @@ const MicroFloorPlan = React.memo(({ data }) => {
       <Lightbox
         open={index >= 0}
         close={() => setIndex(-1)}
-        slides={floorPlanData.thumbnail}
+        slides={floorPlanData}
         plugins={[Zoom]}
         carousel={{
-          finite: floorPlanData.length <= 1,
+          finite: floorPlanData?.length <= 1,
         }}
         render={{
-          buttonNext: floorPlanData.length > 1 ? undefined : () => null,
-          buttonPrev: floorPlanData.length > 1 ? undefined : () => null,
-          slide: floorPlanData.length > 1 ? undefined : () => null,
+          buttonNext: floorPlanData?.length > 1 ? undefined : () => null,
+          buttonPrev: floorPlanData?.length > 1 ? undefined : () => null,
+          slide: floorPlanData?.length > 1 ? undefined : () => null,
         }}
       />
     </section>

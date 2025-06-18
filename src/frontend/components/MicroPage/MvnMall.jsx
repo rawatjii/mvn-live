@@ -67,9 +67,7 @@ const MvnMall = ({ data }) => {
     return () => {
       if (trigger) trigger.kill();
     };
-  }, [isMobile]);
-  
-  console.log('mallData',mallData);
+  }, [isMobile, mallData]);
   
 
   if (loading) return <div className="text-center py-5">Loading...</div>;
@@ -84,16 +82,10 @@ const MvnMall = ({ data }) => {
         <>
           <Container>
             <div className="heading_div mb_60 mb_sm_30">
-              <h4 className="title title_style1 text-center">MVN Mall</h4>
+              <h4 className="title title_style1 text-center">{heading}</h4>
             </div>
             <p className="des_style1 text-center mb_20">
-              Experience a pollution-free haven at MVN's iconic masterpiece,
-              where every breath you take is purified by advanced air
-              filtration systems. Nestled above MVN mall, everything you
-              need—from gourmet dining to designer boutiques and private
-              cinemas—is just an elevator ride away. This is a sanctuary where
-              luxury and convenience come together, offering you everything at
-              your doorstep, so you never need to leave.
+              {description}
             </p>
           </Container>
 
@@ -118,14 +110,14 @@ const MvnMall = ({ data }) => {
               )}
             </div>
           )}
-
-          {/* <ZoomOutImage dataFrames={data} /> */}
+ 
+          <ZoomOutImage dataFrames={data} path={`${API_URL}assets/mvn-mall/mvn-mall/`} mobileFrameCounts="102" desktopFrameCounts="102" />
 
           <div ref={secRef}>
             <div className="image_animation">
               <img
                 ref={imageRef}
-                src={mvnMallImg}
+                src={BACKEND_IMAGE_URL + mallData?.[1].image}
                 alt="mvn mall animation"
                 className="img-fluid"
               />
