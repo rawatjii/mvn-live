@@ -14,6 +14,7 @@ import useCrud from "../../hooks/useCrud";
 
 // Simulated backend response
 const metaFields = [
+    { name: "heading", value:'Heading', label: "Heading", type:'hidden', col: 12, isLeft: true, },
     { name: "type", value:'event', label: "Type", type:'hidden', col: 12, isLeft: true },
     { name: "links", label: "Url", type: "text", col: 12, isLeft: true },
     { name: "alt", label: "Alt Tag", type: "text", col: 12, isLeft: true },
@@ -29,7 +30,6 @@ const metaFields = [
 
 const columns = [
   { key: "id", label: "S.No." },
-  { key: "heading", label: "Heading" },
   { key: "alt", label: "Alt Tag" },
   { key: "image", label: "Image", type: "file" },
 ];
@@ -41,6 +41,7 @@ const Events = () => {
       useCrud(aboutsApi);
   
     const handleCreate = (formData) => {
+      formData.append("heading","test")
       formData.append("type","event")
       createItem(formData)
     };

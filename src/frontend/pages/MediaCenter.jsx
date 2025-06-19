@@ -39,47 +39,6 @@ function MediaCenter() {
     ],
   };
 
-  const newsImages = {
-    isshow: true,
-    galleryData: [
-      {src:`${CONFIG.API_URL}images/mediacenter/news-img-8.webp`, alt:"news Image8"},
-      { src: `${CONFIG.API_URL}images/mediacenter/news-img-7.webp`, alt: "Image 7" },
-      { src: `${CONFIG.API_URL}images/mediacenter/news-img-1.jpeg`, alt: "Image 1" },
-      { src: `${CONFIG.API_URL}images/mediacenter/news-img-2.jpeg`, alt: "Image 2" },
-      { src: `${CONFIG.API_URL}images/mediacenter/news-img-3.jpeg`, alt: "Image 3" },
-      { src: `${CONFIG.API_URL}images/mediacenter/news-img-4.jpeg`, alt: "Image 4" },
-      { src: `${CONFIG.API_URL}images/mediacenter/news-img-5.jpeg`, alt: "Image 5" },
-      { src: `${CONFIG.API_URL}images/mediacenter/news-img-6.jpeg`, alt: "Image 6" },
-    ],
-  };
-
-
-  const pressReleaseData = [
-    {
-      thumbnail: `${CONFIG.API_URL}images/mediacenter/theprint-thubmnail.jpg`,
-      pdf: `${CONFIG.API_URL}images/mediacenter/theprint.pdf`,
-      title: "Press Release 1",
-      presscontent:
-        "MVN Infrastructure Celebrates Navratri with a Joyous Mata Ki Chowki",
-      EventDate: "10 October, 2024",
-    },
-    {
-      thumbnail: `${CONFIG.API_URL}images/mediacenter/daily-news-logo.jpg`,
-      pdf: `${CONFIG.API_URL}images/mediacenter/daily24x7news.pdf`,
-      title: "Press Release 2",
-      presscontent:
-        "MVN Infrastructure Celebrates Navratri with a Joyous Mata Ki Chowki",
-      EventDate: "10 October, 2024",
-    },
-    {
-      thumbnail: `${CONFIG.API_URL}images/mediacenter/edukida-logo.jpg`,
-      pdf: `${CONFIG.API_URL}images/mediacenter/edukida.pdf`,
-      title: "Press Release 3",
-      presscontent:
-        "MVN Infrastructure Celebrates Navratri with a Joyous Mata Ki Chowki",
-      EventDate: "10 October, 2024",
-    },
-  ];
 
   useEffect(() => {
     setNewLoadingCount(Number(localStorage.getItem('count')));
@@ -116,7 +75,7 @@ function MediaCenter() {
                   </h4>
                 </div>
                 <div className="media-news_offline">
-                  <OfflineMedia data={newsImages} />
+                  <OfflineMedia />
                 </div>
               </div>
 
@@ -147,7 +106,6 @@ function MediaCenter() {
             </div>
 
             <PressRelease
-              data={pressReleaseData}
               slidesPerView={3}
               spaceBetween={20}
             />

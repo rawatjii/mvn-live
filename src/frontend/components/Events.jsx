@@ -28,7 +28,7 @@ function Events() {
               >
                 <img
                   src={BACKEND_IMAGE_URL + item.image}
-                  alt={`mvn events ${index}`}
+                  alt={item.alt}
                   className="img-fluid event-video-banner"
                 />
 

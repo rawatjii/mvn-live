@@ -24,7 +24,7 @@ const OnlineMedia = () => {
               <p>{item.heading}</p>
               <div className="awa_posted d-md-flex justify-content-between align-items-center">
                 <span className="text-capitalize">
-                  <time>{new Date(item.created_at).toLocaleDateString('default', {
+                  <time>{new Date(item.date_at).toLocaleDateString('default', {
                     day:'numeric',
                     month:'long',
                     year: 'numeric'

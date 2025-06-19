@@ -14,6 +14,11 @@ function GallerySlider({ data, slidesPerView, spaceBetween, navigation }) {
 
     const images = data?.galleryData ? data.galleryData : data;
 
+    const lightboxSlides = images?.map((image)=>({
+        src:`${BACKEND_IMAGE_URL}${image.image.replace(/\\/g, "/")}`,
+        alt:image.alt || "Gallery image",
+    }))
+
     return (
         <div className="gallery_slider">
             <Swiper
@@ -56,7 +61,7 @@ function GallerySlider({ data, slidesPerView, spaceBetween, navigation }) {
                 <Lightbox
                     open={open}
                     close={() => setOpen(false)}
-                    slides={images}
+                    slides={lightboxSlides}
                     index={currentIndex}
                 />
             )}
