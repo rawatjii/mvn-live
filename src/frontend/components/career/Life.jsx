@@ -28,9 +28,7 @@ const LifeAtMvn = () => {
                 <div className="content-half h-100">
                   <div>
                     <h2>{data?.[0].heading}</h2>
-                    <p className="des_style1">
-                    {data?.[0].description}
-                    </p>
+                    <p className="des_style1" dangerouslySetInnerHTML={{__html:data?.[0]?.description}} />
                   </div>
                 </div>
               </div>
@@ -51,9 +49,7 @@ const LifeAtMvn = () => {
                   <div className="gd-inner h-100 d-grid align-items-center">
                     <div>
                       <h2>{data?.[1].heading}</h2>
-                      <p className="des_style1">
-                      {data?.[1].description}
-                      </p>
+                      <p className="des_style1" dangerouslySetInnerHTML={{__html:data?.[1]?.description}} />
                     </div>
                   </div>
                 </div>
@@ -89,9 +85,7 @@ const LifeAtMvn = () => {
                   <div className="gd-inner h-100 d-grid align-items-center">
                     <div>
                       <h2>{data?.[2].heading}</h2>
-                      <p className="des_style1">
-                      {data?.[2].description}
-                      </p>
+                      <p className="des_style1" dangerouslySetInnerHTML={{__html:data?.[1]?.description}} />
                     </div>
                   </div>
                 </div>
@@ -123,9 +117,7 @@ const LifeAtMvn = () => {
                 <div className="content-half h-100">
                   <div>
                     <h2>{data?.[3].heading}</h2>
-                    <p className="des_style1">
-                    {data?.[3].description}
-                    </p>
+                    <p className="des_style1" dangerouslySetInnerHTML={{__html:data?.[3]?.description}} />
                   </div>
                 </div>
               </div>

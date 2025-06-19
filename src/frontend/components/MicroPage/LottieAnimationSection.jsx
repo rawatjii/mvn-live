@@ -38,6 +38,8 @@ const LottieAnimationSection = React.memo(
     const { isMobile } = useMatches();
     const { sub_heading, description, json, showAwards, section_type, heading = undefined } = data;
 
+    console.log('data json', data);
+
     // Ref for the interseciton observer
     const observerRef = useRef(null);
 

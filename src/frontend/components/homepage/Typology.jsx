@@ -45,7 +45,7 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
       renderer: "canvas",
       loop: false,
       autoplay: false,
-      path: `${BACKEND_IMAGE_URL}${json}`,
+      path: `${json}`,
     });
 
     animationRef.current.addEventListener("data_ready", () => {
