@@ -26,7 +26,7 @@ const MicroLocationMap = ({ data, projectName }) => {
   const sizeRefs = useRef([]);
   const [isLocationMapOpen, setIsLocationMapOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const { project_id, heading, second_title, desc, locationSlider, modalIframe, image, sub_heading, description } =
+  const { project_id, heading, modalIframe, image, sub_heading, description, mb_image, mb_alternative_image, alt, alternative_image } =
     data;
 
   const locationMapImg = [
@@ -129,7 +129,12 @@ const MicroLocationMap = ({ data, projectName }) => {
               </button>
 
               <div onClick={() => setIsLocationMapOpen(true)}>
-                <img
+                <picture>
+                  <source srcset={window.innerWidth < 768 ? CONFIG.BACKEND_IMAGE_URL + mb_image : CONFIG.BACKEND_IMAGE_URL + image} />
+                  <img className="img-fluid" src={window.innerWidth < 768 ? CONFIG.BACKEND_IMAGE_URL + mb_alternative_image : CONFIG.BACKEND_IMAGE_URL + alternative_image} alt={alt} loading="lazy"/>
+                </picture>
+
+                {/* <img
                   src={CONFIG.BACKEND_IMAGE_URL + image}
                   alt="desktop map"
                   className="img-fluid d-none d-md-block"
@@ -140,7 +145,7 @@ const MicroLocationMap = ({ data, projectName }) => {
                   alt="mobile map"
                   className="img-fluid d-md-none"
                   loading="lazy"
-                />
+                /> */}
               </div>
             </div>
           </div>

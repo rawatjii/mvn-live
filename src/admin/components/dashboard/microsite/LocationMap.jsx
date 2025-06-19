@@ -35,6 +35,8 @@ const LocationMap = () => {
     { name: "sub_heading", label: "Sub Heading", type: "text",placeholder:"Enter Sub Heading", col: 6 },
     { name: "image", label: "Image", type: "file", col: 6 },
     { name: "alternative_image", label: "Alternate Image", type: "file", col: 6 },
+    { name: "mb_image", label: "Mobile Image", type: "file", col: 6 },
+    { name: "mb_alternative_image", label: "Mobile Alternate Image", type: "file", col: 6 },
     { name: "alt", label: "Alt", type: "text", col: 12 ,placeholder:"Enter Alt",},
      { name: "description", label: "Description", type: "textarea",placeholder:"Enter Discription", col: 12 },
   ];

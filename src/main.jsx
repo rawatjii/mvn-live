@@ -316,7 +316,7 @@ const router = createBrowserRouter([
             {path:"sizes", element:<Sizes />},
             {path:"large-elevation", element:<Elevation />},
             {path:"banner", element:<HeroSection />},
-            {path:"workthrough", element:<Walkthrough />},
+            {path:"walkthrough", element:<Walkthrough />},
             {path:"360-views", element:<ThreesixtyView />},
             {path:"Peacock", element:<LivingRoom />},
             {path:"party", element:<Party />},

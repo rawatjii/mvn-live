@@ -30,6 +30,7 @@ const BasicMicroSite = () => {
       { name: "name", label: "Project Name", Placeholder: "Enter Project Name", type: "text", col: 6, isRequired: true },
       { name: "slug", label: "Project Slug", Placeholder: "project-slug", type: "text", col: 6, isRequired: true },
       { name: "image", label: "Project image", Placeholder: "Enter Project Typology", type: "file", col: 6 },
+      { name: "project_status", label: "Project Status", Placeholder: "Enter Project Status", type: "text", col: 6 },
       { name: "batch", label: "Upload Badge", type: "file", col: 6 },
       { name: "brochure", label: "Upload Brochure", type: "file", col: 6 },
       { name: "alternative_image", label: "Alternate Project image",type: "file", col: 6 },

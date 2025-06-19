@@ -120,7 +120,8 @@ const Projects = ({ data }) => {
                           className="pro_img"
                           height={100}
                         >
-                          <span className="new-launch-patch">New Launch</span>
+                          {item.project_status && <span className="new-launch-patch">{item.project_status}</span>}
+                          
                           <Link
                             to={VITE_APP_URL + item.slug}
                           >

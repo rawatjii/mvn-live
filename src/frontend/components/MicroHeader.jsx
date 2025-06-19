@@ -204,7 +204,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                                         return (
                                           <li
                                             className={
-                                              project.status === 1
+                                              project.project_status
                                                 ? "new_launch"
                                                 : ""
                                             }
@@ -221,8 +221,8 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                                             >
                                               {project.name}
                                             </NavLink>
-                                            {project.status == 1 && (
-                                              <span>New Launch</span>
+                                            {project.project_status && (
+                                              <span>{project.project_status}</span>
                                             )}
                                           </li>
                                         );
