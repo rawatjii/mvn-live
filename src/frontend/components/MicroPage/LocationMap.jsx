@@ -148,13 +148,13 @@ const MicroLocationMap = ({ data, projectName }) => {
 
         <Container className="desktop_fluid_container">
           <h4 className="title style2">Location Advantages</h4>
-          {!projectName.includes('mvn-athens-gurgaon-phase-2') && (
+          {(!projectName.includes('mvn-athens-gurgaon-phase-2') && !projectName.includes('mvn-athens-gurgaon-phase-1') && !projectName.includes('mvn-athens-faridabad')) && (
             <LocationAdvantes project_id={project_id} />
           )}
         </Container>
       </div>
 
-      {locationSlider && <LocationSlider data={data} />}
+      {(projectName.includes('mvn-athens-gurgaon-phase-2') || projectName.includes('mvn-athens-gurgaon-phase-1') || projectName.includes('mvn-athens-faridabad')) && <LocationSlider project_id={project_id} projectName={projectName} />}
 
       <Container>
         <div className="about">
