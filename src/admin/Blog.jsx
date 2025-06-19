@@ -76,6 +76,7 @@ const AdminBlog = () => {
   const handleCreate = (formData) => createItem(formData);
 
   const handleEditSubmit = (formData) => {
+    setEditModalData(null)
     editItem(editModalData.id, formData); 
   };
 
