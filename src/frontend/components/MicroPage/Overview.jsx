@@ -7,7 +7,7 @@ import useFetchData from "../../utils/apiHelper";
 
 const diamondIMG = `${API_URL}images/icons/plane1.png`;
 
-const MicroOverview = React.memo(({ rera, data }) => {
+const MicroOverview = React.memo(({ rera, data, setOverviewIframe }) => {
   const [count1, setCount1] = useState(0);
   const [count2, setCount2] = useState(0);
   const [count3, setCount3] = useState(0);
@@ -32,7 +32,14 @@ const MicroOverview = React.memo(({ rera, data }) => {
     isDiscountAvailable,
     alt,
     iframe,
+    yt_url,
   } = data;
+
+  useEffect(()=>{
+    if(yt_url){
+      setOverviewIframe(yt_url)
+    }
+  }, [data])
 
   const isScrolledIntoView = useCallback((elem) => {
     if (!elem.current) return false;

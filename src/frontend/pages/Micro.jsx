@@ -101,10 +101,10 @@ const headerData = {
 
 const MicroPage = () => {
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
+  const [overviewIframe, setOverviewIframe] = useState(null);
   const smootherRef = useRef(null);
   const sectionRefs = useRef({});
   const { projectName } = useParams();
-
 
   const { data: basicData, loading } = useFetchData(`project/${projectName}`);
   const { data: projectSections, loading: sectionsLoading } = useFetchData(
@@ -168,8 +168,8 @@ const MicroPage = () => {
                 {section.section_type === "overview" && (
                   <LazyLoadComponent margin="200px" debugName="overview">
                     <div ref={(el) => (sectionRefs.current.microOverview = el)}>
-                      <MicroOverview rera={basicData?.rera_no} data={section} />
-                      {section.yt_url && <CustomIframe data={section.yt_url} />}
+                      <MicroOverview rera={basicData?.rera_no} data={section} setOverviewIframe={setOverviewIframe} />
+                      {/* {section.yt_url && <CustomIframe data={section.yt_url} />} */}
                     </div>
                   </LazyLoadComponent>
                 )}
@@ -195,16 +195,24 @@ const MicroPage = () => {
                     </div>
                   </LazyLoadComponent>
                 )}
-              {secIndex==3&&projectSections?.length > 0 && (
-                        <LazyLoadComponent margin="200px" debugName="downloadBrochure">
-                          <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
-                            <DownloadBrochure
-                              showAwards={basicData?.batch}
-                              name={basicData?.name}
-                            />
-                          </div>
-                        </LazyLoadComponent>
-                      )}
+
+                {projectSections?.length > 0 && projectName.includes('mvn-mall') && secIndex==1 && (
+                  <LazyLoadComponent margin="200px" debugName="downloadBrochure">
+                    <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
+                      <DownloadBrochure
+                        showAwards={basicData?.batch}
+                        name={basicData?.name}
+                      />
+                    </div>
+                  </LazyLoadComponent>
+                )}
+
+                {overviewIframe && projectSections?.length > 0 && projectName.includes('mvn-mall') && secIndex==1 && (
+                  <LazyLoadComponent margin="200px" debugName="mvn-mall">
+                    <CustomIframe data={overviewIframe} />
+                  </LazyLoadComponent>
+                )}
+              
                 {section.section_type === "threesixtyview" && (
                   <LazyLoadComponent margin="200px" debugName="threesixtyview">
                     <View360
