@@ -15,7 +15,7 @@ import { BACKEND_IMAGE_URL } from "../../../config/config";
   const sectionsRef = useRef(null);
   const [index, setIndex] = useState(-1);
   const imageDivRefs = useRef([]);
-  const [imagesLoaded, setImagesLoaded] = useState(0);
+  // const [imagesLoaded, setImagesLoaded] = useState(0);
   const { heading, sub_heading, description, secondTitle, imageClassName, project_id, section_type } = data;
 
   const { data:projectData, loading:projectLoading } = useFetchData(`project/${project_id}/${section_name ? section_name : section_type}`);
@@ -26,9 +26,9 @@ import { BACKEND_IMAGE_URL } from "../../../config/config";
     [projectData]
   );
 
-  const handleImageLoad = useCallback(() => {
-    setImagesLoaded((prev) => prev + 1);
-  }, []);
+  // const handleImageLoad = useCallback(() => {
+  //   setImagesLoaded((prev) => prev + 1);
+  // }, []);
 
 
   // Memoized images map for rendering cards
@@ -53,9 +53,9 @@ import { BACKEND_IMAGE_URL } from "../../../config/config";
                   <source srcSet={BACKEND_IMAGE_URL + image.sm_image} />
                   <img
                     src={BACKEND_IMAGE_URL + image.sm_alternative_image}
-                    alt="Peacock image"
+                    alt={image.alt}
                     className={`${imageClassName} lazy-image`}
-                    onLoad={handleImageLoad}
+                    // onLoad={handleImageLoad}
 
                   />
                 </picture>
@@ -76,7 +76,7 @@ import { BACKEND_IMAGE_URL } from "../../../config/config";
         </div>
       );
     });
-  }, [projectData, handleImageLoad]);
+  }, [projectData]);
 
   const initializeAnimations = async () => {
     const { gsap } = await import("gsap");
@@ -107,10 +107,9 @@ import { BACKEND_IMAGE_URL } from "../../../config/config";
   };
 
   useEffect(() => {
-    if (imagesLoaded === projectData?.length) {
+ 
       initializeAnimations();
-    }
-  }, [imagesLoaded, projectData]);
+  }, [projectData]);
 
   const lightbox_watermark = "lightbox_watermark";
 

@@ -27,7 +27,13 @@ const HeroSection = () => {
     createItem, 
     deleteItem,
     getEditData  } = useCrud(editDataApi);
-// console.log()
+
+console.log('editData11',editData)
+console.log('typeInputs',typeInputs)
+
+useEffect(()=>{
+  setFormType(editData?.is_type)
+}, [editData])
 
   useEffect(() => {
     setTypeInputs(
