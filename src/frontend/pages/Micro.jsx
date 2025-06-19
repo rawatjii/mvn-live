@@ -207,6 +207,17 @@ const MicroPage = () => {
                   </LazyLoadComponent>
                 )}
 
+                {projectSections?.length > 0 && (projectName.includes('mvn-athens-gurgaon-phase-1') || projectName.includes('mvn-athens-gurgaon-phase-2')) && secIndex==1 && (
+                  <LazyLoadComponent margin="200px" debugName="downloadBrochure">
+                    <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
+                      <DownloadBrochure
+                        showAwards={basicData?.batch}
+                        name={basicData?.name}
+                      />
+                    </div>
+                  </LazyLoadComponent>
+                )}
+
                 {overviewIframe && projectSections?.length > 0 && projectName.includes('mvn-mall') && secIndex==1 && (
                   <LazyLoadComponent margin="200px" debugName="mvn-mall">
                     <CustomIframe data={overviewIframe} />
@@ -328,7 +339,7 @@ const MicroPage = () => {
                     <div
                       ref={(el) => (sectionRefs.current.MicroLocationMap = el)}
                     >
-                      <MicroLocationMap data={section} />
+                      <MicroLocationMap data={section} projectName={projectName} />
                     </div>
                   </LazyLoadComponent>
                 )}

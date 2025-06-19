@@ -19,7 +19,7 @@ import LocationSlider from "./bangalore/LocationSlider";
 import LocationAdvantes from "./LocationAdvantes";
 
 gsap.registerPlugin(ScrollTrigger);
-const MicroLocationMap = ({ data }) => {
+const MicroLocationMap = ({ data, projectName }) => {
   const titleRef = useRef();
   const typoRefs = useRef([]);
   const priceRefs = useRef([]);
@@ -148,9 +148,12 @@ const MicroLocationMap = ({ data }) => {
 
         <Container className="desktop_fluid_container">
           <h4 className="title style2">Location Advantages</h4>
-          <LocationAdvantes project_id={project_id} />
+          {!projectName.includes('mvn-athens-gurgaon-phase-2') && (
+            <LocationAdvantes project_id={project_id} />
+          )}
         </Container>
       </div>
+
       {locationSlider && <LocationSlider data={data} />}
 
       <Container>
