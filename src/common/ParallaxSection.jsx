@@ -104,7 +104,7 @@ function ParallaxSection({ section_data }) {
                 ease: "none",
               }
             ),
-            markers: true, 
+            markers: false, 
           });
         });
       }
