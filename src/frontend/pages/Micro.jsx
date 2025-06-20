@@ -344,8 +344,10 @@ const MicroPage = () => {
 
                 {section.section_type === "typologies" && (
                   <LazyLoadComponent margin="200px" debugName="typologies">
+                    <div>
                     <div ref={(el) => (sectionRefs.current.MicroTypology = el)}>
                       <Typology data={section} />
+                    </div>
                     </div>
                   </LazyLoadComponent>
                 )}
