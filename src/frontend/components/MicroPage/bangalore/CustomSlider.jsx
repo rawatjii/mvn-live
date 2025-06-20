@@ -40,7 +40,7 @@ const CustomSlider = ({slides, className}) => {
                 />
                 <div className="carousel-caption">
                   <h1 className="main-title">{slide.heading}</h1>
-                  {slide.area && (<span>Area: {slide.area}</span>)}
+                  {slide.area && slide.area != 0 && (<span>Area: {slide.area}</span>)}
                   <div className="link">
                     <a href={slide.link}>View Details</a>
                   </div>
@@ -56,9 +56,7 @@ const CustomSlider = ({slides, className}) => {
 <Lightbox
   index={index} // Current index
   slides={slides.map(slide => ({
-    src: slide.src,    // The image source
-    title: slide.title, // The title of the image
-    area: slide.area,   // The area of the image
+    src: slide.image,    // The image source
   }))} // Map slides to Lightbox format with additional data
   open={index >= 0} // Open Lightbox when an image is clicked
   close={() => setIndex(-1)} // Close Lightbox

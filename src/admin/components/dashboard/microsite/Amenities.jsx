@@ -48,8 +48,10 @@ const Amenities = () => {
     { name: "heading", label: "Heading", type: "text", col: 6,isRequired:true },
     { name: "image", label: "Image", type: "file", col: 6,isRequired:true },
     { name: "alternative_image", label: "Alternate Image", type: "file", col: 6 },
+    { name: "mb_image", label: "Mobile Image", type: "file", col: 6,isRequired:true },
+    { name: "mb_alternative_image", label: "Mobile Alternate Image", type: "file", col: 6 },
     { name: "alt", label: "Alt", type: "text", col: 6, placeholder: "Enter Alt text",isRequired:true },
-    { name: "short_description", label: "Description", type: "textarea", col: 6,isRequired:true },
+    { name: "short_description", label: "Description", type: "textarea", col: 12,isRequired:true },
 
   ];
 

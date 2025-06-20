@@ -165,9 +165,9 @@ const MicroOverview = React.memo(({ rera, data, setOverviewIframe }) => {
                     </div> */}
                   </div>
                 )}
+            {!alt && <span className="bar"></span>}
               </>
             )}
-            {!alt && <span className="bar"></span>}
           </div>
 
           {/* {discountUrl ? <img src={discountUrl} className="img-fluid discount_patch" /> : undefined} */}
@@ -176,9 +176,12 @@ const MicroOverview = React.memo(({ rera, data, setOverviewIframe }) => {
           )}
 
           {short_description && (
-            <p className="des_style1 text-center discount">
-              {short_description}
-            </p>
+            <>
+              <span className="bar"></span>
+              <p className="des_style1 text-center discount">
+                {short_description}
+              </p>
+            </>
           )}
 
           {short_description ? <span className="bar"></span> : undefined}

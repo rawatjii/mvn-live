@@ -98,8 +98,6 @@ function ParallaxSection({ section_data }) {
         const bg = section?.querySelector(".bg");
         if (!bg || !projectData[i]?.image) return null;
 
-        console.log('projectDataprojectData',projectData);
-
         const normalizedImagePath = projectData[i].image.replace(/\\/g, '/');
         const imageUrl = `url(${CONFIG.BACKEND_IMAGE_URL}${normalizedImagePath})`;
         // const imageUrl = `url(${CONFIG.BACKEND_IMAGE_URL + projectData[i].image})`;
@@ -211,18 +209,17 @@ function ParallaxSection({ section_data }) {
         {projectData?.map((single, index) => (
           <div key={index} className="col-sm-12 col-lg-4">
             <div className="card center">
-              {/* <picture>
-                <source media="(min-width:650px)" srcset="img_pink_flowers.jpg" />
-                <source media="(min-width:465px)" srcset="img_white_flower.jpg" />
-                <img src="img_orange_flowers.jpg" alt="Flowers" style="width:auto;" />
-              </picture> */}
+              <picture>
+                <source srcset={window.innerWidth < 768 ? CONFIG.BACKEND_IMAGE_URL + single.mb_image : CONFIG.BACKEND_IMAGE_URL + single.image} />
+                <img src={window.innerWidth < 768 ? CONFIG.BACKEND_IMAGE_URL + single.mb_alternative_image : CONFIG.BACKEND_IMAGE_URL + single.alternative_image} alt={single.alt} loading="lazy" className="img-fluid" />
+              </picture>
 
-              <img
+              {/* <img
                 src={CONFIG.BACKEND_IMAGE_URL + single.image}
                 alt={single.alt}
                 className="img-fluid"
                 loading="lazy"
-              />
+              /> */}
               <Watermark />
             </div>
             <div className="content">
