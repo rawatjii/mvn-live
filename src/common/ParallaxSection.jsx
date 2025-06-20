@@ -187,7 +187,7 @@ useEffect(() => {
                 alt={single.alt}
                 className="img-fluid"
                 loading="lazy"
-              />
+              /> 
               <Watermark />
             </div>
             <div className="content">

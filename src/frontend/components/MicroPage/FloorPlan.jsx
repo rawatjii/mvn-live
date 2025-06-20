@@ -21,10 +21,18 @@ const MicroFloorPlan = React.memo(({ data }) => {
   const [index, setIndex] = useState(-1);
   const [isShowModal, setIsShowModal] = useState(false);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
+  const [activeKeys, setActiveKeys] = useState([]);
   
   
   const { heading, project_id } = data;
   const { data:floorPlanData, loading } = useFetchData(`project/${project_id}/floor-plan`);
+
+  // Set all accordion items as active on mount
+  useEffect(() => {
+    if (floorPlanData?.length > 0) {
+      setActiveKeys(floorPlanData.map((_, i) => i.toString()));
+    }
+  }, [floorPlanData]);
 
   const showModal = useCallback(() => {
     setIsShowModal(true);
@@ -134,7 +142,7 @@ const MicroFloorPlan = React.memo(({ data }) => {
             ))}
           </div>
         ) : (
-          <Accordion defaultActiveKey={floorPlanData?.map((_, i) => i.toString())} className="floor_plan_data">
+          <Accordion activeKey={activeKeys} onSelect={(newActiveKeys) => setActiveKeys(newActiveKeys)} className="floor_plan_data" alwaysOpen>
             {floorPlanData?.map((item, index) => (
               <Accordion.Item key={index} eventKey={index.toString()} >
                 <Accordion.Header>{item.heading}</Accordion.Header>

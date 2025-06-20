@@ -196,7 +196,18 @@ const MicroPage = () => {
                   </LazyLoadComponent>
                 )}
 
-                {projectSections?.length > 0 && projectName.includes('mvn-mall') && secIndex==1 && (
+                {/* {projectSections?.length > 0 && projectName.includes('mvn-mall') && secIndex==1 && (
+                  <LazyLoadComponent margin="200px" debugName="downloadBrochure">
+                    <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
+                      <DownloadBrochure
+                        showAwards={basicData?.batch}
+                        name={basicData?.name}
+                      />
+                    </div>
+                  </LazyLoadComponent>
+                )} */}
+
+                {projectSections?.length > 0 && (projectName.includes('mvn-mall') || projectName.includes('mvn-athens-gurgaon-phase-1') || projectName.includes('mvn-athens-gurgaon-phase-2') || projectName.includes('mvn-athens-faridabad')) && secIndex==1 && (
                   <LazyLoadComponent margin="200px" debugName="downloadBrochure">
                     <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
                       <DownloadBrochure
@@ -207,7 +218,7 @@ const MicroPage = () => {
                   </LazyLoadComponent>
                 )}
 
-                {projectSections?.length > 0 && (projectName.includes('mvn-athens-gurgaon-phase-1') || projectName.includes('mvn-athens-gurgaon-phase-2')) && secIndex==1 && (
+                {projectSections?.length > 0 && (projectName.includes('aeroone-gurgaon')) && secIndex==5 && (
                   <LazyLoadComponent margin="200px" debugName="downloadBrochure">
                     <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
                       <DownloadBrochure

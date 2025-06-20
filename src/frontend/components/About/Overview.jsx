@@ -17,7 +17,7 @@ const Overview = React.memo(({ data }) => {
   const imageRef = useRef();
   const { isMobile } = useMatches();
 
-  const {heading, short_description, description, image, alternative_image, alt} = data;
+  const {heading, short_description, description, image, alternative_image, alt, mb_image, mb_alternative_image} = data;
 
   useEffect(() => {
     // Title animation
@@ -111,8 +111,8 @@ const Overview = React.memo(({ data }) => {
         {/* Image changes based on screen size */}
         <AnImage ref={imageRef} className="img_col">
           <picture>
-            <source srcset={BACKEND_IMAGE_URL + image} />
-            <img src={BACKEND_IMAGE_URL + alternative_image} alt={alt} className="img-fluid about_img" />
+            <source srcset={window.innerWidth < 768 ? BACKEND_IMAGE_URL + mb_image : BACKEND_IMAGE_URL + image} />
+            <img src={window.innerWidth < 768 ? BACKEND_IMAGE_URL + mb_alternative_image : BACKEND_IMAGE_URL + alternative_image} alt={alt} className="img-fluid about_img" />
           </picture>
         </AnImage>
       </section>

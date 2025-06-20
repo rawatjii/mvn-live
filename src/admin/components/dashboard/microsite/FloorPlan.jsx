@@ -21,18 +21,24 @@ const FloorPlans = () => {
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
   const floorPlansApi = generateApi(`project-floorplan`);
   const floorPlansApi1 = generateApi(`project-floorplan/${project_id}`);
+  const floorPlansApi2 = generateApi(`project-floorplan/${editfloorPlansData?.id}`);
   
   const { editItem, createItem } = useCrud(projectSectionsApi);
   const { 
     createItem: floorPlansCreateItem, 
     deleteItem,
+    
   } = useCrud(floorPlansApi);
 
   const { 
     data: floorPlansItems, 
     getItems: fetchfloorPlansItems,
-    editItem: floorPlansEditItem, 
+    
   } = useCrud(floorPlansApi1);
+
+  const { 
+    editItem: floorPlansEditItem, 
+  } = useCrud(floorPlansApi2);
   
   const { getEditData } = useCrud(getEditDataApi);
   
@@ -118,7 +124,6 @@ const FloorPlans = () => {
   };
 
   const handleEditfloorPlans = async (formData) => {
-    debugger
     try {
       await floorPlansEditItem(editfloorPlansData.id, formData, '', "true");
       await fetchAllfloorPlansItems();
