@@ -28,6 +28,8 @@ import LazyLoadComponent from "../../common/LazyLoadComponent";
 import SliderTypology from "../components/MicroPage/bangalore/SliderTypology";
 import FeatureSection from "../components/MicroPage/athens/FeatureSection";
 import MicroFloorPlan from "../components/MicroPage/FloorPlan";
+import { setCommonState } from "../../redux/commonSlice";
+import { useDispatch } from "react-redux";
 
 const headerSidebarDesktopImg = `${API_URL}images/aero-gurgaon/header/sidebar.webp`;
 
@@ -105,6 +107,7 @@ const MicroPage = () => {
   const smootherRef = useRef(null);
   const sectionRefs = useRef({});
   const { projectName } = useParams();
+  const dispatch = useDispatch();
 
   const { data: basicData, loading } = useFetchData(`project/${projectName}`);
   const { data: projectSections, loading: sectionsLoading } = useFetchData(
@@ -130,6 +133,8 @@ const MicroPage = () => {
   };
 
   useEffect(() => {
+    dispatch(setCommonState({id:basicData?.id, isMicro:true}))
+
     smootherRef.current = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
       content: "#smooth-content",

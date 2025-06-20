@@ -13,6 +13,7 @@ import { otherProjects, otherPages, otherDetails, socialMedia } from "../../data
 import "./Header.css";
 
 import { API_URL } from "../../config/config";
+import useFetchData from "../utils/apiHelper";
 
 const CloseBtnimg = `${API_URL}images/icons/close.png`;
 const MenuSideVideo = `${API_URL}images/hero/tiger.mp4`;
@@ -30,6 +31,9 @@ const Header = () => {
   const headerRef = useRef();
 
   const { pathname } = useLocation();
+
+  const { data: pageLinks, loading } = useFetchData("platter-project");
+  const { data: contactData } = useFetchData(`page/page-section/contact-us`);
 
   useEffect(() => {
     if (pathname.includes("aeroone-gurgaon")) {
@@ -154,29 +158,32 @@ const Header = () => {
                       <div className="bottom-area">
                         <div className="inner-bottom-area">
                           <div className="left">
-                            {otherProjects &&
-                              otherProjects.map((singleProject, index) => (
-                                <React.Fragment key={index}>
-                                  <h4 className={index === 0 ? "" : ""}>
-                                    {singleProject.location}
-                                  </h4>
+                          {pageLinks &&
+                          Object.entries(pageLinks).length > 0 &&
+                          Object.entries(pageLinks).map(
+                            ([key, value], index) => (
+                              <React.Fragment key={index}>
+                                {value.length > 0 && (
+                                  <>
+                                    <h4 className={index === 0 ? "pt-0" : ""}>
+                                      {key}
+                                    </h4>
 
-                                  <ul>
-                                    {singleProject.projects &&
-                                      singleProject.projects.map(
-                                        (project, idx) => (
+                                    <ul>
+                                      {value.map((project, idx) => {
+                                        return (
                                           <li
                                             className={
-                                              project.status ? "new_launch" : ""
+                                              project.project_status
+                                                ? "new_launch"
+                                                : ""
                                             }
                                             key={project.name + idx}
                                           >
                                             <NavLink
-                                              to={project.link}
-                                              target={
-                                                project.target_blank === false
-                                                  ? "_self"
-                                                  : "_blank"
+                                              to={
+                                                import.meta.env.VITE_APP_FRONTEND_URL +
+                                                project.slug
                                               }
                                               onClick={() =>
                                                 toggleMenu("close")
@@ -184,15 +191,18 @@ const Header = () => {
                                             >
                                               {project.name}
                                             </NavLink>
-                                            {project.status && (
-                                              <span>{project.status}</span>
+                                            {project.project_status && (
+                                              <span>{project.project_status}</span>
                                             )}
                                           </li>
-                                        )
-                                      )}
-                                  </ul>
-                                </React.Fragment>
-                              ))}
+                                        );
+                                      })}
+                                    </ul>
+                                  </>
+                                )}
+                              </React.Fragment>
+                            )
+                          )}
                           </div>
 
                           <div className="right top">
@@ -251,10 +261,10 @@ const Header = () => {
                       <div className="top-area">
                         <div className="inner-logo d-none d-md-block">
                           <p>
-                            <span>Office:</span> {otherDetails.address}
+                            <span>Office:</span> {contactData?.[2]?.short_description}
                           </p>
                           <p>
-                            <span>Talk:</span> {otherDetails.contact}
+                            <span>Talk:</span> {contactData?.[2]?.sub_heading}
                           </p>
                         </div>
 

@@ -13,9 +13,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 function ParallaxSection({ section_data }) {
   const { isMobile } = useMatches();
-  const sectionsRef = useRef([]);
-  const triggersRef = useRef([]);
-  const containerRef = useRef(null);
+  const sectionsRef = useRef([]); // Array to hold section refs
+  const triggersRef = useRef([]); // Array to hold ScrollTrigger instances
+  const containerRef = useRef(null); // Ref for the component container
   const iframeRef = useRef(null);
 
   const { pathname } = useLocation();
@@ -24,27 +24,35 @@ function ParallaxSection({ section_data }) {
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const [imageUrls, setImageUrls] = useState([]);
 
-  const { data: projectData, loading: projectLoading } = useFetchData(`project/${project_id}/${section_type}`);
+  const { data:projectData, loading:projectLoading } = useFetchData(`project/${project_id}/${section_type}`);
 
-  const getRatio = (el,innerHeight) => {
-    if (!el) return 0;
-    const ratio = innerHeight / (innerHeight + el.offsetHeight);
-    return ratio;
-  }
 
+  // Memoized ratio calculation
+  const getRatio = useCallback(
+    (el) => {
+      return el
+        ? window.innerHeight / (window.innerHeight + el.offsetHeight)
+        : 0;
+    },
+    [pathname]
+  );
+
+  // collect all image url to preload
   useEffect(() => {
     if (projectData) {
       const urls = projectData.reduce((acc, item) => {
-        if (item.image) acc.push(item.image);
+        if (isMobile && item.image) acc.push(item.image);
+        if (!isMobile && item.image) acc.push(item.image);
         return acc;
       }, []);
       setImageUrls([...new Set(urls)]);
     }
-  }, [projectData]);
+  }, [projectData, isMobile]);
 
+  // Preload images and update loading status
   useEffect(() => {
     if (!imageUrls.length) {
-      setImagesLoaded(true);
+      setImagesLoaded(true); // No images to load
       return;
     }
 
@@ -58,100 +66,115 @@ function ParallaxSection({ section_data }) {
         ScrollTrigger.refresh();
       }
     };
-
-    const handleImageError = (url) => {
-      console.error(`Failed to load image: ${url}`);
-      loadedCount++;
-      if (loadedCount === totalImages) {
-        setImagesLoaded(true);
-        ScrollTrigger.refresh();
-      }
-    };
+    
 
     const preloadImages = () => {
       imageUrls.forEach((url) => {
         const img = new Image();
         img.src = url;
         img.onload = handleImageLoad;
-        img.onerror = () => handleImageError(url);
+        img.onerror = handleImageLoad; // Handle failed loads
       });
     };
 
     preloadImages();
 
     return () => {
-      loadedCount = totalImages;
+      // Cleanup not strictly necessary for Image objects, but included for completeness
+      loadedCount = totalImages; // Prevent further updates
     };
   }, [imageUrls]);
 
-    const setupAnimations = () => {  
-      Array.from(document.querySelectorAll(".parallax")).map((section, i) => {
-        let windowInnerHeight=window.innerHeight;
-        let ratio=getRatio(section,windowInnerHeight);    
+  // Setup GSAP animations
+  const setupAnimations = useCallback(() => {
+    if (!projectData || !sectionsRef.current.length || isMobile) return;
 
-          const bg = section.querySelector(".bg");
-          ScrollTrigger.create({
-            trigger: section,
-            start: i === 0 ? "top top" : "top 100%",
-            end: "bottom top",
-            scrub: true,
-            invalidateOnRefresh: true,
-            animation: gsap.fromTo(
-              bg,
-              { backgroundPosition:  i === 0 ? "50% 0" : `50% ${-windowInnerHeight * ratio }px` },
-              {
-                backgroundPosition: `50% ${ windowInnerHeight * (1 - ratio)}px`,
-                ease: "none",
-              }
-            ),
-            markers: false, 
-          });
+    // Clear existing triggers before setting up new ones
+    triggersRef.current.forEach((trigger) => trigger?.kill());
+    triggersRef.current = [];
+
+    triggersRef.current = sectionsRef.current
+      .map((section, i) => {
+        const bg = section?.querySelector(".bg");
+        if (!bg || !projectData[i]?.image) return null;
+
+        const normalizedImagePath = projectData[i].image.replace(/\\/g, '/');
+        const imageUrl = `url(${CONFIG.BACKEND_IMAGE_URL}${normalizedImagePath})`;
+        // const imageUrl = `url(${CONFIG.BACKEND_IMAGE_URL + projectData[i].image})`;
+        bg.style.backgroundImage = imageUrl;
+
+        const defaultBgPos =
+          i === 0
+            ? "50% 0"
+            : `50% ${-window.innerHeight * getRatio(section)}px`;
+
+        return ScrollTrigger.create({
+          trigger: section,
+          start: i === 0 ? "top top" : "top bottom",
+          end: "bottom top",
+          scrub: true,
+          invalidateOnRefresh: true,
+          animation: gsap.fromTo(
+            bg,
+            { backgroundPosition: defaultBgPos },
+            {
+              backgroundPosition: `50% ${
+                window.innerHeight * (1 - getRatio(section))
+              }px`,
+              ease: "none",
+            }
+          ),
         });
-      }
-useEffect(() => {
-  if (!projectData || !imagesLoaded) return;
+      })
+      .filter(Boolean);
 
-  const parallaxSections = document.querySelectorAll(".parallax_section");
-  const triggers = Array.from(parallaxSections).map(section => 
-    ScrollTrigger.create({
-      trigger: section,
-      start: "top 80%",
-      once: true,
-      onEnter: () => {
-        setupAnimations(section);
-      },
-    })
-  );
+    ScrollTrigger.refresh(); // Explicitly refresh after setup
+  }, [projectData, isMobile, getRatio]);
 
-  return () => {
-    triggers.forEach(trigger => trigger.kill());
-  };
-}, [projectData, imagesLoaded]);
-
+  // Run animations only after images are loaded
   useEffect(() => {
-    if (!iframe || !containerRef.current || iframeLoaded) return;
+    if (imagesLoaded && !isMobile && projectData && sectionsRef.current.length) {
+      setupAnimations();
 
-    const walkthroughEl = containerRef.current.querySelector(".walkthrough");
+      const handleResize = () => {
+        ScrollTrigger.refresh();
+      };
+      window.addEventListener("resize", handleResize);
 
-    if (!walkthroughEl) return;
+      return () => {
+        triggersRef.current.forEach((trigger) => trigger?.kill());
+        triggersRef.current = [];
+        window.removeEventListener("resize", handleResize);
+        ScrollTrigger.refresh();
+      };
+    }
+  }, [imagesLoaded, isMobile, projectData, setupAnimations]);
 
-    const trigger = ScrollTrigger.create({  
-      trigger: walkthroughEl,
-      start: "top bottom",
-      onEnter: () => {
-        if (iframeRef.current && !iframeLoaded) {
+  // lazy load youtube ifram
+  useEffect(()=>{
+    if(!iframe || !containerRef.current || iframeLoaded) return;
+
+    const walkthroughEl = containerRef.current.querySelector('.walkthrough');
+
+    if(!walkthroughEl) return;
+
+    const trigger = ScrollTrigger.create({
+      trigger:walkthroughEl,
+      start:'top bottom',
+      onEnter:()=>{
+        if(iframeRef.current && !iframeLoaded){
           const autoplaySrc = iframe;
           iframeRef.current.src = autoplaySrc;
           setIframeLoaded(true);
         }
       },
-      once: true,
-    });
+      once:true,
+    })
 
-    return () => {
+    return ()=>{
       trigger.kill();
-    };
-  }, [iframe, iframeLoaded, imagesLoaded]);
+    }
+  }, [iframe, iframeLoaded, imagesLoaded])
 
   const renderMobileView = () => (
     <div className="section amenities_section main_am bottom_content parallax_section pb-0">
@@ -160,42 +183,51 @@ useEffect(() => {
           <h4 className="title title_style1 text-center">{heading}</h4>
         </div>
 
+        {/* walkthrough */}
+
         {iframe && (
           <div className="walkthrough mb-5">
             <iframe
-              ref={iframeRef}
+            ref={iframeRef}
               title="YouTube video player"
               frameBorder="0"
               allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
-              width="100%"
-              height="315"
+              width="100"
+              height="100"
               playsInline
-              className="mb-4"
+              className=" mb-4"
               loading="lazy"
             ></iframe>
             <hr />
           </div>
         )}
 
+        {/* parallax */}
+
         {projectData?.map((single, index) => (
           <div key={index} className="col-sm-12 col-lg-4">
             <div className="card center">
-              <img
+              <picture>
+                <source srcset={window.innerWidth < 768 ? CONFIG.BACKEND_IMAGE_URL + single.mb_image : CONFIG.BACKEND_IMAGE_URL + single.image} />
+                <img src={window.innerWidth < 768 ? CONFIG.BACKEND_IMAGE_URL + single.mb_alternative_image : CONFIG.BACKEND_IMAGE_URL + single.alternative_image} alt={single.alt} loading="lazy" className="img-fluid" />
+              </picture>
+
+              {/* <img
                 src={CONFIG.BACKEND_IMAGE_URL + single.image}
                 alt={single.alt}
                 className="img-fluid"
                 loading="lazy"
-              /> 
+              /> */}
               <Watermark />
             </div>
             <div className="content">
               <span className="am-name mx-auto">{single.heading}</span>
-              {Array.isArray(single.short_description) ? (
+              {Array.isArray(single.desc) ? (
                 single.short_description.map((desc, idx) => (
                   <p key={idx} className="desc des_style1 text-center mt-3">
-                    {desc}
+                    {short_description}
                   </p>
                 ))
               ) : (
@@ -216,6 +248,7 @@ useEffect(() => {
         <h4 className="title title_style1 text-center">{heading}</h4>
       </div>
 
+      {/* walkthrough */}
       {iframe && (
         <div className="walkthrough mb-5">
           <iframe
@@ -225,24 +258,25 @@ useEffect(() => {
             allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
-            width="100%"
-            height="315"
+            width="100"
+            height="100"
             playsInline
-            className="mb-4"
+            className=" mb-4"
             loading="lazy"
           ></iframe>
           <hr />
         </div>
       )}
 
+      {/* parallax */}
       {projectData?.map((amenity, i) => (
         <section
           key={i}
           className="parallax"
+          ref={(el) => (sectionsRef.current[i] = el)}
           aria-label="Desktop View Section"
         >
-          <div className="bg"  style={{backgroundImage:`url(${CONFIG.BACKEND_IMAGE_URL+amenity.image})`}}
->
+          <div className="bg">
             <Watermark className="left" />
           </div>
           <div className="content">
@@ -258,6 +292,7 @@ useEffect(() => {
     </div>
   );
 
+  // Loader component (customize as needed)
   const Loader = () => (
     <div
       style={{
@@ -273,7 +308,7 @@ useEffect(() => {
         zIndex: 9999,
       }}
     >
-      <div>Loading...</div>
+      <div>Loading...</div> {/* Replace with your spinner or custom loader */}
     </div>
   );
 

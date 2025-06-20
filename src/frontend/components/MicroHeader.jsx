@@ -14,6 +14,8 @@ import { useMatches } from "../../theme/theme";
 import { API_URL } from "../../config/config";
 import "./Header.css";
 import useFetchData from "../utils/apiHelper";
+import { useSelector } from "react-redux";
+import { setCommonState } from "../../redux/commonSlice";
 
 const subscribeBtn = `${API_URL}images/icons/subscribe_btn.webp`;
 const CloseBtnimg = `${API_URL}images/icons/close.png`;
@@ -22,6 +24,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
   const [scrolled, setScrolled] = useState(false);
   const [isMicro, setIsMicro] = useState(false);
   const [isBangaloreProject, setIsBangaloreProject] = useState(false);
+  const {isMicroPage, microId} = useSelector((state)=>state.commonState);
 
   const { sidebar_section, sidebarAsset } = data;
   const channelUrl = CONFIG.YOUTUBE_URL;
@@ -66,6 +69,12 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
   // }, []);
 
   const { data: pageLinks, loading } = useFetchData("platter-project");
+  const { data: contactData } = useFetchData(`page/page-section/contact-us`);
+  const { data: microPageSections } = useFetchData(`project/${microId}/project-section-nav`);
+  // const { data: contactData } = useFetchData(`project/${}/project-section-nav`);
+
+  console.log('microId',microId);
+  
 
   if (loading) return <div className="text-center py-5">Loading...</div>;
   if (!loading && pageLinks && pageLinks.length === 0)
@@ -162,17 +171,17 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                         </ul>
                         <h4>{data.title}</h4>
                         <ul>
-                          {sidebar_section &&
-                            sidebar_section.map((section, index) => (
+                          {microPageSections &&
+                            microPageSections?.map((section, index) => (
                               <li key={index}>
                                 <NavLink
                                   className="new-launch"
                                   onClick={() => {
-                                    scrollToSection(section.link);
+                                    scrollToSection(section.section_type);
                                     toggleMenu("close");
                                   }}
                                 >
-                                  {section.section_title}
+                                  {section.section_type}
                                 </NavLink>
                               </li>
                             ))}
@@ -262,13 +271,10 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                   <div className="top-area">
                     <div className="inner-logo d-none d-md-block">
                       <p>
-                        <span>Office:</span> {otherDetails.address}
+                        <span>Office:</span> {contactData?.[2]?.short_description}
                       </p>
                       <p>
-                        <span>Talk:</span>{" "}
-                        {!isBangaloreProject
-                          ? otherDetails.contact
-                          : "+91 9164001177"}
+                        <span>Talk:</span>{contactData?.[2]?.sub_heading}
                       </p>
                     </div>
                     <ul className="sub_menu">

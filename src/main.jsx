@@ -125,7 +125,7 @@ const router = createBrowserRouter([
         path: ":projectName",
         element: (
           <FrontendRoute loaderType="aeroone-gurgaon">
-            <MicroPage data={data} />
+            <MicroPage  />
           </FrontendRoute>
         ),
       },
