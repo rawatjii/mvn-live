@@ -134,6 +134,30 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
     };
   }, [loading, loadingComplete, totalFrames, segments, isLaptop]);
 
+  // 🛠️ Fix: Show only first content/image initially
+
+  useEffect(() => {
+
+    if (!typologyData || typologyData.length === 0 || contentRefs.current.length === 0) return;
+
+
+
+    contentRefs.current.forEach((el, i) => {
+
+      if (el) el.style.display = i === 0 ? "block" : "none";
+
+    });
+
+
+
+    imageContentRefs.current.forEach((el, i) => {
+
+      if (el) el.style.display = i === 0 ? "block" : "none";
+
+    });
+
+  }, [typologyData]);
+
   return (
     <>
       <section
@@ -172,7 +196,7 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
                 <div
                   ref={(el) => (contentRefs.current[index] = el)}
                   className="content-box"
-                  style={{ display: "block" }}
+                  style={{ display: "none" }}
                 >
                   <h1>{item.heading}</h1>
                   <p>{item.short_description}</p>
@@ -187,7 +211,7 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
               <div
                 ref={(el) => (imageContentRefs.current[index] = el)}
                 className="typologies-images"
-                style={{ display: "block" }}
+                style={{ display: "none" }}
               >
                 <picture>
                   <source srcset={BACKEND_IMAGE_URL + item.image} />
