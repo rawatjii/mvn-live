@@ -30,6 +30,9 @@ import FeatureSection from "../components/MicroPage/athens/FeatureSection";
 import MicroFloorPlan from "../components/MicroPage/FloorPlan";
 import { setCommonState } from "../../redux/commonSlice";
 import { useDispatch } from "react-redux";
+import { Helmet } from "react-helmet";
+import parse from 'html-react-parser';
+import injectScripts from "../components/InjectScripts";
 
 const headerSidebarDesktopImg = `${API_URL}images/aero-gurgaon/header/sidebar.webp`;
 
@@ -107,6 +110,7 @@ const MicroPage = () => {
   const smootherRef = useRef(null);
   const sectionRefs = useRef({});
   const { projectName } = useParams();
+  const [metaData, setMetaData] = useState([])
   const dispatch = useDispatch();
 
   const { data: basicData, loading } = useFetchData(`project/${projectName}`);
@@ -151,12 +155,54 @@ const MicroPage = () => {
     };
   }, [basicData,projectSections]);
 
+  useEffect(()=>{
+        const headDataArray = basicData?.head_data?.split('\n')
+
+        // Convert each string element to its appropriate type
+        const parsedArray = headDataArray?.map(item => item);
+      
+        parsedArray?.map(item=>{
+            setMetaData(prevState=>([
+                ...prevState,
+                item,
+            ]))
+        })
+        
+    }, [basicData, projectName])
+
+    useEffect(()=>{
+        var headDataContainer;
+        if (basicData?.head_data) {
+            headDataContainer = document.createElement('div');
+            headDataContainer.innerHTML = basicData.head_data;
+            Array.from(headDataContainer.children).forEach(child => {
+                document.head.appendChild(child);
+            });
+        }
+
+        return ()=>{
+            if (headDataContainer) {
+                Array.from(headDataContainer.children).forEach(child => {
+                  document.head.removeChild(child);
+                });
+            }
+        }
+    }, [basicData, projectName])
+
   if (loading) return <div className="text-center py-5">Loading...</div>;
   if (!loading && basicData && basicData.length === 0)
     return <div className="text-center py-5">No records found</div>;
 
   return (
     <>
+      <Helmet>
+        {basicData?.meta_title && <title>{basicData.meta_title}</title>}
+        {basicData?.meta_description && <meta name="description" content={basicData.meta_description} />}
+        {basicData?.meta_keywords && <meta name="keywords" content={basicData.meta_keywords} />}
+        {/* {metaData && metaData?.length && metaData?.map((item,index)=>(item))} */}
+        {basicData?.head_data && <div dangerouslySetInnerHTML={{__html:basicData.head_data}} />}
+        {basicData?.footer_data && parse(basicData.footer_data)}
+      </Helmet>
       <MicroHeader
         scrollToSection={scrollToSection}
         data={headerData}

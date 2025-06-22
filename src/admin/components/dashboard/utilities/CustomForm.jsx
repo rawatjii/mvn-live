@@ -171,6 +171,7 @@ const CustomForm = ({
                   value={field.value ? field.value : formData?.[field.name] || ''}
                   onChange={field.type == "file" ? handleFileChange : field.type == 'editor' ? handleQuillChange : handleChange}
                   resetKey={resetKey}
+                  rows={field.row}
                 />
               </div>
           ))}

@@ -99,6 +99,7 @@ import Timeline from "./admin/components/aboutus/Timeline.jsx";
 import Team from "./admin/components/aboutus/Team.jsx";
 import Sizes from "./admin/components/dashboard/microsite/Sizes.jsx";
 import KeyHighlights from "./admin/components/dashboard/microsite/KeyHighlights.jsx";
+import PagesMeta from "./admin/components/PagesMeta.jsx";
 // import Apartment from "./admin/components/dashboard/microsite/Apartment.jsx";
 const router = createBrowserRouter([
   {
@@ -300,6 +301,7 @@ const router = createBrowserRouter([
           { path: "contact-us", element: <AdminContactUs /> },
           { path: "project-list", element: <ProjectList /> },
           { path: "platter", element: <Platter /> },
+          { path: "pages-meta", element: <PagesMeta /> },
           // { path: "page/index", element: <AdminHomepage /> },
           { path: "page/:pageName", element: <SinglePage /> },
           { path: "microsite", element:<MicroSidebar />,

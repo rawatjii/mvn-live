@@ -134,8 +134,6 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
     };
   }, [loading, loadingComplete, totalFrames, segments, isLaptop]);
 
-  console.log("typologyData", typologyData);
-
   return (
     <>
       <section
@@ -151,7 +149,7 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
           <div
             ref={lottieRef}
             className="frame"
-            style={{ height: "460px", maxHeight: "500px" }}
+            style={{ height: window.innerWidth < 768 ? "300px" : "460px", maxHeight: "500px" }}
           />
           <div className="typology_arrow">
             <div className="line"></div>

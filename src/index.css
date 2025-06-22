@@ -5275,7 +5275,7 @@ table.bg_transparent{
   /* typology_section */
 
   section.typology_section{
-
+    max-height: 150vh;
 
     .sec_title{
 

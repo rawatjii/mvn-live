@@ -147,6 +147,11 @@ const PageCommonSection = [
     icon: <FaUser className="mr-3 box-icon" />,
     link: "admin/team",
   },
+  {
+    name: "Pages Meta",
+    icon: <FaUser className="mr-3 box-icon" />,
+    link: "admin/pages-meta",
+  },
 ];
 
 

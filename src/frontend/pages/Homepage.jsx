@@ -1,4 +1,4 @@
-import React, { useState, Suspense, useCallback } from "react";
+import React, { useState, Suspense, useCallback, useEffect } from "react";
 import { Helmet } from "react-helmet";
 
 import Layout from "../components/Layout";
@@ -44,10 +44,24 @@ const Homepage = () => {
   const [isShowModal, setIsShowModal] = useState(false);
   const [isOffer, setIsOffer] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [pageMetaData, setPageMetaData] = useState(null);
 
   const { data: homepageData, loading } = useFetchData(
     `page/page-section/home`
   );
+
+  const fetchPageMeta = async()=>{
+    try{
+      const response = await fetch('https://mvnbackend.gtftechnologies.com/api/admin/page-meta/3');
+      const fetchPageData = await response.json();
+      setPageMetaData(fetchPageData.data);
+    }catch(error){
+      console.error(error);
+    }
+  }
+
+  console.log('pageMetaData',pageMetaData);
+  
 
   const isHideModal = () => {
     setIsShowModal(false);
@@ -62,8 +76,11 @@ const Homepage = () => {
       setIsShowModal(true);
     }
   }, []);
+  
+  useEffect(()=>{
+    fetchPageMeta();
+  }, [])
 
-  console.log("homepageData", homepageData);
 
   if (loading) return <div className="text-center py-5">Loading...</div>;
   if (!loading && homepageData && homepageData.length === 0)
