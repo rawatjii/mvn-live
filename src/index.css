@@ -4379,6 +4379,14 @@ table.bg_transparent{
   border-radius: 100px; 
 }
 
+.app_site_plan_box div:first-child{
+  flex: 1;
+}
+
+.app_site_plan_box div:last-child{
+  flex-grow: 1;
+}
+
 
 /* start responsive */
 /* by bhupendra */

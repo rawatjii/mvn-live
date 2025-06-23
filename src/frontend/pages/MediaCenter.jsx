@@ -65,20 +65,7 @@ function MediaCenter() {
     },
   ];
 
-  const sitePlans = [
-    {
-      src: `${CONFIG.API_URL}images/mediacenter/site_plans/principle_approval_letter.pdf`,
-      title: "In-Principle Approval Letter",
-    },
-    {
-      src: `${CONFIG.API_URL}images/mediacenter/site_plans/approved_site_plan_ph1.pdf`,
-      title: "Approved Site Plan for Phase-I",
-    },
-    {
-      src: `${CONFIG.API_URL}images/mediacenter/site_plans/approved_site_plan_ph1_ph2.pdf`,
-      title: "In-Principle Approved Site Plan for Phase-I & II",
-    },
-  ];
+  
 
   const newsImages = {
     isshow: true,
@@ -418,11 +405,7 @@ function MediaCenter() {
               <h4 className="title title_style1 text-center">Approved Site Plans</h4>
             </div>
 
-            <ApprovedSitePlans
-              data={sitePlans}
-              slidesPerView={3}
-              spaceBetween={20}
-            />
+            <ApprovedSitePlans />
           </div>
         </section>
 
