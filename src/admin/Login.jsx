@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import "./assets/css/login.css";
 import { API_BASE_URL } from "../config/config";
 import { toast, ToastContainer } from "react-toastify";
@@ -11,6 +11,48 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const [authStatus, setAuthStatus] = useState({
+    isAuthenticated: null,
+    isLoading: true,
+  });
+
+  const token = localStorage.getItem("token");
+
+  // Check if user is already authenticated on mount
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      if (!token) {
+        setAuthStatus({ isAuthenticated: false, isLoading: false });
+
+        return;
+      }
+
+      try {
+        const response = await axios.post(
+          `${API_BASE_URL}/validate-token`,
+
+          {},
+
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+
+        setAuthStatus({
+          isAuthenticated: response.data.status == true,
+          isLoading: false,
+        });
+      } catch (err) {
+        console.error("Token validation failed:", err);
+
+        setAuthStatus({ isAuthenticated: false, isLoading: false });
+      }
+    };
+
+    checkAuth();
+  }, [token]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -23,10 +65,17 @@ const Login = () => {
       });
 
       const { token } = res.data;
-      localStorage.setItem("token", token);
-      toast.success("Login successful! ✅", { position: "top-center" });
+      if (!token) {
+        throw new Error("No token received");
+      }
 
-      setTimeout(() => navigate("/admin"), 1500);
+      localStorage.setItem("token", token);
+
+      toast.success("Login successful! ✅", {
+        position: "top-center",
+        autoClose: 500,
+        onClose: () => navigate("/admin", { replace: true }),
+      });
     } catch (error) {
       const errorMessage =
         error.response?.data?.message ||
@@ -39,14 +88,26 @@ const Login = () => {
     }
   };
 
+  // Redirect to /admin if already authenticated
+
+  if (authStatus.isLoading) {
+    return (
+      <div className="loading" style={{ textAlign: "center", padding: "20px" }}>
+        Loading...
+      </div>
+    );
+  }
+
+  if (authStatus.isAuthenticated) {
+    return <Navigate to="/admin" replace />;
+  }
+
   return (
     <div className="loginContainer">
       <ToastContainer position="top-center" />
       <div className="row">
         <div className="col-6">
-          <div className="imgContainer">
-            {/* Optional image or logo */}
-          </div>
+          <div className="imgContainer">{/* Optional image or logo */}</div>
         </div>
         <div className="col-6">
           <div className="LoginRightContainer">
