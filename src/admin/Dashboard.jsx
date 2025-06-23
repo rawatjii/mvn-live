@@ -328,7 +328,7 @@ const Dashboard = () => {
           {/* <!----------left-area---------> */}
 
           <div className="right-area">
-            <div className="inner-left">
+            {/* <div className="inner-left">
               <div className="box">
                 <h6>
                   <i className="fa fa-envelope-open" aria-hidden="true"></i>{" "}
@@ -357,7 +357,7 @@ const Dashboard = () => {
                   </table>
                 </div>
               </div>
-            </div>
+            </div> */}
             {/* <!----------right-area---------> */}
 
             <div className="inner-left">

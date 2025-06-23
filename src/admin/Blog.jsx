@@ -12,6 +12,9 @@ import CustomPagination from "./components/dashboard/utilities/pagination/Custom
 import generateApi from "./api/generateApi";
 import useCrud from "./hooks/useCrud";
 import CustomModal from "./components/dashboard/utilities/custom-modal/CustomModal";// Simulated backend response
+import { Button, Modal } from "react-bootstrap";
+import { IoIosCloseCircleOutline } from "react-icons/io";
+
 
 const metaFields = [
   { name: "heading", label: "Title", type: "text", col: 4, isRequired: true },
@@ -81,6 +84,8 @@ const AdminBlog = () => {
   };
 
   const handleDelete = (row) => deleteItem(row.id);
+
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
@@ -91,6 +96,36 @@ const AdminBlog = () => {
 
   return (
     <>
+    <Modal size="sm" show={true} centered backdrop="static" keyboard={false} className="delete-confirmation-modal">
+    {/* <Modal.Header closeButton className="modal-header">
+        <Modal.Title>Confirm Deletion</Modal.Title>
+      </Modal.Header> */}
+      <Modal.Body className="text-center">
+        <IoIosCloseCircleOutline size={100} className="d-table mx-auto mb-4" style={{color:'#f15e5e'}} />
+        <h3 className="mb-4">Are You Sure?</h3>
+        <p style={{color:'#999'}}>Are you sure you want to delete <strong></strong>? This action cannot be undone.</p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button
+          variant="secondary"
+          // onClick={onHide}
+          className="cancel-btn"
+          disabled={false}
+        >
+          Cancel
+        </Button>
+        <Button
+          variant="danger"
+          // onClick={onConfirm}
+          className="delete-btn"
+          disabled={false}
+        >
+          Delete
+        </Button>
+      </Modal.Footer>
+      </Modal>
+
+
       <CustomSection customClass="d-block">
         <MicroBox>
           <CustomTitle title="Blog Details" />

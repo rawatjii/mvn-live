@@ -4381,6 +4381,16 @@ table.bg_transparent{
 }
 
 
+.delete-confirmation-modal .modal-content{
+  background:#fff;
+}
+
+.delete-confirmation-modal .modal-body{
+  background: transparent;
+  outline: none;
+  border-radius: unset;
+}
+
 
 /* start responsive */
 /* by bhupendra */

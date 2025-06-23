@@ -181,7 +181,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                                     toggleMenu("close");
                                   }}
                                 >
-                                  {section.section_type}
+                                  {section.section_name}
                                 </NavLink>
                               </li>
                             ))}
