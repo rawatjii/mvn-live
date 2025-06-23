@@ -10,11 +10,25 @@ import GallerySlider from "../components/GallerySlider";
 import PressRelease from "../components/PressRelease";
 
 import Layout from "../components/Layout";
+import { Document, Page, pdfjs } from "react-pdf";
+import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+import "react-pdf/dist/esm/Page/TextLayer.css";
+import ApprovedSitePlans from "../components/ApprovedSitePlans";
+// import './PDFPreview.css';
+
+// Use local worker from pdfjs-dist
+
+// import pdfjsWorker from "pdfjs-dist/build/pdf.worker.entry";
+// pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
 function MediaCenter() {
   window.scrollTo(0, 0);
-  const [newLoadingCount, setNewLoadingCount] = useState(Number(localStorage.getItem('count')));
-  
+  const [newLoadingCount, setNewLoadingCount] = useState(
+    Number(localStorage.getItem("count"))
+  );
+  const [numPages, setNumPages] = useState(null);
+  const [error, setError] = useState(null);
+
   const mvnLOGO = CONFIG.IMAGE_URL + "logo_white.webp";
   const titleRef = useRef();
   const desRefs = useRef([]);
@@ -51,17 +65,56 @@ function MediaCenter() {
     },
   ];
 
+  const sitePlans = [
+    {
+      src: `${CONFIG.API_URL}images/mediacenter/site_plans/principle_approval_letter.pdf`,
+      title: "In-Principle Approval Letter",
+    },
+    {
+      src: `${CONFIG.API_URL}images/mediacenter/site_plans/approved_site_plan_ph1.pdf`,
+      title: "Approved Site Plan for Phase-I",
+    },
+    {
+      src: `${CONFIG.API_URL}images/mediacenter/site_plans/approved_site_plan_ph1_ph2.pdf`,
+      title: "In-Principle Approved Site Plan for Phase-I & II",
+    },
+  ];
+
   const newsImages = {
     isshow: true,
     galleryData: [
-      {src:`${CONFIG.API_URL}images/mediacenter/news-img-8.webp`, alt:"news Image8"},
-      { src: `${CONFIG.API_URL}images/mediacenter/news-img-7.webp`, alt: "Image 7" },
-      { src: `${CONFIG.API_URL}images/mediacenter/news-img-1.jpeg`, alt: "Image 1" },
-      { src: `${CONFIG.API_URL}images/mediacenter/news-img-2.jpeg`, alt: "Image 2" },
-      { src: `${CONFIG.API_URL}images/mediacenter/news-img-3.jpeg`, alt: "Image 3" },
-      { src: `${CONFIG.API_URL}images/mediacenter/news-img-4.jpeg`, alt: "Image 4" },
-      { src: `${CONFIG.API_URL}images/mediacenter/news-img-5.jpeg`, alt: "Image 5" },
-      { src: `${CONFIG.API_URL}images/mediacenter/news-img-6.jpeg`, alt: "Image 6" },
+      {
+        src: `${CONFIG.API_URL}images/mediacenter/news-img-8.webp`,
+        alt: "news Image8",
+      },
+      {
+        src: `${CONFIG.API_URL}images/mediacenter/news-img-7.webp`,
+        alt: "Image 7",
+      },
+      {
+        src: `${CONFIG.API_URL}images/mediacenter/news-img-1.jpeg`,
+        alt: "Image 1",
+      },
+      {
+        src: `${CONFIG.API_URL}images/mediacenter/news-img-2.jpeg`,
+        alt: "Image 2",
+      },
+      {
+        src: `${CONFIG.API_URL}images/mediacenter/news-img-3.jpeg`,
+        alt: "Image 3",
+      },
+      {
+        src: `${CONFIG.API_URL}images/mediacenter/news-img-4.jpeg`,
+        alt: "Image 4",
+      },
+      {
+        src: `${CONFIG.API_URL}images/mediacenter/news-img-5.jpeg`,
+        alt: "Image 5",
+      },
+      {
+        src: `${CONFIG.API_URL}images/mediacenter/news-img-6.jpeg`,
+        alt: "Image 6",
+      },
     ],
   };
 
@@ -215,26 +268,48 @@ function MediaCenter() {
     },
   ];
 
+  const onDocumentLoadSuccess = ({ numPages }) => {
+    setNumPages(numPages);
+    setError(null);
+  };
+
+  const onDocumentLoadError = (error) => {
+    console.error("PDF load error:", error.message);
+    setError("Failed to load PDF preview.");
+  };
+
   useEffect(() => {
-    setNewLoadingCount(Number(localStorage.getItem('count')));
-  }, [localStorage.getItem('count')]);
+    setNewLoadingCount(Number(localStorage.getItem("count")));
+  }, [localStorage.getItem("count")]);
 
   return (
     <Layout>
       <div className="media_center">
-        <MicroBanner bg={`${CONFIG.API_URL}images/mediacenter/mediaimg.jpg`} data={breadcrumbs} />
-        <section className="section media-news-section pb-0" aria-label="Media Center Section">
+        <MicroBanner
+          bg={`${CONFIG.API_URL}images/mediacenter/mediaimg.jpg`}
+          data={breadcrumbs}
+        />
+        <section
+          className="section media-news-section pb-0"
+          aria-label="Media Center Section"
+        >
           <div className="micro_content">
             <div className="micro_data">
               <div className="content_col position-relative page-header-main-heading">
                 <Container>
                   <div className="heading_div ">
-                    <img src={`${CONFIG.API_URL}images/icons/heading-icon-img.webp`} alt="mvn vertical icon" className="img-fluid title_plane1" />
-                    <h4 ref={titleRef} className="title title_style1 text-center">
-                    Latest News
+                    <img
+                      src={`${CONFIG.API_URL}images/icons/heading-icon-img.webp`}
+                      alt="mvn vertical icon"
+                      className="img-fluid title_plane1"
+                    />
+                    <h4
+                      ref={titleRef}
+                      className="title title_style1 text-center"
+                    >
+                      Latest News
                     </h4>
                   </div>
-    
                 </Container>
               </div>
             </div>
@@ -242,16 +317,17 @@ function MediaCenter() {
           <div className="container-fluid">
             <div className="row">
               <div className="col-sm-6 px-md-0">
-
                 <div className="heading_div mb_60 mb_sm_30">
-                  <img src={`${CONFIG.API_URL}images/icons/heading-icon-img.webp`} alt="heading icon" className="img-fluid title_plane1" />
+                  <img
+                    src={`${CONFIG.API_URL}images/icons/heading-icon-img.webp`}
+                    alt="heading icon"
+                    className="img-fluid title_plane1"
+                  />
                   <h4 className="title title_style1 text-center">
-                  Offline Media News
+                    Offline Media News
                   </h4>
                 </div>
                 <div className="media-news_offline">
-                
-
                   <GallerySlider
                     data={newsImages}
                     slidesPerView={2}
@@ -263,9 +339,13 @@ function MediaCenter() {
               <div className="col-sm-6 px-md-0">
                 <div className="media-news_online">
                   <div className="heading_div mb_60 mb_sm_30">
-                    <img src={`${CONFIG.API_URL}images/icons/heading-icon-img.webp`} alt="heading icon" className="img-fluid title_plane1" />
+                    <img
+                      src={`${CONFIG.API_URL}images/icons/heading-icon-img.webp`}
+                      alt="heading icon"
+                      className="img-fluid title_plane1"
+                    />
                     <h4 className="title title_style1 text-center">
-                    Online Media News
+                      Online Media News
                     </h4>
                   </div>
                   {onlineNews &&
@@ -302,13 +382,18 @@ function MediaCenter() {
           </div>
         </section>
 
-        <section className="section press-releases-container" aria-label="Press Section">
+        <section
+          className="section press-releases-container"
+          aria-label="Press Section"
+        >
           <div className="container">
             <div className="heading_div mb_60 mb_sm_30">
-              <img src={`${CONFIG.API_URL}images/icons/heading-icon-img.webp`} alt="heading icon" className="img-fluid title_plane1" />
-              <h4 className="title title_style1 text-center">
-              Press Releases
-              </h4>
+              <img
+                src={`${CONFIG.API_URL}images/icons/heading-icon-img.webp`}
+                alt="heading icon"
+                className="img-fluid title_plane1"
+              />
+              <h4 className="title title_style1 text-center">Press Releases</h4>
             </div>
 
             <PressRelease
@@ -318,13 +403,41 @@ function MediaCenter() {
             />
           </div>
         </section>
-        <section className="section media-gallery" aria-label="Media Gallery Section">
+
+        <section
+          className="section pt-md-0 pb-0 pb-md-5"
+          aria-label="Press Section"
+        >
           <div className="container">
             <div className="heading_div mb_60 mb_sm_30">
-              <img src={`${CONFIG.API_URL}images/icons/heading-icon-img.webp`} alt="heading icon" className="img-fluid title_plane1" />
-              <h4 className="title title_style1 text-center">
-                Gallery
-              </h4>
+              <img
+                src={`${CONFIG.API_URL}images/icons/heading-icon-img.webp`}
+                alt="heading icon"
+                className="img-fluid title_plane1"
+              />
+              <h4 className="title title_style1 text-center">Approved Site Plans</h4>
+            </div>
+
+            <ApprovedSitePlans
+              data={sitePlans}
+              slidesPerView={3}
+              spaceBetween={20}
+            />
+          </div>
+        </section>
+
+        <section
+          className="section media-gallery"
+          aria-label="Media Gallery Section"
+        >
+          <div className="container">
+            <div className="heading_div mb_60 mb_sm_30">
+              <img
+                src={`${CONFIG.API_URL}images/icons/heading-icon-img.webp`}
+                alt="heading icon"
+                className="img-fluid title_plane1"
+              />
+              <h4 className="title title_style1 text-center">Gallery</h4>
             </div>
             <GallerySlider
               data={ourGallery}
@@ -334,15 +447,20 @@ function MediaCenter() {
             />
           </div>
         </section>
-        <section className="section media-events" aria-label="Media Events Section">
+        <section
+          className="section media-events"
+          aria-label="Media Events Section"
+        >
           <div className="container">
             <div className="heading_div mb_60 mb_sm_30">
-              <img src={`${CONFIG.API_URL}images/icons/heading-icon-img.webp`} alt="heading icon" className="img-fluid title_plane1" />
-              <h4 className="title title_style1 text-center">
-              OUR EVENTS
-              </h4>
+              <img
+                src={`${CONFIG.API_URL}images/icons/heading-icon-img.webp`}
+                alt="heading icon"
+                className="img-fluid title_plane1"
+              />
+              <h4 className="title title_style1 text-center">OUR EVENTS</h4>
             </div>
-            
+
             <div className="row">
               {ourEvents &&
                 ourEvents.map((item, index) => (
@@ -358,12 +476,12 @@ function MediaCenter() {
                           alt={`mvn events ${index}`}
                           className="img-fluid event-video-banner"
                         />
-                      
-                      <img
-                        src={`${CONFIG.API_URL}images/mediacenter/play-button.png`}
-                        alt={`mvn events ${index}`}
-                        className="img-fluid play-icon"
-                      />
+
+                        <img
+                          src={`${CONFIG.API_URL}images/mediacenter/play-button.png`}
+                          alt={`mvn events ${index}`}
+                          className="img-fluid play-icon"
+                        />
                       </a>
                     </div>
                   </div>
@@ -371,6 +489,7 @@ function MediaCenter() {
             </div>
           </div>
         </section>
+
         <div className="container-fluid">
           <div className="row align-items-center">
             <div className="col-sm-6">
@@ -378,14 +497,13 @@ function MediaCenter() {
             </div>
             <div className="col-sm-6">
               <div className="media_enquiry_form_card">
-              <EnquireForm projectName={'MVN Infrastructure'}/>
+                <EnquireForm projectName={"MVN Infrastructure"} />
               </div>
             </div>
           </div>
         </div>
       </div>
     </Layout>
-    
   );
 }
 
