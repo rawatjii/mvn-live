@@ -2442,6 +2442,15 @@ ul.journey_content  .plane img {width: auto; height: 61px;}
 /* .section.peacock_section.pb-0  svg g image {
   height: 5852px!important;
 } */
+.app_site_plan_box div:first-child{
+  flex-basis: 5%;
+}
+.app_site_plan_box div:first-child img{
+  background: #fff;
+        height: auto;
+        padding: 15px 5px;
+        border-radius: 5px;
+}
 .modal-body  .sec_title.text-center.color.style1 {
   margin-bottom: 0px;
 }
