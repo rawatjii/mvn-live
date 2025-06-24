@@ -338,7 +338,7 @@ function MediaCenter() {
                 alt="heading icon"
                 className="img-fluid title_plane1"
               />
-              <h4 className="title title_style1 text-center">Approved Site Plans</h4>
+              <h4 className="title title_style1 text-center">Compliances</h4>
             </div>
 
             <ApprovedSitePlans />
