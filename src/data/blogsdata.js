@@ -349,7 +349,7 @@ In this article, we will learn about the challenges faced by commercial real est
         description: `Situated directly on the 18‑km <a class="text-white text-decoration-underline" target="_blank" href="https://www.mvn.in/blogs/dwarka-expressway-redefining-urban-connectivity-and-real-estate-dynamics">Dwarka Expressway</a>, Sector 37D is poised to become a strategic real estate destination. Residents have smooth travel times to: 
 
         <br/>
-        <ul>
+        <ul class="style_1">
           <li class="mt-2 px-4">
            MVN Mall is within walking distance—literally 0 km away.
           </li>
@@ -370,7 +370,7 @@ In this article, we will learn about the challenges faced by commercial real est
       {
         heading: `2. Luxurious and Custom Homes`,
         description: `
-          <ul>
+          <ul class="style_1">
             <li class="mt-2 px-4">
               Providing 5.5 BHK configurations, from ~6,300 to 13,500 sq.ft in chosen penthouses.
             </li>
@@ -389,7 +389,7 @@ In this article, we will learn about the challenges faced by commercial real est
       {
         heading: `3. Resort‑Grade Amenities`,
         description: `
-          <ul>
+          <ul class="style_1">
             <li class="mt-2 px-4">
               An expansive clubhouse features include multi-purpose halls, fine dining, a bar, and celebration lawns.
             </li>
@@ -419,7 +419,7 @@ In this article, we will learn about the challenges faced by commercial real est
       {
         heading: `4. Healthy & Green Living`,
         description: `
-          <ul>
+          <ul class="style_1">
             <li class="mt-2 px-4">
               Conceived to be located in an eco-friendly, pollution-free society.
             </li>
@@ -436,7 +436,7 @@ In this article, we will learn about the challenges faced by commercial real est
       {
         heading: `5. Rock-Solid Security & Smart Infrastructure`,
         description: `
-            <ul>
+            <ul class="style_1">
               <li class="mt-2 px-4">
                 Around‑the‑clock surveillance via CCTV, guards, and access-controlled parking.
               </li>
@@ -454,7 +454,7 @@ In this article, we will learn about the challenges faced by commercial real est
       },
       {
         heading: `6. Investment & Developer Cred`,
-        description: `<ul>
+        description: `<ul class="style_1">
               <li class="mt-2 px-4">
                 MVN Infrastructure, established in 2008, is a respected leader in education and real estate, known for quality and timely delivery.
               </li>
@@ -472,7 +472,7 @@ In this article, we will learn about the challenges faced by commercial real est
       {
         heading: `7. Growing Ecosystem: MVN Aero One Mall`,
         description: `
-            <ul>
+            <ul class="style_1">
               <li class="mt-2 px-4">
                 Mixed-use integrated complex with retail, restaurants, entertainment, multiplex, co-working, and a luxury hotel.
               </li>
@@ -486,7 +486,7 @@ In this article, we will learn about the challenges faced by commercial real est
         heading: `Additional Reasons It's One of the Best Luxe Apartments in Gurgaon`,
         description: `Here are some of the other reasons why MVN Aero One provides a perfect blend of luxury living and convenience at the same time.
         <br/>
-        <ul>
+        <ul class="style_1">
           <li class="mt-2 px-4">
             <strong>Bespoke living:</strong> Totally personalized homes with grandeur and practicality.
           </li>
@@ -510,23 +510,23 @@ In this article, we will learn about the challenges faced by commercial real est
         heading: `Frequently Asked Questions`,
         description: `<ul>
               <li class="mt-3 px-4">
-                <h6>Q1. Why is MVN Aero One a Luxury Residential Complex in Gurgaon?</h6>
+                <h3 class="faq_ques">Q1. Why is MVN Aero One a Luxury Residential Complex in Gurgaon?</h3>
                 <p>A. MVN Aero One offers ultra-spacious 5.5 BHK homes, high-end finishes, best-in-class amenities, and skyline views that redefine luxury lifestyle in Gurgaon.</p>
               </li>
               <li class="mt-3 px-4">
-                <h6>Q2. Is MVN Aero One Situated in a Well-Developed Area of Gurgaon?</h6>
+                <h3 class="faq_ques">Q2. Is MVN Aero One Situated in a Well-Developed Area of Gurgaon?</h3>
                 <p>A. MVN Aero One is well-positioned on the Dwarka Expressway with ease of connectivity to IGI Airport, Cyber City, and core Gurgaon.</p>
               </li>
               <li class="mt-3 px-4">
-                <h6>Q3. What are the Amenities in MVN Aero One?</h6>
+                <h3 class="faq_ques">Q3. What are the Amenities in MVN Aero One?</h3>
                 <p>A. Residents have access to world-class amenities, including a rooftop infinity pool, wellness spa, smart home automation, fitness studio, and concierge services.</p>
               </li>
               <li class="mt-3 px-4">
-                <h6>Q4. Who might want to invest in MVN Aero One?</h6>
+                <h3 class="faq_ques">Q4. Who might want to invest in MVN Aero One?</h3>
                 <p>A. MVN Aero One is ideal for luxury homeowners, NRIs, and investors seeking a premium address with long-term appreciation and convenience in Gurgaon.</p>
               </li>
               <li class="mt-3 px-4">
-                <h6>Q5. How does MVN Aero One Effectively Balance Luxury and Convenience?</h6>
+                <h3 class="faq_ques">Q5. How does MVN Aero One Effectively Balance Luxury and Convenience?</h3>
                 <p>A. With its provision of high-class interiors, 5-star facilities, and a central location, MVN Aero One offers a well-balanced lifestyle that combines luxury, convenience, and accessibility.</p>
               </li>
             </ul>

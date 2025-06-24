@@ -4409,6 +4409,15 @@ video:focus {
   flex-grow: 1;
 }
 
+.blog_page .faq_ques{
+  font-size:20px;
+}
+
+.blog_page .style_1{
+  list-style-type: square;
+  list-style-position: inside;
+}
+
 
 /* start responsive */
 /* by bhupendra */
@@ -5799,6 +5808,11 @@ video:focus {
   .awa_card div:last-child {
     padding: 10px 15px;
     flex-basis: 70%;
+  }
+
+  .blog_page .faq_ques{
+    font-size: 16px;
+    line-height: 22px;
   }
 
 }
