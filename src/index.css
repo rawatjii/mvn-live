@@ -4401,6 +4401,14 @@ video:focus {
   outline-offset: 2px;
 }
 
+.app_site_plan_box div:first-child{
+  flex: 1;
+}
+
+.app_site_plan_box div:last-child {
+  flex-grow: 1;
+}
+
 
 /* start responsive */
 /* by bhupendra */
@@ -5769,6 +5777,28 @@ video:focus {
 
   .micro_overview .rera-number{
     margin-top:30px;
+  }
+
+  .approvedSitePlans .title{
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .app_site_plan_box div:first-child {
+    flex-basis: 5%;
+  }
+
+  .app_site_plan_box div:first-child img {
+    background: #fff;
+    height: auto;
+    padding: 15px 5px;
+    border-radius: 5px;
+  
+  }
+
+  .awa_card div:last-child {
+    padding: 10px 15px;
+    flex-basis: 70%;
   }
 
 }

@@ -11,6 +11,7 @@ import PressRelease from "../components/PressRelease";
 
 import Layout from "../components/Layout";
 import { Helmet } from "react-helmet";
+import ApprovedSitePlans from "../components/ApprovedSitePlans";
 
 function MediaCenter() {
   window.scrollTo(0, 0);
@@ -325,6 +326,25 @@ function MediaCenter() {
             />
           </div>
         </section>
+
+        <section
+          className="section pt-md-0 pb-0 pb-md-5"
+          aria-label="Press Section"
+        >
+          <div className="container">
+            <div className="heading_div mb_60 mb_sm_30">
+              <img
+                src={`${CONFIG.API_URL}images/icons/heading-icon-img.webp`}
+                alt="heading icon"
+                className="img-fluid title_plane1"
+              />
+              <h4 className="title title_style1 text-center">Approved Site Plans</h4>
+            </div>
+
+            <ApprovedSitePlans />
+          </div>
+        </section>
+
         <section className="section media-gallery" aria-label="Media Gallery Section">
           <div className="container">
             <div className="heading_div mb_60 mb_sm_30">
