@@ -45,6 +45,7 @@ import "./index.css";
 import "./awaneesh.css";
 import "./savan.css";
 import './adarsh.css'
+import PDFViewer from "./frontend/pages/PDFViewer.jsx";
 
 
 
@@ -178,6 +179,14 @@ const router = createBrowserRouter([
         element: (
           <FrontendRoute loaderType="">
             <Disclaimer />
+          </FrontendRoute>
+        ),
+      },
+      {
+        path: "pdf/:pdfName",
+        element: (
+          <FrontendRoute loaderType="">
+            <PDFViewer />
           </FrontendRoute>
         ),
       },
