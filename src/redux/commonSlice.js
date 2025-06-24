@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit"
 const initialState = {
   isMicro:false,
   microId:null,
+  isModalShow:false,
 }
 
 const commonSlice = createSlice({
@@ -12,10 +13,16 @@ const commonSlice = createSlice({
     setCommonState:(state, action)=>{
       state.microId = action.payload.id,
       state.isMicro = action.payload.isMicro
+    },
+    setModalShow:(state, action)=>{
+      state.isModalShow = true
+    },
+    setModalHide:(state, action)=>{
+      state.isModalShow = false
     }
   },
 })
 
-export const {setCommonState} = commonSlice.actions;
+export const {setCommonState, setModalShow, setModalHide} = commonSlice.actions;
 
 export default commonSlice.reducer;

@@ -11,9 +11,9 @@ import CustomTable from "./components/dashboard/utilities/custom-table/CustomTab
 import CustomPagination from "./components/dashboard/utilities/pagination/CustomPagination";
 import generateApi from "./api/generateApi";
 import useCrud from "./hooks/useCrud";
-import CustomModal from "./components/dashboard/utilities/custom-modal/CustomModal";// Simulated backend response
-
-
+import CustomModal from "./components/dashboard/utilities/custom-modal/CustomModal"; // Simulated backend response
+import { useDispatch } from "react-redux";
+import { setModalShow } from "../redux/commonSlice";
 
 const metaFields = [
   { name: "heading", label: "Title", type: "text", col: 4, isRequired: true },
@@ -53,7 +53,6 @@ const metaFields = [
   },
 ];
 
-
 const columns = [
   { key: "id", label: "S.No." },
   { key: "heading", label: "Heading" },
@@ -72,19 +71,19 @@ const oldData = [
 
 const AdminBlog = () => {
   const aboutsApi = generateApi("blog"); // ✅ Adjust endpoint if needed
-  const { data, loading, error, createItem, updateItem, editItem, deleteItem } = useCrud(aboutsApi);
+  const { data, loading, error, createItem, updateItem, editItem, deleteItem } =
+    useCrud(aboutsApi);
   const [editModalData, setEditModalData] = useState(null);
+  const dispatch = useDispatch()
 
   const handleCreate = (formData) => createItem(formData);
 
   const handleEditSubmit = (formData) => {
-    setEditModalData(null)
-    editItem(editModalData.id, formData); 
+    setEditModalData(null);
+    editItem(editModalData.id, formData);
   };
 
   const handleDelete = (row) => deleteItem(row.id);
-
-
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
@@ -93,11 +92,14 @@ const AdminBlog = () => {
     currentPage * itemsPerPage
   );
 
+  const editFormHandler = (row) => {
+    scrollTo(0, 0);
+    // dispatch(setModalShow());
+    setEditModalData(row);
+  };
+
   return (
     <>
-    
-
-
       <CustomSection customClass="d-block">
         <MicroBox>
           <CustomTitle title="Blog Details" />
@@ -116,8 +118,7 @@ const AdminBlog = () => {
             columns={columns}
             data={paginatedData}
             onEdit={(row) => {
-              scrollTo(0, 0)
-              setEditModalData(row)
+              editFormHandler(row);
             }}
             onDelete={handleDelete}
           />

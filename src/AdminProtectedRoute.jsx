@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import { API_BASE_URL } from "./config/config";
 import axios from "axios";
+import DeleteConfirmModal from "./admin/components/DeleteConfirmModal";
 
 const AdminProtectedRoute = () => {
   const [authStatus, setAuthStatus] = useState({
@@ -58,7 +59,10 @@ const AdminProtectedRoute = () => {
   }
 
   return authStatus.isAuthenticated ? (
-    <Outlet />
+    <>
+      <Outlet />
+      <DeleteConfirmModal />
+    </>
   ) : (
     <Navigate to="/admin/login" state={{ from: location.pathname }} replace />
   );
