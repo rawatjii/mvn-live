@@ -4391,6 +4391,32 @@ table.bg_transparent{
   border-radius: unset;
 }
 
+.blog_page .main_content p{
+  font-size: 14px;
+  line-height: 26px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.blog_page .main_content p a{
+  color:#fff;
+  text-decoration: underline;
+}
+
+.blog_page .main_content ul{
+  list-style-type: disc;
+  list-style-position: inside;
+  padding-left: 15px;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.blog_page .main_content li{
+  margin:7px 0;
+}
+
 
 /* start responsive */
 /* by bhupendra */

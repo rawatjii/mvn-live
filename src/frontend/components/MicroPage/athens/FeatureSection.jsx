@@ -56,7 +56,7 @@ const FeatureSection = ({ data }) => {
         <div className="col-lg-6">
 
           <div className="box-title m-v">
-            <h1 className="main-title">{heading}</h1>
+            <h2 className="main-title">{heading}</h2>
             <p className="main-pera">{sub_heading}</p>
           </div>
           <picture className='d-v'>
@@ -73,7 +73,7 @@ const FeatureSection = ({ data }) => {
           <div className="elevation-content">
             <div className="container">
               <div className="inner-box" data-speed="clamp(0.9)">
-                <h1 className="main-title d-v">{heading}</h1>
+                <h3 className="main-title d-v">{heading}</h3>
                 <p className="main-pera d-v">{sub_heading}</p>
 
 

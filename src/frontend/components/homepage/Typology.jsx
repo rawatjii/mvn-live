@@ -198,7 +198,7 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
                   className="content-box"
                   style={{ display: "none" }}
                 >
-                  <h1>{item.heading}</h1>
+                  <h2>{item.heading}</h2>
                   <p>{item.short_description}</p>
                 </div>
               ))}

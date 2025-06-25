@@ -117,7 +117,7 @@ function BlogDetails() {
           <Container className="text-center py-5"></Container>
           <div className="container">
             <div className="row row-gap-3">
-              <div className="col-sm-12 col-md-8 col-lg-8">
+              <div className="col-sm-12 col-md-8 col-lg-8 main_content">
                 {loading ? (
                   <h1>Loading...</h1>
                 ) : !loading &&
@@ -126,7 +126,7 @@ function BlogDetails() {
                   <div className="text-center py-5">No records found</div>
                 ) : (
                   <>
-                    <div className="">
+                    <div className="mb-5">
                       <img
                         src={BACKEND_IMAGE_URL + selectedBlog?.image}
                         alt="mvn blog image"

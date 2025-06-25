@@ -32,6 +32,9 @@ color: #131313;text-decoration: none;font-family: "Tinos-Regular";font-size: 18p
 .typology_section .main-title{
     color: #d9c072;
 }
+.typology_section .main-title:before{
+    display: none;
+}
 .typology_section .nav-tabs li{
     margin: 0 10px;
 }
