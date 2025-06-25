@@ -32,7 +32,7 @@ const RelatedBlogs = () => {
                   month:'long',
                   year: 'numeric'
                 })}</p>
-                <Link className="btn btn_style2" to={`${FRONTEND_URL}blogs/details/${singleBlog.slug}`}>
+                <Link className="btn btn_style2" to={`${FRONTEND_URL}blogs/${singleBlog.slug}`}>
                   View Details
                 </Link>
               </div>

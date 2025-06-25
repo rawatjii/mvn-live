@@ -97,9 +97,6 @@ function BlogDetails() {
       }
   }, [pageMetaData])
 
-  console.log('location',location);
-  
-
   return (
     <>
       <Helmet>
