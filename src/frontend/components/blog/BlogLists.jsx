@@ -59,7 +59,7 @@ export default function BlogLists() {
                     <div className="blog-platter-detail">
                       <h4>{el.heading}</h4>
                       <div className="blog-platter-detail-btn">
-                        <p>{new Date(el.created_at).toLocaleDateString('default', {
+                        <p>{new Date(el.date_at).toLocaleDateString('default', {
                           day:'numeric',
                           month:'long',
                           year: 'numeric'

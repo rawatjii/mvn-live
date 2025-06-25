@@ -43,7 +43,6 @@ const metaFields = [
     isWebpAllowed: false,
     isRequired: true,
   },
-  // { name: "description", label: "Description", type: "textarea", col: 12, isRequired: true },
   {
     name: "description",
     label: "Description",
@@ -51,6 +50,9 @@ const metaFields = [
     col: 12,
     isRequired: true,
   },
+  { name: "meta_title", label: "Meta Title", type: "text", col: 4},
+  { name: "meta_keywords", label: "Meta Keywords", type: "text", col: 4},
+  { name: "meta_description", label: "Meta Description", type: "text", col: 4},
 ];
 
 const columns = [
