@@ -12,13 +12,17 @@ import Layout from "../components/Layout";
 
 import { API_URL } from "../../config/config";
 import useFetchData from "../utils/apiHelper";
+import { Helmet } from "react-helmet";
 
 const AboutUs = () => {
   window.scrollTo(0, 0);
-  
+  const [pageMetaData, setPageMetaData] = useState(null);
+  const [metaDataArray, setMetaData] = useState([])
   const [microBg, setMicroBg] = useState(`${API_URL}images/about/about-head-bg-desktop.webp`);
 
   const { data, loading } = useFetchData("page/page-section/about");
+
+  const { data: metaData } = useFetchData(`get-page-meta/2`);
   
   const breadcrumbs = {
     title: 'About Us',
@@ -51,8 +55,52 @@ const AboutUs = () => {
     };
   }, []);
 
+  useEffect(()=>{
+    setPageMetaData(metaData?.[0])
+  }, [metaData])
+
+  useEffect(()=>{
+    const headDataArray = pageMetaData?.head_data?.split('\n')
+
+    // Convert each string element to its appropriate type
+    const parsedArray = headDataArray?.map(item => item);
+  
+    parsedArray?.map(item=>{
+        setMetaData(prevState=>([
+            ...prevState,
+            item,
+        ]))
+    })
+    
+  }, [pageMetaData])
+
+  useEffect(()=>{
+      var headDataContainer;
+      if (pageMetaData?.head_data) {
+          headDataContainer = document.createElement('div');
+          headDataContainer.innerHTML = pageMetaData.head_data;
+          Array.from(headDataContainer.children).forEach(child => {
+              document.head.appendChild(child);
+          });
+      }
+
+      return ()=>{
+          if (headDataContainer) {
+              Array.from(headDataContainer.children).forEach(child => {
+                document.head.removeChild(child);
+              });
+          }
+      }
+  }, [pageMetaData])
+
   return (
     <>
+      <Helmet>
+        {pageMetaData && pageMetaData.meta_title && <title>{pageMetaData.meta_title}</title>}
+        {pageMetaData && pageMetaData.meta_description && <meta name="description" content={pageMetaData.meta_description} />}
+        {pageMetaData && pageMetaData.meta_keyword && <meta name="keywords" content={pageMetaData.meta_keyword} />}
+        {pageMetaData && pageMetaData.head_data && <div dangerouslySetInnerHTML={{__html:pageMetaData.head_data}} />}
+      </Helmet>
       <Layout>
         <MicroBanner page_section="about-banner" data={breadcrumbs} page="about" />
 
