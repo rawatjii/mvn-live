@@ -51,7 +51,9 @@
     position: relative;
     z-index: 1;
     margin-bottom: 0;
-  
+    font-family: var(--roboto_font);
+    font-weight: 400;
+    margin-top:10px;
   }
   nav{
     position: relative;
