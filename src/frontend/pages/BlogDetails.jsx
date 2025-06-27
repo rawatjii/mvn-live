@@ -70,10 +70,10 @@ function BlogDetails() {
                 </div>
 
                 <div className="mt-4 mb-2">
-                  <h1
+                  <h3
                     className="blog-detail-page-heading"
                     dangerouslySetInnerHTML={{ __html: selectedBlog?.title }}
-                  ></h1>
+                  ></h3>
                   <div
                     className="blog-deatail-page-description"
                     dangerouslySetInnerHTML={{ __html: selectedBlog?.content }}
