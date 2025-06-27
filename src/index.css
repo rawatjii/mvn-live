@@ -4418,6 +4418,10 @@ video:focus {
   list-style-position: inside;
 }
 
+.typology_section .main-title:before{
+  display:none;
+}
+
 
 /* start responsive */
 /* by bhupendra */

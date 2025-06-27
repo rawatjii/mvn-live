@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./feature_section.css";
 
 const FeatureSection = ({ data }) => {
-  const{title,desc,src,list,bgImg}=data;
+  const { title, desc, src, list, bgImg } = data;
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -48,43 +48,47 @@ const FeatureSection = ({ data }) => {
 
   return (
     <section className="feature" aria-label="Feature Section">
-        <div className="row">
-            <div className="col-lg-6">
-                
+      <div className="row">
+        <div className="col-lg-6">
           <div class="box-title m-v">
-        <h1 class="main-title">{title}</h1>
-        <p class="main-pera">{desc}</p>
-      </div>
-      <img
-        className="d-v elevation reveal"
-        src={src}
-        alt="Elevation feature"
-      />
-        <div class="m-v overlap" >
-    <img class="elevation bg-elevation" src={bgImg} alt="elevation background image"/>
-     <img class="elevation fr-elevation" src={src} alt='elevation front image'/>      
-  </div>
+            <h4 class="main-title">{title}</h4>
+            <p class="main-pera">{desc}</p>
+          </div>
+          <img
+            className="d-v elevation reveal"
+            src={src}
+            alt="Elevation feature"
+          />
+          <div class="m-v overlap">
+            <img
+              class="elevation bg-elevation"
+              src={bgImg}
+              alt="elevation background image"
+            />
+            <img
+              class="elevation fr-elevation"
+              src={src}
+              alt="elevation front image"
+            />
+          </div>
+        </div>
+        <div className="col-lg-6">
+          <div className="elevation-content">
+            <div className="container">
+              <div className="inner-box" data-speed="clamp(0.9)">
+                <h4 className="main-title d-v">{title}</h4>
+                <p className="main-pera d-v">{desc}</p>
+
+                <ul>
+                  {list.map((feature, index) => (
+                    <li key={index}>{feature}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <div className="col-lg-6">
-            <div className="elevation-content">
-        <div className="container">
-          <div className="inner-box" data-speed="clamp(0.9)">
-            <h1 className="main-title d-v">{title}</h1>
-            <p className="main-pera d-v">{desc}</p>
-
-
-            <ul>
-              {list.map((feature, index) => (
-                <li key={index}>{feature}</li>
-              ))}
-            </ul>
           </div>
         </div>
       </div>
-            </div>
-        </div>
-
-  
     </section>
   );
 };
@@ -98,5 +102,4 @@ FeatureSection.propTypes = {
   }).isRequired,
 };
 
-
-export default FeatureSection
+export default FeatureSection;

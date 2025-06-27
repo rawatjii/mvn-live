@@ -38,7 +38,7 @@ const CustomSlider = ({slides, className}) => {
                   onClick={() => setIndex(index)}
                 />
                 <div className="carousel-caption">
-                  <h1 className="main-title">{slide.title}</h1>
+                  <h3 className="main-title">{slide.title}</h3>
                   {slide.area && (<span>Area: {slide.area}</span>)}
                   <div className="link">
                     <a href={slide.link}>View Details</a>
