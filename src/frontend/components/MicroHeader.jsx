@@ -177,7 +177,8 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                               <li key={index}>
                                 <NavLink
                                   className="new-launch"
-                                  onClick={() => {
+                                  onClick={(e) => {
+                                    e.preventDefault();
                                     scrollToSection(section.section_type);
                                     toggleMenu("close");
                                   }}
