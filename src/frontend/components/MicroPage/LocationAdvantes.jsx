@@ -8,9 +8,6 @@ const LocationAdvantes = React.memo(({ project_id }) => {
 
   const { data, loading:projectLoading } = useFetchData(`project/${project_id}/location-advantage`);
 
-  console.log('kjsdf data',data);
-  
-
 
   return (
     <div>

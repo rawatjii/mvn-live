@@ -9,7 +9,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Renders1({ data }) {
   const sectionsRef = useRef([]);
-  console.log('page data',data);
 
   return (
     <div className="section renders1_section wrapper center pb-0 Landscape-section">

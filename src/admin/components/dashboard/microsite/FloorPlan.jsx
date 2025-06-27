@@ -101,10 +101,6 @@ const FloorPlans = () => {
   };
 
   const handleEditMeta = async (formData) => {
-    // console.log('formData11',formData);
-    // for(let [key, value] of formData.entries()){
-    //   console.log(`${key}:`, value);
-    // }
     try {
       await editItem(editData.id, formData);
       await fetchMetadata();

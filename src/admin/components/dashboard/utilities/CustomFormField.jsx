@@ -84,7 +84,6 @@ const CustomFormField = ({
     };
   }, [resetKey, value, type]);
 
-  console.log('section type', type);
 
   return (
     <div className={`FieldContainer mb-3 ${isLeft ? "row" : ""}`}>

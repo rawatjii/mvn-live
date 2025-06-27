@@ -11,7 +11,6 @@ import useCrud from "../../../hooks/useCrud";
 export default React.memo(function pages() {
   const allpagesApi = generateApi("distinct-all-pages");
   const { data } = useCrud(allpagesApi);
-  console.log("all pages", data);
 
   return (
     <>

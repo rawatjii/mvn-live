@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { Button, Modal } from "react-bootstrap";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
-import { setModalHide } from "../../redux/commonSlice";
+import { setDeleteConfirm, setModalHide } from "../../redux/commonSlice";
 
 const DeleteConfirmModal = () => {
   const isModalShow = useSelector(state=>state.commonState.isModalShow)
@@ -11,6 +11,10 @@ const DeleteConfirmModal = () => {
 
   const handleCancel = ()=>{
     dispatch(setModalHide())
+  }
+
+  const onConfirm = ()=>{
+    dispatch(setDeleteConfirm(true));
   }
 
   return createPortal(
@@ -45,7 +49,7 @@ const DeleteConfirmModal = () => {
           </Button>
           <Button
             variant="danger"
-            // onClick={onConfirm}
+            onClick={onConfirm}
             className="delete-btn text-white"
             disabled={false}
           >

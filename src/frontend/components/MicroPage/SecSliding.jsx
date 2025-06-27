@@ -7,7 +7,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function SecSliding({ data }) {
   const sectionsRef = useRef([]);
-  console.log('page data',data);
 
   useEffect(() => {
     const getRatio = (el) => window.innerHeight / (window.innerHeight + el.offsetHeight);
@@ -55,7 +54,6 @@ export default function SecSliding({ data }) {
         <h4 className="title">{data.title}</h4>
       </div>
       {data.data.map((amenity, i) => {
-        console.log('amenity data', amenity);
         return (
           <section
             key={i}

@@ -148,6 +148,21 @@ const PageCommonSection = [
     link: "admin/team",
   },
   {
+    name: "Blog",
+    icon: <FaUser className="mr-3 box-icon" />,
+    link: "admin/blogs",
+  },
+  {
+    name: "Media Centre",
+    icon: <FaUser className="mr-3 box-icon" />,
+    link: "admin/media-centre",
+  },
+  {
+    name: "Career",
+    icon: <FaUser className="mr-3 box-icon" />,
+    link: "admin/career",
+  },
+  {
     name: "Pages Meta",
     icon: <FaUser className="mr-3 box-icon" />,
     link: "admin/pages-meta",

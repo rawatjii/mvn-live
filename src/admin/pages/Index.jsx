@@ -89,8 +89,6 @@ const SinglePage = () => {
   }, [data]);
 
  
-    console.log('formSections',formSections)
-
   return (
     <CustomSection customClass="d-block">
       {formSections.map((section, index) => 

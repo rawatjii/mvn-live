@@ -5,8 +5,6 @@ const ScrollToTop = () => {
   // Extracts pathname property(key) from an object
   const { pathname } = useLocation();
 
-  console.log('pathname',pathname);
-
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   }

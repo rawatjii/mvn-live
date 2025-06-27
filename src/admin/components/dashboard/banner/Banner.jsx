@@ -49,10 +49,8 @@ const Banner = () => {
   const { pageName } = useParams(); 
 
   const handleSectionSubmit = (sectionApi, data) => {
-    console.log(` Data from section [${sectionApi}] is already FormData`);
-    console.log(` FormData content for [${sectionApi}]:`);
+    
     for (let [key, value] of data.entries()) {
-      console.log(`${key}:`, value instanceof File ? value.name : value);
     }
   
     const endpoint = "https://dummyjson.com/test"; 

@@ -27,6 +27,8 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
   const {isMicroPage, microId} = useSelector((state)=>state.commonState);
 
   const { sidebar_section, sidebarAsset } = data;
+
+  console.log('micropage data',data);
   const channelUrl = CONFIG.YOUTUBE_URL;
   const { pathname } = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -70,10 +72,8 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
 
   const { data: pageLinks, loading } = useFetchData("platter-project");
   const { data: contactData } = useFetchData(`page/page-section/contact-us`);
-  const { data: microPageSections } = useFetchData(`project/${microId}/project-section-nav`);
+  const { data: microPageSections } = useFetchData(`project/${microId}/project-section-nav?is_theme=${pathname.includes("aeroone-gurgaon") ? 2 : 1}`);
   // const { data: contactData } = useFetchData(`project/${}/project-section-nav`);
-
-  console.log('microId',microId);
   
 
   if (loading) return <div className="text-center py-5">Loading...</div>;
@@ -87,6 +87,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
   const toggleMenu = (value) => {
     setIsMenuOpen(value === "show");
   };
+  
 
   return (
     <Navbar

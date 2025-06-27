@@ -76,7 +76,6 @@ const Header = () => {
 
   useEffect(() => {
     window.addEventListener("resize", () => {
-      // console.log(window.innerWidth);
       setInnerWidth(window.innerWidth);
     });
     return () => window.removeEventListener("resize", () => null);

@@ -39,7 +39,6 @@ const HeroSection = ({ projectId, onBannerExit, isMainBanner }) => {
     }
   }, [iframeRef, vimeoPlayer]);
 
-  console.log("banner data", data);
 
   if (loading) return <div className="text-center py-5">Loading...</div>;
   if (!loading && data && data.length === 0)

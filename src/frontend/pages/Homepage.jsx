@@ -63,8 +63,6 @@ const Homepage = () => {
   //   }
   // }
 
-  // console.log('pageMetaData',pageMetaData);
-  
 
   const isHideModal = () => {
     setIsShowModal(false);

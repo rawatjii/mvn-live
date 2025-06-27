@@ -67,7 +67,6 @@ const useCrud = (apiService,via) => {
     editItem: async (id, item, pagevia, isUpdate) => {
       try {
         await apiService.update(id, item, isUpdate);
-        // console.log(fetchAll())
 
         const selectedTheme = await item.get("is_theme");
 
@@ -77,7 +76,6 @@ const useCrud = (apiService,via) => {
         toast.success("Value updated successfully!");
         await fetchAll();
       } catch (err) {
-        console.log(err);
         toast.error("❌ Failed to add value.");
         // const errorMessage = err.response?.data?.message || err.message || "Failed to update value";
         // toast.error(`❌ ${errorMessage}`);

@@ -50,7 +50,6 @@ const OfflineMedia = () => {
   };
 
   const handleEditSubmit = (formData) => {
-    console.log('formData',formData);
     editItem(editModalData.id, formData); // update data
     // setEditModalData(null); // close modal
   };

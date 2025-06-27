@@ -17,7 +17,6 @@ export default function Sidebar() {
   const location = useLocation();
 
 
-  console.log(location.pathname,"path");
   const toggleSidebar = () => setSidebarIsOpen(!sidebarIsOpen);
 
   const menuItems = [

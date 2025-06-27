@@ -64,8 +64,6 @@ const Projects = ({ data }) => {
     : [projectsData[0], projectsData[1]];
   const rightColProjects = isDesktop ? [projectsData[2]] : [projectsData[2]];
 
-  console.log("project data", projectsData1);
-
   return (
     <>
       <section

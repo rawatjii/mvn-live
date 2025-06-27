@@ -99,10 +99,7 @@ const CustomForm = ({
       visibleFields
       .filter((field) => field.condition)
       .forEach((field) => {
-        // if(field.name['description']){
-        //   console.log('description value', field.name['description'])
-        // }
-        // return;
+        
         const value = formData[field.name];
         if (value != null) {
           payload.append(field.name, value);
@@ -132,10 +129,6 @@ const CustomForm = ({
       visibleFields
       .filter((field) => field.condition)
       .forEach((field) => {
-        // if(field.name['description']){
-        //   console.log('description value', field.name['description'])
-        // }  
-        // return;
         const value = formData[field.name];
         if (value != null) {
           payload.append(field.name, value);
@@ -154,8 +147,6 @@ const CustomForm = ({
     }
   };
 
-  console.log('dynamicFields',dynamicFields);
-  
   return (
     <Form onSubmit={data ? handleUpdate : handleSubmit}>
       <div className={formType === "block" ? "" : "row"}>

@@ -58,7 +58,6 @@ const Ourvalues = () => {
   );
 
 
-  console.log(editModalData,"editModalData");
   return (
     <CustomSection customClass="">
       {/* left box for form */}

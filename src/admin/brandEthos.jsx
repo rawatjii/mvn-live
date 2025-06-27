@@ -50,9 +50,6 @@ const BrandEthos = () => {
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
-
-
-  console.log(editModalData,"editModalData");
   return (
     <CustomSection customClass="">
       {/* left box for form */}

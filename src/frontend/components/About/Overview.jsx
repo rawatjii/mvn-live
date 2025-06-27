@@ -101,7 +101,7 @@ const Overview = React.memo(({ data }) => {
 
             <p
               ref={(el) => (desRefs.current[1] = el)}
-              className="des_style1 text-center"
+              className="des_style1 text-center mt-3"
             >
               {description}
             </p>

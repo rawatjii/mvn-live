@@ -132,7 +132,6 @@ const Apartment = () => {
   ];
 
   const paginatedData = apartmentItems?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
-console.log(apartmentItems)
   return (
     <CustomSection>
      <StatusOrder sectionId={editData?.id} editData={editData} fetchEditData={fetchMetadata}/>  

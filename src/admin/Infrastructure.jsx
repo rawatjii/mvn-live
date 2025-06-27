@@ -59,8 +59,6 @@ const Infrastructure = () => {
     currentPage * itemsPerPage
   );
 
-
-  console.log(editModalData,"editModalData");
   return (
     <CustomSection customClass="">
       {/* left box for form */}

@@ -44,10 +44,6 @@ const PressRelease = () => {
   
     const handleCreate = (formData) => {
       formData.append("type","press")
-      // console.log('handlecreate', formData);
-      // for (const [key, value] of formData.entries()) {
-      //   console.log(`${key}: ${value}`);
-      // }
       createItem(formData)
     };
     // const handleEdit = (row) => updateItem(row.id, row);
@@ -58,9 +54,6 @@ const PressRelease = () => {
     };
   
     const handleEditSubmit = (formData) => {
-      // for (const [key, value] of formData.entries()) {
-      //   console.log(`${key}: ${value}`);
-      // }
       editItem(editModalData.id, formData);
     };
   

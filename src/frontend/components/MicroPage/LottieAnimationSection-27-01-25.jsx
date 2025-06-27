@@ -76,7 +76,6 @@ const LottieAnimationSection = ({ data, onLoadComplete, position }) => {
 
     // Event listener for when Lottie is fully initialized
     lottieAnimation.addEventListener("DOMLoaded", () => {
-      console.log("Lottie animation is fully loaded.");
       setLoading(false);  // Set loading to false when Lottie is fully loaded
       onLoadComplete && onLoadComplete();  // Call onLoadComplete if provided
     });

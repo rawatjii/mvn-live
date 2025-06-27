@@ -48,7 +48,6 @@ function BlogDetails() {
 
       setSelectedBlog(response.data);
     } catch (err) {
-      console.log(err.message);
       setSelectedBlog({});
     } finally {
       setLoading(false);

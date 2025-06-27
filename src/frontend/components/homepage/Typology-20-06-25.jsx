@@ -134,8 +134,6 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
     };
   }, [loading, loadingComplete, totalFrames, segments, isLaptop]);
 
-  console.log("typologyData", typologyData);
-
   return (
     <>
       <section

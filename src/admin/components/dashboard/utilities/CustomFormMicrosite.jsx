@@ -51,7 +51,6 @@ const CustomFormMicrosite = ({
     setFormData(defaultData);
     // alert("in")
 
-    console.log(defaultData);
   }, [defaultData]);
 
   useEffect(() => {
@@ -59,7 +58,6 @@ const CustomFormMicrosite = ({
     if (Object.keys(initialData).length > 0) {
       const updatedForm = {};
       currentFields.forEach((field) => {
-        console.log(field);
         updatedForm[field.name] =
           field.type === "file"
             ? initialData[field.name] || null

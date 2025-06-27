@@ -20,7 +20,6 @@ export default function BlogLists() {
       setBlogData(response.data);
 
     } catch (err) {
-      console.log(err.message);
       setBlogData([]);
     } finally {
       setLoading(false);
