@@ -88,7 +88,7 @@ const AdminBlog = () => {
   }, [isDeleteConfirm])
 
   const handleDelete = (row) => {
-    dispatch(setDeleteId(row.id))
+    dispatch(setDeleteId(row.id));
     dispatch(toggleModal(true));
   }
 

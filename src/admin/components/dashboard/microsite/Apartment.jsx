@@ -8,13 +8,17 @@ import { useLocation, useParams } from "react-router-dom";
 import CustomTable from "../utilities/custom-table/CustomTable";
 import CustomPagination from "../utilities/pagination/CustomPagination";
 import StatusOrder from "../utilities/Status-order";
+import { setDeleteId, toggleModal } from "../../../../redux/commonSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Apartment = () => {
   const [editData, setEditData] = useState(null);
   const [editapartmentData, setEditapartmentData] = useState(null);
+  const dispatch = useDispatch();
   const { project_id } = useParams();
   const location = useLocation();
   const locationType = location.pathname.split("/").pop();
+  const {isDeleteConfirm, deleteId} = useSelector(state=>state.commonState)
   
   const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
@@ -46,7 +50,16 @@ const Apartment = () => {
 
   ];
 
+  useEffect(()=>{
+    if(isDeleteConfirm){
+      deleteItem(deleteId);
+      dispatch(toggleModal(false));
+    }
+  }, [isDeleteConfirm])
+
   const fetchMetadata = async () => {
+
+
     const formData = new FormData();
     formData.append("section_type", locationType);
     formData.append("project_id", project_id);
@@ -119,6 +132,12 @@ const Apartment = () => {
     setEditapartmentData(null);
   };
 
+  const handleDelete = (row) => {
+    dispatch(setDeleteId(row.id))
+    dispatch(toggleModal(true));
+    // (row) => handleDeleteItem(row.id)
+  }
+
   useEffect(() => {
     fetchMetadata();
   }, []);
@@ -164,7 +183,7 @@ const Apartment = () => {
             window.scrollTo(0, 0);
             setEditapartmentData(row);
           }}
-          onDelete={(row) => handleDeleteItem(row.id)}
+          onDelete={handleDelete}
           startIndex={(currentPage - 1) * itemsPerPage}
         />
         <CustomPagination

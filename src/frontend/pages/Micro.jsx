@@ -219,17 +219,16 @@ const MicroPage = () => {
             const sectionKey = `${section.section_type}_${secIndex}`;
             return (
               <React.Fragment key={sectionKey}>
-                {section.section_type === "overview" && (
-                  <LazyLoadComponent margin="200px" debugName="overview">
-                    <div ref={(el) => (sectionRefs.current.overview = el)}>
+                {(section.section_type === "overview") && (
+                    <div ref={(el) => {sectionRefs.current.overview = el, sectionRefs.current.sizes = el}}>
                       <MicroOverview
                         rera={basicData?.rera_no}
                         data={section}
                         setOverviewIframe={setOverviewIframe}
+                        onBannerExit={setIsHeaderFixed} 
                       />
                       {/* {section.yt_url && <CustomIframe data={section.yt_url} />} */}
                     </div>
-                  </LazyLoadComponent>
                 )}
 
                 {section.section_type === "elevation" && (
@@ -313,7 +312,7 @@ const MicroPage = () => {
 
                 {section.section_type === "threesixtyview" && (
                   <LazyLoadComponent margin="200px" debugName="threesixtyview">
-                    <div ref={(el) => (sectionRefs.current[sectionKey] = el)}>
+                    <div ref={(el) => (sectionRefs.current[section.section_type] = el)}>
                       <View360
                         sectionId={section.section_type + secIndex}
                         data={section}
@@ -325,7 +324,7 @@ const MicroPage = () => {
 
                 {section.section_type === "Peacock" && (
                   <LazyLoadComponent margin="200px" debugName="livingroom"> 
-                    <div ref={(el) => (sectionRefs.current.LIVINGROOM = el)}>
+                    <div ref={(el) => (sectionRefs.current[section.section_type] = el)}>
                       <PeacockSection data={section} />
                     </div>
                   </LazyLoadComponent>
@@ -333,7 +332,7 @@ const MicroPage = () => {
 
                 {section.section_type === "party" && (
                   <LazyLoadComponent margin="200px" debugName="party">
-                    <div ref={(el) => (sectionRefs.current.party = el)}>
+                    <div ref={(el) => (sectionRefs.current[section.section_type] = el)}>
                       <PeacockSection data={section} />
                     </div>
                   </LazyLoadComponent>
@@ -341,7 +340,7 @@ const MicroPage = () => {
 
                 {section.section_type === "masterbedroom" && (
                   <LazyLoadComponent margin="200px" debugName="masterbedroom">
-                    <div ref={(el) => (sectionRefs.current.masterbedroom = el)}>
+                    <div ref={(el) => (sectionRefs.current[section.section_type] = el)}>
                       <PeacockSection data={section} />
                     </div>
                   </LazyLoadComponent>
@@ -349,7 +348,7 @@ const MicroPage = () => {
 
                 {section.section_type === "consultant" && (
                   <LazyLoadComponent margin="200px" debugName="consultant">
-                    <div ref={(el) => (sectionRefs.current.consultant = el)}>
+                    <div ref={(el) => (sectionRefs.current[section.section_type] = el)}>
                       <Consultant data={section} />
                     </div>
                   </LazyLoadComponent>
@@ -365,7 +364,7 @@ const MicroPage = () => {
                     debugName={section.section_type}
                   >
                     <div
-                      ref={(el) => (sectionRefs.current.MicroLandscape = el)}
+                      ref={(el) => (sectionRefs.current[section.section_type] = el)}
                     >
                       <ImagesGallery
                         section_name={
@@ -391,7 +390,7 @@ const MicroPage = () => {
                   <LazyLoadComponent margin="200px" debugName="keyHighlights">
                     <div
                       ref={(el) =>
-                        (sectionRefs.current.constructionTechnology = el)
+                        (sectionRefs.current[section.section_type] = el)
                       }
                     >
                       <FeatureSection data={section} />
@@ -403,7 +402,7 @@ const MicroPage = () => {
                   <LazyLoadComponent margin="200px" debugName="construction">
                     <div
                       ref={(el) =>
-                        (sectionRefs.current.constructionTechnology = el)
+                        (sectionRefs.current[section.section_type] = el)
                       }
                     >
                       <ConstructionTechnology data={section} />
@@ -418,7 +417,7 @@ const MicroPage = () => {
                     debugName={section.section_type}
                   >
                     <div
-                      ref={(el) => (sectionRefs.current.MicroAmenities = el)}
+                      ref={(el) => {sectionRefs.current[section.section_type] = el}}
                     >
                       <ParallaxSection section_data={section} />
                     </div>
@@ -429,7 +428,7 @@ const MicroPage = () => {
                   <LazyLoadComponent margin="200px" debugName="typologies">
                     <div>
                       <div
-                        ref={(el) => (sectionRefs.current.MicroTypology = el)}
+                        ref={(el) => (sectionRefs.current[section.section_type] = el)}
                       >
                         <Typology data={section} />
                       </div>
@@ -440,7 +439,7 @@ const MicroPage = () => {
                 {section.section_type === "location-map" && (
                   <LazyLoadComponent margin="200px" debugName="location-map">
                     <div
-                      ref={(el) => (sectionRefs.current.MicroLocationMap = el)}
+                      ref={(el) => (sectionRefs.current[section.section_type] = el)}
                     >
                       <MicroLocationMap
                         data={section}
@@ -452,7 +451,7 @@ const MicroPage = () => {
 
                 {section.section_type === "mvn-mall" && (
                   <LazyLoadComponent margin="200px" debugName="mvn-mall">
-                    <div ref={(el) => (sectionRefs.current.MVNMALL = el)}>
+                    <div ref={(el) => (sectionRefs.current[section.section_type] = el)}>
                       <MvnMall data={section} />
                     </div>
                   </LazyLoadComponent>
@@ -460,7 +459,7 @@ const MicroPage = () => {
 
                 {section.section_type === "floor-plan" && (
                   <LazyLoadComponent margin="200px" debugName="floor-plan">
-                    <div ref={(el) => (sectionRefs.current.MVNMALL = el)}>
+                    <div ref={(el) => (sectionRefs.current[section.section_type] = el)}>
                       {section.is_type == "video" ? (
                         <MicroFloorPlan data={section} />
                       ) : (
