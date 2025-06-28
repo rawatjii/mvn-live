@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   CustomSection,
   LeftArea,
@@ -12,6 +12,8 @@ import CustomPagination from "./components/dashboard/utilities/pagination/Custom
 import generateApi from "./api/generateApi";
 import useCrud from "./hooks/useCrud";
 import CustomModal from "./components/dashboard/utilities/custom-modal/CustomModal";
+import { useDispatch, useSelector } from "react-redux";
+import { setDeleteId, toggleModal } from "../redux/commonSlice";
 
 // Simulated backend response
 const metaFields = [
@@ -29,20 +31,29 @@ const columns = [
 
 const BrandEthos = () => {
   const [editModalData, setEditModalData] = useState(null);
-
+  const dispatch = useDispatch();
+  const {isDeleteConfirm, deleteId} = useSelector(state=>state.commonState)
   const brandApi = generateApi("ethos");
   const { data, loading, error, createItem, editItem, deleteItem } =useCrud(brandApi);
 
+  useEffect(()=>{
+    if(isDeleteConfirm){
+      deleteItem(deleteId);
+      dispatch(toggleModal(false));
+    }
+  }, [isDeleteConfirm])
+
   const handleCreate = (formData) => createItem(formData);
-  const handleDelete = (row) => deleteItem(row.id);
+  const handleDelete = (row) => {
+    dispatch(setDeleteId(row.id));
+    dispatch(toggleModal(true));
+  };
   const handleEditSubmit = (formData) => {
     editItem(editModalData.id, formData);
   };
   const handleEdit = (row) => {
     setEditModalData(row); // open modal
   };
-
-
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 

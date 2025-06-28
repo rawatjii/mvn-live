@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   CustomSection,
   LeftArea,
@@ -11,6 +11,8 @@ import CustomTable from "../dashboard/utilities/custom-table/CustomTable";
 import CustomPagination from "../dashboard/utilities/pagination/CustomPagination";
 import generateApi from "../../api/generateApi";
 import useCrud from "../../hooks/useCrud";
+import { useDispatch, useSelector } from "react-redux";
+import { setDeleteId, toggleModal } from "../../../redux/commonSlice";
 
 // Simulated backend response
 const metaFields = [
@@ -34,16 +36,27 @@ const columns = [
 
 const OfflineMedia = () => {
   const [editModalData, setEditModalData] = useState(null);
-
+  const dispatch = useDispatch();
+  const {isDeleteConfirm, deleteId} = useSelector(state=>state.commonState)
   const offlineApi = generateApi("media-items");
   const { data, loading, error, createItem, editItem, deleteItem } =
     useCrud(offlineApi);
+
+  useEffect(()=>{
+    if(isDeleteConfirm){
+      deleteItem(deleteId);
+      dispatch(toggleModal(false));
+    }
+  }, [isDeleteConfirm])
 
   const handleCreate = (formData) =>{
     formData.append("type","gallery")
     createItem(formData)};
   // const handleEdit = (row) => updateItem(row.id, row);
-  const handleDelete = (row) => deleteItem(row.id);
+  const handleDelete = (row) => {
+    dispatch(setDeleteId(row.id));
+    dispatch(toggleModal(true));
+  };
 
   const handleEdit = (row) => {
     setEditModalData(row); // open modal
@@ -85,7 +98,7 @@ const OfflineMedia = () => {
       {/* right box for table */}
       <RightArea>
         <MicroBox>
-          <CustomTitle title="Offline Media Data" />
+          <CustomTitle title="Gallery Data" />
           <CustomTable
             columns={columns}
             data={paginatedData}

@@ -12,6 +12,8 @@ import CustomPagination from "./dashboard/utilities/pagination/CustomPagination"
 import generateApi from "../api/generateApi";
 import useCrud from "../hooks/useCrud";
 import CustomModal from "./dashboard/utilities/custom-modal/CustomModal";
+import { setDeleteId, toggleModal } from "../../redux/commonSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 // Simulated backend response
 
@@ -24,16 +26,28 @@ const columns = [
 const PagesMeta = () => {
   const [editModalData, setEditModalData] = useState(null);
   const [pagesList, setPagesList] = useState([])
-
+  const dispatch = useDispatch();
+  const {isDeleteConfirm, deleteId} = useSelector(state=>state.commonState)
   const aboutsApi = generateApi("page-meta");
   const allPagesApi = generateApi("distinct-all-pages");
   const { data, loading, error, createItem, editItem, updateItem, deleteItem } = useCrud(aboutsApi);
 
   const { data:getAllPages } = useCrud(allPagesApi);
 
+  useEffect(()=>{
+    if(isDeleteConfirm){
+      deleteItem(deleteId);
+      dispatch(toggleModal(false));
+    }
+  }, [isDeleteConfirm])
+
   const handleCreate = (formData) => createItem(formData);
   // const handleEdit = (row) => updateItem(row.id, row);
-  const handleDelete = (row) => deleteItem(row.id);
+  const handleDelete = (row) => {
+    dispatch(setDeleteId(row.id));
+    dispatch(toggleModal(true));
+    // deleteItem(row.id)
+  };
 
   const handleEdit = (row) => {
     setEditModalData(row); // open modal

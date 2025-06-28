@@ -103,12 +103,12 @@ const otherSection = [
   //   icon: <FaCity className="mr-3 box-icon" />,
   //   link: "property-type.html",
   // },
-  {
-    name: "Amenities Logo",
-    image: amenityIcon,
-    icon: <FaCity className="mr-3 box-icon" />,
-    link: "/admin/amenities",
-  },
+  // {
+  //   name: "Amenities Logo",
+  //   image: amenityIcon,
+  //   icon: <FaCity className="mr-3 box-icon" />,
+  //   link: "/admin/amenities",
+  // },
   // { name: "Other Page", icon: <FaCity className="mr-3 box-icon" />, link: "#" },
 ];
 const PageCommonSection = [
@@ -299,7 +299,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className="middle-box">
+            {/*<div className="middle-box">
               <div className="inner-bottom-box">
                 <CustomTitle
                   icon={<IoShareSocial />}
@@ -336,9 +336,9 @@ const Dashboard = () => {
                     );
                   })}
                 </div>
-                {/* <!--------inner-other----------> */}
+                /~ <!--------inner-other----------> ~/
               </div>
-            </div>
+            </div>*/}
           </div>
           {/* <!----------left-area---------> */}
 

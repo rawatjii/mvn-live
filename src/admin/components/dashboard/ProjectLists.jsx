@@ -16,7 +16,7 @@ const ProjectLists = ({ items }) => {
           <thead>
             <tr>
               <th>Name</th>
-              <th>Hide / Show</th>
+              {/* <th>Hide / Show</th> */}
             </tr>
           </thead>
           <tbody>
@@ -29,7 +29,7 @@ const ProjectLists = ({ items }) => {
                 >
                   {item.name}
                 </td>
-                <td>
+                {/* <td>
                   <label className="switch">
                     <input
                       type="checkbox"
@@ -38,7 +38,7 @@ const ProjectLists = ({ items }) => {
                     />
                     <span className="slider round"></span>
                   </label>
-                </td>
+                </td> */}
                 {/* <td>
                   <label className="switch">
                     <input
