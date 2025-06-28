@@ -268,7 +268,6 @@ const MicroPage = () => {
                     <LazyLoadComponent
                       margin="200px"
                       debugName="downloadBrochure"
-                      smootherRef={smootherRef}
                     >
                       <div
                         ref={(el) =>
@@ -289,7 +288,6 @@ const MicroPage = () => {
                     <LazyLoadComponent
                       margin="200px"
                       debugName="downloadBrochure"
-                      smootherRef={smootherRef}
                     >
                       <div
                         ref={(el) =>
@@ -308,13 +306,13 @@ const MicroPage = () => {
                   projectSections?.length > 0 &&
                   projectName.includes("mvn-mall") &&
                   secIndex == 1 && (
-                    <LazyLoadComponent margin="200px" debugName="mvn-mall" smootherRef={smootherRef}>
+                    <LazyLoadComponent margin="200px" debugName="mvn-mall">
                       <CustomIframe data={overviewIframe} />
                     </LazyLoadComponent>
                   )}
 
                 {section.section_type === "threesixtyview" && (
-                  <LazyLoadComponent margin="200px" debugName="threesixtyview" smootherRef={smootherRef}>
+                  <LazyLoadComponent margin="200px" debugName="threesixtyview">
                     <div ref={(el) => (sectionRefs.current[sectionKey] = el)}>
                       <View360
                         sectionId={section.section_type + secIndex}
@@ -326,7 +324,7 @@ const MicroPage = () => {
                 )}
 
                 {section.section_type === "Peacock" && (
-                  <LazyLoadComponent margin="200px" debugName="livingroom" smootherRef={smootherRef}> 
+                  <LazyLoadComponent margin="200px" debugName="livingroom"> 
                     <div ref={(el) => (sectionRefs.current.LIVINGROOM = el)}>
                       <PeacockSection data={section} />
                     </div>

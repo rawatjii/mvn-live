@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import {useInView} from 'react-intersection-observer';
 
-import ScrollTrigger from "gsap/ScrollTrigger";
-
 const LazyLoadComponent = ({children, margin, debugName, smootherRef})=>{
   const {ref, inView} = useInView({
     triggerOnce:true,
@@ -12,12 +10,16 @@ const LazyLoadComponent = ({children, margin, debugName, smootherRef})=>{
   });
 
   useEffect(() => {
-    if (inView && smootherRef?.current) {
+    if (inView) {
       const scrollY = window.scrollY || smootherRef?.current?.offset() || 0;
       const timeoutId = setTimeout(() => {
         try {
           ScrollTrigger.refresh();
-          smootherRef.current.scrollTo(scrollY, false);
+          if (smootherRef?.current) {
+            smootherRef.current.scrollTo(scrollY, false);
+          } else {
+            window.scrollTo(0, scrollY);
+          }
         }catch(error){
 
         }
