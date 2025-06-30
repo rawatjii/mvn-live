@@ -4,15 +4,15 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import useFetchData from "../../../utils/apiHelper";
 import Player from "@vimeo/player";
-import { BACKEND_IMAGE_URL } from "../../../../config/config";
+import { API_URL, BACKEND_IMAGE_URL } from "../../../../config/config";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const HeroSection = ({ projectId, onBannerExit, isMainBanner }) => {
+const HeroSection = ({ projectId, onBannerExit, isMainBanner, projectName }) => {
   const sectionRef = useRef(null);
   const iframeRef = useRef(null);
-
   const [vimeoPlayer, setVimeoPlayer] = useState(null);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false); // Track video playback
 
   const { data, loading } = useFetchData(`project/${projectId}/banner`);
 
@@ -29,18 +29,35 @@ const HeroSection = ({ projectId, onBannerExit, isMainBanner }) => {
   }, [isMainBanner, onBannerExit]);
 
   useEffect(() => {
-    if (iframeRef.current && !vimeoPlayer) {
-      const player = new Player(iframeRef.current);
+    if (iframeRef.current && !vimeoPlayer && data && data[0]?.is_type === "iframe") {
+      const player = new Player(iframeRef.current, {
+        autoplay: true, // Ensure autoplay is enabled
+      });
 
-      // Do NOT set volume immediately
-      // That breaks autoplay on iOS
+      // Listen for the 'play' event to hide placeholder
+      player.on("play", () => {
+        setIsVideoPlaying(true);
+      });
 
       setVimeoPlayer(player);
+
+      return () => {
+        player.off("play"); // Cleanup event listener
+      };
     }
-  }, [iframeRef, vimeoPlayer]);
+  }, [iframeRef, vimeoPlayer, data]);
 
-
-  if (loading) return <div className="text-center py-5">Loading...</div>;
+  if (loading){
+    return (
+      <div className="loading_screen" style={{position:'relative'}}>
+        {projectName?.includes('aeroone-gurgaon') ? (
+          <img src={window.innerWidth < 768 ? API_URL + "loader/homepage_loading_sm.webp" : API_URL + "loader/homepage_loading.webp"} alt="loading screen" className="img-fluid w-100" />
+        ) : projectName?.includes('mvn-mall') ? <img src={window.innerWidth < 768 ? API_URL + "loader/mvnMall_loader_sm.webp" : API_URL + "loader/mvnMall_loader.webp"} alt="loading screen" className="img-fluid w-100" /> : undefined}
+        
+        <p className="loading" style={{position:'fixed ', top:'calc(100vh - 40px)', width:'100%', textAlign:'center', textTransform:'uppercase', fontSize:window.innerWidth < 768 ? '11px' : '14px', letterSpacing:'3px', textShadow:'0 0 10px #000', fontWeight:600}}>Loading Experience...</p>
+      </div>
+    ) ;
+  }
   if (!loading && data && data.length === 0)
     return <div className="text-center py-5">No records found</div>;
 
@@ -50,15 +67,18 @@ const HeroSection = ({ projectId, onBannerExit, isMainBanner }) => {
       ref={sectionRef}
       id="peacockSection"
     >
-      {data && data[0]?.is_type == "image" ? (
+      {data && data[0]?.is_type === "image" ? (
         <div className="AthensBanner" ref={sectionRef}>
           <picture>
-            <source srcset={BACKEND_IMAGE_URL+data[0].image}/>
-            <img src={BACKEND_IMAGE_URL+data[0].alternative_image} alt={data[0].alt} className="img-fluid" />
+            <source srcSet={`${BACKEND_IMAGE_URL}${data[0].image}`} />
+            <img
+              src={`${BACKEND_IMAGE_URL}${data[0].alternative_image}`}
+              alt={data[0].alt || "Banner image"}
+              className="img-fluid"
+            />
           </picture>
-          
         </div>
-      ) : data && data[0]?.is_type == 'iframe' ? (
+      ) : data && data[0]?.is_type === "iframe" ? (
         <div
           style={{
             position: "relative",
@@ -66,9 +86,25 @@ const HeroSection = ({ projectId, onBannerExit, isMainBanner }) => {
             overflow: "hidden",
           }}
         >
+          {/* Placeholder image for iframe */}
+          {!isVideoPlaying && (
+            <img
+              src={`${BACKEND_IMAGE_URL}${data[0].alternative_image || data[0].image}`}
+              alt={data[0].alt || "Loading video..."}
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                zIndex: 1,
+              }}
+            />
+          )}
           <iframe
             ref={iframeRef}
-            src={data[0].iframe}
+            src={`${data[0].iframe}?autoplay=1`} // Ensure autoplay is enabled
             frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
@@ -78,11 +114,14 @@ const HeroSection = ({ projectId, onBannerExit, isMainBanner }) => {
               left: 0,
               width: "100%",
               height: "100%",
+              zIndex: 2,
             }}
             title="MVN Aero One Walkthrough"
           />
         </div>
-      ) : (<p>Something went wrong</p>)}
+      ) : (
+        <p>Something went wrong</p>
+      )}
     </div>
   );
 };

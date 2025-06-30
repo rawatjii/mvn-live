@@ -185,7 +185,17 @@ const MicroPage = () => {
     };
   }, [basicData]);
 
-  if (loading) return <div className="text-center py-5">Loading...</div>;
+  if (loading){
+    return (
+      <div className="loading_screen" style={{position:'relative'}}>
+        {projectName?.includes('aeroone-gurgaon') ? (
+          <img src={window.innerWidth < 768 ? API_URL + "loader/homepage_loading_sm.webp" : API_URL + "loader/homepage_loading.webp"} alt="loading screen" className="img-fluid w-100" />
+        ) : projectName?.includes('mvn-mall') ? <img src={window.innerWidth < 768 ? API_URL + "loader/mvnMall_loader_sm.webp" : API_URL + "loader/mvnMall_loader.webp"} alt="loading screen" className="img-fluid w-100" /> : undefined}
+        
+        <p className="loading" style={{position:'fixed ', top:'calc(100vh - 40px)', width:'100%', textAlign:'center', textTransform:'uppercase', fontSize:window.innerWidth < 768 ? '11px' : '14px', letterSpacing:'3px', textShadow:'0 0 10px #000', fontWeight:600}}>Loading Experience...</p>
+      </div>
+    ) ;
+  }
   if (!loading && basicData && basicData.length === 0)
     return <div className="text-center py-5">No records found</div>;
 
@@ -213,7 +223,7 @@ const MicroPage = () => {
       />
       <div id="smooth-wrapper">
         <div id="smooth-content">
-          <HeroSection projectId={basicData?.id} />
+          <HeroSection projectId={basicData?.id} projectName={projectName} />
 
           {projectSections?.map((section, secIndex) => {
             const sectionKey = `${section.section_type}_${secIndex}`;
@@ -426,11 +436,12 @@ const MicroPage = () => {
 
                 {section.section_type === "typologies" && (
                   <LazyLoadComponent margin="200px" debugName="typologies">
-                      <div
+                      {/* <div
                         ref={(el) => (sectionRefs.current[section.section_type] = el)}
                        className="outer_section">
                         <Typology data={section} />
-                      </div>
+                      </div> */}
+                      <Typology data={section} />
                   </LazyLoadComponent>
                 )}
 

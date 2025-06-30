@@ -39,6 +39,7 @@ import LivingRoomVideoGurugram from "../components/MicroPage/LivingRoomVideoGuru
 import useFetchData from "../utils/apiHelper";
 import Intro from "../components/homepage/Intro";
 import LazyLoadComponent from "../../common/LazyLoadComponent";
+import { API_URL, BACKEND_IMAGE_URL } from "../../config/config";
 
 const Homepage = () => {
   const [isShowModal, setIsShowModal] = useState(false);
@@ -117,7 +118,10 @@ const Homepage = () => {
   }, [pageMetaData])
   
 
-  if (loading) return <div className="text-center py-5">Loading...</div>;
+  if (loading) return <div className="loading_screen" style={{position:'relative'}}>
+    <img src={window.innerWidth < 768 ? API_URL + "loader/homepage_loading_sm.webp" : API_URL + "loader/homepage_loading.webp"} alt="loading screen" className="img-fluid" />
+    <p className="loading" style={{position:'fixed ', top:'calc(100vh - 40px)', width:'100%', textAlign:'center', textTransform:'uppercase', fontSize:'14px', letterSpacing:'3px', textShadow:'0 0 10px #000', fontWeight:600}}>Loading Experience...</p>
+  </div>;
   if (!loading && homepageData && homepageData.length === 0)
     return <div className="text-center py-5">No records found</div>;
 

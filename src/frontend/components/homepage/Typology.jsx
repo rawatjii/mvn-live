@@ -137,25 +137,20 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
   // 🛠️ Fix: Show only first content/image initially
 
   useEffect(() => {
-
-    if (!typologyData || typologyData.length === 0 || contentRefs.current.length === 0) return;
-
-
+    if (
+      !typologyData ||
+      typologyData.length === 0 ||
+      contentRefs.current.length === 0
+    )
+      return;
 
     contentRefs.current.forEach((el, i) => {
-
       if (el) el.style.display = i === 0 ? "block" : "none";
-
     });
-
-
 
     imageContentRefs.current.forEach((el, i) => {
-
       if (el) el.style.display = i === 0 ? "block" : "none";
-
     });
-
   }, [typologyData]);
 
   return (
@@ -173,7 +168,11 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
           <div
             ref={lottieRef}
             className="frame"
-            style={{ height: window.innerWidth < 768 ? "300px" : "460px", maxHeight: "500px", display:'table' }}
+            style={{
+              height: window.innerWidth < 768 ? "300px" : "460px",
+              maxHeight: "500px",
+              display: "table",
+            }}
           />
           <div className="typology_arrow">
             <div className="line"></div>
