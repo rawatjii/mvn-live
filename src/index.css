@@ -4417,6 +4417,8 @@ table.bg_transparent{
   margin:7px 0;
 }
 
+.typology_section .desktop-view-typo-images .typologies-images {position: relative;width: 450px;height: 450px;}
+
 
 /* start responsive */
 /* by bhupendra */
@@ -4509,6 +4511,11 @@ table.bg_transparent{
 
     height: 800px;
   }
+
+  .typology_section .desktop-view-typo-images .typologies-images{
+    width: 350px;
+    height: 350px;
+  }
 }
 
 /* end of 1500 */
@@ -4518,6 +4525,7 @@ table.bg_transparent{
   section.section.walkthrough_section iframe{
     height: 700px;
   }
+  .typology_section .images canvas{height: 400px !important;}
 }
 
 /* end of 1366 */
@@ -5778,6 +5786,10 @@ table.bg_transparent{
 
   .micro_overview .rera-number{
     margin-top:30px;
+  }
+
+  .typology_section .images canvas{
+    height:auto!important
   }
 
 }

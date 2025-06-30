@@ -173,7 +173,7 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
           <div
             ref={lottieRef}
             className="frame"
-            style={{ height: window.innerWidth < 768 ? "300px" : "460px", maxHeight: "500px" }}
+            style={{ height: window.innerWidth < 768 ? "300px" : "460px", maxHeight: "500px", display:'table' }}
           />
           <div className="typology_arrow">
             <div className="line"></div>
@@ -198,7 +198,7 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
                   className="content-box"
                   style={{ display: "none" }}
                 >
-                  <h2>{item.heading}</h2>
+                  <h3>{item.heading}</h3>
                   <p>{item.short_description}</p>
                 </div>
               ))}
