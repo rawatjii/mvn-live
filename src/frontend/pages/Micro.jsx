@@ -189,8 +189,8 @@ const MicroPage = () => {
     return (
       <div className="loading_screen" style={{position:'relative'}}>
         {projectName?.includes('aeroone-gurgaon') ? (
-          <img src={window.innerWidth < 768 ? API_URL + "loader/homepage_loading_sm.webp" : API_URL + "loader/homepage_loading.webp"} alt="loading screen" className="img-fluid w-100" />
-        ) : projectName?.includes('mvn-mall') ? <img src={window.innerWidth < 768 ? API_URL + "loader/mvnMall_loader_sm.webp" : API_URL + "loader/mvnMall_loader.webp"} alt="loading screen" className="img-fluid w-100" /> : undefined}
+          <img src={window.innerWidth < 768 ? API_URL + "images/aero-gurgaon/loader_sm.webp" : API_URL + "loader/homepage_loading.webp"} alt="loading screen" className="img-fluid w-100" />
+        ) : projectName?.includes('mvn-mall') ? <img src={window.innerWidth < 768 ? API_URL + "loader/mvnMall_loader_sm.webp" : API_URL + "loader/mvnMall_loader.webp"} alt="loading screen" className="img-fluid w-100" /> : projectName?.includes('mvn-athens-gurgaon-phase-1') ? <img src={window.innerWidth < 768 ? API_URL + "images/athens-ph1/loader_sm.webp" : API_URL + "images/athens-ph1/loader.webp"} alt="loading screen" className="img-fluid w-100" /> : projectName?.includes('mvn-athens-gurgaon-phase-2') ? <img src={window.innerWidth < 768 ? API_URL + "images/athens-ph2/loader_sm.webp" : API_URL + "images/athens-ph2/loader.webp"} alt="loading screen" className="img-fluid w-100" /> : projectName?.includes('mvn-athens-faridabad') ? <img src={window.innerWidth < 768 ? API_URL + "images/athens-faridabad/loader_sm.webp" : API_URL + "images/athens-faridabad/loader.webp"} alt="loading screen" className="img-fluid w-100" /> : undefined}
         
         <p className="loading" style={{position:'fixed ', top:'calc(100vh - 40px)', width:'100%', textAlign:'center', textTransform:'uppercase', fontSize:window.innerWidth < 768 ? '11px' : '14px', letterSpacing:'3px', textShadow:'0 0 10px #000', fontWeight:600}}>Loading Experience...</p>
       </div>

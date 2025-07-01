@@ -89,7 +89,7 @@ const HeroSection = ({ projectId, onBannerExit, isMainBanner, projectName }) => 
           {/* Placeholder image for iframe */}
           {!isVideoPlaying && (
             <img
-              src={`${BACKEND_IMAGE_URL}${data[0].alternative_image || data[0].image}`}
+              src={projectName?.includes('aeroone-gurgaon') ? window.innerWidth < 768 ? API_URL + "images/aero-gurgaon/hero/hero_loader_sm.webp" : API_URL + "loader/homepage_loading.webp" : undefined}
               alt={data[0].alt || "Loading video..."}
               style={{
                 position: "absolute",
