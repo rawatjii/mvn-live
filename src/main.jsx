@@ -170,7 +170,7 @@ const router = createBrowserRouter([
         path: "mvn-mall",
         element: (
           <FrontendRoute  loaderType="mvn-mall-1">
-          <MvnMall1 data={mvnMallData}/>
+            <MvnMall1 data={mvnMallData}/>
           </FrontendRoute>
         ),
       },

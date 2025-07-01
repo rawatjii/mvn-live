@@ -25,6 +25,7 @@ const CustomModal = React.lazy(() => import("../../common/Modal"));
 const ClubOne = React.lazy(() => import("../components/homepage/ClubOne"));
 const MvnMall = React.lazy(() => import("../components/homepage/MvnMall"));
 import LazyLoadComponent from "../../common/LazyLoadComponent";
+import Strip from "../components/homepage/Strip";
 
 const Homepage = () => {
   const [isShowModal, setIsShowModal] = useState(false);
@@ -177,6 +178,10 @@ const Homepage = () => {
 
         <LazyLoadComponent>
           <MvnMall />
+        </LazyLoadComponent>
+
+        <LazyLoadComponent>
+          <Strip clickHandler={showCustomModal} />
         </LazyLoadComponent>
 
         <LazyLoadComponent>
