@@ -26,6 +26,7 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
 
   const { heading, json } = data;
 
+  // Load Lottie animation
   useEffect(() => {
     animationRef.current = lottie.loadAnimation({
       container: lottieRef.current,
@@ -49,6 +50,7 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
     };
   }, [onLoadComplete, json]);
 
+  // Calculate animation segments
   const segments = useMemo(() => {
     if (totalFrames === 0) return [];
     const third = Math.floor(totalFrames / 3);
@@ -60,8 +62,26 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
   }, [totalFrames]);
 
   useEffect(() => {
+    if (loading || !loadingComplete || !typologyData) return;
+
+    const refreshTrigger = ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: "top center", 
+      once: true,
+      onEnter: () => {
+        ScrollTrigger.refresh(); 
+      },
+    });
+
+    return () => {
+      refreshTrigger.kill();
+    };
+  }, [loading, loadingComplete, typologyData]);
+
+  useEffect(() => {
     if (loading || !loadingComplete || totalFrames === 0 || !typologyData) return;
 
+    // Initialize content visibility
     contentRefs.current.forEach((el, i) => {
       if (el) el.style.display = i === 0 ? "block" : "none";
     });

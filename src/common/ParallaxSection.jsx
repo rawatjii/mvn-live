@@ -19,28 +19,18 @@ function ParallaxSection({ section_data }) {
   const iframeRef = useRef(null);
 
   const { pathname } = useLocation();
-  const {
-    heading,
-    data,
-    second_title,
-    description,
-    iframe,
-    project_id,
-    section_type,
-  } = section_data || {};
+  const { heading, data, second_title, description, iframe, project_id, section_type } = section_data || {};
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const [imageUrls, setImageUrls] = useState([]);
 
-  const { data: projectData, loading: projectLoading } = useFetchData(
-    `project/${project_id}/${section_type}`
-  );
+  const { data: projectData, loading: projectLoading } = useFetchData(`project/${project_id}/${section_type}`);
 
-  const getRatio = (el, innerHeight) => {
+  const getRatio = (el,innerHeight) => {
     if (!el) return 0;
     const ratio = innerHeight / (innerHeight + el.offsetHeight);
     return ratio;
-  };
+  }
 
   useEffect(() => {
     if (projectData) {
@@ -94,52 +84,49 @@ function ParallaxSection({ section_data }) {
     };
   }, [imageUrls]);
 
-  const setupAnimations = () => {
-    Array.from(document.querySelectorAll(".parallax")).map((section, i) => {
-      let windowInnerHeight = window.innerHeight;
-      let ratio = getRatio(section, windowInnerHeight);
+    const setupAnimations = () => {  
+      Array.from(document.querySelectorAll(".parallax")).map((section, i) => {
+        let windowInnerHeight=window.innerHeight;
+        let ratio=getRatio(section,windowInnerHeight);    
 
-      const bg = section.querySelector(".bg");
-      ScrollTrigger.create({
-        trigger: section,
-        start: i === 0 ? "top top" : "top 100%",
-        end: "bottom top",
-        scrub: true,
-        invalidateOnRefresh: true,
-        animation: gsap.fromTo(
-          bg,
-          {
-            backgroundPosition:
-              i === 0 ? "50% 0" : `50% ${-windowInnerHeight * ratio}px`,
-          },
-          {
-            backgroundPosition: `50% ${windowInnerHeight * (1 - ratio)}px`,
-            ease: "none",
-          }
-        ),
-        markers: false,
-      });
-    });
+          const bg = section.querySelector(".bg");
+          ScrollTrigger.create({
+            trigger: section,
+            start: i === 0 ? "top top" : "top 100%",
+            end: "bottom top",
+            scrub: true,
+            invalidateOnRefresh: true,
+            animation: gsap.fromTo(
+              bg,
+              { backgroundPosition:  i === 0 ? "50% 0" : `50% ${-windowInnerHeight * ratio }px` },
+              {
+                backgroundPosition: `50% ${ windowInnerHeight * (1 - ratio)}px`,
+                ease: "none",
+              }
+            ),
+            markers: false, 
+          });
+        });
+      }
+useEffect(() => {
+  if (!projectData || !imagesLoaded) return;
+
+  const parallaxSections = document.querySelectorAll(".parallax_section");
+  const triggers = Array.from(parallaxSections).map(section => 
+    ScrollTrigger.create({
+      trigger: section,
+      start: "top 80%",
+      once: true,
+      onEnter: () => {
+        setupAnimations(section);
+      },
+    })
+  );
+
+  return () => {
+    triggers.forEach(trigger => trigger.kill());
   };
-  useEffect(() => {
-    if (!projectData || !imagesLoaded) return;
-
-    const parallaxSections = document.querySelectorAll(".parallax_section");
-    const triggers = Array.from(parallaxSections).map((section) =>
-      ScrollTrigger.create({
-        trigger: section,
-        start: "top 80%",
-        once: true,
-        onEnter: () => {
-          setupAnimations(section);
-        },
-      })
-    );
-
-    return () => {
-      triggers.forEach((trigger) => trigger.kill());
-    };
-  }, [projectData, imagesLoaded]);
+}, [projectData, imagesLoaded]);
 
   useEffect(() => {
     if (!iframe || !containerRef.current || iframeLoaded) return;
@@ -148,7 +135,7 @@ function ParallaxSection({ section_data }) {
 
     if (!walkthroughEl) return;
 
-    const trigger = ScrollTrigger.create({
+    const trigger = ScrollTrigger.create({  
       trigger: walkthroughEl,
       start: "top bottom",
       onEnter: () => {
@@ -195,10 +182,12 @@ function ParallaxSection({ section_data }) {
         {projectData?.map((single, index) => (
           <div key={index} className="col-sm-12 col-lg-4">
             <div className="card center">
-              <picture>
-                <source srcset={window.innerWidth < 768 ? CONFIG.BACKEND_IMAGE_URL + single.mb_image : CONFIG.BACKEND_IMAGE_URL + single.image} />
-                <img src={window.innerWidth < 768 ? CONFIG.BACKEND_IMAGE_URL + single.mb_alternative_image : CONFIG.BACKEND_IMAGE_URL + single.alternative_image} className="img-fluid" alt={single.alt} loading="lazy" />
-              </picture>
+              <img
+                src={CONFIG.BACKEND_IMAGE_URL + single.image}
+                alt={single.alt}
+                className="img-fluid"
+                loading="lazy"
+              /> 
               <Watermark />
             </div>
             <div className="content">
@@ -247,15 +236,13 @@ function ParallaxSection({ section_data }) {
       )}
 
       {projectData?.map((amenity, i) => (
-        <section key={i} className="parallax" aria-label="Desktop View Section">
-          <div
-            className="bg"
-            style={{
-              backgroundImage: `url(${
-                CONFIG.BACKEND_IMAGE_URL + amenity.image
-              })`,
-            }}
-          >
+        <section
+          key={i}
+          className="parallax"
+          aria-label="Desktop View Section"
+        >
+          <div className="bg"  style={{backgroundImage:`url(${CONFIG.BACKEND_IMAGE_URL+amenity.image})`}}
+>
             <Watermark className="left" />
           </div>
           <div className="content">
