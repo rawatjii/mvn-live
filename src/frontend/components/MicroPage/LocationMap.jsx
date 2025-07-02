@@ -127,9 +127,13 @@ const MicroLocationMap = ({ data, projectName }) => {
 
               <div onClick={() => setIsLocationMapOpen(true)}>
                 <picture>
+                  <source srcSet={CONFIG.BACKEND_IMAGE_URL + mb_image} media="(max-width:768px)" />
+                  <img src={CONFIG.BACKEND_IMAGE_URL + image} className="img-fluid" alt={alt} loading="lazy" />
+                </picture>
+                {/* <picture>
                   <source srcset={window.innerWidth < 768 ? CONFIG.BACKEND_IMAGE_URL + mb_image : CONFIG.BACKEND_IMAGE_URL + image} />
                   <img className="img-fluid" src={window.innerWidth < 768 ? CONFIG.BACKEND_IMAGE_URL + mb_alternative_image : CONFIG.BACKEND_IMAGE_URL + alternative_image} alt={alt} loading="lazy"/>
-                </picture>
+                </picture> */}
 
                 {/* <img
                   src={CONFIG.BACKEND_IMAGE_URL + image}

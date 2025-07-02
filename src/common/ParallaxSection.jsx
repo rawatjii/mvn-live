@@ -182,12 +182,10 @@ useEffect(() => {
         {projectData?.map((single, index) => (
           <div key={index} className="col-sm-12 col-lg-4">
             <div className="card center">
-              <img
-                src={CONFIG.BACKEND_IMAGE_URL + single.image}
-                alt={single.alt}
-                className="img-fluid"
-                loading="lazy"
-              /> 
+              <picture>
+                <source srcSet={CONFIG.BACKEND_IMAGE_URL + single.mb_image} media="(max-width:768px)" />
+                <img src={CONFIG.BACKEND_IMAGE_URL + single.mb_image} className="img-fluid" alt={single.alt} />
+              </picture>
               <Watermark />
             </div>
             <div className="content">

@@ -2545,8 +2545,8 @@ footer {
 .typology_section {
 
   .images {
-    height: 600px;
     position:relative;
+    width: 240px;
   }
 
   /* img {
@@ -5327,6 +5327,7 @@ table.bg_transparent{
     }
 
     .images{
+      width:100%;
 
       img{
         width:100%;
@@ -5789,7 +5790,16 @@ table.bg_transparent{
   }
 
   .typology_section .images canvas{
-    height:auto!important
+    height: 320px !important;
+    object-fit: contain!important;
+  }
+
+  .typology_section .typology_content .content-box .content_title{
+    margin-bottom: 15px;
+  }
+
+  .typology_arrow{
+    display:none;
   }
 
 }

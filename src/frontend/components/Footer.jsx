@@ -21,6 +21,7 @@ const Footer = () => {
   const {pathname} = useLocation();
 
   const { data: pageLinks, loading } = useFetchData("platter-project");
+  const { data: contactData } = useFetchData(`page/page-section/contact-us`);
 
   const channelUrl = CONFIG.YOUTUBE_URL;
   const baseUrl = CONFIG.FRONTEND_URL;
@@ -117,12 +118,12 @@ const Footer = () => {
                 </>
               ) : (
                 <>
-                  <p className="address-details"><span>Meet:</span>{otherDetails.address}<br /> CIN:ACA-4678 | PAN:ABWFM8415E</p>
+                  <p className="address-details"><span>Meet:</span>{contactData?.[2]?.short_description}</p>
                 </>
               )}
 
-              <p className="phone-details"><span>Talk:</span> {!isBangaloreProject ? otherDetails.contact : '+91 9164001177'}</p>
-              <p className="mail-details"><span>Write:</span> {otherDetails.email}</p>
+              <p className="phone-details"><span>Talk:</span> {contactData?.[2]?.sub_heading}</p>
+              <p className="mail-details"><span>Write:</span> {contactData?.[2]?.heading}</p>
 
               <div className="footer-top">
                 <div className="social-media">

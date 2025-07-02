@@ -18,7 +18,7 @@
     .typology_content{background: #121212; padding: 20px;margin: 10px; text-align: center;position: relative; bottom:40px;
         .typology_diamond_btn{position: absolute;top: -40px;left: 50%;transform: translateX(-50%);display: flex;justify-content: center;align-items: center;gap:15px;
         img{width: 20px;height: 20px;}}
-        .content-box h1{font-size: 22px;letter-spacing: 1px ;color: var(--theme_primary_color);line-height: 28px;}
+        .content-box .content_title{font-size: 22px;letter-spacing: 1px ;color: var(--theme_primary_color);line-height: 28px;}
         .content-box p{font-size: 13px;letter-spacing: 1px;font-weight: 300; line-height: 22px;}
     }
     .desktop-view-typo-images{display: none;}
