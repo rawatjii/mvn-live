@@ -118,16 +118,8 @@ section.scrollSlider-Content-2.desktop-view {
   margin-bottom: 40px
 }
 
-.modal .modal-dialog {
-  max-width: 1000px
-}
-
 .modal-body {
   background-color: #2d2c2c
-}
-
-.modal .modal-dialog {
-  max-width: 1000px
 }
 
 .modal-body {
@@ -189,8 +181,33 @@ section.scrollSlider-Content-2.desktop-view {
   max-width: 700px
 }
 
+.modal.delete-confirmation-modal .modal-dialog {
+  max-width: 400px
+}
+
+.modal.delete-confirmation-modal .title{
+  font-size:24px;
+}
+
+.modal.delete-confirmation-modal p{
+  font-size:14px;
+  letter-spacing: unset;
+}
+
 .modal-body button.btn.btn-secondary:hover {
   color: #000;
+}
+
+.modal.delete-confirmation-modal .btn.btn-secondary{
+  background-color: #c1c1c1;
+  padding: 10px 25px;
+  color:#fff;
+  text-transform: capitalize;
+}
+
+.modal.delete-confirmation-modal .btn.btn-secondary:hover{
+  background-color: #a8a8a8;
+  color:#fff;
 }
 
 .our-team-section .ourteamCard {

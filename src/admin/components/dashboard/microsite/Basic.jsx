@@ -37,8 +37,10 @@ const BasicMicroSite = () => {
       { name: "phone_ivr", label: "Phone IVR", Placeholder: "xxxxxxxxxx", type: "text", col: 6, isRequired: true },
       { name: "rera_no", label: "RERA NO", Placeholder: "EX/MM/MM/MM", type: "text", col: 6, isRequired: false },
       { name: "meta_title", label: "Meta Title", Placeholder: "Enter Meta Title", type: "text", col: 6 },
-      { name: "meta_keyword", label: "Meta Keyword", Placeholder: "Enter Meta Keyword", type: "text", col: 6 },
-      { name: "meta_description", label: "Meta Description", Placeholder: "Enter Meta Description", type: "text", col: 6 }
+      { name: "meta_keywords", label: "Meta Keyword", Placeholder: "Enter Meta Keyword", type: "text", col: 6 },
+      { name: "meta_description", label: "Meta Description", Placeholder: "Enter Meta Description", type: "text", col: 6 },
+      { name: "head_data", label: "Head Scripts", Placeholder: "Enter Head Scripts", type: "textarea", col: 6, rows:10 },
+      { name: "footer_data", label: "Body Scripts", Placeholder: "Enter Body Scripts", type: "textarea", col: 6, rows:10 },
     ]
   };
 

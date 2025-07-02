@@ -4,16 +4,21 @@ import Table from "react-bootstrap/Table";
 import { API_URL } from "../../../config/config";
 import CustomIframe from "./CustomIframe";
 import useFetchData from "../../utils/apiHelper";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 const diamondIMG = `${API_URL}images/icons/plane1.png`;
 
-const MicroOverview = React.memo(({ rera, data, setOverviewIframe }) => {
+gsap.registerPlugin(ScrollTrigger);
+
+const MicroOverview = React.memo(({ rera, data, setOverviewIframe, onBannerExit }) => {
   const [count1, setCount1] = useState(0);
   const [count2, setCount2] = useState(0);
   const [count3, setCount3] = useState(0);
   const [ended1, setEnded1] = useState(false);
   const [ended2, setEnded2] = useState(false);
   const [ended3, setEnded3] = useState(false);
+  const sectionRef = useRef();
 
   const ref1 = useRef(null);
   const ref2 = useRef(null);
@@ -34,6 +39,22 @@ const MicroOverview = React.memo(({ rera, data, setOverviewIframe }) => {
     iframe,
     yt_url,
   } = data;
+
+  useEffect(()=>{
+    if(onBannerExit){
+      const trigger = ScrollTrigger.create({
+        trigger:sectionRef.current,
+        start:"top top",
+        toggleActions:"play none none reverse",
+        onEnter:()=>onBannerExit(true),
+        onLeave:()=>onBannerExit(true),
+        onLeaveBack:()=>onBannerExit(false),
+        onEnterBack:()=>onBannerExit(true),
+      })
+
+      return ()=>trigger.kill();
+    }
+  }, [onBannerExit]);
 
   useEffect(()=>{
     if(yt_url){
@@ -98,6 +119,7 @@ const MicroOverview = React.memo(({ rera, data, setOverviewIframe }) => {
       <section
         className="section micro_overview text-center pb-0 pt-4"
         aria-label="Overview Section"
+        ref={sectionRef}
       >
         <Container>
           <div className="overview_card px-0 pb-0">

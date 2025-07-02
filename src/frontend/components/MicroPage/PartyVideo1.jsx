@@ -87,7 +87,6 @@ const PartyVideo1 = ({  data, onLoadComplete }) => {
 
     // Event listener for when Lottie is fully initialized
     lottieAnimation.addEventListener("DOMLoaded", () => {
-      console.log("Lottie animation is fully loaded.");
       setLoading(false);
       onLoadComplete && onLoadComplete();
     });

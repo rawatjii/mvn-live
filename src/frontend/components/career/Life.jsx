@@ -7,8 +7,6 @@ const LifeAtMvn = () => {
 
   const { data, loading } = useFetchData(`work-culture`);
 
-  console.log('life aata', data);
-
   return (
     <section className="front-page-all" aria-label="Career Section">
       <div className="container">

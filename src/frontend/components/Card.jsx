@@ -12,7 +12,7 @@ const CustomCard = React.memo(({ className, title, location, extra, desc, extraT
       
       {title && (
         <div className="title">
-          <h1 className="pr_name">{title}</h1>
+          <h3 className="pr_name">{title}</h3>
           <h6 className="location">{location}</h6>
         </div>
       )}

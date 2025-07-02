@@ -4381,6 +4381,44 @@ table.bg_transparent{
 }
 
 
+.delete-confirmation-modal .modal-content{
+  background:#fff;
+}
+
+.delete-confirmation-modal .modal-body{
+  background: transparent;
+  outline: none;
+  border-radius: unset;
+}
+
+.blog_page .main_content p{
+  font-size: 14px;
+  line-height: 26px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.blog_page .main_content p a{
+  color:#fff;
+  text-decoration: underline;
+}
+
+.blog_page .main_content ul{
+  list-style-type: disc;
+  list-style-position: inside;
+  padding-left: 15px;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.blog_page .main_content li{
+  margin:7px 0;
+}
+
+.typology_section .desktop-view-typo-images .typologies-images {position: relative;width: 450px;height: 450px;}
+
 
 /* start responsive */
 /* by bhupendra */
@@ -4473,6 +4511,11 @@ table.bg_transparent{
 
     height: 800px;
   }
+
+  .typology_section .desktop-view-typo-images .typologies-images{
+    width: 350px;
+    height: 350px;
+  }
 }
 
 /* end of 1500 */
@@ -4482,6 +4525,7 @@ table.bg_transparent{
   section.section.walkthrough_section iframe{
     height: 700px;
   }
+  .typology_section .images canvas{height: 400px !important;}
 }
 
 /* end of 1366 */
@@ -5275,7 +5319,7 @@ table.bg_transparent{
   /* typology_section */
 
   section.typology_section{
-
+    max-height: 150vh;
 
     .sec_title{
 
@@ -5742,6 +5786,10 @@ table.bg_transparent{
 
   .micro_overview .rera-number{
     margin-top:30px;
+  }
+
+  .typology_section .images canvas{
+    height:auto!important
   }
 
 }

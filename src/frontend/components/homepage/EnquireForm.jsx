@@ -41,7 +41,6 @@ const EnquireForm = ({ career, projectName }) => {
         // body: JSON.stringify(formDetails), // Convert the data to JSON string
       })
         .then((data) => {
-          // console.log("Success:", data); // Handle the response
           setFormDetails({});
           setLoading(false);
           alert("Enquiry Details Sent Successfully!");

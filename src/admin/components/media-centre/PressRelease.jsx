@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   CustomSection,
   LeftArea,
@@ -11,6 +11,8 @@ import CustomTable from "../dashboard/utilities/custom-table/CustomTable";
 import CustomPagination from "../dashboard/utilities/pagination/CustomPagination";
 import generateApi from "../../api/generateApi";
 import useCrud from "../../hooks/useCrud";
+import { useDispatch, useSelector } from "react-redux";
+import { setDeleteId, toggleModal } from "../../../redux/commonSlice";
 
 // Simulated backend response
 const metaFields = [
@@ -37,30 +39,34 @@ const columns = [
 ];
 const PressRelease = () => {
     const [editModalData, setEditModalData] = useState(null);
-
+    const dispatch = useDispatch();
+    const {isDeleteConfirm, deleteId} = useSelector(state=>state.commonState)
     const aboutsApi = generateApi("media-center");
     const { data, loading, error, createItem, editItem, updateItem, deleteItem } =
       useCrud(aboutsApi);
+
+    useEffect(()=>{
+      if(isDeleteConfirm){
+        deleteItem(deleteId);
+        dispatch(toggleModal(false));
+      }
+    }, [isDeleteConfirm])
   
     const handleCreate = (formData) => {
       formData.append("type","press")
-      // console.log('handlecreate', formData);
-      // for (const [key, value] of formData.entries()) {
-      //   console.log(`${key}: ${value}`);
-      // }
       createItem(formData)
     };
     // const handleEdit = (row) => updateItem(row.id, row);
-    const handleDelete = (row) => deleteItem(row.id);
+    const handleDelete = (row) => {
+      dispatch(setDeleteId(row.id));
+    dispatch(toggleModal(true));
+    };
   
     const handleEdit = (row) => {
       setEditModalData(row); // open modal
     };
   
     const handleEditSubmit = (formData) => {
-      // for (const [key, value] of formData.entries()) {
-      //   console.log(`${key}: ${value}`);
-      // }
       editItem(editModalData.id, formData);
     };
   

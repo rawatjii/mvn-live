@@ -77,7 +77,6 @@ const ModalSelectBox = ({
       },
     })
       .then((data) => {
-        console.log("Success:", data);
         alert("Enquiry Details Sent Successfully!");
         const newTab = window.open("/thanks", "_blank");
 
@@ -108,7 +107,6 @@ const ModalSelectBox = ({
       },
     })
       .then((data) => {
-        console.log("Success:", data);
         alert("Enquiry Details Sent Successfully!");
         const newTab = window.open("/thanks", "_blank");
 

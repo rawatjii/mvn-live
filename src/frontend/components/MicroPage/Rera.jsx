@@ -2,7 +2,6 @@ import React from 'react'
 import { Container } from 'react-bootstrap'
 
 function Rera({data}) {
-    console.log(data);
     
   return (
     <div className='rera_container'>

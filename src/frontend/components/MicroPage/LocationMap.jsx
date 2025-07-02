@@ -97,9 +97,6 @@ const MicroLocationMap = ({ data, projectName }) => {
     });
   }, []);
 
-  console.log('mvnmall data',data);
-  
-
   return (
     <section
       className="section location_map_section pb-0"

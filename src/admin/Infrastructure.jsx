@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   CustomSection,
   LeftArea,
@@ -12,6 +12,8 @@ import CustomPagination from "./components/dashboard/utilities/pagination/Custom
 import generateApi from "./api/generateApi";
 import useCrud from "./hooks/useCrud";
 import CustomModal from "./components/dashboard/utilities/custom-modal/CustomModal";
+import { useDispatch, useSelector } from "react-redux";
+import { setDeleteId, toggleModal } from "../redux/commonSlice";
 
 // Simulated backend response
 const metaFields = [
@@ -37,12 +39,24 @@ const columns = [
 
 const Infrastructure = () => {
   const [editModalData, setEditModalData] = useState(null);
-
+  const dispatch = useDispatch();
   const infraApi = generateApi("infrastructure");
   const { data, loading, error, createItem, editItem, deleteItem } =useCrud(infraApi);
+  const {isDeleteConfirm, deleteId} = useSelector(state=>state.commonState)
+
+  useEffect(()=>{
+    if(isDeleteConfirm){
+      deleteItem(deleteId);
+      dispatch(toggleModal(false));
+    }
+  }, [isDeleteConfirm])
 
   const handleCreate = (formData) => createItem(formData);
-  const handleDelete = (row) => deleteItem(row.id);
+  const handleDelete = (row) => {
+    dispatch(setDeleteId(row.id));
+    dispatch(toggleModal(true));
+    // deleteItem(row.id)
+  };
   const handleEditSubmit = (formData) => {
     editItem(editModalData.id, formData);
   };
@@ -59,8 +73,6 @@ const Infrastructure = () => {
     currentPage * itemsPerPage
   );
 
-
-  console.log(editModalData,"editModalData");
   return (
     <CustomSection customClass="">
       {/* left box for form */}

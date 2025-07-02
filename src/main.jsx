@@ -1,4 +1,4 @@
-import React, {  Suspense} from "react";
+import React, { Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -9,10 +9,10 @@ import store from "./store/store.js";
 // import InitialLoading from "./frontend/skeleton/Initial/Index.jsx";
 import { data } from "./frontend/pages/micro/mvn-aeroone-gurgaon1/Index.jsx";
 import FrontendRoute from "./common/FrontendRoute.jsx";
-import PrPolcy from './frontend/pages/PrPolcy.jsx';
+import PrPolcy from "./frontend/pages/PrPolcy.jsx";
 import Disclaimer from "./frontend/pages/Disclaimer.jsx";
 import ThankYou from "./frontend/pages/ThankYou.jsx";
-import {bangaloreData} from './frontend/pages/micro/mvn-aeroone-bangalore/Index.jsx';
+import { bangaloreData } from "./frontend/pages/micro/mvn-aeroone-bangalore/Index.jsx";
 import { faridabadData } from "./frontend/pages/micro/Athens/Index.jsx";
 import { athensGurgaonPhase1Data } from "./frontend/pages/micro/athens-gurgaon-phase-1/Index.jsx";
 import { athensGurgaonPhase2Data } from "./frontend/pages/micro/athens-gurgaon-phase-2/Index.jsx";
@@ -20,20 +20,36 @@ import { mvnMallData } from "./frontend/pages/micro/mvnMall/Index.jsx";
 
 const Homepage = React.lazy(() => import("./frontend/pages/Homepage.jsx"));
 const AboutUs = React.lazy(() => import("./frontend/pages/AboutUs.jsx"));
-const MediaCenter = React.lazy(() => import("./frontend/pages/MediaCenter.jsx"));
-const Blog = React.lazy(() => import("./frontend/pages/Blog.jsx")); 
-const BlogDetails = React.lazy(() => import("./frontend/pages/BlogDetails.jsx")); 
+const MediaCenter = React.lazy(() =>
+  import("./frontend/pages/MediaCenter.jsx")
+);
+const Blog = React.lazy(() => import("./frontend/pages/Blog.jsx"));
+const BlogDetails = React.lazy(() =>
+  import("./frontend/pages/BlogDetails.jsx")
+);
 const Career = React.lazy(() => import("./frontend/pages/Career.jsx"));
 const ContactPage = React.lazy(() => import("./frontend/pages/ContactUs.jsx"));
-const PageNotFound = React.lazy(() => import("./common/PageNotFound/Index.jsx"));
+const PageNotFound = React.lazy(() =>
+  import("./common/PageNotFound/Index.jsx")
+);
 // const Gallery = React.lazy(() => import('./frontend/pages/Gallery.jsx'));
 // const Csr = React.lazy(() => import('./frontend/pages/Csr.jsx'));
-const MicroPageGurgaon1 = React.lazy(()=>import("./frontend/pages/MicroPageGurgaon1.jsx"));
-const MicroPageBangalore = React.lazy(()=>import("./frontend/pages/MicroPageBangalore.jsx"));
-const MicroPageFaridabad = React.lazy(()=>import("./frontend/pages/MicroPageFaridabad.jsx"));
-const MicroPageGurgaonPhase1 = React.lazy(()=>import("./frontend/pages/MicroPageGurgaonPhase1.jsx"));
-const MicroPageGurgaonPhase2 = React.lazy(()=>import("./frontend/pages/MicroPageGurgaonPhase2.jsx"));
-const MvnMall1 = React.lazy(()=>import("./frontend/pages/mvnMall.jsx"));
+const MicroPageGurgaon1 = React.lazy(() =>
+  import("./frontend/pages/MicroPageGurgaon1.jsx")
+);
+const MicroPageBangalore = React.lazy(() =>
+  import("./frontend/pages/MicroPageBangalore.jsx")
+);
+const MicroPageFaridabad = React.lazy(() =>
+  import("./frontend/pages/MicroPageFaridabad.jsx")
+);
+const MicroPageGurgaonPhase1 = React.lazy(() =>
+  import("./frontend/pages/MicroPageGurgaonPhase1.jsx")
+);
+const MicroPageGurgaonPhase2 = React.lazy(() =>
+  import("./frontend/pages/MicroPageGurgaonPhase2.jsx")
+);
+const MvnMall1 = React.lazy(() => import("./frontend/pages/mvnMall.jsx"));
 // const MicroPageGurgaon1 = React.lazy(() =>
 //   new Promise((resolve) =>
 //     setTimeout(() => resolve(import("./frontend/pages/MicroPageGurgaon1.jsx")), 100000)
@@ -44,9 +60,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import "./awaneesh.css";
 import "./savan.css";
-import './adarsh.css';
-import "./admin/assets/css/microsite.css"
-
+import "./adarsh.css";
+import "./admin/assets/css/microsite.css";
 
 import AdminLayout from "./admin/components/ContentLayout/AdminLayout.jsx";
 import Dashboard from "./admin/Dashboard.jsx";
@@ -59,8 +74,8 @@ import AdminMediaCentre from "./admin/MediaCentre.jsx";
 import AdminContactUs from "./admin/ContactUs.jsx";
 import BasicMicroSite from "./admin/components/dashboard/microsite/Basic.jsx";
 import Login from "./admin/Login.jsx";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import AdminProtectedRoute from "./AdminProtectedRoute.jsx";
 import MicroSidebar from "./admin/components/ContentLayout/microSidebar/MicroSidebar.jsx";
 import OverviewMicroSite from "./admin/components/dashboard/microsite/Overview.jsx";
@@ -85,7 +100,7 @@ import Typologies from "./admin/components/dashboard/microsite/Typologies.jsx";
 import FloorPlans from "./admin/components/dashboard/microsite/FloorPlan.jsx";
 import LocationMap from "./admin/components/dashboard/microsite/LocationMap.jsx";
 import MvnMall from "./admin/components/dashboard/microsite/mvn-mall.jsx";
-import AdminHomepage from './admin/pages/Homepage.jsx'
+import AdminHomepage from "./admin/pages/Homepage.jsx";
 import SinglePage from "./admin/pages/Index.jsx";
 import AdminWorkCulture from "./admin/WorkCulture.jsx";
 import MicroPageLayout from "./frontend/pages/micro/Index.jsx";
@@ -99,6 +114,7 @@ import Timeline from "./admin/components/aboutus/Timeline.jsx";
 import Team from "./admin/components/aboutus/Team.jsx";
 import Sizes from "./admin/components/dashboard/microsite/Sizes.jsx";
 import KeyHighlights from "./admin/components/dashboard/microsite/KeyHighlights.jsx";
+import PagesMeta from "./admin/components/PagesMeta.jsx";
 // import Apartment from "./admin/components/dashboard/microsite/Apartment.jsx";
 const router = createBrowserRouter([
   {
@@ -111,12 +127,12 @@ const router = createBrowserRouter([
           <FrontendRoute loaderType="homepage">
             <Homepage />
           </FrontendRoute>
-      ), 
+        ),
       },
       {
         path: "about-us",
         element: (
-          <FrontendRoute loaderType="about-us" >
+          <FrontendRoute loaderType="about-us">
             <AboutUs />
           </FrontendRoute>
         ),
@@ -124,9 +140,9 @@ const router = createBrowserRouter([
       {
         path: ":projectName",
         element: (
-          <FrontendRoute loaderType="aeroone-gurgaon">
-            <MicroPage data={data} />
-          </FrontendRoute>
+          <MicroPage />
+          // <FrontendRoute>
+          // </FrontendRoute>
         ),
       },
       // {
@@ -173,7 +189,7 @@ const router = createBrowserRouter([
         path: "media-centre",
         element: (
           <FrontendRoute loaderType="media-centre">
-              <MediaCenter />
+            <MediaCenter />
           </FrontendRoute>
         ),
       },
@@ -201,7 +217,7 @@ const router = createBrowserRouter([
           </FrontendRoute>
         ),
       },
-      
+
       {
         path: "contact-us",
         element: (
@@ -212,10 +228,7 @@ const router = createBrowserRouter([
       },
       {
         path: "thanks",
-        element: (
-          
-          <ThankYou />
-        ),
+        element: <ThankYou />,
       },
       {
         path: "privacy-policy",
@@ -249,7 +262,8 @@ const router = createBrowserRouter([
           </Suspense>
         ),
       },
-      {/*{
+      {
+        /*{
         path: "gallery",
         element: (
           <Suspense fallback={<InitialLoading onComplete={()=>console.log('Loading complete')} />}>
@@ -268,16 +282,17 @@ const router = createBrowserRouter([
             </Layout>
           </Suspense>
         ),
-      },*/}
+      },*/
+      },
     ],
   },
   {
     path: "/admin/login",
-    element: <Login />, 
+    element: <Login />,
   },
   {
     path: "/admin",
-    element: <AdminProtectedRoute />, 
+    element: <AdminProtectedRoute />,
     children: [
       {
         path: "",
@@ -300,57 +315,64 @@ const router = createBrowserRouter([
           { path: "contact-us", element: <AdminContactUs /> },
           { path: "project-list", element: <ProjectList /> },
           { path: "platter", element: <Platter /> },
+          { path: "pages-meta", element: <PagesMeta /> },
           // { path: "page/index", element: <AdminHomepage /> },
           { path: "page/:pageName", element: <SinglePage /> },
-          { path: "microsite", element:<MicroSidebar />,
-            children:[
-            {path:"", element:<BasicMicroSite />},
-          //   {path:"overview", element:<OverviewMicroSite />},
-          //   {path:"banner", element:<HeroSection />},
-          ] 
-        },
-          { path: "microsite/:project_id", element:<MicroSidebar />, 
-            children:[
-            {path:"", element:<BasicMicroSite />},
-            {path:"overview", element:<OverviewMicroSite />},
-            {path:"sizes", element:<Sizes />},
-            {path:"large-elevation", element:<Elevation />},
-            {path:"banner", element:<HeroSection />},
-            {path:"walkthrough", element:<Walkthrough />},
-            {path:"360-views", element:<ThreesixtyView />},
-            {path:"Peacock", element:<LivingRoom />},
-            {path:"party", element:<Party />},
-            {path:"master-Bed-room", element:<MasterBedroom />},
-            {path:"architect", element:<Consultant />},
-            {path:"landscape", element:<LandScape />},
-            {path:"landscapes", element:<LandScape />},
-            {path:"galleries", element:<Galleries />},
-            {path:"elevation", element:<SmElevation />},
-            {path:"apartment", element:<Apartment />}, 
-             {path:"construction-technology", element:<ConstructionTechnology />},  
-            {path:"amenities", element:<AmenitiesAdmin />}, 
-             {path:"connection-mall", element:<ConnectionMvnMall />},              
-            {path:"typologies", element:<Typologies />}, 
-            {path:"floor-plan", element:<FloorPlans />}, 
-            {path:"location-map", element:<LocationMap />}, 
-            {path:"key-highlights", element:<KeyHighlights />}, 
-            {path:"mvn-mall", element:<MvnMall />}, 
-           ] 
-        },  
-        ]
-      }
-    ]
+          {
+            path: "microsite",
+            element: <MicroSidebar />,
+            children: [
+              { path: "", element: <BasicMicroSite /> },
+              //   {path:"overview", element:<OverviewMicroSite />},
+              //   {path:"banner", element:<HeroSection />},
+            ],
+          },
+          {
+            path: "microsite/:project_id",
+            element: <MicroSidebar />,
+            children: [
+              { path: "", element: <BasicMicroSite /> },
+              { path: "overview", element: <OverviewMicroSite /> },
+              { path: "sizes", element: <Sizes /> },
+              { path: "large-elevation", element: <Elevation /> },
+              { path: "banner", element: <HeroSection /> },
+              { path: "walkthrough", element: <Walkthrough /> },
+              { path: "360-views", element: <ThreesixtyView /> },
+              { path: "Peacock", element: <LivingRoom /> },
+              { path: "party", element: <Party /> },
+              { path: "master-Bed-room", element: <MasterBedroom /> },
+              { path: "architect", element: <Consultant /> },
+              { path: "landscape", element: <LandScape /> },
+              { path: "landscapes", element: <LandScape /> },
+              { path: "galleries", element: <Galleries /> },
+              { path: "elevation", element: <SmElevation /> },
+              { path: "apartment", element: <Apartment /> },
+              {
+                path: "construction-technology",
+                element: <ConstructionTechnology />,
+              },
+              { path: "amenities", element: <AmenitiesAdmin /> },
+              { path: "connection-mall", element: <ConnectionMvnMall /> },
+              { path: "typologies", element: <Typologies /> },
+              { path: "floor-plan", element: <FloorPlans /> },
+              { path: "location-map", element: <LocationMap /> },
+              { path: "key-highlights", element: <KeyHighlights /> },
+              { path: "mvn-mall", element: <MvnMall /> },
+            ],
+          },
+        ],
+      },
+    ],
   },
-  
 ]);
 
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <>
-    <RouterProvider router={router}>
-      <App />
-    </RouterProvider>
-    <ToastContainer position="top-right" autoClose={3000} />
+      <RouterProvider router={router}>
+        <App />
+      </RouterProvider>
+      <ToastContainer position="top-right" autoClose={3000} />
     </>
   </Provider>
 );

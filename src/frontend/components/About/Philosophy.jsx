@@ -19,8 +19,6 @@ const Philosophy = ({data}) => {
   const { data:sectionsData } = useFetchData("page/page-section/about");
   const { data:valuesData, loading } = useFetchData("our-value");
 
-  console.log('sectionsData',sectionsData);
-
   useEffect(() => {
     // Title animation
     gsap.from(titleRef.current, {

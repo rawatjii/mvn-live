@@ -39,7 +39,6 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer, isVideoModal
         // body: JSON.stringify(formDetails), // Convert the data to JSON string
       })
         .then((data) => {
-          console.log("Success:", data); // Handle the response
           alert("Enquiry Details Sent Successfully!");
           const newTab = window.open("/thanks", "_blank");
 
@@ -62,7 +61,6 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer, isVideoModal
   useEffect(() => {
     const close = (e) => {
       if (!modalRef.current?.contains(e.target)) {
-        console.log("closed");
         hide();
       }
     };

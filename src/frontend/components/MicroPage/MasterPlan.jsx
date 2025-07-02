@@ -25,7 +25,6 @@ const MicroMasterPlan = ({data})=>{
   const priceRefs = useRef([]);
   const sizeRefs = useRef([]);
   const [isMasterPlanOpen, setIsMasterPlanOpen] = useState(false);
-  console.log("data", data);
   
   const masterPlanImage = [{src: data}]
 

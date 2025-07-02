@@ -9,14 +9,12 @@ const getAuthHeader = () => {
 const generateApi = (endpoint,callVia,changeEndpointVia) => {
 
 
-  console.log(endpoint)
   const baseUrl = `${API_BASE_URL}/${endpoint}`;
 
   return {
     get: (custom_url) => {
     if(callVia!=0){
       const headers = getAuthHeader();
-      console.log("🔐 Request Headers:", headers); 
       if(!custom_url){
         return axios.get(baseUrl, { headers });
       }else{

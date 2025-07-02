@@ -117,17 +117,10 @@ section.scrollSlider-Content-2.desktop-view {
   margin-bottom: 40px;
 }
 
-.modal .modal-dialog {
-  max-width: 1000px;
-}
-
 .modal-body {
   background-color: #2d2c2c;
 }
 
-.modal .modal-dialog {
-  max-width: 1000px;
-}
 
 .modal-body {
   background-color: #2d2c2c;
@@ -182,10 +175,6 @@ section.scrollSlider-Content-2.desktop-view {
 
 .modal-content {
   background-color: transparent;
-}
-
-.modal .modal-dialog {
-  max-width: 700px;
 }
 
 .modal-body button.btn.btn-secondary:hover {

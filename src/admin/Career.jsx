@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   CustomSection,
   LeftArea,
@@ -12,6 +12,8 @@ import CustomPagination from "./components/dashboard/utilities/pagination/Custom
 import generateApi from "./api/generateApi";
 import useCrud from "./hooks/useCrud";
 import CustomModal from "./components/dashboard/utilities/custom-modal/CustomModal";// Simulated backend response
+import { useDispatch, useSelector } from "react-redux";
+import { setDeleteId, toggleModal } from "../redux/commonSlice";
 
 const metaFields = [
   { name: "heading", label: "Heading", type: "text", col: 12, isRequired: true, placeholder:"Enter Heading" },
@@ -41,7 +43,8 @@ const AdminCareer = () => {
   const aboutsApi = generateApi("work-culture"); // ✅ Adjust endpoint if needed
   const { data, loading, error, createItem, updateItem, editItem, deleteItem } = useCrud(aboutsApi);
   const [editModalData, setEditModalData] = useState(null);
-
+  const dispatch = useDispatch();
+  const {isDeleteConfirm, deleteId} = useSelector(state=>state.commonState)
   const handleCreate = (formData) => createItem(formData);
 
   const handleEditSubmit = (formData) => {
@@ -49,7 +52,17 @@ const AdminCareer = () => {
     editItem(editModalData.id, formData); 
   };
 
-  const handleDelete = (row) => deleteItem(row.id);
+  useEffect(()=>{
+    if(isDeleteConfirm){
+      deleteItem(deleteId);
+      dispatch(toggleModal(false));
+    }
+  }, [isDeleteConfirm])
+
+  const handleDelete = (row) => {
+    dispatch(setDeleteId(row.id));
+    dispatch(toggleModal(true));
+  };
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 

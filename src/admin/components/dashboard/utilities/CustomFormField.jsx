@@ -40,6 +40,7 @@ const CustomFormField = ({
   dataError,
   isWebpAllowed = true,
   isRequired = false,
+  rows,
   ...rest
 }) => {
   const [fileName, setFileName] = useState("");
@@ -83,7 +84,6 @@ const CustomFormField = ({
     };
   }, [resetKey, value, type]);
 
-  console.log('section type', type);
 
   return (
     <div className={`FieldContainer mb-3 ${isLeft ? "row" : ""}`}>
@@ -105,8 +105,9 @@ const CustomFormField = ({
                 placeholder={placeholder}
                 className={`form-control ${className}`}
                 required={isRequired}
-                rows="2"
+                rows={rows ? rows : "2"}
                 {...rest}
+                style={{height:rows && 'auto'}}
               />
               <span className="text-danger">{dataError?.[name]}</span>
             </>

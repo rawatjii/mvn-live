@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   CustomSection,
   LeftArea,
@@ -12,6 +12,8 @@ import CustomPagination from "./components/dashboard/utilities/pagination/Custom
 import generateApi from "./api/generateApi";
 import useCrud from "./hooks/useCrud";
 import CustomModal from "./components/dashboard/utilities/custom-modal/CustomModal";
+import { setDeleteId, toggleModal } from "../redux/commonSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 // Simulated backend response
 const metaFields = [
@@ -36,19 +38,33 @@ const columns = [
 
 const Verticals = () => {
   const [editModalData, setEditModalData] = useState(null);
-
+  const dispatch = useDispatch();
   const verticalApi = generateApi("verticals");
-  const { data, loading, error, createItem, editItem, deleteItem } =useCrud(verticalApi);
+  const { data, loading, error, createItem, editItem, deleteItem } =
+    useCrud(verticalApi);
+  const { isDeleteConfirm, deleteId } = useSelector(
+    (state) => state.commonState
+  );
+
+  useEffect(() => {
+    if (isDeleteConfirm) {
+      deleteItem(deleteId);
+      dispatch(toggleModal(false));
+    }
+  }, [isDeleteConfirm]);
 
   const handleCreate = (formData) => createItem(formData);
-  const handleDelete = (row) => deleteItem(row.id);
+  const handleDelete = (row) => {
+    dispatch(setDeleteId(row.id));
+    dispatch(toggleModal(true));
+    // deleteItem(row.id)
+  };
   const handleEditSubmit = (formData) => {
     editItem(editModalData.id, formData);
   };
   const handleEdit = (row) => {
     setEditModalData(row); // open modal
   };
-
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
@@ -58,8 +74,6 @@ const Verticals = () => {
     currentPage * itemsPerPage
   );
 
-
-  console.log(editModalData,"editModalData");
   return (
     <CustomSection customClass="">
       {/* left box for form */}
@@ -83,7 +97,7 @@ const Verticals = () => {
           <CustomTable
             columns={columns}
             data={paginatedData}
-            onEdit={handleEdit} 
+            onEdit={handleEdit}
             onDelete={handleDelete}
             // startIndex={(currentPage - 1) * itemsPerPage}
           />
@@ -93,7 +107,6 @@ const Verticals = () => {
           totalPages={Math.ceil(data?.length / itemsPerPage)}
           onPageChange={(page) => setCurrentPage(page)}
         />
-
       </RightArea>
     </CustomSection>
   );

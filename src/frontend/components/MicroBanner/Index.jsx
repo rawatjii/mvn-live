@@ -18,9 +18,8 @@ const MicroBanner = ({page_section, page, data, type})=>{
   const fetchUrl = type == 'blog' ? `blog/${page}` : `page/page-section/${page}`;
 
   const { data:bannerData, loading } = useFetchData(fetchUrl);
+  const { data:innerBlogBanner } = useFetchData(`page/page-section/blog`);
 
-  console.log('bannerData',bannerData);
-  
   useEffect(()=>{
     if(type != 'blog'){
       const banner = bannerData?.filter((el)=> el.page_section == page_section)
@@ -51,21 +50,27 @@ const MicroBanner = ({page_section, page, data, type})=>{
       "+=0.5"
     );
   }, []);
-
-  console.log('blog type', page);
   
 
   return (
     <>
       <section className="section micro_banner" aria-label="Banner Section">
         <Container>
-          <picture className="microbanner_bg">
-            <source srcset={window.innerWidth <= 768 ? BACKEND_IMAGE_URL+microBannerData?.mb_image : BACKEND_IMAGE_URL+microBannerData?.image} type="image/webp" />
-            <img src={window.innerWidth <= 768 ? BACKEND_IMAGE_URL+microBannerData?.mb_alternative_image : BACKEND_IMAGE_URL+microBannerData?.alternative_image} alt={microBannerData?.alt} />
-          </picture>
+          {type == 'blog' ? (
+            <picture className="microbanner_bg">
+              <source srcset={window.innerWidth <= 768 ? BACKEND_IMAGE_URL+innerBlogBanner?.[0]?.mb_image : BACKEND_IMAGE_URL+innerBlogBanner?.[0]?.image} type="image/webp" />
+              <img src={window.innerWidth <= 768 ? BACKEND_IMAGE_URL+innerBlogBanner?.[0]?.mb_alternative_image : BACKEND_IMAGE_URL+innerBlogBanner?.[0]?.alternative_image} alt={innerBlogBanner?.[0]?.alt} />
+            </picture>
+          ) : (
+            <picture className="microbanner_bg">
+              <source srcset={window.innerWidth <= 768 ? BACKEND_IMAGE_URL+microBannerData?.mb_image : BACKEND_IMAGE_URL+microBannerData?.image} type="image/webp" />
+              <img src={window.innerWidth <= 768 ? BACKEND_IMAGE_URL+microBannerData?.mb_alternative_image : BACKEND_IMAGE_URL+microBannerData?.alternative_image} alt={microBannerData?.alt} />
+            </picture>
+          )}
+          
           {/* <img src={window.innerWidth <= 768 ? BACKEND_IMAGE_URL+microBannerData?.mb_image : BACKEND_IMAGE_URL+microBannerData?.image} alt="mvn micro banner background image" className="img-fluid microbanner_bg" /> */}
-          <h2 ref={titleRef} className="microTitle" >{microBannerData?.heading}</h2>
-          <p className="microContent">{microBannerData?.sub_heading && microBannerData?.sub_heading}</p>
+          <h1 ref={titleRef} className="microTitle" >{microBannerData?.heading}</h1>
+          <h2 className="microContent">{microBannerData?.sub_heading && microBannerData?.sub_heading}</h2>
         </Container>
       </section>
       <section className="breadcrumb_section" aria-label="Breadcrumb Section">

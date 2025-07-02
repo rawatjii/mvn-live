@@ -103,12 +103,12 @@ const otherSection = [
   //   icon: <FaCity className="mr-3 box-icon" />,
   //   link: "property-type.html",
   // },
-  {
-    name: "Amenities Logo",
-    image: amenityIcon,
-    icon: <FaCity className="mr-3 box-icon" />,
-    link: "/admin/amenities",
-  },
+  // {
+  //   name: "Amenities Logo",
+  //   image: amenityIcon,
+  //   icon: <FaCity className="mr-3 box-icon" />,
+  //   link: "/admin/amenities",
+  // },
   // { name: "Other Page", icon: <FaCity className="mr-3 box-icon" />, link: "#" },
 ];
 const PageCommonSection = [
@@ -146,6 +146,26 @@ const PageCommonSection = [
     name: "Team",
     icon: <FaUser className="mr-3 box-icon" />,
     link: "admin/team",
+  },
+  {
+    name: "Blog",
+    icon: <FaUser className="mr-3 box-icon" />,
+    link: "admin/blogs",
+  },
+  {
+    name: "Media Centre",
+    icon: <FaUser className="mr-3 box-icon" />,
+    link: "admin/media-centre",
+  },
+  {
+    name: "Career",
+    icon: <FaUser className="mr-3 box-icon" />,
+    link: "admin/career",
+  },
+  {
+    name: "Pages Meta",
+    icon: <FaUser className="mr-3 box-icon" />,
+    link: "admin/pages-meta",
   },
 ];
 
@@ -279,7 +299,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className="middle-box">
+            {/*<div className="middle-box">
               <div className="inner-bottom-box">
                 <CustomTitle
                   icon={<IoShareSocial />}
@@ -316,14 +336,14 @@ const Dashboard = () => {
                     );
                   })}
                 </div>
-                {/* <!--------inner-other----------> */}
+                /~ <!--------inner-other----------> ~/
               </div>
-            </div>
+            </div>*/}
           </div>
           {/* <!----------left-area---------> */}
 
           <div className="right-area">
-            <div className="inner-left">
+            {/* <div className="inner-left">
               <div className="box">
                 <h6>
                   <i className="fa fa-envelope-open" aria-hidden="true"></i>{" "}
@@ -352,7 +372,7 @@ const Dashboard = () => {
                   </table>
                 </div>
               </div>
-            </div>
+            </div> */}
             {/* <!----------right-area---------> */}
 
             <div className="inner-left">

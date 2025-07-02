@@ -28,8 +28,6 @@ const HeroSection = () => {
     deleteItem,
     getEditData  } = useCrud(editDataApi);
 
-console.log('editData11',editData)
-console.log('typeInputs',typeInputs)
 
 useEffect(()=>{
   setFormType(editData?.is_type)
@@ -41,6 +39,8 @@ useEffect(()=>{
         ? [
             { name: "image", label: "Image", type: "file", col: 12, isLeft: true },
             { name: "alternative_image", label: "Alternative Image", type: "file", col: 12, isLeft: true },
+            { name: "mb_image", label: "Mobile Image", type: "file", col: 12, isLeft: true },
+            { name: "mb_alternative_image", label: "Mobile Alternative Image", type: "file", col: 12, isLeft: true },
             { name: "alt", label: "Alt text", type: "text", col: 12, isLeft: true, isRequired: true },
           ]
         : formType === "iframe"

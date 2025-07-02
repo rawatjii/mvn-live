@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   CustomSection,
   LeftArea,
@@ -11,18 +11,21 @@ import CustomTable from "./components/dashboard/utilities/custom-table/CustomTab
 import CustomPagination from "./components/dashboard/utilities/pagination/CustomPagination";
 import generateApi from "./api/generateApi";
 import useCrud from "./hooks/useCrud";
-import CustomModal from "./components/dashboard/utilities/custom-modal/CustomModal";// Simulated backend response
+import CustomModal from "./components/dashboard/utilities/custom-modal/CustomModal"; // Simulated backend response
+import { useDispatch, useSelector } from "react-redux";
+import { setDeleteId, toggleModal } from "../redux/commonSlice";
 
 const metaFields = [
   { name: "heading", label: "Title", type: "text", col: 4, isRequired: true },
+  { name: "slug", label: "Slug", type: "text", col: 4, isRequired: true },
   { name: "date_at", label: "Date", type: "date", col: 4, isRequired: true },
   { name: "alt", label: "Alt Tag", type: "text", col: 4, isRequired: true },
-  { name: "image", label: "Image", type: "file", col: 6, isRequired: true },
+  { name: "image", label: "Image", type: "file", col: 4, isRequired: true },
   {
     name: "mb_image",
     label: "Mobile Image",
     type: "file",
-    col: 6,
+    col: 4,
     isRequired: true,
   },
   {
@@ -41,7 +44,6 @@ const metaFields = [
     isWebpAllowed: false,
     isRequired: true,
   },
-  // { name: "description", label: "Description", type: "textarea", col: 12, isRequired: true },
   {
     name: "description",
     label: "Description",
@@ -49,8 +51,10 @@ const metaFields = [
     col: 12,
     isRequired: true,
   },
+  { name: "meta_title", label: "Meta Title", type: "text", col: 4},
+  { name: "meta_keywords", label: "Meta Keywords", type: "text", col: 4},
+  { name: "meta_description", label: "Meta Description", type: "text", col: 4},
 ];
-
 
 const columns = [
   { key: "id", label: "S.No." },
@@ -61,26 +65,33 @@ const columns = [
   // { key: "mobile_image", label: "Mobile Image" },
 ];
 
-const oldData = [
-  { id: 1, title: "Enrich lives", image: "image1.jpg" },
-  { id: 2, title: "Empower ambitions", image: "image2.jpg" },
-  { id: 3, title: "Drive innovation", image: "image2.jpg" },
-  { id: 4, title: "Inspire quality", image: "image2.jpg" },
-];
-
 const AdminBlog = () => {
   const aboutsApi = generateApi("blog"); // ✅ Adjust endpoint if needed
-  const { data, loading, error, createItem, updateItem, editItem, deleteItem } = useCrud(aboutsApi);
+  const { data, loading, error, createItem, updateItem, editItem, deleteItem } =
+    useCrud(aboutsApi);
   const [editModalData, setEditModalData] = useState(null);
+  const dispatch = useDispatch();
+  const {isDeleteConfirm, deleteId} = useSelector(state=>state.commonState)
 
   const handleCreate = (formData) => createItem(formData);
 
   const handleEditSubmit = (formData) => {
-    setEditModalData(null)
-    editItem(editModalData.id, formData); 
+    setEditModalData(null);
+    editItem(editModalData.id, formData);
   };
 
-  const handleDelete = (row) => deleteItem(row.id);
+  useEffect(()=>{
+    if(isDeleteConfirm){
+      deleteItem(deleteId);
+      dispatch(toggleModal(false));
+    }
+  }, [isDeleteConfirm])
+
+  const handleDelete = (row) => {
+    dispatch(setDeleteId(row.id));
+    dispatch(toggleModal(true));
+  }
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
@@ -88,6 +99,11 @@ const AdminBlog = () => {
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
+
+  const editFormHandler = (row) => {
+    scrollTo(0, 0);
+    setEditModalData(row);
+  };
 
   return (
     <>
@@ -109,8 +125,7 @@ const AdminBlog = () => {
             columns={columns}
             data={paginatedData}
             onEdit={(row) => {
-              scrollTo(0, 0)
-              setEditModalData(row)
+              editFormHandler(row);
             }}
             onDelete={handleDelete}
           />

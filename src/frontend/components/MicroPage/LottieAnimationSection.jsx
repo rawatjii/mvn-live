@@ -38,8 +38,6 @@ const LottieAnimationSection = React.memo(
     const { isMobile } = useMatches();
     const { sub_heading, description, json, showAwards, section_type, heading = undefined } = data;
 
-    console.log('data json', data);
-
     // Ref for the interseciton observer
     const observerRef = useRef(null);
 
@@ -142,7 +140,6 @@ const LottieAnimationSection = React.memo(
 
       // Event listener for when Lottie is fully initialized
       lottieAnimation.addEventListener("DOMLoaded", () => {
-        console.log("Lottie animation is fully loaded.");
         setLoading(false); // Set loading to false when Lottie is fully loaded
         onLoadComplete && onLoadComplete(); // Call onLoadComplete if provided
       });

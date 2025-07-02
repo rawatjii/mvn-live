@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   CustomSection,
   LeftArea,
@@ -12,6 +12,8 @@ import CustomPagination from "./components/dashboard/utilities/pagination/Custom
 import generateApi from "./api/generateApi";
 import useCrud from "./hooks/useCrud";
 import CustomModal from "./components/dashboard/utilities/custom-modal/CustomModal";
+import { useDispatch, useSelector } from "react-redux";
+import { setDeleteId, toggleModal } from "../redux/commonSlice";
 
 // Simulated backend response
 const metaFields = [
@@ -41,9 +43,25 @@ const Testimonials = React.memo(() => {
 
   const brandApi = generateApi("testimonials");
   const { data, loading, error, createItem, editItem, deleteItem } =useCrud(brandApi);
+  const dispatch = useDispatch();
+  const {isDeleteConfirm, deleteId} = useSelector(state=>state.commonState)
 
-  const handleCreate = (formData) => createItem(formData);
-  const handleDelete = (row) => deleteItem(row.id);
+  useEffect(()=>{
+    if(isDeleteConfirm){
+      deleteItem(deleteId);
+      dispatch(toggleModal(false));
+    }
+  }, [isDeleteConfirm])
+
+  const handleCreate = (formData) => {
+    createItem(formData)
+  };
+
+  const handleDelete = (row) => {
+    dispatch(setDeleteId(row.id));
+    dispatch(toggleModal(true));
+    // deleteItem(row.id)
+  };
   const handleEditSubmit = (formData) => {
     editItem(editModalData.id, formData);
   };
