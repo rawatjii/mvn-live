@@ -42,7 +42,7 @@ export const otherProjects = [
 export const otherDetails = {
   contact: '+91 79960 00196',
   email: 'info@mvn.in',
-  address: 'MVN AERO ONE, C/o Awfis, 7th Floor, Gate No. 3 &4 Ambience Mall, Ambience Island, NH-8, DLF Phase-3, Sector-24, Gurugram',
+  address: 'GS 301A–GS 301F, Third Floor, DLF Grand Mall, M.G. Road, Gurgaon, Haryana – 122002.',
 };
 
 export const socialMedia = [
