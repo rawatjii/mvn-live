@@ -63,6 +63,7 @@ import "./savan.css";
 import "./adarsh.css";
 import "./admin/assets/css/microsite.css";
 
+import PDFViewer from "./frontend/pages/PDFViewer.jsx";
 import AdminLayout from "./admin/components/ContentLayout/AdminLayout.jsx";
 import Dashboard from "./admin/Dashboard.jsx";
 import Amenities from "./admin/components/dashboard/microsite/Amenities.jsx";
@@ -251,6 +252,14 @@ const router = createBrowserRouter([
         element: (
           <FrontendRoute loaderType="">
             <Disclaimer />
+          </FrontendRoute>
+        ),
+      },
+      {
+        path: "pdf/:pdfName",
+        element: (
+          <FrontendRoute loaderType="">
+            <PDFViewer />
           </FrontendRoute>
         ),
       },

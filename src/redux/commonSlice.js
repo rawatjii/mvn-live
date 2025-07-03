@@ -6,6 +6,7 @@ const initialState = {
   isModalShow:false,
   isDeleteConfirm:false,
   deleteId:null,
+  compliancePdf:null,
 }
 
 const commonSlice = createSlice({
@@ -28,10 +29,13 @@ const commonSlice = createSlice({
     },
     setDeleteId:(state, action)=>{
       state.deleteId = action.payload;
+    },
+    setCompliancePdf:(state, action)=>{
+      state.compliancePdf = action.payload;
     }
   },
 })
 
-export const {setCommonState, toggleModal, setModalHide, setDeleteConfirm, setDeleteId} = commonSlice.actions;
+export const {setCommonState, toggleModal, setModalHide, setDeleteConfirm, setDeleteId, setCompliancePdf} = commonSlice.actions;
 
 export default commonSlice.reducer;

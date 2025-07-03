@@ -16,19 +16,14 @@ import { setDeleteId, toggleModal } from "../../../redux/commonSlice";
 
 // Simulated backend response
 const metaFields = [
-    { name: "type", value:'news', label: "Type", type:'hidden', col: 12, isLeft: true },
+    { name: "type", value:'compliance', label: "Type", type:'hidden', col: 12, isLeft: true },
     { name: "heading", label: "Heading", type: "text", col: 12, isLeft: true },
     { name: "date_at", label: "Date", type: "date", col: 12, isLeft: true },
-    { name: "links", label: "Url", type: "text", col: 12, isLeft: true },
     { name: "alt", label: "Alt Tag", type: "text", col: 12, isLeft: true },
   { name: "image", label: "Image", type: "file", col: 6, isLeft: true },
-  {
-    name: "alternative_image",
-    label: "Alternative Image",
-    type: "file",
-    col: 6,
-    isLeft: true,
-  },
+  { name: "brochure", label: "PDF", type: "file", col: 6, isLeft: true },
+  { name: "links", label: "Slug", type: "text", col: 6, isLeft: true },
+  
 ];
 
 const columns = [
@@ -37,13 +32,14 @@ const columns = [
   { key: "alt", label: "Alt Tag" },
   { key: "image", label: "Image", type: "file" },
 ];
-const OnlineMedia = () => {
+const Compliance = () => {
     const [editModalData, setEditModalData] = useState(null);
     const dispatch = useDispatch();
     const {isDeleteConfirm, deleteId} = useSelector(state=>state.commonState)
-    const aboutsApi = generateApi("media-center?is_type=news");
-    const { data, loading, error, createItem, editItem, updateItem, deleteItem } =
-      useCrud(aboutsApi);
+    const complianceApi = generateApi("media-center");
+    const complianceApi1 = generateApi("media-center?is_type=compliance");
+    const { data} = useCrud(complianceApi1);
+    const {createItem, editItem, updateItem, deleteItem } = useCrud(complianceApi);
 
     useEffect(()=>{
       if(isDeleteConfirm){
@@ -53,14 +49,13 @@ const OnlineMedia = () => {
     }, [isDeleteConfirm])
   
     const handleCreate = (formData) => {
-      formData.append("type","news")
+      formData.append("type","compliance")
       createItem(formData)
     };
     // const handleEdit = (row) => updateItem(row.id, row);
     const handleDelete = (row) => {
       dispatch(setDeleteId(row.id));
-      dispatch(toggleModal(true));
-      // deleteItem(row.id)
+    dispatch(toggleModal(true));
     };
   
     const handleEdit = (row) => {
@@ -74,7 +69,7 @@ const OnlineMedia = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
 
-    const filteredData = data.filter((item)=>item.type == 'news').map(item=>({
+    const filteredData = data.map(item=>({
       ...item,
       is_type:'image'
     }));
@@ -88,7 +83,7 @@ const OnlineMedia = () => {
     {/* left box for form */}
     <LeftArea>
       <MicroBox>
-        <CustomTitle title="Online Media Form" />
+        <CustomTitle title="Compliances Form" />
         <CustomForm
           isBanner={false}
           dynamicFields={metaFields}
@@ -101,7 +96,7 @@ const OnlineMedia = () => {
     {/* right box for table */}
     <RightArea>
       <MicroBox>
-        <CustomTitle title="Online Media Table" />
+        <CustomTitle title="Compliances Table" />
         <CustomTable
           columns={columns}
           data={paginatedData}
@@ -120,4 +115,4 @@ const OnlineMedia = () => {
   )
 }
 
-export default OnlineMedia
+export default Compliance

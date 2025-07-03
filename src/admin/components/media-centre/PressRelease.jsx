@@ -41,7 +41,7 @@ const PressRelease = () => {
     const [editModalData, setEditModalData] = useState(null);
     const dispatch = useDispatch();
     const {isDeleteConfirm, deleteId} = useSelector(state=>state.commonState)
-    const aboutsApi = generateApi("media-center");
+    const aboutsApi = generateApi("media-center?is_type=press");
     const { data, loading, error, createItem, editItem, updateItem, deleteItem } =
       useCrud(aboutsApi);
 

@@ -688,7 +688,7 @@ section.section.other_projects_section.pb-0 {
 section.section.press-releases-container {padding-bottom: 0px;}
 section.section.press-releases-container  .swiper.swiper-initialized.swiper-horizontal.swiper-backface-hidden {padding-bottom: 70px;}
 article.awa_card.awa_shadow p {text-align: left;}
-article.awa_card.awa_shadow p.text-capitalize { color: var(--theme_primary_color);cursor: pointer;}
+article.awa_card.awa_shadow .text-capitalize { color: var(--theme_primary_color);cursor: pointer;}
 
 .sec_title.text-center.color.style1{position:relative;width:fit-content;margin:0 auto;margin-top: 0 !important;margin-bottom:60px}
 .sec_title.text-center.color.style2{width:fit-content;margin:0 auto;margin-bottom:40px}
@@ -1290,7 +1290,8 @@ button.closebtn {
     .philosophy_section .content li li{max-width:100%!important;width:100%!important}
     .philosophy_section .content li p { color: #d5d5d5;}
     .philosophy_section .content li li { color: #d5d5d5;}
-    .awa_posted a {font-size: 14px; margin-top: 5px;}
+    .awa_posted a,
+    .awa_posted button {font-size: 14px; margin-top: 5px; background:transparent; box-shadow: none; outline:none; border:none;}
     .awa_card div:last-child {  flex-basis: 65%; padding: 20px 20px;}
     .media-news_online {padding: 30px 13%;height: 100%;}
     .gallery_slider .swiper-horizontal {padding-bottom: 120px;}

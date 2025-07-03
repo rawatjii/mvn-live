@@ -576,6 +576,20 @@ border-bottom: 1px solid rgb(42 42 42 / 49%);text-decoration: none;letter-spacin
     .awa_card div:last-child {
       flex-basis: 70%;
     }
+    .app_site_plan_box div:first-child {
+        flex: 1;
+        padding: 15px;
+    }
+
+    .app_site_plan_box div:first-child img {
+        background: #fff;
+        height: auto;
+        padding: 15px 5px;
+        border-radius: 5px;
+    }
+    .app_site_plan_box div:last-child {
+        flex-grow: 1;
+    }
   }
   
 
