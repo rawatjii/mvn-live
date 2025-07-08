@@ -33,7 +33,7 @@ const PDFViewer = () => {
   };
 
   const currentPdfData = data?.filter((item)=>{
-    return item.heading.split(' ').join('-').toLowerCase().includes(pdfName);
+    return item.links.includes(pdfName);
   });
 
   return (
