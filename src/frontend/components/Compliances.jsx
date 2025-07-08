@@ -18,9 +18,9 @@ function Compliances({slidesPerView, spaceBetween }) {
   if (!loading && data && data.length === 0)
     return <div className="text-center py-5">No records found</div>;
 
-  const setPdfHandler = (pdf)=>{
-    dispatch(setCompliancePdf(pdf));
-    window.open(import.meta.env.VITE_APP_URL + `pdf/${pdf}`, '_blank');
+  const setPdfHandler = (item)=>{
+    dispatch(setCompliancePdf(item?.brochure));
+    window.open(import.meta.env.VITE_APP_URL + `pdf/${item.heading.split(' ').join('-').toLowerCase()}`, '_blank');
   }
 
 
@@ -53,7 +53,7 @@ function Compliances({slidesPerView, spaceBetween }) {
                                     year:"numeric"
                                   })}
                                 </time></span>
-                                <button type="button" className="text-capitalize" onClick={()=>setPdfHandler(item.brochure)}>View Full PDF</button>
+                                <button type="button" className="text-capitalize" onClick={()=>setPdfHandler(item)}>View Full PDF</button>
                                 {/* <Link type="button" className="text-capitalize" target="_blank" to={import.meta.env.VITE_APP_URL + `pdf/${item.links}`}>View Full PDF</Link> */}
                             </div>
                         </div>

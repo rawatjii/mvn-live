@@ -7,6 +7,7 @@ import { Worker, Viewer } from '@react-pdf-viewer/core';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import * as CONFIG from "../../config/config";
 import { useLocation, useParams } from "react-router-dom";
+import useFetchData from "../utils/apiHelper";
 
 const Desktopmicro_bg = `${API_URL}images/disclaimer-head-bg-desktop.jpg`;
 
@@ -17,13 +18,23 @@ const PDFViewer = () => {
   // State to manage background image
   const [microBg, setMicroBg] = useState(Desktopmicro_bg);
   const {pathname} = useLocation();
-  const {pdfName} = useParams()
+  const {pdfName} = useParams();
+
+  const { data, loading } = useFetchData("media/compliance");
+
+  if (loading) return <div className="text-center py-5">Loading...</div>;
+  if (!loading && data && data.length === 0)
+    return <div className="text-center py-5">No records found</div>;
 
   // Breadcrumb data
   const breadcrumbs = {
     title: "Disclaimer",
     links: [{ name: "Home", link: "/" }, { name: "Disclaimer" }],
   };
+
+  const currentPdfData = data?.filter((item)=>{
+    return item.heading.split(' ').join('-').toLowerCase().includes(pdfName);
+  });
 
   return (
     <>
@@ -36,8 +47,8 @@ const PDFViewer = () => {
                       height: '100vh',
                   }}
               >
-                {pdfName && (
-                  <Viewer fileUrl={`${CONFIG.API_URL}images/mediacenter/site_plans/${pdfName}.pdf`} />
+                {currentPdfData && (
+                  <Viewer fileUrl={CONFIG.BACKEND_IMAGE_URL + currentPdfData?.[0].brochure} />
                 )}
               </div>
           </Worker>
