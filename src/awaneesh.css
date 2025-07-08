@@ -515,10 +515,6 @@ border-bottom: 1px solid rgb(42 42 42 / 49%);text-decoration: none;letter-spacin
     overflow: hidden;
   }
   
-  .awa_card div:first-child {
-    flex-basis: 35%;
-  }
-  
   .awa_card div:last-child {
     flex-basis: 65%;
     padding: 35px 15px ;

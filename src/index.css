@@ -4418,6 +4418,13 @@ table.bg_transparent{
 }
 
 .typology_section .desktop-view-typo-images .typologies-images {position: relative;width: 450px;height: 450px;}
+.app_site_plan_box div:first-child {
+  flex: 1
+}
+
+.app_site_plan_box div:last-child {
+  flex-grow: 1
+}
 
 
 /* start responsive */
@@ -5584,10 +5591,9 @@ table.bg_transparent{
       }
     }
   }
-
-  .awa_card div:first-child{
-
-    flex-basis: 30%;
+  
+  .awa_card div:first-child {
+    flex-basis: 35%;
   }
 
   .blog_page .blog-detail-page-heading{
@@ -5818,6 +5824,15 @@ table.bg_transparent{
   .typology_arrow{
     display:none;
   }
+
+  .awa_posted button {
+    font-size: 14px;
+    margin-top: 5px;
+    background: transparent;
+    box-shadow: none;
+    outline: none;
+    border: none;
+}
 
 }
 
