@@ -40,7 +40,7 @@ const ContactPage = ()=>{
                         <span className="icon">
                             <img src={`${CONFIG.API_URL}assets/icons/location.png`} alt="mvn envelope icon" className="img-fluid" />
                         </span>
-                        <span className="txt">MVN AERO ONE, C/o Awfis, 7th Floor, Gate No. 3 &4 Ambience Mall, Ambience Island, NH-8, DLF Phase-3, Sector-24, Gurugram | CIN:ACA-4678 | PAN:ABWFM8415E</span>
+                        <span className="txt text-start">GS 301A–GS 301F, Third Floor, DLF Grand Mall, M.G. Road, Gurgaon, Haryana – 122002. | CIN:ACA-4678 | PAN:ABWFM8415E</span>
                     </li>
                 </ul>
             </Container>
