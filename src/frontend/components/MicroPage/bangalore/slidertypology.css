@@ -48,6 +48,7 @@ color: #131313;text-decoration: none;font-family: "Tinos-Regular";font-size: 18p
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     font-size: 18px;
+    text-transform: uppercase;
 }
 .typology_section .nav-tabs li button.active{
     background-color: #d9c072;
@@ -123,9 +124,10 @@ color: #131313;text-decoration: none;font-family: "Tinos-Regular";font-size: 18p
     }
     .typology_section .nav-tabs li{
         padding:0;
+        margin:0;
     }
     .typology_section .nav-tabs li button{
-        font-size: 14px;
+        font-size: 12px;
         height: 100%;
         margin: 0;
     }

@@ -5824,7 +5824,8 @@ video:focus {
   }
 
   .typology_section .nav-tabs li button.active{
-    font-size:12px;
+    font-size: 11px;
+        padding: 0 10px;
   }
 
   .typology_section .main-title{
