@@ -25,7 +25,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
   const { isMobile } = useMatches();
 
   useEffect(() => {
-    if (pathname.includes("aeroone-gurgaon") || pathname.includes("mvn-mall") || pathname.includes("aeroone-bangalore") || pathname.includes("mvn-athens-faridabad") || pathname.includes("/mvn-athens-gurgaon-phase-2") || pathname.includes("/mvn-athens-gurgaon-phase-1")) {
+    if (pathname.includes("aeroone-gurgaon") || pathname.includes("mvn-mall") || pathname.includes("aeroone-bangalore") || pathname.includes("mvn-athens-faridabad") || pathname.includes("/mvn-athens-gurgaon-phase-2") || pathname.includes("/mvn-athens-gurgaon-phase-1") || pathname.includes("/mvn-athens-gurgaon-phase-3")) {
       setIsMicro(true);
     }
 

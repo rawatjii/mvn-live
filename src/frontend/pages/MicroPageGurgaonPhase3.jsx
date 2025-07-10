@@ -19,7 +19,7 @@ const ParallaxSection = React.lazy(() => import("../../common/ParallaxSection"))
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
  
-const MicroPageGurgaonPhase2 = ({ data, loadingCount, setLoadingCount }) => {
+const MicroPageGurgaonPhase3 = ({ data, loadingCount, setLoadingCount }) => {
   const [heroLoaded, setHeroLoaded] = useState(true);
   const [newLoadingCount, setNewLoadingCount] = useState(
     Math.floor(localStorage.getItem('count') || 0)
@@ -258,7 +258,7 @@ const MicroPageGurgaonPhase2 = ({ data, loadingCount, setLoadingCount }) => {
               (sectionRefs.current.MicroTypology = el)
             }
           >
-            <SliderTypology data={data.typologies} onLoadComplete={() => setTypologyLoaded(true)} projectName="MVN Athens Gurgaon PH-2" />
+            <SliderTypology data={data.typologies} onLoadComplete={() => setTypologyLoaded(true)} projectName="MVN Athens Gurgaon PH-3" />
           </div>
 
           <div
@@ -296,4 +296,4 @@ const MicroPageGurgaonPhase2 = ({ data, loadingCount, setLoadingCount }) => {
   );
 };
 
-export default MicroPageGurgaonPhase2;
+export default MicroPageGurgaonPhase3;

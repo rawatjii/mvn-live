@@ -16,6 +16,7 @@ import {bangaloreData} from './frontend/pages/micro/mvn-aeroone-bangalore/Index.
 import { faridabadData } from "./frontend/pages/micro/Athens/Index.jsx";
 import { athensGurgaonPhase1Data } from "./frontend/pages/micro/athens-gurgaon-phase-1/Index.jsx";
 import { athensGurgaonPhase2Data } from "./frontend/pages/micro/athens-gurgaon-phase-2/Index.jsx";
+import { athensGurgaonPhase3Data } from "./frontend/pages/micro/athens-gurgaon-phase-3/Index.jsx";
 import { mvnMallData } from "./frontend/pages/micro/mvnMall/Index.jsx";
 
 const Homepage = React.lazy(() => import("./frontend/pages/Homepage.jsx"));
@@ -33,6 +34,7 @@ const MicroPageBangalore = React.lazy(()=>import("./frontend/pages/MicroPageBang
 const MicroPageFaridabad = React.lazy(()=>import("./frontend/pages/MicroPageFaridabad.jsx"));
 const MicroPageGurgaonPhase1 = React.lazy(()=>import("./frontend/pages/MicroPageGurgaonPhase1.jsx"));
 const MicroPageGurgaonPhase2 = React.lazy(()=>import("./frontend/pages/MicroPageGurgaonPhase2.jsx"));
+const MicroPageGurgaonPhase3 = React.lazy(()=>import("./frontend/pages/MicroPageGurgaonPhase3.jsx"));
 const MvnMall1 = React.lazy(()=>import("./frontend/pages/mvnMall.jsx"));
 // const MicroPageGurgaon1 = React.lazy(() =>
 //   new Promise((resolve) =>
@@ -107,6 +109,14 @@ const router = createBrowserRouter([
         element: (
           <FrontendRoute loaderType="mvn-athens-gurgaon-phase-2">
             <MicroPageGurgaonPhase2 data={athensGurgaonPhase2Data} />
+          </FrontendRoute>
+        ),
+      },
+      {
+        path: "mvn-athens-gurgaon-phase-3",
+        element: (
+          <FrontendRoute loaderType="mvn-athens-gurgaon-phase-2">
+            <MicroPageGurgaonPhase3 data={athensGurgaonPhase3Data} />
           </FrontendRoute>
         ),
       },

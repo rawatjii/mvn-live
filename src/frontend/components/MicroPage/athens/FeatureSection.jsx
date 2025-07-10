@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./feature_section.css";
 
 const FeatureSection = ({ data }) => {
-  const { title, desc, src, list, bgImg } = data;
+  const { title, desc, src, list, bgImg, isTwoColumn } = data;
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -79,7 +79,7 @@ const FeatureSection = ({ data }) => {
                 <h4 className="main-title d-v">{title}</h4>
                 <p className="main-pera d-v">{desc}</p>
 
-                <ul>
+                <ul className={isTwoColumn ? "two_column" : ""}>
                   {list.map((feature, index) => (
                     <li key={index}>{feature}</li>
                   ))}

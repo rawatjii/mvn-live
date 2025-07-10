@@ -4,8 +4,9 @@ import CustomCard from "../../Card";
 import CustomSlider from "./CustomSlider";
 import "./slidertypology.css";
 
-const SliderTypology = ({ data }) => {
+const SliderTypology = ({ data, projectName }) => {
   const {title, desc, tabs, tabs_name } = data;
+
 
   return (
     <section className="section typology_section" aria-label="Typology Section">
@@ -16,7 +17,7 @@ const SliderTypology = ({ data }) => {
         <Tabs defaultActiveKey={tabs_name[0]} id="typology-tabs" className="mb-3 pb-0">
           {Object.keys(tabs).map((key, index) => (
             <Tab eventKey={tabs_name[index]} title={tabs_name[index]} key={key}>
-              <CustomSlider className="typology_slider" slides={tabs[key]} />
+              <CustomSlider className={`typology_slider`} isFullDesign={key} slides={tabs[key]} projectName={projectName} />
             </Tab>
           ))}
         </Tabs>

@@ -5819,6 +5819,31 @@ video:focus {
     line-height: 22px;
   }
 
+  .typology_section .nav-tabs li button{
+    height:30px;
+  }
+
+  .typology_section .nav-tabs li button.active{
+    font-size:12px;
+  }
+
+  .typology_section .main-title{
+    font-size:18px;
+    margin: 15px;
+  }
+
+  .typology_section .carousel-inner .carousel-caption .link{
+    padding-top:0;
+  }
+
+  .typology_section .carousel-inner .carousel-caption .link a{
+    font-size:14px;
+  }
+
+  .typology_section .carousel-inner .carousel-caption{
+    padding-bottom:30px;
+  }
+
 }
 
 /* end of 767 */

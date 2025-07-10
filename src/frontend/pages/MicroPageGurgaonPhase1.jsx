@@ -257,7 +257,7 @@ const MicroPageGurgaonPhase1 = ({ data, loadingCount, setLoadingCount }) => {
               (sectionRefs.current.MicroTypology = el)
             }
           >
-            <SliderTypology data={data.typologies} onLoadComplete={() => setTypologyLoaded(true)} />
+            <SliderTypology data={data.typologies} onLoadComplete={() => setTypologyLoaded(true)} projectName="MVN Athens Gurgaon PH-1" />
           </div>
 
           <div
