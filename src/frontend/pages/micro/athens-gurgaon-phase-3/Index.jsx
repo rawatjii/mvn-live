@@ -35,8 +35,8 @@ const bhk3 = `${API_URL}athens-gurgaon-phase-3/plans/3_bhk.webp`
 // typology images end
 //   <----------------------------------->
 // location map start
-const locationMapDesktop = `${API_URL}athens-gurgaon-phase-2/location-map/location-map.jpg`
-const locationMapMobile = `${API_URL}athens-gurgaon-phase-2/location-map/location-mapm.jpg`
+const locationMapDesktop = `${API_URL}athens-gurgaon-phase-3/location-map/location-map.webp`
+const locationMapMobile = `${API_URL}athens-gurgaon-phase-3/location-map/location-mapm.webp`
 // location map end
 
 export const athensGurgaonPhase3Data = {
@@ -229,7 +229,7 @@ export const athensGurgaonPhase3Data = {
       { title: "Universities / Schools (GD Goenka / RK Manglam / Ryan / Pathways/DPS)", desc: "05 - 10 Mins" },
       { title: "Hospitals", desc: "10 Mins" },
       { title: "Malls", desc: "10 Mins" },
-      { title: "DMIC (Delhi Mumbai Industrial Coridor)", desc: "05 Mins" },
+      { title: "DMIC (Delhi Mumbai Industrial Corridor)", desc: "05 Mins" },
     ],
     modalIframe:'https://www.youtube.com/embed/p4ArtUtsj-A?si=VsbM3Dvdk969-OHv',
   },
