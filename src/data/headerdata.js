@@ -25,7 +25,8 @@ export const otherProjects = [
   { 
     location: 'Sohna', projects: [
       { name: 'MVN Athens', link: '/mvn-athens-gurgaon-phase-1', status: '', target_blank: false },
-      { name: 'MVN Athens PH-2', link: '/mvn-athens-gurgaon-phase-2', status: '', target_blank: false }
+      { name: 'MVN Athens PH-2', link: '/mvn-athens-gurgaon-phase-2', status: '', target_blank: false },
+      { name: 'MVN Athens PH-3', link: '/mvn-athens-gurgaon-phase-3', status: '', target_blank: false }
     ]
   },
   {
