@@ -14,6 +14,7 @@ import MicroHeader from "../components/MicroHeader";
 import ImagesGallery from "../components/MicroPage/ImagesGallery";
 import SliderTypology from "../components/MicroPage/bangalore/SliderTypology";
 import AthensBanner from "../components/MicroPage/athens/AthensBanner";
+import ConstructionTechnology from "../components/MicroPage/ConstructionTechnology";
 const FeatureSection = React.lazy(() => import("../components/MicroPage/athens/FeatureSection"));
 const ParallaxSection = React.lazy(() => import("../../common/ParallaxSection"));
 
@@ -269,6 +270,22 @@ const MicroPageGurgaonPhase3 = ({ data, loadingCount, setLoadingCount }) => {
             <MicroLocationMap
               data={data.locationAdvantage}
             />
+          </div>
+
+          {/* <div
+            ref={(el) =>
+              (sectionRefs.current.constructionProgress = el)
+            }
+          >
+            <ConstructionTechnology data={data.constructionProgress}/>
+          </div> */}
+
+          <div
+            ref={(el) =>
+              (sectionRefs.current.constructionUpdate = el)
+            }
+          >
+            <ImagesGallery data={data.constructionUpdate}/>
           </div>
 
           <div
