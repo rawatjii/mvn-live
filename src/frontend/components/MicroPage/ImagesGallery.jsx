@@ -8,12 +8,14 @@ import AnImage from "../../../common/animations/Image/Index";
 import "yet-another-react-lightbox/styles.css";
 import CustomCard from "../Card";
 import Logomark from "../../../common/logomark/Index";
+import { useLocation } from "react-router-dom";
 
  function ImagesGallery({ data }) {
   const sectionsRef = useRef(null);
   const [index, setIndex] = useState(-1);
   const imageDivRefs = useRef([]);
   const [imagesLoaded, setImagesLoaded] = useState(0);
+  const{pathname} = useLocation()
   const { title, images, desc, secondTitle, imageClassName } = data;
 
   // Memoized mapped slides for Lightbox
@@ -25,6 +27,9 @@ import Logomark from "../../../common/logomark/Index";
   const handleImageLoad = useCallback(() => {
     setImagesLoaded((prev) => prev + 1);
   }, []);
+
+  const isAeroOne = pathname?.includes('aeroone-gurgaon');
+  const isMvnLogo = pathname?.includes('mvn-mall');
 
   // Memoized images map for rendering cards
   const imageCards = useMemo(() => {
@@ -38,7 +43,7 @@ import Logomark from "../../../common/logomark/Index";
         <div className="col-sm-12 col-md-4 col-lg-4" key={idx}>
           <div className="card center" role="button" tabindex="0" onClick={() => setIndex(idx)}>
             <div className="img">
-              <Watermark className={image.watermark} />
+              <Watermark className={image.watermark} isAthensLogo={!isAeroOne} isMvnLogo={isMvnLogo} />
               <AnImage ref={imageRef}>
                 <img
                   src={image.mobile}
@@ -137,7 +142,7 @@ import Logomark from "../../../common/logomark/Index";
                 alt="landscape image"
                 className='LightBox_image'
               />
-              <Watermark className={lightbox_watermark} />
+              <Watermark className={lightbox_watermark} isAthensLogo={!isAeroOne} isMvnLogo={isMvnLogo} />
             </div>
           ),
         }}

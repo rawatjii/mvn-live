@@ -129,7 +129,7 @@ export const athensGurgaonPhase3Data = {
   },
   overview: {
     title: "MVN Athens Phase - III",
-    extra: "Your dream paradise",
+    extra: "Your Dream Paradise",
     desc: [
       "Our happiness dwells in the hearts of our home buyers. So, where somebody talks about customer satisfaction we are all ears.",
       "All our efforts are committed towards it. Delivery before time, Affordable luxury, Reliability & Quality in terms of material used for construction backed by a dedicated in-house team to look after the day to day affairs.",
@@ -169,14 +169,14 @@ export const athensGurgaonPhase3Data = {
         desktop: gallery7,
         mobile: gallery7_sm,
       },
-      {
-        desktop: gallery8,
-        mobile: gallery8_sm,
-      },
-      {
-        desktop: gallery9,
-        mobile: gallery9_sm,
-      },
+      // {
+      //   desktop: gallery8,
+      //   mobile: gallery8_sm,
+      // },
+      // {
+      //   desktop: gallery9,
+      //   mobile: gallery9_sm,
+      // },
       {
         desktop: gallery10,
         mobile: gallery10_sm,
@@ -210,10 +210,10 @@ export const athensGurgaonPhase3Data = {
         desktop: construction4,
         mobile: construction4_sm,
       },
-      {
-        desktop: construction5,
-        mobile: construction5_sm,
-      },
+      // {
+      //   desktop: construction5,
+      //   mobile: construction5_sm,
+      // },
       {
         desktop: construction6,
         mobile: construction6_sm,
@@ -259,8 +259,8 @@ export const athensGurgaonPhase3Data = {
       "Power Back up for common area",
       "Organised landscape",
       "Site Entry/Exit",
-      "6 M Drive way",
-      "1.8 m Jogging Track",
+      "6 Min Drive way",
+      "1.8 MTR Jogging Track",
       "Toddlers Sand Pitch",
       "Chit Chat Corner with Games",
       "Seating Area",

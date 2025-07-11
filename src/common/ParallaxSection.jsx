@@ -23,6 +23,9 @@ function ParallaxSection({ section_data }) {
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const [imageUrls, setImageUrls] = useState([]);
 
+  const isAeroOne = pathname?.includes('aeroone-gurgaon');
+  const isMvnLogo = pathname?.includes('mvn-mall');
+
   // Memoized ratio calculation
   const getRatio = useCallback(
     (el) => {
@@ -214,7 +217,7 @@ function ParallaxSection({ section_data }) {
                 className="img-fluid d-none d-md-block"
                 loading="lazy"
               />
-              <Watermark />
+              <Watermark isAthensLogo={!isAeroOne} isMvnLogo={isMvnLogo} />
             </div>
             <div className="content">
               <span className="am-name mx-auto">{single.name}</span>
@@ -271,7 +274,7 @@ function ParallaxSection({ section_data }) {
           aria-label="Desktop View Section"
         >
           <div className="bg">
-            <Watermark className="left" />
+            <Watermark className="left" isAthensLogo={!isAeroOne} isMvnLogo={isMvnLogo} />
           </div>
           <div className="content">
             <span className="am-name mx-auto">{amenity.name}</span>

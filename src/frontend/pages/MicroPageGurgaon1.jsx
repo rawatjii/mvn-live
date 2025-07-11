@@ -394,7 +394,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
           <LazyLoadComponent margin="200px" debugName="MicroLandscape" smootherRef={smootherRef}>
             <div ref={(el) => (sectionRefs.current.MicroLandscape = el)}>
-              <ImageGallery data={data.landscape} />
+              <ImageGallery data={data.landscape}  />
             </div>
           </LazyLoadComponent>
 
