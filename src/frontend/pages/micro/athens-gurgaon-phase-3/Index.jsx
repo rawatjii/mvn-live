@@ -353,7 +353,7 @@ export const athensGurgaonPhase3Data = {
       { title: "IMT (Industrial Model Town) Sohna", desc: "05 Mins" },
       { title: "Golf Course Road", desc: "20 Mins" },
       { title: "Aravalis in the Backdrop", desc: "" },
-      { title: "Universities / Schools (GD Goenka / RK Manglam / Ryan / Pathways/DPS)", desc: "05 - 10 Mins" },
+      { title: "Universities / Schools (GD Goenka / KR Manglam / Ryan / Pathways/DPS)", desc: "05 - 10 Mins" },
       { title: "Hospitals", desc: "10 Mins" },
       { title: "Malls", desc: "10 Mins" },
       { title: "DMIC (Delhi Mumbai Industrial Corridor)", desc: "05 Mins" },
