@@ -112,14 +112,14 @@ const router = createBrowserRouter([
           </FrontendRoute>
         ),
       },
-      {
-        path: "mvn-athens-gurgaon-phase-3",
-        element: (
-          <FrontendRoute loaderType="mvn-athens-gurgaon-phase-2">
-            <MicroPageGurgaonPhase3 data={athensGurgaonPhase3Data} />
-          </FrontendRoute>
-        ),
-      },
+      // {
+      //   path: "mvn-athens-gurgaon-phase-3",
+      //   element: (
+      //     <FrontendRoute loaderType="mvn-athens-gurgaon-phase-2">
+      //       <MicroPageGurgaonPhase3 data={athensGurgaonPhase3Data} />
+      //     </FrontendRoute>
+      //   ),
+      // },
       {
         path: "media-centre",
         element: (
