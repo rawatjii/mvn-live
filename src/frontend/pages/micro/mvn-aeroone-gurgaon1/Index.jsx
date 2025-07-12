@@ -107,10 +107,10 @@ export const data = {
         section_title:'Overview',
         link:'microOverview'
       },
-      {
-        section_title:'Walkthrough',
-        link:'Walkthrough'
-      },
+      // {
+      //   section_title:'Walkthrough',
+      //   link:'Walkthrough'
+      // },
       {
         section_title:'MVN ID Brochure',
         link:'downloadBrochure'
