@@ -172,9 +172,9 @@ const Homepage = () => {
         <Hero />
         <Overview />
 
-        <LazyLoadComponent>
+        {/* <LazyLoadComponent>
           <ClubOne />
-        </LazyLoadComponent>
+        </LazyLoadComponent> */}
 
         <LazyLoadComponent>
           <MvnMall />
