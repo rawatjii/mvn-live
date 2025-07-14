@@ -28,6 +28,8 @@ const Overview = ({className}) => {
               <a
                 href={import.meta.env.VITE_APP_URL + "aeroone-gurgaon"}
                 className="btn btn_style3 r_100 mt-3 mt-md-4"
+                aria-label="Learn more about AeroOne Gurgaon"
+                title="Learn more about AeroOne Gurgaon"
               > 
                 Click Here
               </a>

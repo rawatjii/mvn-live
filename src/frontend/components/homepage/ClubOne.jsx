@@ -29,12 +29,12 @@ const ClubOne = ()=>{
         {/* https://player.vimeo.com/video/1079670411?autopause=0&loop=1&title=0&byline=0&portrait=0 */}
           <iframe
             ref={iframeRef}
-            src={isMobile 
-              ? "https://www.youtube.com/embed/BqcxVd21m6Y?loop=1&mute=1&playlist=BqcxVd21m6Y" 
-              : "https://www.youtube.com/embed/BqcxVd21m6Y?loop=1&mute=1&playlist=BqcxVd21m6Y"}
             // src={isMobile 
-            //   ? "https://player.vimeo.com/video/1078921802?background=1&autopause=0&title=0&byline=0&portrait=0" 
-            //   : "https://player.vimeo.com/video/1078294218?background=1&autopause=0&title=0&byline=0&portrait=0"}
+            //   ? "https://www.youtube.com/embed/BqcxVd21m6Y?loop=1&mute=1&playlist=BqcxVd21m6Y" 
+            //   : "https://www.youtube.com/embed/BqcxVd21m6Y?loop=1&mute=1&playlist=BqcxVd21m6Y"}
+            src={isMobile 
+              ? "https://player.vimeo.com/video/1079670411?background=0&autopause=0&title=0&byline=0&portrait=0" 
+              : "https://player.vimeo.com/video/1079670411?background=0&autopause=0&title=0&byline=0&portrait=0"}
             frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen

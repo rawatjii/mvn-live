@@ -329,11 +329,11 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
           <MicroOverview data={data.overview} />
           <LargeElevationSection data={data.LargeElevationSection} />
 
-          {/* <LazyLoadComponent margin="200px" debugName="Walkthrough" smootherRef={smootherRef}>
+          <LazyLoadComponent margin="200px" debugName="Walkthrough" smootherRef={smootherRef}>
             <div ref={(el) => (sectionRefs.current.Walkthrough = el)}>
               <Walkthrough data={data.walkthrough} />
             </div>
-          </LazyLoadComponent> */}
+          </LazyLoadComponent>
 
           <LazyLoadComponent margin="200px" debugName="DownloadBrochure" smootherRef={smootherRef}>
             <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
