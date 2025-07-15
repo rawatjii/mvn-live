@@ -43,7 +43,7 @@ const PrPolcy = () => {
   return (
     <>
       <Layout>
-        <MicroBanner bg={microBg} data={breadcrumbs} />
+        <MicroBanner page_section="privacy-policy" data={breadcrumbs} page="privacy-policy" />
 
         <section className="section " aria-label="PrPolicy Section">
           <Container className="privacy-policy-content">

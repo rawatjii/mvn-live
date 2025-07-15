@@ -22,7 +22,7 @@ const Disclaimer = () => {
   return (
     <>
       <Layout>
-        <MicroBanner bg={microBg} data={breadcrumbs} />
+        <MicroBanner page_section="disclaimer" page="disclaimer" data={breadcrumbs} />
 
         {/* Main Content Section */}
         <section className="section" aria-label="Disclaimer Section">
