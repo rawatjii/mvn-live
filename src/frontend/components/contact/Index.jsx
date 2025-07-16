@@ -73,7 +73,7 @@ const ContactPage = ({ page }) => {
                 className="img-fluid"
               />
             </span>
-            <span className="txt">
+            <span className="txt text-start">
               {contactData?.[2]?.short_description}
             </span>
           </li>

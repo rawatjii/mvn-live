@@ -20,7 +20,7 @@ function Compliances({slidesPerView, spaceBetween }) {
 
   const setPdfHandler = (item)=>{
     dispatch(setCompliancePdf(item?.brochure));
-    window.open(import.meta.env.VITE_APP_URL + `pdf/${item.links}`, '_blank');
+    window.open(import.meta.env.VITE_APP_URL + `pdf/view?slug=${item.links}`, '_blank');
   }
 
 

@@ -256,7 +256,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "pdf/:pdfName",
+        path: "pdf/view",
         element: (
           <FrontendRoute loaderType="">
             <PDFViewer />
