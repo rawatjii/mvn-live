@@ -16,7 +16,7 @@ const Strip = React.memo(()=>{
         <img src={`${API_URL}assets/strip/strip_mobile.webp`} alt="mvn strip image" class="img-fluid w-100 d-md-none" style={{cursor:'pointer'}} loading="lazy" />
       </section>
 
-      <CustomModal type="enquire" hide={isHideModal} show={isShowModal} projectName="MVN Aeroone"/>
+      <CustomModal type="enquire" hide={isHideModal} show={isShowModal} projectName="MVN Mall Dwarka Expressway"/>
     </>
   )
 })

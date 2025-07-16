@@ -224,7 +224,7 @@ const Homepage = () => {
             hide={isHideModal}
             show={isShowModal}
             type="enquire"
-            projectName="MVN Aeroone"
+            projectName="MVN Infrastructure"
             isOffer={isOffer}
           />
         </Suspense>
