@@ -40,7 +40,7 @@ const CustomSlider = ({slides, className}) => {
                 />
                 <div className="carousel-caption">
                   <h3 className="main-title">{slide.heading}</h3>
-                  {slide.area && slide.area != 0 && (<span>Area: {slide.area}</span>)}
+                  {slide.area && slide.area != 0 && (<span className='mb-2 mb-md-0 d-block'>Area: {slide.area}</span>)}
                   <div className="link">
                     <a href={slide.link}>View Details</a>
                   </div>

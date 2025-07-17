@@ -38,7 +38,7 @@ const LifeAtMvn = () => {
               <div className="item ">
               
                 <img
-                  className="blank-img"
+                  className="blank-img d-none d-md-block"
                   src={BlankIMG}
                   alt="Blank image"
                   width="100%"
@@ -74,7 +74,7 @@ const LifeAtMvn = () => {
             <div className="img-left-right">
               <div className="item ">
                 <img
-                  className="blank-img"
+                  className="blank-img d-none d-md-block"
                   src={BlankIMG}
                   alt="Blank image"
                   width="100%"

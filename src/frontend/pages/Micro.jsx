@@ -22,12 +22,13 @@ import Enquire from "../components/homepage/Enquire";
 import EnquireForm from "../components/homepage/EnquireForm";
 import Footer from "../components/Footer";
 import { API_URL } from "../../config/config";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import useFetchData from "../utils/apiHelper";
 import LazyLoadComponent from "../../common/LazyLoadComponent";
 import SliderTypology from "../components/MicroPage/bangalore/SliderTypology";
 import FeatureSection from "../components/MicroPage/athens/FeatureSection";
 import MicroFloorPlan from "../components/MicroPage/FloorPlan";
+import Strip from "../components/homepage/Strip";
 import { setCommonState } from "../../redux/commonSlice";
 import { useDispatch } from "react-redux";
 import { Helmet } from "react-helmet";
@@ -112,6 +113,7 @@ const MicroPage = () => {
   const { projectName } = useParams();
   const [metaData, setMetaData] = useState([]);
   const dispatch = useDispatch();
+  const {pathname} = useLocation();
 
   const { data: basicData, loading } = useFetchData(`project/${projectName}`);
   const { data: projectSections, loading: sectionsLoading } = useFetchData(
@@ -225,6 +227,14 @@ const MicroPage = () => {
         <div id="smooth-content">
           <HeroSection projectId={basicData?.id} projectName={projectName} />
 
+          {pathname.includes('mvn-mall') && (
+            <div className={`mt-5 mt-md-0 mb-md-5`}>
+              <Strip />{" "}
+            </div>
+          )}
+
+          
+
           {projectSections?.map((section, secIndex) => {
             const sectionKey = `${section.section_type}_${secIndex}`;
             return (
@@ -249,13 +259,13 @@ const MicroPage = () => {
                   </LazyLoadComponent>
                 )}
 
-                {section.section_type === "walkthrough" && (
+                {/* {section.section_type === "walkthrough" && (
                   <LazyLoadComponent margin="200px" debugName="walkthrough">
                     <div ref={(el) => (sectionRefs.current.walkthrough = el)}>
                       <YtIframe data={section} subs_btn={true} />
                     </div>
                   </LazyLoadComponent>
-                )}
+                )} */}
 
                 {/* {projectSections?.length > 0 && projectName.includes('mvn-mall') && secIndex==1 && (
                   <LazyLoadComponent margin="200px" debugName="downloadBrochure">
@@ -286,6 +296,7 @@ const MicroPage = () => {
                         <DownloadBrochure
                           showAwards={basicData?.batch}
                           name={basicData?.name}
+                          projectName={pathname.includes('mvn-athens-gurgaon-phase-1') ? "MVN Athens Ph-1" : pathname.includes('mvn-athens-gurgaon-phase-2') ? "MVN Athens Ph-2" : pathname.includes('mvn-athens-faridabad') ? "MVN Athens Faridabad" : pathname.includes('mvn-mall') ? "MVN Mall Dwarka Expressway" : "MVN Aeroone"}
                         />
                       </div>
                     </LazyLoadComponent>

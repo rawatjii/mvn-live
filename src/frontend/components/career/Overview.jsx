@@ -11,7 +11,7 @@ const CareerOverview = ({page}) => {
   const { data:careerData, loading } = useFetchData(`page/page-section/${page}`);
 
   return (
-    <div className="micro_data">
+    <div className="micro_data mb-3 mb-md-0">
         <div className="content_col position-relative page-header-main-heading">
           <Container>
             <div className="heading_div mb_60 mb_sm_30">

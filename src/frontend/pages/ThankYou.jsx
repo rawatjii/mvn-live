@@ -120,9 +120,9 @@ const ThankYou = () => {
                                 Our professional shall get in touch with you within two working hours. Stay with us.
                             </p>
                         </div>
-                        <Link className='backBtn' to="/">
+                        <a className='backBtn' href="/">
                         back to home
-                        </Link>
+                        </a>
                     </Container>
                 </div>
             </Layout>   

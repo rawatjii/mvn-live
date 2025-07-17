@@ -114,6 +114,7 @@ color: #131313;text-decoration: none;font-family: "Tinos-Regular";font-size: 18p
   @media (max-width: 768px){
     .typology_section .carousel-item_in{
         flex-direction: column;
+        min-height: unset;
     }
     .typology_section .carousel-inner .carousel-item img{
         width: 100%;
@@ -124,11 +125,17 @@ color: #131313;text-decoration: none;font-family: "Tinos-Regular";font-size: 18p
     }
     .typology_section .nav-tabs li{
         padding:0;
+        margin:0;
     }
     .typology_section .nav-tabs li button{
-        font-size: 14px;
+        font-size: 11px;
         height: 100%;
         margin: 0;
+        padding: 7px 15px;
+    }
+    .typology_section .nav-tabs li button.active{
+        padding-left: 10px;
+        padding-right:10px;
     }
   }
   @media (max-width: 520px) {

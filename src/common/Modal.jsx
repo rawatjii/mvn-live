@@ -40,7 +40,7 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer, isVideoModal
       })
         .then((data) => {
           alert("Enquiry Details Sent Successfully!");
-          const newTab = window.open("/thanks", "_blank");
+          const newTab = window.open("/thanks");
 
           // Close the current tab
           if (newTab) {

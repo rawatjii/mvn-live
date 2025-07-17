@@ -117,7 +117,7 @@ const MvnMall = ({ data }) => {
             <div className="image_animation">
               <img
                 ref={imageRef}
-                src={BACKEND_IMAGE_URL + mallData?.[1].image}
+                src={BACKEND_IMAGE_URL + mallData?.[2].image}
                 alt="mvn mall animation"
                 className="img-fluid"
               />

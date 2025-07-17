@@ -27,6 +27,7 @@ const EnquireForm = React.lazy(() =>
 const CustomModal = React.lazy(() => import("../../common/Modal"));
 const ClubOne = React.lazy(() => import("../components/homepage/ClubOne"));
 const MvnMall = React.lazy(() => import("../components/homepage/MvnMall"));
+import Strip from "../components/homepage/Strip";
 // const Enquire = React.lazy(() =>
 //   new Promise((resolve) =>
 //     setTimeout(() => resolve(import("../components/homepage/Enquire")), 100000)
@@ -151,27 +152,35 @@ const Homepage = () => {
           if (section.page_section == "home-shopping")
             return <LazyLoadComponent><MvnMall data={section} key={secIndex + section.id} /></LazyLoadComponent>;
 
-          if (section.page_section == "home-video")
-            return <LazyLoadComponent><Offer data={section} clickHandler={showCustomModal} key={secIndex + section.id} /></LazyLoadComponent>;
-
-          if (section.page_section == "home-project")
-            return <LazyLoadComponent><Projects data={section} clickHandler={showCustomModal} key={secIndex + section.id} /></LazyLoadComponent>;
-
-          if (section.page_section == "home-verticals")
-            return <LazyLoadComponent><OtherProjects data={section} key={secIndex + section.id} /></LazyLoadComponent>;
-
-          if (section.page_section == "home-infrastructure")
-            return <LazyLoadComponent><OurJourney data={section} key={secIndex + section.id} /></LazyLoadComponent>;
-
-          if (section.page_section == "home-people-behind")
-            return <LazyLoadComponent><OurTeam data={section} key={secIndex + section.id} /></LazyLoadComponent>;
-
-          if (section.page_section == "home-brand-ethos")
-            return <LazyLoadComponent><OurBrand data={section} key={secIndex + section.id} /></LazyLoadComponent>;
-
-          if (section.page_section == "home-client-says")
-            return <LazyLoadComponent><Testimonial data={section} key={secIndex + section.id} /></LazyLoadComponent>;
         })}
+
+          <LazyLoadComponent>
+            <Strip clickHandler={showCustomModal} />
+          </LazyLoadComponent>
+
+          {homepageData?.map((section, secIndex) => {
+            if (section.page_section == "home-video")
+              return <LazyLoadComponent><Offer data={section} clickHandler={showCustomModal} key={secIndex + section.id} /></LazyLoadComponent>;
+
+            if (section.page_section == "home-project")
+              return <LazyLoadComponent><Projects data={section} clickHandler={showCustomModal} key={secIndex + section.id} /></LazyLoadComponent>;
+
+            if (section.page_section == "home-verticals")
+              return <LazyLoadComponent><OtherProjects data={section} key={secIndex + section.id} /></LazyLoadComponent>;
+
+            if (section.page_section == "home-infrastructure")
+              return <LazyLoadComponent><OurJourney data={section} key={secIndex + section.id} /></LazyLoadComponent>;
+
+            if (section.page_section == "home-people-behind")
+              return <LazyLoadComponent><OurTeam data={section} key={secIndex + section.id} /></LazyLoadComponent>;
+
+            if (section.page_section == "home-brand-ethos")
+              return <LazyLoadComponent><OurBrand data={section} key={secIndex + section.id} /></LazyLoadComponent>;
+
+            if (section.page_section == "home-client-says")
+              return <LazyLoadComponent><Testimonial data={section} key={secIndex + section.id} /></LazyLoadComponent>;
+          })}
+
         {/* <Suspense fallback={<Skeleton height="h_90vh" />}>
           <Testimonial />
         </Suspense> */}
