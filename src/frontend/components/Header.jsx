@@ -181,12 +181,12 @@ const Header = () => {
                                           >
                                             <NavLink
                                               to={
-                                                import.meta.env.VITE_APP_FRONTEND_URL +
-                                                project.slug
+                                                project.slug == 'aeroone-bangalore' ? 'https://www.mvnaeroone.com/' : import.meta.env.VITE_APP_FRONTEND_URL + project.slug
                                               }
                                               onClick={() =>
                                                 toggleMenu("close")
                                               }
+                                              target={project.slug == 'aeroone-bangalore' && '_blank'}
                                             >
                                               {project.name}
                                             </NavLink>

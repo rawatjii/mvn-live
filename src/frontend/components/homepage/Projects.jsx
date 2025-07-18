@@ -16,6 +16,10 @@ const Projects = ({ data }) => {
 
   const { data:projectsData1, loading } = useFetchData("our-projects");
 
+
+  console.log('projectsData1',projectsData1);
+  
+
   useEffect(() => {
     const handleResize = () => {
       setIsDesktop(window.innerWidth >= 768);
@@ -76,7 +80,7 @@ const Projects = ({ data }) => {
                     </div>
                   </div>
                 </div>
-
+                
                 <div className="projects_flex_row d-flex flex-wrap col-md-8 col-12">
                   {value.map((item, valueIndex) => (
                     <div className={`project_box ${index == 0 && 'col-md-6'} col-12`} key={valueIndex}>
@@ -89,7 +93,8 @@ const Projects = ({ data }) => {
                           {item.project_status && <span className="new-launch-patch">{item.project_status}</span>}
                           
                           <Link
-                            to={VITE_APP_URL + item.slug}
+                            target={key == 'Bangalore' ? "_blank" : undefined}
+                            to={key == 'Bangalore' ? "https://www.mvnaeroone.com/" : VITE_APP_URL + item.slug}
                           >
                             <img
                               src={BACKEND_IMAGE_URL + item.image}
@@ -114,7 +119,8 @@ const Projects = ({ data }) => {
                           </span>
                           <Link
                             className="pro_link text-capitalize"
-                            to={VITE_APP_URL + item.slug}
+                            target={key == 'Bangalore' ? "_blank" : undefined}
+                            to={key == 'Bangalore' ? "https://www.mvnaeroone.com/" : VITE_APP_URL + item.slug}
                           >
                             view detail
                             <img
