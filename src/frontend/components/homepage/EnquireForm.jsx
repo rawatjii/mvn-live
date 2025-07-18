@@ -1,8 +1,9 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import Button from "../../../common/Button/Button";
 import { API_URL } from "../../../config/config";
+import { useParams, useLocation } from 'react-router-dom';
 
 const EnquireForm = ({ career, projectName }) => {
   const titleRef = useRef();
@@ -10,6 +11,23 @@ const EnquireForm = ({ career, projectName }) => {
 
   const [formDetails, setFormDetails] = useState({});
   const [loading, setLoading] = useState(false);
+
+  const { ...pathParams } = useParams(); // Fetching path parameters
+  const location = useLocation(); // Accessing current location for query parameters
+  const [queryParams, setQueryParams] = useState({});
+
+  useEffect(() => {
+    // Create an object to store query parameters
+    const params = new URLSearchParams(location.search);
+    const queryParamsObject = {};
+    
+    // Loop through all query parameters
+    params.forEach((value, key) => {
+      queryParamsObject[key] = value;
+    });
+
+    setQueryParams(queryParamsObject);
+  }, [location.search]); // Re-run if query params change
 
   const handleFormChange = useCallback((e) => {
     setFormDetails((prevDetails)=>({
@@ -23,7 +41,12 @@ const EnquireForm = ({ career, projectName }) => {
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
 
-    const apiUrl = `https://api2.gtftech.com/AjaxHelper/AgentInstantQuerySetter.aspx?qAgentID=4804&qSenderName=${formDetails.name}"&qMobileNo=${formDetails.number}&qEmailID=${formDetails.email}&qQueryMessage=${formDetails.message}&qProjectName=${projectName}`;
+    let apiUrl = `https://api2.gtftech.com/AjaxHelper/AgentInstantQuerySetter.aspx?qAgentID=4804&qSenderName=${formDetails.name}"&qMobileNo=${formDetails.number}&qEmailID=${formDetails.email}&qQueryMessage=${formDetails.message}&qProjectName=${projectName}`;
+
+    Object.keys(queryParams).forEach((key) => {
+      apiUrl += `&${key}=${queryParams[key]}`;
+    });
+
     if (
       !formDetails.name ||
       !formDetails.email ||

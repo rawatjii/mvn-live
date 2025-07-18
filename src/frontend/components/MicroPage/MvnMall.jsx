@@ -165,7 +165,7 @@ const MvnMall = ({ data }) => {
                   <div className="position-relative">
                     <img src={BACKEND_IMAGE_URL + item.image} alt="mvn mall icon" className="img-fluid w-100" />
                     <Watermark isMvnLogo="true" />
-                    <Logomark className="left sm" />
+                    {/* <Logomark className="left sm" /> */}
                   </div>
                 </div>
               }
@@ -184,7 +184,7 @@ const MvnMall = ({ data }) => {
                         className="img-fluid"
                       />
                       <Watermark isMvnLogo="true" />
-                      <Logomark className="left sm" />
+                      {/* <Logomark className="left sm" /> */}
                     </div>
                   )
                 }

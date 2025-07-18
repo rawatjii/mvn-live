@@ -5,11 +5,33 @@ import Modal from "react-bootstrap/Modal";
 import SecTitle from "./SecTitle/Index";
 import Loader from "./Loader/loader";
 import { API_URL } from "../config/config";
+import { useParams, useLocation } from 'react-router-dom';
 
 const CustomModal = React.memo(({ show, hide, projectName, isOffer, isVideoModal }) => {
   const [formDetails, setFormDetails] = useState({});
   const [loading, setLoading] = useState(false);
   const modalRef = useRef();
+
+
+  const { ...pathParams } = useParams(); // Fetching path parameters
+  const location = useLocation(); // Accessing current location for query parameters
+  const [queryParams, setQueryParams] = useState({});
+
+
+  useEffect(() => {
+    // Create an object to store query parameters
+    const params = new URLSearchParams(location.search);
+    const queryParamsObject = {};
+    
+    // Loop through all query parameters
+    params.forEach((value, key) => {
+      queryParamsObject[key] = value;
+    });
+
+    setQueryParams(queryParamsObject);
+  }, [location.search]); // Re-run if query params change
+
+
 
   const handleFormChange = (e) => {
     setFormDetails({
@@ -20,7 +42,16 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer, isVideoModal
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const apiUrl = `https://api2.gtftech.com/AjaxHelper/AgentInstantQuerySetter.aspx?qAgentID=4804&qSenderName=${formDetails.name}"&qMobileNo=${formDetails.number}&qEmailID=${formDetails.email}&qQueryMessage=${formDetails.message}&qProjectName=${projectName}`;
+    let apiUrl = `https://api2.gtftech.com/AjaxHelper/AgentInstantQuerySetter.aspx?qAgentID=4804&qSenderName=${formDetails.name}"&qMobileNo=${formDetails.number}&qEmailID=${formDetails.email}&qQueryMessage=${formDetails.message}&qProjectName=${projectName}`;
+
+
+    Object.keys(queryParams).forEach((key) => {
+      apiUrl += `&${key}=${queryParams[key]}`;
+    });
+    
+    console.log('apiUrl',apiUrl);
+    
+    return;
 
     if (
       !formDetails.name ||
