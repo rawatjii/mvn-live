@@ -13,6 +13,7 @@ import "yet-another-react-lightbox/styles.css";
 
 import CustomModal from "../../../common/Modal";
 import useFetchData from "../../utils/apiHelper";
+import { BACKEND_IMAGE_URL } from "../../../config/config";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -86,7 +87,7 @@ const MicroFloorPlan = React.memo(({ data }) => {
                           position: "relative",
                         }}
                       >
-                        <img src={item.image} alt="mvn floor plan image" loading="lazy" />
+                        <img src={BACKEND_IMAGE_URL + item.image} alt="mvn floor plan image" loading="lazy" />
                         <div
                           style={{
                             position: "absolute",

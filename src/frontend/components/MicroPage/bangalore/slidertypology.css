@@ -18,7 +18,8 @@ color: #131313;text-decoration: none;font-family: "Tinos-Regular";font-size: 18p
 .typology_section .carousel-inner .carousel-caption h1:before{display: none;}
 .typology_section .carousel-inner .carousel-caption span{font-family: "Roboto-light";color: #fff;border-top: 1px solid #fff;border-bottom: 1px solid #fff;font-size: 18px;padding: 10px 0px;letter-spacing: 2px;}
 .typology_section .carousel-inner .carousel-caption .link{padding-top: 20px;}
-.typology_section .carousel-inner .carousel-caption .link a{font-family: "Roboto-light";color: #fff;}
+.typology_section .carousel-inner .carousel-caption .link a,
+.typology_section .carousel-inner .carousel-caption .link .btn{font-family: "Roboto-light";color: #fff; font-size:16px;}
 .typology_section .carousel-item_in{display: flex; flex-direction: row-reverse; justify-content: center; align-items: center; padding-bottom: 10px; gap: 0 110px; min-height: 445px;}
 
 /* .typology_section .arrow {position: absolute;width: 120px;right: 0%;height: 50px;display: flex;z-index: 9;bottom: 63%;} */

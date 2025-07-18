@@ -55,5 +55,5 @@ border-radius: 100%;display: block;justify-content: center;left: 0;right: 0;marg
 bottom: 0px;right: 0;z-index: -1;background-size: 100%;transition: 0.5s;}
 .typology_section .main-title{font-size: 18px; margin: 15px;}
 .typology_section .carousel-inner .carousel-caption .link{padding-top:0;}
-.typology_section .carousel-inner .carousel-caption .link a{font-size:14px;}
+.typology_section .carousel-inner .carousel-caption .link .btn{font-size:14px;}
 }  
