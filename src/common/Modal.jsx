@@ -48,10 +48,6 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer, isVideoModal
     Object.keys(queryParams).forEach((key) => {
       apiUrl += `&${key}=${queryParams[key]}`;
     });
-    
-    console.log('apiUrl',apiUrl);
-    
-    return;
 
     if (
       !formDetails.name ||
