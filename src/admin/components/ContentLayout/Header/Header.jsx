@@ -26,7 +26,7 @@ export default function Header() {
         </div>
         <div className="right">
           <div className="admin-search">
-            <div className="search">
+            {/* <div className="search">
               <div className="input-group">
                 <input
                   type="text"
@@ -42,15 +42,15 @@ export default function Header() {
               <select className="form-control select-width">
                 <option>All</option>
               </select>
-            </div>
+            </div> */}
             {/* search */}
 
             <div className="login">
               <ul>
-                <li className="noti">
+                {/* <li className="noti">
                   <FaBell size={20} />
                   <span>2</span>
-                </li>
+                </li> */}
                 {/* <li>
                   <img src="images/icon/login.png" />
                 </li> */}

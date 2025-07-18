@@ -62,7 +62,7 @@ const SinglePage = () => {
   // Fetch edit data when pageName changes
   useEffect(() => {
     fetchEditData();
-  }, [pageName]);
+  }, [pageName, data]);
 
   // Process form sections when data and editData are available
   useEffect(() => {
@@ -106,7 +106,7 @@ const SinglePage = () => {
 
   return (
     <CustomSection customClass="d-block">
-      {formSections.map((section, index) => (
+      {formSections?.map((section, index) => (
         <MicroBox key={`section-${index}`}>
           <CustomTitle title={section.name} />
           <CustomForm

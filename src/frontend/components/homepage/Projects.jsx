@@ -7,34 +7,6 @@ import AnImage from "../../../common/animations/Image/Index";
 import { API_URL, BACKEND_IMAGE_URL, VITE_APP_URL } from "../../../config/config";
 import useFetchData from "../../utils/apiHelper";
 
-const projectsData = [
-  {
-    mobile: `${API_URL}images/projects/mvn-aeroone.webp`,
-    desktop: `${API_URL}images/projects/mvn-aeroone.webp`,
-    name: "MVN AERO ONE RESIDENCES",
-    location: "Gurugram",
-    otherPage: false,
-    link: "aeroone-gurgaon",
-  },
-  {
-    mobile: `${API_URL}images/projects/mvn-mall.webp`,
-    desktop: `${API_URL}images/projects/project-img-3.webp`,
-    name: "Mvn Mall",
-    location: "Gurugram",
-    otherPage: true,
-    link: "mvn-mall",
-    watermark: true,
-  },
-  {
-    mobile: `${API_URL}images/projects/mvn-bangalore-project.webp`,
-    desktop: `${API_URL}images/projects/mvn-bangalore-project.webp`,
-    name: "Mvn AERO ONE",
-    location: "Bangalore",
-    otherPage: true,
-    link: "aeroone-bangalore",
-  },
-];
-
 const Projects = ({ data }) => {
   const imageDivRefs = useRef([]);
   const titleRef = useRef();
@@ -59,10 +31,6 @@ const Projects = ({ data }) => {
     setImagesLoaded((prev) => prev + 1);
   };
 
-  const leftColProjects = isDesktop
-    ? [projectsData[0], projectsData[1]]
-    : [projectsData[0], projectsData[1]];
-  const rightColProjects = isDesktop ? [projectsData[2]] : [projectsData[2]];
 
   return (
     <>
