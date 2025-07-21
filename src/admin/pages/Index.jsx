@@ -68,9 +68,14 @@ const SinglePage = () => {
   useEffect(() => {
     if (!data || !editData) return;
 
+    console.log('test data',data);
+    
+
     const processedSections = data.map((section, index) => {
       const sectionFields = JSON.parse(section.fields_name || "{}");
       const sectionPermissions = JSON.parse(section.section_permissions || "{}");
+
+      
       const enabledPermissions = Object.entries(sectionFields)
         .filter(([key]) => {
           return sectionPermissions[key] === undefined || sectionPermissions[key] === "true";
@@ -87,6 +92,22 @@ const SinglePage = () => {
       const matchedEditSection = editData.find(
         (editSection) => editSection?.page_section === section.name
       );
+
+      console.log('enabledPermissions',enabledPermissions);
+
+      if(section.name == 'disclaimer-details' || section.name == 'privacy-policy-details'){
+        enabledPermissions.map((field, index)=>{
+          if(field.name == 'heading' || field.name == 'alt'){
+            field.hidden=true,
+            field.label=''
+          }
+          if(field.name == 'description'){
+            field.type = 'editor',
+            field.col = 12
+          }
+        })
+      }
+      
 
       return {
         name: section.name,

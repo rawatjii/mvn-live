@@ -48,9 +48,6 @@ const CustomFormField = ({
   const [previewUrl, setPreviewUrl] = useState("");
   const [quillContent, setQuillContent] = useState("");
 
-  console.log("testing value",value);
-  
-
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setFileName(file ? file.name : "");
