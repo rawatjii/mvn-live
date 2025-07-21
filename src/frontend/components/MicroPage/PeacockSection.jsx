@@ -8,7 +8,7 @@ import Watermark from "../../../common/watermark/Index";
 import ScrollDown from "../../../common/scrollDown/Index";
 import { BACKEND_IMAGE_URL } from "../../../config/config";
 
-const PeacockSection = React.memo(({ data }) => {
+const PeacockSection = React.memo(({ data, watermarkClass }) => {
   const { isMobile } = useMatches();
 
   const { heading, description, image, alternative_image, json } = data;
@@ -18,7 +18,7 @@ const PeacockSection = React.memo(({ data }) => {
       {(!image && json) || isMobile ? (
         <>
           <LottieAnimationSection
-            customClass="style2"
+            customClass={watermarkClass ? watermarkClass : "style2"}
             data={data}
             position="0"
             logomark="sm style4"

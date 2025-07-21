@@ -354,7 +354,7 @@ const MicroPage = () => {
                 {section.section_type === "party" && (
                   <LazyLoadComponent margin="200px" debugName="party">
                     <div ref={(el) => (sectionRefs.current[section.section_type] = el)}>
-                      <PeacockSection data={section} />
+                      <PeacockSection data={section} watermarkClass="style5" />
                     </div>
                   </LazyLoadComponent>
                 )}
@@ -362,7 +362,7 @@ const MicroPage = () => {
                 {section.section_type === "masterbedroom" && (
                   <LazyLoadComponent margin="200px" debugName="masterbedroom">
                     <div ref={(el) => (sectionRefs.current[section.section_type] = el)}>
-                      <PeacockSection data={section} />
+                      <PeacockSection data={section} watermarkClass="style5" />
                     </div>
                   </LazyLoadComponent>
                 )}
