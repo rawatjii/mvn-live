@@ -8,8 +8,7 @@ const Offer = React.memo(({clickHandler, data})=>{
   return(
     <section className="section offers_section">
       <div className="single" role="presentation" style={{cursor:'pointer'}} onClick={()=>clickHandler(false)}>
-        <video src={`${BACKEND_IMAGE_URL + image}`} muted className="img-fluid d-none d-md-block" playsInline autoPlay preload="auto" loop={false} loading="lazy" />
-        <video src={`${BACKEND_IMAGE_URL + alternative_image}`} muted className="img-fluid d-md-none" playsInline autoPlay preload="auto" loop={false} loading="lazy" />
+        <video src={window.innerWidth < 768 ? `${BACKEND_IMAGE_URL + alternative_image}` : `${BACKEND_IMAGE_URL + image}`} muted className="img-fluid " playsInline autoPlay preload="none" loop={false} loading="lazy" />
       </div>
     </section>
   )

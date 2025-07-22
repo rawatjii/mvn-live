@@ -1,148 +1,116 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import Button from "./Button/Button";
 import Modal from "react-bootstrap/Modal";
 import SecTitle from "./SecTitle/Index";
 import Loader from "./Loader/loader";
 import { API_URL } from "../config/config";
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation } from "react-router-dom";
 
-const CustomModal = React.memo(({ show, hide, projectName, isOffer, isVideoModal }) => {
-  const [formDetails, setFormDetails] = useState({});
-  const [loading, setLoading] = useState(false);
-  const modalRef = useRef();
+const CustomModal = React.memo(
+  ({ show, hide, projectName, isOffer, isVideoModal }) => {
+    const [formDetails, setFormDetails] = useState({});
+    const [loading, setLoading] = useState(false);
+    const modalRef = useRef();
 
+    const { ...pathParams } = useParams(); // Fetching path parameters
+    const location = useLocation(); // Accessing current location for query parameters
+    const [queryParams, setQueryParams] = useState({});
 
-  const { ...pathParams } = useParams(); // Fetching path parameters
-  const location = useLocation(); // Accessing current location for query parameters
-  const [queryParams, setQueryParams] = useState({});
+    useEffect(() => {
+      // Create an object to store query parameters
+      const params = new URLSearchParams(location.search);
+      const queryParamsObject = {};
 
+      // Loop through all query parameters
+      params.forEach((value, key) => {
+        queryParamsObject[key] = value;
+      });
 
-  useEffect(() => {
-    // Create an object to store query parameters
-    const params = new URLSearchParams(location.search);
-    const queryParamsObject = {};
-    
-    // Loop through all query parameters
-    params.forEach((value, key) => {
-      queryParamsObject[key] = value;
-    });
+      setQueryParams(queryParamsObject);
+    }, [location.search]); // Re-run if query params change
 
-    setQueryParams(queryParamsObject);
-  }, [location.search]); // Re-run if query params change
+    const handleFormChange = useCallback((e) => {
+      setFormDetails({
+        ...formDetails,
+        [e.target.name]: e.target.value,
+      });
+    }, []);
 
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      let apiUrl = `https://api2.gtftech.com/AjaxHelper/AgentInstantQuerySetter.aspx?qAgentID=4804&qSenderName=${formDetails.name}"&qMobileNo=${formDetails.number}&qEmailID=${formDetails.email}&qQueryMessage=${formDetails.message}&qProjectName=${projectName}`;
 
+      Object.keys(queryParams).forEach((key) => {
+        apiUrl += `&${key}=${queryParams[key]}`;
+      });
 
-  const handleFormChange = (e) => {
-    setFormDetails({
-      ...formDetails,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let apiUrl = `https://api2.gtftech.com/AjaxHelper/AgentInstantQuerySetter.aspx?qAgentID=4804&qSenderName=${formDetails.name}"&qMobileNo=${formDetails.number}&qEmailID=${formDetails.email}&qQueryMessage=${formDetails.message}&qProjectName=${projectName}`;
-
-
-    Object.keys(queryParams).forEach((key) => {
-      apiUrl += `&${key}=${queryParams[key]}`;
-    });
-
-    if (
-      !formDetails.name ||
-      !formDetails.email ||
-      !formDetails.number ||
-      !formDetails.message
-    ) {
-      alert("Please fill all details!");
-    } else {
-      setLoading(true);
-      fetch(apiUrl, {
-        method: "GET", // HTTP method
-        headers: {
-          "Content-Type": "application/json", // Specify content type
-        },
-        // body: JSON.stringify(formDetails), // Convert the data to JSON string
-      })
-        .then((data) => {
-          alert("Enquiry Details Sent Successfully!");
-          const newTab = window.open("/thanks");
-
-          // Close the current tab
-          if (newTab) {
-            // If the new tab opened successfully, close the current tab
-            window.close();
-          }
-          setFormDetails({});
-          setLoading(false);
-          hide();
+      if (
+        !formDetails.name ||
+        !formDetails.email ||
+        !formDetails.number ||
+        !formDetails.message
+      ) {
+        alert("Please fill all details!");
+      } else {
+        setLoading(true);
+        fetch(apiUrl, {
+          method: "GET", // HTTP method
+          headers: {
+            "Content-Type": "application/json", // Specify content type
+          },
+          // body: JSON.stringify(formDetails), // Convert the data to JSON string
         })
-        .catch((error) => {
-          console.error("Error:", error); // Handle any errors
-          setLoading(false);
-        });
-    }
-  };
+          .then((data) => {
+            alert("Enquiry Details Sent Successfully!");
+            const newTab = window.open("/thanks");
 
-  useEffect(() => {
-    const close = (e) => {
-      if (!modalRef.current?.contains(e.target)) {
-        hide();
+            // Close the current tab
+            if (newTab) {
+              // If the new tab opened successfully, close the current tab
+              window.close();
+            }
+            setFormDetails({});
+            setLoading(false);
+            hide();
+          })
+          .catch((error) => {
+            console.error("Error:", error); // Handle any errors
+            setLoading(false);
+          });
       }
     };
-    document.addEventListener("mousedown", close);
-    return () => document.removeEventListener("mousedown", close);
-  }, []);
 
-  if (isVideoModal) {
-    return (
-      <Modal
-        show={show}
-        className="custom_modal video_modal"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <div ref={modalRef}>
-          <Modal.Body>
-            
-            <video src="https://img.websitedesigningcompany.co.in/public/images/aero-gurgaon/360.mp4" autoPlay  muted playsInline loop controls  className='img-fluid' />
-            <span
-              className="close"
-              onClick={hide}
-              style={{ position: "absolute", top: 0, right: 10, fontSize: 30 }}
-            >
-              &times;
-            </span>
-          </Modal.Body>
-        </div>
-      </Modal>
-    );
-  }
+    // Close modal when clicked outside
+    useEffect(() => {
+      const close = (e) => {
+        if (!modalRef.current?.contains(e.target)) {
+          hide();
+        }
+      };
+      document.addEventListener("mousedown", close);
+      return () => document.removeEventListener("mousedown", close);
+    }, [hide]);
 
-  if (isOffer) {
-    return (
-      <Modal
-        show={show}
-        className="enquire_form custom_modal offer_modal "
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <div ref={modalRef}>
-          <Modal.Body>
-            <div className="left">
-              {/* <img
-                src={CONFIG.IMAGE_URL + "offer/1.webp"}
-                className="img-fluid offer_img"
-                alt="offer image"
-              /> */}
-            </div>
-
-            <div className="right">
-              <SecTitle className="text-center color style1">
-                <h4 className="title">Grab The Offer</h4>
-              </SecTitle>
-
+    if (isVideoModal) {
+      return (
+        <Modal
+          show={show}
+          className="custom_modal video_modal"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        >
+          <div ref={modalRef}>
+            <Modal.Body>
+              <video
+                src="https://img.websitedesigningcompany.co.in/public/images/aero-gurgaon/360.mp4"
+                autoPlay
+                muted
+                playsInline
+                loop
+                controls
+                className="img-fluid"
+              />
               <span
                 className="close"
                 onClick={hide}
@@ -155,92 +123,144 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer, isVideoModal
               >
                 &times;
               </span>
-              {/* {loading  ? <Loader  /> : '' } */}
-              <Form onSubmit={loading ? () => null : handleSubmit}>
-                <Row>
-                  <Form.Group className="form-group" as={Col} xs="12">
-                    <Form.Label className='visually-hidden' htmlFor="name">Name</Form.Label>
-                    <Form.Control
-                    autoComplete="name" 
-                      id="name"
-                      type="text"
-                      name="name"
-                      placeholder="Name:"
-                      value={formDetails.name ?? ""}
-                      onChange={handleFormChange}
-                    />
-                  </Form.Group>
+            </Modal.Body>
+          </div>
+        </Modal>
+      );
+    }
 
-                  <Form.Group className="form-group" as={Col} xs="12">
-                    <Form.Label className='visually-hidden' htmlFor="email">E-Mail</Form.Label>
-                    <Form.Control
-                    autoComplete="off" 
-                      id="email"
-                      type="email"
-                      name="email"
-                      placeholder="E-Mail:"
-                      value={formDetails.email ?? ""}
-                      onChange={handleFormChange}
-                    />
-                  </Form.Group>
+    // Render offer modal
+    if (isOffer) {
+      return (
+        <Modal
+          show={show}
+          className="enquire_form custom_modal offer_modal "
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        >
+          <div ref={modalRef}>
+            <Modal.Body>
+              <div className="left">
+                {/* <img
+                src={CONFIG.IMAGE_URL + "offer/1.webp"}
+                className="img-fluid offer_img"
+                alt="offer image"
+              /> */}
+              </div>
 
-                  <Form.Group className="form-group" as={Col} xs="12">
-                    <Form.Label className='visually-hidden' htmlFor="number">Phone</Form.Label>
-                    <Form.Control
+              <div className="right">
+                <SecTitle className="text-center color style1">
+                  <h4 className="title">Grab The Offer</h4>
+                </SecTitle>
 
-                      id="number"
-                      type="number"
-                      name="number"
-                      placeholder="Phone:"
-                      value={formDetails.number ?? ""}
-                      onChange={(e) => {
-                        const inputValue = e.target.value.replace(/\D/g, ""); // Remove non-digits
-                        if (inputValue.length <= 10) {
-                          handleFormChange({ target: { name: "number", value: inputValue } });
-                        }
-                      }}
-                      autoComplete="tel"
-                    />
-                  </Form.Group>
-
-                  <Form.Group className="form-group" as={Col} xs="12">
-                    <Form.Label className='visually-hidden' htmlFor="message">Message</Form.Label>
-                    <Form.Control
-                    autoComplete="off" 
-                      id="message"
-                      type="text"
-                      name="message"
-                      placeholder="Message:"
-                      value={formDetails.message ?? ""}
-                      onChange={handleFormChange}
-                    />
-                  </Form.Group>
-                </Row>
-
-                <Button
-                  type="submit"
-                  className="btn_style3"
-                  disabled={loading ? true : false}
+                <span
+                  className="close"
+                  onClick={hide}
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    right: 10,
+                    fontSize: 30,
+                  }}
                 >
-                  {loading ? "Sending..." : "Submit"}
-                </Button>
-              </Form>
-            </div>
-          </Modal.Body>
-        </div>
-      </Modal>
-    );
-  }
-  
-  return (
-    <Modal show={show} className="enquire_form custom_modal floor_plan_popup">
-      <div ref={modalRef}>
-        <Modal.Body>
+                  &times;
+                </span>
+                {/* {loading  ? <Loader  /> : '' } */}
+                <Form onSubmit={loading ? () => null : handleSubmit}>
+                  <Row>
+                    <Form.Group className="form-group" as={Col} xs="12">
+                      <Form.Label className="visually-hidden" htmlFor="name">
+                        Name
+                      </Form.Label>
+                      <Form.Control
+                        autoComplete="name"
+                        id="name"
+                        type="text"
+                        name="name"
+                        placeholder="Name:"
+                        value={formDetails.name ?? ""}
+                        onChange={handleFormChange}
+                      />
+                    </Form.Group>
+
+                    <Form.Group className="form-group" as={Col} xs="12">
+                      <Form.Label className="visually-hidden" htmlFor="email">
+                        E-Mail
+                      </Form.Label>
+                      <Form.Control
+                        autoComplete="off"
+                        id="email"
+                        type="email"
+                        name="email"
+                        placeholder="E-Mail:"
+                        value={formDetails.email ?? ""}
+                        onChange={handleFormChange}
+                      />
+                    </Form.Group>
+
+                    <Form.Group className="form-group" as={Col} xs="12">
+                      <Form.Label className="visually-hidden" htmlFor="number">
+                        Phone
+                      </Form.Label>
+                      <Form.Control
+                        id="number"
+                        type="number"
+                        name="number"
+                        placeholder="Phone:"
+                        value={formDetails.number ?? ""}
+                        onChange={(e) => {
+                          const inputValue = e.target.value.replace(/\D/g, ""); // Remove non-digits
+                          if (inputValue.length <= 10) {
+                            handleFormChange({
+                              target: { name: "number", value: inputValue },
+                            });
+                          }
+                        }}
+                        autoComplete="tel"
+                      />
+                    </Form.Group>
+
+                    <Form.Group className="form-group" as={Col} xs="12">
+                      <Form.Label className="visually-hidden" htmlFor="message">
+                        Message
+                      </Form.Label>
+                      <Form.Control
+                        autoComplete="off"
+                        id="message"
+                        type="text"
+                        name="message"
+                        placeholder="Message:"
+                        value={formDetails.message ?? ""}
+                        onChange={handleFormChange}
+                      />
+                    </Form.Group>
+                  </Row>
+
+                  <Button
+                    type="submit"
+                    className="btn_style3"
+                    disabled={loading ? true : false}
+                  >
+                    {loading ? "Sending..." : "Submit"}
+                  </Button>
+                </Form>
+              </div>
+            </Modal.Body>
+          </div>
+        </Modal>
+      );
+    }
+
+    return (
+      <Modal show={show} className="enquire_form custom_modal floor_plan_popup">
+        <div ref={modalRef}>
+          <Modal.Body>
             <SecTitle className="text-center color style1">
               <img
                 src={`${API_URL}assets/logo_white.webp`}
                 alt="mvn modal logo"
                 className="img-fluid headingIcon"
+                loading="lazy"
               />
 
               <h4 className="title">Get In Touch With Us</h4>
@@ -256,7 +276,9 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer, isVideoModal
             <Form onSubmit={loading ? () => null : handleSubmit}>
               <Row>
                 <Form.Group className="form-group" as={Col} xs="12">
-                  <Form.Label className='visually-hidden' htmlFor="name">Name</Form.Label>
+                  <Form.Label className="visually-hidden" htmlFor="name">
+                    Name
+                  </Form.Label>
                   <Form.Control
                     id="name"
                     type="text"
@@ -264,12 +286,14 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer, isVideoModal
                     placeholder="Name:"
                     value={formDetails.name ?? ""}
                     onChange={handleFormChange}
-                    autoComplete="name" 
+                    autoComplete="name"
                   />
                 </Form.Group>
 
                 <Form.Group className="form-group" as={Col} xs="12">
-                  <Form.Label className='visually-hidden' htmlFor="email">E-Mail</Form.Label>
+                  <Form.Label className="visually-hidden" htmlFor="email">
+                    E-Mail
+                  </Form.Label>
                   <Form.Control
                     id="email"
                     type="email"
@@ -277,12 +301,14 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer, isVideoModal
                     placeholder="E-Mail:"
                     value={formDetails.email ?? ""}
                     onChange={handleFormChange}
-                    autoComplete="off" 
+                    autoComplete="off"
                   />
                 </Form.Group>
 
                 <Form.Group className="form-group" as={Col} xs="12">
-                  <Form.Label className='visually-hidden' htmlFor="number">Phone</Form.Label>
+                  <Form.Label className="visually-hidden" htmlFor="number">
+                    Phone
+                  </Form.Label>
                   <Form.Control
                     id="number"
                     type="number"
@@ -292,7 +318,9 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer, isVideoModal
                     onChange={(e) => {
                       const inputValue = e.target.value.replace(/\D/g, ""); // Remove non-digits
                       if (inputValue.length <= 10) {
-                        handleFormChange({ target: { name: "number", value: inputValue } });
+                        handleFormChange({
+                          target: { name: "number", value: inputValue },
+                        });
                       }
                     }}
                     autoComplete="tel"
@@ -300,7 +328,9 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer, isVideoModal
                 </Form.Group>
 
                 <Form.Group className="form-group" as={Col} xs="12">
-                  <Form.Label className='visually-hidden' htmlFor="message">Message</Form.Label>
+                  <Form.Label className="visually-hidden" htmlFor="message">
+                    Message
+                  </Form.Label>
                   <Form.Control
                     id="message"
                     type="text"
@@ -308,7 +338,7 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer, isVideoModal
                     placeholder="Message:"
                     value={formDetails.message ?? ""}
                     onChange={handleFormChange}
-                    autoComplete="off" 
+                    autoComplete="off"
                   />
                 </Form.Group>
               </Row>
@@ -321,10 +351,11 @@ const CustomModal = React.memo(({ show, hide, projectName, isOffer, isVideoModal
                 {loading ? "Sending..." : "Submit"}
               </Button>
             </Form>
-        </Modal.Body>
-      </div>
-    </Modal>
-  );
-});
+          </Modal.Body>
+        </div>
+      </Modal>
+    );
+  }
+);
 
 export default CustomModal;

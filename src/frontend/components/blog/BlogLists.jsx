@@ -64,7 +64,8 @@ export default function BlogLists() {
                           year: 'numeric'
                         })}</p>
                         <Link
-                          to={`/blogs/${el.slug}?key=${el.id}`}
+                          to={`/blogs/${el.slug}`}
+                          // ?key=${el.id}
                           className="btn btn_style2"
                           onClick={() => {
                             localStorage.setItem("selectedBlog", i);

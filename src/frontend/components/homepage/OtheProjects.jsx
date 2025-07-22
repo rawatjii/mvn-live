@@ -10,45 +10,15 @@ import useFetchData from "../../utils/apiHelper";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// const otherProjects = [
-//   {
-//     name: "MVN School",
-//     thumbnails: {
-//       mobile: `${API_URL}images/other-projects/mvn-school.webp`,
-//       desktop: `${API_URL}images/other-projects/mvn-school-desktop.webp`,
-//     },
-//     link: "https://www.mvneducation.com/sector-17/",
-//   },
-//   {
-//     name: "MVN University",
-//     thumbnails: {
-//       mobile: `${API_URL}images/other-projects/mvn-university.webp`,
-//       desktop: `${API_URL}images/other-projects/mvn-university-desktop.webp`,
-//     },
-//     link: "https://www.mvn.edu.in/",
-//   },
-//   {
-//     name: "MVN Sports Academy",
-//     thumbnails: {
-//       mobile: `${API_URL}images/other-projects/mvn-sports-academy-desktop-2.webp`,
-//       desktop: `${API_URL}images/other-projects/mvn-sports-academy-desktop-2.webp`,
-//     },
-//     link: "https://www.mvn88.com/exercise-sports-academy/",
-//   },
-// ];
-
 const OtherProjects = React.memo(
   ({ data, title, subTitle, mobContent = 12 }) => {
     const titleRef = useRef();
     const imageDivRefs = useRef([]);
-    const { isMobile } = useMatches();
     const [imagesLoaded, setImagesLoaded] = useState(0);
 
-    const {heading} = data;
+    const { heading } = data;
 
-
-    const { data:otherProjectsData, loading } = useFetchData("verticals");
-    
+    const { data: otherProjectsData, loading } = useFetchData("verticals");
 
     const initializeAnimations = useCallback(() => {
       if (otherProjectsData.length > 0) {
@@ -93,13 +63,13 @@ const OtherProjects = React.memo(
       return () => window.removeEventListener("resize", handleResize);
     }, [imagesLoaded]);
 
-    const handleImageLoad = () => {
+    const handleImageLoad = useCallback(() => {
       setImagesLoaded((prev) => prev + 1);
-    };
-    
+    }, []);
 
-    if(loading) return <div className="text-center py-5">Loading...</div>;
-    if(!loading && otherProjectsData && otherProjectsData?.length === 0) return <div className="text-center py-5">No records found</div>;
+    if (loading) return <div className="text-center py-5">Loading...</div>;
+    if (!loading && otherProjectsData && otherProjectsData?.length === 0)
+      return <div className="text-center py-5">No records found</div>;
 
     return (
       <section
@@ -112,6 +82,7 @@ const OtherProjects = React.memo(
               src={`${API_URL}images/icons/heading-icon-img.webp`}
               alt="mvn vertical icon"
               className="img-fluid title_plane1"
+              loading="lazy"
             />
             <h4 ref={titleRef} className="title title_style1 text-center">
               {heading}
@@ -129,6 +100,7 @@ const OtherProjects = React.memo(
                         src={`${API_URL}images/icons/arrow.png`}
                         alt="mvn arrow icon"
                         className="img-fluid icon"
+                        loading="lazy"
                       />
                     </Link>
                   </div>
@@ -141,9 +113,14 @@ const OtherProjects = React.memo(
 
                   <picture>
                     <source srcset={BACKEND_IMAGE_URL + item.image} />
-                    <img src={BACKEND_IMAGE_URL + item.alternative_image} alt={item.alt} className="img-fluid other-project-img w-100" onLoad={handleImageLoad} />
+                    <img
+                      src={BACKEND_IMAGE_URL + item.alternative_image}
+                      alt={item.alt}
+                      className="img-fluid other-project-img w-100"
+                      onLoad={handleImageLoad}
+                      loading="lazy"
+                    />
                   </picture>
-
                 </div>
               </Col>
             ))}

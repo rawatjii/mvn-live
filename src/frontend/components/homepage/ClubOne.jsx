@@ -1,20 +1,26 @@
-import React, { useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { API_URL } from "../../../config/config";
 
-const ClubOne = ({ data }) => {
+const ClubOne = React.memo(({ data }) => {
   const iframeRef = useRef(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   const { heading, short_description, alt, links } = data;
 
+  const handleResize = useCallback(() => {
+    setIsMobile(window.innerWidth <= 768);
+  }, []);
+
   // Add event listener for window resize
-  React.useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
+  useEffect(() => {
+    const debounceResize = () => {
+      setTimeout(() => {
+        handleResize();
+      }, 2000);
     };
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener("resize", debounceResize);
+    return () => window.removeEventListener("resize", debounceResize);
   }, []);
 
   return (
@@ -25,6 +31,7 @@ const ClubOne = ({ data }) => {
             src={`${API_URL}images/icons/heading-icon-img.webp`}
             alt="mvn head icon"
             className="img-fluid title_plane1"
+            loading="lazy"
           />
           <h4 className="title_style1 text-center">{heading}</h4>
         </div>
@@ -40,9 +47,7 @@ const ClubOne = ({ data }) => {
           {/* https://player.vimeo.com/video/1079670411?autopause=0&loop=1&title=0&byline=0&portrait=0 */}
           <iframe
             ref={iframeRef}
-            src={
-              links 
-            }
+            src={links}
             // src={isMobile
             //   ? "https://player.vimeo.com/video/1078921802?background=1&autopause=0&title=0&byline=0&portrait=0"
             //   : "https://player.vimeo.com/video/1078294218?background=1&autopause=0&title=0&byline=0&portrait=0"}
@@ -57,6 +62,7 @@ const ClubOne = ({ data }) => {
               height: "100%",
             }}
             title="MVN Aero One Walkthrough"
+            loading="lazy"
           />
         </div>
 
@@ -66,6 +72,6 @@ const ClubOne = ({ data }) => {
       </section>
     </>
   );
-};
+});
 
 export default ClubOne;

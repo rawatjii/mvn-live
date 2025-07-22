@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import { API_URL } from "../../../config/config";
 
 const Hero = React.memo(({ data }) => {
@@ -8,13 +8,21 @@ const Hero = React.memo(({ data }) => {
 
   const { heading, sub_heading, alt } = data;
 
+  const handleResize = useCallback(() => {
+    setIsMobile(window.innerWidth <= 768);
+    console.log('hero window resie');
+  }, []);
+
   // Handle window resize
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    const debounceResize = ()=>{
+      setTimeout(()=>{
+        handleResize();
+      }, 2000);
+    }
+
+    window.addEventListener("resize", debounceResize);
+    return () => window.removeEventListener("resize", debounceResize);
   }, []);
 
   // Load YouTube IFrame API and set up player
@@ -91,6 +99,7 @@ const Hero = React.memo(({ data }) => {
             zIndex: 2,
           }}
           title="MVN Aero One Walkthrough"
+          loading="lazy"
         />
       </div>
     </div>

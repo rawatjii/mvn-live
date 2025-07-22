@@ -1,18 +1,15 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { API_URL } from "../../../config/config";
 import CustomModal from "../../../common/Modal";
 import { useLocation } from "react-router-dom";
 
-const Strip = React.memo(()=>{
+const Strip = ()=>{
   const [isShowModal, setIsShowModal] = useState(false);
   const {pathname} = useLocation();
 
-  console.log('pathname',pathname);
-  
-
-  const isHideModal = () => {
+  const isHideModal = useCallback(() => {
     setIsShowModal(false);
-  };
+  }, []);
 
   return(
     <>
@@ -24,6 +21,6 @@ const Strip = React.memo(()=>{
       <CustomModal type="enquire" hide={isHideModal} show={isShowModal} projectName="MVN Mall Dwarka Expressway"/>
     </>
   )
-})
+}
 
 export default Strip;

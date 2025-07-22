@@ -1,58 +1,76 @@
-import React, { useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { API_URL } from "../../../config/config";
 
-const MvnMall = ({data})=>{
+const MvnMall = React.memo(({ data }) => {
   const iframeRef = useRef(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   const { heading, short_description, alt, links } = data;
 
-  // Add event listener for window resize
-  React.useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+  const handleResize = useCallback(() => {
+    setIsMobile(window.innerWidth <= 768);
   }, []);
 
-  return(
+  // Add event listener for window resize
+  React.useEffect(() => {
+    const debounceResize = () => {
+      setTimeout(() => {
+        handleResize();
+      }, 2000);
+    };
+
+    window.addEventListener("resize", debounceResize);
+    return () => window.removeEventListener("resize", debounceResize);
+  }, []);
+
+  return (
     <>
       <section className="section">
-      <div className="home-about-content pt-0">
-              <img src={`${API_URL}images/icons/heading-icon-img.webp`} alt="mvn head icon" className="img-fluid title_plane1"/>
-              <h4 className="title_style1 text-center">{heading}</h4>
-            </div>
+        <div className="home-about-content pt-0">
+          <img
+            src={`${API_URL}images/icons/heading-icon-img.webp`}
+            alt="mvn head icon"
+            className="img-fluid title_plane1"
+            loading="lazy"
+          />
+          <h4 className="title_style1 text-center">{heading}</h4>
+        </div>
 
-        <div style={{ position: "relative", paddingBottom: isMobile ? '56.25%' : '56.25%', overflow: "hidden" }}>
+        <div
+          style={{
+            position: "relative",
+            paddingBottom: isMobile ? "56.25%" : "56.25%",
+            overflow: "hidden",
+          }}
+        >
           <iframe
             ref={iframeRef}
             src={links}
             frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
-            style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+            }}
             title="MVN Aero One Walkthrough"
+            loading="lazy"
           />
         </div>
 
         <div className="home-about-content pb-0">
-              
-              <p className="des_style1 text-center">
-              {short_description}
-              </p>
-            </div>
+          <p className="des_style1 text-center">{short_description}</p>
+        </div>
 
-            {/* <div className="awards text-center mt-5">
+        {/* <div className="awards text-center mt-5">
             <img src={`${API_URL}mvn-offer-without-logo.webp`} alt="awards icon"  height={"150"} />
           </div> */}
       </section>
-
-
-
     </>
-  )
-}
+  );
+});
 
 export default MvnMall;

@@ -233,8 +233,6 @@ const MicroPage = () => {
             </div>
           )}
 
-          
-
           {projectSections?.map((section, secIndex) => {
             const sectionKey = `${section.section_type}_${secIndex}`;
             return (
@@ -259,13 +257,13 @@ const MicroPage = () => {
                   </LazyLoadComponent>
                 )}
 
-                {/* {section.section_type === "walkthrough" && (
+                {section.section_type === "walkthrough" && (
                   <LazyLoadComponent margin="200px" debugName="walkthrough">
                     <div ref={(el) => (sectionRefs.current.walkthrough = el)}>
                       <YtIframe data={section} subs_btn={true} />
                     </div>
                   </LazyLoadComponent>
-                )} */}
+                )}
 
                 {/* {projectSections?.length > 0 && projectName.includes('mvn-mall') && secIndex==1 && (
                   <LazyLoadComponent margin="200px" debugName="downloadBrochure">
