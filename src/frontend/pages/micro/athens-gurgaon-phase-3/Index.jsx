@@ -206,34 +206,34 @@ export const athensGurgaonPhase3Data = {
         desktop: construction3,
         mobile: construction3_sm,
       },
-      {
-        desktop: construction4,
-        mobile: construction4_sm,
-      },
+      // {
+      //   desktop: construction4,
+      //   mobile: construction4_sm,
+      // },
       // {
       //   desktop: construction5,
       //   mobile: construction5_sm,
       // },
-      {
-        desktop: construction6,
-        mobile: construction6_sm,
-      },
-      {
-        desktop: construction7,
-        mobile: construction7_sm,
-      },
-      {
-        desktop: construction8,
-        mobile: construction8_sm,
-      },
-      {
-        desktop: construction9,
-        mobile: construction9_sm,
-      },
-      {
-        desktop: construction10,
-        mobile: construction10_sm,
-      },
+      // {
+      //   desktop: construction6,
+      //   mobile: construction6_sm,
+      // },
+      // {
+      //   desktop: construction7,
+      //   mobile: construction7_sm,
+      // },
+      // {
+      //   desktop: construction8,
+      //   mobile: construction8_sm,
+      // },
+      // {
+      //   desktop: construction9,
+      //   mobile: construction9_sm,
+      // },
+      // {
+      //   desktop: construction10,
+      //   mobile: construction10_sm,
+      // },
     ],
   },
 
