@@ -34,7 +34,7 @@ import { useDispatch } from "react-redux";
 import { Helmet } from "react-helmet";
 import parse from "html-react-parser";
 import injectScripts from "../components/InjectScripts";
-
+import Construction from "./Construction";
 const headerSidebarDesktopImg = `${API_URL}images/aero-gurgaon/header/sidebar.webp`;
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -44,7 +44,7 @@ const headerData = {
     desktop: headerSidebarDesktopImg,
     mobile: headerSidebarDesktopImg,
   },
-  title: "MVN AeroOne, Gurugram",
+  title: "MVN Athens Gurgaon Phase  III",
   sidebar_section: [
     {
       section_title: "Overview",
@@ -119,7 +119,7 @@ const MicroPage = () => {
   const { data: projectSections, loading: sectionsLoading } = useFetchData(
     `project/${basicData?.id}/project-section`
   );
-
+// console.log(pathname,"pathname pathname")
   // Sort projectSections by seq
   // const sortedProjectSections = projectSections
   //   ? [...projectSections].sort((a, b) => a.seq - b.seq)
@@ -280,6 +280,7 @@ const MicroPage = () => {
                   (projectName.includes("mvn-mall") ||
                     projectName.includes("mvn-athens-gurgaon-phase-1") ||
                     projectName.includes("mvn-athens-gurgaon-phase-2") ||
+                    projectName.includes("mvn-athens-gurgaon-phase-3") ||
                     projectName.includes("mvn-athens-faridabad")) &&
                   secIndex == 1 && (
                     <LazyLoadComponent
@@ -486,9 +487,17 @@ const MicroPage = () => {
                     </div>
                   </LazyLoadComponent>
                 )}
+                
               </React.Fragment>
             );
           })}
+
+{
+  pathname=="/mvn-athens-gurgaon-phase-3"&&
+  <div ref={(el) => (sectionRefs.current['construction'] = el)}>
+  <Construction/> 
+  </div>
+}
 
           {projectSections?.length > 0 && (
             <>
@@ -510,6 +519,7 @@ const MicroPage = () => {
               </LazyLoadComponent>
             </>
           )}
+      
         </div>
       </div>
     </>

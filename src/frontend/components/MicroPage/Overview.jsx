@@ -114,6 +114,7 @@ const MicroOverview = React.memo(({ rera, data, setOverviewIframe, onBannerExit 
     };
   }, [ended1, ended2, ended3]);
 
+
   return (
     <>
       <section

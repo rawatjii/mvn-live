@@ -27,7 +27,6 @@ const LocationSlider = ({project_id, projectName}) => {
     chunkedItems.push(data.slice(i, i + chunks));
   }
 
-  console.log(new Set(chunkedItems))
   return (
     <Container>
       <div className="LocationSlider">
@@ -49,7 +48,10 @@ const LocationSlider = ({project_id, projectName}) => {
           }}
         >
           {chunkedItems?.map((chunk, index) => (
+         
+            
             <SwiperSlide key={index}>
+                 {console.log(chunk,"chunkchunkchunkchunkchunkchunk")}
               <div
                 className={`SliderContain ${
                   chunks < 4 ? (chunks === 3 ? "height_183" : "fit_height") : ""
