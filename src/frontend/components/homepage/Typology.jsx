@@ -178,6 +178,7 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
           </div>
 
           {typologyData?.map((item, index) => (
+        
             <div
               key={item.id || index}
               ref={(el) => (contentRefs.current[index] = el)}

@@ -81,6 +81,9 @@ color: #131313;text-decoration: none;font-family: "Tinos-Regular";font-size: 18p
 .typology_section .swiper-button-prev:after,.typology_section .swiper-button-next:after{
     font-size: 13px;
 }
+.typology_section .carousel-inner .carousel-item img.layout_plan {
+    width: 600px;
+}
 /* typology slider start */
 .Typologies_Modal{
     position: relative;

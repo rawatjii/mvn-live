@@ -26,6 +26,8 @@ const LocationSlider = ({project_id, projectName}) => {
   for (let i = 0; i < data?.length; i += chunks) {
     chunkedItems.push(data.slice(i, i + chunks));
   }
+
+  console.log(new Set(chunkedItems))
   return (
     <Container>
       <div className="LocationSlider">
