@@ -1786,7 +1786,7 @@ a {
 
   p {
     text-align: center;
-    max-width: 70%;
+    max-width: 85%;
     margin: auto;
     line-height: 20px;
     margin-bottom: 0px;
@@ -1799,6 +1799,12 @@ a {
     padding: 5px 20px;
     margin: auto;
     display: table;
+  }
+}
+
+@media (min-width: 1700px) {
+  .enquire_section p {
+    width: 70%;
   }
 }
 
