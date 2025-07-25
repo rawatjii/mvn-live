@@ -295,7 +295,7 @@ const MicroPage = () => {
                         <DownloadBrochure
                           showAwards={basicData?.batch}
                           name={basicData?.name}
-                          projectName={pathname.includes('mvn-athens-gurgaon-phase-1') ? "MVN Athens Ph-1" : pathname.includes('mvn-athens-gurgaon-phase-2') ? "MVN Athens Ph-2" : pathname.includes('mvn-athens-faridabad') ? "MVN Athens Faridabad" : pathname.includes('mvn-mall') ? "MVN Mall Dwarka Expressway" : "MVN Aeroone"}
+                          projectName={pathname.includes('mvn-athens-gurgaon-phase-1') ? "MVN Athens Ph-1" : pathname.includes('mvn-athens-gurgaon-phase-2') ? "MVN Athens Ph-2" : pathname.includes('mvn-athens-gurgaon-phase-3') ? "MVN Athens Ph-3" : pathname.includes('mvn-athens-faridabad') ? "MVN Athens Faridabad" : pathname.includes('mvn-mall') ? "MVN Mall Dwarka Expressway" : "MVN Aeroone"}
                         />
                       </div>
                     </LazyLoadComponent>
