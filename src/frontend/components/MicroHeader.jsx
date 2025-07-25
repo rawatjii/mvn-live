@@ -206,7 +206,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                               to={import.meta.env.VITE_APP_URL + "contact-us"}
                               onClick={() => toggleMenu("close")}
                             >
-                              Contact Us
+                              Contact Us  
                             </NavLink>
                           </li>
                         </ul>

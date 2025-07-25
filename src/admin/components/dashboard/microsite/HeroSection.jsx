@@ -34,24 +34,24 @@ useEffect(()=>{
 }, [editData])
 
   useEffect(() => {
-    setTypeInputs(
-      formType === "image"
-        ? [
-            { name: "image", label: "Image", type: "file", col: 12, isLeft: true },
-            { name: "alternative_image", label: "Alternative Image", type: "file", col: 12, isLeft: true },
-            { name: "mb_image", label: "Mobile Image", type: "file", col: 12, isLeft: true },
-            { name: "mb_alternative_image", label: "Mobile Alternative Image", type: "file", col: 12, isLeft: true },
-            { name: "alt", label: "Alt text", type: "text", col: 12, isLeft: true, isRequired: true },
-          ]
-        : formType === "iframe"
-        ? [{ name: "iframe", label: "Iframe Link", type: "text", placeholder: "Enter Iframe Link", col: 12, isLeft: true, isRequired: true }]
-        : formType === "json"
-        ? [{ name: "json", label: "Upload JSON", type: "file", col: 12, isLeft: true }]
-        : formType === "video"
-        ? [{ name: "video", label: "Upload Video", type: "file", col: 12, isLeft: true }]
-        : []
-    );
-  }, [formType]);
+  setTypeInputs(
+    formType === "image"
+      ? [
+          { name: "image", label: "Image", type: "file", col: 12, isLeft: true },
+          { name: "alternative_image", label: "Alternative Image", type: "file", col: 12, isLeft: true },
+          { name: "mb_image", label: "Mobile Image", type: "file", col: 12, isLeft: true },
+          { name: "mb_alternative_image", label: "Mobile Alternative Image", type: "file", col: 12, isLeft: true },
+          { name: "alt", label: "Alt text", type: "text", col: 12, isLeft: true, isRequired: true },
+        ]
+      : formType === "iframe"
+      ? [{ name: "iframe", label: "Iframe Link", type: "text", placeholder: "Enter Iframe Link", col: 12, isLeft: true, isRequired: true }]
+      : formType === "json"
+      ? [{ name: "json", label: "Upload JSON", type: "file", col: 12, isLeft: true }]
+      : formType === "video"
+      ? [{ name: "video", label: "Upload Video", type: "file", col: 12, isLeft: true }]
+      : []
+  );
+}, [formType]);
 
   const columns = [
     { key: "", label: "S.No." },
