@@ -16,7 +16,7 @@ const Watermark = ({className, type, isMvnLogo, customClass})=>{
   // let logoSrc = `${CONFIG.IMAGE_URL}default-logo.png`; // default logo
   
   useEffect(()=>{
-    if (location.pathname === '/mvn-athens-faridabad' || location.pathname === '/mvn-athens-gurgaon-phase-2' || location.pathname === '/mvn-athens-gurgaon-phase-1') {
+    if (location.pathname === '/mvn-athens-faridabad' || location.pathname === '/mvn-athens-gurgaon-phase-2' || location.pathname === '/mvn-athens-gurgaon-phase-1' || location.pathname === '/mvn-athens-gurgaon-phase-3') {
       setLogoUrl(athensFaridabadLogo);
     }else if(location.pathname.includes('mvn-mall')){
       setLogoUrl(mvnMallLogo);

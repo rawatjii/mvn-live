@@ -42,7 +42,7 @@ const CustomSlider = ({ slides, className }) => {
           <div>Loading...</div> // Show loading until slides are available
         ) : (
           slides.map((slide, index) => (
-            <SwiperSlide key={index}>
+     <SwiperSlide key={index}>
               <div id="carousel" className="carousel">
                 <div className="carousel-inner">
                   <div
@@ -52,12 +52,13 @@ const CustomSlider = ({ slides, className }) => {
                   >
                     <div className="carousel-item_in">
                       <img
+                      className={slide.heading=='Layout Plan'&& 'layout_plan'}
                         // data-speed="clamp(0.9)"
                         src={BACKEND_IMAGE_URL + slide.image}
                         alt={`Slide ${index + 1}`}
                         onClick={() => setIndex(index)}
                       />
-                      <div className="carousel-caption">
+                     {        slide.heading!='Layout Plan'&&  <div className="carousel-caption">
                         <h3 className="main-title">{slide.heading}</h3>
                         {slide.area && slide.area != 0 && (
                           <span className="mb-2 mb-md-0 d-block">
@@ -73,7 +74,7 @@ const CustomSlider = ({ slides, className }) => {
                           </button>
                           {/* <a href={slide.link}>View Details</a> */}
                         </div>
-                      </div>
+                      </div>}
                     </div>
                   </div>
                 </div>

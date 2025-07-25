@@ -30,12 +30,12 @@ const CustomModal = React.memo(
       setQueryParams(queryParamsObject);
     }, [location.search]); // Re-run if query params change
 
-    const handleFormChange = useCallback((e) => {
+    const handleFormChange = (e) => {
       setFormDetails({
         ...formDetails,
         [e.target.name]: e.target.value,
       });
-    }, []);
+    };
 
     const handleSubmit = (e) => {
       e.preventDefault();

@@ -77,7 +77,7 @@ const FeatureSection = ({ data }) => {
                 <p className="main-pera d-v">{sub_heading}</p>
 
 
-                <ul>
+                <ul className={keyHighlightsData?.length>10&&"two_column"}>
                   {keyHighlightsData?.map((feature, index) => (
                     <li key={index}>{feature.heading}</li>
                   ))}

@@ -41,6 +41,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
       pathname.includes("aeroone-bangalore") ||
       pathname.includes("mvn-athens-faridabad") ||
       pathname.includes("/mvn-athens-gurgaon-phase-2") ||
+      pathname.includes("/mvn-athens-gurgaon-phase-3") ||
       pathname.includes("/mvn-athens-gurgaon-phase-1")
     ) {
       setIsMicro(true);
@@ -87,7 +88,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
   const toggleMenu = (value) => {
     setIsMenuOpen(value === "show");
   };
-  
+  // console.log(isMicro)
 
   return (
     <Navbar
@@ -187,12 +188,25 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                                 </NavLink>
                               </li>
                             ))}
+                               
+                               {pathname=="/mvn-athens-gurgaon-phase-3"&&<li>
+                               <NavLink
+                                  className="new-launch"
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    scrollToSection("construction");
+                                    toggleMenu("close");
+                                  }}
+                                >
+                              Construction Update
+                            </NavLink>
+                          </li>}
                           <li>
                             <NavLink
                               to={import.meta.env.VITE_APP_URL + "contact-us"}
                               onClick={() => toggleMenu("close")}
                             >
-                              Contact Us
+                              Contact Us  
                             </NavLink>
                           </li>
                         </ul>
