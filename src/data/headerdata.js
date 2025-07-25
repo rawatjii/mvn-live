@@ -12,7 +12,7 @@ export const otherProjects = [
   { 
     location: 'Gurugram',
     projects: [
-      { name: 'MVN AeroOne', link: '/aeroone-gurgaon', status: 'New Launch', target_blank: false  },
+      { name: 'MVN Aeroone', link: '/aeroone-gurgaon', status: 'New Launch', target_blank: false  },
       { name: 'MVN Mall', link: '/mvn-mall', target_blank: false, status: 'New Launch' },
     ]
   }, 

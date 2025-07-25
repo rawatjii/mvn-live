@@ -42,8 +42,6 @@ function Career() {
 
   useEffect(() => {
     const headDataArray = pageMetaData?.head_data?.split("\n");
-
-    // Convert each string element to its appropriate type
     const parsedArray = headDataArray?.map((item) => item);
 
     parsedArray?.map((item) => {
@@ -93,12 +91,9 @@ function Career() {
             page="career"
             data={breadcrumbs}
           />
-
           <div className="micro_content">
             <CareerOverview page="career" />
-
             <LifeAtMvn />
-
             <section
               className="oppotunities padding"
               aria-label="Oppotunities Section"
@@ -124,7 +119,6 @@ function Career() {
                             href="mailto:careers@mvninfrastructure.com"
                             className="jobmail"
                           >
-                            {" "}
                             careers@mvninfrastructure.com
                           </a>
                         </div>
