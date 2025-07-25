@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 import Layout from "../components/Layout";
-import { BACKEND_IMAGE_URL, FRONTEND_API_BASE_URL } from "../../config/config";
+import { BACKEND_IMAGE_URL, FRONTEND_API_BASE_URL ,FRONTEND_URL} from "../../config/config";
 import RelatedBlogs from "../components/blog/RelatedBlogs";
 import { Helmet } from "react-helmet";
 
@@ -36,7 +36,7 @@ function BlogDetails() {
     ],
   };
 
-  const fetchData = useCallback(async () => {
+  const fetchData =async () => {
     setLoading(true);
     try {
       const data = await fetch(`${FRONTEND_API_BASE_URL}blog/${slug}`);
@@ -52,11 +52,11 @@ function BlogDetails() {
     } finally {
       setLoading(false);
     }
-  }, []);
+  };
 
   useEffect(() => {
     fetchData();
-  }, [location]);
+  }, [location,slug]);
 
   // useEffect(()=>{
   //   setPageMetaData(metaData?.[0])
@@ -108,7 +108,7 @@ function BlogDetails() {
         {selectedBlog && selectedBlog.meta_keywords && (
           <meta name="keywords" content={selectedBlog.meta_keywords} />
         )}
-        <link rel="canonical" href={location && `https://final-backend-rouge.vercel.app${location.pathname}`}/>
+        <link rel="canonical" href={location && `https://www.mvn.in${location.pathname}`}/>
       </Helmet>
       <Layout>
         <div className="blog_page">

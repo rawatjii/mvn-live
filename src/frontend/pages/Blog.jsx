@@ -50,7 +50,6 @@ function Blog() {
   useEffect(()=>{
     const headDataArray = pageMetaData?.head_data?.split('\n')
 
-    // Convert each string element to its appropriate type
     const parsedArray = headDataArray?.map(item => item);
   
     parsedArray?.map(item=>{
@@ -89,7 +88,6 @@ function Blog() {
         {pageMetaData && pageMetaData.meta_keyword && <meta name="keywords" content={pageMetaData.meta_keyword} />}
         {pageMetaData && pageMetaData.head_data && <div dangerouslySetInnerHTML={{__html:pageMetaData.head_data}} />}
       </Helmet>
-
       <Layout>
         <div className="blog_page inner_section" ref={containerRef}>
           <MicroBanner page_section="blog-banner" page="blog" data={breadcrumbs} />
@@ -110,10 +108,7 @@ function Blog() {
                 </Container>
               </div>
             </div>
-
             <BlogLists />
-
-
           </div>
         </div>
       </Layout>
