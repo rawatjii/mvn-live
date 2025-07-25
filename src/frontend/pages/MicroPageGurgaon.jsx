@@ -84,7 +84,7 @@ const MicroPageGurgaon = ({ data }) => {
                 <Enquire />
               </div>
               <div className="col-sm-6 px-0">
-              <EnquireForm projectName={'MVN-AeroOne-Gurgaon'}/>
+              <EnquireForm projectName={'MVN-Aeroone-Gurgaon'}/>
               </div>
             </div>
           </div>

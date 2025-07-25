@@ -562,7 +562,7 @@ export const bangaloreData = {
 const AeroOneBangalore = () => {
   window.scrollTo(0,0)
   return (
-    <MicroPageBangalore data={bangaloreData}  projectName={'MVN-AeroOne-Bangalore'}/>
+    <MicroPageBangalore data={bangaloreData}  projectName={'MVN-Aeroone-Bangalore'}/>
   )
 };
 
