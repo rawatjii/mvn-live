@@ -113,13 +113,13 @@ const MicroPage = () => {
   const { projectName } = useParams();
   const [metaData, setMetaData] = useState([]);
   const dispatch = useDispatch();
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
 
   const { data: basicData, loading } = useFetchData(`project/${projectName}`);
   const { data: projectSections, loading: sectionsLoading } = useFetchData(
     `project/${basicData?.id}/project-section`
   );
-// console.log(pathname,"pathname pathname")
+  // console.log(pathname,"pathname pathname")
   // Sort projectSections by seq
   // const sortedProjectSections = projectSections
   //   ? [...projectSections].sort((a, b) => a.seq - b.seq)
@@ -187,16 +187,79 @@ const MicroPage = () => {
     };
   }, [basicData]);
 
-  if (loading){
+  if (loading) {
     return (
-      <div className="loading_screen" style={{position:'relative'}}>
-        {projectName?.includes('aeroone-gurgaon') ? (
-          <img src={window.innerWidth < 768 ? API_URL + "images/aero-gurgaon/loader_sm.webp" : API_URL + "loader/homepage_loading.webp"} alt="loading screen" className="img-fluid w-100" />
-        ) : projectName?.includes('mvn-mall') ? <img src={window.innerWidth < 768 ? API_URL + "loader/mvnMall_loader_sm.webp" : API_URL + "loader/mvnMall_loader.webp"} alt="loading screen" className="img-fluid w-100" /> : projectName?.includes('mvn-athens-gurgaon-phase-1') ? <img src={window.innerWidth < 768 ? API_URL + "images/athens-ph1/loader_sm.webp" : API_URL + "images/athens-ph1/loader.webp"} alt="loading screen" className="img-fluid w-100" /> : projectName?.includes('mvn-athens-gurgaon-phase-2') ? <img src={window.innerWidth < 768 ? API_URL + "images/athens-ph2/loader_sm.webp" : API_URL + "images/athens-ph2/loader.webp"} alt="loading screen" className="img-fluid w-100" /> : projectName?.includes('mvn-athens-faridabad') ? <img src={window.innerWidth < 768 ? API_URL + "images/athens-faridabad/loader_sm.webp" : API_URL + "images/athens-faridabad/loader.webp"} alt="loading screen" className="img-fluid w-100" /> : undefined}
-        
-        <p className="loading" style={{position:'fixed ', top:'calc(100vh - 40px)', width:'100%', textAlign:'center', textTransform:'uppercase', fontSize:window.innerWidth < 768 ? '11px' : '14px', letterSpacing:'3px', textShadow:'0 0 10px #000', fontWeight:600}}>Loading Experience...</p>
+      <div className="loading_screen" style={{ position: "relative" }}>
+        {projectName?.includes("aeroone-gurgaon") ? (
+          <img
+            src={
+              window.innerWidth < 768
+                ? API_URL + "images/aero-gurgaon/loader_sm.webp"
+                : API_URL + "loader/homepage_loading.webp"
+            }
+            alt="loading screen"
+            className="img-fluid w-100"
+          />
+        ) : projectName?.includes("mvn-mall") ? (
+          <img
+            src={
+              window.innerWidth < 768
+                ? API_URL + "loader/mvnMall_loader_sm.webp"
+                : API_URL + "loader/mvnMall_loader.webp"
+            }
+            alt="loading screen"
+            className="img-fluid w-100"
+          />
+        ) : projectName?.includes("mvn-athens-gurgaon-phase-1") ? (
+          <img
+            src={
+              window.innerWidth < 768
+                ? API_URL + "images/athens-ph1/loader_sm.webp"
+                : API_URL + "images/athens-ph1/loader.webp"
+            }
+            alt="loading screen"
+            className="img-fluid w-100"
+          />
+        ) : projectName?.includes("mvn-athens-gurgaon-phase-2") ? (
+          <img
+            src={
+              window.innerWidth < 768
+                ? API_URL + "images/athens-ph2/loader_sm.webp"
+                : API_URL + "images/athens-ph2/loader.webp"
+            }
+            alt="loading screen"
+            className="img-fluid w-100"
+          />
+        ) : projectName?.includes("mvn-athens-faridabad") ? (
+          <img
+            src={
+              window.innerWidth < 768
+                ? API_URL + "images/athens-faridabad/loader_sm.webp"
+                : API_URL + "images/athens-faridabad/loader.webp"
+            }
+            alt="loading screen"
+            className="img-fluid w-100"
+          />
+        ) : undefined}
+
+        <p
+          className="loading"
+          style={{
+            position: "fixed ",
+            top: "calc(100vh - 40px)",
+            width: "100%",
+            textAlign: "center",
+            textTransform: "uppercase",
+            fontSize: window.innerWidth < 768 ? "11px" : "14px",
+            letterSpacing: "3px",
+            textShadow: "0 0 10px #000",
+            fontWeight: 600,
+          }}
+        >
+          Loading Experience...
+        </p>
       </div>
-    ) ;
+    );
   }
   if (!loading && basicData && basicData.length === 0)
     return <div className="text-center py-5">No records found</div>;
@@ -217,7 +280,7 @@ const MicroPage = () => {
         )}
         {basicData?.footer_data && parse(basicData.footer_data)}
       </Helmet>
-      
+
       <MicroHeader
         scrollToSection={scrollToSection}
         data={headerData}
@@ -227,7 +290,7 @@ const MicroPage = () => {
         <div id="smooth-content">
           <HeroSection projectId={basicData?.id} projectName={projectName} />
 
-          {pathname.includes('mvn-mall') && (
+          {pathname.includes("mvn-mall") && (
             <div className={`mt-5 mt-md-0 mb-md-5`}>
               <Strip />{" "}
             </div>
@@ -237,16 +300,21 @@ const MicroPage = () => {
             const sectionKey = `${section.section_type}_${secIndex}`;
             return (
               <React.Fragment key={sectionKey}>
-                {(section.section_type === "overview") && (
-                    <div ref={(el) => {sectionRefs.current.overview = el, sectionRefs.current.sizes = el}}>
-                      <MicroOverview
-                        rera={basicData?.rera_no}
-                        data={section}
-                        setOverviewIframe={setOverviewIframe}
-                        onBannerExit={setIsHeaderFixed} 
-                      />
-                      {/* {section.yt_url && <CustomIframe data={section.yt_url} />} */}
-                    </div>
+                {section.section_type === "overview" && (
+                  <div
+                    ref={(el) => {
+                      (sectionRefs.current.overview = el),
+                        (sectionRefs.current.sizes = el);
+                    }}
+                  >
+                    <MicroOverview
+                      rera={basicData?.rera_no}
+                      data={section}
+                      setOverviewIframe={setOverviewIframe}
+                      onBannerExit={setIsHeaderFixed}
+                    />
+                    {/* {section.yt_url && <CustomIframe data={section.yt_url} />} */}
+                  </div>
                 )}
 
                 {section.section_type === "elevation" && (
@@ -295,7 +363,19 @@ const MicroPage = () => {
                         <DownloadBrochure
                           showAwards={basicData?.batch}
                           name={basicData?.name}
-                          projectName={pathname.includes('mvn-athens-gurgaon-phase-1') ? "MVN Athens Ph-1" : pathname.includes('mvn-athens-gurgaon-phase-2') ? "MVN Athens Ph-2" : pathname.includes('mvn-athens-gurgaon-phase-3') ? "MVN Athens Ph-3" : pathname.includes('mvn-athens-faridabad') ? "MVN Athens Faridabad" : pathname.includes('mvn-mall') ? "MVN Mall Dwarka Expressway" : "MVN Aeroone"}
+                          projectName={
+                            pathname.includes("mvn-athens-gurgaon-phase-1")
+                              ? "MVN Athens Ph-1"
+                              : pathname.includes("mvn-athens-gurgaon-phase-2")
+                              ? "MVN Athens Ph-2"
+                              : pathname.includes("mvn-athens-gurgaon-phase-3")
+                              ? "MVN Athens Ph-3"
+                              : pathname.includes("mvn-athens-faridabad")
+                              ? "MVN Athens Faridabad"
+                              : pathname.includes("mvn-mall")
+                              ? "MVN Mall Dwarka Expressway"
+                              : "MVN Aeroone"
+                          }
                         />
                       </div>
                     </LazyLoadComponent>
@@ -332,7 +412,11 @@ const MicroPage = () => {
 
                 {section.section_type === "threesixtyview" && (
                   <LazyLoadComponent margin="200px" debugName="threesixtyview">
-                    <div ref={(el) => (sectionRefs.current[section.section_type] = el)}>
+                    <div
+                      ref={(el) =>
+                        (sectionRefs.current[section.section_type] = el)
+                      }
+                    >
                       <View360
                         sectionId={section.section_type + secIndex}
                         data={section}
@@ -343,8 +427,12 @@ const MicroPage = () => {
                 )}
 
                 {section.section_type === "Peacock" && (
-                  <LazyLoadComponent margin="200px" debugName="livingroom"> 
-                    <div ref={(el) => (sectionRefs.current[section.section_type] = el)}>
+                  <LazyLoadComponent margin="200px" debugName="livingroom">
+                    <div
+                      ref={(el) =>
+                        (sectionRefs.current[section.section_type] = el)
+                      }
+                    >
                       <PeacockSection data={section} />
                     </div>
                   </LazyLoadComponent>
@@ -352,7 +440,11 @@ const MicroPage = () => {
 
                 {section.section_type === "party" && (
                   <LazyLoadComponent margin="200px" debugName="party">
-                    <div ref={(el) => (sectionRefs.current[section.section_type] = el)}>
+                    <div
+                      ref={(el) =>
+                        (sectionRefs.current[section.section_type] = el)
+                      }
+                    >
                       <PeacockSection data={section} watermarkClass="style5" />
                     </div>
                   </LazyLoadComponent>
@@ -360,7 +452,11 @@ const MicroPage = () => {
 
                 {section.section_type === "masterbedroom" && (
                   <LazyLoadComponent margin="200px" debugName="masterbedroom">
-                    <div ref={(el) => (sectionRefs.current[section.section_type] = el)}>
+                    <div
+                      ref={(el) =>
+                        (sectionRefs.current[section.section_type] = el)
+                      }
+                    >
                       <PeacockSection data={section} watermarkClass="style5" />
                     </div>
                   </LazyLoadComponent>
@@ -368,7 +464,11 @@ const MicroPage = () => {
 
                 {section.section_type === "consultant" && (
                   <LazyLoadComponent margin="200px" debugName="consultant">
-                    <div ref={(el) => (sectionRefs.current[section.section_type] = el)}>
+                    <div
+                      ref={(el) =>
+                        (sectionRefs.current[section.section_type] = el)
+                      }
+                    >
                       <Consultant data={section} />
                     </div>
                   </LazyLoadComponent>
@@ -384,7 +484,9 @@ const MicroPage = () => {
                     debugName={section.section_type}
                   >
                     <div
-                      ref={(el) => (sectionRefs.current[section.section_type] = el)}
+                      ref={(el) =>
+                        (sectionRefs.current[section.section_type] = el)
+                      }
                     >
                       <ImagesGallery
                         section_name={
@@ -437,7 +539,9 @@ const MicroPage = () => {
                     debugName={section.section_type}
                   >
                     <div
-                      ref={(el) => {sectionRefs.current[section.section_type] = el}}
+                      ref={(el) => {
+                        sectionRefs.current[section.section_type] = el;
+                      }}
                     >
                       <ParallaxSection section_data={section} />
                     </div>
@@ -446,19 +550,24 @@ const MicroPage = () => {
 
                 {section.section_type === "typologies" && (
                   <LazyLoadComponent margin="200px" debugName="typologies">
-                      <div
-                        ref={(el) => (sectionRefs.current[section.section_type] = el)}
-                       className="outer_section">
-                        <Typology data={section} />
-                      </div>
-                      {/* <Typology data={section} /> */}
+                    <div
+                      ref={(el) =>
+                        (sectionRefs.current[section.section_type] = el)
+                      }
+                      className="outer_section"
+                    >
+                      <Typology data={section} />
+                    </div>
+                    {/* <Typology data={section} /> */}
                   </LazyLoadComponent>
                 )}
 
                 {section.section_type === "location-map" && (
                   <LazyLoadComponent margin="200px" debugName="location-map">
                     <div
-                      ref={(el) => (sectionRefs.current[section.section_type] = el)}
+                      ref={(el) =>
+                        (sectionRefs.current[section.section_type] = el)
+                      }
                     >
                       <MicroLocationMap
                         data={section}
@@ -470,7 +579,11 @@ const MicroPage = () => {
 
                 {section.section_type === "mvn-mall" && (
                   <LazyLoadComponent margin="200px" debugName="mvn-mall">
-                    <div ref={(el) => (sectionRefs.current[section.section_type] = el)}>
+                    <div
+                      ref={(el) =>
+                        (sectionRefs.current[section.section_type] = el)
+                      }
+                    >
                       <MvnMall data={section} />
                     </div>
                   </LazyLoadComponent>
@@ -478,7 +591,11 @@ const MicroPage = () => {
 
                 {section.section_type === "floor-plan" && (
                   <LazyLoadComponent margin="200px" debugName="floor-plan">
-                    <div ref={(el) => (sectionRefs.current[section.section_type] = el)}>
+                    <div
+                      ref={(el) =>
+                        (sectionRefs.current[section.section_type] = el)
+                      }
+                    >
                       {section.is_type == "video" ? (
                         <MicroFloorPlan data={section} />
                       ) : (
@@ -487,17 +604,15 @@ const MicroPage = () => {
                     </div>
                   </LazyLoadComponent>
                 )}
-                
               </React.Fragment>
             );
           })}
 
-{
-  pathname=="/mvn-athens-gurgaon-phase-3"&&
-  <div ref={(el) => (sectionRefs.current['construction'] = el)}>
-  <Construction/> 
-  </div>
-}
+          {pathname == "/mvn-athens-gurgaon-phase-3" && (
+            <div ref={(el) => (sectionRefs.current["construction"] = el)}>
+              <Construction />
+            </div>
+          )}
 
           {projectSections?.length > 0 && (
             <>
@@ -508,7 +623,19 @@ const MicroPage = () => {
                       <Enquire />
                     </div>
                     <div className="col-sm-6 px-0">
-                      <EnquireForm projectName={projectName} />
+                      <EnquireForm projectName={
+                            pathname.includes("mvn-athens-gurgaon-phase-1")
+                              ? "MVN Athens Ph-1"
+                              : pathname.includes("mvn-athens-gurgaon-phase-2")
+                              ? "MVN Athens Ph-2"
+                              : pathname.includes("mvn-athens-gurgaon-phase-3")
+                              ? "MVN Athens Ph-3"
+                              : pathname.includes("mvn-athens-faridabad")
+                              ? "MVN Athens Faridabad"
+                              : pathname.includes("mvn-mall")
+                              ? "MVN Mall Dwarka Expressway"
+                              : "MVN Aeroone"
+                          } />
                     </div>
                   </div>
                 </div>
@@ -519,7 +646,6 @@ const MicroPage = () => {
               </LazyLoadComponent>
             </>
           )}
-      
         </div>
       </div>
     </>
