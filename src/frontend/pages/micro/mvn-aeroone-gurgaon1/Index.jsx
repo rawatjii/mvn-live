@@ -101,7 +101,7 @@ export const data = {
       desktop:headerSidebarDesktopImg,
       mobile:headerSidebarDesktopImg,
     },
-    title:'MVN AeroOne, Gurugram',
+    title:'MVN Aeroone, Gurugram',
     sidebar_section:[
       {
         section_title:'Overview',
