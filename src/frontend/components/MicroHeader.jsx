@@ -171,7 +171,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                             </NavLink>
                           </li>
                         </ul>
-                        <h4>{pathname.includes('mvn-mall') ? 'MVN Mall, Gurugram' : pathname.includes('mvn-athens-gurgaon-phase-1') ? 'MVN Athens Ph-1, Sohna' : pathname.includes('mvn-athens-gurgaon-phase-2') ? 'MVN Athens Ph-2, Sohna' : pathname.includes('mvn-athens-faridabad') ? 'MVN Athens, Faridabad' : data.title}</h4>
+                        <h4>{pathname.includes('mvn-mall') ? 'MVN Mall, Gurugram' : pathname.includes('mvn-athens-gurgaon-phase-1') ? 'MVN Athens Ph-1, Sohna' : pathname.includes('mvn-athens-gurgaon-phase-2') ? 'MVN Athens Ph-2, Sohna' : pathname.includes('mvn-athens-faridabad') ? 'MVN Athens, Faridabad' : pathname.includes('aeroone-gurgaon')?'MVN Aeroone Gurgaon':data.title}</h4>
                         <ul>
                           {microPageSections &&
                             microPageSections?.map((section, index) => (
