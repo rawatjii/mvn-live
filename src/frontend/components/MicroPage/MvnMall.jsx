@@ -3,16 +3,10 @@ import { Container } from "react-bootstrap";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Watermark from "../../../common/watermark/Index";
-import Logomark from "../../../common/logomark/Index";
 import ZoomOutImage from "./ZoomOut";
 import { useMatches } from "../../../theme/theme";
 import { API_URL, BACKEND_IMAGE_URL } from "../../../config/config";
 import useFetchData from "../../utils/apiHelper";
-
-const mvnMallImg = `${API_URL}images/mvn_mall.webp`;
-const mvnMallBannerImg1 = `${API_URL}images/mall-banner-1.webp`;
-const mvnMallBannerImg2 = `${API_URL}images/mall-banner-2.webp`;
-const mvnMallAnimatedImg = `${API_URL}images/mvn_mall_animated_img.webp`;
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -165,7 +159,6 @@ const MvnMall = ({ data }) => {
                   <div className="position-relative">
                     <img src={BACKEND_IMAGE_URL + item.image} alt="mvn mall icon" className="img-fluid w-100" />
                     <Watermark isMvnLogo="true" />
-                    {/* <Logomark className="left sm" /> */}
                   </div>
                 </div>
               }
@@ -184,7 +177,6 @@ const MvnMall = ({ data }) => {
                         className="img-fluid"
                       />
                       <Watermark isMvnLogo="true" />
-                      {/* <Logomark className="left sm" /> */}
                     </div>
                   )
                 }
