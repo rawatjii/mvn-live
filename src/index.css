@@ -4411,8 +4411,8 @@ table.bg_transparent{
 
 .blog_page .main_content ul{
   list-style-type: disc;
-  list-style-position: inside;
-  padding-left: 15px;
+  list-style-position: outside;
+  padding-left: 30px;
   margin-top: 10px;
   font-size: 14px;
   font-weight: 300;
@@ -4421,6 +4421,11 @@ table.bg_transparent{
 
 .blog_page .main_content li{
   margin:7px 0;
+}
+
+.blog_page .main_content li a{
+  color:#fff;
+  text-decoration: underline;
 }
 
 .typology_section .desktop-view-typo-images .typologies-images {position: relative;width: 450px;height: 450px;}
