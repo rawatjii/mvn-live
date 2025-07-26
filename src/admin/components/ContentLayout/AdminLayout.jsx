@@ -10,7 +10,6 @@ const AdminLayout = (props) => {
   const location = useLocation();
   const [isMicroPage, setIsMicroPage] = useState(false);
 
-  // Check if current path includes "login"
   const isLoginPage = location.pathname.includes("login");
 
   useEffect(()=>{

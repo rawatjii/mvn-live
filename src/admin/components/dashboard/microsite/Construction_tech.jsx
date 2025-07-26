@@ -18,20 +18,20 @@ const ConstructionTechnology = () => {
   
   const projectSectionsApi = generateApi("projec-sections",0);
   const getEditDataApi = generateApi("show-by-project-with-sectionType", 0);
-  const keyHightlightsApi = generateApi(`project-key-highlight/${project_id}`);
-  const keyHightlightsApi1 = generateApi(`project-key-highlight`);
+  const constructionApi = generateApi(`project-gallery/${project_id}/construction`);
+  const constructionApi1 = generateApi(`project-gallery`,0);
   
-  const { editItem, createItem, } = useCrud(projectSectionsApi);
+  const { editItem, createItem } = useCrud(projectSectionsApi);
   const { 
     data: construction, 
     fetchAll: fetchconstruction
-  } = useCrud(keyHightlightsApi);
+  } = useCrud(constructionApi);
 
   const { 
-    createItem: keyHightlightsCreateItem, 
-    editItem: keyHightlightsEditItem, 
+    createItem: ConstructionCreateItem, 
+    editItem: ConstructionEditItem, 
     deleteItem,
-  } = useCrud(keyHightlightsApi1);
+  } = useCrud(constructionApi1);
   
   const { getEditData } = useCrud(getEditDataApi);
   const [currentPage, setCurrentPage] = useState(1);
@@ -40,19 +40,35 @@ const ConstructionTechnology = () => {
   const metaFields = [  
     { name: "heading", label: "Heading", type: "text", col: 6 },
     { name: "sub_heading", label: "Sub Heading", type: "text", col: 6 },
-    { name: "short_description", label:"Title", type: "text", col: 12 },
-    { name: "video", label: "Upload Video", type: "file", col: 12 },
-    { name: "description", label: "Description", type: "textarea", placeholder: "Enter Description", col: 12 }
+    // { name: "short_description", label:"Title", type: "text", col: 12 },
+    // { name: "video", label: "Upload Video", type: "file", col: 12 },
+    // { name: "description", label: "Description", type: "textarea", placeholder: "Enter Description", col: 12 }
   ];
 
   const keyHightlightsFields = [
-    { name: "heading", label: "Heading", type: "text", col: 12,isRequired:true },
-    { name: "short_description", label: "Description", type: "textarea", col: 12,isRequired:true },
+    { name: "title", label: "Title", type: "text", col: 12,isRequired:true },
+    { name: "image", label: "Banner", type: "file", col: 6 },
+    { name: "alternative_image", label: "Banner Alternate Image", type: "file", col: 6 },
+     { name: "sm_image", label: "Small Image", type: "file", col: 6 },
+    {
+      name: "sm_alternative_image",
+      label: "Small Alternative Image",
+      type: "file",
+      col: 6,
+    },
+    {
+      name: "alt",
+      label: "Alt",
+      type: "text",
+      col: 12,
+      placeholder: "Enter Alt text",
+      isRequired: true,
+    },
   ];
 
   const fetchMetadata = async () => {
     const formData = new FormData();
-    formData.append("section_type", "construction");
+    formData.append("section_type", "construction-technology");
     formData.append("project_id", project_id);
     try {
       const data = await getEditData(formData);
@@ -62,18 +78,10 @@ const ConstructionTechnology = () => {
     }
   };
 
-  const fetchAllconstruction = async () => {
-    try {
-      await fetchconstruction({ project_id, type: locationType });
-    } catch (error) {
-      console.error("Error fetching keyHightlights items:", error);
-    }
-  };
-
-
+ 
   const handleCreateMeta = async (formData) => {
     try {
-      formData.append("is_type", "video");
+      // formData.append("is_type", "construction");
       await createItem(formData);
       await fetchMetadata();
     } catch (error) {
@@ -90,22 +98,23 @@ const ConstructionTechnology = () => {
     }
   };
 
-  const handleCreatekeyHightlights = async (formData) => {
+  const handleCreateConstruction = async (formData) => {
     try {
-      formData.append("is_type", "keyHightlights");
-      await keyHightlightsCreateItem(formData, "true");
-      await fetchAllconstruction();
+      formData.append("is_type", "construction");
+      await ConstructionCreateItem(formData, "true");
+      await fetchconstruction();
       setEditkeyHightlightsData(null);
     } catch (error) {
       console.error("Error creating keyHightlights item:", error);
     }
   };
 
-  const handleEditkeyHightlights = async (formData) => {
+  const handleEditConstrucion = async (formData) => {
     try {
-            formData.append("is_type", "keyHightlights");
-      await keyHightlightsEditItem(editkeyHightlightsData.id, formData);
-      await fetchAllconstruction();
+           
+      formData.append("is_type", "construction");
+      await ConstructionEditItem(editkeyHightlightsData.id, formData);
+      await fetchconstruction();
       setEditkeyHightlightsData(null);
     } catch (error) {
       console.error("Error updating keyHightlights item:", error);
@@ -115,7 +124,7 @@ const ConstructionTechnology = () => {
   const handleDeleteItem = async (id) => {
     try {
       await deleteItem(id);
-      await fetchAllconstruction();
+      await fetchconstruction();
     } catch (error) {
       console.error("Error deleting keyHightlights item:", error);
     }
@@ -132,8 +141,12 @@ const ConstructionTechnology = () => {
 
   const columns = [
     { key: "", label: "S.No." },
-    { key: "heading", label: "Heading", type: "text" },
-    { key: "short_description", label: "Description", type: "text" },
+    { key: "title", label: "Title", type: "text" },
+    { key: "image", label: "image", type: "file" },
+    { key: "alternative_image", label: "Alternative Imae", type: "file" },
+  //{ key: "sm_image", label: "Mobile Image", type: "file" },
+ // { key: "sm_alternative_image", label: "Mobile Alternative Image", type: "file" },
+     { key: "alt", label: "Alt", type: "text" },
   ];
 
   const paginatedData = construction?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) || [];
@@ -150,18 +163,18 @@ const ConstructionTechnology = () => {
         />
       </MicroBox>
       <MicroBox>
-        <CustomTitle title={editkeyHightlightsData ? "Edit key hightlights" : "Add key hightlights"} />
+        <CustomTitle title={editkeyHightlightsData ? "Edit Construction" : "Add Construction"} />
         <CustomFormMicrosite
           isBanner={false}
           dynamicFields={keyHightlightsFields}
           defaultData={editkeyHightlightsData}
-          onSubmit={editkeyHightlightsData ? handleEditkeyHightlights : handleCreatekeyHightlights}
+          onSubmit={editkeyHightlightsData ? handleEditConstrucion : handleCreateConstruction}
           submitButtonText={editkeyHightlightsData ? "Update" : "Create"}
           cancelButton={editkeyHightlightsData ? { text: "Cancel", onClick: handleCancelEdit } : null}
         />
       </MicroBox>
       <MicroBox>
-        <CustomTitle title="Key hightlights" />
+        <CustomTitle title="Construction" />
         <CustomTable
           columns={columns}
           data={paginatedData}

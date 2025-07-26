@@ -604,16 +604,22 @@ const MicroPage = () => {
                     </div>
                   </LazyLoadComponent>
                 )}
+                 {pathname == "/mvn-athens-gurgaon-phase-3" && (
+                 section.section_type === "construction-technology"&& (
+                 <LazyLoadComponent margin="200px" debugName="floor-plan">
+                    <div  ref={(el) =>(sectionRefs.current[section.section_type] = el)}>
+                      <Construction  data={section}/>
+                    </div>
+                    </LazyLoadComponent>
+                 )
+                 )}
+          
+
               </React.Fragment>
             );
           })}
 
-          {pathname == "/mvn-athens-gurgaon-phase-3" && (
-            <div ref={(el) => (sectionRefs.current["construction"] = el)}>
-              <Construction />
-            </div>
-          )}
-
+         
           {projectSections?.length > 0 && (
             <>
               <LazyLoadComponent margin="200px">
