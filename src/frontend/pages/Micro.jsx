@@ -22,7 +22,7 @@ import Enquire from "../components/homepage/Enquire";
 import EnquireForm from "../components/homepage/EnquireForm";
 import Footer from "../components/Footer";
 import { API_URL } from "../../config/config";
-import { useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import useFetchData from "../utils/apiHelper";
 import LazyLoadComponent from "../../common/LazyLoadComponent";
 import SliderTypology from "../components/MicroPage/bangalore/SliderTypology";
@@ -35,6 +35,7 @@ import { Helmet } from "react-helmet";
 import parse from "html-react-parser";
 import injectScripts from "../components/InjectScripts";
 import Construction from "./Construction";
+import WhatsappBtn from "../components/Whatsapp";
 const headerSidebarDesktopImg = `${API_URL}images/aero-gurgaon/header/sidebar.webp`;
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -286,6 +287,9 @@ const MicroPage = () => {
         data={headerData}
         isFixed={isHeaderFixed}
       />
+      {pathname.includes('aeroone-gurgaon') && (
+        <WhatsappBtn />
+      )}
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <HeroSection projectId={basicData?.id} projectName={projectName} />
