@@ -327,6 +327,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                       </li>
                     </ul>
                   </div>
+                  
                 </div>
               </div>
               <div
