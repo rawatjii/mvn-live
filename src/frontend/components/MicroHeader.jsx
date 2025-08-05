@@ -290,7 +290,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                         <span>Office:</span> {contactData?.[2]?.short_description}
                       </p>
                       <p>
-                        <span>Talk:</span>{contactData?.[2]?.sub_heading}
+                        <span>Talk:</span> <a href={`tel:${contactData?.[2]?.sub_heading}`}>{contactData?.[2]?.sub_heading}</a>
                       </p>
                     </div>
 
@@ -305,7 +305,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                             <span>Email:</span> <a href="mailto:smtm@mvninfrastructure.com">smtm@mvninfrastructure.com</a>
                           </p>
                           <p>
-                            <span>Talk:</span> (+91) 9311051426
+                            <span>Talk:</span> <a href="tel:+919311051426">(+91) 9311051426</a>
                           </p>
                         </div>
 
@@ -318,7 +318,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                             <span>Email:</span> <a href="mailto:smto@mvninfrastructure.com">smto@mvninfrastructure.com</a>
                           </p>
                           <p>
-                            <span>Talk:</span> (+91) 9870101385
+                            <span>Talk:</span> <a href="tel:+919870101385">(+91) 9870101385</a>
                           </p>
                         </div>
                       </>

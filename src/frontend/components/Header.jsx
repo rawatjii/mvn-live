@@ -258,12 +258,12 @@ const Header = () => {
                       </div>
 
                       <div className="top-area">
-                        <div className="inner-logo d-none d-md-block">
+                        <div className="inner-logo">
                           <p>
                             <span>Office:</span> {contactData?.[2]?.short_description}
                           </p>
                           <p>
-                            <span>Talk:</span> {contactData?.[2]?.sub_heading}
+                            <span>Talk:</span> <a href={`tel:${contactData?.[2]?.sub_heading}`}>{contactData?.[2]?.sub_heading}</a>
                           </p>
                         </div>
 
