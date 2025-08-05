@@ -6392,13 +6392,14 @@ div input:focus{
 .Contact-info .card{
 border: 1px solid #e6d49c;
 padding: 40px;
-text-align: center;
+text-align: start;
 background-color: #000;
 }
+
 .Contact-info .card div{
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   gap: 20px;
   color: #fff;
   margin-bottom: 20px;
