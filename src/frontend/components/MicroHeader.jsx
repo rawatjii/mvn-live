@@ -307,6 +307,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                           <p>
                             <span>Talk:</span> <a href="tel:+919311051426">(+91) 9311051426</a>
                           </p>
+                          <p><span>Designation:</span> DGM Sales</p>
                         </div>
 
                         <div className="inner-logo">
@@ -320,6 +321,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                           <p>
                             <span>Talk:</span> <a href="tel:+919870101385">(+91) 9870101385</a>
                           </p>
+                          <p><span>Designation:</span> DGM Sales</p>
                         </div>
                       </>
                     )}

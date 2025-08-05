@@ -160,6 +160,8 @@ const Footer = () => {
                     <p>
                       <span>Write:</span> <a href="mailto:smtm@mvninfrastructure.com">smtm@mvninfrastructure.com</a>
                     </p>
+                          <p><span>Designation:</span> DGM Sales</p>
+                    
                   </div>
 
                   <div className="aeroone-footer-contact">
@@ -172,6 +174,7 @@ const Footer = () => {
                     <p>
                       <span>Write:</span> <a href="mailto:smto@mvninfrastructure.com">smto@mvninfrastructure.com</a>
                     </p>
+                          <p><span>Designation:</span> DGM Sales</p>
                   </div>
                 </>
               )}
