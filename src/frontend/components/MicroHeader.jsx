@@ -294,7 +294,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                       </p>
                     </div>
 
-                    {pathname.includes("aeroone-gurgaon") && (
+                    {/* {pathname.includes("aeroone-gurgaon") && (
                       <>
                         <div className="inner-logo">
                           <p>
@@ -324,7 +324,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                           <p><span>Designation:</span> DGM Sales</p>
                         </div>
                       </>
-                    )}
+                    )} */}
 
                     
                     

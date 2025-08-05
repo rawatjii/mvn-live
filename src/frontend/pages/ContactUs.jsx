@@ -7,6 +7,7 @@ import Layout from "../components/Layout";
 import { API_URL } from "../../config/config";
 import { Helmet } from "react-helmet";
 import useFetchData from "../utils/apiHelper";
+import ContactInfo from "../components/ContactInfo";
 
 const MobilebannerBg = `${API_URL}images/contact/head-banner_bg.webp`;
 const DesktopbannerBg = `${API_URL}images/contact/head-banner_bg-2.webp`;
@@ -109,6 +110,8 @@ const ContactUs = () => {
                   <Enquire />
                   <EnquireForm projectName={'MVN Infrastructure'}/>
                 </div>
+                
+                <ContactInfo/>
               </Suspense>
           </div>
         </div>

@@ -36,6 +36,7 @@ import parse from "html-react-parser";
 import injectScripts from "../components/InjectScripts";
 import Construction from "./Construction";
 import WhatsappBtn from "../components/Whatsapp";
+import ContactInfo from "../components/ContactInfo";
 const headerSidebarDesktopImg = `${API_URL}images/aero-gurgaon/header/sidebar.webp`;
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -650,6 +651,9 @@ const MicroPage = () => {
                   </div>
                 </div>
               </LazyLoadComponent>
+              
+              {(pathname.includes("aeroone-gurgaon")) && <ContactInfo/>}
+
 
               <LazyLoadComponent margin="200px">
                 <Footer />

@@ -6383,3 +6383,41 @@ div input:focus{
   border: 1px solid #000 !important;
 }
 /* new css for input */
+
+
+/* microsite contact info section style start */
+.Contact-info{
+  padding: 40px 0;
+}
+.Contact-info .card{
+border: 1px solid #e6d49c;
+padding: 40px;
+text-align: center;
+background-color: #000;
+}
+.Contact-info .card div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.Contact-info .card div img{
+  width: 20px;
+  filter: invert();
+}
+.Contact-info .card div a{
+  color: #fff;
+}
+.Contact-info .card div a:hover{
+  color: #e6d49c;
+  text-decoration: underline;
+}
+.Contact-info .card div span{
+  color: #fff;
+}
+.Contact-info .card div span.name{
+  color: #e6d49c;
+}
+/* microsite contact info section style end */
