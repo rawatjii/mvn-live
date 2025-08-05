@@ -1053,7 +1053,11 @@ a {
               display: flex;
 
               &:not(:first-child){
-                margin-top:15px;
+                margin-top:5px;
+              }
+
+              a{
+                color: #d9d9d9;
               }
 
               span{
@@ -1880,12 +1884,21 @@ footer {
       justify-content: space-between;
       border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 
+      .aeroone-footer-contact{
+        border-top: 1px solid #555;
+        padding-top: 15px;
+      }
+
       p{
         color: #d4d4d4;
         font-size: 13px;
         /* display: flex; */
         margin-bottom: 15px;
         letter-spacing: 0.1px;
+
+        a{
+          color: #d4d4d4;
+        }
 
         span{
 
@@ -4493,6 +4506,23 @@ table.bg_transparent{
   }
 }
 
+/* Change navigation arrow color */
+.strip_section .swiper-button-next,
+.strip_section .swiper-button-prev {
+  color: #e6d49c; /* Your desired color */
+}
+
+/* Change pagination bullet color */
+.strip_section .swiper-pagination-bullet {
+  background: #503d06 ; /* Bullet default color */
+  opacity: 1;
+}
+
+/* Active bullet color */
+.strip_section .swiper-pagination-bullet-active {
+  background: #e6d49c; /* Bullet active color */
+}
+
 
 /* start responsive */
 /* by bhupendra */
@@ -5917,6 +5947,10 @@ table.bg_transparent{
 
 .floating_whatsapp_btn .text_icon{
   font-size:11px;
+}
+
+.strip_section .swiper-slide img{
+  height:auto;
 }
 
 }

@@ -285,14 +285,47 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                   </div>
 
                   <div className="top-area">
-                    <div className="inner-logo d-none d-md-block">
-                      <p>
+                    <div className="inner-logo">
+                      <p className="mb-1">
                         <span>Office:</span> {contactData?.[2]?.short_description}
                       </p>
                       <p>
                         <span>Talk:</span>{contactData?.[2]?.sub_heading}
                       </p>
                     </div>
+
+                    {pathname.includes("aeroone-gurgaon") && (
+                      <>
+                        <div className="inner-logo">
+                          <p>
+                            <span>Vidhi Negi</span>
+                          </p>
+
+                          <p>
+                            <span>Email:</span> <a href="mailto:smtm@mvninfrastructure.com">smtm@mvninfrastructure.com</a>
+                          </p>
+                          <p>
+                            <span>Talk:</span> (+91) 9311051426
+                          </p>
+                        </div>
+
+                        <div className="inner-logo">
+                          <p>
+                            <span>Archi</span>
+                          </p>
+
+                          <p>
+                            <span>Email:</span> <a href="mailto:smto@mvninfrastructure.com">smto@mvninfrastructure.com</a>
+                          </p>
+                          <p>
+                            <span>Talk:</span> (+91) 9870101385
+                          </p>
+                        </div>
+                      </>
+                    )}
+
+                    
+                    
                     <ul className="sub_menu">
                       <li>
                         <span htmlFor="school" className="d-block w-100">

@@ -147,6 +147,36 @@ const Footer = () => {
                 <span>Write:</span> {contactData?.[2]?.heading}
               </p>
 
+              {pathname.includes("aeroone-gurgaon") && (
+                <>
+                  <div className="aeroone-footer-contact">
+                    <p>
+                      <span className="text-uppercase">Vidhi Negi</span>
+                    </p>
+                    <p>
+                      <span>Talk:</span> (+91) 9311051426
+                    </p>
+                    <p>
+                      <span>Write:</span> <a href="mailto:smtm@mvninfrastructure.com">smtm@mvninfrastructure.com</a>
+                    </p>
+                  </div>
+
+                  <div className="aeroone-footer-contact">
+                    <p>
+                      <span className="text-uppercase">Archi</span>
+                    </p>
+                    <p>
+                      <span>Talk:</span> (+91) 9870101385
+                    </p>
+                    <p>
+                      <span>Write:</span> <a href="mailto:smto@mvninfrastructure.com">smto@mvninfrastructure.com</a>
+                    </p>
+                  </div>
+                </>
+              )}
+
+              
+
               <div className="footer-top">
                 <div className="social-media">
                   <div className="left-b">
