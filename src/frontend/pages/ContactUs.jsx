@@ -111,7 +111,7 @@ const ContactUs = () => {
                   <EnquireForm projectName={'MVN Infrastructure'}/>
                 </div>
                 
-                <ContactInfo/>
+                {/* <ContactInfo/> */}
               </Suspense>
           </div>
         </div>
