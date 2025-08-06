@@ -652,7 +652,7 @@ const MicroPage = () => {
                 </div>
               </LazyLoadComponent>
               
-              {(pathname.includes("aeroone-gurgaon")) && <ContactInfo/>}
+              {/* {(pathname.includes("aeroone-gurgaon")) && <ContactInfo/>} */}
 
 
               <LazyLoadComponent margin="200px">
