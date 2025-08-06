@@ -27,7 +27,7 @@ const EnquireForm = React.lazy(() =>
 const CustomModal = React.lazy(() => import("../../common/Modal"));
 const ClubOne = React.lazy(() => import("../components/homepage/ClubOne"));
 const MvnMall = React.lazy(() => import("../components/homepage/MvnMall"));
-const Strip = React.lazy(()=>import('../components/homepage/Strip11'))
+const Strip = React.lazy(()=>import('../components/homepage/Strip'))
 // const Enquire = React.lazy(() =>
 //   new Promise((resolve) =>
 //     setTimeout(() => resolve(import("../components/homepage/Enquire")), 100000)

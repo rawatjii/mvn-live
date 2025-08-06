@@ -28,7 +28,7 @@ import LazyLoadComponent from "../../common/LazyLoadComponent";
 import SliderTypology from "../components/MicroPage/bangalore/SliderTypology";
 import FeatureSection from "../components/MicroPage/athens/FeatureSection";
 import MicroFloorPlan from "../components/MicroPage/FloorPlan";
-import Strip from "../components/homepage/Strip11";
+import Strip from "../components/homepage/Strip";
 import { setCommonState } from "../../redux/commonSlice";
 import { useDispatch } from "react-redux";
 import { Helmet } from "react-helmet";
@@ -652,7 +652,7 @@ const MicroPage = () => {
                 </div>
               </LazyLoadComponent>
               
-              {(pathname.includes("aeroone-gurgaon")) && <ContactInfo/>}
+              {/* {(pathname.includes("aeroone-gurgaon")) && <ContactInfo/>} */}
 
 
               <LazyLoadComponent margin="200px">
