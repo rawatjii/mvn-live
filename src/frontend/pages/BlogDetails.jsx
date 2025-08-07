@@ -96,6 +96,25 @@ function BlogDetails() {
       }
   }, [pageMetaData])
 
+  useEffect(() => {
+    var headDataContainer;
+    if (selectedBlog?.head_data) {
+      headDataContainer = document.createElement("div");
+      headDataContainer.innerHTML = selectedBlog.head_data;
+      Array.from(headDataContainer.children).forEach((child) => {
+        document.head.appendChild(child);
+      });
+    }
+
+    return () => {
+      if (headDataContainer) {
+        Array.from(headDataContainer.children).forEach((child) => {
+          document.head.removeChild(child);
+        });
+      }
+    };
+  }, [selectedBlog]);
+
   return (
     <>
       <Helmet>
@@ -109,38 +128,10 @@ function BlogDetails() {
           <meta name="keywords" content={selectedBlog.meta_keywords} />
         )}
         <link rel="canonical" href={location && `https://www.mvn.in${location.pathname}`}/>
+        {selectedBlog && selectedBlog.head_data && (
+          <div dangerouslySetInnerHTML={{ __html: selectedBlog.head_data }} />
+        )}
 
-        {location.pathname.includes('mvn-aero-one-gurgaon-residences') && (
-          <script type="application/ld+json">
-            {`
-              {
-                "@context": "https://schema.org",
-                "@type": "BlogPosting",
-                "mainEntityOfPage": {
-                  "@type": "WebPage",
-                  "@id": "https://www.mvn.in/blogs/mvn-aero-one-gurgaon-residences"
-                },
-                "headline": "MVN Aero One in Gurgaon: The Ultimate Residential Choice for 2025",
-                "description": "Discover why MVN Aero One in Gurgaon is the ultimate residential choice for 2025. Explore luxury living with spacious layouts, premium amenities, and prime connectivity in Gurgaon’s fastest-growing neighborhood.",
-                "image": "https://mvnbackend.gtftechnologies.com/uploads/blog/1750248386782.webp",  
-                "author": {
-                  "@type": "",
-                  "name": "MVN Aero One"
-                },  
-                "publisher": {
-                  "@type": "Organization",
-                  "name": "",
-                  "logo": {
-                    "@type": "ImageObject",
-                    "url": ""
-                  }
-                },
-                "datePublished": "2025-07-06"
-              }
-            `}
-            </script>
-          )}
-        
       </Helmet>
       <Layout>
         <div className="blog_page">
