@@ -96,6 +96,25 @@ function BlogDetails() {
       }
   }, [pageMetaData])
 
+  useEffect(() => {
+    var headDataContainer;
+    if (selectedBlog?.head_data) {
+      headDataContainer = document.createElement("div");
+      headDataContainer.innerHTML = selectedBlog.head_data;
+      Array.from(headDataContainer.children).forEach((child) => {
+        document.head.appendChild(child);
+      });
+    }
+
+    return () => {
+      if (headDataContainer) {
+        Array.from(headDataContainer.children).forEach((child) => {
+          document.head.removeChild(child);
+        });
+      }
+    };
+  }, [selectedBlog]);
+
   return (
     <>
       <Helmet>
@@ -109,6 +128,10 @@ function BlogDetails() {
           <meta name="keywords" content={selectedBlog.meta_keywords} />
         )}
         <link rel="canonical" href={location && `https://www.mvn.in${location.pathname}`}/>
+        {selectedBlog && selectedBlog.head_data && (
+          <div dangerouslySetInnerHTML={{ __html: selectedBlog.head_data }} />
+        )}
+
       </Helmet>
       <Layout>
         <div className="blog_page">

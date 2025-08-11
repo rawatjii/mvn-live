@@ -22,19 +22,21 @@ import Enquire from "../components/homepage/Enquire";
 import EnquireForm from "../components/homepage/EnquireForm";
 import Footer from "../components/Footer";
 import { API_URL } from "../../config/config";
-import { useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import useFetchData from "../utils/apiHelper";
 import LazyLoadComponent from "../../common/LazyLoadComponent";
 import SliderTypology from "../components/MicroPage/bangalore/SliderTypology";
 import FeatureSection from "../components/MicroPage/athens/FeatureSection";
 import MicroFloorPlan from "../components/MicroPage/FloorPlan";
-import Strip from "../components/homepage/Strip";
+import Strip from "../components/homepage/Strip11";
 import { setCommonState } from "../../redux/commonSlice";
 import { useDispatch } from "react-redux";
 import { Helmet } from "react-helmet";
 import parse from "html-react-parser";
 import injectScripts from "../components/InjectScripts";
 import Construction from "./Construction";
+import WhatsappBtn from "../components/Whatsapp";
+import ContactInfo from "../components/ContactInfo";
 const headerSidebarDesktopImg = `${API_URL}images/aero-gurgaon/header/sidebar.webp`;
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -286,6 +288,9 @@ const MicroPage = () => {
         data={headerData}
         isFixed={isHeaderFixed}
       />
+      {pathname.includes('aeroone-gurgaon') && (
+        <WhatsappBtn />
+      )}
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <HeroSection projectId={basicData?.id} projectName={projectName} />
@@ -300,6 +305,14 @@ const MicroPage = () => {
             const sectionKey = `${section.section_type}_${secIndex}`;
             return (
               <React.Fragment key={sectionKey}>
+                {section.section_type === "elevation" && (
+                  <LazyLoadComponent margin="200px" debugName="elevation">
+                    <div ref={(el) => (sectionRefs.current.elevation = el)}>
+                      <LargeElevationSection data={section} />
+                    </div>
+                  </LazyLoadComponent>
+                )}
+
                 {section.section_type === "overview" && (
                   <div
                     ref={(el) => {
@@ -315,14 +328,6 @@ const MicroPage = () => {
                     />
                     {/* {section.yt_url && <CustomIframe data={section.yt_url} />} */}
                   </div>
-                )}
-
-                {section.section_type === "elevation" && (
-                  <LazyLoadComponent margin="200px" debugName="elevation">
-                    <div ref={(el) => (sectionRefs.current.elevation = el)}>
-                      <LargeElevationSection data={section} />
-                    </div>
-                  </LazyLoadComponent>
                 )}
 
                 {section.section_type === "walkthrough" && (
@@ -646,6 +651,9 @@ const MicroPage = () => {
                   </div>
                 </div>
               </LazyLoadComponent>
+              
+              {/* {(pathname.includes("aeroone-gurgaon")) && <ContactInfo/>} */}
+
 
               <LazyLoadComponent margin="200px">
                 <Footer />

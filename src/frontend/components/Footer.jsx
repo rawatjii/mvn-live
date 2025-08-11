@@ -147,6 +147,8 @@ const Footer = () => {
                 <span>Write:</span> {contactData?.[2]?.heading}
               </p>
 
+              
+
               <div className="footer-top">
                 <div className="social-media">
                   <div className="left-b">

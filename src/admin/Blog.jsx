@@ -54,6 +54,8 @@ const metaFields = [
   { name: "meta_title", label: "Meta Title", type: "text", col: 4},
   { name: "meta_keywords", label: "Meta Keywords", type: "text", col: 4},
   { name: "meta_description", label: "Meta Description", type: "text", col: 4},
+  { name: "head_data", label: "Head Scripts", type: "textarea", col: 6, row:6},
+  { name: "footer_data", label: "Body Scripts", type: "textarea", col: 6, row:6},
 ];
 
 const columns = [

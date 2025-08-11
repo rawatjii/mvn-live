@@ -41,7 +41,7 @@ const EnquireForm = ({ career, projectName }) => {
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
 
-    let apiUrl = `https://api2.gtftech.com/AjaxHelper/AgentInstantQuerySetter.aspx?qAgentID=4804&qSenderName=${formDetails.name}"&qMobileNo=${formDetails.number}&qEmailID=${formDetails.email}&qQueryMessage=${formDetails.message}&qProjectName=${projectName}`;
+    let apiUrl = `https://api2.gtftech.com/AjaxHelper/AgentInstantQuerySetter.aspx?qAgentID=4804&qSenderName=${formDetails.name}"&qMobileNo=${formDetails.number}&qEmailID=${formDetails.email}&qQueryMessage=${formDetails.message}&qProjectName=${projectName}&micrositeurl=${window.location.href}`;
 
     Object.keys(queryParams).forEach((key) => {
       apiUrl += `&${key}=${queryParams[key]}`;

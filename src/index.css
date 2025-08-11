@@ -1053,7 +1053,11 @@ a {
               display: flex;
 
               &:not(:first-child){
-                margin-top:15px;
+                margin-top:5px;
+              }
+
+              a{
+                color: #d9d9d9;
               }
 
               span{
@@ -1880,12 +1884,21 @@ footer {
       justify-content: space-between;
       border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 
+      .aeroone-footer-contact{
+        border-top: 1px solid #555;
+        padding-top: 15px;
+      }
+
       p{
         color: #d4d4d4;
         font-size: 13px;
         /* display: flex; */
         margin-bottom: 15px;
         letter-spacing: 0.1px;
+
+        a{
+          color: #d4d4d4;
+        }
 
         span{
 
@@ -4437,6 +4450,79 @@ table.bg_transparent{
   flex-grow: 1
 }
 
+/* floating_whatsapp_btn */
+.floating_whatsapp_btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content:center;
+  z-index: 1000;
+}
+
+.floating_whatsapp_btn img{
+  filter:invert(1);
+  width: 30px;
+}
+
+.floating_whatsapp_btn .contact_icon {
+  background-color: #42db87;
+  color: #fff;
+  width: 60px;
+  height: 60px;
+  font-size:30px;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translatey(0px);
+  animation: pulse 1.5s infinite;
+  box-shadow: 0 0 0 0 #42db87;
+  -webkit-animation: pulsing 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  -moz-animation: pulsing 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  -ms-animation: pulsing 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  animation: pulsing 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  font-weight: normal;
+  font-family: sans-serif;
+  text-decoration: none !important;
+  transition: all 300ms ease-in-out;
+}
+
+.floating_whatsapp_btn .text_icon {
+  margin-top: 8px;
+  color: #fff;
+  font-size: 13px;
+}
+
+@keyframes pulsing {
+  to {
+    box-shadow: 0 0 0 30px rgba(232, 76, 61, 0);
+  }
+}
+
+/* Change navigation arrow color */
+.strip_section .swiper-button-next,
+.strip_section .swiper-button-prev {
+  color: #e6d49c; /* Your desired color */
+}
+
+/* Change pagination bullet color */
+.strip_section .swiper-pagination-bullet {
+  background: #503d06 ; /* Bullet default color */
+  opacity: 1;
+}
+
+/* Active bullet color */
+.strip_section .swiper-pagination-bullet-active {
+  background: #e6d49c; /* Bullet active color */
+}
+
 
 /* start responsive */
 /* by bhupendra */
@@ -5845,6 +5931,34 @@ table.bg_transparent{
     border: none;
 }
 
+.floating_whatsapp_btn{
+  width:auto;
+  height:auto;
+}
+
+.floating_whatsapp_btn .contact_icon{
+  width: 40px;
+  height: 40px;
+}
+
+.floating_whatsapp_btn img{
+  width: 20px;
+}
+
+.floating_whatsapp_btn .text_icon{
+  font-size:11px;
+}
+
+.strip_section .swiper-slide img{
+  height:auto;
+}
+
+
+.strip_section .swiper-button-prev::after,
+.strip_section .swiper-button-next::after{
+  font-size: 20px;
+}
+
 }
 
 /* end of 767 */
@@ -6275,3 +6389,75 @@ div input:focus{
   border: 1px solid #000 !important;
 }
 /* new css for input */
+
+
+/* microsite contact info section style start */
+.Contact-info{
+  padding: 40px 0;
+}
+.contact-info-title{
+    display: block;
+    width: fit-content;
+    margin: 20px auto 60px;
+    /* color: #e6d49c; */
+    position: relative;
+    color: #e6d49c;
+}
+.contact-info-title h2{
+  position: relative;
+  z-index: 2;
+      text-transform: uppercase;
+    font-size: 24px;
+    letter-spacing: 1.8px;
+    text-align: center;
+    line-height: 36px
+}
+.contact-info-title::before{
+  content: '';
+  position: absolute;
+  left: -30px;
+  top: -18px;
+  height: 70px;
+  width: 70px;
+  background-color: #d6bf5a59;
+  border-radius: 50%;
+  z-index: 0;
+}
+.Contact-info .card{
+border: 1px solid #e6d49c;
+padding: 40px;
+text-align: start;
+background-color: #000;
+}
+
+.Contact-info .card div{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 20px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.Contact-info .card div img{
+  width: 20px;
+  filter: invert();
+}
+.Contact-info .card div a{
+  color: #fff;
+}
+.Contact-info .card div a:hover{
+  color: #e6d49c;
+  text-decoration: underline;
+}
+.Contact-info .card div span{
+  color: #fff;
+}
+.Contact-info .card div span.name{
+  color: #e6d49c;
+}
+@media screen and (max-width: 768px) {
+  .contact-info-title::before{
+    display: none;
+  }
+}
+/* microsite contact info section style end */

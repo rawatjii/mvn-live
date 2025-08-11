@@ -27,7 +27,7 @@ const EnquireForm = React.lazy(() =>
 const CustomModal = React.lazy(() => import("../../common/Modal"));
 const ClubOne = React.lazy(() => import("../components/homepage/ClubOne"));
 const MvnMall = React.lazy(() => import("../components/homepage/MvnMall"));
-import Strip from "../components/homepage/Strip";
+const Strip = React.lazy(()=>import('../components/homepage/Strip11'))
 // const Enquire = React.lazy(() =>
 //   new Promise((resolve) =>
 //     setTimeout(() => resolve(import("../components/homepage/Enquire")), 100000)
@@ -41,6 +41,7 @@ import useFetchData from "../utils/apiHelper";
 import Intro from "../components/homepage/Intro";
 import LazyLoadComponent from "../../common/LazyLoadComponent";
 import { API_URL, BACKEND_IMAGE_URL } from "../../config/config";
+import WhatsappBtn from "../components/Whatsapp";
 
 const Homepage = () => {
   const [isShowModal, setIsShowModal] = useState(false);
@@ -134,6 +135,8 @@ const Homepage = () => {
         {pageMetaData && pageMetaData.meta_keywords && <meta name="keywords" content={pageMetaData.meta_keywords} />}
         {pageMetaData && pageMetaData.head_data && <div dangerouslySetInnerHTML={{__html:pageMetaData.head_data}} />}
       </Helmet>
+
+      <WhatsappBtn />
 
       <Layout>
         {homepageData?.map((section, secIndex) => {
