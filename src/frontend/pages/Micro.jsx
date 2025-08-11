@@ -305,6 +305,14 @@ const MicroPage = () => {
             const sectionKey = `${section.section_type}_${secIndex}`;
             return (
               <React.Fragment key={sectionKey}>
+                {section.section_type === "elevation" && (
+                  <LazyLoadComponent margin="200px" debugName="elevation">
+                    <div ref={(el) => (sectionRefs.current.elevation = el)}>
+                      <LargeElevationSection data={section} />
+                    </div>
+                  </LazyLoadComponent>
+                )}
+
                 {section.section_type === "overview" && (
                   <div
                     ref={(el) => {
@@ -320,14 +328,6 @@ const MicroPage = () => {
                     />
                     {/* {section.yt_url && <CustomIframe data={section.yt_url} />} */}
                   </div>
-                )}
-
-                {section.section_type === "elevation" && (
-                  <LazyLoadComponent margin="200px" debugName="elevation">
-                    <div ref={(el) => (sectionRefs.current.elevation = el)}>
-                      <LargeElevationSection data={section} />
-                    </div>
-                  </LazyLoadComponent>
                 )}
 
                 {section.section_type === "walkthrough" && (
