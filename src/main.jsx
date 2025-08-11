@@ -101,10 +101,8 @@ import Typologies from "./admin/components/dashboard/microsite/Typologies.jsx";
 import FloorPlans from "./admin/components/dashboard/microsite/FloorPlan.jsx";
 import LocationMap from "./admin/components/dashboard/microsite/LocationMap.jsx";
 import MvnMall from "./admin/components/dashboard/microsite/mvn-mall.jsx";
-import AdminHomepage from "./admin/pages/Homepage.jsx";
 import SinglePage from "./admin/pages/Index.jsx";
 import AdminWorkCulture from "./admin/WorkCulture.jsx";
-import MicroPageLayout from "./frontend/pages/micro/Index.jsx";
 import MicroPage from "./frontend/pages/Micro.jsx";
 import Verticals from "./admin/Verticals.jsx";
 import Infrastructure from "./admin/Infrastructure.jsx";
@@ -116,7 +114,6 @@ import Team from "./admin/components/aboutus/Team.jsx";
 import Sizes from "./admin/components/dashboard/microsite/Sizes.jsx";
 import KeyHighlights from "./admin/components/dashboard/microsite/KeyHighlights.jsx";
 import PagesMeta from "./admin/components/PagesMeta.jsx";
-// import Apartment from "./admin/components/dashboard/microsite/Apartment.jsx";
 const router = createBrowserRouter([
   {
     path: "/",

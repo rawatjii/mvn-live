@@ -19,9 +19,9 @@ const SinglePage = () => {
   const singlePageApi = generateApi(`page-section/${pageName}`);
   const getEditDataApi = generateApi("page-section-list", 0);
 
-  const { data } = useCrud(singlePageApi); // Form sections data
-  const { data: editSectionData, getMultiEditdata } = useCrud(editSectionApi); // Pre-filled edit data
-  const { editItem: updateFormData, createItem } = useCrud(getEditDataApi); // Update/create API
+  const { data } = useCrud(singlePageApi); 
+  const { data: editSectionData, getMultiEditdata } = useCrud(editSectionApi); 
+  const { editItem: updateFormData, createItem } = useCrud(getEditDataApi); 
 
   // Fetch edit data
   const fetchEditData = async () => {
@@ -88,7 +88,6 @@ const SinglePage = () => {
           isRequired: true,
         }));
 
-      // Find matching edit section
       const matchedEditSection = editData.find(
         (editSection) => editSection?.page_section === section.name
       );
@@ -113,7 +112,7 @@ const SinglePage = () => {
         name: section.name,
         data: enabledPermissions,
         type: section.name === "home-banner" ? "select" : undefined,
-        defaultValues: matchedEditSection || null, // Ensure defaultValues is null if no match
+        defaultValues: matchedEditSection || null, 
       };
     });
 

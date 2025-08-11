@@ -16,8 +16,7 @@ import imagejson from "../../../../assets/images/json-file.png";
 import video_icon from "../../../../assets/images/icon_video.png";
 import image_preview from "../../../../assets/images/img_preview.png";
 import link_image from "../../../../assets/images/link.png";
-import iframe_icon from "../../../../assets/images/link.png"; // Add an iframe icon to your 
-
+import iframe_icon from "../../../../assets/images/link.png"; 
 const CustomTable = ({ columns, data, onEdit, onDelete, startIndex = 0, textLength=50 }) => {
   const [modalImage, setModalImage] = React.useState(null);
   const [modalText, setModalText] = React.useState(null);
