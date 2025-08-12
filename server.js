@@ -6,92 +6,94 @@ import axios from 'axios';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname  = path.dirname(__filename);
+const __dirname = path.dirname(__filename);
 
-const app  = express();
-const PORT = process.env.PORT || 3000;
+const app = express();
+const PORT = process.env.PORT || 4000;
 
-/** Serve Vite build assets */
+/* Serve built assets from dist */
 app.use(express.static(path.resolve(__dirname, 'dist'), {
-  index: false, // we’ll send index.html manually (after injection)
+  index: false, // let us manually serve index.html
   maxAge: '1y',
   setHeaders: (res, filePath) => {
-    // don’t cache HTML files
-    if (filePath.endsWith('.html')) res.setHeader('Cache-Control', 'no-store');
+    if (filePath.endsWith('.html')) {
+      res.setHeader('Cache-Control', 'no-store');
+    }
   }
 }));
 
-/** Defaults for any route */
+/* Default meta fallback */
 const defaultMeta = (fullUrl) => ({
-  title: 'Default Title',
-  description: 'Default Description',
-  og_title: 'Default OG Title',
-  og_description: 'Default OG Description',
-  og_image: new URL('/og-default.jpg', fullUrl).toString(), // put this file in /dist
-  og_url: fullUrl,
-  canonical: fullUrl,
+  head_data: `
+    <title>Default Title</title>
+    <meta name="description" content="Default Description">
+    <meta property="og:title" content="Default OG Title">
+    <meta property="og:description" content="Default OG Description">
+    <meta property="og:image" content="${new URL('/og-default.jpg', fullUrl)}">
+    <meta property="og:url" content="${fullUrl}">
+    <link rel="canonical" href="${fullUrl}">
+  `
 });
 
-/** Optional: tiny in-memory cache */
+/* Simple in-memory cache */
 const cache = new Map();
-const TTL_MS = 60_000;
+const TTL_MS = 60_000; // 1 minute cache
 
 async function resolveMeta(req) {
   const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
-  const p = req.path;
   const cached = cache.get(fullUrl);
-  if (cached && cached.expires > Date.now()) return cached.meta;
+  if (cached && cached.expires > Date.now()) {
+    return cached.meta;
+  }
 
   let meta = defaultMeta(fullUrl);
 
   try {
-    // EXAMPLES — adapt to your routes & API
-    // /blog/:slug
-    let m;
-    if ((m = p.match(/^\/blog\/([^/]+)$/))) {
-      const slug = m[1];
-      const { data } = await axios.get(`https://mvnbackend.gtftechnologies.com/api/project/${slug}`);
-      meta = data.head_data;
-    }
-    // /project/:slug
-    else if ((m = p.match(/^\/project\/([^/]+)$/))) {
-      const slug = m[1];
-      const { data } = await axios.get(`https://mvnbackend.gtftechnologies.com/api/project/${slug}`);
-      meta = data.head_data;
-    
-    }
-    // add more branches as needed
-  } catch (e) {
-    console.error('Meta fetch error:', e?.message || e);
-    // keep defaults on error
-  }
+    // Clean up path from request URL for dynamic API call
+    const pathSlug = req.originalUrl.replace(/^\/+|\/+$/g, '') || 'home';
 
-  // ensure absolute og:image
-  try { meta.og_image = new URL(meta.og_image, fullUrl).toString(); } catch {}
+    // You can also include query params if needed
+    // const queryString = req.originalUrl.includes('?') ? '?' + req.originalUrl.split('?')[1] : '';
+    // const apiUrl = `https://mvnbackend.gtftechnologies.com/api/project/${pathSlug}${queryString}`;
+
+    const apiUrl = `https://mvnbackend.gtftechnologies.com/api/project/${pathSlug}`;
+
+    const { data } = await axios.get(apiUrl, { timeout: 5000 });
+
+    if (data.data?.head_data) {
+      meta.head_data = data.data.head_data;
+    }
+  } catch (err) {
+    console.error('Meta fetch error:', err?.message || err);
+  }
 
   cache.set(fullUrl, { meta, expires: Date.now() + TTL_MS });
   return meta;
 }
 
 function injectMeta(html, meta) {
-  let out = html;
-  for (const [k, v] of Object.entries(meta)) {
-    out = out.replaceAll(`{{${k}}}`, String(v ?? ''));
-  }
-  return out;
+  return html.replace('{{head_data}}', meta.head_data || '');
 }
 
-/** Fallback handler: serve dist/index.html with injected meta for every route */
+/* Catch-all route to handle SSR */
 app.use(async (req, res) => {
-  const indexPath = path.resolve(__dirname, 'dist', 'index.html');
-  const html = await fs.readFile(indexPath, 'utf8').catch(() => null);
-  if (!html) return res.status(500).send('dist/index.html missing – did you run `npm run build`?');
+  try {
+    // Read base HTML
+    const indexPath = path.resolve(__dirname, 'dist', 'index.html');
+    const html = await fs.readFile(indexPath, 'utf8');
 
-  const meta = await resolveMeta(req);
-  const out  = injectMeta(html, meta);
+    // Wait for meta BEFORE sending response
+    const meta = await resolveMeta(req);
+    const out = injectMeta(html, meta);
 
-  res.set('Content-Type', 'text/html; charset=utf-8');
-  res.status(200).send(out);
+    res.set('Content-Type', 'text/html; charset=utf-8');
+    res.status(200).send(out);
+  } catch (err) {
+    console.error('Error serving request:', err);
+    res.status(500).send('Internal Server Error');
+  }
 });
 
-app.listen(PORT, () => console.log(`Server running on :${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
