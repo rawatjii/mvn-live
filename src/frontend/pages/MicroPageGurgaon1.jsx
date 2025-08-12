@@ -338,6 +338,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
               isMobile={isMobile}
             />
           </div>
+          <LargeElevationSection data={data.LargeElevationSection} />
 
           <MicroOverview data={data.overview} />
 
@@ -352,7 +353,6 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
               showAwards={true}
             />
           </div>
-          <LargeElevationSection data={data.LargeElevationSection} />
 
           <LazyLoadComponent
             margin="200px"
