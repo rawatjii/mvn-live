@@ -325,7 +325,6 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
               isMobile={isMobile}
             />
           </div>
-          <LargeElevationSection data={data.LargeElevationSection} />
 
           <MicroOverview data={data.overview} />
 
@@ -344,6 +343,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
               />
             </div>
           </LazyLoadComponent>
+          <LargeElevationSection data={data.LargeElevationSection} />
 
           <LazyLoadComponent margin="200px" debugName="View360" smootherRef={smootherRef}>
             {is360Show ? (
