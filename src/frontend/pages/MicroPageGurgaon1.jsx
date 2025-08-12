@@ -138,11 +138,11 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
         <meta name="distribution" content="Global" />
         <meta name="Language" content="English" />
         <meta name="doc-type" content="Public" />
-        <meta name="robots" content="index, follow" />
+        <meta name="robots" content="noindex, nofollow" />
         <meta name="author" content="MVN Aero One" />
-        <meta name="googlebot" content="all, index, follow" />
-        <meta name="YahooSeeker" content="all, index, follow" />
-        <meta name="msnbot" content="all, index, follow" />
+        <meta name="googlebot" content="noindex, nofollow" />
+        <meta name="YahooSeeker" content="noindex, nofollow" />
+        <meta name="msnbot" content="noindex, nofollow" />
         <meta name="HandheldFriendly" content="true" />
         <meta name="revisit-after" content="1 days" />
         <meta name="rating" content="safe for kids" />
@@ -325,9 +325,9 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
               isMobile={isMobile}
             />
           </div>
+          <LargeElevationSection data={data.LargeElevationSection} />
 
           <MicroOverview data={data.overview} />
-          <LargeElevationSection data={data.LargeElevationSection} />
 
           {/* <LazyLoadComponent margin="200px" debugName="Walkthrough" smootherRef={smootherRef}>
             <div ref={(el) => (sectionRefs.current.Walkthrough = el)}>
