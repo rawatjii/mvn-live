@@ -1,7 +1,7 @@
 import React from "react";
 import * as CONFIG from '../../../../config/config';
-const bgImgMB = `${CONFIG.API_URL}images/aero-gurgaon/largeBg1Sm.webp`
-const bgImgDesk = `${CONFIG.API_URL}images/aero-gurgaon/largeBg1.png`
+const bgImgMB = `${CONFIG.API_URL}images/aero-gurgaon/floors_sm.webp`
+const bgImgDesk = `${CONFIG.API_URL}images/aero-gurgaon/floors.webp`
 const absDesk = `${CONFIG.API_URL}images/aero-gurgaon/building.webp`
 const building_sm = `${CONFIG.API_URL}images/aero-gurgaon/building_sm.webp`;
 const headerSidebarDesktopImg = `${CONFIG.API_URL}images/aero-gurgaon/header/sidebar.webp`;
