@@ -68,11 +68,11 @@ const Homepage = () => {
         <meta name="distribution" content="Global" />
         <meta name="Language" content="English" />
         <meta name="doc-type" content="Public" />
-        <meta name="robots" content="index, follow" />
+        <meta name="robots" content="noindex, nofollow" />
         <meta name="author" content="MVN Infrastructure" />
-        <meta name="googlebot" content="all, index, follow" />
-        <meta name="YahooSeeker" content="all, index, follow" />
-        <meta name="msnbot" content="all, index, follow" />
+        <meta name="googlebot" content="noindex, nofollow" />
+        <meta name="YahooSeeker" content="noindex, nofollow" />
+        <meta name="msnbot" content="noindex, nofollow" />
         <meta name="HandheldFriendly" content="true" />
         <meta name="revisit-after" content="1 days" />
         <meta name="rating" content="safe for kids" />
