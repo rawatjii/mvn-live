@@ -23,7 +23,7 @@ const MicroOverview = React.lazy(() =>
   import("../components/MicroPage/Overview")
 );
 const LargeElevationSection = React.lazy(() =>
-  import("../components/MicroPage/LargeElevationSection")
+  import("../components/MicroPage/LargeElevationSection1")
 );
 const Walkthrough = React.lazy(() =>
   import("../components/MicroPage/Walkthrough")

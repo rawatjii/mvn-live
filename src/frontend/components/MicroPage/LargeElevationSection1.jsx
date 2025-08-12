@@ -7,7 +7,7 @@ import CustomCard from "../Card";
 import { useMatches } from "../../../theme/theme";
 gsap.registerPlugin(ScrollTrigger);
 
-function LargeElevation({ data }) {
+function LargeElevation1({ data }) {
   const sectionRef = React.useRef(null);
   const desktopRef = React.useRef();
   const { title, class_name, path, second_title, desc } = data;
@@ -44,11 +44,11 @@ function LargeElevation({ data }) {
 
   return (
     <div
-      className="large-elevation"
+      className="section large-elevation"
       ref={sectionRef}
       id="largeElevationSection"
     >
-      {title && (
+      {/* {title && (
         <Container>
           <div className="container_elevation">
             <div className="top_div">
@@ -60,22 +60,22 @@ function LargeElevation({ data }) {
             </div>
           </div>
         </Container>
-      )}
+      )} */}
 
       {/* view start */}
 
       <div
-        className={`bottom_img_div ${isMobile ? "d_sm_block" : "d_lg_block"}`}
+        className={`bottom_img_div d-block`}
         ref={!isMobile ? desktopRef : null}
       >
-        <div className="full_img">
+        <div className="full_img position-relative">
           <img
-            src={isMobile ? path.mobile.bgImg : path.desktop.bgImg}
+            src={isMobile ? `https://img.websitedesigningcompany.co.in/public/images/aero-gurgaon/floors_sm.webp` : `https://img.websitedesigningcompany.co.in/public/images/aero-gurgaon/floors.webp`}
             alt={title}
             className={`img-fluid img_in ${isMobile ? " " : "d_lg_block"}`}
           />
         </div>
-        <div
+        {/* <div
           className={`abs_img ${
             isMobile ? "abs_img_m" : "abs_img1"
           } ${class_name}`}
@@ -85,7 +85,7 @@ function LargeElevation({ data }) {
             alt={title}
             className={`img-fluid abs_img_in ${isMobile ? " " : "d_lg_block"}`}
           />
-        </div>
+        </div> */}
       </div>
 
       {/* view end */}
@@ -95,8 +95,8 @@ function LargeElevation({ data }) {
           <div className="about">
             <CustomCard
               className="px-0 pb-0"
-              title={second_title}
-              desc={desc}
+              title={"Villas in the Sky"}
+              desc={"Experience elevated living with unmatched luxury above the clouds."}
               type="style1"
             />
           </div>
@@ -106,4 +106,4 @@ function LargeElevation({ data }) {
   );
 }
 
-export default React.memo(LargeElevation);
+export default React.memo(LargeElevation1);
