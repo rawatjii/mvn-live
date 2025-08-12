@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { gsap } from "gsap";
-import ScrollTrigger from 'gsap/ScrollTrigger';
+import ScrollTrigger from "gsap/ScrollTrigger";
 import ScrollSmoother from "gsap/ScrollSmoother";
 
 import Header from "./Header";
@@ -48,6 +48,18 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      <div class="floating_whatsapp_btn">
+        <a
+          rel="noopener noreferrer"
+          href="https://wa.me/message/6RWQT5CDTMA7C1"
+          target="_blank"
+        >
+          <div class="contact_icon">
+            <img src="https://www.mvn.in/assets/icons/whatsapp.png" alt="whatsapp" />
+          </div>
+        </a>
+        <p class="text_icon">Talk to us?</p>
+      </div>
       <Header />
       <div id="smooth-wrapper">
         <div id="smooth-content">

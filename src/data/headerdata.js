@@ -41,9 +41,9 @@ export const otherProjects = [
 ];
 
 export const otherDetails = {
-  contact: '+91 79960 00196',
-  email: 'info@mvn.in',
-  address: 'GS 301A–GS 301F, Third Floor, DLF Grand Mall, M.G. Road, Gurgaon, Haryana – 122002.',
+  contact: '(+91) 799 6000 196',
+  email: 'info@mvngroup.in',
+  address: 'GS 301A–GS 301F, Third Floor, DLF Grand Mall, M.G. Road, Gurgaon, Haryana – 122002',
 };
 
 export const socialMedia = [

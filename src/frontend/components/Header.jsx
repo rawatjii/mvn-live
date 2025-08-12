@@ -200,7 +200,7 @@ const Header = () => {
                         
                         <div className="inner-logo d-none d-md-block">
                           <p><span>Office:</span> {otherDetails.address}</p>
-                          <p><span>Talk:</span> {otherDetails.contact}</p>
+                          <p><span>Talk:</span> <Link to={`tel:${otherDetails.contact}`}>{otherDetails.contact}</Link> </p>
                         </div>
 
                         <ul className="sub_menu">

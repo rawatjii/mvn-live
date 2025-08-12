@@ -20,7 +20,7 @@ const Walkthrough = React.memo(({ data }) => {
   const channelUrl = CONFIG.YOUTUBE_URL;
 
   useEffect(() => {
-    setVideoSrc("https://www.youtube.com/embed/9CHcJAveejU?loop=1&mute=1&playlist=9CHcJAveejU");
+    setVideoSrc("https://www.youtube.com/embed/qanbwLmZt4s?loop=1&mute=1&playlist=qanbwLmZt4s");
   }, []);
 
   // Lazy-load YouTube iframe when walkthrough enters viewport

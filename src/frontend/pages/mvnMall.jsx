@@ -16,6 +16,7 @@ import SliderTypology from "../components/MicroPage/bangalore/SliderTypology";
 import AthensBanner from "../components/MicroPage/athens/AthensBanner";
 import CustomIframe from "../components/MicroPage/CustomIframe";
 import Strip from "../components/homepage/Strip";
+import Strip11 from "../components/homepage/Strip11";
 const ParallaxSection = React.lazy(() =>
   import("../../common/ParallaxSection")
 );
@@ -132,7 +133,7 @@ const MvnMall1 = ({ data }) => {
           </div>
 
           <div className="mt-5 mt-md-0">
-            <Strip />{" "}
+            <Strip11 />{" "}
           </div>
 
           <div ref={(el) => (sectionRefs.current.microOverview = el)}>

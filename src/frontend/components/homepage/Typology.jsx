@@ -168,7 +168,7 @@ const Typology = React.memo(({ onLoadComplete }) => {
               className="content-box"
               style={{ display: "block" }}
             >
-              <h3>Penthouse</h3>
+              <h3 className="content_title">Penthouse</h3>
               <p>
                 Elevate your lifestyle to new heights with these extraordinary
                 duplex residences, where two levels of unmatched luxury unfold
@@ -184,7 +184,7 @@ const Typology = React.memo(({ onLoadComplete }) => {
               className="content-box"
               style={{ display: "none" }}
             >
-              <h3>360 degree Panoramic Apartment</h3>
+              <h3 className="content_title">360 degree Panoramic Apartment</h3>
               <p>
                 At an impressive 12600 sq.ft., the simplex flats offer a
                 commanding 360-degree panoramic vista, presenting a boundless
@@ -198,7 +198,7 @@ const Typology = React.memo(({ onLoadComplete }) => {
               className="content-box"
               style={{ display: "none" }}
             >
-              <h3>270 degree Panoramic Apartment</h3>
+              <h3 className="content_title">270 degree Panoramic Apartment</h3>
               <p>
                 Spanning an expansive 6300 sq.ft., these exquisite residences
                 offer a captivating 270-degree panoramic view, seamlessly

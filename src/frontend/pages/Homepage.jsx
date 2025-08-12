@@ -26,6 +26,7 @@ const ClubOne = React.lazy(() => import("../components/homepage/ClubOne"));
 const MvnMall = React.lazy(() => import("../components/homepage/MvnMall"));
 import LazyLoadComponent from "../../common/LazyLoadComponent";
 import Strip from "../components/homepage/Strip";
+import Strip11 from "../components/homepage/Strip11";
 
 const Homepage = () => {
   const [isShowModal, setIsShowModal] = useState(false);
@@ -172,16 +173,16 @@ const Homepage = () => {
         <Hero />
         <Overview />
 
-        {/* <LazyLoadComponent>
+        <LazyLoadComponent>
           <ClubOne />
-        </LazyLoadComponent> */}
+        </LazyLoadComponent>
 
         <LazyLoadComponent>
           <MvnMall />
         </LazyLoadComponent>
 
         <LazyLoadComponent>
-          <Strip clickHandler={showCustomModal} />
+          <Strip11 clickHandler={showCustomModal} />
         </LazyLoadComponent>
 
         <LazyLoadComponent>

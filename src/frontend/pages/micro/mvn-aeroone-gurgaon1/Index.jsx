@@ -375,7 +375,7 @@ export const data = {
     "Premium emulsion paint finish.",
   ],
   walkthrough: {
-    src: "https://www.youtube.com/embed/9CHcJAveejU?loop=1&mute=1&playlist=9CHcJAveejU",
+    src: "https://www.youtube.com/embed/qanbwLmZt4s?loop=1&mute=1&playlist=qanbwLmZt4s",
     // title: "Virtual Tour",
     // title: "Walkthrough",
     second_title:'A GLIMPSE INTO A LIFE EXTRAORDINARY',
@@ -612,7 +612,7 @@ export const data = {
           desc:'Make sports a regular part of your life. Participate in sports events and also follow your passion to play your favourite sports, at the exclusive Sports Lounge and Sports Club.'
         },
         {
-          name: `0 km cinema`,
+          name: `0 km from cinema`,
           path:{
             desktop:cinema,
             mobile:cinemaSm,
