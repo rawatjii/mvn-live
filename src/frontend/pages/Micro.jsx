@@ -182,37 +182,37 @@ const appendLinkTag = (rel, href) => {
   return link;
 };
 
-useEffect(() => {
-  window.scrollTo(0, 0);
-  document.title =
-    "Top Web Development Companies Delhi NCR | IT Services | IQSetters";
+// useEffect(() => {
+//   window.scrollTo(0, 0);
+//   document.title =
+//     "Top Web Development Companies Delhi NCR | IT Services | IQSetters";
 
-  const meta1 = appendMetaTagNameContent(
-    "description",
-    "IQ Setters is the most trusted web development company in Delhi, NCR, India. Website development services are the cheapest and most cost effective."
-  );
-  const meta2 = appendMetaTagNameContent(
-    "keywords",
-    "Website development company in noida, Website Designing company noida, Seo, India."
-  );
-  const link1 = appendLinkTag(
-    "icon",
-    "https://www.iqsetters.com/assets/iq-setters-logo.png"
-  );
+//   const meta1 = appendMetaTagNameContent(
+//     "description",
+//     "IQ Setters is the most trusted web development company in Delhi, NCR, India. Website development services are the cheapest and most cost effective."
+//   );
+//   const meta2 = appendMetaTagNameContent(
+//     "keywords",
+//     "Website development company in noida, Website Designing company noida, Seo, India."
+//   );
+//   const link1 = appendLinkTag(
+//     "icon",
+//     "https://www.iqsetters.com/assets/iq-setters-logo.png"
+//   );
 
-  // Cleanup function to remove the elements
-  return () => {
-    if (meta1 && meta1.parentNode) {
-      meta1.parentNode.removeChild(meta1);
-    }
-    if (meta2 && meta2.parentNode) {
-      meta2.parentNode.removeChild(meta2);
-    }
-    if (link1 && link1.parentNode) {
-      link1.parentNode.removeChild(link1);
-    }
-  };
-}, []);
+//   // Cleanup function to remove the elements
+//   return () => {
+//     if (meta1 && meta1.parentNode) {
+//       meta1.parentNode.removeChild(meta1);
+//     }
+//     if (meta2 && meta2.parentNode) {
+//       meta2.parentNode.removeChild(meta2);
+//     }
+//     if (link1 && link1.parentNode) {
+//       link1.parentNode.removeChild(link1);
+//     }
+//   };
+// }, []);
   useEffect(() => {
     const headDataArray = basicData?.head_data?.split("\n");
 
@@ -322,7 +322,7 @@ useEffect(() => {
 
   return (
     <>
-      {/* <Helmet>
+      <Helmet>
         {basicData?.meta_title && <title>{basicData.meta_title}</title>}
         {basicData?.meta_description && (
           <meta name="description" content={basicData.meta_description} />
@@ -334,7 +334,7 @@ useEffect(() => {
           <div dangerouslySetInnerHTML={{ __html: basicData.head_data }} />
         )}
         {basicData?.footer_data && parse(basicData.footer_data)}
-      </Helmet> */}
+      </Helmet>
 
       <MicroHeader
         scrollToSection={scrollToSection}
