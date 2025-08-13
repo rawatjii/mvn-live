@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import generateApi from "../api/generateApi";
 import useCrud from "../hooks/useCrud";
 
+
 const SinglePage = () => {
   const { pageName } = useParams();
   const [editData, setEditData] = useState(null);

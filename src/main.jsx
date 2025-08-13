@@ -8,6 +8,7 @@ import { StaticRouter } from "react-router-dom/server";
 import { renderToString } from 'react-dom/server';
 import { BrowserRouter, MemoryRouter } from "react-router-dom";
 
+import { hydrateRoot } from 'react-dom/client';
 
 // Prerender function for vite-prerender-plugin
 
@@ -122,6 +123,9 @@ import Sizes from "./admin/components/dashboard/microsite/Sizes.jsx";
 import KeyHighlights from "./admin/components/dashboard/microsite/KeyHighlights.jsx";
 import PagesMeta from "./admin/components/PagesMeta.jsx";
 import { setSelectedBlog } from "./redux/blogsSlice.js";
+import { HelmetProvider } from 'react-helmet-async';
+  const helmetContext = {};
+
 export async function prerender(data) {
   let selectedBlog = null;
 
@@ -130,34 +134,44 @@ export async function prerender(data) {
     if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
     const result = await response.json();
     selectedBlog = result?.data?.head_data || null;
-    console.log('Selected Blog HTML:', selectedBlog);
+    console.log('Selected Blog:', JSON.stringify(selectedBlog, null, 2));
   } catch (error) {
     console.error('Failed to fetch selectedBlog data:', error);
   }
 
-  const html = renderToString(
+  // Format head content
+  const headContent = selectedBlog
+    ? {
+        title: selectedBlog.title || 'Default Title',
+        meta: [
+          { name: 'description', content: selectedBlog.description || 'Default description' },
+          { name: 'keywords', content: selectedBlog.keywords || '' },
+          { property: 'og:title', content: selectedBlog.title || 'Default Title' },
+          { property: 'og:description', content: selectedBlog.description || 'Default description' },
+          { property: 'og:image', content: selectedBlog.ogImage || '' },
+        ].filter(meta => meta.content), // Remove meta tags with empty content
+      } 
+    : {
+        title: 'Default Title',
+        meta: [{ name: 'description', content: 'Default description' }],
+      };
+
+  const content = renderToString(
     <>
-      {/* You may need to ensure this ends up in <head> in your layout */}
-      <head dangerouslySetInnerHTML={{ __html: selectedBlog }} />
+    <HelmetProvider context={helmetContext}>
       <Provider store={store}>
         <StaticRouter location={data.url}>
           <App selectedBlog={selectedBlog} />
         </StaticRouter>
       </Provider>
+      </HelmetProvider>
     </>
   );
 
   return {
-    html,
+    head: headContent,
     data: { selectedBlog },
-    head: {
-      lang: 'en',
-      title: 'MVN Athens Gurgaon Phase 2',
-      headContent:selectedBlog,
-      elements: (
-        <div dangerouslySetInnerHTML={{ __html: selectedBlog }} />
-      )
-    },
+    html: content, // Include if required by your framework
   };
 }
 
@@ -425,11 +439,12 @@ const router = createBrowserRouter([
   },
 ]);
   import('react-dom/client').then(({ createRoot }) => {
-    const root = createRoot(document.getElementById('root'));
+    const root = hydrateRoot(document.getElementById('root'));
     root.render(
       <Provider store={store}>
         <>
           <RouterProvider router={router}>
+            
             <App />
           </RouterProvider>
           <ToastContainer position="top-right" autoClose={3000} />

@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import vitePrerenderPlugin from 'vite-prerender-plugin';
-import DemoComponent from './src/DemoComponent';
+
 // Recursively extract all route paths
 // function extractPaths(routeArray, basePath = '') {
 //   return routeArray.flatMap((route) => {
@@ -25,9 +25,11 @@ export default defineConfig({
       staticDir: path.resolve(__dirname, 'dist'),
       renderTarget: '#root',
       prerenderScript: path.resolve(__dirname, 'src/main.jsx'),
-routes: ['/', '/404', '/about-us'],
+// routes: ['/', '/404', '/about-us'],
       additionalPrerenderRoutes: ['/404', '/about-us','/contact-us', '/aeroone-gurgaon'],
-      previewMiddlewareFallback: '/index.html'
+      previewMiddlewareFallback: '/index.html',
+            template: path.resolve(__dirname, '/template.html'), // Specify custom template
+
     })
   ],
   test: {

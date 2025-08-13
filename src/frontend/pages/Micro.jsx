@@ -31,13 +31,15 @@ import MicroFloorPlan from "../components/MicroPage/FloorPlan";
 import Strip from "../components/homepage/Strip11";
 import { setCommonState } from "../../redux/commonSlice";
 import { useDispatch } from "react-redux";
-import { Helmet } from "react-helmet";
 import parse from "html-react-parser";
 import injectScripts from "../components/InjectScripts";
 import Construction from "./Construction";
 import WhatsappBtn from "../components/Whatsapp";
 import ContactInfo from "../components/ContactInfo";
 const headerSidebarDesktopImg = `${API_URL}images/aero-gurgaon/header/sidebar.webp`;
+
+import { HelmetProvider,Helmet } from 'react-helmet-async';
+
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -322,7 +324,7 @@ useEffect(() => {
 
   return (
     <>
-      {/* <Helmet>
+      <Helmet>
         {basicData?.meta_title && <title>{basicData.meta_title}</title>}
         {basicData?.meta_description && (
           <meta name="description" content={basicData.meta_description} />
@@ -334,7 +336,7 @@ useEffect(() => {
           <div dangerouslySetInnerHTML={{ __html: basicData.head_data }} />
         )}
         {basicData?.footer_data && parse(basicData.footer_data)}
-      </Helmet> */}
+      </Helmet>
 
       <MicroHeader
         scrollToSection={scrollToSection}
