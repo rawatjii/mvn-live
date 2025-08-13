@@ -1,7 +1,5 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
-import Header from "../../frontend/components/Header";
-import Button from "../Button/Button";
 import { Link } from "react-router-dom";
 import "./page_not_found.css";
 import { API_URL } from "../../config/config";
@@ -21,7 +19,7 @@ const PageNotFound = () => {
         />
 
         <Container>
-          <div className="content">
+          <div className="content d-block">
             <h2 className="title">404</h2>
             <h3 className="sub_title">Look like you're lost</h3>
             <p className="para">The page you are looking for not avaible!</p>

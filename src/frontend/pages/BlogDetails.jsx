@@ -8,6 +8,7 @@ import Layout from "../components/Layout";
 import { BACKEND_IMAGE_URL, FRONTEND_API_BASE_URL ,FRONTEND_URL} from "../../config/config";
 import RelatedBlogs from "../components/blog/RelatedBlogs";
 import { Helmet } from "react-helmet";
+import PageNotFound from "../../common/PageNotFound/Index";
 
 function BlogDetails() {
   window.scrollTo(0, 0);
@@ -114,6 +115,10 @@ function BlogDetails() {
       }
     };
   }, [selectedBlog]);
+
+  if(!loading && !selectedBlog){
+    return <PageNotFound />
+  }
 
   return (
     <>

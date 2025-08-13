@@ -22,7 +22,7 @@ import Enquire from "../components/homepage/Enquire";
 import EnquireForm from "../components/homepage/EnquireForm";
 import Footer from "../components/Footer";
 import { API_URL } from "../../config/config";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import useFetchData from "../utils/apiHelper";
 import LazyLoadComponent from "../../common/LazyLoadComponent";
 import SliderTypology from "../components/MicroPage/bangalore/SliderTypology";
@@ -37,6 +37,7 @@ import injectScripts from "../components/InjectScripts";
 import Construction from "./Construction";
 import WhatsappBtn from "../components/Whatsapp";
 import ContactInfo from "../components/ContactInfo";
+import PageNotFound from "../../common/PageNotFound/Index";
 const headerSidebarDesktopImg = `${API_URL}images/aero-gurgaon/header/sidebar.webp`;
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -116,6 +117,7 @@ const MicroPage = () => {
   const [metaData, setMetaData] = useState([]);
   const dispatch = useDispatch();
   const { pathname } = useLocation();
+  useNavigate();
 
   const { data: basicData, loading } = useFetchData(`project/${projectName}`);
   const { data: projectSections, loading: sectionsLoading } = useFetchData(
@@ -317,8 +319,11 @@ const MicroPage = () => {
       </div>
     );
   }
+  if(!loading && !basicData){
+    return <PageNotFound />
+  }
   if (!loading && basicData && basicData.length === 0)
-    return <div className="text-center py-5">No records found</div>;
+    return <div className="text-center py-5">No records found!!</div>;
 
   return (
     <>
