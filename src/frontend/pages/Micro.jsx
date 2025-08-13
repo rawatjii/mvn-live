@@ -158,29 +158,29 @@ const MicroPage = () => {
       }
     };
   }, [basicData, dispatch]);
-const appendMetaTagNameContent = (name, content) => {
-  const meta = document.createElement("meta");
-  meta.name = name;
-  meta.content = content;
-  document.head.appendChild(meta);
-  return meta;
-};
+// const appendMetaTagNameContent = (name, content) => {
+//   const meta = document.createElement("meta");
+//   meta.name = name;
+//   meta.content = content;
+//   document.head.appendChild(meta);
+//   return meta;
+// };
 
-const appendMetaTagPropertyContent = (property, content) => {
-  const meta = document.createElement("meta");
-  meta.property = property;
-  meta.content = content;
-  document.head.appendChild(meta);
-  return meta;
-};
+// const appendMetaTagPropertyContent = (property, content) => {
+//   const meta = document.createElement("meta");
+//   meta.property = property;
+//   meta.content = content;
+//   document.head.appendChild(meta);
+//   return meta;
+// };
 
-const appendLinkTag = (rel, href) => {
-  const link = document.createElement("link");
-  link.rel = rel;
-  link.href = href;
-  document.head.appendChild(link);
-  return link;
-};
+// const appendLinkTag = (rel, href) => {
+//   const link = document.createElement("link");
+//   link.rel = rel;
+//   link.href = href;
+//   document.head.appendChild(link);
+//   return link;
+// };
 
 // useEffect(() => {
 //   window.scrollTo(0, 0);
