@@ -1,21 +1,21 @@
 import React, { useEffect, useRef, useState } from "react";
-import CustomDropdown from 'common/Custom_Dropdown/CustomDropdown';
-import SidebarPortal from "common/Portal/Sidebar";
-import BackdropPortal from 'common/Portal/Backdrop'
+// import CustomDropdown from 'common/Custom_Dropdown/CustomDropdown';
+// import SidebarPortal from "common/Portal/Sidebar";
+// import BackdropPortal from 'common/Portal/Backdrop'
 // import SideModal from "admin/components/Modal/SideModal/Index";
 import Form from 'react-bootstrap/Form';
-import Loader from "common/Loader/loader";
+// import Loader from "common/Loader/loader";
 import {  toast } from 'react-toastify';
-import Pagination from 'common/Pagination/Pagination';
+// import Pagination from 'common/Pagination/Pagination';
 import {useNavigate } from 'react-router-dom';
 // import Request from 'root/config/Request';
 import ReactQuill from 'react-quill';
-import Button from 'common/Button/Button'
+// import Button from 'common/Button/Button'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useAsyncError } from "react-router-dom";
  
-import * as CONFIG from 'root/config/config';
+import * as CONFIG from '../config/config';
 
 const statusOptions = [ 
     { label: 'Active', value: '1' },

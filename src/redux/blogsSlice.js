@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const selectedBlog = typeof window !== 'undefined' ? localStorage.getItem('selectedBlog') ?? null : null;
 const blogsSlice = createSlice({
     name: 'blogsSlice',
     initialState:{
-        selectedBlog: localStorage.getItem('selectedBlog') ?? null,
+        selectedBlog: selectedBlog,
     },
     reducers:{
         setSelectedBlog: (state,action) => {

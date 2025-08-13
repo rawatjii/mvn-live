@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 
-import './image.css'
+// import './image.css'
 
 const AnImage = forwardRef(({className, height, children}, ref)=>{
   return(

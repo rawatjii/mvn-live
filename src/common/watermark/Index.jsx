@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import * as CONFIG from '../../config/config';
 import { useLocation } from 'react-router-dom';
-import './watermark.css';
+// import './watermark.css';
 
 const mvnMallLogo = `${CONFIG.API_URL}images/mvn-mall/mvn-mall-logo.webp`;
 const athensFaridabadLogo = `${CONFIG.API_URL}images/athens-faridabad/athens-logo.png`;

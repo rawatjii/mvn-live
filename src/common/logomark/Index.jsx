@@ -1,7 +1,7 @@
 import React from "react";
 import * as CONFIG from '../../config/config'
 
-import './logomark.css'
+// import './logomark.css'
 
 const Logomark = React.memo(({className})=>{
   return(

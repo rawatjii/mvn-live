@@ -1,5 +1,5 @@
 import React from "react";
-import './skeleton.css'
+// import './skeleton.css'
 
 const Skeleton = ({height})=>{
   return(

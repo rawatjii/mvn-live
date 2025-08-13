@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar/Sidebar";
 import Header from "./Header/Header";
 
 // css
-import "./styles.css";
+// import "./styles.css";
 
 const AdminLayout = (props) => {
   const location = useLocation();

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as CONFIG from '../../../../config/config';
 import BarLoader from "react-spinners/BarLoader";
 
-import './peacock_loader.css';
+// import './peacock_loader.css';
 import { useMatches } from "../../../../theme/theme";
 
 const PartyLoader = ()=>{

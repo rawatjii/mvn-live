@@ -1,5 +1,5 @@
 import React from "react";
-import "./initialLoading.css";
+// import "./initialLoading.css";
 
 const InitialLoading = ({loadingImg}) => {
     return (

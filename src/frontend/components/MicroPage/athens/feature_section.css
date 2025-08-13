@@ -3,7 +3,7 @@
 h1, h2, h3, h4, h5, h6, p, ul{margin: 0;padding: 0;letter-spacing: 0.5px;}
 .feature{padding-top: 75px;position: relative;}
 .feature:before{position: absolute;content: '';height: 100%;width: 100%;opacity:20%;
-background: url(/public//assets//athens-gurgaon-phase-2/bg/bg-b3.jpg) no-repeat right center;left: 0px;bottom:0px;right: 0;z-index: -1;
+background: url(/assets//athens-gurgaon-phase-2/bg/bg-b3.jpg) no-repeat right center;left: 0px;bottom:0px;right: 0;z-index: -1;
 background-size: 100%;transition: 0.5s;}
 .feature img.elevation{max-height: 585px;height: 100%;}
 .feature .elevation-content{width: 100%;right: 0;position: absolute;bottom: 0;background-color: #131313;z-index: -1;padding-left: 48%;padding-right: 8%;}

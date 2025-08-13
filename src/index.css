@@ -45,23 +45,23 @@
 @font-face {
   font-family: "Futura";
   font-display: swap;
-  src: url("../public/assets/fonts/Futura/Futura.woff2") format("woff2"),
-    url("../public/assets/fonts/Futura/Futura.otf") format("opentype");
+  src: url("/assets/fonts/Futura/Futura.woff2") format("woff2"),
+    url("/assets/fonts/Futura/Futura.otf") format("opentype");
 
 }
 
 @font-face {
   font-family: "Futura_Bt_book";
   font-display: swap;
-  src: url("../public/assets/fonts/Futura/Futura_BT_Book.woff2") format("woff2"),
-    url("../public/assets/fonts/Futura/Futura_BT_Book.ttf") format("truetype");
+  src: url("/assets/fonts/Futura/Futura_BT_Book.woff2") format("woff2"),
+    url("/assets/fonts/Futura/Futura_BT_Book.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Futura_Bt_medium";
   font-display: swap;
-  src: url("../public/assets/fonts/Futura/Futura_BT_Medium.woff2") format("woff2"),
-    url("../public/assets/fonts/Futura/Futura_BT_Medium.ttf") format("truetype");
+  src: url("/assets/fonts/Futura/Futura_BT_Medium.woff2") format("woff2"),
+    url("/assets/fonts/Futura/Futura_BT_Medium.ttf") format("truetype");
 }
 
 /* tinos font */

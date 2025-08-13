@@ -1,9 +1,16 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/store.js";
+import { StaticRouter } from "react-router-dom/server";
+import { renderToString } from 'react-dom/server';
+import { BrowserRouter, MemoryRouter } from "react-router-dom";
+
+
+// Prerender function for vite-prerender-plugin
+
 // import Layout from "./frontend/components/Layout.jsx";
 
 // import InitialLoading from "./frontend/skeleton/Initial/Index.jsx";
@@ -114,6 +121,52 @@ import Team from "./admin/components/aboutus/Team.jsx";
 import Sizes from "./admin/components/dashboard/microsite/Sizes.jsx";
 import KeyHighlights from "./admin/components/dashboard/microsite/KeyHighlights.jsx";
 import PagesMeta from "./admin/components/PagesMeta.jsx";
+import { setSelectedBlog } from "./redux/blogsSlice.js";
+export async function prerender(data) {
+  let selectedBlog = null;
+
+  try {
+    const response = await fetch('https://mvnbackend.gtftechnologies.com/api/project/mvn-athens-gurgaon-phase-2');
+    if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
+    const result = await response.json();
+    selectedBlog = result?.data?.head_data || null;
+    console.log('Selected Blog HTML:', selectedBlog);
+  } catch (error) {
+    console.error('Failed to fetch selectedBlog data:', error);
+  }
+
+  const html = renderToString(
+    <>
+      {/* You may need to ensure this ends up in <head> in your layout */}
+      <head dangerouslySetInnerHTML={{ __html: selectedBlog }} />
+      <Provider store={store}>
+        <StaticRouter location={data.url}>
+          <App selectedBlog={selectedBlog} />
+        </StaticRouter>
+      </Provider>
+    </>
+  );
+
+  return {
+    html,
+    data: { selectedBlog },
+    head: {
+      lang: 'en',
+      title: 'MVN Athens Gurgaon Phase 2',
+      headContent:selectedBlog,
+      elements: (
+        <div dangerouslySetInnerHTML={{ __html: selectedBlog }} />
+      )
+    },
+  };
+}
+
+if (typeof window !== 'undefined') {
+
+  
+
+// Client-side rendering
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -371,14 +424,17 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-
-createRoot(document.getElementById("root")).render(
-  <Provider store={store}>
-    <>
-      <RouterProvider router={router}>
-        <App />
-      </RouterProvider>
-      <ToastContainer position="top-right" autoClose={3000} />
-    </>
-  </Provider>
-);
+  import('react-dom/client').then(({ createRoot }) => {
+    const root = createRoot(document.getElementById('root'));
+    root.render(
+      <Provider store={store}>
+        <>
+          <RouterProvider router={router}>
+            <App />
+          </RouterProvider>
+          <ToastContainer position="top-right" autoClose={3000} />
+        </>
+      </Provider>
+    );
+  });
+}

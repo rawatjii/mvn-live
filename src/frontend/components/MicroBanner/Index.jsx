@@ -4,7 +4,7 @@ import LazyLoad from "react-lazyload";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-import './microBanner.css';
+// import './microBanner.css';
 import useFetchData from "../../utils/apiHelper";
 import { BACKEND_IMAGE_URL } from "../../../config/config";
 

@@ -1,4 +1,3 @@
-import { ASSET_IMG_URL } from "root/config/config";
 import { API_URL } from "../config/config";
 
 export const blogData = [

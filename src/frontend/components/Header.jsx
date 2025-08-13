@@ -3,7 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import * as CONFIG from "root/config/config";
+import * as CONFIG from "../../config/config";
 import { useEffect, useRef, useState } from "react";
 
 import "./Header.css";
