@@ -143,6 +143,7 @@ const MicroPage = () => {
   };
 
   useEffect(() => {
+    
     dispatch(setCommonState({ id: basicData?.id, isMicro: true }));
 
     smootherRef.current = ScrollSmoother.create({
@@ -319,12 +320,12 @@ const MicroPage = () => {
       </div>
     );
   }
-  if(!loading && !basicData){
-    return <PageNotFound />
-  }
   if (!loading && basicData && basicData.length === 0)
     return <div className="text-center py-5">No records found!!</div>;
 
+  if(!loading && !basicData){
+    return <PageNotFound />
+  }
   return (
     <>
       <Helmet>
