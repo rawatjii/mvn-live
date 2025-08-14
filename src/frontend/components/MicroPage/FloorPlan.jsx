@@ -158,7 +158,7 @@ const MicroFloorPlan = React.memo(({ data }) => {
                         position: "relative",
                       }}
                     >
-                      <img src={item.image} alt="mvn floor plan image" loading="lazy" />
+                      <img src={BACKEND_IMAGE_URL + item.image} alt="mvn floor plan image" loading="lazy" />
                       <div
                         style={{
                           position: "absolute",
