@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import MicroBanner from "../components/MicroBanner/Index";
 import { Container } from "react-bootstrap";
-import { Link, useLocation } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 import Layout from "../components/Layout";
@@ -21,6 +21,7 @@ function BlogDetails() {
   // );
   const { slug } = useParams();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const queryParams = new URLSearchParams(location.search);
 
@@ -56,6 +57,9 @@ function BlogDetails() {
   };
 
   useEffect(() => {
+    if(location.pathname.includes('mvn-aero-one-gurgaon-residences')){
+      return navigate('/blogs/mvn-aero-one-gurgaon')
+    }
     fetchData();
   }, [location,slug]);
 
