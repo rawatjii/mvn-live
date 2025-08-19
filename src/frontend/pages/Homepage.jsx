@@ -27,6 +27,8 @@ const MvnMall = React.lazy(() => import("../components/homepage/MvnMall"));
 import LazyLoadComponent from "../../common/LazyLoadComponent";
 import Strip from "../components/homepage/Strip";
 
+import WhatsappBtn from "../components/Whatsapp";
+
 const Homepage = () => {
   const [isShowModal, setIsShowModal] = useState(false);
   const [isOffer, setIsOffer] = useState(false);
@@ -167,6 +169,8 @@ const Homepage = () => {
               `}
         </script>
       </Helmet>
+
+      <WhatsappBtn />
 
       <Layout>
         <Hero />

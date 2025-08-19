@@ -11,42 +11,16 @@ const bgImgDesk1 = `${CONFIG.API_URL}images/aero-gurgaon/largeBg1.png`
 const bgImgDesk1_sm = `${CONFIG.API_URL}images/aero-gurgaon/largeBg1Sm.webp`
 
 
-function LargeElevation({ data, theme2 }) {
+function LargeElevation1({ data, theme2 }) {
 
-    const sectionRef = React.useRef(null);
-    const desktopRef = React.useRef();
     const {title, class_name, path,second_title,desc} = data;
 
     const { isMobile } = useMatches(); 
 
-    useEffect(() => {
-        gsap.from(".abs_img_m", {
-            y: -200,
-            scrollTrigger: {
-                trigger: ".large-elevation",
-                start: "top 80%",
-                end: "top 20%",
-                scrub: 0.2,
-            },
-        });
-        gsap.to(".abs_img1", {
-            y: -200,
-            scrollTrigger: {
-                trigger: desktopRef.current,
-                start: "top bottom",
-                end: "top top",
-                scrub: true,
-                markers:false
-            },
-        });
-
-         // Ensure triggers refresh
-            ScrollTrigger.addEventListener("refresh", () => console.log("Triggers refreshed"));
-            ScrollTrigger.refresh();
-    }, []);
+    
         
     return (
-        <div className='large-elevation mt-5' ref={sectionRef} id='largeElevationSection'>
+        <div className='large-elevation'  id='largeElevationSection'>
             {theme2 && title &&
             <Container>
             <div className='container_elevation'>
@@ -62,7 +36,7 @@ function LargeElevation({ data, theme2 }) {
 
             {/* view start */}
 
-            <div className={`bottom_img_div ${isMobile ? "d_sm_block" : "d_lg_block"}`}  ref={!isMobile ? desktopRef : null}>
+            <div className={`bottom_img_div ${isMobile ? "d_sm_block" : "d_lg_block"}`}>
                 <div className={`full_img ${!theme2 ? 'position-relative' : ''}`}>
                     {theme2 ? <img src={isMobile ? bgImgDesk1_sm : bgImgDesk1} alt={title} className={`img-fluid img_in ${isMobile ? " " : "d_lg_block"}`} /> : <img src={isMobile ? path.mobile.bgImg : path.desktop.bgImg} alt={title} className={`img-fluid img_in ${isMobile ? " " : "d_lg_block"}`} />}
                 </div>
@@ -89,4 +63,4 @@ function LargeElevation({ data, theme2 }) {
     )
 }
 
-export default React.memo(LargeElevation)
+export default React.memo(LargeElevation1)

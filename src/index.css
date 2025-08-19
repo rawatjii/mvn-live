@@ -4428,6 +4428,60 @@ video:focus {
   display:none;
 }
 
+.floating_whatsapp_btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.floating_whatsapp_btn .contact_icon {
+  background-color: #42db87;
+  color: #fff;
+  width: 60px;
+  height: 60px;
+  font-size: 30px;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translatey(0);
+  animation: pulse 1.5s infinite;
+  box-shadow: 0 0 #42db87;
+  -webkit-animation: pulsing 1.25s infinite cubic-bezier(.66,0,0,1);
+  -moz-animation: pulsing 1.25s infinite cubic-bezier(.66,0,0,1);
+  -ms-animation: pulsing 1.25s infinite cubic-bezier(.66,0,0,1);
+  animation: pulsing 1.25s infinite cubic-bezier(.66,0,0,1);
+  font-weight: 400;
+  font-family: sans-serif;
+  text-decoration: none !important;
+  transition: all .3s ease-in-out;
+}
+
+.floating_whatsapp_btn img {
+  filter: invert(1);
+  width: 30px;
+}
+
+@keyframes pulsing {
+  100% {
+    box-shadow: 0 0 0 30px #e84c3d00;
+  }
+}
+
+.floating_whatsapp_btn .text_icon {
+  margin-top: 8px;
+  color: #fff;
+  font-size: 13px;
+}
 
 /* start responsive */
 /* by bhupendra */

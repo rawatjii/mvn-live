@@ -25,6 +25,9 @@ const MicroOverview = React.lazy(() =>
 const LargeElevationSection = React.lazy(() =>
   import("../components/MicroPage/LargeElevationSection")
 );
+const LargeElevationSection1 = React.lazy(() =>
+  import("../components/MicroPage/LargeElevationSection1")
+);
 const Walkthrough = React.lazy(() =>
   import("../components/MicroPage/Walkthrough")
 );
@@ -310,6 +313,19 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
         isFixed={isHeaderFixed}
       />
 
+<div class="floating_whatsapp_btn">
+        <a
+          rel="noopener noreferrer"
+          href="https://wa.me/message/6RWQT5CDTMA7C1"
+          target="_blank"
+        >
+          <div class="contact_icon">
+            <img src="https://www.mvn.in/assets/icons/whatsapp.png" alt="whatsapp" />
+          </div>
+        </a>
+        <p class="text_icon">Talk to us?</p>
+      </div>
+
       <div id="smooth-wrapper">
         <div id="smooth-content">
           {/* <div ref={bannerRef}>
@@ -327,7 +343,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
           </div>
 
           <MicroOverview data={data.overview} />
-          <LargeElevationSection data={data.LargeElevationSection} />
+          <LargeElevationSection1 data={data.LargeElevationSection} />
           <LargeElevationSection data={data.LargeElevationSection} theme2={true} />
 
           <div ref={(el) => (sectionRefs.current.Walkthrough = el)}>
