@@ -2,6 +2,7 @@ import React from "react";
 import * as CONFIG from '../../../../config/config';
 const bgImgMB = `${CONFIG.API_URL}images/aero-gurgaon/floors_sm.webp`
 const bgImgDesk = `${CONFIG.API_URL}images/aero-gurgaon/floors.webp`
+
 const absDesk = `${CONFIG.API_URL}images/aero-gurgaon/building.webp`
 const building_sm = `${CONFIG.API_URL}images/aero-gurgaon/building_sm.webp`;
 const headerSidebarDesktopImg = `${CONFIG.API_URL}images/aero-gurgaon/header/sidebar.webp`;
@@ -375,7 +376,7 @@ export const data = {
     "Premium emulsion paint finish.",
   ],
   walkthrough: {
-    src: "https://www.youtube.com/embed/9CHcJAveejU?loop=1&mute=1&playlist=9CHcJAveejU",
+    src: "https://www.youtube.com/embed/qanbwLmZt4s?loop=1&mute=1&playlist=qanbwLmZt4s",
     // title: "Virtual Tour",
     // title: "Walkthrough",
     second_title:'A GLIMPSE INTO A LIFE EXTRAORDINARY',

@@ -6,9 +6,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CustomCard from '../Card'
 import { useMatches } from '../../../theme/theme'
 gsap.registerPlugin(ScrollTrigger);
+import * as CONFIG from '../../../config/config'
+const bgImgDesk1 = `${CONFIG.API_URL}images/aero-gurgaon/largeBg1.png`
 
 
-function LargeElevation({ data }) {
+function LargeElevation({ data, theme2 }) {
 
     const sectionRef = React.useRef(null);
     const desktopRef = React.useRef();
@@ -43,8 +45,8 @@ function LargeElevation({ data }) {
     }, []);
         
     return (
-        <div className='large-elevation' ref={sectionRef} id='largeElevationSection'>
-            {title &&
+        <div className='large-elevation mt-5' ref={sectionRef} id='largeElevationSection'>
+            {theme2 && title &&
             <Container>
             <div className='container_elevation'>
                 <div className='top_div'>
@@ -60,12 +62,15 @@ function LargeElevation({ data }) {
             {/* view start */}
 
             <div className={`bottom_img_div ${isMobile ? "d_sm_block" : "d_lg_block"}`}  ref={!isMobile ? desktopRef : null}>
-                <div className='full_img position-relative'>
-                    <img src={isMobile ? path.mobile.bgImg : path.desktop.bgImg} alt={title} className={`img-fluid img_in ${isMobile ? " " : "d_lg_block"}`} />
+                <div className={`full_img ${!theme2 ? 'position-relative' : ''}`}>
+                    {theme2 ? <img src={isMobile ? path.mobile.bgImg : bgImgDesk1} alt={title} className={`img-fluid img_in ${isMobile ? " " : "d_lg_block"}`} /> : <img src={isMobile ? path.mobile.bgImg : path.desktop.bgImg} alt={title} className={`img-fluid img_in ${isMobile ? " " : "d_lg_block"}`} />}
                 </div>
-                {/* <div className={`abs_img ${isMobile ? "abs_img_m" : "abs_img1"} ${class_name}`}>
-                    <img src={isMobile ? path.mobile.frontImg : path.desktop.frontImg} alt={title} className={`img-fluid abs_img_in ${isMobile ? " " : "d_lg_block"}`} />
-                </div> */}
+                {theme2 && (
+                    <div className={`abs_img ${isMobile ? "abs_img_m" : "abs_img1"} ${class_name}`}>
+                        <img src={isMobile ? path.mobile.frontImg : path.desktop.frontImg} alt={title} className={`img-fluid abs_img_in ${isMobile ? " " : "d_lg_block"}`} />
+                    </div>
+                )}
+                
             </div>
 
              {/* view end */}
@@ -75,7 +80,7 @@ function LargeElevation({ data }) {
             <div className='content_section'>
                 <Container>
                     <div className="about">
-                        <CustomCard className="px-0 pb-0" title={second_title} desc={desc} type="style1"  />
+                        <CustomCard className="px-0 pb-0" title={"Villas in the Sky"} desc={"Experience elevated living with unmatched luxury above the clouds."} type="style1"  />
                     </div>
                 </Container>
             </div>

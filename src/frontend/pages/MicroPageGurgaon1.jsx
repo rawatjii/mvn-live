@@ -327,14 +327,13 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
           </div>
 
           <MicroOverview data={data.overview} />
+          <LargeElevationSection data={data.LargeElevationSection} />
+          <LargeElevationSection data={data.LargeElevationSection} theme2={true} />
 
-          {/* <LazyLoadComponent margin="200px" debugName="Walkthrough" smootherRef={smootherRef}>
-            <div ref={(el) => (sectionRefs.current.Walkthrough = el)}>
+          <div ref={(el) => (sectionRefs.current.Walkthrough = el)}>
               <Walkthrough data={data.walkthrough} />
             </div>
-          </LazyLoadComponent> */}
 
-          <LazyLoadComponent margin="200px" debugName="DownloadBrochure" smootherRef={smootherRef}>
             <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
               <DownloadBrochure
                 is360Available={false}
@@ -342,8 +341,6 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
                 showAwards={true}
               />
             </div>
-          </LazyLoadComponent>
-          <LargeElevationSection data={data.LargeElevationSection} />
 
           <LazyLoadComponent margin="200px" debugName="View360" smootherRef={smootherRef}>
             {is360Show ? (
