@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import { Link, useLocation } from "react-router-dom";
 import "./page_not_found.css";
@@ -10,9 +10,13 @@ const PageNotFound = () => {
 
   const {pathname} = useLocation();
 
-  if(pathname.includes('mvn-aero-one-gurgaon-residences')){
-    return navigate('/blogs/mvn-aero-one-gurgaon')
-  }
+  
+
+  useEffect(()=>{
+    if(pathname.includes('mvn-aero-one-gurgaon-residences')){
+      return navigate('/blogs/mvn-aero-one-gurgaon')
+    }
+  }, [pathname])
 
   return (
     <>
