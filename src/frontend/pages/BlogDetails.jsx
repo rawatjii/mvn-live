@@ -57,9 +57,7 @@ function BlogDetails() {
   };
 
   useEffect(() => {
-    if(location.pathname.includes('mvn-aero-one-gurgaon-residences')){
-      return navigate('/blogs/mvn-aero-one-gurgaon')
-    }
+    
     fetchData();
   }, [location,slug]);
 
@@ -119,6 +117,10 @@ function BlogDetails() {
       }
     };
   }, [selectedBlog]);
+
+  if(location.pathname.includes('mvn-aero-one-gurgaon-residences')){
+    return navigate('/blogs/mvn-aero-one-gurgaon')
+  }
 
   if(!loading && !selectedBlog){
     return <PageNotFound />
