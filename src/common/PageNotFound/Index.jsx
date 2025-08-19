@@ -1,12 +1,19 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./page_not_found.css";
 import { API_URL } from "../../config/config";
 
 const notFoundGif = `${API_URL}images/page_not_found/404.gif`;
 
 const PageNotFound = () => {
+
+  const {pathname} = useLocation();
+
+  if(pathname.includes('mvn-aero-one-gurgaon-residences')){
+    return navigate('/blogs/mvn-aero-one-gurgaon')
+  }
+
   return (
     <>
       <div className="page_not_found micro_page">
