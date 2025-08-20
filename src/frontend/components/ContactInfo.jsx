@@ -2,10 +2,11 @@ import React from 'react'
 
 const ContactInfo = () => {
   return (
-    <section className='Contact-info'>
+    <section className='Contact-info contact-us-section '>
         <div className="container">
             <div className='contact-info-title'>
-            <h2>Step into luxury — Digitally or in person. Connect now</h2>
+            <h2>Begin your Project Exploration with us, your journey begins here. </h2>
+            <p className='detail_title mt-4'>Call our Ultra Luxury Sales Specialist</p>
             </div>
 
     <div className='row gy-3 d-flex justify-content-center'>

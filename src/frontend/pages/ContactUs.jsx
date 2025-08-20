@@ -106,6 +106,8 @@ const ContactUs = () => {
           <div className="micro_data">
               <Suspense fallback="loading">
                 <ContactPage page="contact-us" />
+                {/* info card */}
+                <ContactInfo/>
                   <div className="flex-footer-form">
                   <Enquire />
                   <EnquireForm projectName={'MVN Infrastructure'}/>

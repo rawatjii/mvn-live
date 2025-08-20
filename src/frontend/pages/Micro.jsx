@@ -415,6 +415,12 @@ const MicroPage = () => {
                     </LazyLoadComponent>
                   )}
 
+                  {secIndex === 5 &&
+                  ((pathname.includes("aeroone-gurgaon")) && <ContactInfo/>)}
+
+
+
+
                 {section.section_type === "threesixtyview" && (
                   <LazyLoadComponent margin="200px" debugName="threesixtyview">
                     <div
@@ -652,7 +658,7 @@ const MicroPage = () => {
                 </div>
               </LazyLoadComponent>
               
-              {/* {(pathname.includes("aeroone-gurgaon")) && <ContactInfo/>} */}
+              
 
 
               <LazyLoadComponent margin="200px">
