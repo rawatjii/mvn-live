@@ -18,6 +18,7 @@ import NoPolutionZone from "../components/MicroPage/NoPolutionZone";
 import View360 from "../components/MicroPage/360";
 import LivingRoomVideoGurugram from "../components/MicroPage/LivingRoomVideoGurugram";
 import LazyLoadComponent from "../../common/LazyLoadComponent";
+import ContactInfo from "../components/ContactInfo";
 
 const MicroOverview = React.lazy(() =>
   import("../components/MicroPage/Overview")
@@ -357,6 +358,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
                 showAwards={true}
               />
             </div>
+            <ContactInfo white={true} />
 
           <LazyLoadComponent margin="200px" debugName="View360" smootherRef={smootherRef}>
             {is360Show ? (
