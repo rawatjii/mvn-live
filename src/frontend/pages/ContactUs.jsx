@@ -6,6 +6,7 @@ import EnquireForm from '../components/homepage/EnquireForm';
 import Layout from "../components/Layout";
 import { API_URL } from "../../config/config";
 import { Helmet } from "react-helmet";
+import ContactInfo from "../components/ContactInfo";
 
 const MobilebannerBg = `${API_URL}images/contact/head-banner_bg.webp`;
 const DesktopbannerBg = `${API_URL}images/contact/head-banner_bg-2.webp`;
@@ -62,6 +63,7 @@ const ContactUs = () => {
           <div className="micro_data">
               <Suspense fallback="loading">
                 <ContactPage />
+                <ContactInfo/>
                   <div className="flex-footer-form">
                   <Enquire />
                   <EnquireForm projectName={'MVN Infrastructure'}/>

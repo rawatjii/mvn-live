@@ -6340,3 +6340,90 @@ div input:focus{
 }
 
 /* new css for input */
+
+
+
+
+/* microsite contact info section style start */
+.Contact-info{
+  padding: 40px 0;
+}
+.contact-info-title{
+    display: block;
+    width: fit-content;
+    margin: 20px auto 60px;
+    /* color: #e6d49c; */
+    position: relative;
+    color: #e6d49c;
+}
+.contact-info-title h2{
+  position: relative;
+  z-index: 2;
+      text-transform: uppercase;
+    font-size: 24px;
+    letter-spacing: 1.8px;
+    text-align: center;
+    line-height: 36px
+}
+.contact-info-title::before{
+  content: '';
+  position: absolute;
+  left: -30px;
+  top: -18px;
+  height: 70px;
+  width: 70px;
+  background-color: #d6bf5a59;
+  border-radius: 50%;
+  z-index: 0;
+}
+.Contact-info .card{
+border: 1px solid #e6d49c;
+padding: 40px;
+text-align: start;
+background-color: #000;
+}
+
+.Contact-info .card div{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 20px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.Contact-info .card div img{
+  width: 20px;
+  filter: invert();
+}
+.Contact-info .card div a{
+  color: #fff;
+}
+.Contact-info .card div a:hover{
+  color: #e6d49c;
+  text-decoration: underline;
+}
+.Contact-info .card div span{
+  color: #fff;
+}
+.Contact-info .card div span.name{
+  color: #e6d49c;
+}
+.Contact-info .contact-info-title .title{
+color: #fff;
+text-align: center;
+text-transform: uppercase;
+    font-size: 18px;
+    display: inline-block;
+    letter-spacing: 1.8px;
+    margin-bottom: 10px;
+    text-align: center;
+    line-height: 26px;
+    width: 100%;
+    font-family: var(--tinos_font);
+}
+@media screen and (max-width: 768px) {
+  .contact-info-title::before{
+    display: none;
+  }
+}
+/* microsite contact info section style end */
