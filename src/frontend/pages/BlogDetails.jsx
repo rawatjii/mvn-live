@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useCallback } from "react";
 import MicroBanner from "../components/MicroBanner/Index";
 import { Container } from "react-bootstrap";
-import { Link, useLocation } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 import Layout from "../components/Layout";
 import { BACKEND_IMAGE_URL, FRONTEND_API_BASE_URL ,FRONTEND_URL} from "../../config/config";
 import RelatedBlogs from "../components/blog/RelatedBlogs";
 import { Helmet } from "react-helmet";
+import PageNotFound from "../../common/PageNotFound/Index";
 
 function BlogDetails() {
   window.scrollTo(0, 0);
@@ -20,6 +21,7 @@ function BlogDetails() {
   // );
   const { slug } = useParams();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const queryParams = new URLSearchParams(location.search);
 
@@ -55,6 +57,7 @@ function BlogDetails() {
   };
 
   useEffect(() => {
+    
     fetchData();
   }, [location,slug]);
 
@@ -96,6 +99,33 @@ function BlogDetails() {
       }
   }, [pageMetaData])
 
+  useEffect(() => {
+    var headDataContainer;
+    if (selectedBlog?.head_data) {
+      headDataContainer = document.createElement("div");
+      headDataContainer.innerHTML = selectedBlog.head_data;
+      Array.from(headDataContainer.children).forEach((child) => {
+        document.head.appendChild(child);
+      });
+    }
+
+    return () => {
+      if (headDataContainer) {
+        Array.from(headDataContainer.children).forEach((child) => {
+          document.head.removeChild(child);
+        });
+      }
+    };
+  }, [selectedBlog]);
+
+  if(location.pathname.includes('mvn-aero-one-gurgaon-residences')){
+    return navigate('/blogs/mvn-aero-one-gurgaon')
+  }
+
+  if(!loading && !selectedBlog){
+    return <PageNotFound />
+  }
+
   return (
     <>
       <Helmet>
@@ -109,38 +139,10 @@ function BlogDetails() {
           <meta name="keywords" content={selectedBlog.meta_keywords} />
         )}
         <link rel="canonical" href={location && `https://www.mvn.in${location.pathname}`}/>
+        {selectedBlog && selectedBlog.head_data && (
+          <div dangerouslySetInnerHTML={{ __html: selectedBlog.head_data }} />
+        )}
 
-        {location.pathname.includes('mvn-aero-one-gurgaon-residences') && (
-          <script type="application/ld+json">
-            {`
-              {
-                "@context": "https://schema.org",
-                "@type": "BlogPosting",
-                "mainEntityOfPage": {
-                  "@type": "WebPage",
-                  "@id": "https://www.mvn.in/blogs/mvn-aero-one-gurgaon-residences"
-                },
-                "headline": "MVN Aero One in Gurgaon: The Ultimate Residential Choice for 2025",
-                "description": "Discover why MVN Aero One in Gurgaon is the ultimate residential choice for 2025. Explore luxury living with spacious layouts, premium amenities, and prime connectivity in Gurgaon’s fastest-growing neighborhood.",
-                "image": "https://mvnbackend.gtftechnologies.com/uploads/blog/1750248386782.webp",  
-                "author": {
-                  "@type": "",
-                  "name": "MVN Aero One"
-                },  
-                "publisher": {
-                  "@type": "Organization",
-                  "name": "",
-                  "logo": {
-                    "@type": "ImageObject",
-                    "url": ""
-                  }
-                },
-                "datePublished": "2025-07-06"
-              }
-            `}
-            </script>
-          )}
-        
       </Helmet>
       <Layout>
         <div className="blog_page">

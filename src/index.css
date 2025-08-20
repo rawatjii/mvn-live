@@ -5953,6 +5953,12 @@ table.bg_transparent{
   height:auto;
 }
 
+
+.strip_section .swiper-button-prev::after,
+.strip_section .swiper-button-next::after{
+  font-size: 20px;
+}
+
 }
 
 /* end of 767 */

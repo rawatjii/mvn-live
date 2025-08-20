@@ -3,7 +3,7 @@ import { FRONTEND_API_BASE_URL } from "../../config/config";
 
 const useFetchData = (endpoint) => {
   const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const fetchData = useCallback(async () => {

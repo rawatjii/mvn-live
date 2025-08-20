@@ -22,13 +22,13 @@ import Enquire from "../components/homepage/Enquire";
 import EnquireForm from "../components/homepage/EnquireForm";
 import Footer from "../components/Footer";
 import { API_URL } from "../../config/config";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import useFetchData from "../utils/apiHelper";
 import LazyLoadComponent from "../../common/LazyLoadComponent";
 import SliderTypology from "../components/MicroPage/bangalore/SliderTypology";
 import FeatureSection from "../components/MicroPage/athens/FeatureSection";
 import MicroFloorPlan from "../components/MicroPage/FloorPlan";
-import Strip from "../components/homepage/Strip";
+import Strip from "../components/homepage/Strip11";
 import { setCommonState } from "../../redux/commonSlice";
 import { useDispatch } from "react-redux";
 import { Helmet } from "react-helmet";
@@ -37,6 +37,7 @@ import injectScripts from "../components/InjectScripts";
 import Construction from "./Construction";
 import WhatsappBtn from "../components/Whatsapp";
 import ContactInfo from "../components/ContactInfo";
+import PageNotFound from "../../common/PageNotFound/Index";
 const headerSidebarDesktopImg = `${API_URL}images/aero-gurgaon/header/sidebar.webp`;
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -116,6 +117,7 @@ const MicroPage = () => {
   const [metaData, setMetaData] = useState([]);
   const dispatch = useDispatch();
   const { pathname } = useLocation();
+  useNavigate();
 
   const { data: basicData, loading } = useFetchData(`project/${projectName}`);
   const { data: projectSections, loading: sectionsLoading } = useFetchData(
@@ -141,6 +143,7 @@ const MicroPage = () => {
   };
 
   useEffect(() => {
+    
     dispatch(setCommonState({ id: basicData?.id, isMicro: true }));
 
     smootherRef.current = ScrollSmoother.create({
@@ -158,7 +161,61 @@ const MicroPage = () => {
       }
     };
   }, [basicData, dispatch]);
+// const appendMetaTagNameContent = (name, content) => {
+//   const meta = document.createElement("meta");
+//   meta.name = name;
+//   meta.content = content;
+//   document.head.appendChild(meta);
+//   return meta;
+// };
 
+// const appendMetaTagPropertyContent = (property, content) => {
+//   const meta = document.createElement("meta");
+//   meta.property = property;
+//   meta.content = content;
+//   document.head.appendChild(meta);
+//   return meta;
+// };
+
+// const appendLinkTag = (rel, href) => {
+//   const link = document.createElement("link");
+//   link.rel = rel;
+//   link.href = href;
+//   document.head.appendChild(link);
+//   return link;
+// };
+
+// useEffect(() => {
+//   window.scrollTo(0, 0);
+//   document.title =
+//     "Top Web Development Companies Delhi NCR | IT Services | IQSetters";
+
+//   const meta1 = appendMetaTagNameContent(
+//     "description",
+//     "IQ Setters is the most trusted web development company in Delhi, NCR, India. Website development services are the cheapest and most cost effective."
+//   );
+//   const meta2 = appendMetaTagNameContent(
+//     "keywords",
+//     "Website development company in noida, Website Designing company noida, Seo, India."
+//   );
+//   const link1 = appendLinkTag(
+//     "icon",
+//     "https://www.iqsetters.com/assets/iq-setters-logo.png"
+//   );
+
+//   // Cleanup function to remove the elements
+//   return () => {
+//     if (meta1 && meta1.parentNode) {
+//       meta1.parentNode.removeChild(meta1);
+//     }
+//     if (meta2 && meta2.parentNode) {
+//       meta2.parentNode.removeChild(meta2);
+//     }
+//     if (link1 && link1.parentNode) {
+//       link1.parentNode.removeChild(link1);
+//     }
+//   };
+// }, []);
   useEffect(() => {
     const headDataArray = basicData?.head_data?.split("\n");
 
@@ -264,8 +321,11 @@ const MicroPage = () => {
     );
   }
   if (!loading && basicData && basicData.length === 0)
-    return <div className="text-center py-5">No records found</div>;
+    return <div className="text-center py-5">No records found!!</div>;
 
+  if(!loading && !basicData){
+    return <PageNotFound />
+  }
   return (
     <>
       <Helmet>
@@ -276,7 +336,6 @@ const MicroPage = () => {
         {basicData?.meta_keywords && (
           <meta name="keywords" content={basicData.meta_keywords} />
         )}
-        {/* {metaData && metaData?.length && metaData?.map((item,index)=>(item))} */}
         {basicData?.head_data && (
           <div dangerouslySetInnerHTML={{ __html: basicData.head_data }} />
         )}
@@ -305,6 +364,14 @@ const MicroPage = () => {
             const sectionKey = `${section.section_type}_${secIndex}`;
             return (
               <React.Fragment key={sectionKey}>
+                {section.section_type === "elevation" && (
+                  <LazyLoadComponent margin="200px" debugName="elevation">
+                    <div ref={(el) => (sectionRefs.current.elevation = el)}>
+                      <LargeElevationSection data={section} />
+                    </div>
+                  </LazyLoadComponent>
+                )}
+
                 {section.section_type === "overview" && (
                   <div
                     ref={(el) => {
@@ -320,14 +387,6 @@ const MicroPage = () => {
                     />
                     {/* {section.yt_url && <CustomIframe data={section.yt_url} />} */}
                   </div>
-                )}
-
-                {section.section_type === "elevation" && (
-                  <LazyLoadComponent margin="200px" debugName="elevation">
-                    <div ref={(el) => (sectionRefs.current.elevation = el)}>
-                      <LargeElevationSection data={section} />
-                    </div>
-                  </LazyLoadComponent>
                 )}
 
                 {section.section_type === "walkthrough" && (
