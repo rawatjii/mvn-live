@@ -474,8 +474,10 @@ const MicroPage = () => {
                     </LazyLoadComponent>
                   )}
 
-                  {secIndex === 5 &&
-                  ((pathname.includes("aeroone-gurgaon")) && <ContactInfo/>)}
+{secIndex === 5 && pathname.includes("aeroone-gurgaon") && (
+  <ContactInfo white={true} />
+)}
+
 
 
 

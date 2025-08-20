@@ -1,12 +1,16 @@
 import React from 'react'
 
-const ContactInfo = () => {
+const ContactInfo = ({white}) => {
   return (
     <section className='Contact-info contact-us-section '>
         <div className="container">
             <div className='contact-info-title'>
             <h2>Begin your Project Exploration with us, your journey begins here. </h2>
-            <p className='detail_title mt-4'>Call our Ultra Luxury Sales Specialist</p>
+            {white 
+            ? <p className={`title mt-4`}>Call our Ultra Luxury Sales Specialist</p>
+            : <p className={`detail_title mt-4`}>Call our Ultra Luxury Sales Specialist</p>
+            }
+            
             </div>
 
     <div className='row gy-3 d-flex justify-content-center'>
