@@ -2,11 +2,11 @@ import React from 'react'
 
 const ContactInfo = ({white}) => {
   return (
-    <section className='Contact-info contact-us-section '>
+    <section className={`Contact-info contact-us-section ${!white && 'mobile'}`}>
         <div className="container">
 
     <div className='row gy-3 d-flex justify-content-center'>
-        <div className="col-6 col-md-6 col-xl-3 order-2 order-xl-1 p-0">
+        <div className="col-12 col-md-6 col-xl-3 order-2 order-xl-1 p-0">
             <div className="card border-right">
                 <div><span className='name'>Vidhi Negi</span></div>
                 <div><span> DGM Sales</span></div>
@@ -26,7 +26,7 @@ const ContactInfo = ({white}) => {
             
             </div>
         </div>
-        <div className="col-6 col-md-6 col-xl-3 order-3 order-xl-3 p-0">
+        <div className="col-12 col-md-6 col-xl-3 order-3 order-xl-3 p-0">
             <div className="card border-left">
                 <div> <span className='name'>Archi Rajpal</span></div>
                 <div><span> DGM Sales</span></div>

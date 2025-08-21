@@ -6451,11 +6451,21 @@ text-transform: uppercase;
   }
 }
 @media screen and (max-width: 768px) {
+  .Contact-info.mobile{
+    margin: 0px;
+  }
   .contact-info-title::before{
     display: none;
   }
   .contact-info-title h2{
     font-size: 20px;
+  }
+  .Contact-info .card.border-right div,.Contact-info .card.border-left div{
+    justify-content: center;
+  }
+  .border-right{
+    border-right: none;
+    border-bottom: 1px solid #ffffff21;
   }
   
   .Contact-info .card div span.name,.Contact-info .contact-info-title .title{
@@ -6463,6 +6473,9 @@ text-transform: uppercase;
   }
   .contact-info-title{
     margin: 30px auto 0px;
+  }
+  .Contact-info.mobile .contact-info-title{
+    margin: 0px auto;
   }
   .Contact-info .card{
     padding: 10px 10px;
