@@ -6455,6 +6455,19 @@ background-color: #000;
 .Contact-info .card div span.name{
   color: #e6d49c;
 }
+.Contact-info .contact-info-title .title{
+color: #fff;
+text-align: center;
+text-transform: uppercase;
+    font-size: 18px;
+    display: inline-block;
+    letter-spacing: 1.8px;
+    margin-bottom: 10px;
+    text-align: center;
+    line-height: 26px;
+    width: 100%;
+    font-family: var(--tinos_font);
+}
 @media screen and (max-width: 768px) {
   .contact-info-title::before{
     display: none;
