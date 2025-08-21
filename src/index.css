@@ -6392,17 +6392,23 @@ div input:focus{
 
 
 /* microsite contact info section style start */
-.Contact-info{
-  padding: 40px 0;
+.Contact-info {
+  margin: 100px 0px;
+  background: linear-gradient(rgba(0, 0, 0, 0.804), rgba(0, 0, 0, 0.804)), url("/contact-info.webp");
+  background-size: cover;   /* Makes the image cover the section */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents tiling */
 }
+
 .contact-info-title{
     display: block;
     width: fit-content;
-    margin: 20px auto 60px;
+    margin: 46px auto 60px;
     /* color: #e6d49c; */
     position: relative;
     color: #e6d49c;
 }
+
 .contact-info-title h2{
   position: relative;
   z-index: 2;
@@ -6415,7 +6421,7 @@ div input:focus{
 .contact-info-title::before{
   content: '';
   position: absolute;
-  left: -30px;
+  left: 45%;
   top: -18px;
   height: 70px;
   width: 70px;
@@ -6424,11 +6430,18 @@ div input:focus{
   z-index: 0;
 }
 .Contact-info .card{
-border: 1px solid #e6d49c;
+/* border: 1px solid #e6d49c; */
 padding: 40px;
-text-align: start;
-background-color: #000;
+/* background-color: #000; */
+background: transparent;
+border-radius: 0;
 }
+.border-right{
+    border-right: 2px solid #ffffff21;
+  }
+  .border-left{
+    border-left: 2px solid #ffffff21;
+  }
 
 .Contact-info .card div{
   display: flex;
@@ -6436,7 +6449,13 @@ background-color: #000;
   justify-content: start;
   gap: 20px;
   color: #fff;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+}
+.Contact-info .card.border-right div{
+  justify-content: end;
+}
+.Contact-info .card div:nth-child(1){
+  margin-bottom: 5px;
 }
 .Contact-info .card div img{
   width: 20px;
@@ -6444,6 +6463,10 @@ background-color: #000;
 }
 .Contact-info .card div a{
   color: #fff;
+  font-size: 16px;
+    word-break: break-word;   /* Break anywhere if too long */
+  overflow-wrap: anywhere;  /* Modern way */
+  display: inline-block; 
 }
 .Contact-info .card div a:hover{
   color: #e6d49c;
@@ -6451,9 +6474,12 @@ background-color: #000;
 }
 .Contact-info .card div span{
   color: #fff;
+  font-size: 16px;
 }
 .Contact-info .card div span.name{
   color: #e6d49c;
+  font-size: 20px;
+  text-transform: uppercase;
 }
 .Contact-info .contact-info-title .title{
 color: #fff;
@@ -6468,9 +6494,36 @@ text-transform: uppercase;
     width: 100%;
     font-family: var(--tinos_font);
 }
+@media screen and (max-width:1279px){
+   .border-left{
+    border-left: none
+  }
+}
 @media screen and (max-width: 768px) {
   .contact-info-title::before{
     display: none;
+  }
+  .contact-info-title h2{
+    font-size: 20px;
+  }
+  
+  .Contact-info .card div span.name,.Contact-info .contact-info-title .title{
+    font-size: 16px;
+  }
+  .contact-info-title{
+    margin: 30px auto 0px;
+  }
+  .Contact-info .card{
+    padding: 10px 10px;
+  }
+  .Contact-info .card div a,.Contact-info .card div span{
+    font-size: 11px;
+  }
+  .Contact-info .card div{
+    gap: 5px;
+  }
+  .Contact-info .card div img{
+    width: 12px;
   }
 }
 /* microsite contact info section style end */
