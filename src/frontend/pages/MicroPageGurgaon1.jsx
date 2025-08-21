@@ -17,6 +17,7 @@ import MicroAmenities from "../components/MicroPage/Amenities";
 import NoPolutionZone from "../components/MicroPage/NoPolutionZone";
 import View360 from "../components/MicroPage/360";
 import LivingRoomVideoGurugram from "../components/MicroPage/LivingRoomVideoGurugram";
+import LargeElevationSection1 from "../components/MicroPage/LargeElevationSection1";
 
 const MicroOverview = React.lazy(() =>
   import("../components/MicroPage/Overview")
@@ -326,6 +327,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
           </div>
 
             <MicroOverview data={data.overview} />
+            {/* <LargeElevationSection1 data={data.LargeElevationSection}/> */}
 
             <LargeElevationSection data={data.LargeElevationSection} />
 

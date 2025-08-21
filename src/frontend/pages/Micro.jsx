@@ -38,6 +38,7 @@ import Construction from "./Construction";
 import WhatsappBtn from "../components/Whatsapp";
 import ContactInfo from "../components/ContactInfo";
 import PageNotFound from "../../common/PageNotFound/Index";
+import LargeElevationSection1 from "../components/MicroPage/LargeElevationSection1";
 const headerSidebarDesktopImg = `${API_URL}images/aero-gurgaon/header/sidebar.webp`;
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -388,6 +389,11 @@ const MicroPage = () => {
                     {/* {section.yt_url && <CustomIframe data={section.yt_url} />} */}
                   </div>
                 )}
+                
+                {secIndex === 2 && pathname.includes("aeroone-gurgaon") && (
+     <LargeElevationSection1/>
+)}
+                         
 
                 {section.section_type === "walkthrough" && (
                   <LazyLoadComponent margin="200px" debugName="walkthrough">
