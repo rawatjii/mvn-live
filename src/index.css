@@ -6438,9 +6438,11 @@ border-radius: 0;
 }
 .border-right{
     border-right: 2px solid #ffffff21;
+    padding-left: 0px;
   }
   .border-left{
     border-left: 2px solid #ffffff21;
+    padding-right: 0px;
   }
 
 .Contact-info .card div{
@@ -6464,9 +6466,6 @@ border-radius: 0;
 .Contact-info .card div a{
   color: #fff;
   font-size: 16px;
-    word-break: break-word;   /* Break anywhere if too long */
-  overflow-wrap: anywhere;  /* Modern way */
-  display: inline-block; 
 }
 .Contact-info .card div a:hover{
   color: #e6d49c;
@@ -6516,8 +6515,14 @@ text-transform: uppercase;
   .Contact-info .card{
     padding: 10px 10px;
   }
-  .Contact-info .card div a,.Contact-info .card div span{
+  .Contact-info .card div span{
     font-size: 11px;
+  }
+  .Contact-info .card div a{
+    font-size: 11px;
+    word-break: break-word;   /* Break anywhere if too long */
+  overflow-wrap: anywhere;  /* Modern way */
+  display: inline-block; 
   }
   .Contact-info .card div{
     gap: 5px;
