@@ -505,7 +505,7 @@ const MicroPage = () => {
                   </LazyLoadComponent>
                 )}
 
-                {secIndex === 6  && <LifeStyleSec   name={basicData?.name}/>
+                {secIndex === 6 && pathname.includes("aeroone-gurgaon") && <LifeStyleSec   name={basicData?.name}/>
                 }
                 
 
