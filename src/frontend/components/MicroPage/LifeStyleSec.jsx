@@ -12,15 +12,14 @@ const LifeStyleSec = () => {
   const sectionRef = useRef(null);
   const circleRef = useRef(null);
   const pointersRef = useRef(null);
- const [isShowModal, setIsShowModal] = useState(false);
+  const [isShowModal, setIsShowModal] = useState(false);
 
-     const handleOpenBrochureModal =() => {
-       setIsShowModal(true);
-    //    setIsVideoModalOpen(false);
-     };
-      const isHideModal = () => {
-           setIsShowModal(false);
-         }
+  const handleOpenBrochureModal = () => {
+    setIsShowModal(true);
+  };
+  const isHideModal = () => {
+    setIsShowModal(false);
+  };
   const defaultValues = {
     radius: 522,
     strokeWidth: 2,
@@ -44,36 +43,52 @@ const LifeStyleSec = () => {
   useEffect(() => {
     const section = sectionRef.current;
     const circle = circleRef.current;
-    const pointers = pointersRef.current;
+    const pointers = pointersRef.current?.children;
 
     if (!section || !circle || !pointers) return;
 
     const circumference = 2 * Math.PI * defaultValues.radius;
-    const totalPoints = 4; // Number of pointers (Residence, Office, Mall, Hotels)
-    const segmentLength = (circumference+1800) / totalPoints; // Length of each segment
-    const firstPointOffset = circumference - segmentLength; // Align to first pointer (Residence)
+    const totalPoints = 4; 
+    const segmentLength = (circumference + 1800) / totalPoints; 
+    const firstPointOffset = circumference - segmentLength;
 
     gsap.set(circle, {
       strokeDasharray: circumference,
-      strokeDashoffset: firstPointOffset, // Start at first pointer on load
+      strokeDashoffset: firstPointOffset,
       strokeWidth: defaultValues.strokeWidth,
       stroke: defaultValues.strokeColor,
     });
 
+    gsap.set(pointers, { display: "none" });
+    gsap.set(pointers[0], { display: "block" });
+
     ScrollTrigger.create({
       trigger: section,
-      start: "top -80",
+      start: "top top+=30",
       end: "+=300%",
       pin: true,
       pinSpacing: true,
       scrub: 1,
       onUpdate: (self) => {
         const progress = self.progress;
-        // Animate from first pointer to the last
-        const dashOffset = firstPointOffset - (circumference - segmentLength) * progress;
+        const dashOffset =
+          firstPointOffset - (circumference - segmentLength) * progress;
         gsap.set(circle, {
           strokeDashoffset: dashOffset,
           strokeWidth: defaultValues.strokeWidth,
+        });
+
+        // Determine active pointer based on progress
+        const activeIndex = Math.min(
+          Math.floor(progress * totalPoints),
+          totalPoints - 1
+        );
+
+        // Show active pointer, hide others
+        Array.from(pointers).forEach((pointer, index) => {
+          gsap.set(pointer, {
+            display: index === activeIndex ? "block" : "none",
+          });
         });
       },
     });
@@ -110,7 +125,6 @@ const LifeStyleSec = () => {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                {/* Background circle with default values */}
                 <circle
                   cx="596.5"
                   cy="536.5"
@@ -120,7 +134,6 @@ const LifeStyleSec = () => {
                   strokeDasharray={defaultValues.dashArray}
                   fill="none"
                 />
-                {/* Animated progress circle with default values */}
                 <circle
                   ref={circleRef}
                   cx="596.5"
@@ -132,7 +145,6 @@ const LifeStyleSec = () => {
                   strokeLinecap="round"
                   transform={`rotate(${defaultValues.startAngle} 596.5 536.5)`}
                 />
-                {/* Default marker circles */}
                 <circle
                   cx="252.5"
                   cy="144.5"
@@ -161,7 +173,7 @@ const LifeStyleSec = () => {
             </div>
           </div>
           <img
-            src={"/assets/images/lifeStylePngnew.png"}
+            src={"/assets/images/liststyle.png"}
             alt={"LifeStyle Image"}
             height={"200"}
             className={`img-fluid img_in w-100 object-fit-cover`}
@@ -172,32 +184,30 @@ const LifeStyleSec = () => {
         <Container>
           <div className="about">
             <h3 className="pr_name">
-             Where Life, Work, Leisure & Luxury Converge
-
+              Where Life, Work, Leisure & Luxury Converge
             </h3>
             <p>
               A lifestyle that works around the clock. Because true luxury means
               never compromising.
             </p>
           </div>
-          <Button type="button"              onClick={handleOpenBrochureModal}
- className="btn btn_style3 r_100">
+          <Button
+            type="button"
+            onClick={handleOpenBrochureModal}
+            className="btn btn_style3 r_100"
+          >
             view details
           </Button>
-            <CustomModal
+          <CustomModal
             hide={isHideModal}
             show={isShowModal}
             type="enquire"
-            // projectName={projectName ? projectName : "MVN Aeroone"}
-            // isVideoModal={isVideoModalOpen}
           />
         </Container>
       </div>
-       <CustomCard
-                  className="px_sm_0 pb-0"
-                //   title={"adad"}
-                //   desc={description}
-                />
+      <CustomCard
+        className="px_sm_0 pb-0"
+      />
     </div>
   );
 };
