@@ -161,7 +161,7 @@ const LifeStyleSec = () => {
             </div>
           </div>
           <img
-            src={"/assets/images/lifeStylePng.png"}
+            src={"/assets/images/lifeStylePngnew.png"}
             alt={"LifeStyle Image"}
             height={"200"}
             className={`img-fluid img_in w-100 object-fit-cover`}
