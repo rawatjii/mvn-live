@@ -6545,3 +6545,59 @@ text-transform: uppercase;
   }
 }
 /* microsite contact info section style end */
+
+.lifestyle_sec{padding-top:300px ;}
+
+.lifestyle_sec .content_section{position: absolute;bottom: 20%;background-color: transparent;right: 13%;width: 30%;transform: translateY(-50%);}
+.lifestyle_sec .content_section p{margin:30px 0;line-height: 1.8;}
+.lifestyle_sec  .svg_container{      position: absolute;
+top:-294px;
+left: 39%;
+transform: translateX(-50%);}
+.lifestyle_sec  .svg_container svg{width:67%;}
+.lifestyle_sec .content_section h3{color: #E6D49C;    color: #E6D49C;
+line-height: 1.5;
+text-transform: uppercase;}
+.lifestyle_sec .ponters li{text-transform: uppercase;position: absolute;font-family: var(--tinos_font);}
+.lifestyle_sec .ponters li:nth-child(1){    left: calc(9%);
+display: flex
+;
+align-items: center;
+gap: 30px;
+top: -5px;}
+
+.lifestyle_sec .ponters li:nth-child(2){       left: calc(29%);
+gap: 30px;
+top: -13%;
+justify-content: center;
+align-items: center;
+display: flex
+;
+flex-direction: column;
+gap: 10px;
+}
+
+
+.lifestyle_sec .ponters li:nth-child(3){           right: calc(52%);
+gap: 30px;
+top: 9px;
+justify-content: center;
+align-items: center;
+display: flex
+;
+flex-direction: column;
+gap: 10px;
+}
+.lifestyle_sec .ponters li:nth-child(4){              right: calc(46%);
+    gap: 30px;
+    top: calc(26% - 4px);
+    transform: translateY(-50%);
+    justify-content: center;
+    align-items: center;
+    display: flex
+;
+    flex-direction: column;
+    gap: 10px;
+}
+.lifestyle_sec .ponters li .circle{height: 15px;width: 15px;background-color: #E6D49C;display: block;border-radius: 50%;}
+.lifestyle_sec  .img_in{position: relative;z-index: 1;object-position: left;width: 100%;}

@@ -38,6 +38,7 @@ import Construction from "./Construction";
 import WhatsappBtn from "../components/Whatsapp";
 import ContactInfo from "../components/ContactInfo";
 import PageNotFound from "../../common/PageNotFound/Index";
+import LifeStyleSec from "../components/MicroPage/LifeStyleSec";
 import LargeElevationSection1 from "../components/MicroPage/LargeElevationSection1";
 const headerSidebarDesktopImg = `${API_URL}images/aero-gurgaon/header/sidebar.webp`;
 
@@ -480,9 +481,9 @@ const MicroPage = () => {
                     </LazyLoadComponent>
                   )}
 
-{secIndex === 5 && pathname.includes("aeroone-gurgaon") && (
-  <ContactInfo white={true} />
-)}
+                  {secIndex === 5 && pathname.includes("aeroone-gurgaon") && (
+                    <ContactInfo white={true} />
+                  )}
 
 
 
@@ -503,6 +504,10 @@ const MicroPage = () => {
                     </div>
                   </LazyLoadComponent>
                 )}
+
+                {secIndex === 6  && <LifeStyleSec   name={basicData?.name}/>
+                }
+                
 
                 {section.section_type === "Peacock" && (
                   <LazyLoadComponent margin="200px" debugName="livingroom">

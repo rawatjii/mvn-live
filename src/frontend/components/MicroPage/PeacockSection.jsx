@@ -28,7 +28,7 @@ const PeacockSection = React.memo(({ data, watermarkClass }) => {
       ) : (
         <>
           <div
-            className="section peacock_section pb-0 pt_sm_0"
+            className="section peacock_section pb-0 pt-0"
             id="peacockSection"
           >
             <div className="frames_content">
