@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { Container } from "react-bootstrap";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import CustomCard from "../Card";
 gsap.registerPlugin(ScrollTrigger);
 import Button from "../../../common/Button/Button";
 import CustomModal from "../../../common/Modal";
@@ -171,8 +172,8 @@ const LifeStyleSec = () => {
         <Container>
           <div className="about">
             <h3 className="pr_name">
-              A Lifestyle That Works  Around
-              the Clock
+             Where Life, Work, Leisure & Luxury Converge
+
             </h3>
             <p>
               A lifestyle that works around the clock. Because true luxury means
@@ -192,6 +193,11 @@ const LifeStyleSec = () => {
           />
         </Container>
       </div>
+       <CustomCard
+                  className="px_sm_0 pb-0"
+                //   title={"adad"}
+                //   desc={description}
+                />
     </div>
   );
 };
