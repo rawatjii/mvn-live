@@ -38,7 +38,7 @@ import Construction from "./Construction";
 import WhatsappBtn from "../components/Whatsapp";
 import ContactInfo from "../components/ContactInfo";
 import PageNotFound from "../../common/PageNotFound/Index";
-import LifeStyleSec from "../components/MicroPage/LifeStyleSec";
+// import LifeStyleSec from "../components/MicroPage/LifeStyleSec";
 import LargeElevationSection1 from "../components/MicroPage/LargeElevationSection1";
 const headerSidebarDesktopImg = `${API_URL}images/aero-gurgaon/header/sidebar.webp`;
 
@@ -523,6 +523,7 @@ const MicroPage = () => {
 
                 {section.section_type === "party" && (
                   <LazyLoadComponent margin="200px" debugName="party">
+                    {console.log(section, "party party")}
                     <div
                       ref={(el) =>
                         (sectionRefs.current[section.section_type] = el)

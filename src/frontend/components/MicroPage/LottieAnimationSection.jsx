@@ -36,7 +36,7 @@ const LottieAnimationSection = React.memo(
     const [loading, setLoading] = useState(false); // Initially set to true
     const [animationData, setAnimationData] = useState(null);
     const { isMobile } = useMatches();
-    const { sub_heading, description, json, showAwards, section_type, heading = undefined } = data;
+    const { sub_heading, description,mb_json, json, showAwards, section_type, heading = undefined } = data;
 
     // Ref for the interseciton observer
     const observerRef = useRef(null);
@@ -69,10 +69,12 @@ const LottieAnimationSection = React.memo(
     // }, [])
 
     // Dynamically load JSON animation data using fetch
+
+    // console.log(data,"datadatadatadatadatadata")
     useEffect(() => {
       const loadAnimationData = async () => {
         try {
-          const jsonPath = BACKEND_IMAGE_URL+json;
+          const jsonPath =BACKEND_IMAGE_URL+ (window.innerWidth > 767 ?json:mb_json?mb_json:json);
           const response = await fetch(jsonPath);
           const data = await response.json();
 

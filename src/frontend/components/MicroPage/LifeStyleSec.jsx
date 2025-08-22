@@ -110,7 +110,6 @@ const LifeStyleSec = () => {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                {/* Background circle with default values */}
                 <circle
                   cx="596.5"
                   cy="536.5"
@@ -120,7 +119,6 @@ const LifeStyleSec = () => {
                   strokeDasharray={defaultValues.dashArray}
                   fill="none"
                 />
-                {/* Animated progress circle with default values */}
                 <circle
                   ref={circleRef}
                   cx="596.5"
