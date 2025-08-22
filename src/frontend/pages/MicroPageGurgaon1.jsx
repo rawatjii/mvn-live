@@ -19,6 +19,7 @@ import View360 from "../components/MicroPage/360";
 import LivingRoomVideoGurugram from "../components/MicroPage/LivingRoomVideoGurugram";
 import LazyLoadComponent from "../../common/LazyLoadComponent";
 import ContactInfo from "../components/ContactInfo";
+import LifeStyleSec from "../components/MicroPage/LifeStyleSec";
 
 const MicroOverview = React.lazy(() =>
   import("../components/MicroPage/Overview")
@@ -368,7 +369,18 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
                 isMobile={isMobile}
               />
             ) : null}
+
+
+            
           </LazyLoadComponent>
+             <LazyLoadComponent  smootherRef={smootherRef}>
+              <LifeStyleSec
+                onLoadComplete={() => ScrollTrigger.refresh()}
+                isMobile={isMobile}
+              />
+          </LazyLoadComponent>
+
+          
 
           <LazyLoadComponent margin="200px" debugName="PeacockSection" smootherRef={smootherRef}>
             <div ref={(el) => (sectionRefs.current.LIVINGROOM = el)}>
