@@ -27,7 +27,7 @@ const LifeStyleSec = () => {
     backgroundStrokeColor: "#E6D49C",
     backgroundStrokeOpacity: 0.3,
     dashArray: "10 10",
-    startAngle: -270,
+    startAngle: -250,
     initialOpacity: 0,
     initialY: 30,
     initialScale: 0.8,
@@ -49,7 +49,7 @@ const LifeStyleSec = () => {
 
     const circumference = 2 * Math.PI * defaultValues.radius;
     const totalPoints = 4;
-    const segmentLength = (circumference + 1800) / totalPoints;
+    const segmentLength = (circumference + 1100) / totalPoints;
     const firstPointOffset = circumference - segmentLength;
 
     gsap.set(circle, {
@@ -74,7 +74,7 @@ const LifeStyleSec = () => {
     let lastActiveIndex = 0;
     ScrollTrigger.create({
       trigger: section,
-      start: "top top-=70",
+      start: "top top",
       end: "+=300%",
       pin: true,
       pinSpacing: true,
@@ -132,6 +132,7 @@ const LifeStyleSec = () => {
       id="largeElevationSection"
     >
       <div className={`bottom_img_div`}>
+        <div className="bg_overlay"></div>
         <div className={``}>
           <div className="">
             <ul ref={pointersRef} className="ponters">
@@ -141,58 +142,58 @@ const LifeStyleSec = () => {
               <li className="pr_name">Hotels</li>
             </ul>
             <div className="svg_container">
-              <svg
-                width="1129"
-                height="1091"
-                viewBox="0 0 1129 1091"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle
-                  cx="596.5"
-                  cy="536.5"
-                  r={defaultValues.radius}
-                  stroke={defaultValues.backgroundStrokeColor}
-                  strokeOpacity={defaultValues.backgroundStrokeOpacity}
-                  strokeDasharray={defaultValues.dashArray}
+                <svg
+                  width="1129"
+                  height="1091"
+                  viewBox="0 0 1129 1091"
                   fill="none"
-                />
-                <circle
-                  ref={circleRef}
-                  cx="596.5"
-                  cy="536.5"
-                  r={defaultValues.radius}
-                  stroke={defaultValues.strokeColor}
-                  strokeWidth={defaultValues.strokeWidth}
-                  fill="transparent"
-                  strokeLinecap="round"
-                  transform={`rotate(${defaultValues.startAngle} 596.5 536.5)`}
-                />
-                <circle
-                  cx="252.5"
-                  cy="144.5"
-                  r="12.5"
-                  fill={defaultValues.strokeColor}
-                />
-                <circle
-                  cx="619.5"
-                  cy="12.5"
-                  r="12.5"
-                  fill={defaultValues.strokeColor}
-                />
-                <circle
-                  cx="1116.5"
-                  cy="498.5"
-                  r="12.5"
-                  fill={defaultValues.strokeColor}
-                />
-                <circle
-                  cx="971.5"
-                  cy="171.5"
-                  r="12.5"
-                  fill={defaultValues.strokeColor}
-                />
-              </svg>
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="596.5"
+                    cy="536.5"
+                    r={defaultValues.radius}
+                    stroke={defaultValues.backgroundStrokeColor}
+                    strokeOpacity={defaultValues.backgroundStrokeOpacity}
+                    strokeDasharray={defaultValues.dashArray}
+                    fill="none"
+                  />
+                  <circle
+                    ref={circleRef}
+                    cx="596.5"
+                    cy="536.5"
+                    r={defaultValues.radius}
+                    stroke={defaultValues.strokeColor}
+                    strokeWidth={defaultValues.strokeWidth}
+                    fill="transparent"
+                    strokeLinecap="round"
+                    transform={`rotate(${defaultValues.startAngle} 596.5 536.5)`}
+                  />
+                  <circle
+                    cx="252.5"
+                    cy="144.5"
+                    r="12.5"
+                    fill={defaultValues.strokeColor}
+                  />
+                  <circle
+                    cx="619.5"
+                    cy="12.5"
+                    r="12.5"
+                    fill={defaultValues.strokeColor}
+                  />
+                  <circle
+                    cx="1116.5"
+                    cy="498.5"
+                    r="12.5"
+                    fill={defaultValues.strokeColor}
+                  />
+                  <circle
+                    cx="971.5"
+                    cy="171.5"
+                    r="12.5"
+                    fill={defaultValues.strokeColor}
+                  />
+                </svg>
             </div>
           </div>
           <img
