@@ -208,11 +208,11 @@ const LifeStyleSec = () => {
         <Container>
           <div className="about">
             <h3 className="pr_name">
-              Where Life, Work, Leisure & Luxury Converge
+             Find Every Desire At The Pinnacle Of Luxury Living
+
             </h3>
             <p>
-              A lifestyle that works around the clock. Because true luxury means
-              never compromising.
+              Step into a realm of unparalleled indulgence, where every facet of refined living—hotel, mall, office, and residence—merges to create a life of exceptional ease and opulence.
             </p>
           </div>
           <Button
