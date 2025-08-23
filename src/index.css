@@ -6393,11 +6393,12 @@ div input:focus{
 
 /* microsite contact info section style start */
 .Contact-info {
-  margin: 100px 0px;
-  background: linear-gradient(rgba(0, 0, 0, 0.804), rgba(0, 0, 0, 0.804)), url("/contact-info.webp");
-  background-size: cover;   /* Makes the image cover the section */
-  background-position: center; /* Centers the image */
-  background-repeat: no-repeat; /* Prevents tiling */
+margin: 100px 0px;
+/* background: linear-gradient(rgba(0, 0, 0, 0.804), rgba(0, 0, 0, 0.804)), url("/contact-info.webp"); */
+background-size: cover;   /* Makes the image cover the section */
+background-position: center; /* Centers the image */
+border-block:1px solid #ffffff3b;
+background-repeat: no-repeat; /* Prevents tiling */
 }
 
 .contact-info-title{
@@ -6433,6 +6434,7 @@ div input:focus{
 /* border: 1px solid #e6d49c; */
 padding: 40px;
 /* background-color: #000; */
+height: 100%;
 background: transparent;
 border-radius: 0;
 }
