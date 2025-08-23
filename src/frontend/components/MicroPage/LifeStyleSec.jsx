@@ -48,8 +48,8 @@ const LifeStyleSec = () => {
     if (!section || !circle || !pointers) return;
 
     const circumference = 2 * Math.PI * defaultValues.radius;
-    const totalPoints = 4; 
-    const segmentLength = (circumference + 1800) / totalPoints; 
+    const totalPoints = 4;
+    const segmentLength = (circumference + 1800) / totalPoints;
     const firstPointOffset = circumference - segmentLength;
 
     gsap.set(circle, {
@@ -59,37 +59,60 @@ const LifeStyleSec = () => {
       stroke: defaultValues.strokeColor,
     });
 
-    gsap.set(pointers, { display: "none" });
-    gsap.set(pointers[0], { display: "block" });
+    // Initialize pointers and text
+    gsap.set(pointers, {
+      opacity: defaultValues.initialOpacity,
+      scale: defaultValues.initialScale,
+      display: "block",
+    });
 
+    gsap.set(pointers[0], {
+      opacity: defaultValues.normalOpacity,
+      scale: 1,
+    });
+
+    let lastActiveIndex = 0;
     ScrollTrigger.create({
       trigger: section,
-      start: "top top+=30",
+      start: "top top-=70",
       end: "+=300%",
       pin: true,
       pinSpacing: true,
       scrub: 1,
       onUpdate: (self) => {
         const progress = self.progress;
+        const direction = self.direction;
         const dashOffset =
           firstPointOffset - (circumference - segmentLength) * progress;
         gsap.set(circle, {
           strokeDashoffset: dashOffset,
           strokeWidth: defaultValues.strokeWidth,
         });
-
-        // Determine active pointer based on progress
         const activeIndex = Math.min(
-          Math.floor(progress * totalPoints),
+          Math.floor((progress + 0.02) * totalPoints),
           totalPoints - 1
         );
 
-        // Show active pointer, hide others
+        // Animate pointers and text
         Array.from(pointers).forEach((pointer, index) => {
-          gsap.set(pointer, {
-            display: index === activeIndex ? "block" : "none",
-          });
+          if (index <= activeIndex) {
+            gsap.to(pointer, {
+              opacity: defaultValues.normalOpacity,
+              scale: 1,
+              duration: defaultValues.animationDuration,
+              ease: "power2.out",
+            });
+          } else {
+            gsap.to(pointer, {
+              opacity: defaultValues.initialOpacity,
+              scale: defaultValues.initialScale,
+              duration: defaultValues.animationDuration,
+              ease: "power2.out",
+            });
+          }
         });
+
+        lastActiveIndex = activeIndex;
       },
     });
 

@@ -375,7 +375,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
           </LazyLoadComponent>
              <LazyLoadComponent  smootherRef={smootherRef}>
               <LifeStyleSec
-                onLoadComplete={() => ScrollTrigger.refresh()}
+                // onLoadComplete={() => ScrollTrigger.refresh()}
                 isMobile={isMobile}
               />
           </LazyLoadComponent>
