@@ -6453,7 +6453,7 @@ border-left: none
 }
 }
 @media screen and (max-width: 768px) {
-  .Contact-info{background: none;}
+.Contact-info{background: none;}
 .Contact-info.mobile{
 margin: 0px;
 }
@@ -6512,112 +6512,110 @@ width: 38%;
 transform: translateY(-50%);}
 .lifestyle_sec .content_section p{margin:30px 0;line-height: 1.8;}
 .lifestyle_sec  .svg_container{           position: absolute;
-    top: -333px;
-    left: 36%;
-    transform: translate(-50%);}
+top: -333px;
+left: 36%;
+transform: translate(-50%);}
 .lifestyle_sec  .svg_container svg{width:50%;}
 .lifestyle_sec .content_section h3{color: #E6D49C;    color: #E6D49C;
 line-height: 1.5;
 text-transform: uppercase;}
 .lifestyle_sec .ponters li{text-transform: uppercase;position: absolute;font-family: var(--tinos_font);}
 .lifestyle_sec .ponters li:nth-child(1){       left: calc(4%);
-    display: flex
+display: flex
 ;
-    align-items: center;
-    gap: 30px;
-    top: 3%;
+align-items: center;
+gap: 30px;
+top: 3%;
 }
 
 .lifestyle_sec .ponters li:nth-child(2){     left: 20%;
-    gap: 30px;
-    top: -10%;
-    justify-content: center;
-    align-items: center;
-    display: flex
+gap: 30px;
+top: -10%;
+justify-content: center;
+align-items: center;
+display: flex
 ;
-    flex-direction: column;
-    gap: 10px;
+flex-direction: column;
+gap: 10px;
 
 }
 
 .lifestyle_sec .ponters li:nth-child(3){             gap: 30px;
-    top: 5%;
-    justify-content: center;
-    align-items: center;
-    display: flex
+top: 5%;
+justify-content: center;
+align-items: center;
+display: flex
 ;
-    flex-direction: column;
-    gap: 10px;
-    right: 63%;
+flex-direction: column;
+gap: 10px;
+right: 63%;
 }
 .lifestyle_sec .ponters li:nth-child(4){                   right: 58%;
-    gap: 30px;
-    top: 29%;
-    transform: translateY(-50%);
-    justify-content: center;
-    align-items: center;
-    display: flex
+gap: 30px;
+top: 29%;
+transform: translateY(-50%);
+justify-content: center;
+align-items: center;
+display: flex
 ;
-    flex-direction: column;
-    gap: 10px;
+flex-direction: column;
+gap: 10px;
 
 }
 .lifestyle_sec .ponters li .circle{height: 15px;width: 15px;background-color: #E6D49C;display: block;border-radius: 50%;}
 .lifestyle_sec  .img_in{position: relative;z-index: 1;object-position: left;width: 100%;}
 .bg_overlay{height: 200px;
-    width: 200px;
-    background-color: #e6d49c29;
-    filter: blur(18px);
-    border-radius: 50%;
-    position: absolute;
-    left: 16%;
-    top: 75px;}
-  @media only screen and (max-width: 767px) {
+width: 200px;
+background-color: #e6d49c29;
+filter: blur(18px);
+border-radius: 50%;
+position: absolute;
+left: 16%;
+top: 75px;}
+@media only screen and (max-width: 767px) {
 .lifestyle_sec .content_section{position: static;width: 100%;transform: inherit;margin-top: 25px;}
 .lifestyle_sec .svg_container svg{width:134%;}
 .lifestyle_sec .ponters li:nth-child(1) {
- left: calc(11%);
-    display: flex
+left: calc(11%);
+display: flex
 ;
-    align-items: center;
-    gap: 30px;
-    top: -3%;
+align-items: center;
+gap: 30px;
+top: -3%;
 }
 .lifestyle_sec .ponters li:nth-child(2) {
- left: calc(46%);
-    gap: 30px;
-    top: -9%;
-    justify-content: center;
-    align-items: center;
-    display: flex
-;
-    flex-direction: column;
-    gap: 10px;
+left: calc(46%);
+gap: 30px;
+top: -9%;
+justify-content: center;
+align-items: center;
+display: flex;
+flex-direction: column;
+gap: 10px;
 }
 .lifestyle_sec .ponters li:nth-child(3) {
-      right: calc(11%);
-    gap: 30px;
-    top: 1%;
-    justify-content: center;
-    align-items: center;
-    display: flex
-;
-    flex-direction: column;
-    gap: 10px;
-    right:11%;
+right: calc(11%);
+gap: 30px;
+top: 1%;
+justify-content: center;
+align-items: center;
+display: flex;
+flex-direction: column;
+gap: 10px;
+right:11%;
 }
 
 .lifestyle_sec .ponters li:nth-child(4) {
-   right: calc(3%);
-    gap: 30px;
-    top: 21%;
-    transform: translateY(-50%);
-    justify-content: center;
-    align-items: center;
-    display: flex
+right: calc(3%);
+gap: 30px;
+top: 21%;
+transform: translateY(-50%);
+justify-content: center;
+align-items: center;
+display: flex
 ;
-    flex-direction: column;
-    gap: 10px;
+flex-direction: column;
+gap: 10px;
 }
 .lifestyle_sec .ponters li{background-color: #000;font-size: 14px;z-index: 1;padding: 10px 10px;}
 .lifestyle_sec .svg_container{top: -429px;}
