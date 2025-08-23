@@ -6511,48 +6511,48 @@ right: 60px;
 width: 38%;
 transform: translateY(-50%);}
 .lifestyle_sec .content_section p{margin:30px 0;line-height: 1.8;}
-.lifestyle_sec  .svg_container{        position: absolute;
-    top: -354px;
-    left: 37%;
-    transform: translateX(-50%);}
+.lifestyle_sec  .svg_container{           position: absolute;
+    top: -333px;
+    left: 36%;
+    transform: translate(-50%);}
 .lifestyle_sec  .svg_container svg{width:50%;}
 .lifestyle_sec .content_section h3{color: #E6D49C;    color: #E6D49C;
 line-height: 1.5;
 text-transform: uppercase;}
 .lifestyle_sec .ponters li{text-transform: uppercase;position: absolute;font-family: var(--tinos_font);}
-.lifestyle_sec .ponters li:nth-child(1){          left: calc(5%);
+.lifestyle_sec .ponters li:nth-child(1){       left: calc(4%);
     display: flex
 ;
     align-items: center;
     gap: 30px;
-    top: 1%;
+    top: 3%;
 }
 
-.lifestyle_sec .ponters li:nth-child(2){      left: calc(21%);
+.lifestyle_sec .ponters li:nth-child(2){     left: 20%;
     gap: 30px;
-    top:-10%;
+    top: -10%;
     justify-content: center;
     align-items: center;
     display: flex
 ;
     flex-direction: column;
     gap: 10px;
+
 }
 
-.lifestyle_sec .ponters li:nth-child(3){               right: calc(11%);
-    gap: 30px;
-    top:3%;
+.lifestyle_sec .ponters li:nth-child(3){             gap: 30px;
+    top: 5%;
     justify-content: center;
     align-items: center;
     display: flex
 ;
     flex-direction: column;
     gap: 10px;
-    right: 62%;
+    right: 63%;
 }
-.lifestyle_sec .ponters li:nth-child(4){                    right: calc(58%);
+.lifestyle_sec .ponters li:nth-child(4){                   right: 58%;
     gap: 30px;
-    top:26%;
+    top: 29%;
     transform: translateY(-50%);
     justify-content: center;
     align-items: center;

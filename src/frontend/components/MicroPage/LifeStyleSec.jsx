@@ -197,19 +197,13 @@ const LifeStyleSec = () => {
                 </svg>
             </div>
           </div>
-         <picture>
-  <source 
-    srcSet="/assets/images/lifeStylePng-mob.png" 
-    media="(max-width: 767px)" 
-  />
-  <img
-    src="/assets/images/liststyle.png"
-    alt="LifeStyle Image"
-    height="200"
-    className="img-fluid img_in w-100 object-fit-cover"
-  />
-</picture>
-
+          <img
+            src={"/assets/images/liststyle.png"}
+            alt={"LifeStyle Image"}
+            height={"200"}
+            className={`img-fluid img_in w-100 object-fit-cover`}
+          />
+          
         </div>
       </div>
       <div className="content_section">
