@@ -41,6 +41,7 @@ const LifeStyleSec = () => {
   };
 
   useEffect(() => {
+    if(window.innerWidth<=767){return}
     const section = sectionRef.current;
     const circle = circleRef.current;
     const pointers = pointersRef.current?.children;
@@ -196,12 +197,19 @@ const LifeStyleSec = () => {
                 </svg>
             </div>
           </div>
-          <img
-            src={"/assets/images/liststyle.png"}
-            alt={"LifeStyle Image"}
-            height={"200"}
-            className={`img-fluid img_in w-100 object-fit-cover`}
-          />
+         <picture>
+  <source 
+    srcSet="/assets/images/lifeStylePng-mob.png" 
+    media="(max-width: 767px)" 
+  />
+  <img
+    src="/assets/images/liststyle.png"
+    alt="LifeStyle Image"
+    height="200"
+    className="img-fluid img_in w-100 object-fit-cover"
+  />
+</picture>
+
         </div>
       </div>
       <div className="content_section">
