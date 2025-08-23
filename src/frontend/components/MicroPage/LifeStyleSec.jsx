@@ -75,7 +75,7 @@ const LifeStyleSec = () => {
     let lastActiveIndex = 0;
     ScrollTrigger.create({
       trigger: section,
-      start: "top top",
+      start: window.innerWidth<1441?"top top":window.innerWidth>1535?"top top+=40":"top top+=50",
       end: "+=300%",
       pin: true,
       pinSpacing: true,
@@ -197,13 +197,18 @@ const LifeStyleSec = () => {
                 </svg>
             </div>
           </div>
-          <img
-            src={"/assets/images/liststyle.png"}
-            alt={"LifeStyle Image"}
-            height={"200"}
-            className={`img-fluid img_in w-100 object-fit-cover`}
-          />
-          
+         <picture>
+  <source 
+    srcSet="/assets/images/lifeStylePng-mob.png" 
+    media="(max-width: 767px)" 
+  />
+  <img 
+    src="/assets/images/liststyle.png" 
+    alt="LifeStyle Image" 
+    height="200" 
+    className="img-fluid img_in w-100 object-fit-cover" 
+  />
+</picture>
         </div>
       </div>
       <div className="content_section">
