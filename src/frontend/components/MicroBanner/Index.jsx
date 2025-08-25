@@ -7,6 +7,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import './microBanner.css';
 import useFetchData from "../../utils/apiHelper";
 import { BACKEND_IMAGE_URL } from "../../../config/config";
+import { useLocation } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,6 +15,7 @@ const MicroBanner = ({page_section, page, data, type})=>{
   const titleRef = useRef();
   const linksRef = useRef();
   const [microBannerData, setMicroBannerData] = useState(null);
+  const {pathname} = useLocation();
 
   const fetchUrl = type == 'blog' ? `blog/${page}` : `page/page-section/${page}`;
 
@@ -69,7 +71,7 @@ const MicroBanner = ({page_section, page, data, type})=>{
           )}
           
           {/* <img src={window.innerWidth <= 768 ? BACKEND_IMAGE_URL+microBannerData?.mb_image : BACKEND_IMAGE_URL+microBannerData?.image} alt="mvn micro banner background image" className="img-fluid microbanner_bg" /> */}
-          <h1 ref={titleRef} className="microTitle" >{microBannerData?.heading}</h1>
+          <h1 ref={titleRef} className="microTitle" >{pathname == '/blogs/mvn-aero-one-gurgaon' ? "MVN Aero One Gurgaon Premium Residences" : microBannerData?.heading}</h1>
           <h2 className="microContent">{microBannerData?.sub_heading && microBannerData?.sub_heading}</h2>
         </Container>
       </section>
