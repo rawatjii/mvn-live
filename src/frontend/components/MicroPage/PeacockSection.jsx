@@ -42,7 +42,7 @@ const PeacockSection = React.memo(({ data, watermarkClass }) => {
                   <img
                     src={BACKEND_IMAGE_URL + alternative_image}
                     alt="Peacock image"
-                    className="img-fluid peacock_img"
+                    className="img-fluid peacock_img w-100"
                   />
                 </picture>
                 {/* <img src={BACKEND_IMAGE_URL + image} alt="Peacock image" className="img-fluid peacock_img" /> */}
