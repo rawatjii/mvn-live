@@ -71,8 +71,8 @@ const MicroBanner = ({page_section, page, data, type})=>{
           )}
           
           {/* <img src={window.innerWidth <= 768 ? BACKEND_IMAGE_URL+microBannerData?.mb_image : BACKEND_IMAGE_URL+microBannerData?.image} alt="mvn micro banner background image" className="img-fluid microbanner_bg" /> */}
-          <h1 ref={titleRef} className="microTitle" >Blogs</h1>
-          <h2 className="microContent">Insights into Luxurious Living</h2>
+          <h3 ref={titleRef} className="microTitle" >Blogs</h3>
+          <h5 className="microContent">Insights into Luxurious Living</h5>
         </Container>
       </section>
       <section className="breadcrumb_section" aria-label="Breadcrumb Section">
