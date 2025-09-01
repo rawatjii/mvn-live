@@ -157,9 +157,9 @@ const Homepage = () => {
 
         })}
 
-          <LazyLoadComponent>
+          {/* <LazyLoadComponent>
             <Strip clickHandler={showCustomModal} />
-          </LazyLoadComponent>
+          </LazyLoadComponent> */}
 
           {homepageData?.map((section, secIndex) => {
             if (section.page_section == "home-video")
