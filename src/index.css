@@ -6422,7 +6422,8 @@ background-repeat: no-repeat; /* Prevents tiling */
 .contact-info-title::before{
   content: '';
   position: absolute;
-  left: 45%;
+  left: 50%;
+  transform: translateX(-50%);
   top: -18px;
   height: 70px;
   width: 70px;
@@ -6503,10 +6504,6 @@ text-transform: uppercase;
 @media screen and (max-width: 768px) {
   .Contact-info.mobile{
     margin: 0px;
-  }
-  .contact-info-title::before{
-    /* top: 20px; */
-    left: 40%;
   }
   .contact-info-title h2{
     font-size: 20px;
