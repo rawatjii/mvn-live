@@ -152,8 +152,8 @@ const Homepage = () => {
           if (section.page_section == "home-overview")
             return <LazyLoadComponent><ClubOne data={section} key={secIndex + section.id} /></LazyLoadComponent>;
 
-          if (section.page_section == "home-shopping")
-            return <LazyLoadComponent><MvnMall data={section} key={secIndex + section.id} /></LazyLoadComponent>;
+          // if (section.page_section == "home-shopping")
+          //   return <LazyLoadComponent><MvnMall data={section} key={secIndex + section.id} /></LazyLoadComponent>;
 
         })}
 
