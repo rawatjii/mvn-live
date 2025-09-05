@@ -118,10 +118,9 @@ const Homepage = () => {
           }
       }
   }, [pageMetaData])
-  
 
   if (loading) return <div className="loading_screen" style={{position:'relative'}}>
-    <img src={window.innerWidth < 768 ? API_URL + "loader/homepage_loading_sm.webp" : API_URL + "loader/homepage_loading.webp"} alt="loading screen" className="img-fluid" />
+    <img src={window.innerWidth < 768 ? API_URL + "loader/homepage_loading_sm.webp" : API_URL + "loader/homepage_loading.webp"} alt="loading screen" className="img-fluid w-100" style={{width:'100%'}} />
     <p className="loading" style={{position:'fixed ', top:'calc(100vh - 40px)', width:'100%', textAlign:'center', textTransform:'uppercase', fontSize:'14px', letterSpacing:'3px', textShadow:'0 0 10px #000', fontWeight:600}}>Loading Experience...</p>
   </div>;
   if (!loading && homepageData && homepageData.length === 0)

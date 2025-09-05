@@ -60,6 +60,7 @@ const Hero = React.memo(({ data }) => {
       {/* Static placeholder image */}
       {!isVideoPlaying && (
         <img
+          className="w-100"
           src={
             isMobile
               ? `${API_URL}images/homepage/hero/hero_img_sm.webp`

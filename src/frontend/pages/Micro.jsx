@@ -145,7 +145,6 @@ const MicroPage = () => {
   };
 
   useEffect(() => {
-    
     dispatch(setCommonState({ id: basicData?.id, isMicro: true }));
 
     smootherRef.current = ScrollSmoother.create({
@@ -163,61 +162,61 @@ const MicroPage = () => {
       }
     };
   }, [basicData, dispatch]);
-// const appendMetaTagNameContent = (name, content) => {
-//   const meta = document.createElement("meta");
-//   meta.name = name;
-//   meta.content = content;
-//   document.head.appendChild(meta);
-//   return meta;
-// };
+  // const appendMetaTagNameContent = (name, content) => {
+  //   const meta = document.createElement("meta");
+  //   meta.name = name;
+  //   meta.content = content;
+  //   document.head.appendChild(meta);
+  //   return meta;
+  // };
 
-// const appendMetaTagPropertyContent = (property, content) => {
-//   const meta = document.createElement("meta");
-//   meta.property = property;
-//   meta.content = content;
-//   document.head.appendChild(meta);
-//   return meta;
-// };
+  // const appendMetaTagPropertyContent = (property, content) => {
+  //   const meta = document.createElement("meta");
+  //   meta.property = property;
+  //   meta.content = content;
+  //   document.head.appendChild(meta);
+  //   return meta;
+  // };
 
-// const appendLinkTag = (rel, href) => {
-//   const link = document.createElement("link");
-//   link.rel = rel;
-//   link.href = href;
-//   document.head.appendChild(link);
-//   return link;
-// };
+  // const appendLinkTag = (rel, href) => {
+  //   const link = document.createElement("link");
+  //   link.rel = rel;
+  //   link.href = href;
+  //   document.head.appendChild(link);
+  //   return link;
+  // };
 
-// useEffect(() => {
-//   window.scrollTo(0, 0);
-//   document.title =
-//     "Top Web Development Companies Delhi NCR | IT Services | IQSetters";
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  //   document.title =
+  //     "Top Web Development Companies Delhi NCR | IT Services | IQSetters";
 
-//   const meta1 = appendMetaTagNameContent(
-//     "description",
-//     "IQ Setters is the most trusted web development company in Delhi, NCR, India. Website development services are the cheapest and most cost effective."
-//   );
-//   const meta2 = appendMetaTagNameContent(
-//     "keywords",
-//     "Website development company in noida, Website Designing company noida, Seo, India."
-//   );
-//   const link1 = appendLinkTag(
-//     "icon",
-//     "https://www.iqsetters.com/assets/iq-setters-logo.png"
-//   );
+  //   const meta1 = appendMetaTagNameContent(
+  //     "description",
+  //     "IQ Setters is the most trusted web development company in Delhi, NCR, India. Website development services are the cheapest and most cost effective."
+  //   );
+  //   const meta2 = appendMetaTagNameContent(
+  //     "keywords",
+  //     "Website development company in noida, Website Designing company noida, Seo, India."
+  //   );
+  //   const link1 = appendLinkTag(
+  //     "icon",
+  //     "https://www.iqsetters.com/assets/iq-setters-logo.png"
+  //   );
 
-//   // Cleanup function to remove the elements
-//   return () => {
-//     if (meta1 && meta1.parentNode) {
-//       meta1.parentNode.removeChild(meta1);
-//     }
-//     if (meta2 && meta2.parentNode) {
-//       meta2.parentNode.removeChild(meta2);
-//     }
-//     if (link1 && link1.parentNode) {
-//       link1.parentNode.removeChild(link1);
-//     }
-//   };
-// }, []);
+  //   // Cleanup function to remove the elements
+  //   return () => {
+  //     if (meta1 && meta1.parentNode) {
+  //       meta1.parentNode.removeChild(meta1);
+  //     }
+  //     if (meta2 && meta2.parentNode) {
+  //       meta2.parentNode.removeChild(meta2);
+  //     }
+  //     if (link1 && link1.parentNode) {
+  //       link1.parentNode.removeChild(link1);
+  //     }
+  //   };
+  // }, []);
   useEffect(() => {
     const headDataArray = basicData?.head_data?.split("\n");
 
@@ -260,6 +259,7 @@ const MicroPage = () => {
             }
             alt="loading screen"
             className="img-fluid w-100"
+            style={{ width: "100%" }}
           />
         ) : projectName?.includes("mvn-mall") ? (
           <img
@@ -268,6 +268,7 @@ const MicroPage = () => {
                 ? API_URL + "loader/mvnMall_loader_sm.webp"
                 : API_URL + "loader/mvnMall_loader.webp"
             }
+            style={{ width: "100%" }}
             alt="loading screen"
             className="img-fluid w-100"
           />
@@ -278,6 +279,7 @@ const MicroPage = () => {
                 ? API_URL + "images/athens-ph1/loader_sm.webp"
                 : API_URL + "images/athens-ph1/loader.webp"
             }
+            style={{ width: "100%" }}
             alt="loading screen"
             className="img-fluid w-100"
           />
@@ -288,6 +290,7 @@ const MicroPage = () => {
                 ? API_URL + "images/athens-ph2/loader_sm.webp"
                 : API_URL + "images/athens-ph2/loader.webp"
             }
+            style={{ width: "100%" }}
             alt="loading screen"
             className="img-fluid w-100"
           />
@@ -298,6 +301,7 @@ const MicroPage = () => {
                 ? API_URL + "images/athens-faridabad/loader_sm.webp"
                 : API_URL + "images/athens-faridabad/loader.webp"
             }
+            style={{ width: "100%" }}
             alt="loading screen"
             className="img-fluid w-100"
           />
@@ -325,8 +329,8 @@ const MicroPage = () => {
   if (!loading && basicData && basicData.length === 0)
     return <div className="text-center py-5">No records found!!</div>;
 
-  if(!loading && !basicData){
-    return <PageNotFound />
+  if (!loading && !basicData) {
+    return <PageNotFound />;
   }
   return (
     <>
@@ -349,9 +353,7 @@ const MicroPage = () => {
         data={headerData}
         isFixed={isHeaderFixed}
       />
-      {pathname.includes('aeroone-gurgaon') && (
-        <WhatsappBtn />
-      )}
+      {pathname.includes("aeroone-gurgaon") && <WhatsappBtn />}
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <HeroSection projectId={basicData?.id} projectName={projectName} />
@@ -367,11 +369,9 @@ const MicroPage = () => {
             return (
               <React.Fragment key={sectionKey}>
                 {section.section_type === "elevation" && (
-                  <LazyLoadComponent margin="200px" debugName="elevation">
                     <div ref={(el) => (sectionRefs.current.elevation = el)}>
                       <LargeElevationSection data={section} />
                     </div>
-                  </LazyLoadComponent>
                 )}
 
                 {section.section_type === "overview" && (
@@ -390,18 +390,15 @@ const MicroPage = () => {
                     {/* {section.yt_url && <CustomIframe data={section.yt_url} />} */}
                   </div>
                 )}
-                
+
                 {secIndex === 2 && pathname.includes("aeroone-gurgaon") && (
-     <LargeElevationSection1/>
-)}
-                         
+                  <LargeElevationSection1 />
+                )}
 
                 {section.section_type === "walkthrough" && (
-                  <LazyLoadComponent margin="200px" debugName="walkthrough">
-                    <div ref={(el) => (sectionRefs.current.walkthrough = el)}>
-                      <YtIframe data={section} subs_btn={true} />
-                    </div>
-                  </LazyLoadComponent>
+                  <div ref={(el) => (sectionRefs.current.walkthrough = el)}>
+                    <YtIframe data={section} subs_btn={true} />
+                  </div>
                 )}
 
                 {/* {projectSections?.length > 0 && projectName.includes('mvn-mall') && secIndex==1 && (
@@ -422,140 +419,106 @@ const MicroPage = () => {
                     projectName.includes("mvn-athens-gurgaon-phase-3") ||
                     projectName.includes("mvn-athens-faridabad")) &&
                   secIndex == 1 && (
-                    <LazyLoadComponent
-                      margin="200px"
-                      debugName="downloadBrochure"
+                    <div
+                      ref={(el) => (sectionRefs.current.downloadBrochure = el)}
                     >
-                      <div
-                        ref={(el) =>
-                          (sectionRefs.current.downloadBrochure = el)
+                      <DownloadBrochure
+                        showAwards={basicData?.batch}
+                        name={basicData?.name}
+                        projectName={
+                          pathname.includes("mvn-athens-gurgaon-phase-1")
+                            ? "MVN Athens Ph-1"
+                            : pathname.includes("mvn-athens-gurgaon-phase-2")
+                            ? "MVN Athens Ph-2"
+                            : pathname.includes("mvn-athens-gurgaon-phase-3")
+                            ? "MVN Athens Ph-3"
+                            : pathname.includes("mvn-athens-faridabad")
+                            ? "MVN Athens Faridabad"
+                            : pathname.includes("mvn-mall")
+                            ? "MVN Mall Dwarka Expressway"
+                            : "MVN Aeroone"
                         }
-                      >
-                        <DownloadBrochure
-                          showAwards={basicData?.batch}
-                          name={basicData?.name}
-                          projectName={
-                            pathname.includes("mvn-athens-gurgaon-phase-1")
-                              ? "MVN Athens Ph-1"
-                              : pathname.includes("mvn-athens-gurgaon-phase-2")
-                              ? "MVN Athens Ph-2"
-                              : pathname.includes("mvn-athens-gurgaon-phase-3")
-                              ? "MVN Athens Ph-3"
-                              : pathname.includes("mvn-athens-faridabad")
-                              ? "MVN Athens Faridabad"
-                              : pathname.includes("mvn-mall")
-                              ? "MVN Mall Dwarka Expressway"
-                              : "MVN Aeroone"
-                          }
-                        />
-                      </div>
-                    </LazyLoadComponent>
+                      />
+                    </div>
                   )}
 
                 {projectSections?.length > 0 &&
                   projectName.includes("aeroone-gurgaon") &&
                   secIndex == 5 && (
-                    <LazyLoadComponent
-                      margin="200px"
-                      debugName="downloadBrochure"
+                    <div
+                      ref={(el) => (sectionRefs.current.downloadBrochure = el)}
                     >
-                      <div
-                        ref={(el) =>
-                          (sectionRefs.current.downloadBrochure = el)
-                        }
-                      >
-                        <DownloadBrochure
-                          showAwards={basicData?.batch}
-                          name={basicData?.name}
-                        />
-                      </div>
-                    </LazyLoadComponent>
+                      <DownloadBrochure
+                        showAwards={basicData?.batch}
+                        name={basicData?.name}
+                      />
+                    </div>
                   )}
 
                 {overviewIframe &&
                   projectSections?.length > 0 &&
                   projectName.includes("mvn-mall") &&
-                  secIndex == 1 && (
-                    <LazyLoadComponent margin="200px" debugName="mvn-mall">
-                      <CustomIframe data={overviewIframe} />
-                    </LazyLoadComponent>
-                  )}
+                  secIndex == 1 && <CustomIframe data={overviewIframe} />}
 
-                  {secIndex === 5 && pathname.includes("aeroone-gurgaon") && (
-                    <ContactInfo white={true} />
-                  )}
-
-
-
-
+                {secIndex === 5 && pathname.includes("aeroone-gurgaon") && (
+                  <ContactInfo white={true} />
+                )}
 
                 {section.section_type === "threesixtyview" && (
-                  <LazyLoadComponent margin="200px" debugName="threesixtyview">
-                    <div
-                      ref={(el) =>
-                        (sectionRefs.current[section.section_type] = el)
-                      }
-                    >
-                      <View360
-                        sectionId={section.section_type + secIndex}
-                        data={section}
-                        onLoadComplete={() => ScrollTrigger.refresh()}
-                      />
-                    </div>
-                  </LazyLoadComponent>
+                  <div
+                    ref={(el) =>
+                      (sectionRefs.current[section.section_type] = el)
+                    }
+                  >
+                    <View360
+                      sectionId={section.section_type + secIndex}
+                      data={section}
+                      onLoadComplete={() => ScrollTrigger.refresh()}
+                    />
+                  </div>
                 )}
 
                 {/* {secIndex === 6 && pathname.includes("aeroone-gurgaon") && <LifeStyleSec   name={basicData?.name}/>
                 } */}
-                
 
                 {section.section_type === "Peacock" && (
-                  <LazyLoadComponent margin="200px" debugName="livingroom">
-                    <div
-                      ref={(el) =>
-                        (sectionRefs.current[section.section_type] = el)
-                      }
-                    >
-                      <PeacockSection data={section} />
-                    </div>
-                  </LazyLoadComponent>
+                  <div
+                    ref={(el) =>
+                      (sectionRefs.current[section.section_type] = el)
+                    }
+                  >
+                    <PeacockSection data={section} />
+                  </div>
                 )}
 
                 {section.section_type === "party" && (
-                  <LazyLoadComponent margin="200px" debugName="party">
-                    {console.log(section, "party party")}
-                    <div
-                      ref={(el) =>
-                        (sectionRefs.current[section.section_type] = el)
-                      }
-                    >
-                      <PeacockSection data={section} watermarkClass="style5" />
-                    </div>
-                  </LazyLoadComponent>
+                  <div
+                    ref={(el) =>
+                      (sectionRefs.current[section.section_type] = el)
+                    }
+                  >
+                    <PeacockSection data={section} watermarkClass="style5" />
+                  </div>
                 )}
 
                 {section.section_type === "masterbedroom" && (
-                  <LazyLoadComponent margin="200px" debugName="masterbedroom">
-                    <div
-                      ref={(el) =>
-                        (sectionRefs.current[section.section_type] = el)
-                      }
-                    >
-                      <PeacockSection data={section} watermarkClass="style5" />
-                    </div>
-                  </LazyLoadComponent>
+                  <div
+                    ref={(el) =>
+                      (sectionRefs.current[section.section_type] = el)
+                    }
+                  >
+                    <PeacockSection data={section} watermarkClass="style5" />
+                  </div>
                 )}
 
                 {section.section_type === "consultant" && (
-                  <LazyLoadComponent margin="200px" debugName="consultant">
-                    <div
-                      ref={(el) =>
-                        (sectionRefs.current[section.section_type] = el)
-                      }
-                    >
-                      <Consultant data={section} />
-                    </div>
-                  </LazyLoadComponent>
+                  <div
+                    ref={(el) =>
+                      (sectionRefs.current[section.section_type] = el)
+                    }
+                  >
+                    <Consultant data={section} />
+                  </div>
                 )}
 
                 {(section.section_type === "landscape" ||
@@ -563,147 +526,122 @@ const MicroPage = () => {
                   section.section_type === "landscapes" ||
                   section.section_type === "sm-elevation" ||
                   section.section_type === "apartment") && (
-                  <LazyLoadComponent
-                    margin="200px"
-                    debugName={section.section_type}
+                  <div
+                    ref={(el) =>
+                      (sectionRefs.current[section.section_type] = el)
+                    }
                   >
-                    <div
-                      ref={(el) =>
-                        (sectionRefs.current[section.section_type] = el)
+                    <ImagesGallery
+                      section_name={
+                        section.section_type === "landscape"
+                          ? "landscapes"
+                          : section.section_type === "sm-elevation"
+                          ? "elevation"
+                          : ""
                       }
-                    >
-                      <ImagesGallery
-                        section_name={
-                          section.section_type === "landscape"
-                            ? "landscapes"
-                            : section.section_type === "sm-elevation"
-                            ? "elevation"
-                            : ""
-                        }
-                        data={section}
-                        showTitle={
-                          section.section_type === "landscapes" ||
-                          section.section_type === "galleries"
-                            ? false
-                            : true
-                        }
-                      />
-                    </div>
-                  </LazyLoadComponent>
+                      data={section}
+                      showTitle={
+                        section.section_type === "landscapes" ||
+                        section.section_type === "galleries"
+                          ? false
+                          : true
+                      }
+                    />
+                  </div>
                 )}
 
                 {section.section_type === "key-highlights" && (
-                  <LazyLoadComponent margin="200px" debugName="keyHighlights">
-                    <div
-                      ref={(el) =>
-                        (sectionRefs.current[section.section_type] = el)
-                      }
-                    >
-                      <FeatureSection data={section} />
-                    </div>
-                  </LazyLoadComponent>
+                  <div
+                    ref={(el) =>
+                      (sectionRefs.current[section.section_type] = el)
+                    }
+                  >
+                    <FeatureSection data={section} />
+                  </div>
                 )}
 
                 {section.section_type === "construction" && (
-                  <LazyLoadComponent margin="200px" debugName="construction">
-                    <div
-                      ref={(el) =>
-                        (sectionRefs.current[section.section_type] = el)
-                      }
-                    >
-                      <ConstructionTechnology data={section} />
-                    </div>
-                  </LazyLoadComponent>
+                  <div
+                    ref={(el) =>
+                      (sectionRefs.current[section.section_type] = el)
+                    }
+                  >
+                    <ConstructionTechnology data={section} />
+                  </div>
                 )}
 
                 {(section.section_type === "amenities" ||
                   section.section_type === "connection-mall") && (
-                  <LazyLoadComponent
-                    margin="200px"
-                    debugName={section.section_type}
+                  <div
+                    ref={(el) => {
+                      sectionRefs.current[section.section_type] = el;
+                    }}
                   >
-                    <div
-                      ref={(el) => {
-                        sectionRefs.current[section.section_type] = el;
-                      }}
-                    >
-                      <ParallaxSection section_data={section} />
-                    </div>
-                  </LazyLoadComponent>
+                    <ParallaxSection section_data={section} />
+                  </div>
                 )}
 
                 {section.section_type === "typologies" && (
-                  <LazyLoadComponent margin="200px" debugName="typologies">
-                    <div
-                      ref={(el) =>
-                        (sectionRefs.current[section.section_type] = el)
-                      }
-                      className="outer_section"
-                    >
-                      <Typology data={section} />
-                    </div>
-                    {/* <Typology data={section} /> */}
-                  </LazyLoadComponent>
+                  <div
+                    ref={(el) =>
+                      (sectionRefs.current[section.section_type] = el)
+                    }
+                    className="outer_section"
+                  >
+                    <Typology data={section} />
+                  </div>
                 )}
 
                 {section.section_type === "location-map" && (
-                  <LazyLoadComponent margin="200px" debugName="location-map">
-                    <div
-                      ref={(el) =>
-                        (sectionRefs.current[section.section_type] = el)
-                      }
-                    >
-                      <MicroLocationMap
-                        data={section}
-                        projectName={projectName}
-                      />
-                    </div>
-                  </LazyLoadComponent>
+                  <div
+                    ref={(el) =>
+                      (sectionRefs.current[section.section_type] = el)
+                    }
+                  >
+                    <MicroLocationMap
+                      data={section}
+                      projectName={projectName}
+                    />
+                  </div>
                 )}
 
                 {section.section_type === "mvn-mall" && (
-                  <LazyLoadComponent margin="200px" debugName="mvn-mall">
-                    <div
-                      ref={(el) =>
-                        (sectionRefs.current[section.section_type] = el)
-                      }
-                    >
-                      <MvnMall data={section} />
-                    </div>
-                  </LazyLoadComponent>
+                  <div
+                    ref={(el) =>
+                      (sectionRefs.current[section.section_type] = el)
+                    }
+                  >
+                    <MvnMall data={section} />
+                  </div>
                 )}
 
                 {section.section_type === "floor-plan" && (
-                  <LazyLoadComponent margin="200px" debugName="floor-plan">
+                  <div
+                    ref={(el) =>
+                      (sectionRefs.current[section.section_type] = el)
+                    }
+                  >
+                    {section.is_type == "video" ? (
+                      <MicroFloorPlan data={section} />
+                    ) : (
+                      <SliderTypology data={section} />
+                    )}
+                  </div>
+                )}
+                {pathname == "/mvn-athens-gurgaon-phase-3" &&
+                  section.section_type === "construction-technology" && (
                     <div
                       ref={(el) =>
                         (sectionRefs.current[section.section_type] = el)
                       }
                     >
-                      {section.is_type == "video" ? (
-                        <MicroFloorPlan data={section} />
-                      ) : (
-                        <SliderTypology data={section} />
-                      )}
+                      <Construction data={section} />
                     </div>
-                  </LazyLoadComponent>
-                )}
-                 {pathname == "/mvn-athens-gurgaon-phase-3" && (
-                 section.section_type === "construction-technology"&& (
-                 <LazyLoadComponent margin="200px" debugName="floor-plan">
-                    <div  ref={(el) =>(sectionRefs.current[section.section_type] = el)}>
-                      <Construction  data={section}/>
-                    </div>
-                    </LazyLoadComponent>
-                 )
-                 )}
-          
-
+                  )}
               </React.Fragment>
             );
           })}
 
-         
           {projectSections?.length > 0 && (
             <>
               <LazyLoadComponent margin="200px">
@@ -713,30 +651,27 @@ const MicroPage = () => {
                       <Enquire />
                     </div>
                     <div className="col-sm-6 px-0">
-                      <EnquireForm projectName={
-                            pathname.includes("mvn-athens-gurgaon-phase-1")
-                              ? "MVN Athens Ph-1"
-                              : pathname.includes("mvn-athens-gurgaon-phase-2")
-                              ? "MVN Athens Ph-2"
-                              : pathname.includes("mvn-athens-gurgaon-phase-3")
-                              ? "MVN Athens Ph-3"
-                              : pathname.includes("mvn-athens-faridabad")
-                              ? "MVN Athens Faridabad"
-                              : pathname.includes("mvn-mall")
-                              ? "MVN Mall Dwarka Expressway"
-                              : "MVN Aeroone"
-                          } />
+                      <EnquireForm
+                        projectName={
+                          pathname.includes("mvn-athens-gurgaon-phase-1")
+                            ? "MVN Athens Ph-1"
+                            : pathname.includes("mvn-athens-gurgaon-phase-2")
+                            ? "MVN Athens Ph-2"
+                            : pathname.includes("mvn-athens-gurgaon-phase-3")
+                            ? "MVN Athens Ph-3"
+                            : pathname.includes("mvn-athens-faridabad")
+                            ? "MVN Athens Faridabad"
+                            : pathname.includes("mvn-mall")
+                            ? "MVN Mall Dwarka Expressway"
+                            : "MVN Aeroone"
+                        }
+                      />
                     </div>
                   </div>
                 </div>
               </LazyLoadComponent>
-              
-              
 
-
-              <LazyLoadComponent margin="200px">
-                <Footer />
-              </LazyLoadComponent>
+              <Footer />
             </>
           )}
         </div>
