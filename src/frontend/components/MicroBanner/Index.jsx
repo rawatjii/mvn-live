@@ -46,8 +46,8 @@ const MicroBanner = ({page_section, page, data, type})=>{
       linksRef.current,
       {
         y: 15,
-        opacity: 0, // Start with 0 opacity (invisible)
-        duration: 0.7, // Animation duration in seconds
+        opacity: 0, 
+        duration: 0.7, 
       },
       "+=0.5"
     );
@@ -69,10 +69,8 @@ const MicroBanner = ({page_section, page, data, type})=>{
               <img src={window.innerWidth <= 768 ? BACKEND_IMAGE_URL+microBannerData?.mb_alternative_image : BACKEND_IMAGE_URL+microBannerData?.alternative_image} alt={microBannerData?.alt} />
             </picture>
           )}
-          
-          {/* <img src={window.innerWidth <= 768 ? BACKEND_IMAGE_URL+microBannerData?.mb_image : BACKEND_IMAGE_URL+microBannerData?.image} alt="mvn micro banner background image" className="img-fluid microbanner_bg" /> */}
-          <h3 ref={titleRef} className="microTitle" >Blogs</h3>
-          <h5 className="microContent">Insights into Luxurious Living</h5>
+          <h1 ref={titleRef} className="microTitle" >{pathname == '/blogs/mvn-aero-one-gurgaon' ? "MVN Aero One Gurgaon Premium Residences" : microBannerData?.heading}</h1>
+          <h2 className="microContent">{microBannerData?.sub_heading && microBannerData?.sub_heading}</h2>
         </Container>
       </section>
       <section className="breadcrumb_section" aria-label="Breadcrumb Section">

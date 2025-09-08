@@ -3,9 +3,8 @@ import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./store/store.js";
+import store, { persistor } from "./store/store.js";
 // import Layout from "./frontend/components/Layout.jsx";
-
 // import InitialLoading from "./frontend/skeleton/Initial/Index.jsx";
 import { data } from "./frontend/pages/micro/mvn-aeroone-gurgaon1/Index.jsx";
 import FrontendRoute from "./common/FrontendRoute.jsx";
@@ -17,7 +16,7 @@ import { faridabadData } from "./frontend/pages/micro/Athens/Index.jsx";
 import { athensGurgaonPhase1Data } from "./frontend/pages/micro/athens-gurgaon-phase-1/Index.jsx";
 import { athensGurgaonPhase2Data } from "./frontend/pages/micro/athens-gurgaon-phase-2/Index.jsx";
 import { mvnMallData } from "./frontend/pages/micro/mvnMall/Index.jsx";
-
+import { PersistGate } from "redux-persist/integration/react";
 const Homepage = React.lazy(() => import("./frontend/pages/Homepage.jsx"));
 const AboutUs = React.lazy(() => import("./frontend/pages/AboutUs.jsx"));
 const MediaCenter = React.lazy(() =>
@@ -376,7 +375,9 @@ createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <>
       <RouterProvider router={router}>
-        <App />
+{/* <PersistGate loading={<div>Loading...</div>} persistor={persistor}>        */}
+ <App />
+        {/* </PersistGate> */}
       </RouterProvider>
       <ToastContainer position="top-right" autoClose={3000} />
     </>
