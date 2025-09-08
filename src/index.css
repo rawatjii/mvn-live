@@ -5959,6 +5959,10 @@ table.bg_transparent{
   font-size: 20px;
 }
 
+.Contact-info {
+  margin: 50px 0px 0px!important;
+}
+
 }
 
 /* end of 767 */
@@ -6393,7 +6397,7 @@ div input:focus{
 
 /* microsite contact info section style start */
 .Contact-info {
-margin: 100px 0px;
+margin: 100px 0px 50px;
 /* background: linear-gradient(rgba(0, 0, 0, 0.804), rgba(0, 0, 0, 0.804)), url("/contact-info.webp"); */
 background-size: cover;   /* Makes the image cover the section */
 background-position: center; /* Centers the image */
@@ -6422,7 +6426,8 @@ background-repeat: no-repeat; /* Prevents tiling */
 .contact-info-title::before{
   content: '';
   position: absolute;
-  left: 45%;
+  left: 50%;
+  transform: translateX(-50%);
   top: -18px;
   height: 70px;
   width: 70px;
@@ -6504,9 +6509,6 @@ text-transform: uppercase;
   .Contact-info.mobile{
     margin: 0px;
   }
-  .contact-info-title::before{
-    display: none;
-  }
   .contact-info-title h2{
     font-size: 20px;
   }
@@ -6521,11 +6523,8 @@ text-transform: uppercase;
   .Contact-info .card div span.name,.Contact-info .contact-info-title .title{
     font-size: 16px;
   }
-  .contact-info-title{
-    margin: 30px auto 0px;
-  }
   .Contact-info.mobile .contact-info-title{
-    margin: 0px auto;
+    margin: 40px auto 0px;
   }
   .Contact-info .card{
     padding: 10px 10px;

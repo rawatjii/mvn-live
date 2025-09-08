@@ -118,10 +118,9 @@ const Homepage = () => {
           }
       }
   }, [pageMetaData])
-  
 
   if (loading) return <div className="loading_screen" style={{position:'relative'}}>
-    <img src={window.innerWidth < 768 ? API_URL + "loader/homepage_loading_sm.webp" : API_URL + "loader/homepage_loading.webp"} alt="loading screen" className="img-fluid" />
+    <img src={window.innerWidth < 768 ? API_URL + "loader/homepage_loading_sm.webp" : API_URL + "loader/homepage_loading.webp"} alt="loading screen" className="img-fluid w-100" style={{width:'100%'}} />
     <p className="loading" style={{position:'fixed ', top:'calc(100vh - 40px)', width:'100%', textAlign:'center', textTransform:'uppercase', fontSize:'14px', letterSpacing:'3px', textShadow:'0 0 10px #000', fontWeight:600}}>Loading Experience...</p>
   </div>;
   if (!loading && homepageData && homepageData.length === 0)
@@ -150,49 +149,49 @@ const Homepage = () => {
             return <Overview data={section} key={secIndex + section.id} />;
 
           if (section.page_section == "home-overview")
-            return <LazyLoadComponent><ClubOne data={section} key={secIndex + section.id} /></LazyLoadComponent>;
+            return <ClubOne data={section} key={secIndex + section.id} />
 
-          if (section.page_section == "home-shopping")
-            return <LazyLoadComponent><MvnMall data={section} key={secIndex + section.id} /></LazyLoadComponent>;
+          // if (section.page_section == "home-shopping")
+          //   return <LazyLoadComponent><MvnMall data={section} key={secIndex + section.id} /></LazyLoadComponent>;
 
         })}
 
-          <LazyLoadComponent>
+          {/* <LazyLoadComponent>
             <Strip clickHandler={showCustomModal} />
-          </LazyLoadComponent>
+          </LazyLoadComponent> */}
 
           {homepageData?.map((section, secIndex) => {
             if (section.page_section == "home-video")
-              return <LazyLoadComponent><Offer data={section} clickHandler={showCustomModal} key={secIndex + section.id} /></LazyLoadComponent>;
+              return <Offer data={section} clickHandler={showCustomModal} key={secIndex + section.id} />;
 
             if (section.page_section == "home-project")
-              return <LazyLoadComponent><Projects data={section} clickHandler={showCustomModal} key={secIndex + section.id} /></LazyLoadComponent>;
+              return <Projects data={section} clickHandler={showCustomModal} key={secIndex + section.id} />;
 
             if (section.page_section == "home-verticals")
-              return <LazyLoadComponent><OtherProjects data={section} key={secIndex + section.id} /></LazyLoadComponent>;
+              return <OtherProjects data={section} key={secIndex + section.id} />;
 
             if (section.page_section == "home-infrastructure")
-              return <LazyLoadComponent><OurJourney data={section} key={secIndex + section.id} /></LazyLoadComponent>;
+              return <OurJourney data={section} key={secIndex + section.id} />;
 
             if (section.page_section == "home-people-behind")
-              return <LazyLoadComponent><OurTeam data={section} key={secIndex + section.id} /></LazyLoadComponent>;
+              return <OurTeam data={section} key={secIndex + section.id} />;
 
             if (section.page_section == "home-brand-ethos")
-              return <LazyLoadComponent><OurBrand data={section} key={secIndex + section.id} /></LazyLoadComponent>;
+              return <OurBrand data={section} key={secIndex + section.id} />;
 
             if (section.page_section == "home-client-says")
-              return <LazyLoadComponent><Testimonial data={section} key={secIndex + section.id} /></LazyLoadComponent>;
+              return <Testimonial data={section} key={secIndex + section.id} />;
           })}
 
         {/* <Suspense fallback={<Skeleton height="h_90vh" />}>
           <Testimonial />
         </Suspense> */}
-        <LazyLoadComponent>
+        
           <div className="flex-footer-form">
               <Enquire />
               <EnquireForm projectName={"MVN Infrastructure"} />
           </div>
-        </LazyLoadComponent>
+        
 
         <Suspense fallback={<div>Loading...</div>}>
           <CustomModal

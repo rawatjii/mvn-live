@@ -23,7 +23,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/uploads': {
-        target: 'https://mvnbackend.gtftechnologies.com',
+        target: 'https://www.mvn.in/',
         changeOrigin: true,
         secure: false
       }

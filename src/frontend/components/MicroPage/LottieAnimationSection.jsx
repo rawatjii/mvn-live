@@ -28,7 +28,8 @@ const LottieAnimationSection = React.memo(
     isMainBanner,
     customClass,
     anClass,
-    isBanner
+    isBanner,
+    animation_speed=2
   }) => {
     const containerRef = useRef(null);
     const titleRef = useRef();
@@ -41,36 +42,8 @@ const LottieAnimationSection = React.memo(
     // Ref for the interseciton observer
     const observerRef = useRef(null);
 
-    // Lazy load animation data when section comes into view
-
-    // useEffect(() => {
-    //   if(observerRef.current) return; // Avoid multiple observers
-
-    //   observerRef.current = new IntersectionObserver((entries) => {
-    //     entries.forEach(entry => {
-    //       if (entry.isIntersecting) {
-    //         // Start loading the animation data when the section is in view
-    //         loadAnimationData();
-    //       }
-    //     });
-    //   }, { threshold: 0.25 }); // Trigger when 25% of the section is in view
-
-    //   const target = containerRef.current;
-    //   if (target) {
-    //     observerRef.current.observe(target);
-    //   }
-
-    //   return () => {
-    //     if (observerRef.current) {
-    //       observerRef.current.disconnect(); // Cleanup observer when component unmounts
-    //     }
-    //   };
-
-    // }, [])
-
     // Dynamically load JSON animation data using fetch
 
-    // console.log(data,"datadatadatadatadatadata")
     useEffect(() => {
       const loadAnimationData = async () => {
         try {
@@ -100,7 +73,7 @@ const LottieAnimationSection = React.memo(
       const lottieAnimation = lottie.loadAnimation({
         container: lottieContainerRef.current,
         animationData,
-        renderer: "canvas",
+        renderer: "svg",
         loop: false,
         autoplay: false,
         rendererSettings: {
@@ -114,7 +87,7 @@ const LottieAnimationSection = React.memo(
         start: isBanner
           ? `top ${isMobile ? "top" : "top"}`
           : `top ${isMobile ? "65px" : "top"}`,
-        end: `+=${window.innerHeight * 2}`,
+        end: `+=${window.innerHeight * animation_speed || 2}`,
         pin: true,
         scrub: 0.5,
         onUpdate: (self) => {
