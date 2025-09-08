@@ -149,7 +149,7 @@ const Homepage = () => {
             return <Overview data={section} key={secIndex + section.id} />;
 
           if (section.page_section == "home-overview")
-            return <LazyLoadComponent><ClubOne data={section} key={secIndex + section.id} /></LazyLoadComponent>;
+            return <ClubOne data={section} key={secIndex + section.id} />
 
           // if (section.page_section == "home-shopping")
           //   return <LazyLoadComponent><MvnMall data={section} key={secIndex + section.id} /></LazyLoadComponent>;
@@ -162,36 +162,36 @@ const Homepage = () => {
 
           {homepageData?.map((section, secIndex) => {
             if (section.page_section == "home-video")
-              return <LazyLoadComponent><Offer data={section} clickHandler={showCustomModal} key={secIndex + section.id} /></LazyLoadComponent>;
+              return <Offer data={section} clickHandler={showCustomModal} key={secIndex + section.id} />;
 
             if (section.page_section == "home-project")
-              return <LazyLoadComponent><Projects data={section} clickHandler={showCustomModal} key={secIndex + section.id} /></LazyLoadComponent>;
+              return <Projects data={section} clickHandler={showCustomModal} key={secIndex + section.id} />;
 
             if (section.page_section == "home-verticals")
-              return <LazyLoadComponent><OtherProjects data={section} key={secIndex + section.id} /></LazyLoadComponent>;
+              return <OtherProjects data={section} key={secIndex + section.id} />;
 
             if (section.page_section == "home-infrastructure")
-              return <LazyLoadComponent><OurJourney data={section} key={secIndex + section.id} /></LazyLoadComponent>;
+              return <OurJourney data={section} key={secIndex + section.id} />;
 
             if (section.page_section == "home-people-behind")
-              return <LazyLoadComponent><OurTeam data={section} key={secIndex + section.id} /></LazyLoadComponent>;
+              return <OurTeam data={section} key={secIndex + section.id} />;
 
             if (section.page_section == "home-brand-ethos")
-              return <LazyLoadComponent><OurBrand data={section} key={secIndex + section.id} /></LazyLoadComponent>;
+              return <OurBrand data={section} key={secIndex + section.id} />;
 
             if (section.page_section == "home-client-says")
-              return <LazyLoadComponent><Testimonial data={section} key={secIndex + section.id} /></LazyLoadComponent>;
+              return <Testimonial data={section} key={secIndex + section.id} />;
           })}
 
         {/* <Suspense fallback={<Skeleton height="h_90vh" />}>
           <Testimonial />
         </Suspense> */}
-        <LazyLoadComponent>
+        
           <div className="flex-footer-form">
               <Enquire />
               <EnquireForm projectName={"MVN Infrastructure"} />
           </div>
-        </LazyLoadComponent>
+        
 
         <Suspense fallback={<div>Loading...</div>}>
           <CustomModal

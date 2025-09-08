@@ -487,7 +487,7 @@ const MicroPage = () => {
                       (sectionRefs.current[section.section_type] = el)
                     }
                   >
-                    <PeacockSection data={section} />
+                    <PeacockSection data={section} json="assets/json/peacock/mobile.json" />
                   </div>
                 )}
 
@@ -497,7 +497,7 @@ const MicroPage = () => {
                       (sectionRefs.current[section.section_type] = el)
                     }
                   >
-                    <PeacockSection data={section} watermarkClass="style5" />
+                    <PeacockSection data={section} watermarkClass="style5" json="assets/json/party/desktop.json" mb_json="assets/json/party/mobile.json" animation_speed="4" />
                   </div>
                 )}
 
@@ -507,7 +507,7 @@ const MicroPage = () => {
                       (sectionRefs.current[section.section_type] = el)
                     }
                   >
-                    <PeacockSection data={section} watermarkClass="style5" />
+                    <PeacockSection data={section} watermarkClass="style5" json="assets/json/bedroom/desktop.json" mb_json="assets/json/bedroom/mobile.json" />
                   </div>
                 )}
 
@@ -644,7 +644,7 @@ const MicroPage = () => {
 
           {projectSections?.length > 0 && (
             <>
-              <LazyLoadComponent margin="200px">
+              
                 <div className="container-fluid micro_footer">
                   <div className="row">
                     <div className="col-sm-6 px-0">
@@ -669,7 +669,6 @@ const MicroPage = () => {
                     </div>
                   </div>
                 </div>
-              </LazyLoadComponent>
 
               <Footer />
             </>
