@@ -1437,7 +1437,7 @@ div#livingRoomSlidingDoor { padding-top: 0px!important}
   }
 }
 
-.large-elevation .bottom_img_div.d_lg_block{height:80vh}
+/* .large-elevation .bottom_img_div.d_lg_block{height:80vh} */
 
 .large-elevation .top_div {padding: 0px 0 130px 0px!important;}
 .large-elevation { .full_img {  position: absolute;  height: 100%; width: 100%!important;}}

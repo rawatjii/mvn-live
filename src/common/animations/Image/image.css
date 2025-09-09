@@ -2,7 +2,7 @@
   overflow: hidden;
   position:relative;
 
-  &:before{
+  /* &:before{
     position:absolute;
     content:'';
     height:100%;
@@ -15,7 +15,7 @@
 
   &.active::before{
     height:0;
-  }
+  } */
 
 
   img{
