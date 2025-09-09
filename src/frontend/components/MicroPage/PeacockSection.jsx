@@ -32,6 +32,7 @@ const PeacockSection = React.memo(({ data, watermarkClass, json, mb_json, animat
   }
   
   const displayImage = desktop_img || image;
+  const displayMobileImage = mobile_img || image
 
   return (
     <>
@@ -55,13 +56,13 @@ const PeacockSection = React.memo(({ data, watermarkClass, json, mb_json, animat
             <div className="frames_content">
               <div className="image_col position-relative">
                 <Watermark
-                  className={isMobile ? "style4" : "style2"}
+                  className={isMobile ? "style5" : "style2"}
                   type="style1"
                 />
                 <picture className="img-fluid peacock_img">
-                  <source srcSet={BACKEND_IMAGE_URL + displayImage} />
+                  <source srcSet={isMobile ? BACKEND_IMAGE_URL + displayMobileImage : BACKEND_IMAGE_URL + displayImage} />
                   <img
-                    src={BACKEND_IMAGE_URL + displayImage}
+                    src={isMobile ? BACKEND_IMAGE_URL + displayMobileImage : BACKEND_IMAGE_URL + displayImage}
                     alt="Peacock image"
                     className="img-fluid peacock_img w-100"
                   />

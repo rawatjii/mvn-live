@@ -285,13 +285,12 @@ useEffect(() => {
       ),
       party: (
           <div {...sectionProps}>
-            <PeacockSection {...sectionProps} watermarkClass="style5" desktop_img="assets/images/aeroone/party/desktop.webp" mobile_img="assets/images/aeroone/party/desktop.webp" />
+            <PeacockSection {...sectionProps} watermarkClass="style5" desktop_img="assets/images/aeroone/party/desktop.webp" mobile_img="assets/images/aeroone/party/mobile.webp" />
           </div>
       ),
       masterbedroom: (
-        
           <div {...sectionProps}>
-            <PeacockSection {...sectionProps} watermarkClass="style5" desktop_img="assets/images/aeroone/bedroom/desktop.webp" mobile_img="assets/images/aeroone/bedroom/desktop.webp" />
+            <PeacockSection {...sectionProps} watermarkClass="style5" desktop_img="assets/images/aeroone/bedroom/desktop.webp" mobile_img="assets/images/aeroone/bedroom/mobile.webp" />
           </div>
       ),
       consultant: (
