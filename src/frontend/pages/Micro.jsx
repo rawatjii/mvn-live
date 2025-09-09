@@ -220,11 +220,9 @@ useEffect(() => {
 
     const sectionComponents = {
       elevation: (
-        <LazyLoadComponent margin="200px" debugName="elevation">
           <div ref={(el) => (sectionRefs.current.elevation = el)}>
             <LargeElevationSection {...sectionProps} />
           </div>
-        </LazyLoadComponent>
       ),
       overview: (
         <div ref={(el) => (sectionRefs.current.overview = el)}>
@@ -237,14 +235,11 @@ useEffect(() => {
         </div>
       ),
       walkthrough: (
-        <LazyLoadComponent margin="200px" debugName="walkthrough">
           <div ref={(el) => (sectionRefs.current.walkthrough = el)}>
             <YtIframe {...sectionProps} subs_btn={true} />
           </div>
-        </LazyLoadComponent>
       ),
       threesixtyview: (
-        <LazyLoadComponent margin="200px" debugName="threesixtyview">
           <div {...sectionProps}>
             <View360
               sectionId={sectionKey}
@@ -252,38 +247,28 @@ useEffect(() => {
               onLoadComplete={() => ScrollTrigger.refresh()}
             />
           </div>
-        </LazyLoadComponent>
       ),
       Peacock: (
-        <LazyLoadComponent margin="200px" debugName="livingroom">
           <div {...sectionProps}>
-            <PeacockSection {...sectionProps} />
+                    <PeacockSection data={section} json="assets/json/peacock/mobile.json" />
           </div>
-        </LazyLoadComponent>
       ),
       party: (
-        <LazyLoadComponent margin="200px" debugName="party">
           <div {...sectionProps}>
-            <PeacockSection {...sectionProps} watermarkClass="style5" />
-          </div>
-        </LazyLoadComponent>
+                    <PeacockSection data={section} watermarkClass="style5" json="assets/json/party/desktop.json" mb_json="assets/json/party/mobile.json" animation_speed="4" />
+            </div>
       ),
       masterbedroom: (
-        <LazyLoadComponent margin="200px" debugName="masterbedroom">
           <div {...sectionProps}>
-            <PeacockSection {...sectionProps} watermarkClass="style5" />
+                    <PeacockSection data={section} watermarkClass="style5" json="assets/json/bedroom/desktop.json" mb_json="assets/json/bedroom/mobile.json" />
           </div>
-        </LazyLoadComponent>
       ),
       consultant: (
-        <LazyLoadComponent margin="200px" debugName="consultant">
           <div {...sectionProps}>
             <Consultant {...sectionProps} />
           </div>
-        </LazyLoadComponent>
       ),
       landscape: (
-        <LazyLoadComponent margin="200px" debugName={section.section_type}>
           <div {...sectionProps}>
             <ImagesGallery
               section_name={section.section_type === "landscape" ? "landscapes" : section.section_type}
@@ -291,52 +276,38 @@ useEffect(() => {
               showTitle={["landscapes", "galleries"].includes(section.section_type) ? false : true}
             />
           </div>
-        </LazyLoadComponent>
       ),
       "key-highlights": (
-        <LazyLoadComponent margin="200px" debugName="keyHighlights">
           <div {...sectionProps}>
             <FeatureSection {...sectionProps} />
           </div>
-        </LazyLoadComponent>
       ),
       construction: (
-        <LazyLoadComponent margin="200px" debugName="construction">
           <div {...sectionProps}>
             <ConstructionTechnology {...sectionProps} />
           </div>
-        </LazyLoadComponent>
       ),
       amenities: (
-        <LazyLoadComponent margin="200px" debugName={section.section_type}>
           <div {...sectionProps}>
             <ParallaxSection section_data={section} />
           </div>
-        </LazyLoadComponent>
       ),
       typologies: (
-        <LazyLoadComponent margin="200px" debugName="typologies">
           <div {...sectionProps} className="outer_section">
             <Typology {...sectionProps} />
           </div>
-        </LazyLoadComponent>
       ),
       "location-map": (
-        <LazyLoadComponent margin="200px" debugName="location-map">
           <div {...sectionProps}>
             <MicroLocationMap data={section} projectName={projectName} />
           </div>
-        </LazyLoadComponent>
       ),
       "mvn-mall": (
-        <LazyLoadComponent margin="200px" debugName="mvn-mall">
           <div {...sectionProps}>
             <MvnMall {...sectionProps} />
           </div>
-        </LazyLoadComponent>
       ),
       "floor-plan": (
-        <LazyLoadComponent margin="200px" debugName="floor-plan">
           <div {...sectionProps}>
             {section.is_type === "video" ? (
               <MicroFloorPlan {...sectionProps} />
@@ -344,14 +315,11 @@ useEffect(() => {
               <SliderTypology {...sectionProps} />
             )}
           </div>
-        </LazyLoadComponent>
       ),
       "construction-technology": pathname.includes("mvn-athens-gurgaon-phase-3") && (
-        <LazyLoadComponent margin="200px" debugName="construction-technology">
           <div {...sectionProps}>
             <Construction {...sectionProps} />
           </div>
-        </LazyLoadComponent>
       ),
     };
 
