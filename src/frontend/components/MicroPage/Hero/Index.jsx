@@ -6,6 +6,7 @@ import Player from "@vimeo/player";
 import { API_URL, BACKEND_IMAGE_URL } from "../../../../config/config";
 import { fetchBanner,clearBanner } from "../../../../redux/bannerSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,12 +17,17 @@ const HeroSection = ({ projectId, onBannerExit, isMainBanner, projectName }) => 
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const dispatch = useDispatch();
   const { banner, loading } = useSelector((state) => state.banner);
-  const rehydrated = useSelector((state) => state._persist?.rehydrated);
+    const rehydrated = useSelector((state) => state._persist?.rehydrated);
 
+  // Fetch banner data when projectId changes or after rehydration
   useEffect(() => {
-    dispatch(clearBanner())
-    dispatch(fetchBanner(projectId));
-  }, [dispatch]);
+    if (rehydrated || projectId) {
+      console.log("Fetching banner for projectId:", projectId, "Current banner:", banner);
+      dispatch(clearBanner()); // Clear stale banner data
+      dispatch(fetchBanner(projectId)); // Fetch new banner data
+    }
+  }, [dispatch, projectId, rehydrated]);
+
   
 
   useEffect(() => {
@@ -82,7 +88,7 @@ const HeroSection = ({ projectId, onBannerExit, isMainBanner, projectName }) => 
   }
 
   
-  if (!banner?.data?.length) return <div className="text-center py-5">No records found</div>;
+  if (!banner) return <div className="text-center py-5">No records found</div>;
 
   const { is_type, image, alternative_image, alt, iframe } = banner['data'][0];
   return (

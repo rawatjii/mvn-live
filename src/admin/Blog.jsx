@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
   CustomSection,
-  LeftArea,
   MicroBox,
-  RightArea,
 } from "./components/dashboard/utilities/CutomTags";
 import CustomTitle from "./components/dashboard/utilities/CustomTitle";
 import CustomForm from "./components/dashboard/utilities/CustomForm";
@@ -11,7 +9,6 @@ import CustomTable from "./components/dashboard/utilities/custom-table/CustomTab
 import CustomPagination from "./components/dashboard/utilities/pagination/CustomPagination";
 import generateApi from "./api/generateApi";
 import useCrud from "./hooks/useCrud";
-import CustomModal from "./components/dashboard/utilities/custom-modal/CustomModal"; // Simulated backend response
 import { useDispatch, useSelector } from "react-redux";
 import { setDeleteId, toggleModal } from "../redux/commonSlice";
 
@@ -68,7 +65,7 @@ const columns = [
 ];
 
 const AdminBlog = () => {
-  const aboutsApi = generateApi("blog"); // ✅ Adjust endpoint if needed
+  const aboutsApi = generateApi("blog"); 
   const { data, loading, error, createItem, updateItem, editItem, deleteItem } =
     useCrud(aboutsApi);
   const [editModalData, setEditModalData] = useState(null);

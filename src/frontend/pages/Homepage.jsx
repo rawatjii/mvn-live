@@ -28,6 +28,9 @@ const CustomModal = React.lazy(() => import("../../common/Modal"));
 const ClubOne = React.lazy(() => import("../components/homepage/ClubOne"));
 const MvnMall = React.lazy(() => import("../components/homepage/MvnMall"));
 const Strip = React.lazy(()=>import('../components/homepage/Strip11'))
+import { useDispatch,useSelector } from "react-redux";
+import { fetchhome,clearhome } from "../../redux/homepageSlice";
+
 // const Enquire = React.lazy(() =>
 //   new Promise((resolve) =>
 //     setTimeout(() => resolve(import("../components/homepage/Enquire")), 100000)
@@ -50,12 +53,26 @@ const Homepage = () => {
   const [pageMetaData, setPageMetaData] = useState(null);
   const [metaDataArray, setMetaData] = useState([])
 
-  const { data: homepageData, loading } = useFetchData(
-    `page/page-section/home`
-  );
+  // const { data: homepageData, loading } = useFetchData(
+  //   `page/page-section/home`
+  // );
+
+    let {home: homepageData, loading} = useSelector((state) => state.home);
+    homepageData=homepageData?.data
+   const dispatch = useDispatch();
 
   const { data: metaData } = useFetchData(`get-page-meta/3`);
+    const rehydrated = useSelector((state) => state._persist?.rehydrated);
 
+ useEffect(() => {
+    if (!homepageData) {
+      // dispatch(clearhome());
+      dispatch(fetchhome()); 
+    }
+  }, [dispatch]);
+  useEffect(()=>{
+console.log(homepageData,"homepageData")
+  },[homepageData])
   // const fetchPageMeta = async()=>{
   //   try{
   //     const response = await fetch('https://mvnbackend.gtftechnologies.com/api/admin/page-meta/3');

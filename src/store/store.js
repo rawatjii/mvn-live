@@ -6,16 +6,15 @@ import blogsReducer from '../redux/blogsSlice';
 import commonReducer from '../redux/commonSlice';
 import bannerReducer from '../redux/bannerSlice';
 import projectReducer from '../redux/projectDataSlice';
-import sectionReducer from '../redux/sectionDataSlice'; // Updated import
-
+import sectionReducer from '../redux/sectionDataSlice'; 
+import homeReducer from "../redux/homepageSlice"
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['banner'], // Persist only the banner slice
+  whitelist: ['banner'], 
 };
 
 const persistedBannerReducer = persistReducer(persistConfig, bannerReducer);
-
 const store = configureStore({
   reducer: {
     adminSideMenu: sideMenuReducer,
@@ -23,7 +22,8 @@ const store = configureStore({
     commonState: commonReducer,
     banner: persistedBannerReducer,
     project: projectReducer,
-    section: sectionReducer, // Updated reducer name
+    home: homeReducer,
+    section: sectionReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
