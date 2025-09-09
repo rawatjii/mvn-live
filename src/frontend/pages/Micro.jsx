@@ -136,7 +136,6 @@ useEffect(() => {
     effects: true,
     smoothTouch: 1.4,
     onUpdate: (self) => {
-      console.log("ScrollSmoother progress:", self.progress);
     },
   });
 

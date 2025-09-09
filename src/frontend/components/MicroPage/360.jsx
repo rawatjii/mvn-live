@@ -22,11 +22,21 @@ const View360 = React.memo(({ data, onLoadComplete, sectionId }) => {
     <div className="position-relative">
       {!showthreeSixtyView ? (
         <div className="">
-          <img
-            src="./assets/images/defaultthreesixtyImg.jpg"
-            alt="default Image"
-            className="w-100"
+          <picture>
+          <source 
+          media="(max-width: 767px)" 
+          srcSet="./assets/images/defaultthreesixtyImgmob.jpg" 
           />
+          <source 
+          media="(min-width: 768px)" 
+          srcSet="./assets/images/defaultthreesixtyImg.jpg" 
+          />
+          <img 
+          src="./assets/images/defaultthreesixtyImg.jpg" 
+          alt="default Image" 
+          className="w-100" 
+          />
+          </picture>
           <button className="btn btn btn_style3 r_100 threeSixtyBtn" onClick={()=>setshowthreeSixtyView(true)}>
             360 View
           </button>

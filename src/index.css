@@ -4347,6 +4347,107 @@ table.bg_transparent {
   background: #e6d49c; /* Bullet active color */
 }
 
+
+/* microsite contact info section style end */
+
+.lifestyle_sec {
+  padding-top: 300px;
+  padding-bottom: 100px;
+}
+
+.lifestyle_sec .content_section {
+  position: absolute;
+  bottom: 43%;
+  background-color: transparent;
+  right: 30px;
+  width: 38%;
+  transform: translateY(-50%);
+}
+.lifestyle_sec .content_section p {
+  margin: 30px 0;
+  line-height: 1.8;
+}
+.lifestyle_sec .svg_container {
+  position: absolute;
+  top: -294px;
+  left: 39%;
+  transform: translateX(-50%);
+}
+.lifestyle_sec .svg_container svg {
+  width: 67%;
+}
+.lifestyle_sec .content_section h3 {
+  color: #e6d49c;
+  color: #e6d49c;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+.lifestyle_sec .ponters li {
+  text-transform: uppercase;
+  position: absolute;
+  font-family: var(--tinos_font);
+}
+.lifestyle_sec .ponters li:nth-child(1) {
+  left: calc(9%);
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  top: -5px;
+}
+
+.lifestyle_sec .ponters li:nth-child(2) {
+  left: calc(29%);
+  gap: 30px;
+  top: -13%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lifestyle_sec .ponters li:nth-child(3) {
+  right: calc(52%);
+  gap: 30px;
+  top: 9px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.lifestyle_sec .ponters li:nth-child(4) {
+  right: calc(46%);
+  gap: 30px;
+  top: calc(26% - 4px);
+  transform: translateY(-50%);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.lifestyle_sec .ponters li .circle {
+  height: 15px;
+  width: 15px;
+  background-color: #e6d49c;
+  display: block;
+  border-radius: 50%;
+}
+.lifestyle_sec .img_in {
+  position: relative;
+  z-index: 1;
+  object-position: left;
+  width: 100%;
+}
+.threeSixtyBtn {
+  position: absolute;
+  top: 280px;
+  right: 100px;
+  z-index: 99;
+}
+
+
 /* start responsive */
 /* by bhupendra */
 @media (min-width: 768px) {
@@ -4966,7 +5067,7 @@ table.bg_transparent {
     }
 
     .frames_content {
-      height: 100vh;
+      /* height: 100vh; */
       position: relative;
 
       img {
@@ -5648,6 +5749,13 @@ table.bg_transparent {
   .Contact-info {
     margin: 50px 0px 0px !important;
   }
+
+  .threeSixtyBtn{
+    top: 10px;
+    right:Unset;
+    left:50%;
+    transform:translateX(-50%)
+  }
 }
 
 /* end of 767 */
@@ -6232,102 +6340,4 @@ div input:focus {
   .Contact-info .card div img {
     width: 12px;
   }
-}
-/* microsite contact info section style end */
-
-.lifestyle_sec {
-  padding-top: 300px;
-  padding-bottom: 100px;
-}
-
-.lifestyle_sec .content_section {
-  position: absolute;
-  bottom: 43%;
-  background-color: transparent;
-  right: 30px;
-  width: 38%;
-  transform: translateY(-50%);
-}
-.lifestyle_sec .content_section p {
-  margin: 30px 0;
-  line-height: 1.8;
-}
-.lifestyle_sec .svg_container {
-  position: absolute;
-  top: -294px;
-  left: 39%;
-  transform: translateX(-50%);
-}
-.lifestyle_sec .svg_container svg {
-  width: 67%;
-}
-.lifestyle_sec .content_section h3 {
-  color: #e6d49c;
-  color: #e6d49c;
-  line-height: 1.5;
-  text-transform: uppercase;
-}
-.lifestyle_sec .ponters li {
-  text-transform: uppercase;
-  position: absolute;
-  font-family: var(--tinos_font);
-}
-.lifestyle_sec .ponters li:nth-child(1) {
-  left: calc(9%);
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  top: -5px;
-}
-
-.lifestyle_sec .ponters li:nth-child(2) {
-  left: calc(29%);
-  gap: 30px;
-  top: -13%;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.lifestyle_sec .ponters li:nth-child(3) {
-  right: calc(52%);
-  gap: 30px;
-  top: 9px;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.lifestyle_sec .ponters li:nth-child(4) {
-  right: calc(46%);
-  gap: 30px;
-  top: calc(26% - 4px);
-  transform: translateY(-50%);
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.lifestyle_sec .ponters li .circle {
-  height: 15px;
-  width: 15px;
-  background-color: #e6d49c;
-  display: block;
-  border-radius: 50%;
-}
-.lifestyle_sec .img_in {
-  position: relative;
-  z-index: 1;
-  object-position: left;
-  width: 100%;
-}
-.threeSixtyBtn {
-  position: absolute;
-  top: 280px;
-  right: 100px;
-  z-index: 99;
 }
