@@ -124,7 +124,6 @@ const LottieAnimationSection = React.memo(
       };
     }, [animationData, onLoadComplete]);
 
-    // Title animation with GSAP
     useEffect(() => {
       if (!titleRef.current) return;
 
@@ -158,7 +157,6 @@ const LottieAnimationSection = React.memo(
                   <div className="position-relative h_sm_100">
                     <div className="position-relative h_sm_100">
                       <Watermark customClass={customClass} />
-                      {/* <Logomark className={`left ${logomark ? logomark : null}`} /> */}
                       <div
                         ref={lottieContainerRef}
                         className={`Animation_height ${
