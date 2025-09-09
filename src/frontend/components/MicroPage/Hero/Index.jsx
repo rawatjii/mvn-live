@@ -6,7 +6,6 @@ import Player from "@vimeo/player";
 import { API_URL, BACKEND_IMAGE_URL } from "../../../../config/config";
 import { fetchBanner,clearBanner } from "../../../../redux/bannerSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,17 +16,12 @@ const HeroSection = ({ projectId, onBannerExit, isMainBanner, projectName }) => 
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const dispatch = useDispatch();
   const { banner, loading } = useSelector((state) => state.banner);
-    const rehydrated = useSelector((state) => state._persist?.rehydrated);
+  const rehydrated = useSelector((state) => state._persist?.rehydrated);
 
-  // Fetch banner data when projectId changes or after rehydration
   useEffect(() => {
-    if (rehydrated || projectId) {
-      console.log("Fetching banner for projectId:", projectId, "Current banner:", banner);
-      dispatch(clearBanner()); // Clear stale banner data
-      dispatch(fetchBanner(projectId)); // Fetch new banner data
-    }
-  }, [dispatch, projectId, rehydrated]);
-
+    dispatch(clearBanner())
+    dispatch(fetchBanner(projectId));
+  }, [dispatch]);
   
 
   useEffect(() => {
@@ -53,17 +47,17 @@ const HeroSection = ({ projectId, onBannerExit, isMainBanner, projectName }) => 
       return () => player.off("play");
     }
   }, [vimeoPlayer, banner]);
-
-  useEffect(()=>{
-    console.log(banner,"banner")
-  },[banner])
-  if (loading) {
-    const loaderImage = projectName?.includes('aeroone-gurgaon')
+ const loaderImage = projectName?.includes('aeroone-gurgaon')
       ? `${API_URL}loader/homepage_loading${window.innerWidth < 768 ? '_sm' : ''}.webp`
       : projectName?.includes('mvn-mall')
       ? `${API_URL}loader/mvnMall_loader${window.innerWidth < 768 ? '_sm' : ''}.webp`
       : undefined;
 
+  useEffect(()=>{
+    console.log(banner,"banner")
+  },[banner])
+  if (loading) {
+   
     return (
       <div className="loading_screen" style={{ position: "relative" }}>
         {loaderImage && <img src={loaderImage} alt="loading screen" className="img-fluid w-100" />}
@@ -88,7 +82,7 @@ const HeroSection = ({ projectId, onBannerExit, isMainBanner, projectName }) => 
   }
 
   
-  if (!banner) return <div className="text-center py-5">No records found</div>;
+  if (!banner?.data?.length) return <div className="text-center py-5">No records found</div>;
 
   const { is_type, image, alternative_image, alt, iframe } = banner['data'][0];
   return (
@@ -105,7 +99,7 @@ const HeroSection = ({ projectId, onBannerExit, isMainBanner, projectName }) => 
           {!isVideoPlaying && (
             <img
               src={projectName?.includes('aeroone-gurgaon')
-                ? `${API_URL}images/aero-gurgaon/hero/hero_loader${window.innerWidth < 768 ? '_sm' : ''}.webp`
+                ? `${loaderImage}`
                 : undefined}
               alt={alt || "Loading video..."}
               style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 1 }}
