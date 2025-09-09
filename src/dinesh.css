@@ -121,7 +121,6 @@ section.scrollSlider-Content-2.desktop-view {
   background-color: #2d2c2c;
 }
 
-
 .modal-body {
   background-color: #2d2c2c;
   text-align: center;
@@ -630,7 +629,6 @@ section.section.experience-section {
     align-content: space-between;
   }
 
-
   .projects_section {
     .plane_icon {
       display: none;
@@ -666,7 +664,6 @@ section.section.experience-section {
       }
     }
   }
-
 
   .other_projects_section .other-project-img {
     height: 476px;
@@ -759,7 +756,6 @@ section.section.experience-section {
   .journey_section .data {
     height: 100%;
   }
-  
 
   .testimonial_section .single {
     width: fit-content;
@@ -774,7 +770,6 @@ section.section.experience-section {
     padding: 25px 20px;
     margin: 25px;
   }
-
 
   .our_brand_section {
     .brand_bg {
@@ -850,7 +845,6 @@ section.section.experience-section {
     padding: 33px 45px;
     margin: 24px;
   }
-
 
   .flex-footer-form {
     display: flex;
@@ -1027,7 +1021,6 @@ section.section.experience-section {
     color: #c1c2c1;
   }
 
-
   .excited-to-meet-us .title::after {
     display: none;
   }
@@ -1146,7 +1139,6 @@ section.section.our_brand_section .brand_content {
   text-align: left !important;
 }
 
-
 .our_brand_section p {
   margin-bottom: 0;
 }
@@ -1155,7 +1147,6 @@ section.section.our_brand_section .brand_content {
   width: auto;
   height: 70px;
 }
-
 
 .testimonial_section {
   padding-top: 80px;
@@ -1192,15 +1183,12 @@ section.section.other_projects_section.pb-0 {
   padding-top: 20px;
 }
 
-
 .flex-name-pic {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
 }
-
-
 
 .testimonial_section .content {
   height: 100%;
@@ -1298,7 +1286,6 @@ section.section.other_projects_section.pb-0 {
     }
   }
 
-
   .other_projects_section .other-project-img {
     height: 350px;
     object-fit: cover;
@@ -1343,7 +1330,6 @@ section.section.other_projects_section.pb-0 {
       letter-spacing: 12px;
     }
   }
-
 }
 
 @media (max-width: 767px) {
@@ -1356,7 +1342,6 @@ section.section.other_projects_section.pb-0 {
   }
 
   .navbar {
-
     .navbar-brand {
       padding: 0;
       margin: 0;
@@ -1442,7 +1427,6 @@ section.section.other_projects_section.pb-0 {
       }
     }
   }
-
 
   .enquire_section {
     .enquire_bg {
@@ -1595,14 +1579,12 @@ section.section.other_projects_section.pb-0 {
 
   section.front-page-all .grid-left-right .img-hov {
     position: relative !important;
-    display: block!important;
+    display: block !important;
   }
   .grid-left-right .right-overlay {
-    position: unset!important;
+    position: unset !important;
   }
   .oppotunities .title {
     padding: 21px 0;
-
-}
-
+  }
 }

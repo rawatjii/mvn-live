@@ -398,8 +398,8 @@ useEffect(() => {
   };
 
   if (loading || sectionLoading) return renderLoadingScreen();
-  if (!project) return <PageNotFound />;
   if (!loading && project?.length === 0) return <div className="text-center py-5">No records found!!</div>;
+  if (!project) return <PageNotFound />;
 
   return (
     <>
