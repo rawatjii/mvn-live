@@ -236,11 +236,14 @@ useEffect(() => {
       {projectData?.map((amenity, i) => (
         <section
           key={i}
-          className="parallax"
+          className="parallax1"
           aria-label="Desktop View Section"
         >
-          <div className="bg"  style={{backgroundImage:`url(${CONFIG.BACKEND_IMAGE_URL+amenity.image})`}}
->
+          <div className="card center">
+            <picture>
+              <source srcSet={CONFIG.BACKEND_IMAGE_URL + amenity.image} media="(max-width:768px)" />
+              <img src={CONFIG.BACKEND_IMAGE_URL + amenity.image} className="img-fluid" alt={amenity.alt} />
+            </picture>
             <Watermark className="left" />
           </div>
           <div className="content">

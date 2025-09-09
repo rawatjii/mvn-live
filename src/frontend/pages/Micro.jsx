@@ -374,7 +374,13 @@ useEffect(() => {
 
     return (
       <>
-        {/* {isAeroone && secIndex === 2 && <LargeElevationSection1 />} */}
+        {isAeroone && secIndex === 2 && elevationData?.map((item, index)=>(
+              <div key={index}>
+                <div className="mt_80 mt_sm_30 mb-md-5">
+                  <LargeElevationSection1 {...item} />
+                </div>
+              </div>
+            ))}
         {isMvnProject && secIndex === 1 && (
             <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
               <DownloadBrochure showAwards={project?.batch} name={project?.name} projectName={getProjectDisplayName()} />
@@ -394,8 +400,8 @@ useEffect(() => {
   };
 
   if (loading || sectionLoading) return renderLoadingScreen();
-  if (!loading && project?.length === 0) return <div className="text-center py-5">No records found!!</div>;
-  if (!project) return <PageNotFound />;
+  if (!loading && project?.length === 0) return <PageNotFound />;
+  // if (!project) return <PageNotFound />;
 
   return (
     <>
@@ -416,7 +422,7 @@ useEffect(() => {
           <HeroSection projectId={project?.id} projectName={projectName} />
 
           {/* jacuzzi image for aeroone */}
-          {pathname.includes("aeroone-gurgaon") && (
+          {/* {pathname.includes("aeroone-gurgaon") && (
             elevationData?.map((item, index)=>(
               <div key={index}>
                 <div className="mt_80 mt_sm_30 mb-md-5">
@@ -424,7 +430,7 @@ useEffect(() => {
                 </div>
               </div>
             ))
-          )}
+          )} */}
 
           {pathname.includes("mvn-mall") && (
             <div className="mt-5 mt-md-0 mb-md-5">

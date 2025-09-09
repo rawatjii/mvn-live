@@ -4020,6 +4020,7 @@ footer {
     .abs_img_in {
       width: 30%;
       margin-left: auto;
+      margin-top: -200px;
     }
     .abs_img_in.center {
       margin: auto;
@@ -4442,9 +4443,14 @@ table.bg_transparent {
 }
 .threeSixtyBtn {
   position: absolute;
-  top: 280px;
-  right: 100px;
+  top: 50px;
+  left: 50%;
+  transform:translateX(-50%);
   z-index: 99;
+}
+
+.section_360 .image_section img{ 
+  filter:blur(4px)
 }
 
 
@@ -5565,6 +5571,7 @@ table.bg_transparent {
 
       .abs_img_in {
         width: 100%;
+        margin-top: -50px;
       }
     }
   }
@@ -6029,8 +6036,8 @@ table.bg_transparent {
 
   section {
     position: relative;
-    height: 100vh;
-    padding-top: 60px;
+    /* height: 100vh; */
+    /* padding-top: 60px; */
     /* display: flex;
     align-items: center;
     justify-content: center; */

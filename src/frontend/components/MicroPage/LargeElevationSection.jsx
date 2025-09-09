@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import { gsap } from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CustomCard from "../Card";
 import { useMatches } from "../../../theme/theme";
 import { BACKEND_IMAGE_URL } from "../../../config/config";
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
 
 function LargeElevation({ data }) {
   const sectionRef = React.useRef(null);
@@ -23,33 +23,33 @@ function LargeElevation({ data }) {
 
   const { isMobile } = useMatches();
 
-  useEffect(() => {
-    gsap.from(".abs_img_m", {
-      y: -200,
-      scrollTrigger: {
-        trigger: ".large-elevation",
-        start: "top 80%",
-        end: "top 20%",
-        scrub: 0.2,
-      },
-    });
-    gsap.to(".abs_img1", {
-      y: -200,
-      scrollTrigger: {
-        trigger: desktopRef.current,
-        start: "top bottom",
-        end: "top top",
-        scrub: true,
-        markers: false,
-      },
-    });
+  // useEffect(() => {
+  //   gsap.from(".abs_img_m", {
+  //     y: -200,
+  //     scrollTrigger: {
+  //       trigger: ".large-elevation",
+  //       start: "top 80%",
+  //       end: "top 20%",
+  //       scrub: 0.2,
+  //     },
+  //   });
+  //   gsap.to(".abs_img1", {
+  //     y: -200,
+  //     scrollTrigger: {
+  //       trigger: desktopRef.current,
+  //       start: "top bottom",
+  //       end: "top top",
+  //       scrub: true,
+  //       markers: false,
+  //     },
+  //   });
 
-    // Ensure triggers refresh
-    ScrollTrigger.addEventListener("refresh", () =>
-      console.log("Triggers refreshed")
-    );
-    ScrollTrigger.refresh();
-  }, []);
+  //   // Ensure triggers refresh
+  //   ScrollTrigger.addEventListener("refresh", () =>
+  //     console.log("Triggers refreshed")
+  //   );
+  //   ScrollTrigger.refresh();
+  // }, []);
 
   return (
     <div

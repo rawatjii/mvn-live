@@ -19,9 +19,9 @@ const View360 = React.memo(({ data, onLoadComplete, sectionId }) => {
   };
 
   return (
-    <div className="position-relative">
+    <div className="position-relative section_360">
       {!showthreeSixtyView ? (
-        <div className="">
+        <div className="image_section">
           <picture>
           <source 
           media="(max-width: 767px)" 
