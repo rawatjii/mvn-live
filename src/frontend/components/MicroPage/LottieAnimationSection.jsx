@@ -73,7 +73,7 @@ const LottieAnimationSection = React.memo(
       const lottieAnimation = lottie.loadAnimation({
         container: lottieContainerRef.current,
         animationData,
-        renderer: "svg",
+        renderer: "canvas",
         loop: false,
         autoplay: false,
         rendererSettings: {

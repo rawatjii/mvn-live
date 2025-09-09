@@ -1624,8 +1624,8 @@ section.section.other_projects_section.pb-0 {
 
 
 .main_am .content {
-  position: absolute;
-  top: 0;
+  position: relative;
+  top: 100%;
   width: 100%;
 }
 
