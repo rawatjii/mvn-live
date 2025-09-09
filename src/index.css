@@ -5754,7 +5754,7 @@ table.bg_transparent {
     top: 10px;
     right:Unset;
     left:50%;
-    transform:translateX(-50%)
+    transform:translateX(-50%)  
   }
 }
 
