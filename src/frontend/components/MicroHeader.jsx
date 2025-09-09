@@ -20,6 +20,22 @@ import { setCommonState } from "../../redux/commonSlice";
 const subscribeBtn = `${API_URL}images/icons/subscribe_btn.webp`;
 const CloseBtnimg = `${API_URL}images/icons/close.png`;
 
+
+const microMenus = [
+  { section_name: 'Overview', section_type: 'overview' },
+  { section_name: 'Walkthrough', section_type: 'walkthrough' },
+  { section_name: 'DGM Sales', section_type: 'dgm_sales' },
+  { section_name: '360 Degree View', section_type: 'view_360' },
+  { section_name: 'About Architect', section_type: 'about_architect' },
+  { section_name: 'Landscape', section_type: 'landscape' },
+  { section_name: 'Construction Technology', section_type: 'construction_technology' },
+  { section_name: 'Amenities', section_type: 'amenities' },
+  { section_name: 'Typologies', section_type: 'typologies' },
+  { section_name: 'Floor plan', section_type: 'floor_plan' },
+  { section_name: 'Location Map', section_type: 'location_map' },
+  { section_name: 'MVN Mall', section_type: 'mvn_mall' },
+];
+
 const MicroHeader = ({ scrollToSection, data, isFixed }) => {
   const [scrolled, setScrolled] = useState(false);
   const [isMicro, setIsMicro] = useState(false);
@@ -28,7 +44,6 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
 
   const { sidebar_section, sidebarAsset } = data;
 
-  console.log('micropage data',data);
   const channelUrl = CONFIG.YOUTUBE_URL;
   const { pathname } = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -89,6 +104,8 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
     setIsMenuOpen(value === "show");
   };
   // console.log(isMicro)
+
+  let menusSections = pathname.includes('aeroone-gurgaon') ? microMenus : microPageSections;
 
   return (
     <Navbar
@@ -172,9 +189,11 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                           </li>
                         </ul>
                         <h4>{pathname.includes('mvn-mall') ? 'MVN Mall, Gurugram' : pathname.includes('mvn-athens-gurgaon-phase-1') ? 'MVN Athens Ph-1, Sohna' : pathname.includes('mvn-athens-gurgaon-phase-2') ? 'MVN Athens Ph-2, Sohna' : pathname.includes('mvn-athens-faridabad') ? 'MVN Athens, Faridabad' : pathname.includes('aeroone-gurgaon')?'MVN Aeroone Gurgaon':data.title}</h4>
+                        
                         <ul>
-                          {microPageSections &&
-                            microPageSections?.map((section, index) => (
+                        {/* {pathname.includes('mvn-mall') ? } */}
+                          {menusSections &&
+                            menusSections?.map((section, index) => (
                               <li key={index}>
                                 <NavLink
                                   className="new-launch"

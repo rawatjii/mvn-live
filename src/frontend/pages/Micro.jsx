@@ -270,11 +270,13 @@ useEffect(() => {
       threesixtyview: (
         
           <div {...sectionProps}>
+            <div ref={(el) => (sectionRefs.current.view_360 = el)}>
             <View360
               sectionId={sectionKey}
               data={section}
               onLoadComplete={() => ScrollTrigger.refresh()}
             />
+            </div>
           </div>
       ),
       Peacock: (
@@ -296,7 +298,9 @@ useEffect(() => {
       consultant: (
         
           <div {...sectionProps}>
+             <div ref={(el) => (sectionRefs.current.about_architect = el)}>
             <Consultant {...sectionProps} />
+            </div>
           </div>
       ),
       landscape: (
@@ -318,7 +322,9 @@ useEffect(() => {
       construction: (
         
           <div {...sectionProps}>
+            <div ref={(el) => (sectionRefs.current.construction_technology = el)}>
             <ConstructionTechnology {...sectionProps} />
+            </div>
           </div>
       ),
       amenities: (
@@ -334,21 +340,27 @@ useEffect(() => {
       ),
       "location-map": (
           <div {...sectionProps}>
+            <div ref={(el) => (sectionRefs.current.location_map = el)}>
             <MicroLocationMap data={section} projectName={projectName} />
+            </div>
           </div>
       ),
       "mvn-mall": (
           <div {...sectionProps}>
+            <div ref={(el) => (sectionRefs.current.mvn_mall = el)}>
             <MvnMall {...sectionProps} />
+            </div>
           </div>
       ),
       "floor-plan": (
           <div {...sectionProps}>
+            <div ref={(el) => (sectionRefs.current.floor_plan = el)}>
             {section.is_type === "video" ? (
               <MicroFloorPlan {...sectionProps} />
             ) : (
               <SliderTypology {...sectionProps} />
             )}
+            </div>
           </div>
       ),
       "construction-technology": pathname.includes("mvn-athens-gurgaon-phase-3") && (
@@ -394,7 +406,8 @@ useEffect(() => {
         {overviewIframe && projectName.includes("mvn-mall") && secIndex === 1 && (
             <CustomIframe data={overviewIframe} />
         )}
-        {isAeroone && secIndex === 5 && <ContactInfo white={true} />}
+        {isAeroone && secIndex === 5 && 
+        <div ref={(el) => (sectionRefs.current.dgm_sales = el)}><ContactInfo white={true} /></div>}
       </>
     );
   };
