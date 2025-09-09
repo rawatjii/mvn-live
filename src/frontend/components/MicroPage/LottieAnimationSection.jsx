@@ -113,10 +113,9 @@ const LottieAnimationSection = React.memo(
         });
       }
 
-      // Event listener for when Lottie is fully initialized
       lottieAnimation.addEventListener("DOMLoaded", () => {
-        setLoading(false); // Set loading to false when Lottie is fully loaded
-        onLoadComplete && onLoadComplete(); // Call onLoadComplete if provided
+        setLoading(false);
+        onLoadComplete && onLoadComplete();
       });
 
       return () => {

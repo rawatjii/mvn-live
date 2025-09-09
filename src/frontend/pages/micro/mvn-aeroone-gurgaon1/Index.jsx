@@ -219,8 +219,6 @@ export const data = {
     // second_title:'OPEN THE DOORS TO EXPANSIVE ELEGANCE AND SPACIOUS LUXURY',
     // desc:'Glide your way through the floor-to-ceiling sliding doors, and step on to the sprawling deck with breathtaking vistas and an air of tranquility.',
     path:{
-      // mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/livingRoom/data.json`,
-      // desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/livingRoom/data.json`,
       mobile:`${CONFIG.API_URL}videos/aeroone-gurgaon/living-room.mp4`,
       desktop:`${CONFIG.API_URL}videos/aeroone-gurgaon/living-room.mp4`,
     }
