@@ -113,9 +113,7 @@ useEffect(() => {
     },
   });
 
-  console.log("ScrollSmoother initialized:", smootherRef.current);
 
-  // Refresh ScrollTrigger after sections load
   if (!sectionLoading && sections.length > 0) {
     ScrollTrigger.refresh();
     smootherRef.current?.refresh();
