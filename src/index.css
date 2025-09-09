@@ -6616,3 +6616,4 @@ gap: 10px;
 }
 .lifestyle_sec .ponters li .circle{height: 15px;width: 15px;background-color: #E6D49C;display: block;border-radius: 50%;}
 .lifestyle_sec  .img_in{position: relative;z-index: 1;object-position: left;width: 100%;}
+.threeSixtyBtn{position: absolute;top: 280px;right: 100px;z-index: 99;}
