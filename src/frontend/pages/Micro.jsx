@@ -34,7 +34,6 @@ import Strip from "../components/homepage/Strip11";
 import SliderTypology from "../components/MicroPage/bangalore/SliderTypology";
 import FeatureSection from "../components/MicroPage/athens/FeatureSection";
 import MicroFloorPlan from "../components/MicroPage/FloorPlan";
-import LazyLoadComponent from "../../common/LazyLoadComponent";
 import { API_URL } from "../../config/config";
 import { setCommonState } from "../../redux/commonSlice";
 import { fetchProject, clearProject } from "../../redux/projectDataSlice";
@@ -67,6 +66,33 @@ const headerData = {
     { section_title: "Connections MVN Mall", link: "NoPolutionZone" },
   ],
 };
+
+const elevationData = [
+  {
+    image:{
+      desktop:'floors.webp',
+      mobile:'floors_sm.webp',
+    },
+    title:'Villas in the Sky',
+    desc:'Experience elevated living with unmatched luxury above the clouds.',
+  },
+  {
+    image:{
+      desktop:'assets/images/aeroone/jacuzzi/desktop.webp',
+      mobile:'assets/images/aeroone/jacuzzi/mobile.webp',
+    },
+    title:'Indulge in Serenity',
+    desc:'Immerse in luxury with a private jacuzzi, offering relaxation and stunning vistas.',
+  },
+  {
+    image:{
+      desktop:'assets/images/aeroone/zen-garden/desktop.webp',
+      mobile:'assets/images/aeroone/zen-garden/mobile.webp',
+    },
+    title:'Embrace Tranquility',
+    desc:'Experience peace in a meticulously crafted Zen garden, a sanctuary of balance and beauty.',
+  },
+]
 
 const MicroPage = () => {
   const { projectName } = useParams();
@@ -221,11 +247,9 @@ useEffect(() => {
 
     const sectionComponents = {
       elevation: (
-        <LazyLoadComponent margin="200px" debugName="elevation">
           <div ref={(el) => (sectionRefs.current.elevation = el)}>
             <LargeElevationSection {...sectionProps} />
           </div>
-        </LazyLoadComponent>
       ),
       overview: (
         <div ref={(el) => (sectionRefs.current.overview = el)}>
@@ -238,14 +262,14 @@ useEffect(() => {
         </div>
       ),
       walkthrough: (
-        <LazyLoadComponent margin="200px" debugName="walkthrough">
+        
           <div ref={(el) => (sectionRefs.current.walkthrough = el)}>
             <YtIframe {...sectionProps} subs_btn={true} />
           </div>
-        </LazyLoadComponent>
+        
       ),
       threesixtyview: (
-        <LazyLoadComponent margin="200px" debugName="threesixtyview">
+        
           <div {...sectionProps}>
             <View360
               sectionId={sectionKey}
@@ -253,38 +277,32 @@ useEffect(() => {
               onLoadComplete={() => ScrollTrigger.refresh()}
             />
           </div>
-        </LazyLoadComponent>
       ),
       Peacock: (
-        <LazyLoadComponent margin="200px" debugName="livingroom">
+        
           <div {...sectionProps}>
             <PeacockSection {...sectionProps} />
           </div>
-        </LazyLoadComponent>
       ),
       party: (
-        <LazyLoadComponent margin="200px" debugName="party">
           <div {...sectionProps}>
-            <PeacockSection {...sectionProps} watermarkClass="style5" />
+            <PeacockSection {...sectionProps} watermarkClass="style5" desktop_img="assets/images/aeroone/party/desktop.webp" mobile_img="assets/images/aeroone/party/desktop.webp" />
           </div>
-        </LazyLoadComponent>
       ),
       masterbedroom: (
-        <LazyLoadComponent margin="200px" debugName="masterbedroom">
+        
           <div {...sectionProps}>
-            <PeacockSection {...sectionProps} watermarkClass="style5" />
+            <PeacockSection {...sectionProps} watermarkClass="style5" desktop_img="assets/images/aeroone/bedroom/desktop.webp" mobile_img="assets/images/aeroone/bedroom/desktop.webp" />
           </div>
-        </LazyLoadComponent>
       ),
       consultant: (
-        <LazyLoadComponent margin="200px" debugName="consultant">
+        
           <div {...sectionProps}>
             <Consultant {...sectionProps} />
           </div>
-        </LazyLoadComponent>
       ),
       landscape: (
-        <LazyLoadComponent margin="200px" debugName={section.section_type}>
+        
           <div {...sectionProps}>
             <ImagesGallery
               section_name={section.section_type === "landscape" ? "landscapes" : section.section_type}
@@ -292,52 +310,41 @@ useEffect(() => {
               showTitle={["landscapes", "galleries"].includes(section.section_type) ? false : true}
             />
           </div>
-        </LazyLoadComponent>
       ),
       "key-highlights": (
-        <LazyLoadComponent margin="200px" debugName="keyHighlights">
+        
           <div {...sectionProps}>
             <FeatureSection {...sectionProps} />
           </div>
-        </LazyLoadComponent>
       ),
       construction: (
-        <LazyLoadComponent margin="200px" debugName="construction">
+        
           <div {...sectionProps}>
             <ConstructionTechnology {...sectionProps} />
           </div>
-        </LazyLoadComponent>
       ),
       amenities: (
-        <LazyLoadComponent margin="200px" debugName={section.section_type}>
+        
           <div {...sectionProps}>
             <ParallaxSection section_data={section} />
           </div>
-        </LazyLoadComponent>
       ),
       typologies: (
-        <LazyLoadComponent margin="200px" debugName="typologies">
           <div {...sectionProps} className="outer_section">
             <Typology {...sectionProps} />
           </div>
-        </LazyLoadComponent>
       ),
       "location-map": (
-        <LazyLoadComponent margin="200px" debugName="location-map">
           <div {...sectionProps}>
             <MicroLocationMap data={section} projectName={projectName} />
           </div>
-        </LazyLoadComponent>
       ),
       "mvn-mall": (
-        <LazyLoadComponent margin="200px" debugName="mvn-mall">
           <div {...sectionProps}>
             <MvnMall {...sectionProps} />
           </div>
-        </LazyLoadComponent>
       ),
       "floor-plan": (
-        <LazyLoadComponent margin="200px" debugName="floor-plan">
           <div {...sectionProps}>
             {section.is_type === "video" ? (
               <MicroFloorPlan {...sectionProps} />
@@ -345,14 +352,11 @@ useEffect(() => {
               <SliderTypology {...sectionProps} />
             )}
           </div>
-        </LazyLoadComponent>
       ),
       "construction-technology": pathname.includes("mvn-athens-gurgaon-phase-3") && (
-        <LazyLoadComponent margin="200px" debugName="construction-technology">
           <div {...sectionProps}>
             <Construction {...sectionProps} />
           </div>
-        </LazyLoadComponent>
       ),
     };
 
@@ -372,25 +376,19 @@ useEffect(() => {
 
     return (
       <>
-        {isAeroone && secIndex === 2 && <LargeElevationSection1 />}
+        {/* {isAeroone && secIndex === 2 && <LargeElevationSection1 />} */}
         {isMvnProject && secIndex === 1 && (
-          <LazyLoadComponent margin="200px" debugName="downloadBrochure">
             <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
               <DownloadBrochure showAwards={project?.batch} name={project?.name} projectName={getProjectDisplayName()} />
             </div>
-          </LazyLoadComponent>
         )}
         {isAeroone && secIndex === 5 && (
-          <LazyLoadComponent margin="200px" debugName="downloadBrochure">
             <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
               <DownloadBrochure showAwards={project?.batch} name={project?.name} />
             </div>
-          </LazyLoadComponent>
         )}
         {overviewIframe && projectName.includes("mvn-mall") && secIndex === 1 && (
-          <LazyLoadComponent margin="200px" debugName="mvn-mall">
             <CustomIframe data={overviewIframe} />
-          </LazyLoadComponent>
         )}
         {isAeroone && secIndex === 5 && <ContactInfo white={true} />}
       </>
@@ -415,7 +413,21 @@ useEffect(() => {
       {pathname.includes("aeroone-gurgaon") && <WhatsappBtn />}
       <div id="smooth-wrapper">
         <div id="smooth-content">
+
+          {/* hero section */}
           <HeroSection projectId={project?.id} projectName={projectName} />
+
+          {/* jacuzzi image for aeroone */}
+          {pathname.includes("aeroone-gurgaon") && (
+            elevationData?.map((item, index)=>(
+              <div key={index}>
+                <div className="mt_80 mt_sm_30 mb-md-5">
+                  <LargeElevationSection1 {...item} />
+                </div>
+              </div>
+            ))
+          )}
+
           {pathname.includes("mvn-mall") && (
             <div className="mt-5 mt-md-0 mb-md-5">
               <Strip />
@@ -429,7 +441,6 @@ useEffect(() => {
           ))}
           {sections.length > 0 && (
             <>
-              
                 <div className="container-fluid micro_footer">
                   <div className="row">
                     <div className="col-sm-6 px-0">

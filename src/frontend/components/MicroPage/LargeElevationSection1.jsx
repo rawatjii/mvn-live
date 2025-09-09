@@ -10,7 +10,7 @@ import * as CONFIG from "../../../config/config";
 const bgImgDesk1 = `${CONFIG.API_URL}images/aero-gurgaon/largeBg1.png`;
 const bgImgDesk1_sm = `${CONFIG.API_URL}images/aero-gurgaon/largeBg1Sm.webp`;
 
-function LargeElevation1() {
+function LargeElevation1({title="Villas in the Sky", desc="Experience elevated living with unmatched luxury above the clouds.", image}) {
   const { isMobile } = useMatches();
 
   return (
@@ -22,7 +22,7 @@ function LargeElevation1() {
       >
         <div className={``}>
           <img
-            src={isMobile ? "/floors_sm.webp" : "/floors.webp"}
+            src={isMobile ? image?.mobile : image?.desktop}
             alt={"LargeElevation Image"}
             className={`img-fluid img_in w-100 h-100 object-fit-cover ${
               isMobile ? " " : "d_lg_block"
@@ -38,10 +38,8 @@ function LargeElevation1() {
           <div className="about">
             <CustomCard
               className="px-0 pb-0"
-              title={"Villas in the Sky"}
-              desc={
-                "Experience elevated living with unmatched luxury above the clouds."
-              }
+              title={title}
+              desc={desc}
               type="style1"
             />
           </div>
