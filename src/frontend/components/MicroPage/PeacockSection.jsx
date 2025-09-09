@@ -8,7 +8,7 @@ import Watermark from "../../../common/watermark/Index";
 import ScrollDown from "../../../common/scrollDown/Index";
 import { BACKEND_IMAGE_URL } from "../../../config/config";
 
-const PeacockSection = React.memo(({ data, watermarkClass, json, mb_json, animation_speed=2 }) => {
+const PeacockSection = React.memo(({ data, watermarkClass, json, mb_json, animation_speed=2, desktop_img, mobile_img }) => {
   const { isMobile } = useMatches();
   let finalData;
 
@@ -30,10 +30,12 @@ const PeacockSection = React.memo(({ data, watermarkClass, json, mb_json, animat
       ...data
     }
   }
+  
+  const displayImage = desktop_img || image;
 
   return (
     <>
-      {(!image && json) || isMobile ? (
+      {(!displayImage && json) || (isMobile && !displayImage) ? (
         <>
           <LottieAnimationSection
             customClass={watermarkClass ? watermarkClass : "style2"}
@@ -47,7 +49,7 @@ const PeacockSection = React.memo(({ data, watermarkClass, json, mb_json, animat
       ) : (
         <>
           <div
-            className="section peacock_section pb-0 pt-0"
+            className="section peacock_section pb-0 pt_50 pt_sm_30"
             id="peacockSection"
           >
             <div className="frames_content">
@@ -57,9 +59,9 @@ const PeacockSection = React.memo(({ data, watermarkClass, json, mb_json, animat
                   type="style1"
                 />
                 <picture className="img-fluid peacock_img">
-                  <source srcSet={BACKEND_IMAGE_URL + image} />
+                  <source srcSet={BACKEND_IMAGE_URL + displayImage} />
                   <img
-                    src={BACKEND_IMAGE_URL + alternative_image}
+                    src={BACKEND_IMAGE_URL + displayImage}
                     alt="Peacock image"
                     className="img-fluid peacock_img w-100"
                   />

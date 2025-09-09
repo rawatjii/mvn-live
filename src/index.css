@@ -4499,8 +4499,12 @@ table.bg_transparent {
     padding-top: 0px !important;
   }
 
-  .pb_sm_0 {
-    padding-bottom: 0px !important;
+  .pt_sm_30{
+    padding-top:30px!important;
+  }
+
+  .pb_sm_0{
+    padding-bottom:0px!important;
   }
 
   .pb_sm_10 {
@@ -4519,8 +4523,18 @@ table.bg_transparent {
     padding-bottom: 40px;
   }
 
-  .p_sm_0 {
-    padding: 0 !important;
+  
+
+.mt_sm_30{
+  margin-top:30px!important;
+}
+
+.mt_sm_40{
+  margin-top:40px!important;
+}
+
+  .p_sm_0{
+    padding:0!important;
   }
 
   .px_sm_0 {
