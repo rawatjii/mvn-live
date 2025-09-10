@@ -11,7 +11,7 @@ import sectionReducer from '../redux/sectionDataSlice'; // Updated import
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['banner'], // Persist only the banner slice
+  whitelist: ['banner','section','project'], // Persist only the banner slice
 };
 
 const persistedBannerReducer = persistReducer(persistConfig, bannerReducer);
