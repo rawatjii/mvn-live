@@ -29,6 +29,7 @@ const LottieAnimationSection = React.memo(
     customClass,
     anClass,
     isBanner,
+    showthreeSixtyView=true,
     animation_speed=2,
     key
   }) => {
@@ -138,6 +139,7 @@ const LottieAnimationSection = React.memo(
         },
       });
     }, []);
+    // if(!)return
     return (
       <div className="">
         {loading ? (
@@ -145,7 +147,7 @@ const LottieAnimationSection = React.memo(
         ) : (
           <>
             <section
-              className={`LottieAnimationContainer ${anClass}`}
+              className={`LottieAnimationContainer ${!showthreeSixtyView?'d-none':'d-block'} ${anClass}`}
               aria-label="LottieAnimation Section"
             >
               {(section_type !== 'party' && section_type !== 'masterbedroom'&& section_type !== 'Peacock' )&& heading && (

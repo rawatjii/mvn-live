@@ -20,8 +20,8 @@ const View360 = React.memo(({ data, onLoadComplete, sectionId }) => {
 
   return (
     <div className="position-relative section_360">
-      {!showthreeSixtyView ? (
-        <div className="image_section">
+     
+        <div className={`${!showthreeSixtyView?'d-block':'d-none' } image_section`}>
           <picture>
           <source 
           media="(max-width: 767px)" 
@@ -41,20 +41,22 @@ const View360 = React.memo(({ data, onLoadComplete, sectionId }) => {
             360 View
           </button>
         </div>
-      ) : (
-        <div className="section peacock_section position-relative party_section py-0">
+  
+        <div className={`section peacock_section position-relative party_section   py-0`}>
           <LottieAnimationSection
             sectionId={sectionId}
             onLoadComplete={onLoadComplete}
+            visibilityVia={0}
             backgroundImg={partyImg}
             data={data}
+            showthreeSixtyView={showthreeSixtyView}
             logomark={isMobile ? "left sm" : "left"}
             position="0"
             animation_speed="3"
             key={showthreeSixtyView ? "360-view" : "default"}
           />
         </div>
-      )}
+     
     </div>
   );
 });
