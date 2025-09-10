@@ -42,7 +42,8 @@ const PrPolcy = lazy(() => import("./frontend/pages/PrPolcy.jsx"));
 const Disclaimer = lazy(() => import("./frontend/pages/Disclaimer.jsx"));
 const ThankYou = lazy(() => import("./frontend/pages/ThankYou.jsx"));
 const PDFViewer = lazy(() => import("./frontend/pages/PDFViewer.jsx"));
-const MicroPage = lazy(() => import("./frontend/pages/Micro.jsx"));
+// const MicroPage = lazy(() => import("./frontend/pages/Micro.jsx"));
+import MicroPage from "./frontend/pages/Micro.jsx";
 const FrontendRoute = lazy(() => import("./common/FrontendRoute.jsx"));
 
 // ==========================================================
@@ -184,9 +185,9 @@ const router = createBrowserRouter([
       {
         path: ":projectName",
         element: (
-          <FrontendRoute loaderType="about-us">
+          // <FrontendRoute loaderType="media-centre">
             <MicroPage />
-          </FrontendRoute>
+          // </FrontendRoute>
           // <FrontendRoute>
           // </FrontendRoute>
         ),
@@ -234,7 +235,7 @@ const router = createBrowserRouter([
       },
       {
         path: "thanks",
-        element: <ThankYou />,
+        element: <FrontendRoute loaderType=""><ThankYou /></FrontendRoute>,
       },
       {
         path: "privacy-policy",
@@ -280,76 +281,76 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin/login",
-    element: <Login />,
+    element: <Suspense fallback=""><Login /></Suspense>,
   },
   {
     path: "/admin",
-    element: <AdminProtectedRoute />,
+    element: <Suspense fallback=""><AdminProtectedRoute /></Suspense>,
     children: [
       {
         path: "",
         element: <AdminLayout />,
         children: [
-          { path: "", element: <Dashboard /> },
-          { path: "amenities", element: <AmenitiesAdmin /> },
-          { path: "about-us", element: <AdminAboutUs /> },
-          { path: "verticals", element: <Verticals /> },
-          { path: "infrastructure", element: <Infrastructure /> },
-          { path: "brand-ethos", element: <BrandEthos /> },
-          { path: "testimonials", element: <Testimonials /> },
-          { path: "our-values", element: <OurValues /> },
-          { path: "timeline", element: <Timeline /> },
-          { path: "team", element: <Team /> },
-          { path: "blogs", element: <AdminBlog /> },
-          { path: "work-culture", element: <AdminWorkCulture /> },
-          { path: "career", element: <AdminCareer /> },
-          { path: "media-centre", element: <AdminMediaCentre /> },
-          { path: "contact-us", element: <AdminContactUs /> },
-          { path: "project-list", element: <ProjectList /> },
-          { path: "platter", element: <Platter /> },
-          { path: "pages-meta", element: <PagesMeta /> },
+          { path: "", element: <FrontendRoute loaderType=""><Dashboard /></FrontendRoute> },
+          { path: "amenities", element: <FrontendRoute loaderType=""><AmenitiesAdmin /></FrontendRoute> },
+          { path: "about-us", element: <FrontendRoute loaderType=""><AdminAboutUs /></FrontendRoute> },
+          { path: "verticals", element: <FrontendRoute loaderType=""><Verticals /></FrontendRoute> },
+          { path: "infrastructure", element: <FrontendRoute loaderType=""><Infrastructure /></FrontendRoute> },
+          { path: "brand-ethos", element: <FrontendRoute loaderType=""><BrandEthos /></FrontendRoute> },
+          { path: "testimonials", element: <FrontendRoute loaderType=""><Testimonials /></FrontendRoute> },
+          { path: "our-values", element: <FrontendRoute loaderType=""><OurValues /></FrontendRoute> },
+          { path: "timeline", element: <FrontendRoute loaderType=""><Timeline /></FrontendRoute> },
+          { path: "team", element: <FrontendRoute loaderType=""><Team /></FrontendRoute> },
+          { path: "blogs", element: <FrontendRoute loaderType=""><AdminBlog /></FrontendRoute> },
+          { path: "work-culture", element: <FrontendRoute loaderType=""><AdminWorkCulture /></FrontendRoute> },
+          { path: "career", element: <FrontendRoute loaderType=""><AdminCareer /></FrontendRoute> },
+          { path: "media-centre", element: <FrontendRoute loaderType=""><AdminMediaCentre /></FrontendRoute>},
+          { path: "contact-us", element: <FrontendRoute loaderType=""><AdminContactUs /></FrontendRoute> },
+          { path: "project-list", element: <FrontendRoute loaderType=""><ProjectList /></FrontendRoute> },
+          { path: "platter", element: <FrontendRoute loaderType=""><Platter /></FrontendRoute> },
+          { path: "pages-meta", element: <FrontendRoute loaderType=""><PagesMeta /></FrontendRoute> },
           // { path: "page/index", element: <AdminHomepage /> },
-          { path: "page/:pageName", element: <SinglePage /> },
+          { path: "page/:pageName", element: <FrontendRoute loaderType=""><SinglePage /></FrontendRoute> },
           {
             path: "microsite",
-            element: <MicroSidebar />,
+            element: <FrontendRoute loaderType=""><MicroSidebar /></FrontendRoute>,
             children: [
-              { path: "", element: <BasicMicroSite /> },
+              { path: "", element: <FrontendRoute loaderType=""><BasicMicroSite /></FrontendRoute> },
               //   {path:"overview", element:<OverviewMicroSite />},
               //   {path:"banner", element:<HeroSection />},
             ],
           },
           {
             path: "microsite/:project_id",
-            element: <MicroSidebar />,
+            element: <FrontendRoute loaderType=""><MicroSidebar /></FrontendRoute>,
             children: [
-              { path: "", element: <BasicMicroSite /> },
-              { path: "overview", element: <OverviewMicroSite /> },
-              { path: "sizes", element: <Sizes /> },
-              { path: "large-elevation", element: <Elevation /> },
-              { path: "banner", element: <HeroSection /> },
-              { path: "walkthrough", element: <Walkthrough /> },
-              { path: "360-views", element: <ThreesixtyView /> },
-              { path: "Peacock", element: <LivingRoom /> },
-              { path: "party", element: <Party /> },
-              { path: "master-Bed-room", element: <MasterBedroom /> },
-              { path: "architect", element: <Consultant /> },
-              { path: "landscape", element: <LandScape /> },
-              { path: "landscapes", element: <LandScape /> },
-              { path: "galleries", element: <Galleries /> },
-              { path: "elevation", element: <SmElevation /> },
-              { path: "apartment", element: <Apartment /> },
+              { path: "", element: <FrontendRoute loaderType=""><BasicMicroSite /></FrontendRoute> },
+              { path: "overview", element: <FrontendRoute loaderType=""><OverviewMicroSite /></FrontendRoute> },
+              { path: "sizes", element: <FrontendRoute loaderType=""><Sizes /></FrontendRoute> },
+              { path: "large-elevation", element: <FrontendRoute loaderType=""><Elevation /></FrontendRoute> },
+              { path: "banner", element: <FrontendRoute loaderType=""><HeroSection /></FrontendRoute> },
+              { path: "walkthrough", element: <FrontendRoute loaderType=""><Walkthrough /></FrontendRoute> },
+              { path: "360-views", element: <FrontendRoute loaderType=""><ThreesixtyView /></FrontendRoute> },
+              { path: "Peacock", element: <FrontendRoute loaderType=""><LivingRoom /></FrontendRoute> },
+              { path: "party", element: <FrontendRoute loaderType=""><Party /></FrontendRoute> },
+              { path: "master-Bed-room", element:  <FrontendRoute loaderType=""><MasterBedroom /></FrontendRoute> },
+              { path: "architect", element: <FrontendRoute loaderType=""><Consultant /></FrontendRoute> },
+              { path: "landscape", element:  <FrontendRoute loaderType=""><LandScape /></FrontendRoute> },
+              { path: "landscapes", element: <FrontendRoute loaderType=""><LandScape /></FrontendRoute> },
+              { path: "galleries", element: <FrontendRoute loaderType=""><Galleries /></FrontendRoute> },
+              { path: "elevation", element: <FrontendRoute loaderType=""><SmElevation /></FrontendRoute> },
+              { path: "apartment", element: <FrontendRoute loaderType=""><Apartment /></FrontendRoute> },
               {
                 path: "construction-technology",
-                element: <ConstructionTechnology />,
+                element: <FrontendRoute loaderType=""><ConstructionTechnology /></FrontendRoute>,
               },
-              { path: "amenities", element: <AmenitiesAdmin /> },
-              { path: "connection-mall", element: <ConnectionMvnMall /> },
-              { path: "typologies", element: <Typologies /> },
-              { path: "floor-plan", element: <FloorPlans /> },
-              { path: "location-map", element: <LocationMap /> },
-              { path: "key-highlights", element: <KeyHighlights /> },
-              { path: "mvn-mall", element: <MvnMall /> },
+              { path: "amenities", element: <FrontendRoute loaderType=""><AmenitiesAdmin /> </FrontendRoute>},
+              { path: "connection-mall", element: <FrontendRoute loaderType=""><ConnectionMvnMall /></FrontendRoute> },
+              { path: "typologies", element:<FrontendRoute loaderType=""> <Typologies /></FrontendRoute> },
+              { path: "floor-plan", element: <FrontendRoute loaderType=""> <FloorPlans /> </FrontendRoute>},
+              { path: "location-map", element: <FrontendRoute loaderType=""><LocationMap /></FrontendRoute> },
+              { path: "key-highlights", element: <FrontendRoute loaderType=""><KeyHighlights /></FrontendRoute> },
+              { path: "mvn-mall", element: <FrontendRoute loaderType=""><MvnMall /></FrontendRoute> },
             ],
           },
         ],

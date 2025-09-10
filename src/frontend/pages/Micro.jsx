@@ -19,7 +19,7 @@ import { setCommonState } from "../../redux/commonSlice";
 import { fetchProject, clearProject } from "../../redux/projectDataSlice";
 import { fetchSectionById, clearSection } from "../../redux/sectionDataSlice";
 
-const WhatsappBtn = React.lazy(() => import("../components/Whatsapp"));
+import WhatsappBtn from "../components/Whatsapp";
 const ContactInfo = React.lazy(() => import("../components/ContactInfo"));
 const PageNotFound = React.lazy(() =>
   import("../../common/PageNotFound/Index")
@@ -27,9 +27,10 @@ const PageNotFound = React.lazy(() =>
 const Construction = React.lazy(() => import("./Construction"));
 
 // ✅ Dynamically loaded components using React.lazy (for code-splitting)
-const HeroSection = React.lazy(() =>
-  import("../components/MicroPage/Hero/Index")
-);
+import HeroSection from "../components/MicroPage/Hero/Index"
+// const HeroSection = React.lazy(() =>
+//   import("../components/MicroPage/Hero/Index")
+// );
 const MicroOverview = React.lazy(() =>
   import("../components/MicroPage/Overview")
 );
@@ -46,7 +47,8 @@ const DownloadBrochure = React.lazy(() =>
 const CustomIframe = React.lazy(() =>
   import("../components/MicroPage/CustomIframe")
 );
-const View360 = React.lazy(() => import("../components/MicroPage/360"));
+// import View360 from "../components/MicroPage/360";
+// const View360 = React.lazy(() => import("../components/MicroPage/360"));
 const PeacockSection = React.lazy(() =>
   import("../components/MicroPage/PeacockSection")
 );
@@ -59,14 +61,13 @@ const ImagesGallery = React.lazy(() =>
 const ConstructionTechnology = React.lazy(() =>
   import("../components/MicroPage/ConstructionTechnology")
 );
-const ParallaxSection = React.lazy(() =>
-  import("../../common/ParallaxSection")
-);
+import ParallaxSection from "../../common/ParallaxSection";
 const MicroLocationMap = React.lazy(() =>
   import("../components/MicroPage/LocationMap")
 );
 const MvnMall = React.lazy(() => import("../components/MicroPage/MvnMall"));
-const Typology = React.lazy(() => import("../components/homepage/Typology"));
+import Typology from "../components/homepage/Typology";
+// const Typology = React.lazy(() => import("../components/homepage/Typology"));
 const Enquire = React.lazy(() => import("../components/homepage/Enquire"));
 const EnquireForm = React.lazy(() =>
   import("../components/homepage/EnquireForm")
@@ -292,19 +293,17 @@ const MicroPage = () => {
           </Suspense>
         </div>
       ),
-      threesixtyview: (
-        <div {...sectionProps}>
-          <div ref={(el) => (sectionRefs.current.view_360 = el)}>
-            <Suspense fallback={<p>Loading...</p>}>
-              <View360
-                sectionId={sectionKey}
-                data={section}
-                onLoadComplete={() => ScrollTrigger.refresh()}
-              />
-            </Suspense>
-          </div>
-        </div>
-      ),
+      // threesixtyview: (
+      //   <div {...sectionProps}>
+      //     <div ref={(el) => (sectionRefs.current.view_360 = el)}>
+      //         <View360
+      //           sectionId={sectionKey}
+      //           data={section}
+      //           onLoadComplete={() => ScrollTrigger.refresh()}
+      //         />
+      //     </div>
+      //   </div>
+      // ),
       Peacock: (
         <div {...sectionProps}>
           <Suspense fallback={<p>Loading...</p>}>
@@ -382,16 +381,12 @@ const MicroPage = () => {
       ),
       amenities: (
         <div {...sectionProps}>
-          <Suspense fallback={<p>Loading...</p>}>
             <ParallaxSection section_data={section} />
-          </Suspense>
         </div>
       ),
       typologies: (
         <div {...sectionProps} className="outer_section">
-          <Suspense fallback={<p>Loading...</p>}>
             <Typology {...sectionProps} />
-          </Suspense>
         </div>
       ),
       "location-map": (
@@ -507,11 +502,10 @@ const MicroPage = () => {
   if (loading || sectionLoading) return renderLoadingScreen();
   if (!loading && project?.length === 0)
     return (
-      <Suspense fallback={<p>Loading...</p>}>
+      <Suspense fallback={<p>Loading page not found...</p>}>
         <PageNotFound />
       </Suspense>
     );
-  // if (!project) return <PageNotFound />;
 
   return (
     <>
@@ -534,11 +528,9 @@ const MicroPage = () => {
         data={headerData}
         isFixed={isHeaderFixed}
       />
-      {pathname.includes("aeroone-gurgaon") && <Suspense fallback={<p>Loading...</p>}><WhatsappBtn /></Suspense>}
+      {pathname.includes("aeroone-gurgaon") && <WhatsappBtn />}
           {/* hero section */}
-          <Suspense fallback={<p>Loading...</p>}>
             <HeroSection projectId={project?.id} projectName={projectName} />
-          </Suspense>
 
           {pathname.includes("mvn-mall") && (
             <div className="mt-5 mt-md-0 mb-md-5">
