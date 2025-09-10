@@ -51,6 +51,7 @@ const View360 = React.memo(({ data, onLoadComplete, sectionId }) => {
             logomark={isMobile ? "left sm" : "left"}
             position="0"
             animation_speed="3"
+            key={showthreeSixtyView ? "360-view" : "default"}
           />
         </div>
       )}

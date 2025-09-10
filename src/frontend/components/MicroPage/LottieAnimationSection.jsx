@@ -29,7 +29,8 @@ const LottieAnimationSection = React.memo(
     customClass,
     anClass,
     isBanner,
-    animation_speed=2
+    animation_speed=2,
+    key
   }) => {
     const containerRef = useRef(null);
     const titleRef = useRef();
@@ -59,7 +60,7 @@ const LottieAnimationSection = React.memo(
       };
 
       loadAnimationData();
-    }, [isMobile, json]);
+    }, [isMobile, json, mb_json, key]);
 
     // Initialize Lottie and ScrollTrigger
     useEffect(() => {
@@ -122,7 +123,7 @@ const LottieAnimationSection = React.memo(
         scrollAnimation.kill();
         lottieAnimation.destroy();
       };
-    }, [animationData, onLoadComplete]);
+    }, [animationData, onLoadComplete, key]);
 
     useEffect(() => {
       if (!titleRef.current) return;

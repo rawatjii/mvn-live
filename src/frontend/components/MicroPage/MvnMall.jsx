@@ -1,75 +1,27 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+
 import Watermark from "../../../common/watermark/Index";
-import ZoomOutImage from "./ZoomOut";
 import { useMatches } from "../../../theme/theme";
 import { API_URL, BACKEND_IMAGE_URL } from "../../../config/config";
 import useFetchData from "../../utils/apiHelper";
 
-gsap.registerPlugin(ScrollTrigger);
 
 const MvnMall = ({ data }) => {
   const imageRef = useRef(null);
-  const secRef = useRef(null);
   const iframeRef = useRef(null);
   const { isMobile } = useMatches();
   const [iframeVisible, setIframeVisible] = useState(false);
-
   const { data: mallData, loading } = useFetchData(`project/${data?.project_id}/mvn-mall`);
 
-
   const { heading, description } = data;
-
-  useEffect(() => {
-    // Scroll animation for mobile image pinning
-    if (isMobile) {
-      const image = imageRef.current;
-      if (image) {
-        gsap.to(image, {
-          x: "-50%",
-          ease: "none",
-          scrollTrigger: {
-            trigger: secRef.current,
-            start: "top 60px",
-            pin: true,
-            scrub: 1,
-            end: "+=1000",
-            onLeave: () => {
-              document.querySelector(".navbar")?.classList.add("fill");
-            },
-            onEnterBack: () => {
-              document.querySelector(".navbar")?.classList.remove("fill");
-            },
-          },
-        });
-      }
-    }
-
-    // Lazy load iframe when in view
-    let trigger;
-    if (iframeRef.current) {
-      trigger = ScrollTrigger.create({
-        trigger: iframeRef.current,
-        start: "top 80%",
-        once: true,
-        onEnter: () => setIframeVisible(true),
-      });
-    }
-
-    return () => {
-      if (trigger) trigger.kill();
-    };
-  }, [isMobile, mallData]);
-  
 
   if (loading) return <div className="text-center py-5">Loading...</div>;
   if (!loading && mallData && mallData.length === 0) return <div className="text-center py-5">No records found</div>;
 
   return (
     <section
-      className="section mvn_mall_section micro_design1 pb-0"
+      className="section mvn_mall_section micro_design1 pb-0 mb-md-5"
       aria-label="MVN Mall Section"
     >
       {window.innerWidth < 768 ? (
@@ -105,10 +57,17 @@ const MvnMall = ({ data }) => {
             </div>
           )}
  
-          <ZoomOutImage dataFrames={data} path={`${API_URL}assets/mvn-mall/mvn-mall/`} mobileFrameCounts="102" desktopFrameCounts="102" />
+            <div className="image_animation position-relative w-100 mb-3">
+              <img
+                ref={imageRef}
+                src="assets/images/mvn-mall/mvn-full.webp"
+                alt="mvn mall animation"
+                className="img-fluid"
+              />
+              <Watermark isMvnLogo={true} />
+            </div>
 
-          <div ref={secRef}>
-            <div className="image_animation">
+            <div className="image_animation position-relative w-100">
               <img
                 ref={imageRef}
                 src={BACKEND_IMAGE_URL + mallData?.[2].image}
@@ -117,7 +76,6 @@ const MvnMall = ({ data }) => {
               />
               <Watermark isMvnLogo={true} />
             </div>
-          </div>
         </>
       ) : (
         <Container>

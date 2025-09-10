@@ -5,7 +5,6 @@ import { useMatches } from "../../../theme/theme";
 import LottieAnimationSection from "./LottieAnimationSection";
 
 import Watermark from "../../../common/watermark/Index";
-import ScrollDown from "../../../common/scrollDown/Index";
 import { BACKEND_IMAGE_URL } from "../../../config/config";
 
 const PeacockSection = React.memo(({ data, watermarkClass, json, mb_json, animation_speed=2, desktop_img, mobile_img }) => {
@@ -70,7 +69,6 @@ const PeacockSection = React.memo(({ data, watermarkClass, json, mb_json, animat
                 {/* <img src={BACKEND_IMAGE_URL + image} alt="Peacock image" className="img-fluid peacock_img" /> */}
               </div>
 
-              <ScrollDown className="color-black" />
             </div>
 
             <Container>

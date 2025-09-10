@@ -5,8 +5,7 @@ import { createRoot } from "react-dom/client";
 // 🔹 Routing & State Management
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react"; // (optional, but often needed if using persisted state)
-import store, { persistor } from "./store/store.js";
+import store from "./store/store.js";
 
 // 🔹 Third-Party Libraries & Styles
 import { ToastContainer } from "react-toastify";
@@ -69,35 +68,85 @@ const Verticals = lazy(() => import("./admin/Verticals.jsx"));
 // ==========================================================
 // 🔵 Admin Layout & Structure
 // ==========================================================
-const AdminLayout = lazy(() => import("./admin/components/ContentLayout/AdminLayout.jsx"));
-const MicroSidebar = lazy(() => import("./admin/components/ContentLayout/microSidebar/MicroSidebar.jsx"));
+const AdminLayout = lazy(() =>
+  import("./admin/components/ContentLayout/AdminLayout.jsx")
+);
+const MicroSidebar = lazy(() =>
+  import("./admin/components/ContentLayout/microSidebar/MicroSidebar.jsx")
+);
 
 // ==========================================================
 // 🟣 Microsite Components (Admin Dashboard)
 // ==========================================================
-const AmenitiesAdmin = lazy(() => import("./admin/components/dashboard/microsite/Amenities.jsx"));
-const Apartment = lazy(() => import("./admin/components/dashboard/microsite/Apartment.jsx"));
-const BasicMicroSite = lazy(() => import("./admin/components/dashboard/microsite/Basic.jsx"));
-const ConnectionMvnMall = lazy(() => import("./admin/components/dashboard/microsite/ConnectionMvnmall.jsx"));
-const ConstructionTechnology = lazy(() => import("./admin/components/dashboard/microsite/Construction_tech.jsx"));
-const Elevation = lazy(() => import("./admin/components/dashboard/microsite/Elevation.jsx"));
-const FloorPlans = lazy(() => import("./admin/components/dashboard/microsite/FloorPlan.jsx"));
-const Galleries = lazy(() => import("./admin/components/dashboard/microsite/Gallery.jsx"));
-const HeroSection = lazy(() => import("./admin/components/dashboard/microsite/HeroSection.jsx"));
-const KeyHighlights = lazy(() => import("./admin/components/dashboard/microsite/KeyHighlights.jsx"));
-const LandScape = lazy(() => import("./admin/components/dashboard/microsite/LandScape.jsx"));
-const LivingRoom = lazy(() => import("./admin/components/dashboard/microsite/LivingRoom.jsx"));
-const LocationMap = lazy(() => import("./admin/components/dashboard/microsite/LocationMap.jsx"));
-const MasterBedroom = lazy(() => import("./admin/components/dashboard/microsite/MasterBedroom.jsx"));
-const MvnMall = lazy(() => import("./admin/components/dashboard/microsite/mvn-mall.jsx"));
-const OverviewMicroSite = lazy(() => import("./admin/components/dashboard/microsite/Overview.jsx"));
-const Party = lazy(() => import("./admin/components/dashboard/microsite/Party.jsx"));
-const Sizes = lazy(() => import("./admin/components/dashboard/microsite/Sizes.jsx"));
-const SmElevation = lazy(() => import("./admin/components/dashboard/microsite/SmElevation.jsx"));
-const ThreesixtyView = lazy(() => import("./admin/components/dashboard/microsite/ThreesixtyView.jsx"));
-const Consultant = lazy(() => import("./admin/components/dashboard/microsite/Consultant.jsx"));
-const Typologies = lazy(() => import("./admin/components/dashboard/microsite/Typologies.jsx"));
-const Walkthrough = lazy(() => import("./admin/components/dashboard/microsite/Walkthrough.jsx"));
+const AmenitiesAdmin = lazy(() =>
+  import("./admin/components/dashboard/microsite/Amenities.jsx")
+);
+const Apartment = lazy(() =>
+  import("./admin/components/dashboard/microsite/Apartment.jsx")
+);
+const BasicMicroSite = lazy(() =>
+  import("./admin/components/dashboard/microsite/Basic.jsx")
+);
+const ConnectionMvnMall = lazy(() =>
+  import("./admin/components/dashboard/microsite/ConnectionMvnmall.jsx")
+);
+const ConstructionTechnology = lazy(() =>
+  import("./admin/components/dashboard/microsite/Construction_tech.jsx")
+);
+const Elevation = lazy(() =>
+  import("./admin/components/dashboard/microsite/Elevation.jsx")
+);
+const FloorPlans = lazy(() =>
+  import("./admin/components/dashboard/microsite/FloorPlan.jsx")
+);
+const Galleries = lazy(() =>
+  import("./admin/components/dashboard/microsite/Gallery.jsx")
+);
+const HeroSection = lazy(() =>
+  import("./admin/components/dashboard/microsite/HeroSection.jsx")
+);
+const KeyHighlights = lazy(() =>
+  import("./admin/components/dashboard/microsite/KeyHighlights.jsx")
+);
+const LandScape = lazy(() =>
+  import("./admin/components/dashboard/microsite/LandScape.jsx")
+);
+const LivingRoom = lazy(() =>
+  import("./admin/components/dashboard/microsite/LivingRoom.jsx")
+);
+const LocationMap = lazy(() =>
+  import("./admin/components/dashboard/microsite/LocationMap.jsx")
+);
+const MasterBedroom = lazy(() =>
+  import("./admin/components/dashboard/microsite/MasterBedroom.jsx")
+);
+const MvnMall = lazy(() =>
+  import("./admin/components/dashboard/microsite/mvn-mall.jsx")
+);
+const OverviewMicroSite = lazy(() =>
+  import("./admin/components/dashboard/microsite/Overview.jsx")
+);
+const Party = lazy(() =>
+  import("./admin/components/dashboard/microsite/Party.jsx")
+);
+const Sizes = lazy(() =>
+  import("./admin/components/dashboard/microsite/Sizes.jsx")
+);
+const SmElevation = lazy(() =>
+  import("./admin/components/dashboard/microsite/SmElevation.jsx")
+);
+const ThreesixtyView = lazy(() =>
+  import("./admin/components/dashboard/microsite/ThreesixtyView.jsx")
+);
+const Consultant = lazy(() =>
+  import("./admin/components/dashboard/microsite/Consultant.jsx")
+);
+const Typologies = lazy(() =>
+  import("./admin/components/dashboard/microsite/Typologies.jsx")
+);
+const Walkthrough = lazy(() =>
+  import("./admin/components/dashboard/microsite/Walkthrough.jsx")
+);
 
 // ==========================================================
 // 🔶 About Us Subcomponents (Admin)
@@ -110,8 +159,6 @@ const Timeline = lazy(() => import("./admin/components/aboutus/Timeline.jsx"));
 // ==========================================================
 const PagesMeta = lazy(() => import("./admin/components/PagesMeta.jsx"));
 const Platter = lazy(() => import("./admin/components/platter/Platter.jsx"));
-
-
 
 const router = createBrowserRouter([
   {
@@ -137,51 +184,13 @@ const router = createBrowserRouter([
       {
         path: ":projectName",
         element: (
-          <MicroPage />
+          <FrontendRoute loaderType="about-us">
+            <MicroPage />
+          </FrontendRoute>
           // <FrontendRoute>
           // </FrontendRoute>
         ),
       },
-      // {
-      //   path: "aeroone-gurgaon",
-      //   element: (
-      //     <FrontendRoute loaderType="aeroone-gurgaon">
-      //       <MicroPageGurgaon1 data={data} />
-      //     </FrontendRoute>
-      //   ),
-      // },
-      // {
-      //   path: "aeroone-bangalore",
-      //   element: (
-      //     <FrontendRoute loaderType="aeroone-bangalore" >
-      //       <MicroPageBangalore data={bangaloreData} />
-      //     </FrontendRoute>
-      //   ),
-      // },
-      // {
-      //   path: "mvn-athens-faridabad",
-      //   element: (
-      //     <FrontendRoute loaderType="mvn-athens-faridabad">
-      //       <MicroPageFaridabad data={faridabadData} />
-      //     </FrontendRoute>
-      //   ),
-      // },
-      // {
-      //   path: "mvn-athens-gurgaon-phase-1",
-      //   element: (
-      //     <FrontendRoute loaderType="mvn-athens-gurgaon-phase-1">
-      //       <MicroPageGurgaonPhase1 data={athensGurgaonPhase1Data} />
-      //     </FrontendRoute>
-      //   ),
-      // },
-      // {
-      //   path: "mvn-athens-gurgaon-phase-2",
-      //   element: (
-      //     <FrontendRoute loaderType="mvn-athens-gurgaon-phase-2">
-      //       <MicroPageGurgaonPhase2 data={athensGurgaonPhase2Data} />
-      //     </FrontendRoute>
-      //   ),
-      // },
       {
         path: "media-centre",
         element: (
@@ -266,28 +275,6 @@ const router = createBrowserRouter([
             <PageNotFound />
           </Suspense>
         ),
-      },
-      {
-        /*{
-        path: "gallery",
-        element: (
-          <Suspense fallback={<InitialLoading onComplete={()=>console.log('Loading complete')} />}>
-            <Layout>
-              <Gallery />
-            </Layout>
-          </Suspense>
-        ),
-      },
-      {
-        path: "csr",
-        element: (
-          <Suspense fallback={<InitialLoading onComplete={()=>console.log('Loading complete')} />}>
-            <Layout>
-              <Csr />
-            </Layout>
-          </Suspense>
-        ),
-      },*/
       },
     ],
   },
@@ -375,9 +362,7 @@ createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <>
       <RouterProvider router={router}>
-{/* <PersistGate loading={<div>Loading...</div>} persistor={persistor}>        */}
- <App />
-        {/* </PersistGate> */}
+        <App />
       </RouterProvider>
       <ToastContainer position="top-right" autoClose={3000} />
     </>

@@ -5,9 +5,7 @@ import React, {
   useMemo,
   useCallback,
 } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollSmoother } from "gsap/ScrollSmoother";
+
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
@@ -84,8 +82,6 @@ const MicroFloorPlan = React.lazy(() =>
   import("../components/MicroPage/FloorPlan")
 );
 
-// ✅ Register GSAP plugins
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 // ✅ Asset reference
 const headerSidebarDesktopImg = `${API_URL}images/aero-gurgaon/header/sidebar.webp`;
@@ -148,7 +144,6 @@ const MicroPage = () => {
   const { projectName } = useParams();
   const { pathname } = useLocation();
   const dispatch = useDispatch();
-  const smootherRef = useRef(null);
   const sectionRefs = useRef({});
   const [isHeaderFixed, setIsHeaderFixed] = React.useState(false);
   const [overviewIframe, setOverviewIframe] = React.useState(null);
@@ -166,43 +161,10 @@ const MicroPage = () => {
 
   const scrollToSection = useCallback((sectionKey) => {
     const target = sectionRefs.current[sectionKey];
-    if (target && smootherRef.current) {
-      smootherRef.current.scrollTo(target, true);
-    }
+   
   }, []);
   useEffect(() => {
     dispatch(setCommonState({ id: project?.id, isMicro: true }));
-
-    const wrapper = document.querySelector("#smooth-wrapper");
-    const content = document.querySelector("#smooth-content");
-
-    if (!wrapper || !content) {
-      console.error("ScrollSmoother: Missing wrapper or content element");
-      return;
-    }
-
-    smootherRef.current = ScrollSmoother.create({
-      wrapper: "#smooth-wrapper",
-      content: "#smooth-content",
-      smooth: 1.5,
-      effects: true,
-      smoothTouch: 1.4,
-      onUpdate: (self) => {},
-    });
-
-    console.log("ScrollSmoother initialized:", smootherRef.current);
-
-    // Refresh ScrollTrigger after sections load
-    if (!sectionLoading && sections.length > 0) {
-      ScrollTrigger.refresh();
-      smootherRef.current?.refresh();
-    }
-
-    return () => {
-      smootherRef.current?.kill();
-      smootherRef.current = null;
-      console.log("ScrollSmoother cleaned up");
-    };
   }, [project?.id, projectName, sectionLoading, sections]);
 
   useEffect(() => {
@@ -573,23 +535,10 @@ const MicroPage = () => {
         isFixed={isHeaderFixed}
       />
       {pathname.includes("aeroone-gurgaon") && <Suspense fallback={<p>Loading...</p>}><WhatsappBtn /></Suspense>}
-      <div id="smooth-wrapper">
-        <div id="smooth-content">
           {/* hero section */}
           <Suspense fallback={<p>Loading...</p>}>
             <HeroSection projectId={project?.id} projectName={projectName} />
           </Suspense>
-
-          {/* jacuzzi image for aeroone */}
-          {/* {pathname.includes("aeroone-gurgaon") && (
-            elevationData?.map((item, index)=>(
-              <div key={index}>
-                <div className="mt_80 mt_sm_30 mb-md-5">
-                  <LargeElevationSection1 {...item} />
-                </div>
-              </div>
-            ))
-          )} */}
 
           {pathname.includes("mvn-mall") && (
             <div className="mt-5 mt-md-0 mb-md-5">
@@ -623,8 +572,6 @@ const MicroPage = () => {
               <Footer />
             </>
           )}
-        </div>
-      </div>
     </>
   );
 };
