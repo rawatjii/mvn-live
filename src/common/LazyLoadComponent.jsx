@@ -1,34 +1,23 @@
 import React, { useEffect } from "react";
 import {useInView} from 'react-intersection-observer';
 
-const LazyLoadComponent = ({children, margin, debugName, smootherRef})=>{
+const LazyLoadComponent = ({children, margin, debugName})=>{
   const {ref, inView} = useInView({
     triggerOnce:true,
     threshold:0,
     rootMargin:margin ? margin : '100px',
-    root: document.querySelector('#smooth-wrapper'),
   });
 
   useEffect(() => {
     if (inView) {
-      const scrollY = window.scrollY || smootherRef?.current?.offset() || 0;
+      const scrollY = window.scrollY;
       const timeoutId = setTimeout(() => {
-        try {
-          ScrollTrigger.refresh();
-          if (smootherRef?.current) {
-            smootherRef.current.scrollTo(scrollY, false);
-          } else {
-            window.scrollTo(0, scrollY);
-          }
-        }catch(error){
-
-        }
-        
+        window.scrollTo({ top: scrollY, behavior: "auto" });
       }, 200);
 
       return()=>clearTimeout(timeoutId); 
     }
-  }, [inView, debugName, smootherRef]);
+  }, [inView, debugName]);
 
   return(
     <div ref={ref}>

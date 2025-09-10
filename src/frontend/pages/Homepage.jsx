@@ -9,7 +9,7 @@ const Intro = React.lazy(() => import("../components/homepage/Intro"));
 const Overview = React.lazy(() => import("../components/homepage/Overview"));
 const Banner1 = React.lazy(() => import("../components/homepage/Banner1"));
 const Offer = React.lazy(() => import("../components/homepage/Offer"));
-const Projects = React.lazy(() => import("../components/homepage/Projects"));
+import Projects from "../components/homepage/Projects";
 const OtherProjects = React.lazy(() =>
   import("../components/homepage/OtheProjects")
 );
@@ -38,6 +38,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import useFetchData from "../utils/apiHelper";
 import { API_URL, BACKEND_IMAGE_URL } from "../../config/config";
+import LazyLoadComponent from "../../common/LazyLoadComponent";
 
 const Homepage = () => {
   const [isShowModal, setIsShowModal] = useState(false);
@@ -195,13 +196,13 @@ const Homepage = () => {
 
           if (section.page_section == "home-project")
             return (
-              <Suspense fallback={<p></p>}>
+              <LazyLoadComponent margin="200px">
                 <Projects
                   data={section}
                   clickHandler={showCustomModal}
                   key={secIndex + section.id}
                 />
-              </Suspense>
+              </LazyLoadComponent>
             );
 
           if (section.page_section == "home-verticals")

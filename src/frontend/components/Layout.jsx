@@ -4,6 +4,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import LazyLoadComponent from "../../common/LazyLoadComponent";
 
 
 const Layout = ({ children }) => {
@@ -22,7 +23,9 @@ const Layout = ({ children }) => {
       {/* <div id="smooth-wrapper">
         <div id="smooth-content"> */}
           {children}
-          <Footer />
+          <LazyLoadComponent margin="200px">
+            <Footer />
+          </LazyLoadComponent>
         {/* </div>
       </div> */}
     </>
