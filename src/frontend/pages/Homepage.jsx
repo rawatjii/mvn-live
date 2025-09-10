@@ -2,9 +2,11 @@ import React, { useState, Suspense, useCallback, useEffect } from "react";
 import { Helmet } from "react-helmet";
 
 import Layout from "../components/Layout";
+import Skeleton from "../../common/Loader/skeleton/Index";
 
 import Hero from "../components/homepage/Hero";
 import Overview from "../components/homepage/Overview";
+const Banner1 = React.lazy(() => import("../components/homepage/Banner1"));
 const Offer = React.lazy(() => import("../components/homepage/Offer"));
 const Projects = React.lazy(() => import("../components/homepage/Projects"));
 const OtherProjects = React.lazy(() =>
@@ -24,9 +26,13 @@ const EnquireForm = React.lazy(() =>
 );
 const CustomModal = React.lazy(() => import("../../common/Modal"));
 const ClubOne = React.lazy(() => import("../components/homepage/ClubOne"));
-
-import { useDispatch, useSelector } from "react-redux";
-import { fetchhome, clearhome } from "../../redux/homepageSlice";
+const MvnMall = React.lazy(() => import("../components/homepage/MvnMall"));
+const Strip = React.lazy(()=>import('../components/homepage/Strip11'))
+// const Enquire = React.lazy(() =>
+//   new Promise((resolve) =>
+//     setTimeout(() => resolve(import("../components/homepage/Enquire")), 100000)
+//   )
+// );
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -40,23 +46,26 @@ import WhatsappBtn from "../components/Whatsapp";
 const Homepage = () => {
   const [isShowModal, setIsShowModal] = useState(false);
   const [isOffer, setIsOffer] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [pageMetaData, setPageMetaData] = useState(null);
-  const [metaDataArray, setMetaData] = useState([]);
-  let { home: homepageData, loading } = useSelector((state) => state.home);
-  homepageData = homepageData?.data;
-  const dispatch = useDispatch();
+  const [metaDataArray, setMetaData] = useState([])
+
+  const { data: homepageData, loading } = useFetchData(
+    `page/page-section/home`
+  );
 
   const { data: metaData } = useFetchData(`get-page-meta/3`);
-  const rehydrated = useSelector((state) => state._persist?.rehydrated);
 
-  useEffect(() => {
-    if (!homepageData) {
-      dispatch(fetchhome());
-    }
-  }, [dispatch]);
-  useEffect(() => {
-    console.log(homepageData, "homepageData");
-  }, [homepageData]);
+  // const fetchPageMeta = async()=>{
+  //   try{
+  //     const response = await fetch('https://mvnbackend.gtftechnologies.com/api/admin/page-meta/3');
+  //     const fetchPageData = await response.json();
+  //     setPageMetaData(fetchPageData.data);
+  //   }catch(error){
+  //     console.error(error);
+  //   }
+  // }
+
 
   const isHideModal = () => {
     setIsShowModal(false);
@@ -71,88 +80,59 @@ const Homepage = () => {
       setIsShowModal(true);
     }
   }, []);
+  
+  useEffect(()=>{
+    setPageMetaData(metaData?.[0])
+  }, [metaData])
 
-  useEffect(() => {
-    setPageMetaData(metaData?.[0]);
-  }, [metaData]);
+  useEffect(()=>{
+    const headDataArray = pageMetaData?.head_data?.split('\n')
 
-  useEffect(() => {
-    const headDataArray = pageMetaData?.head_data?.split("\n");
-    const parsedArray = headDataArray?.map((item) => item);
+    // Convert each string element to its appropriate type
+    const parsedArray = headDataArray?.map(item => item);
+  
+    parsedArray?.map(item=>{
+        setMetaData(prevState=>([
+            ...prevState,
+            item,
+        ]))
+    })
+    
+  }, [pageMetaData])
 
-    parsedArray?.map((item) => {
-      setMetaData((prevState) => [...prevState, item]);
-    });
-  }, [pageMetaData]);
-
-  useEffect(() => {
-    var headDataContainer;
-    if (pageMetaData?.head_data) {
-      headDataContainer = document.createElement("div");
-      headDataContainer.innerHTML = pageMetaData.head_data;
-      Array.from(headDataContainer.children).forEach((child) => {
-        document.head.appendChild(child);
-      });
-    }
-
-    return () => {
-      if (headDataContainer) {
-        Array.from(headDataContainer.children).forEach((child) => {
-          document.head.removeChild(child);
-        });
+  useEffect(()=>{
+      var headDataContainer;
+      if (pageMetaData?.head_data) {
+          headDataContainer = document.createElement('div');
+          headDataContainer.innerHTML = pageMetaData.head_data;
+          Array.from(headDataContainer.children).forEach(child => {
+              document.head.appendChild(child);
+          });
       }
-    };
-  }, [pageMetaData]);
 
-  if (loading)
-    return (
-      <div className="loading_screen" style={{ position: "relative" }}>
-        <img
-          src={
-            window.innerWidth < 768
-              ? API_URL + "loader/homepage_loading_sm.webp"
-              : API_URL + "loader/homepage_loading.webp"
+      return ()=>{
+          if (headDataContainer) {
+              Array.from(headDataContainer.children).forEach(child => {
+                document.head.removeChild(child);
+              });
           }
-          alt="loading screen"
-          className="img-fluid w-100"
-          style={{ width: "100%" }}
-        />
-        <p
-          className="loading"
-          style={{
-            position: "fixed ",
-            top: "calc(100vh - 40px)",
-            width: "100%",
-            textAlign: "center",
-            textTransform: "uppercase",
-            fontSize: "14px",
-            letterSpacing: "3px",
-            textShadow: "0 0 10px #000",
-            fontWeight: 600,
-          }}
-        >
-          Loading Experience...
-        </p>
-      </div>
-    );
+      }
+  }, [pageMetaData])
+
+  if (loading) return <div className="loading_screen" style={{position:'relative'}}>
+    <img src={window.innerWidth < 768 ? API_URL + "loader/homepage_loading_sm.webp" : API_URL + "loader/homepage_loading.webp"} alt="loading screen" className="img-fluid w-100" style={{width:'100%'}} />
+    <p className="loading" style={{position:'fixed ', top:'calc(100vh - 40px)', width:'100%', textAlign:'center', textTransform:'uppercase', fontSize:'14px', letterSpacing:'3px', textShadow:'0 0 10px #000', fontWeight:600}}>Loading Experience...</p>
+  </div>;
   if (!loading && homepageData && homepageData.length === 0)
     return <div className="text-center py-5">No records found</div>;
 
   return (
     <>
       <Helmet>
-        {pageMetaData && pageMetaData.meta_title && (
-          <title>{pageMetaData.meta_title}</title>
-        )}
-        {pageMetaData && pageMetaData.meta_description && (
-          <meta name="description" content={pageMetaData.meta_description} />
-        )}
-        {pageMetaData && pageMetaData.meta_keywords && (
-          <meta name="keywords" content={pageMetaData.meta_keywords} />
-        )}
-        {pageMetaData && pageMetaData.head_data && (
-          <div dangerouslySetInnerHTML={{ __html: pageMetaData.head_data }} />
-        )}
+        {pageMetaData && pageMetaData.meta_title && <title>{pageMetaData.meta_title}</title>}
+        {pageMetaData && pageMetaData.meta_description && <meta name="description" content={pageMetaData.meta_description} />}
+        {pageMetaData && pageMetaData.meta_keywords && <meta name="keywords" content={pageMetaData.meta_keywords} />}
+        {pageMetaData && pageMetaData.head_data && <div dangerouslySetInnerHTML={{__html:pageMetaData.head_data}} />}
       </Helmet>
 
       <WhatsappBtn />
@@ -169,46 +149,50 @@ const Homepage = () => {
             return <Overview data={section} key={secIndex + section.id} />;
 
           if (section.page_section == "home-overview")
-            return <ClubOne data={section} key={secIndex + section.id} />;
+            return <ClubOne data={section} key={secIndex + section.id} />
+
+          // if (section.page_section == "home-shopping")
+          //   return <LazyLoadComponent><MvnMall data={section} key={secIndex + section.id} /></LazyLoadComponent>;
+
         })}
-        {homepageData?.map((section, secIndex) => {
-          if (section.page_section == "home-video")
-            return (
-              <Offer
-                data={section}
-                clickHandler={showCustomModal}
-                key={secIndex + section.id}
-              />
-            );
 
-          if (section.page_section == "home-project")
-            return (
-              <Projects
-                data={section}
-                clickHandler={showCustomModal}
-                key={secIndex + section.id}
-              />
-            );
+          {/* <LazyLoadComponent>
+            <Strip clickHandler={showCustomModal} />
+          </LazyLoadComponent> */}
 
-          if (section.page_section == "home-verticals")
-            return <OtherProjects data={section} key={secIndex + section.id} />;
+          {homepageData?.map((section, secIndex) => {
+            if (section.page_section == "home-video")
+              return <Offer data={section} clickHandler={showCustomModal} key={secIndex + section.id} />;
 
-          if (section.page_section == "home-infrastructure")
-            return <OurJourney data={section} key={secIndex + section.id} />;
+            if (section.page_section == "home-project")
+              return <Projects data={section} clickHandler={showCustomModal} key={secIndex + section.id} />;
 
-          if (section.page_section == "home-people-behind")
-            return <OurTeam data={section} key={secIndex + section.id} />;
+            if (section.page_section == "home-verticals")
+              return <OtherProjects data={section} key={secIndex + section.id} />;
 
-          if (section.page_section == "home-brand-ethos")
-            return <OurBrand data={section} key={secIndex + section.id} />;
+            if (section.page_section == "home-infrastructure")
+              return <OurJourney data={section} key={secIndex + section.id} />;
 
-          if (section.page_section == "home-client-says")
-            return <Testimonial data={section} key={secIndex + section.id} />;
-        })}
-        <div className="flex-footer-form">
-          <Enquire />
-          <EnquireForm projectName={"MVN Infrastructure"} />
-        </div>
+            if (section.page_section == "home-people-behind")
+              return <OurTeam data={section} key={secIndex + section.id} />;
+
+            if (section.page_section == "home-brand-ethos")
+              return <OurBrand data={section} key={secIndex + section.id} />;
+
+            if (section.page_section == "home-client-says")
+              return <Testimonial data={section} key={secIndex + section.id} />;
+          })}
+
+        {/* <Suspense fallback={<Skeleton height="h_90vh" />}>
+          <Testimonial />
+        </Suspense> */}
+        
+          <div className="flex-footer-form">
+              <Enquire />
+              <EnquireForm projectName={"MVN Infrastructure"} />
+          </div>
+        
+
         <Suspense fallback={<div>Loading...</div>}>
           <CustomModal
             hide={isHideModal}

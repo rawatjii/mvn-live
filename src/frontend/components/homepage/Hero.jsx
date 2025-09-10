@@ -4,7 +4,8 @@ import { API_URL } from "../../../config/config";
 const Hero = React.memo(({ data }) => {
   const iframeRef = useRef(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false); 
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false); // Track video playback
+
   const { heading, sub_heading, alt } = data;
 
   const handleResize = useCallback(() => {
@@ -24,19 +25,22 @@ const Hero = React.memo(({ data }) => {
     return () => window.removeEventListener("resize", debounceResize);
   }, []);
 
+  // Load YouTube IFrame API and set up player
   useEffect(() => {
+    // Load YouTube IFrame API script
     const tag = document.createElement("script");
     tag.src = "https://www.youtube.com/iframe_api";
     const firstScriptTag = document.getElementsByTagName("script")[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
+    // Initialize YouTube player when API is ready
     let player;
     window.onYouTubeIframeAPIReady = () => {
       player = new window.YT.Player(iframeRef.current, {
         events: {
           onStateChange: (event) => {
             if (event.data === window.YT.PlayerState.PLAYING) {
-              setIsVideoPlaying(true); 
+              setIsVideoPlaying(true); // Video is playing, hide placeholder
             }
           },
         },
