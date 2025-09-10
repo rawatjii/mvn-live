@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useMemo } from "react";
+import React, { useEffect, useRef, useMemo, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import lottie from "lottie-web";
@@ -10,15 +10,15 @@ const PlaneIcon = `${API_URL}images/icons/plane.png`;
 gsap.registerPlugin(ScrollTrigger);
 
 const Typology = React.memo(({ onLoadComplete, data }) => {
-  const containerRef = useRef(null);
+  const containerRefTypo = useRef(null);
   const lottieRef = useRef(null);
   const animationRef = useRef(null);
   const contentRefs = useRef([]);
   const imageContentRefs = useRef([]);
-  const [loading, setLoading] = React.useState(true);
-  const [loadingComplete, setLoadingComplete] = React.useState(false);
-  const [totalFrames, setTotalFrames] = React.useState(0);
-  const isLaptop = window.innerWidth <= 1400;
+  const [loading, setLoading] = useState(true);
+  const [loadingComplete, setLoadingComplete] = useState(false);
+  const [totalFrames, setTotalFrames] = useState(0);
+  const [isLaptop, setIsLaptop] = useState(window.innerWidth <= 1400); // Dynamic resize handling
 
   const { data: typologyData, loading: typologyLoading } = useFetchData(
     `project/${data.project_id}/typologies`
@@ -26,20 +26,34 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
 
   const { heading, json } = data;
 
+  // Handle window resize for responsive behavior
+  useEffect(() => {
+    const handleResize = () => setIsLaptop(window.innerWidth <= 1400);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   // Load Lottie animation
   useEffect(() => {
     animationRef.current = lottie.loadAnimation({
       container: lottieRef.current,
-      renderer: "canvas",
+      renderer: "canvas", // Consider "svg" for better performance if needed
       loop: false,
       autoplay: false,
-      path: BACKEND_IMAGE_URL+json,
+      path: BACKEND_IMAGE_URL + json,
     });
 
     animationRef.current.addEventListener("data_ready", () => {
+      console.log("Lottie loaded, totalFrames:", animationRef.current.totalFrames); // Debug
       setTotalFrames(animationRef.current.totalFrames || 1);
       setLoading(false);
       setLoadingComplete(true);
+      onLoadComplete();
+    });
+
+    animationRef.current.addEventListener("data_failed", () => {
+      console.error("Failed to load Lottie animation");
+      setLoading(false);
       onLoadComplete();
     });
 
@@ -61,15 +75,18 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
     ];
   }, [totalFrames]);
 
+  // Refresh ScrollTrigger when section enters viewport
   useEffect(() => {
     if (loading || !loadingComplete || !typologyData) return;
 
     const refreshTrigger = ScrollTrigger.create({
-      trigger: containerRef.current,
-      start: "top center", 
+      trigger: containerRefTypo.current,
+      start: "top top", // Adjusted for earlier refresh
       once: true,
+      // markers: true, // Uncomment for debugging
       onEnter: () => {
-        ScrollTrigger.refresh(); 
+        console.log("Typology section reached, refreshing ScrollTrigger"); // Debug
+        ScrollTrigger.refresh();
       },
     });
 
@@ -78,6 +95,7 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
     };
   }, [loading, loadingComplete, typologyData]);
 
+  // Main ScrollTrigger for animation
   useEffect(() => {
     if (loading || !loadingComplete || totalFrames === 0 || !typologyData) return;
 
@@ -90,12 +108,14 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
       if (el) el.style.display = i === 0 ? "block" : "none";
     });
 
+    console.log(containerRefTypo.current.offsetHeight)
     const trigger = ScrollTrigger.create({
-      trigger: containerRef.current,
+      trigger: containerRefTypo.current,
       start: "top top",
-      end: `+=${containerRef.current.offsetHeight * 2}`,
+      end: () => `+=${containerRefTypo.current.offsetHeight * 2}`, // Dynamic end
       pin: true,
-      scrub: 1,
+      scrub: 0.5, // Reduced for smoother response
+      anticipatePin: 1, // Improves pinning smoothness
       onUpdate: (self) => {
         const segmentIndex = Math.min(
           Math.floor(self.progress * segments.length),
@@ -137,6 +157,16 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
             : 265;
           typologyArrow.style.top = `${topValue}px`;
         }
+
+        // Debug scroll progress
+        // console.log(
+        //   "Scroll progress:",
+        //   self.progress,
+        //   "segment:",
+        //   segmentIndex,
+        //   "frame:",
+        //   frameIndex
+        // );
       },
     });
 
@@ -147,8 +177,8 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
 
   return (
     <section
-      ref={containerRef}
-      className="section typology_section pb-0"
+      ref={containerRefTypo}
+      className=" typology_section pb-0"
       aria-label="Typology Section"
     >
       <div className="heading_div mb_60 mb_sm_30">
@@ -178,12 +208,12 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
           </div>
 
           {typologyData?.map((item, index) => (
-        
             <div
               key={item.id || index}
               ref={(el) => (contentRefs.current[index] = el)}
               className="content-box"
               style={{ display: index === 0 ? "block" : "none" }}
+              aria-hidden={index !== 0} // Accessibility
             >
               <h3 className="content_title">{item.heading}</h3>
               <p>{item.short_description}</p>
@@ -199,6 +229,7 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
             ref={(el) => (imageContentRefs.current[index] = el)}
             className="typologies-images"
             style={{ display: index === 0 ? "block" : "none" }}
+            aria-hidden={index !== 0} // Accessibility
           >
             <picture>
               <source srcSet={BACKEND_IMAGE_URL + item.image} />
