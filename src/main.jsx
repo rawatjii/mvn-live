@@ -219,7 +219,7 @@ const router = createBrowserRouter([
       {
         path: "career",
         element: (
-          <FrontendRoute loaderType="career">
+          <FrontendRoute loaderType="">
             <Career />
           </FrontendRoute>
         ),

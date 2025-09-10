@@ -17,7 +17,7 @@ const LifeAtMvn = () => {
                 <div className="img-in-left">
                   <picture className="microbanner_bg">
                     <source srcset={BACKEND_IMAGE_URL+data?.[0].image} type="image/webp" />
-                    <img src={BACKEND_IMAGE_URL+data?.[0].alternative_image} alt="Culture image" />
+                    <img className="w-100" src={BACKEND_IMAGE_URL+data?.[0].alternative_image} alt="Culture image" />
                   </picture>
                   {/* <img src={CultureImg} width="100%;" alt="Culture image" /> */}
                 </div>
@@ -55,7 +55,7 @@ const LifeAtMvn = () => {
                   <div className="img-hov">
                   <picture className="microbanner_bg">
                     <source srcset={BACKEND_IMAGE_URL+data?.[1].image} type="image/webp" />
-                    <img className="blank-img" src={BACKEND_IMAGE_URL+data?.[1].alternative_image} alt="Development image" width="100%" />
+                    <img className="blank-img w-100" src={BACKEND_IMAGE_URL+data?.[1].alternative_image} alt="Development image"/>
                   </picture>
                     {/* <img
                       src={peopleDevelopmentImg}
@@ -91,7 +91,7 @@ const LifeAtMvn = () => {
                   <div className="img-hov">
                     <picture className="microbanner_bg">
                       <source srcset={BACKEND_IMAGE_URL+data?.[2].image} type="image/webp" />
-                      <img className="blank-img" src={BACKEND_IMAGE_URL+data?.[2].alternative_image} alt="Rewards image" width="100%" />
+                      <img className="blank-img w-100" src={BACKEND_IMAGE_URL+data?.[2].alternative_image} alt="Rewards image" />
                     </picture>
                     {/* <img src={RewardsImg} alt="Rewards image" width="100%" /> */}
                   </div>
@@ -106,7 +106,7 @@ const LifeAtMvn = () => {
                 <div className="img-in-left">
                   <picture className="microbanner_bg">
                     <source srcset={BACKEND_IMAGE_URL+data?.[3].image} type="image/webp" />
-                    <img className="blank-img" src={BACKEND_IMAGE_URL+data?.[3].alternative_image} alt="life at mvn image" width="100%" />
+                    <img className="blank-img w-100" src={BACKEND_IMAGE_URL+data?.[3].alternative_image} alt="life at mvn image" width="100%" />
                   </picture>
                   {/* <img src={ligemvnImg} alt="life at mvn image" width="100%;" /> */}
                 </div>

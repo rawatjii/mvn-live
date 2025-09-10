@@ -31,9 +31,7 @@ import HeroSection from "../components/MicroPage/Hero/Index"
 // const HeroSection = React.lazy(() =>
 //   import("../components/MicroPage/Hero/Index")
 // );
-const MicroOverview = React.lazy(() =>
-  import("../components/MicroPage/Overview")
-);
+import MicroOverview from "../components/MicroPage/Overview";
 const LargeElevationSection = React.lazy(() =>
   import("../components/MicroPage/LargeElevationSection")
 );
@@ -276,14 +274,12 @@ const MicroPage = () => {
       ),
       overview: (
         <div ref={(el) => (sectionRefs.current.overview = el)}>
-          <Suspense fallback={<p>Loading...</p>}>
             <MicroOverview
               rera={project?.rera_no}
               data={section}
               setOverviewIframe={setOverviewIframe}
               onBannerExit={setIsHeaderFixed}
             />
-          </Suspense>
         </div>
       ),
       walkthrough: (

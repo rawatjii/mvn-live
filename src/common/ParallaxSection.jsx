@@ -242,7 +242,7 @@ useEffect(() => {
           <div className="card center">
             <picture>
               <source srcSet={CONFIG.BACKEND_IMAGE_URL + amenity.image} media="(max-width:768px)" />
-              <img src={CONFIG.BACKEND_IMAGE_URL + amenity.image} className="img-fluid" alt={amenity.alt} />
+              <img src={CONFIG.BACKEND_IMAGE_URL + amenity.image} className="img-fluid w-100" alt={amenity.alt} />
             </picture>
             <Watermark className="left" />
           </div>
