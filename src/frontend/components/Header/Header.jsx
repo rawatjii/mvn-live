@@ -134,18 +134,18 @@ const Header = () => {
   
     // for animation
   
-    useEffect(() => {
-      gsap.from(titleRef.current, {
-        y: 50,
-        opacity: 0,
-        duration: 1,
+    // useEffect(() => {
+    //   gsap.from(titleRef.current, {
+    //     y: 50,
+    //     opacity: 0,
+    //     duration: 1,
   
-        scrollTrigger: {
-          trigger: titleRef.current,
-          start: "top 95%",
-        },
-      });
-    }, []);
+    //     scrollTrigger: {
+    //       trigger: titleRef.current,
+    //       start: "top 95%",
+    //     },
+    //   });
+    // }, []);
   
     useEffect(() => {
       // Preload images

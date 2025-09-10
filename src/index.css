@@ -4590,6 +4590,10 @@ table.bg_transparent {
 /* end of 1199 */
 
 @media (max-width: 767px) {
+  .mx_sm_-15{
+    margin-left: -15px;
+    margin-right:-15px;
+  }
   .h_sm_100 {
     height: 100%;
   }
@@ -4651,6 +4655,11 @@ table.bg_transparent {
   .px_sm_0 {
     padding-left: 0 !important;
     padding-right: 0 !important;
+  }
+
+  .px_sm_15 {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
   }
 
   .d_lg_block {

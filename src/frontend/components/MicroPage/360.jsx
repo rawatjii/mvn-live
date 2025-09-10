@@ -1,7 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import LottieAnimationSection from "./LottieAnimationSection";
 import { useMatches } from "../../../theme/theme";
 import { API_URL } from "../../../config/config";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const partyImg = `${API_URL}assets/loader/party.jpg`;
 
@@ -17,6 +21,14 @@ const View360 = React.memo(({ data, onLoadComplete, sectionId }) => {
     mb_json,
     json,
   };
+
+  // Effect to update scroll behavior when the view changes
+  useEffect(() => {
+    if (showthreeSixtyView) {
+      // Reset the scroll triggers to prevent conflict
+      ScrollTrigger.refresh();
+    }
+  }, [showthreeSixtyView]);
 
   return (
     <div className="position-relative section_360">

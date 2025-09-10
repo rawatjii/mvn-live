@@ -81,11 +81,6 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
     };
   }, [pathname]);
 
-  // useEffect(() => {
-  //   gsap.from(".logo", { y: 30, opacity: 0, duration: 1 });
-  //   gsap.from(".navbar-toggle", { y: 15, opacity: 0, duration: 0.6, delay: 0.4 });
-  // }, []);
-
   const { data: pageLinks, loading } = useFetchData("platter-project");
   const { data: contactData } = useFetchData(`page/page-section/contact-us`);
   const { data: microPageSections } = useFetchData(`project/${microId}/project-section-nav?is_theme=${pathname.includes("aeroone-gurgaon") ? 2 : 1}`);

@@ -1,25 +1,25 @@
 import React, { useEffect, useRef } from 'react';
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import gsap from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { API_URL } from '../../../config/config';
 const desktopBanner = `${API_URL}images/aero-gurgaon/hero/desktop.webp`;
 const mobileBanner = `${API_URL}images/aero-gurgaon/hero/mobile.webp`;
 
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
 
 const MicroHero = ({onBannerExit, isMainBanner}) => {
   const sectionRef = useRef(null);
-  useEffect(() => {
-    if (isMainBanner && sectionRef.current) {
-      ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: "bottom top",
-        toggleActions: "play none none reverse",
-        onEnterBack: () => onBannerExit(false),
-        onLeave: () => onBannerExit(true),
-      });
-    }
-  }, [isMainBanner, onBannerExit]);
+  // useEffect(() => {
+  //   if (isMainBanner && sectionRef.current) {
+  //     ScrollTrigger.create({
+  //       trigger: sectionRef.current,
+  //       start: "bottom top",
+  //       toggleActions: "play none none reverse",
+  //       onEnterBack: () => onBannerExit(false),
+  //       onLeave: () => onBannerExit(true),
+  //     });
+  //   }
+  // }, [isMainBanner, onBannerExit]);
 
   return (
     <section className="section micro_hero_section p-0" ref={sectionRef} aria-label="Hero Section">
