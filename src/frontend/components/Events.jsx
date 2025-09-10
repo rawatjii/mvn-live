@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 function Events() {
   const { data, loading } = useFetchData("media/event");
 
-  if (loading) return <div className="text-center py-5">Loading...</div>;
+  if (loading) return <div className="text-center py-5"></div>;
   if (!loading && data && data.length === 0)
     return <div className="text-center py-5">No records found</div>;
 

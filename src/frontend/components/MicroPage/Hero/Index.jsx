@@ -92,7 +92,7 @@ const HeroSection = ({ projectId, onBannerExit, isMainBanner, projectName }) => 
     <div className="loading_screen" style={{ position: "relative" }}>
       {loaderImage && (
         <>
-          <img src={loaderImage} alt="loading screen" className="img-fluid w-100" />
+          {/* <img src={loaderImage} alt="loading screen" className="img-fluid w-100" /> */}
           <p
             className="loading"
             style={{

@@ -1,166 +1,118 @@
-// 🔹 React Core
-import React, { Suspense, lazy } from "react";
+import React, { Suspense } from "react";
 import { createRoot } from "react-dom/client";
-
-// 🔹 Routing & State Management
+import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./store/store.js";
+import store, { persistor } from "./store/store.js";
+// import Layout from "./frontend/components/Layout.jsx";
+// import InitialLoading from "./frontend/skeleton/Initial/Index.jsx";
+import { data } from "./frontend/pages/micro/mvn-aeroone-gurgaon1/Index.jsx";
+import FrontendRoute from "./common/FrontendRoute.jsx";
+import PrPolcy from "./frontend/pages/PrPolcy.jsx";
+import Disclaimer from "./frontend/pages/Disclaimer.jsx";
+import ThankYou from "./frontend/pages/ThankYou.jsx";
+import { bangaloreData } from "./frontend/pages/micro/mvn-aeroone-bangalore/Index.jsx";
+import { faridabadData } from "./frontend/pages/micro/Athens/Index.jsx";
+import { athensGurgaonPhase1Data } from "./frontend/pages/micro/athens-gurgaon-phase-1/Index.jsx";
+import { athensGurgaonPhase2Data } from "./frontend/pages/micro/athens-gurgaon-phase-2/Index.jsx";
+import { mvnMallData } from "./frontend/pages/micro/mvnMall/Index.jsx";
+import { PersistGate } from "redux-persist/integration/react";
+const Homepage = React.lazy(() => import("./frontend/pages/Homepage.jsx"));
+const AboutUs = React.lazy(() => import("./frontend/pages/AboutUs.jsx"));
+const MediaCenter = React.lazy(() =>
+  import("./frontend/pages/MediaCenter.jsx")
+);
+const Blog = React.lazy(() => import("./frontend/pages/Blog.jsx"));
+const BlogDetails = React.lazy(() =>
+  import("./frontend/pages/BlogDetails.jsx")
+);
+const Career = React.lazy(() => import("./frontend/pages/Career.jsx"));
+const ContactPage = React.lazy(() => import("./frontend/pages/ContactUs.jsx"));
+const PageNotFound = React.lazy(() =>
+  import("./common/PageNotFound/Index.jsx")
+);
+// const Gallery = React.lazy(() => import('./frontend/pages/Gallery.jsx'));
+// const Csr = React.lazy(() => import('./frontend/pages/Csr.jsx'));
+const MicroPageGurgaon1 = React.lazy(() =>
+  import("./frontend/pages/MicroPageGurgaon1.jsx")
+);
+const MicroPageBangalore = React.lazy(() =>
+  import("./frontend/pages/MicroPageBangalore.jsx")
+);
+const MicroPageFaridabad = React.lazy(() =>
+  import("./frontend/pages/MicroPageFaridabad.jsx")
+);
+const MicroPageGurgaonPhase1 = React.lazy(() =>
+  import("./frontend/pages/MicroPageGurgaonPhase1.jsx")
+);
+const MicroPageGurgaonPhase2 = React.lazy(() =>
+  import("./frontend/pages/MicroPageGurgaonPhase2.jsx")
+);
+const MvnMall1 = React.lazy(() => import("./frontend/pages/mvnMall.jsx"));
+// const MicroPageGurgaon1 = React.lazy(() =>
+//   new Promise((resolve) =>
+//     setTimeout(() => resolve(import("./frontend/pages/MicroPageGurgaon1.jsx")), 100000)
+//   )
+// );
 
-// 🔹 Third-Party Libraries & Styles
-import { ToastContainer } from "react-toastify";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "react-toastify/dist/ReactToastify.css";
-
-// 🔹 Global Styles
 import "./index.css";
 import "./awaneesh.css";
 import "./savan.css";
 import "./adarsh.css";
 import "./admin/assets/css/microsite.css";
 
-// 🔹 App Entry
-import App from "./App.jsx";
-
-// 🔹 Static Data
-import { data } from "./frontend/pages/micro/mvn-aeroone-gurgaon1/Index.jsx";
-// import { bangaloreData } from "...";
-// import { faridabadData } from "...";
-
-// ==========================================================
-// 🟢 Frontend Pages (Lazy Loaded)
-// ==========================================================
-const Homepage = lazy(() => import("./frontend/pages/Homepage.jsx"));
-const AboutUs = lazy(() => import("./frontend/pages/AboutUs.jsx"));
-const MediaCenter = lazy(() => import("./frontend/pages/MediaCenter.jsx"));
-const Blog = lazy(() => import("./frontend/pages/Blog.jsx"));
-const BlogDetails = lazy(() => import("./frontend/pages/BlogDetails.jsx"));
-const Career = lazy(() => import("./frontend/pages/Career.jsx"));
-const ContactPage = lazy(() => import("./frontend/pages/ContactUs.jsx"));
-const PageNotFound = lazy(() => import("./common/PageNotFound/Index.jsx"));
-const PrPolcy = lazy(() => import("./frontend/pages/PrPolcy.jsx"));
-const Disclaimer = lazy(() => import("./frontend/pages/Disclaimer.jsx"));
-const ThankYou = lazy(() => import("./frontend/pages/ThankYou.jsx"));
-const PDFViewer = lazy(() => import("./frontend/pages/PDFViewer.jsx"));
-// const MicroPage = lazy(() => import("./frontend/pages/Micro.jsx"));
+import PDFViewer from "./frontend/pages/PDFViewer.jsx";
+import AdminLayout from "./admin/components/ContentLayout/AdminLayout.jsx";
+import Dashboard from "./admin/Dashboard.jsx";
+import Amenities from "./admin/components/dashboard/microsite/Amenities.jsx";
+import Banner from "./admin/components/dashboard/banner/Banner.jsx";
+import AdminAboutUs from "./admin/AboutUs.jsx";
+import AdminBlog from "./admin/Blog.jsx";
+import AdminCareer from "./admin/Career.jsx";
+import AdminMediaCentre from "./admin/MediaCentre.jsx";
+import AdminContactUs from "./admin/ContactUs.jsx";
+import BasicMicroSite from "./admin/components/dashboard/microsite/Basic.jsx";
+import Login from "./admin/Login.jsx";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import AdminProtectedRoute from "./AdminProtectedRoute.jsx";
+import MicroSidebar from "./admin/components/ContentLayout/microSidebar/MicroSidebar.jsx";
+import OverviewMicroSite from "./admin/components/dashboard/microsite/Overview.jsx";
+import HeroSection from "./admin/components/dashboard/microsite/HeroSection.jsx";
+import ProjectList from "./admin/ProjectList.jsx";
+import Platter from "./admin/components/platter/Platter.jsx";
+import Elevation from "./admin/components/dashboard/microsite/Elevation.jsx";
+import Walkthrough from "./admin/components/dashboard/microsite/Walkthrough.jsx";
+import ThreesixtyView from "./admin/components/dashboard/microsite/ThreesixtyView.jsx";
+import LivingRoom from "./admin/components/dashboard/microsite/LivingRoom.jsx";
+import Party from "./admin/components/dashboard/microsite/Party.jsx";
+import MasterBedroom from "./admin/components/dashboard/microsite/MasterBedroom.jsx";
+import Consultant from "./admin/components/dashboard/microsite/Consultant.jsx";
+import LandScape from "./admin/components/dashboard/microsite/LandScape.jsx";
+import Galleries from "./admin/components/dashboard/microsite/Gallery.jsx";
+import SmElevation from "./admin/components/dashboard/microsite/SmElevation.jsx";
+import Apartment from "./admin/components/dashboard/microsite/Apartment.jsx";
+import ConstructionTechnology from "./admin/components/dashboard/microsite/Construction_tech.jsx";
+import AmenitiesAdmin from "./admin/components/dashboard/microsite/Amenities.jsx";
+import ConnectionMvnMall from "./admin/components/dashboard/microsite/ConnectionMvnmall.jsx";
+import Typologies from "./admin/components/dashboard/microsite/Typologies.jsx";
+import FloorPlans from "./admin/components/dashboard/microsite/FloorPlan.jsx";
+import LocationMap from "./admin/components/dashboard/microsite/LocationMap.jsx";
+import MvnMall from "./admin/components/dashboard/microsite/mvn-mall.jsx";
+import SinglePage from "./admin/pages/Index.jsx";
+import AdminWorkCulture from "./admin/WorkCulture.jsx";
 import MicroPage from "./frontend/pages/Micro.jsx";
-const FrontendRoute = lazy(() => import("./common/FrontendRoute.jsx"));
-
-// ==========================================================
-// 🟡 Admin Pages (Lazy Loaded)
-// ==========================================================
-const AdminAboutUs = lazy(() => import("./admin/AboutUs.jsx"));
-const AdminBlog = lazy(() => import("./admin/Blog.jsx"));
-const AdminCareer = lazy(() => import("./admin/Career.jsx"));
-const AdminContactUs = lazy(() => import("./admin/ContactUs.jsx"));
-const AdminMediaCentre = lazy(() => import("./admin/MediaCentre.jsx"));
-const AdminProtectedRoute = lazy(() => import("./AdminProtectedRoute.jsx"));
-const AdminWorkCulture = lazy(() => import("./admin/WorkCulture.jsx"));
-const BrandEthos = lazy(() => import("./admin/brandEthos.jsx"));
-const Dashboard = lazy(() => import("./admin/Dashboard.jsx"));
-const Infrastructure = lazy(() => import("./admin/Infrastructure.jsx"));
-const Login = lazy(() => import("./admin/Login.jsx"));
-const ProjectList = lazy(() => import("./admin/ProjectList.jsx"));
-const SinglePage = lazy(() => import("./admin/pages/Index.jsx"));
-const Testimonials = lazy(() => import("./admin/Testimonials.jsx"));
-const OurValues = lazy(() => import("./admin/OurValues.jsx"));
-const Verticals = lazy(() => import("./admin/Verticals.jsx"));
-
-// ==========================================================
-// 🔵 Admin Layout & Structure
-// ==========================================================
-const AdminLayout = lazy(() =>
-  import("./admin/components/ContentLayout/AdminLayout.jsx")
-);
-const MicroSidebar = lazy(() =>
-  import("./admin/components/ContentLayout/microSidebar/MicroSidebar.jsx")
-);
-
-// ==========================================================
-// 🟣 Microsite Components (Admin Dashboard)
-// ==========================================================
-const AmenitiesAdmin = lazy(() =>
-  import("./admin/components/dashboard/microsite/Amenities.jsx")
-);
-const Apartment = lazy(() =>
-  import("./admin/components/dashboard/microsite/Apartment.jsx")
-);
-const BasicMicroSite = lazy(() =>
-  import("./admin/components/dashboard/microsite/Basic.jsx")
-);
-const ConnectionMvnMall = lazy(() =>
-  import("./admin/components/dashboard/microsite/ConnectionMvnmall.jsx")
-);
-const ConstructionTechnology = lazy(() =>
-  import("./admin/components/dashboard/microsite/Construction_tech.jsx")
-);
-const Elevation = lazy(() =>
-  import("./admin/components/dashboard/microsite/Elevation.jsx")
-);
-const FloorPlans = lazy(() =>
-  import("./admin/components/dashboard/microsite/FloorPlan.jsx")
-);
-const Galleries = lazy(() =>
-  import("./admin/components/dashboard/microsite/Gallery.jsx")
-);
-const HeroSection = lazy(() =>
-  import("./admin/components/dashboard/microsite/HeroSection.jsx")
-);
-const KeyHighlights = lazy(() =>
-  import("./admin/components/dashboard/microsite/KeyHighlights.jsx")
-);
-const LandScape = lazy(() =>
-  import("./admin/components/dashboard/microsite/LandScape.jsx")
-);
-const LivingRoom = lazy(() =>
-  import("./admin/components/dashboard/microsite/LivingRoom.jsx")
-);
-const LocationMap = lazy(() =>
-  import("./admin/components/dashboard/microsite/LocationMap.jsx")
-);
-const MasterBedroom = lazy(() =>
-  import("./admin/components/dashboard/microsite/MasterBedroom.jsx")
-);
-const MvnMall = lazy(() =>
-  import("./admin/components/dashboard/microsite/mvn-mall.jsx")
-);
-const OverviewMicroSite = lazy(() =>
-  import("./admin/components/dashboard/microsite/Overview.jsx")
-);
-const Party = lazy(() =>
-  import("./admin/components/dashboard/microsite/Party.jsx")
-);
-const Sizes = lazy(() =>
-  import("./admin/components/dashboard/microsite/Sizes.jsx")
-);
-const SmElevation = lazy(() =>
-  import("./admin/components/dashboard/microsite/SmElevation.jsx")
-);
-const ThreesixtyView = lazy(() =>
-  import("./admin/components/dashboard/microsite/ThreesixtyView.jsx")
-);
-const Consultant = lazy(() =>
-  import("./admin/components/dashboard/microsite/Consultant.jsx")
-);
-const Typologies = lazy(() =>
-  import("./admin/components/dashboard/microsite/Typologies.jsx")
-);
-const Walkthrough = lazy(() =>
-  import("./admin/components/dashboard/microsite/Walkthrough.jsx")
-);
-
-// ==========================================================
-// 🔶 About Us Subcomponents (Admin)
-// ==========================================================
-const Team = lazy(() => import("./admin/components/aboutus/Team.jsx"));
-const Timeline = lazy(() => import("./admin/components/aboutus/Timeline.jsx"));
-
-// ==========================================================
-// 🔺 Admin Utilities
-// ==========================================================
-const PagesMeta = lazy(() => import("./admin/components/PagesMeta.jsx"));
-const Platter = lazy(() => import("./admin/components/platter/Platter.jsx"));
-
+import Verticals from "./admin/Verticals.jsx";
+import Infrastructure from "./admin/Infrastructure.jsx";
+import BrandEthos from "./admin/brandEthos.jsx";
+import Testimonials from "./admin/Testimonials.jsx";
+import OurValues from "./admin/OurValues.jsx";
+import Timeline from "./admin/components/aboutus/Timeline.jsx";
+import Team from "./admin/components/aboutus/Team.jsx";
+import Sizes from "./admin/components/dashboard/microsite/Sizes.jsx";
+import KeyHighlights from "./admin/components/dashboard/microsite/KeyHighlights.jsx";
+import PagesMeta from "./admin/components/PagesMeta.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -185,13 +137,51 @@ const router = createBrowserRouter([
       {
         path: ":projectName",
         element: (
-          // <FrontendRoute loaderType="media-centre">
-            <MicroPage />
-          // </FrontendRoute>
+          <MicroPage />
           // <FrontendRoute>
           // </FrontendRoute>
         ),
       },
+      // {
+      //   path: "aeroone-gurgaon",
+      //   element: (
+      //     <FrontendRoute loaderType="aeroone-gurgaon">
+      //       <MicroPageGurgaon1 data={data} />
+      //     </FrontendRoute>
+      //   ),
+      // },
+      // {
+      //   path: "aeroone-bangalore",
+      //   element: (
+      //     <FrontendRoute loaderType="aeroone-bangalore" >
+      //       <MicroPageBangalore data={bangaloreData} />
+      //     </FrontendRoute>
+      //   ),
+      // },
+      // {
+      //   path: "mvn-athens-faridabad",
+      //   element: (
+      //     <FrontendRoute loaderType="mvn-athens-faridabad">
+      //       <MicroPageFaridabad data={faridabadData} />
+      //     </FrontendRoute>
+      //   ),
+      // },
+      // {
+      //   path: "mvn-athens-gurgaon-phase-1",
+      //   element: (
+      //     <FrontendRoute loaderType="mvn-athens-gurgaon-phase-1">
+      //       <MicroPageGurgaonPhase1 data={athensGurgaonPhase1Data} />
+      //     </FrontendRoute>
+      //   ),
+      // },
+      // {
+      //   path: "mvn-athens-gurgaon-phase-2",
+      //   element: (
+      //     <FrontendRoute loaderType="mvn-athens-gurgaon-phase-2">
+      //       <MicroPageGurgaonPhase2 data={athensGurgaonPhase2Data} />
+      //     </FrontendRoute>
+      //   ),
+      // },
       {
         path: "media-centre",
         element: (
@@ -219,7 +209,7 @@ const router = createBrowserRouter([
       {
         path: "career",
         element: (
-          <FrontendRoute loaderType="blog-detail">
+          <FrontendRoute loaderType="career">
             <Career />
           </FrontendRoute>
         ),
@@ -235,7 +225,7 @@ const router = createBrowserRouter([
       },
       {
         path: "thanks",
-        element: <FrontendRoute loaderType=""><ThankYou /></FrontendRoute>,
+        element: <ThankYou />,
       },
       {
         path: "privacy-policy",
@@ -277,80 +267,102 @@ const router = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        /*{
+        path: "gallery",
+        element: (
+          <Suspense fallback={<InitialLoading onComplete={()=>console.log('Loading complete')} />}>
+            <Layout>
+              <Gallery />
+            </Layout>
+          </Suspense>
+        ),
+      },
+      {
+        path: "csr",
+        element: (
+          <Suspense fallback={<InitialLoading onComplete={()=>console.log('Loading complete')} />}>
+            <Layout>
+              <Csr />
+            </Layout>
+          </Suspense>
+        ),
+      },*/
+      },
     ],
   },
   {
     path: "/admin/login",
-    element: <Suspense fallback=""><Login /></Suspense>,
+    element: <Login />,
   },
   {
     path: "/admin",
-    element: <Suspense fallback=""><AdminProtectedRoute /></Suspense>,
+    element: <AdminProtectedRoute />,
     children: [
       {
         path: "",
         element: <AdminLayout />,
         children: [
-          { path: "", element: <FrontendRoute loaderType=""><Dashboard /></FrontendRoute> },
-          { path: "amenities", element: <FrontendRoute loaderType=""><AmenitiesAdmin /></FrontendRoute> },
-          { path: "about-us", element: <FrontendRoute loaderType=""><AdminAboutUs /></FrontendRoute> },
-          { path: "verticals", element: <FrontendRoute loaderType=""><Verticals /></FrontendRoute> },
-          { path: "infrastructure", element: <FrontendRoute loaderType=""><Infrastructure /></FrontendRoute> },
-          { path: "brand-ethos", element: <FrontendRoute loaderType=""><BrandEthos /></FrontendRoute> },
-          { path: "testimonials", element: <FrontendRoute loaderType=""><Testimonials /></FrontendRoute> },
-          { path: "our-values", element: <FrontendRoute loaderType=""><OurValues /></FrontendRoute> },
-          { path: "timeline", element: <FrontendRoute loaderType=""><Timeline /></FrontendRoute> },
-          { path: "team", element: <FrontendRoute loaderType=""><Team /></FrontendRoute> },
-          { path: "blogs", element: <FrontendRoute loaderType=""><AdminBlog /></FrontendRoute> },
-          { path: "work-culture", element: <FrontendRoute loaderType=""><AdminWorkCulture /></FrontendRoute> },
-          { path: "career", element: <FrontendRoute loaderType=""><AdminCareer /></FrontendRoute> },
-          { path: "media-centre", element: <FrontendRoute loaderType=""><AdminMediaCentre /></FrontendRoute>},
-          { path: "contact-us", element: <FrontendRoute loaderType=""><AdminContactUs /></FrontendRoute> },
-          { path: "project-list", element: <FrontendRoute loaderType=""><ProjectList /></FrontendRoute> },
-          { path: "platter", element: <FrontendRoute loaderType=""><Platter /></FrontendRoute> },
-          { path: "pages-meta", element: <FrontendRoute loaderType=""><PagesMeta /></FrontendRoute> },
+          { path: "", element: <Dashboard /> },
+          { path: "amenities", element: <Amenities /> },
+          { path: "about-us", element: <AdminAboutUs /> },
+          { path: "verticals", element: <Verticals /> },
+          { path: "infrastructure", element: <Infrastructure /> },
+          { path: "brand-ethos", element: <BrandEthos /> },
+          { path: "testimonials", element: <Testimonials /> },
+          { path: "our-values", element: <OurValues /> },
+          { path: "timeline", element: <Timeline /> },
+          { path: "team", element: <Team /> },
+          { path: "blogs", element: <AdminBlog /> },
+          { path: "work-culture", element: <AdminWorkCulture /> },
+          { path: "career", element: <AdminCareer /> },
+          { path: "media-centre", element: <AdminMediaCentre /> },
+          { path: "contact-us", element: <AdminContactUs /> },
+          { path: "project-list", element: <ProjectList /> },
+          { path: "platter", element: <Platter /> },
+          { path: "pages-meta", element: <PagesMeta /> },
           // { path: "page/index", element: <AdminHomepage /> },
-          { path: "page/:pageName", element: <FrontendRoute loaderType=""><SinglePage /></FrontendRoute> },
+          { path: "page/:pageName", element: <SinglePage /> },
           {
             path: "microsite",
-            element: <FrontendRoute loaderType=""><MicroSidebar /></FrontendRoute>,
+            element: <MicroSidebar />,
             children: [
-              { path: "", element: <FrontendRoute loaderType=""><BasicMicroSite /></FrontendRoute> },
+              { path: "", element: <BasicMicroSite /> },
               //   {path:"overview", element:<OverviewMicroSite />},
               //   {path:"banner", element:<HeroSection />},
             ],
           },
           {
             path: "microsite/:project_id",
-            element: <FrontendRoute loaderType=""><MicroSidebar /></FrontendRoute>,
+            element: <MicroSidebar />,
             children: [
-              { path: "", element: <FrontendRoute loaderType=""><BasicMicroSite /></FrontendRoute> },
-              { path: "overview", element: <FrontendRoute loaderType=""><OverviewMicroSite /></FrontendRoute> },
-              { path: "sizes", element: <FrontendRoute loaderType=""><Sizes /></FrontendRoute> },
-              { path: "large-elevation", element: <FrontendRoute loaderType=""><Elevation /></FrontendRoute> },
-              { path: "banner", element: <FrontendRoute loaderType=""><HeroSection /></FrontendRoute> },
-              { path: "walkthrough", element: <FrontendRoute loaderType=""><Walkthrough /></FrontendRoute> },
-              { path: "360-views", element: <FrontendRoute loaderType=""><ThreesixtyView /></FrontendRoute> },
-              { path: "Peacock", element: <FrontendRoute loaderType=""><LivingRoom /></FrontendRoute> },
-              { path: "party", element: <FrontendRoute loaderType=""><Party /></FrontendRoute> },
-              { path: "master-Bed-room", element:  <FrontendRoute loaderType=""><MasterBedroom /></FrontendRoute> },
-              { path: "architect", element: <FrontendRoute loaderType=""><Consultant /></FrontendRoute> },
-              { path: "landscape", element:  <FrontendRoute loaderType=""><LandScape /></FrontendRoute> },
-              { path: "landscapes", element: <FrontendRoute loaderType=""><LandScape /></FrontendRoute> },
-              { path: "galleries", element: <FrontendRoute loaderType=""><Galleries /></FrontendRoute> },
-              { path: "elevation", element: <FrontendRoute loaderType=""><SmElevation /></FrontendRoute> },
-              { path: "apartment", element: <FrontendRoute loaderType=""><Apartment /></FrontendRoute> },
+              { path: "", element: <BasicMicroSite /> },
+              { path: "overview", element: <OverviewMicroSite /> },
+              { path: "sizes", element: <Sizes /> },
+              { path: "large-elevation", element: <Elevation /> },
+              { path: "banner", element: <HeroSection /> },
+              { path: "walkthrough", element: <Walkthrough /> },
+              { path: "360-views", element: <ThreesixtyView /> },
+              { path: "Peacock", element: <LivingRoom /> },
+              { path: "party", element: <Party /> },
+              { path: "master-Bed-room", element: <MasterBedroom /> },
+              { path: "architect", element: <Consultant /> },
+              { path: "landscape", element: <LandScape /> },
+              { path: "landscapes", element: <LandScape /> },
+              { path: "galleries", element: <Galleries /> },
+              { path: "elevation", element: <SmElevation /> },
+              { path: "apartment", element: <Apartment /> },
               {
                 path: "construction-technology",
-                element: <FrontendRoute loaderType=""><ConstructionTechnology /></FrontendRoute>,
+                element: <ConstructionTechnology />,
               },
-              { path: "amenities", element: <FrontendRoute loaderType=""><AmenitiesAdmin /> </FrontendRoute>},
-              { path: "connection-mall", element: <FrontendRoute loaderType=""><ConnectionMvnMall /></FrontendRoute> },
-              { path: "typologies", element:<FrontendRoute loaderType=""> <Typologies /></FrontendRoute> },
-              { path: "floor-plan", element: <FrontendRoute loaderType=""> <FloorPlans /> </FrontendRoute>},
-              { path: "location-map", element: <FrontendRoute loaderType=""><LocationMap /></FrontendRoute> },
-              { path: "key-highlights", element: <FrontendRoute loaderType=""><KeyHighlights /></FrontendRoute> },
-              { path: "mvn-mall", element: <FrontendRoute loaderType=""><MvnMall /></FrontendRoute> },
+              { path: "amenities", element: <AmenitiesAdmin /> },
+              { path: "connection-mall", element: <ConnectionMvnMall /> },
+              { path: "typologies", element: <Typologies /> },
+              { path: "floor-plan", element: <FloorPlans /> },
+              { path: "location-map", element: <LocationMap /> },
+              { path: "key-highlights", element: <KeyHighlights /> },
+              { path: "mvn-mall", element: <MvnMall /> },
             ],
           },
         ],
@@ -363,7 +375,9 @@ createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <>
       <RouterProvider router={router}>
-        <App />
+{/* <PersistGate loading={<div></div>} persistor={persistor}>        */}
+ <App />
+        {/* </PersistGate> */}
       </RouterProvider>
       <ToastContainer position="top-right" autoClose={3000} />
     </>

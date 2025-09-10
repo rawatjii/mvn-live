@@ -46,7 +46,7 @@ const Construction = ({ data }) => {
       <div className="cards-container">
         <div className="row">
           {loading ? (
-            <p>Loading...</p>
+            <p></p>
           ) : (
             constructionData?.map((images, index) => (
               <div key={index} className="col-sm-12 col-md-4 col-lg-4">

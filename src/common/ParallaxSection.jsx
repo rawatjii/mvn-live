@@ -274,7 +274,7 @@ useEffect(() => {
         zIndex: 9999,
       }}
     >
-      <div>Loading...</div>
+      <div></div>
     </div>
   );
 

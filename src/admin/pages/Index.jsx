@@ -121,7 +121,7 @@ const SinglePage = () => {
 
   // Render loading state
   if (isLoading || !data || !editData) {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   return (

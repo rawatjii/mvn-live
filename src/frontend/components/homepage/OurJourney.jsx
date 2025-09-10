@@ -112,7 +112,7 @@ const OurJourney = React.memo(({data}) => {
 
   
 
-  if(loading) return <div className="text-center py-5">Loading...</div>;
+  if(loading) return <div className="text-center py-5"></div>;
   if(!loading && infraData && infraData.length === 0) return <div className="text-center py-5">No records found</div>;
 
   return (

@@ -159,10 +159,13 @@ const MicroPage = () => {
     return [...projectSections.data].sort((a, b) => a.seq - b.seq);
   }, [projectSections]);
 
-  const scrollToSection = useCallback((sectionKey) => {
-    const target = sectionRefs.current[sectionKey];
-   
-  }, []);
+const scrollToSection = (sectionKey) => {
+  const section = document.getElementById(sectionKey);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
   useEffect(() => {
     dispatch(setCommonState({ id: project?.id, isMicro: true }));
   }, [project?.id, projectName, sectionLoading, sections]);
@@ -231,8 +234,13 @@ const MicroPage = () => {
     };
 
     const imageSrc = projectImages[projectName] || {};
-    return (
-      <div className="loading_screen" style={{ position: "relative" }}>
+    
+    return  pathname.includes("aeroone-gurgaon") ?
+    <div className="loading_screen aeroone_loading text-center d-flex flex-column items-center justify-content-center" style={{ position: "relative", height:'100vh' }}>
+      <img src="loaders/aeroone/main.webp" alt="aeroone loader" className="img-fluid mx-auto" width={60} />
+      <small className="mt-2 text-uppercase" style={{fontSize:'12px', letterSpacing:'1px'}}>Loading Experience...</small>
+      </div>
+    :<div className="loading_screen" style={{ position: "relative" }}>
         <img
           src={window.innerWidth < 768 ? imageSrc.mobile : imageSrc.desktop}
           alt="loading screen"
@@ -255,7 +263,8 @@ const MicroPage = () => {
           Loading Experience...
         </p>
       </div>
-    );
+ 
+    ;
   };
 
   const renderSection = (section, secIndex) => {
@@ -267,14 +276,14 @@ const MicroPage = () => {
 
     const sectionComponents = {
       elevation: (
-        <div ref={(el) => (sectionRefs.current.elevation = el)}>
-          <Suspense fallback={<p>Loading...</p>}>
+        <div ref={(el) => (sectionRefs.current.elevation = el)} id={section.section_type}>
+          <Suspense fallback={<p></p>}>
             <LargeElevationSection {...sectionProps} />
           </Suspense>
         </div>
       ),
       overview: (
-        <div ref={(el) => (sectionRefs.current.overview = el)}>
+        <div ref={(el) => (sectionRefs.current.overview = el)}  id={section.section_type}>
             <MicroOverview
               rera={project?.rera_no}
               data={section}
@@ -284,8 +293,8 @@ const MicroPage = () => {
         </div>
       ),
       walkthrough: (
-        <div ref={(el) => (sectionRefs.current.walkthrough = el)}>
-          <Suspense fallback={<p>Loading...</p>}>
+        <div ref={(el) => (sectionRefs.current.walkthrough = el)}  id={section.section_type}>
+          <Suspense fallback={<p></p>}>
             <YtIframe {...sectionProps} subs_btn={true} />
           </Suspense>
         </div>
@@ -302,15 +311,15 @@ const MicroPage = () => {
       //   </div>
       // ),
       Peacock: (
-        <div {...sectionProps}>
-          <Suspense fallback={<p>Loading...</p>}>
+        <div {...sectionProps}  id={section.section_type}>
+          <Suspense fallback={<p></p>}>
             <PeacockSection {...sectionProps} />
           </Suspense>
         </div>
       ),
       party: (
-        <div {...sectionProps}>
-          <Suspense fallback={<p>Loading...</p>}>
+        <div {...sectionProps}  id={section.section_type}>
+          <Suspense fallback={<p></p>}>
             <PeacockSection
               {...sectionProps}
               watermarkClass="style5"
@@ -321,8 +330,8 @@ const MicroPage = () => {
         </div>
       ),
       masterbedroom: (
-        <div {...sectionProps}>
-          <Suspense fallback={<p>Loading...</p>}>
+        <div {...sectionProps}  id={section.section_type}>
+          <Suspense fallback={<p></p>}>
             <PeacockSection
               {...sectionProps}
               watermarkClass="style5"
@@ -333,17 +342,17 @@ const MicroPage = () => {
         </div>
       ),
       consultant: (
-        <div {...sectionProps}>
-          <div ref={(el) => (sectionRefs.current.about_architect = el)}>
-            <Suspense fallback={<p>Loading...</p>}>
+        <div {...sectionProps}  id={section.section_type}>
+          <div ref={(el) => (sectionRefs.current.about_architect = el)} id="about_architect">
+            <Suspense fallback={<p></p>}>
               <Consultant {...sectionProps} />
             </Suspense>
           </div>
         </div>
       ),
       landscape: (
-        <div {...sectionProps}>
-          <Suspense fallback={<p>Loading...</p>}>
+        <div {...sectionProps}  id={section.section_type}>
+          <Suspense fallback={<p></p>}>
             <ImagesGallery
               section_name={
                 section.section_type === "landscape"
@@ -361,58 +370,58 @@ const MicroPage = () => {
         </div>
       ),
       "key-highlights": (
-        <div {...sectionProps}>
-          <Suspense fallback={<p>Loading...</p>}>
+        <div {...sectionProps}  id={section.section_type}>
+          <Suspense fallback={<p></p>}>
             <FeatureSection {...sectionProps} />
           </Suspense>
         </div>
       ),
       construction: (
-        <div {...sectionProps}>
+        <div {...sectionProps}  id="construction_technology">
           <div ref={(el) => (sectionRefs.current.construction_technology = el)}>
-            <Suspense fallback={<p>Loading...</p>}>
+            <Suspense fallback={<p></p>}>
               <ConstructionTechnology {...sectionProps} />
             </Suspense>
           </div>
         </div>
       ),
       amenities: (
-        <div {...sectionProps}>
+        <div {...sectionProps}  id={section.section_type}>
             <ParallaxSection section_data={section} />
         </div>
       ),
       typologies: (
-        <div {...sectionProps} className="outer_section">
+        <div {...sectionProps} className="outer_section " id={section.section_type} >
             <Typology {...sectionProps} />
         </div>
       ),
       "location-map": (
         <div {...sectionProps}>
-          <div ref={(el) => (sectionRefs.current.location_map = el)}>
-            <Suspense fallback={<p>Loading...</p>}>
+          <div ref={(el) => (sectionRefs.current.location_map = el)} id="location_map">
+            <Suspense fallback={<p></p>}>
               <MicroLocationMap data={section} projectName={projectName} />
             </Suspense>
           </div>
         </div>
       ),
       "mvn-mall": (
-        <div {...sectionProps}>
+        <div {...sectionProps} id="mvn_mall">
           <div ref={(el) => (sectionRefs.current.mvn_mall = el)}>
-            <Suspense fallback={<p>Loading...</p>}>
+            <Suspense fallback={<p></p>}>
               <MvnMall {...sectionProps} />
             </Suspense>
           </div>
         </div>
       ),
       "floor-plan": (
-        <div {...sectionProps}>
+        <div {...sectionProps} id="floor_plan">
           <div ref={(el) => (sectionRefs.current.floor_plan = el)}>
             {section.is_type === "video" ? (
-              <Suspense fallback={<p>Loading...</p>}>
+              <Suspense fallback={<p></p>}>
                 <MicroFloorPlan {...sectionProps} />
               </Suspense>
             ) : (
-              <Suspense fallback={<p>Loading...</p>}>
+              <Suspense fallback={<p></p>}>
                 <SliderTypology {...sectionProps} />
               </Suspense>
             )}
@@ -423,7 +432,7 @@ const MicroPage = () => {
         "mvn-athens-gurgaon-phase-3"
       ) && (
         <div {...sectionProps}>
-          <Suspense fallback={<p>Loading...</p>}>
+          <Suspense fallback={<p></p>}>
             <Construction {...sectionProps} />
           </Suspense>
         </div>
@@ -451,7 +460,7 @@ const MicroPage = () => {
           elevationData?.map((item, index) => (
             <div key={index}>
               <div className="mt_80 mt_sm_30 mb-md-5">
-                <Suspense fallback={<p>Loading...</p>}>
+                <Suspense fallback={<p></p>}>
                   <LargeElevationSection1 {...item} />
                 </Suspense>
               </div>
@@ -459,7 +468,7 @@ const MicroPage = () => {
           ))}
         {isMvnProject && secIndex === 1 && (
           <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
-            <Suspense fallback={<p>Loading...</p>}>
+            <Suspense fallback={<p></p>}>
               <DownloadBrochure
                 showAwards={project?.batch}
                 name={project?.name}
@@ -470,7 +479,7 @@ const MicroPage = () => {
         )}
         {isAeroone && secIndex === 5 && (
           <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
-            <Suspense fallback={<p>Loading...</p>}>
+            <Suspense fallback={<p></p>}>
               <DownloadBrochure
                 showAwards={project?.batch}
                 name={project?.name}
@@ -481,13 +490,13 @@ const MicroPage = () => {
         {overviewIframe &&
           projectName.includes("mvn-mall") &&
           secIndex === 1 && (
-            <Suspense fallback={<p>Loading...</p>}>
+            <Suspense fallback={<p></p>}>
               <CustomIframe data={overviewIframe} />
             </Suspense>
           )}
         {isAeroone && secIndex === 5 && (
-          <div ref={(el) => (sectionRefs.current.dgm_sales = el)}>
-            <Suspense fallback={<p>Loading...</p>}>
+          <div ref={(el) => (sectionRefs.current.dgm_sales = el)}  id="dgm_sales">  
+            <Suspense fallback={<p></p>}>
               <ContactInfo white={true} />
             </Suspense>
           </div>
@@ -531,7 +540,7 @@ const MicroPage = () => {
 
           {pathname.includes("mvn-mall") && (
             <div className="mt-5 mt-md-0 mb-md-5">
-              <Suspense fallback={<p>Loading...</p>}>
+              <Suspense fallback={<p></p>}>
                 <Strip />
               </Suspense>
             </div>
@@ -547,12 +556,12 @@ const MicroPage = () => {
               <div className="container-fluid micro_footer">
                 <div className="row">
                   <div className="col-sm-6 px-0">
-                    <Suspense fallback={<p>Loading...</p>}>
+                    <Suspense fallback={<p></p>}>
                       <Enquire />
                     </Suspense>
                   </div>
                   <div className="col-sm-6 px-0">
-                    <Suspense fallback={<p>Loading...</p>}>
+                    <Suspense fallback={<p></p>}>
                       <EnquireForm projectName={getProjectDisplayName()} />
                     </Suspense>
                   </div>

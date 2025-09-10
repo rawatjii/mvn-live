@@ -308,7 +308,7 @@ function ParallaxSection({ section_data }) {
         zIndex: 9999,
       }}
     >
-      <div>Loading...</div> {/* Replace with your spinner or custom loader */}
+      <div></div> {/* Replace with your spinner or custom loader */}
     </div>
   );
 

@@ -25,7 +25,7 @@ const microMenus = [
   { section_name: 'Overview', section_type: 'overview' },
   { section_name: 'Walkthrough', section_type: 'walkthrough' },
   { section_name: 'DGM Sales', section_type: 'dgm_sales' },
-  { section_name: '360 Degree View', section_type: 'view_360' },
+  // { section_name: '360 Degree View', section_type: 'view_360' },
   { section_name: 'About Architect', section_type: 'about_architect' },
   { section_name: 'Landscape', section_type: 'landscape' },
   { section_name: 'Construction Technology', section_type: 'construction_technology' },
@@ -87,7 +87,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
   // const { data: contactData } = useFetchData(`project/${}/project-section-nav`);
   
 
-  if (loading) return <div className="text-center py-5">Loading...</div>;
+  if (loading) return <div className="text-center"></div>;
   if (!loading && pageLinks && pageLinks.length === 0)
     return <div className="text-center py-5">No records found</div>;
 
@@ -197,6 +197,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                                     scrollToSection(section.section_type);
                                     toggleMenu("close");
                                   }}
+                                  // id={section.section_type}
                                 >
                                   {section.section_name}
                                 </NavLink>
