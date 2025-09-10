@@ -155,7 +155,7 @@ const MvnMall = ({ data }) => {
 
             {mallData?.map((item, index) => {
               if (index == 0) {
-                return <div className="col-sm-12 col-md-6 col-lg-6 mvn_mall_left_col">
+                return <div key={index} className="col-sm-12 col-md-6 col-lg-6 mvn_mall_left_col">
                   <div className="position-relative">
                     <img src={BACKEND_IMAGE_URL + item.image} alt="mvn mall icon" className="img-fluid w-100" />
                     <Watermark isMvnLogo="true" />
@@ -170,7 +170,7 @@ const MvnMall = ({ data }) => {
               {mallData?.map((item, index) => {
                 if(index !== 0){
                   return (
-                    <div className="position-relative mb-4">
+                    <div key={index} className="position-relative mb-4">
                       <img
                         src={BACKEND_IMAGE_URL + item.image}
                         alt="mvn mall icon"

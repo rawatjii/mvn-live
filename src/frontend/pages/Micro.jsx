@@ -1,46 +1,93 @@
-import React, { Suspense, useEffect, useRef, useMemo, useCallback } from "react";
+import React, {
+  Suspense,
+  useEffect,
+  useRef,
+  useMemo,
+  useCallback,
+} from "react";
 import gsap from "gsap";
-import {ScrollTrigger} from "gsap/ScrollTrigger";
-import {ScrollSmoother} from "gsap/ScrollSmoother";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import parse from "html-react-parser";
+
+// ✅ Static imports for small or critical components
 import MicroHeader from "../components/MicroHeader";
-import HeroSection from "../components/MicroPage/Hero/Index";
-import MicroOverview from "../components/MicroPage/Overview";
-import LargeElevationSection from "../components/MicroPage/LargeElevationSection";
-import LargeElevationSection1 from "../components/MicroPage/LargeElevationSection1";
-import YtIframe from "../components/MicroPage/YtIframe";
-import DownloadBrochure from "../components/MicroPage/DownloadBrochure";
-import CustomIframe from "../components/MicroPage/CustomIframe";
-import View360 from "../components/MicroPage/360";
-import PeacockSection from "../components/MicroPage/PeacockSection";
-import Consultant from "../components/MicroPage/Consultant";
-import ImagesGallery from "../components/MicroPage/ImagesGallery";
-import ConstructionTechnology from "../components/MicroPage/ConstructionTechnology";
-import ParallaxSection from "../../common/ParallaxSection";
-import MicroLocationMap from "../components/MicroPage/LocationMap";
-import MvnMall from "../components/MicroPage/MvnMall";
-import Typology from "../components/homepage/Typology";
-import Enquire from "../components/homepage/Enquire";
-import EnquireForm from "../components/homepage/EnquireForm";
 import Footer from "../components/Footer";
-import WhatsappBtn from "../components/Whatsapp";
-import ContactInfo from "../components/ContactInfo";
-import PageNotFound from "../../common/PageNotFound/Index";
-import Construction from "./Construction";
-import Strip from "../components/homepage/Strip11";
-import SliderTypology from "../components/MicroPage/bangalore/SliderTypology";
-import FeatureSection from "../components/MicroPage/athens/FeatureSection";
-import MicroFloorPlan from "../components/MicroPage/FloorPlan";
 import { API_URL } from "../../config/config";
 import { setCommonState } from "../../redux/commonSlice";
 import { fetchProject, clearProject } from "../../redux/projectDataSlice";
 import { fetchSectionById, clearSection } from "../../redux/sectionDataSlice";
 
+const WhatsappBtn = React.lazy(() => import("../components/Whatsapp"));
+const ContactInfo = React.lazy(() => import("../components/ContactInfo"));
+const PageNotFound = React.lazy(() =>
+  import("../../common/PageNotFound/Index")
+);
+const Construction = React.lazy(() => import("./Construction"));
+
+// ✅ Dynamically loaded components using React.lazy (for code-splitting)
+const HeroSection = React.lazy(() =>
+  import("../components/MicroPage/Hero/Index")
+);
+const MicroOverview = React.lazy(() =>
+  import("../components/MicroPage/Overview")
+);
+const LargeElevationSection = React.lazy(() =>
+  import("../components/MicroPage/LargeElevationSection")
+);
+const LargeElevationSection1 = React.lazy(() =>
+  import("../components/MicroPage/LargeElevationSection1")
+);
+const YtIframe = React.lazy(() => import("../components/MicroPage/YtIframe"));
+const DownloadBrochure = React.lazy(() =>
+  import("../components/MicroPage/DownloadBrochure")
+);
+const CustomIframe = React.lazy(() =>
+  import("../components/MicroPage/CustomIframe")
+);
+const View360 = React.lazy(() => import("../components/MicroPage/360"));
+const PeacockSection = React.lazy(() =>
+  import("../components/MicroPage/PeacockSection")
+);
+const Consultant = React.lazy(() =>
+  import("../components/MicroPage/Consultant")
+);
+const ImagesGallery = React.lazy(() =>
+  import("../components/MicroPage/ImagesGallery")
+);
+const ConstructionTechnology = React.lazy(() =>
+  import("../components/MicroPage/ConstructionTechnology")
+);
+const ParallaxSection = React.lazy(() =>
+  import("../../common/ParallaxSection")
+);
+const MicroLocationMap = React.lazy(() =>
+  import("../components/MicroPage/LocationMap")
+);
+const MvnMall = React.lazy(() => import("../components/MicroPage/MvnMall"));
+const Typology = React.lazy(() => import("../components/homepage/Typology"));
+const Enquire = React.lazy(() => import("../components/homepage/Enquire"));
+const EnquireForm = React.lazy(() =>
+  import("../components/homepage/EnquireForm")
+);
+const Strip = React.lazy(() => import("../components/homepage/Strip11"));
+const SliderTypology = React.lazy(() =>
+  import("../components/MicroPage/bangalore/SliderTypology")
+);
+const FeatureSection = React.lazy(() =>
+  import("../components/MicroPage/athens/FeatureSection")
+);
+const MicroFloorPlan = React.lazy(() =>
+  import("../components/MicroPage/FloorPlan")
+);
+
+// ✅ Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
+// ✅ Asset reference
 const headerSidebarDesktopImg = `${API_URL}images/aero-gurgaon/header/sidebar.webp`;
 
 const headerData = {
@@ -57,7 +104,10 @@ const headerData = {
     { section_title: "Landscape", link: "MicroLandscape" },
     { section_title: "Elevation", link: "MicroElevation" },
     { section_title: "Apartment", link: "MicroApartment" },
-    { section_title: "Construction Technology", link: "constructionTechnology" },
+    {
+      section_title: "Construction Technology",
+      link: "constructionTechnology",
+    },
     { section_title: "Amenities", link: "MicroAmenities" },
     { section_title: "Typology", link: "MicroTypology" },
     { section_title: "Floor Plans", link: "MicroFloorPlan" },
@@ -69,30 +119,30 @@ const headerData = {
 
 const elevationData = [
   {
-    image:{
-      desktop:'floors.webp',
-      mobile:'floors_sm.webp',
+    image: {
+      desktop: "floors.webp",
+      mobile: "floors_sm.webp",
     },
-    title:'Villas in the Sky',
-    desc:'Experience elevated living with unmatched luxury above the clouds.',
+    title: "Villas in the Sky",
+    desc: "Experience elevated living with unmatched luxury above the clouds.",
   },
   {
-    image:{
-      desktop:'assets/images/aeroone/jacuzzi/desktop.webp',
-      mobile:'assets/images/aeroone/jacuzzi/mobile.webp',
+    image: {
+      desktop: "assets/images/aeroone/jacuzzi/desktop.webp",
+      mobile: "assets/images/aeroone/jacuzzi/mobile.webp",
     },
-    title:'Soak in Serenity',
-    desc:'Immerse in luxury with a private jacuzzi, offering relaxation and stunning vistas.',
+    title: "Soak in Serenity",
+    desc: "Immerse in luxury with a private jacuzzi, offering relaxation and stunning vistas.",
   },
   {
-    image:{
-      desktop:'assets/images/aeroone/zen-garden/desktop.webp',
-      mobile:'assets/images/aeroone/zen-garden/mobile.webp',
+    image: {
+      desktop: "assets/images/aeroone/zen-garden/desktop.webp",
+      mobile: "assets/images/aeroone/zen-garden/mobile.webp",
     },
-    title:'Embrace Tranquility',
-    desc:'Experience peace in a meticulously crafted Zen garden, a sanctuary of balance and beauty.',
+    title: "Embrace Tranquility",
+    desc: "Experience peace in a meticulously crafted Zen garden, a sanctuary of balance and beauty.",
   },
-]
+];
 
 const MicroPage = () => {
   const { projectName } = useParams();
@@ -104,7 +154,9 @@ const MicroPage = () => {
   const [overviewIframe, setOverviewIframe] = React.useState(null);
 
   const { project: basicData, loading } = useSelector((state) => state.project);
-  const { sectionData: projectSections, loading: sectionLoading } = useSelector((state) => state.section);
+  const { sectionData: projectSections, loading: sectionLoading } = useSelector(
+    (state) => state.section
+  );
 
   const project = useMemo(() => basicData?.data, [basicData]);
   const sections = useMemo(() => {
@@ -118,41 +170,40 @@ const MicroPage = () => {
       smootherRef.current.scrollTo(target, true);
     }
   }, []);
-useEffect(() => {
-  dispatch(setCommonState({ id: project?.id, isMicro: true }));
+  useEffect(() => {
+    dispatch(setCommonState({ id: project?.id, isMicro: true }));
 
-  const wrapper = document.querySelector("#smooth-wrapper");
-  const content = document.querySelector("#smooth-content");
+    const wrapper = document.querySelector("#smooth-wrapper");
+    const content = document.querySelector("#smooth-content");
 
-  if (!wrapper || !content) {
-    console.error("ScrollSmoother: Missing wrapper or content element");
-    return;
-  }
+    if (!wrapper || !content) {
+      console.error("ScrollSmoother: Missing wrapper or content element");
+      return;
+    }
 
-  smootherRef.current = ScrollSmoother.create({
-    wrapper: "#smooth-wrapper",
-    content: "#smooth-content",
-    smooth: 1.5,
-    effects: true,
-    smoothTouch: 1.4,
-    onUpdate: (self) => {
-    },
-  });
+    smootherRef.current = ScrollSmoother.create({
+      wrapper: "#smooth-wrapper",
+      content: "#smooth-content",
+      smooth: 1.5,
+      effects: true,
+      smoothTouch: 1.4,
+      onUpdate: (self) => {},
+    });
 
-  console.log("ScrollSmoother initialized:", smootherRef.current);
+    console.log("ScrollSmoother initialized:", smootherRef.current);
 
-  // Refresh ScrollTrigger after sections load
-  if (!sectionLoading && sections.length > 0) {
-    ScrollTrigger.refresh();
-    smootherRef.current?.refresh();
-  }
+    // Refresh ScrollTrigger after sections load
+    if (!sectionLoading && sections.length > 0) {
+      ScrollTrigger.refresh();
+      smootherRef.current?.refresh();
+    }
 
-  return () => {
-    smootherRef.current?.kill();
-    smootherRef.current = null;
-    console.log("ScrollSmoother cleaned up");
-  };
-}, [project?.id, projectName, sectionLoading, sections]);
+    return () => {
+      smootherRef.current?.kill();
+      smootherRef.current = null;
+      console.log("ScrollSmoother cleaned up");
+    };
+  }, [project?.id, projectName, sectionLoading, sections]);
 
   useEffect(() => {
     dispatch(fetchProject(projectName));
@@ -169,18 +220,26 @@ useEffect(() => {
     if (project?.head_data) {
       const headDataContainer = document.createElement("div");
       headDataContainer.innerHTML = project.head_data;
-      Array.from(headDataContainer.children).forEach((child) => document.head.appendChild(child));
+      Array.from(headDataContainer.children).forEach((child) =>
+        document.head.appendChild(child)
+      );
       return () => {
-        Array.from(headDataContainer.children).forEach((child) => document.head.removeChild(child));
+        Array.from(headDataContainer.children).forEach((child) =>
+          document.head.removeChild(child)
+        );
       };
     }
   }, [project?.head_data]);
 
   const getProjectDisplayName = useCallback(() => {
-    if (pathname.includes("mvn-athens-gurgaon-phase-1")) return "MVN Athens Ph-1";
-    if (pathname.includes("mvn-athens-gurgaon-phase-2")) return "MVN Athens Ph-2";
-    if (pathname.includes("mvn-athens-gurgaon-phase-3")) return "MVN Athens Ph-3";
-    if (pathname.includes("mvn-athens-faridabad")) return "MVN Athens Faridabad";
+    if (pathname.includes("mvn-athens-gurgaon-phase-1"))
+      return "MVN Athens Ph-1";
+    if (pathname.includes("mvn-athens-gurgaon-phase-2"))
+      return "MVN Athens Ph-2";
+    if (pathname.includes("mvn-athens-gurgaon-phase-3"))
+      return "MVN Athens Ph-3";
+    if (pathname.includes("mvn-athens-faridabad"))
+      return "MVN Athens Faridabad";
     if (pathname.includes("mvn-mall")) return "MVN Mall Dwarka Expressway";
     return "MVN Aeroone";
   }, [pathname]);
@@ -246,127 +305,174 @@ useEffect(() => {
 
     const sectionComponents = {
       elevation: (
-          <div ref={(el) => (sectionRefs.current.elevation = el)}>
+        <div ref={(el) => (sectionRefs.current.elevation = el)}>
+          <Suspense fallback={<p>Loading...</p>}>
             <LargeElevationSection {...sectionProps} />
-          </div>
+          </Suspense>
+        </div>
       ),
       overview: (
         <div ref={(el) => (sectionRefs.current.overview = el)}>
-          <MicroOverview
-            rera={project?.rera_no}
-            data={section}
-            setOverviewIframe={setOverviewIframe}
-            onBannerExit={setIsHeaderFixed}
-          />
+          <Suspense fallback={<p>Loading...</p>}>
+            <MicroOverview
+              rera={project?.rera_no}
+              data={section}
+              setOverviewIframe={setOverviewIframe}
+              onBannerExit={setIsHeaderFixed}
+            />
+          </Suspense>
         </div>
       ),
       walkthrough: (
-        
-          <div ref={(el) => (sectionRefs.current.walkthrough = el)}>
+        <div ref={(el) => (sectionRefs.current.walkthrough = el)}>
+          <Suspense fallback={<p>Loading...</p>}>
             <YtIframe {...sectionProps} subs_btn={true} />
-          </div>
-        
+          </Suspense>
+        </div>
       ),
       threesixtyview: (
-        
-          <div {...sectionProps}>
-            <div ref={(el) => (sectionRefs.current.view_360 = el)}>
-            <View360
-              sectionId={sectionKey}
-              data={section}
-              onLoadComplete={() => ScrollTrigger.refresh()}
-            />
-            </div>
+        <div {...sectionProps}>
+          <div ref={(el) => (sectionRefs.current.view_360 = el)}>
+            <Suspense fallback={<p>Loading...</p>}>
+              <View360
+                sectionId={sectionKey}
+                data={section}
+                onLoadComplete={() => ScrollTrigger.refresh()}
+              />
+            </Suspense>
           </div>
+        </div>
       ),
       Peacock: (
-        
-          <div {...sectionProps}>
+        <div {...sectionProps}>
+          <Suspense fallback={<p>Loading...</p>}>
             <PeacockSection {...sectionProps} />
-          </div>
+          </Suspense>
+        </div>
       ),
       party: (
-          <div {...sectionProps}>
-            <PeacockSection {...sectionProps} watermarkClass="style5" desktop_img="assets/images/aeroone/party/desktop.webp" mobile_img="assets/images/aeroone/party/mobile.webp" />
-          </div>
+        <div {...sectionProps}>
+          <Suspense fallback={<p>Loading...</p>}>
+            <PeacockSection
+              {...sectionProps}
+              watermarkClass="style5"
+              desktop_img="assets/images/aeroone/party/desktop.webp"
+              mobile_img="assets/images/aeroone/party/mobile.webp"
+            />
+          </Suspense>
+        </div>
       ),
       masterbedroom: (
-          <div {...sectionProps}>
-            <PeacockSection {...sectionProps} watermarkClass="style5" desktop_img="assets/images/aeroone/bedroom/desktop.webp" mobile_img="assets/images/aeroone/bedroom/mobile.webp" />
-          </div>
+        <div {...sectionProps}>
+          <Suspense fallback={<p>Loading...</p>}>
+            <PeacockSection
+              {...sectionProps}
+              watermarkClass="style5"
+              desktop_img="assets/images/aeroone/bedroom/desktop.webp"
+              mobile_img="assets/images/aeroone/bedroom/mobile.webp"
+            />
+          </Suspense>
+        </div>
       ),
       consultant: (
-        
-          <div {...sectionProps}>
-             <div ref={(el) => (sectionRefs.current.about_architect = el)}>
-            <Consultant {...sectionProps} />
-            </div>
+        <div {...sectionProps}>
+          <div ref={(el) => (sectionRefs.current.about_architect = el)}>
+            <Suspense fallback={<p>Loading...</p>}>
+              <Consultant {...sectionProps} />
+            </Suspense>
           </div>
+        </div>
       ),
       landscape: (
-        
-          <div {...sectionProps}>
+        <div {...sectionProps}>
+          <Suspense fallback={<p>Loading...</p>}>
             <ImagesGallery
-              section_name={section.section_type === "landscape" ? "landscapes" : section.section_type}
+              section_name={
+                section.section_type === "landscape"
+                  ? "landscapes"
+                  : section.section_type
+              }
               data={section}
-              showTitle={["landscapes", "galleries"].includes(section.section_type) ? false : true}
+              showTitle={
+                ["landscapes", "galleries"].includes(section.section_type)
+                  ? false
+                  : true
+              }
             />
-          </div>
+          </Suspense>
+        </div>
       ),
       "key-highlights": (
-        
-          <div {...sectionProps}>
+        <div {...sectionProps}>
+          <Suspense fallback={<p>Loading...</p>}>
             <FeatureSection {...sectionProps} />
-          </div>
+          </Suspense>
+        </div>
       ),
       construction: (
-        
-          <div {...sectionProps}>
-            <div ref={(el) => (sectionRefs.current.construction_technology = el)}>
-            <ConstructionTechnology {...sectionProps} />
-            </div>
+        <div {...sectionProps}>
+          <div ref={(el) => (sectionRefs.current.construction_technology = el)}>
+            <Suspense fallback={<p>Loading...</p>}>
+              <ConstructionTechnology {...sectionProps} />
+            </Suspense>
           </div>
+        </div>
       ),
       amenities: (
-        
-          <div {...sectionProps}>
+        <div {...sectionProps}>
+          <Suspense fallback={<p>Loading...</p>}>
             <ParallaxSection section_data={section} />
-          </div>
+          </Suspense>
+        </div>
       ),
       typologies: (
-          <div {...sectionProps} className="outer_section">
+        <div {...sectionProps} className="outer_section">
+          <Suspense fallback={<p>Loading...</p>}>
             <Typology {...sectionProps} />
-          </div>
+          </Suspense>
+        </div>
       ),
       "location-map": (
-          <div {...sectionProps}>
-            <div ref={(el) => (sectionRefs.current.location_map = el)}>
-            <MicroLocationMap data={section} projectName={projectName} />
-            </div>
+        <div {...sectionProps}>
+          <div ref={(el) => (sectionRefs.current.location_map = el)}>
+            <Suspense fallback={<p>Loading...</p>}>
+              <MicroLocationMap data={section} projectName={projectName} />
+            </Suspense>
           </div>
+        </div>
       ),
       "mvn-mall": (
-          <div {...sectionProps}>
-            <div ref={(el) => (sectionRefs.current.mvn_mall = el)}>
-            <MvnMall {...sectionProps} />
-            </div>
+        <div {...sectionProps}>
+          <div ref={(el) => (sectionRefs.current.mvn_mall = el)}>
+            <Suspense fallback={<p>Loading...</p>}>
+              <MvnMall {...sectionProps} />
+            </Suspense>
           </div>
+        </div>
       ),
       "floor-plan": (
-          <div {...sectionProps}>
-            <div ref={(el) => (sectionRefs.current.floor_plan = el)}>
+        <div {...sectionProps}>
+          <div ref={(el) => (sectionRefs.current.floor_plan = el)}>
             {section.is_type === "video" ? (
-              <MicroFloorPlan {...sectionProps} />
+              <Suspense fallback={<p>Loading...</p>}>
+                <MicroFloorPlan {...sectionProps} />
+              </Suspense>
             ) : (
-              <SliderTypology {...sectionProps} />
+              <Suspense fallback={<p>Loading...</p>}>
+                <SliderTypology {...sectionProps} />
+              </Suspense>
             )}
-            </div>
           </div>
+        </div>
       ),
-      "construction-technology": pathname.includes("mvn-athens-gurgaon-phase-3") && (
-          <div {...sectionProps}>
+      "construction-technology": pathname.includes(
+        "mvn-athens-gurgaon-phase-3"
+      ) && (
+        <div {...sectionProps}>
+          <Suspense fallback={<p>Loading...</p>}>
             <Construction {...sectionProps} />
-          </div>
+          </Suspense>
+        </div>
       ),
     };
 
@@ -386,53 +492,93 @@ useEffect(() => {
 
     return (
       <>
-        {isAeroone && secIndex === 2 && elevationData?.map((item, index)=>(
-              <div key={index}>
-                <div className="mt_80 mt_sm_30 mb-md-5">
+        {isAeroone &&
+          secIndex === 2 &&
+          elevationData?.map((item, index) => (
+            <div key={index}>
+              <div className="mt_80 mt_sm_30 mb-md-5">
+                <Suspense fallback={<p>Loading...</p>}>
                   <LargeElevationSection1 {...item} />
-                </div>
+                </Suspense>
               </div>
-            ))}
-        {isMvnProject && secIndex === 1 && (
-            <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
-              <DownloadBrochure showAwards={project?.batch} name={project?.name} projectName={getProjectDisplayName()} />
             </div>
+          ))}
+        {isMvnProject && secIndex === 1 && (
+          <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
+            <Suspense fallback={<p>Loading...</p>}>
+              <DownloadBrochure
+                showAwards={project?.batch}
+                name={project?.name}
+                projectName={getProjectDisplayName()}
+              />
+            </Suspense>
+          </div>
         )}
         {isAeroone && secIndex === 5 && (
-            <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
-              <DownloadBrochure showAwards={project?.batch} name={project?.name} />
-            </div>
+          <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
+            <Suspense fallback={<p>Loading...</p>}>
+              <DownloadBrochure
+                showAwards={project?.batch}
+                name={project?.name}
+              />
+            </Suspense>
+          </div>
         )}
-        {overviewIframe && projectName.includes("mvn-mall") && secIndex === 1 && (
-            <CustomIframe data={overviewIframe} />
+        {overviewIframe &&
+          projectName.includes("mvn-mall") &&
+          secIndex === 1 && (
+            <Suspense fallback={<p>Loading...</p>}>
+              <CustomIframe data={overviewIframe} />
+            </Suspense>
+          )}
+        {isAeroone && secIndex === 5 && (
+          <div ref={(el) => (sectionRefs.current.dgm_sales = el)}>
+            <Suspense fallback={<p>Loading...</p>}>
+              <ContactInfo white={true} />
+            </Suspense>
+          </div>
         )}
-        {isAeroone && secIndex === 5 && 
-        <div ref={(el) => (sectionRefs.current.dgm_sales = el)}><ContactInfo white={true} /></div>}
       </>
     );
   };
 
   if (loading || sectionLoading) return renderLoadingScreen();
-  if (!loading && project?.length === 0) return <PageNotFound />;
+  if (!loading && project?.length === 0)
+    return (
+      <Suspense fallback={<p>Loading...</p>}>
+        <PageNotFound />
+      </Suspense>
+    );
   // if (!project) return <PageNotFound />;
 
   return (
     <>
       <Helmet>
         {project?.meta_title && <title>{project.meta_title}</title>}
-        {project?.meta_description && <meta name="description" content={project.meta_description} />}
-        {project?.meta_keywords && <meta name="keywords" content={project.meta_keywords} />}
-        {project?.head_data && <div dangerouslySetInnerHTML={{ __html: project.head_data }} />}
+        {project?.meta_description && (
+          <meta name="description" content={project.meta_description} />
+        )}
+        {project?.meta_keywords && (
+          <meta name="keywords" content={project.meta_keywords} />
+        )}
+        {project?.head_data && (
+          <div dangerouslySetInnerHTML={{ __html: project.head_data }} />
+        )}
         {project?.footer_data && parse(project.footer_data)}
       </Helmet>
 
-      <MicroHeader scrollToSection={scrollToSection} data={headerData} isFixed={isHeaderFixed} />
-      {pathname.includes("aeroone-gurgaon") && <WhatsappBtn />}
+      <MicroHeader
+        scrollToSection={scrollToSection}
+        data={headerData}
+        isFixed={isHeaderFixed}
+      />
+      {pathname.includes("aeroone-gurgaon") && <Suspense fallback={<p>Loading...</p>}><WhatsappBtn /></Suspense>}
       <div id="smooth-wrapper">
         <div id="smooth-content">
-
           {/* hero section */}
-          <HeroSection projectId={project?.id} projectName={projectName} />
+          <Suspense fallback={<p>Loading...</p>}>
+            <HeroSection projectId={project?.id} projectName={projectName} />
+          </Suspense>
 
           {/* jacuzzi image for aeroone */}
           {/* {pathname.includes("aeroone-gurgaon") && (
@@ -447,7 +593,9 @@ useEffect(() => {
 
           {pathname.includes("mvn-mall") && (
             <div className="mt-5 mt-md-0 mb-md-5">
-              <Strip />
+              <Suspense fallback={<p>Loading...</p>}>
+                <Strip />
+              </Suspense>
             </div>
           )}
           {sections.map((section, secIndex) => (
@@ -458,17 +606,21 @@ useEffect(() => {
           ))}
           {sections.length > 0 && (
             <>
-                <div className="container-fluid micro_footer">
-                  <div className="row">
-                    <div className="col-sm-6 px-0">
+              <div className="container-fluid micro_footer">
+                <div className="row">
+                  <div className="col-sm-6 px-0">
+                    <Suspense fallback={<p>Loading...</p>}>
                       <Enquire />
-                    </div>
-                    <div className="col-sm-6 px-0">
+                    </Suspense>
+                  </div>
+                  <div className="col-sm-6 px-0">
+                    <Suspense fallback={<p>Loading...</p>}>
                       <EnquireForm projectName={getProjectDisplayName()} />
-                    </div>
+                    </Suspense>
                   </div>
                 </div>
-                <Footer />
+              </div>
+              <Footer />
             </>
           )}
         </div>

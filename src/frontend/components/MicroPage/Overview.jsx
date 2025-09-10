@@ -165,7 +165,7 @@ const MicroOverview = React.memo(({ rera, data, setOverviewIframe, onBannerExit 
                 {iframe && (
                   <div className="counter-flex-box">
                     {iframe.split(",").map((item, index) => (
-                      <div className="flex-box" ref={ref1}>
+                      <div className="flex-box" ref={ref1} key={index}>
                         <h4>
                           <span className="counter">{item}</span>{" "}
                           <span className="sqft">sq.ft.</span>
