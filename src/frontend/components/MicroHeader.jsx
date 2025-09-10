@@ -87,7 +87,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
   // const { data: contactData } = useFetchData(`project/${}/project-section-nav`);
   
 
-  if (loading) return <div className="text-center py-5">Loading...</div>;
+  // if (loading) return <div className="text-center py-5">Loading...</div>;
   if (!loading && pageLinks && pageLinks.length === 0)
     return <div className="text-center py-5">No records found</div>;
 

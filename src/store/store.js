@@ -49,7 +49,7 @@ const store = configureStore({
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE'],
-        ignoredPaths: ['banner.error', 'section.error'], // Added section.error
+        ignoredPaths: ['banner.error', 'section.error'], 
       },
     }),
   devTools: process.env.NODE_ENV !== 'production',
