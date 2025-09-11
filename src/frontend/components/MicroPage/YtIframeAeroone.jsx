@@ -9,7 +9,7 @@ const subscribeImg = `${CONFIG.API_URL}images/icons/subscribe_btn.webp`
 
 gsap.registerPlugin(ScrollTrigger);
 
-const YtIframe = React.memo(({ data, subs_btn }) => {
+const YtIframeAeroone = React.memo(({ data, subs_btn }) => {
   const [videoSrc, setVideoSrc] = useState("");
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const iframeRef = useRef(null);
@@ -89,4 +89,4 @@ const YtIframe = React.memo(({ data, subs_btn }) => {
   );
 });
 
-export default YtIframe;
+export default YtIframeAeroone;

@@ -8,7 +8,7 @@ import { useMatches } from "../../../theme/theme";
 import { BACKEND_IMAGE_URL } from "../../../config/config";
 // gsap.registerPlugin(ScrollTrigger);
 
-function LargeElevation({ data }) {
+function LargeElevationSectionAeroone({ data }) {
   const sectionRef = React.useRef(null);
   const desktopRef = React.useRef();
   const {
@@ -121,4 +121,4 @@ function LargeElevation({ data }) {
   );
 }
 
-export default React.memo(LargeElevation);
+export default React.memo(LargeElevationSectionAeroone);

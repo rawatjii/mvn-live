@@ -10,7 +10,7 @@ import Player from '@vimeo/player';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const LivingRoomVideoGurugram = React.memo(
+const LivingRoomVideoGurugramAeroone = React.memo(
   ({ data, onLoadComplete, onBannerExit, isMainBanner }) => {
     const sectionRef = useRef(null);
     const iframeRef = useRef(null);
@@ -115,4 +115,4 @@ const LivingRoomVideoGurugram = React.memo(
   }
 );
 
-export default LivingRoomVideoGurugram;
+export default LivingRoomVideoGurugramAeroone;

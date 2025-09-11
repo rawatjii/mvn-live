@@ -32,14 +32,12 @@ const Typology = React.memo(({ onLoadComplete }) => {
   const { isMobile } = useMatches();
   const isLaptop = window.innerWidth <= 1400;
 
-  // const { data: typologyData, loading: typologyLoading } = useFetchData(`project/${data.project_id}/typologies`, {enabled:!data});
-
-  const typologyData = data.data
-
-  const finalTypologyData = data ?? typologyData;
-  const finalLoading = data ? false : typologyLoading;
-
-  console.log('finalTypologyData',finalTypologyData)
+  let totalFrames = isMobile ? 327 : 327;
+  let segments = [
+    { contentIndex: 0, startFrame: 0, endFrame: 125 },
+    { contentIndex: 1, startFrame: 126, endFrame: 275 },
+    { contentIndex: 2, startFrame: 276, endFrame: 327 },
+  ];
 
   useEffect(() => {
     // Only preload images once totalFrames is set
@@ -219,24 +217,12 @@ const Typology = React.memo(({ onLoadComplete }) => {
             <span className="image-1">
               <img
                 className="img-fluid"
-                src={typo1}
+                src="https://www.mvn.in/uploads/project/elevant-galleries/1750421291427.webp"
                 alt="mvn typology 1"
                 loading="lazy"
               />
               <Watermark />
             </span>
-            <img
-              className="image-2"
-              src={typo2}
-              alt="mvn typology 2"
-              loading="lazy"
-            />
-            <img
-              className="image-3"
-              src={typo3}
-              alt="mvn typology 3"
-              loading="lazy"
-            />
           </div>
 
           <div
@@ -246,22 +232,11 @@ const Typology = React.memo(({ onLoadComplete }) => {
           >
             <img
               className="image-1"
-              src={typo4}
+              src="https://www.mvn.in/uploads/project/elevant-galleries/1750421318801.webp"
               alt="mvn typology 1"
               loading="lazy"
             />
-            <img
-              className="image-2"
-              src={typo5}
-              alt="mvn typology 2"
-              loading="lazy"
-            />
-            <img
-              className="image-3"
-              src={typo6}
-              alt="mvn typology 3"
-              loading="lazy"
-            />
+           
           </div>
 
           <div
@@ -271,11 +246,11 @@ const Typology = React.memo(({ onLoadComplete }) => {
           >
             <img
               className="image-1 img-fluid"
-              src={typo7}
+              src="https://www.mvn.in/uploads/project/elevant-galleries/1750421332920.webp"
               alt="mvn typology 1"
               loading="lazy"
             />
-            <span className="image-2">
+            {/* <span className="image-2">
               <img
                 className="img-fluid"
                 src={typo8}
@@ -289,7 +264,7 @@ const Typology = React.memo(({ onLoadComplete }) => {
               src={typo9}
               alt="mvn typology 3"
               loading="lazy"
-            />
+            /> */}
           </div>
         </div>
       </section>

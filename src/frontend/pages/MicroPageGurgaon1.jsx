@@ -13,21 +13,22 @@ import { useMatches } from "../../theme/theme";
 import MicroAmenities from "../components/MicroPage/Amenities";
 import NoPolutionZone from "../components/MicroPage/NoPolutionZone";
 import View360 from "../components/MicroPage/360";
-import LivingRoomVideoGurugram from "../components/MicroPage/LivingRoomVideoGurugram";
-import LargeElevationSection1 from "../components/MicroPage/LargeElevationSection1";
+import LivingRoomVideoGurugramAeroone from "../components/MicroPage/LivingRoomVideoGurugramAeroone";
+import LargeElevationSection1Aeroone from "../components/MicroPage/LargeElevationSection1Aeroone";
 import MicroHeaderStatic from "../components/MicroHeadeStatic";
 import Walkthrough from "../components/MicroPage/Walkthrough";
-import LargeElevationSection from "../components/MicroPage/LargeElevationSection";
-import YtIframe from "../components/MicroPage/YtIframe";
+import LargeElevationSectionAeroone from "../components/MicroPage/LargeElevationSectionAeroone";
+import YtIframeAeroone from "../components/MicroPage/YtIframeAeroone";
 import { API_URL, JSON_URL } from "../../config/config";
 import ImagesGallery from "../components/MicroPage/ImagesGallery";
+import MicroOverviewAeroone from "../components/MicroPage/OverviewAeroone";
 const ContactInfo = React.lazy(()=>import("../components/ContactInfo")) ;
 
 const MicroOverview = React.lazy(() =>
   import("../components/MicroPage/Overview")
 );
-const DownloadBrochure = React.lazy(() =>
-  import("../components/MicroPage/DownloadBrochure")
+const DownloadBrochureAeroone = React.lazy(() =>
+  import("../components/MicroPage/DownloadBrochureAeroone")
 );
 const ParallaxSection = React.lazy(() =>
   import("../../common/ParallaxSection")
@@ -107,7 +108,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
       />
 
           <div>
-            <LivingRoomVideoGurugram
+            <LivingRoomVideoGurugramAeroone
               onBannerExit={setIsHeaderFixed} 
               isMainBanner={true}
               data={data.living_room}
@@ -116,30 +117,30 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             />
           </div>
 
-            <MicroOverview data={data.overview} />
+            <MicroOverviewAeroone data={data.overview} />
 
             {/* elevationData */}
             {data?.elevationData?.map((item, index) => (
             <div key={index}>
               <div className="mt_80 mt_sm_30 mb-md-5">
-                  <LargeElevationSection1 {...item} />
+                  <LargeElevationSection1Aeroone {...item} />
               </div>
             </div>
           ))}
 
           <div>
-           <LargeElevationSection data={data.LargeElevationSection} />
+           <LargeElevationSectionAeroone data={data.LargeElevationSection} />
           </div>
 
           <div>
             <Suspense fallback={<p></p>}>
-              <YtIframe data={data.walkthrough} subs_btn={true} />
+              <YtIframeAeroone data={data.walkthrough} subs_btn={true} />
             </Suspense>
           </div>
 
           <div>
             <Suspense fallback="">
-              <DownloadBrochure
+              <DownloadBrochureAeroone
                 showAwards={API_URL+'assets/aeroone/awards.webp'}
                 name={"MVN Aero One Residence "}
               />

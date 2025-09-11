@@ -5,7 +5,7 @@ import { Container } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { API_URL, BACKEND_IMAGE_URL } from "../../../config/config";
 
-const DownloadBrochure = React.memo(
+const DownloadBrochureAeroone = React.memo(
   ({ projectName, name, show360Video, is360Available = false, showAwards }) => {
     const [isShowModal, setIsShowModal] = useState(false);
     const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
@@ -34,7 +34,7 @@ const DownloadBrochure = React.memo(
           {showAwards ? (
             <div className="awards">
               <img
-                src={`${BACKEND_IMAGE_URL+showAwards}`}
+                src={`${showAwards}`}
                 alt="awards icon"
                 height={"150"}
                 className="mb-5"
@@ -74,8 +74,8 @@ const DownloadBrochure = React.memo(
   }
 );
 
-export default DownloadBrochure;
+export default DownloadBrochureAeroone;
 
-DownloadBrochure.propTypes = {
+DownloadBrochureAeroone.propTypes = {
   projectName: PropTypes.string.isRequired,
 };

@@ -135,7 +135,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-          path: "aeroone-gurgaon1",
+          path: "aeroone-gurgaon",
           element: (
             <FrontendRoute loaderType="aeroone-gurgaon">
               <MicroPageGurgaon1 data={data} />
