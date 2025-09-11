@@ -9,7 +9,7 @@ const Intro = React.lazy(() => import("../components/homepage/Intro"));
 const Overview = React.lazy(() => import("../components/homepage/Overview"));
 const Banner1 = React.lazy(() => import("../components/homepage/Banner1"));
 const Offer = React.lazy(() => import("../components/homepage/Offer"));
-import Projects from "../components/homepage/Projects";
+const Projects = React.lazy(()=>import("../components/homepage/Projects")) ;
 const OtherProjects = React.lazy(() =>
   import("../components/homepage/OtheProjects")
 );
@@ -197,11 +197,14 @@ const Homepage = () => {
           if (section.page_section == "home-project")
             return (
               <LazyLoadComponent margin="200px">
-                <Projects
-                  data={section}
-                  clickHandler={showCustomModal}
-                  key={secIndex + section.id}
-                />
+                <Suspense fallback={<p></p>}>
+                  <Projects
+                    data={section}
+                    clickHandler={showCustomModal}
+                    key={secIndex + section.id}
+                  />
+                </Suspense>
+                
               </LazyLoadComponent>
             );
 
