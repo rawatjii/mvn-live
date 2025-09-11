@@ -113,7 +113,7 @@ import { BACKEND_IMAGE_URL } from "../../../config/config";
 
   const lightbox_watermark = "lightbox_watermark";
 
-  if(projectLoading) return <div className="text-center py-5">Loading...</div>;
+  if(projectLoading) return <div className="text-center py-5"></div>;
   if(!projectLoading && projectData && projectData.length === 0) return <div className="text-center py-5">No records found</div>;
   
   return (

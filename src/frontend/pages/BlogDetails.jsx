@@ -152,7 +152,7 @@ function BlogDetails() {
             <div className="row row-gap-3">
               <div className="col-sm-12 col-md-8 col-lg-8 main_content">
                 {loading ? (
-                  <h1>Loading...</h1>
+                  <h1></h1>
                 ) : !loading &&
                   selectedBlog &&
                   Object.keys(selectedBlog).length === 0 ? (

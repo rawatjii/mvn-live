@@ -22,11 +22,13 @@ const subscribeBtn = `${CONFIG.API_URL}images/icons/subscribe_btn.webp`;
 
 const Footer = () => {
   const [isBangaloreProject, setIsBangaloreProject] = useState(false);
-
+  const [contactData, setContactData] = useState(null);      // New state to store the contact data
+  const [contactLoaded, setContactLoaded] = useState(false);
+  const [pageLinks, setPageLinks] = useState(null)
   const { pathname } = useLocation();
 
-  const { data: pageLinks, loading } = useFetchData("platter-project");
-  const { data: contactData } = useFetchData(`page/page-section/contact-us`);
+  // const { data: pageLinks, loading } = useFetchData("platter-project");
+  // const { data: contactData } = useFetchData(`page/page-section/contact-us`);
 
   const channelUrl = CONFIG.YOUTUBE_URL;
   const baseUrl = CONFIG.FRONTEND_URL;
@@ -36,6 +38,29 @@ const Footer = () => {
       setIsBangaloreProject(true);
     }
   }, [pathname]);
+
+  // Fetch contact data only when the footer is rendered for the first time
+  useEffect(()=>{
+    const fetchContactData  = async()=>{
+      try{
+        if(!contactLoaded){
+          const response = await fetch(`${CONFIG.FRONTEND_API_BASE_URL}page/page-section/contact-us`);
+          const platterResponse = await fetch(`${CONFIG.FRONTEND_API_BASE_URL}platter-project`);
+          const {data} = await response.json();
+          const {data:pageLinksData} = await platterResponse.json();
+          setContactData(data);
+          setPageLinks(pageLinksData);
+          setContactLoaded(true);
+        }
+      }
+      catch(err){
+        console.error("contact-us fetch failed", e);
+        setContactLoaded(true);
+      }
+      
+    }
+    fetchContactData()
+  }, [contactLoaded])
 
   return (
     <footer>

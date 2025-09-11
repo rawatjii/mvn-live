@@ -12,19 +12,23 @@ import Button from "../../common/Button/Button";
 import { otherProjects, otherPages, otherDetails, socialMedia } from "../../data/headerdata";
 import "./Header.css";
 
-import { API_URL } from "../../config/config";
+import { API_URL, FRONTEND_API_BASE_URL } from "../../config/config";
 import useFetchData from "../utils/apiHelper";
 
 const CloseBtnimg = `${API_URL}images/icons/close.png`;
 const MenuSideVideo = `${API_URL}images/hero/tiger.mp4`;
 const subscribeBtn = `${API_URL}images/icons/subscribe_btn.webp`;
 
+const channelUrl = CONFIG.YOUTUBE_URL;
+
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isMicro, setIsMicro] = useState(false);
-  const channelUrl = CONFIG.YOUTUBE_URL;
-
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [contactData, setContactData] = useState(null); 
+  const [contactLoaded, setContactLoaded] = useState(false);
+  const [pageLinks, setPageLinks] = useState(null)
   const [otherProjectsOpen, setOtherProjectsOpen] = useState(false);
 
   const menusRef = useRef();
@@ -32,8 +36,8 @@ const Header = () => {
 
   const { pathname } = useLocation();
 
-  const { data: pageLinks, loading } = useFetchData("platter-project");
-  const { data: contactData } = useFetchData(`page/page-section/contact-us`);
+  // const { data: pageLinks, loading } = useFetchData("platter-project");
+  // const { data: contactData } = useFetchData(`page/page-section/contact-us`);
 
   useEffect(() => {
     if (pathname.includes("aeroone-gurgaon")) {
@@ -64,13 +68,45 @@ const Header = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [pathname]);
+
+  // 🔽 Fetch contact data ONLY when the overlay menu is opened the first time
+  useEffect(()=>{
+    const fetchContactData  = async()=>{
+      try{
+        if(isMenuOpen && !contactLoaded){
+          const response = await fetch(`${FRONTEND_API_BASE_URL}page/page-section/contact-us`);
+          const platterResponse = await fetch(`${FRONTEND_API_BASE_URL}platter-project`);
+          const {data} = await response.json();
+          const {data:pageLinksData} = await platterResponse.json();
+          setContactData(data);
+          setPageLinks(pageLinksData);
+          setContactLoaded(true);
+        }
+      }
+      catch(err){
+        console.error("contact-us fetch failed", e);
+        setContactLoaded(true);
+      }
+      
+    }
+    fetchContactData()
+  }, [isMenuOpen, contactLoaded])
+
+  
+  console.log('contact header data',contactData);
 
   const toggleMenu = (value) => {
+    const el = document.querySelector(".navbar_collapse");
+    if(!el) return;
+
+
     if (value == "show") {
-      document.querySelector(".navbar_collapse").classList.add("show");
+      el.classList.add("show");
+      setIsMenuOpen(true)
     } else {
-      document.querySelector(".navbar_collapse").classList.remove("show");
+      el.classList.remove("show");
+      setIsMenuOpen(false);
     }
   };
 

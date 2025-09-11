@@ -93,7 +93,7 @@ const Login = () => {
   if (authStatus.isLoading) {
     return (
       <div className="loading" style={{ textAlign: "center", padding: "20px" }}>
-        Loading...
+        
       </div>
     );
   }

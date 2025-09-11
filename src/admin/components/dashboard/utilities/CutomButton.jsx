@@ -7,9 +7,9 @@ const CustomButton = ({ text = "Button", className = "", onClick, isLoading = fa
         disabled={disabled}
       >
         {isLoading ? (
-          <div className="d-flex  align-items-center">Loading...
+          <div className="d-flex  align-items-center">
           <div className="spinner-border m-2" role="status">
-          <span className="visually-hidden">Loading...</span>
+          <span className="visually-hidden"></span>
         </div>
         </div>
         ) : (

@@ -7,6 +7,7 @@ import AnImage from "../../../common/animations/Image/Index";
 import {
   API_URL,
   BACKEND_IMAGE_URL,
+  FRONTEND_API_BASE_URL,
   VITE_APP_URL,
 } from "../../../config/config";
 import useFetchData from "../../utils/apiHelper";
@@ -15,10 +16,11 @@ const Projects = React.memo(({ data }) => {
   const imageDivRefs = useRef([]);
   const titleRef = useRef();
   const desRef = useRef();
+  const [projectsData, setProjectsData] = useState(null);      // New state to store the contact data
   const [imagesLoaded, setImagesLoaded] = useState(0);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768); // Set initial state based on current screen size
 
-  const { data: projectsData1, loading } = useFetchData("our-projects");
+  // const { data: projectsData1, loading } = useFetchData("our-projects");
 
   const handleResize = useCallback(() => {
     setIsDesktop(window.innerWidth >= 768);
@@ -36,6 +38,21 @@ const Projects = React.memo(({ data }) => {
       window.removeEventListener("resize", debounceResize);
     };
   }, [handleResize]);
+
+  useEffect(()=>{
+    const fetchProjectsData  = async()=>{
+      try{
+          const response = await fetch(`${FRONTEND_API_BASE_URL}our-projects`);
+          const {data:projectsData1} = await response.json();
+          setProjectsData(projectsData1);
+      }
+      catch(err){
+        console.error("home projects fetch failed", e);
+      }
+      
+    }
+    fetchProjectsData()
+  }, [])
 
   const handleImageLoad = useCallback(() => {
     setImagesLoaded((prev) => prev + 1);
@@ -64,8 +81,8 @@ const Projects = React.memo(({ data }) => {
               </article>
             </div>
 
-            {projectsData1 &&
-              Object.entries(projectsData1).map(([key, value], index) => (
+            {projectsData &&
+              Object.entries(projectsData).map(([key, value], index) => (
                 <div key={index} className="project_div d-flex flex-wrap">
                   <div className="box_with_overlay col-md-4">
                     <div className="box_with_overlay_in">

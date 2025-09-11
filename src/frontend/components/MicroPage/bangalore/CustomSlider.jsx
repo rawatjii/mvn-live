@@ -39,7 +39,7 @@ const CustomSlider = ({ slides, className }) => {
         modules={[Autoplay, Navigation]} // Import necessary modules
       >
         {slides.length === 0 ? (
-          <div>Loading...</div> // Show loading until slides are available
+          <div></div> // Show loading until slides are available
         ) : (
           slides.map((slide, index) => (
      <SwiperSlide key={index}>

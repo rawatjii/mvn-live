@@ -9,7 +9,7 @@ const Intro = React.lazy(() => import("../components/homepage/Intro"));
 const Overview = React.lazy(() => import("../components/homepage/Overview"));
 const Banner1 = React.lazy(() => import("../components/homepage/Banner1"));
 const Offer = React.lazy(() => import("../components/homepage/Offer"));
-const Projects = React.lazy(() => import("../components/homepage/Projects"));
+const Projects = React.lazy(()=>import("../components/homepage/Projects")) ;
 const OtherProjects = React.lazy(() =>
   import("../components/homepage/OtheProjects")
 );
@@ -38,6 +38,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import useFetchData from "../utils/apiHelper";
 import { API_URL, BACKEND_IMAGE_URL } from "../../config/config";
+import LazyLoadComponent from "../../common/LazyLoadComponent";
 
 const Homepage = () => {
   const [isShowModal, setIsShowModal] = useState(false);
@@ -160,21 +161,21 @@ const Homepage = () => {
 
           if (section.page_section == "home-area")
             return (
-              <Suspense fallback={<p>ASDASDASD</p>}>
+              <Suspense fallback={<p></p>}>
                 <Intro data={section} key={secIndex + section.id} />
               </Suspense>
             );
 
           if (section.page_section == "home-introduction")
             return (
-              <Suspense fallback={<p>ASDASDASD</p>}>
+              <Suspense fallback={<p></p>}>
                 <Overview data={section} key={secIndex + section.id} />
               </Suspense>
             );
 
           if (section.page_section == "home-overview")
             return (
-              <Suspense fallback={<p>ASDASDASD</p>}>
+              <Suspense fallback={<p></p>}>
                 <ClubOne data={section} key={secIndex + section.id} />
               </Suspense>
             );
@@ -183,7 +184,7 @@ const Homepage = () => {
         {homepageData?.map((section, secIndex) => {
           if (section.page_section == "home-video")
             return (
-              <Suspense fallback={<p>ASDASDASD</p>}>
+              <Suspense fallback={<p></p>}>
                 {" "}
                 <Offer
                   data={section}
@@ -195,61 +196,64 @@ const Homepage = () => {
 
           if (section.page_section == "home-project")
             return (
-              <Suspense fallback={<p>ASDASDASD</p>}>
-                <Projects
-                  data={section}
-                  clickHandler={showCustomModal}
-                  key={secIndex + section.id}
-                />
-              </Suspense>
+              <LazyLoadComponent margin="200px">
+                <Suspense fallback={<p></p>}>
+                  <Projects
+                    data={section}
+                    clickHandler={showCustomModal}
+                    key={secIndex + section.id}
+                  />
+                </Suspense>
+                
+              </LazyLoadComponent>
             );
 
           if (section.page_section == "home-verticals")
             return (
-              <Suspense fallback={<p>ASDASDASD</p>}>
+              <Suspense fallback={<p></p>}>
                 <OtherProjects data={section} key={secIndex + section.id} />
               </Suspense>
             );
 
           if (section.page_section == "home-infrastructure")
             return (
-              <Suspense fallback={<p>ASDASDASD</p>}>
+              <Suspense fallback={<p></p>}>
                 <OurJourney data={section} key={secIndex + section.id} />
               </Suspense>
             );
 
           if (section.page_section == "home-people-behind")
             return (
-              <Suspense fallback={<p>ASDASDASD</p>}>
+              <Suspense fallback={<p></p>}>
                 <OurTeam data={section} key={secIndex + section.id} />
               </Suspense>
             );
 
           if (section.page_section == "home-brand-ethos")
             return (
-              <Suspense fallback={<p>ASDASDASD</p>}>
+              <Suspense fallback={<p></p>}>
                 <OurBrand data={section} key={secIndex + section.id} />
               </Suspense>
             );
 
           if (section.page_section == "home-client-says")
             return (
-              <Suspense fallback={<p>ASDASDASD</p>}>
+              <Suspense fallback={<p></p>}>
                 <Testimonial data={section} key={secIndex + section.id} />
               </Suspense>
             );
         })}
 
         <div className="flex-footer-form">
-          <Suspense fallback={<p>ASDASDASD</p>}>
+          <Suspense fallback={<p></p>}>
             <Enquire />
           </Suspense>
-          <Suspense fallback={<p>ASDASDASD</p>}>
+          <Suspense fallback={<p></p>}>
             <EnquireForm projectName={"MVN Infrastructure"} />
           </Suspense>
         </div>
 
-        <Suspense fallback={<div>ASDASDASD</div>}>
+        <Suspense fallback={<div></div>}>
           <CustomModal
             hide={isHideModal}
             show={isShowModal}
