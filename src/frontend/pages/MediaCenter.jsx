@@ -56,7 +56,6 @@ function MediaCenter() {
   useEffect(()=>{
     const headDataArray = pageMetaData?.head_data?.split('\n')
 
-    // Convert each string element to its appropriate type
     const parsedArray = headDataArray?.map(item => item);
   
     parsedArray?.map(item=>{

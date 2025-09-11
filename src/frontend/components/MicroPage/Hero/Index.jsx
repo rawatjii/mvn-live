@@ -1,133 +1,159 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import "./hero.css";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Player from "@vimeo/player";
 import { API_URL, BACKEND_IMAGE_URL } from "../../../../config/config";
-import { fetchBanner, clearBanner } from "../../../../redux/bannerSlice";
+import { fetchBanner } from "../../../../redux/bannerSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const HeroSection = ({ projectId, onBannerExit, isMainBanner, projectName }) => {
   const sectionRef = useRef(null);
   const iframeRef = useRef(null);
+  const bannerRef = useRef(null);
+
   const [vimeoPlayer, setVimeoPlayer] = useState(null);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [currentImage, setCurrentImage] = useState(null);
+  const [bannerData, setBannerData] = useState(null);
+
   const dispatch = useDispatch();
   const { banner, loading } = useSelector((state) => state.banner);
-  const { pathname } = useLocation();
-  const isInitialMount = useRef(true);
-  const bannerRef = useRef(null);
-  const [currentImage, setCurrentImage] = useState(null);
 
-  const loaderImage = projectName?.includes('aeroone-gurgaon') || projectName?.includes('mvn-mall')
-    ? `${API_URL}loader/${projectName.includes('aeroone-gurgaon') ? 'homepage_loading' : 'mvnMall_loader'}${window.innerWidth < 768 ? '_sm' : ''}.webp`:projectName.includes('mvn-athens-gurgaon-phase-3') ?'/assets/images/mvn_phase_2.webp': undefined;
+  const loaderImage =
+    projectName?.includes("aeroone-gurgaon") || projectName?.includes("mvn-mall")
+      ? `${API_URL}loader/${
+          projectName.includes("aeroone-gurgaon") ? "homepage_loading" : "mvnMall_loader"
+        }${window.innerWidth < 768 ? "_sm" : ""}.webp`
+      : projectName.includes("mvn-athens-gurgaon-phase-3")
+      ? "/assets/images/mvn_phase_2.webp"
+      : undefined;
 
+  // Load cached banner data or fetch if missing
   useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-      return;
+    let storageData = {};
+    try {
+      storageData = JSON.parse(localStorage.getItem("bannerData") || "{}");
+    } catch (error) {
+      console.error("Error parsing localStorage bannerData:", error);
     }
-    if (banner) dispatch(clearBanner());
-  }, [pathname, banner, dispatch]);
+    const cachedData = storageData[projectId];
 
-  useEffect(() => {
-    if (!banner && projectId) dispatch(fetchBanner(projectId));
-  }, [dispatch, projectId, banner]);
+    if (cachedData && cachedData.data?.length) {
+      console.log("Using cached data from localStorage:", cachedData);
+      setBannerData(cachedData);
+    } else {
+      console.log("No cached data, fetching from API for projectId:", projectId);
+      dispatch(fetchBanner(projectId));
+    }
+  }, [dispatch, projectId]);
 
+  // Update localStorage and bannerData when banner changes
   useEffect(() => {
-    if (isMainBanner && sectionRef.current) {
-      const scrollTrigger = ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: "bottom top",
-        toggleActions: "play none none reverse",
-        onEnterBack: () => onBannerExit(false),
-        onLeave: () => onBannerExit(true),
+    if (banner?.data?.length) {
+      const updatedBanner = {
+        ...banner,
+        data: banner.data.map((item) => ({ ...item, project_id: projectId })),
+      };
+      setBannerData((prev) => {
+        if (JSON.stringify(prev) !== JSON.stringify(updatedBanner)) {
+          return updatedBanner;
+        }
+        return prev;
       });
-      return () => scrollTrigger.kill();
+      const storageData = JSON.parse(localStorage.getItem("bannerData") || "{}");
+      storageData[projectId] = updatedBanner;
+      localStorage.setItem("bannerData", JSON.stringify(storageData));
     }
+  }, [banner, projectId]);
+
+  // Scroll handling
+  useEffect(() => {
+    if (!isMainBanner) return;
+
+    const handleScroll = () => {
+      const sectionTop = sectionRef.current?.getBoundingClientRect().top || 0;
+      const windowHeight = window.innerHeight;
+      onBannerExit(!(sectionTop < windowHeight && sectionTop > 0));
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [isMainBanner, onBannerExit]);
 
+  // Initialize Vimeo Player
   useEffect(() => {
-    if (iframeRef.current && !vimeoPlayer && banner?.data?.[0]?.is_type === "iframe") {
+    if (iframeRef.current && !vimeoPlayer && bannerData?.data?.[0]?.is_type === "iframe") {
       const player = new Player(iframeRef.current, { autoplay: true });
       player.on("play", () => setIsVideoPlaying(true));
       setVimeoPlayer(player);
       return () => player.off("play");
     }
-  }, [vimeoPlayer, banner]);
+  }, [vimeoPlayer, bannerData]);
 
+  // Handle image transitions
   useEffect(() => {
-    if (banner?.data?.length && bannerRef.current) {
-      const newImage = banner.data[0].is_type === "image" ? `${BACKEND_IMAGE_URL}${banner.data[0].image}` : null;
-
+    if (bannerData?.data?.length && bannerRef.current) {
+      const newImage =
+        bannerData.data[0].is_type === "image" ? `${BACKEND_IMAGE_URL}${bannerData.data[0].image}` : null;
       if (newImage && newImage !== currentImage) {
-        gsap.to(bannerRef.current, {
-          opacity: 0,
-          duration: 0.5,
-          ease: "power2.out",
-          onComplete: () => {
-            setCurrentImage(newImage);
-            gsap.fromTo(
-              bannerRef.current,
-              { opacity: 0 },
-              { opacity: 1, duration: 0.5, ease: "power2.in" }
-            );
-          },
-        });
-      } else if (!currentImage) {
-        setCurrentImage(newImage);
-        gsap.fromTo(
-          bannerRef.current,
-          { opacity: 0 },
-          { opacity: 1, duration: 1, ease: "power2.out" }
-        );
+        setCurrentImage(null);
+        setTimeout(() => setCurrentImage(newImage), 500);
       }
     }
-  }, [banner, currentImage]);
+  }, [bannerData, currentImage]);
 
-  const renderLoadingScreen = useCallback(() => (
-    <div className="loading_screen" style={{ position: "relative" }}>
-      {loaderImage && (
-        <>
-          <img src={loaderImage} alt="loading screen" className="img-fluid w-100" />
-          <p
-            className="loading"
-            style={{
-              position: "fixed",
-              top: "calc(100vh - 40px)",
-              width: "100%",
-              textAlign: "center",
-              textTransform: "uppercase",
-              fontSize: window.innerWidth < 768 ? "11px" : "14px",
-              letterSpacing: "3px",
-              textShadow: "0 0 10px #000",
-              fontWeight: 600,
-            }}
-          >
-            {loading ? "Loading Experience..." : "No records found"}
-          </p>
-        </>
-      )}
-    </div>
-  ), [loaderImage, loading]);
+  const renderLoadingScreen = useCallback(
+    () => (
+      <div className="loading_screen" style={{ position: "relative" }}>
+        {loaderImage && (
+          <>
+            <img src={loaderImage} alt="loading screen" className="img-fluid w-100" />
+            <p
+              className="loading"
+              style={{
+                position: "fixed",
+                top: "calc(100vh - 40px)",
+                width: "100%",
+                textAlign: "center",
+                textTransform: "uppercase",
+                fontSize: window.innerWidth < 768 ? "11px" : "14px",
+                letterSpacing: "3px",
+                textShadow: "0 0 10px #000",
+                fontWeight: 600,
+              }}
+            >
+              {loading ? "Loading Experience..." : "No records found"}
+            </p>
+          </>
+        )}
+      </div>
+    ),
+    [loaderImage, loading]
+  );
 
-  if (loading || !banner?.data?.length) {
-    return renderLoadingScreen();
-  }
+  if (!bannerData) return renderLoadingScreen();
 
-  const { is_type, image, alternative_image, alt, iframe } = banner.data[0];
+  const { is_type, alternative_image, alt, iframe } = bannerData?.data[0];
+  console.log(bannerData, "bannerData");
 
   return (
-    <div className="section sliding_door_section py-0 mb-md-5 mb-2" ref={sectionRef} id="peacockSection">
+    <div className="section sliding_door_section py-0 mb-md-5 mb-2" ref={sectionRef}>
       {is_type === "image" ? (
-        <div className="AthensBanner" ref={bannerRef}>
-          <picture>
-            <source srcSet={`${BACKEND_IMAGE_URL}${image}`} />
-            <img src={`${BACKEND_IMAGE_URL}${alternative_image}`} alt={alt || "Banner image"} className="img-fluid" />
-          </picture>
+        <div
+          className="AthensBanner"
+          ref={bannerRef}
+          style={{ transition: "opacity 0.5s ease-in-out", opacity: currentImage ? 1 : 0 }}
+        >
+          {currentImage && (
+            <picture>
+              <source srcSet={currentImage} />
+              <img
+                src={`${BACKEND_IMAGE_URL}${alternative_image}`}
+                alt={alt || "Banner image"}
+                className="img-fluid"
+              />
+            </picture>
+          )}
         </div>
       ) : is_type === "iframe" ? (
         <div style={{ position: "relative", paddingBottom: "56.25%", overflow: "hidden" }} ref={bannerRef}>

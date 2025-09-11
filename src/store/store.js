@@ -8,6 +8,7 @@ import bannerReducer from '../redux/bannerSlice';
 import projectReducer from '../redux/projectDataSlice';
 import sectionReducer from '../redux/sectionDataSlice';
 import homeReducer from '../redux/homepageSlice';
+import layoutReducer from '../redux/layoutSlice'
 const persistConfig = {
   key: 'root',
   storage,
@@ -44,6 +45,7 @@ const store = configureStore({
     project: projectReducer,
     home: homeReducer,
     section: persistedSectionReducer,
+    layout:layoutReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
