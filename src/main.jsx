@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
-import store, { persistor } from "./store/store.js";
+import store from "./store/store.js";
 // import Layout from "./frontend/components/Layout.jsx";
 // import InitialLoading from "./frontend/skeleton/Initial/Index.jsx";
 import { data } from "./frontend/pages/micro/mvn-aeroone-gurgaon1/Index.jsx";
