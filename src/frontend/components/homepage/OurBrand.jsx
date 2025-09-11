@@ -3,43 +3,54 @@ import { Container, Row, Col } from "react-bootstrap";
 import LazyLoad from "react-lazyload";
 
 import { useMatches } from "../../../theme/theme";
-import { API_URL, BACKEND_IMAGE_URL } from "../../../config/config";
-import useFetchData from "../../utils/apiHelper";
+import { API_URL } from "../../../config/config";
 
-const OurBrand = React.memo(({ data }) => {
+const brandData = [
+  {
+    title: "Commitment",
+    para: `MVN develops and heightens competencies that show a realtor's dedication to code of Ethics & Standards of Practice.`,
+    icon: `${API_URL}images/icons/brand/handshake.gif`,
+  },
+  {
+    title: "Excellence",
+    para: `We deliver our clients with quality services and aim to exceed expectations in everything we offer.`,
+    icon: `${API_URL}images/icons/brand/growth.gif`,
+  },
+  {
+    title: "Customized Solutions",
+    para: `We offer customer-focused solutions with a high level of accountability, and offer the highest level of honesty and expertise.`,
+    icon: `${API_URL}images/icons/brand/hand.gif`,
+  },
+];
+
+const OurBrand = () => {
   const { isMobile } = useMatches();
 
   const titleRef = useRef();
   const dataRefs = useRef([]);
-  
-  const {heading, image, alternative_image, alt, mb_image} = data;
-  const { data:blogData, loading } = useFetchData("ethos");
 
   return (
     <section className="section our_brand_section" aria-label="Brand Section">
       <LazyLoad>
-        <picture>
-          <source srcset={BACKEND_IMAGE_URL + mb_image} />
-          <img src={
+        <img
+          src={
             isMobile
-              ? BACKEND_IMAGE_URL + mb_image
-              : BACKEND_IMAGE_URL + mb_image
+              ? `${API_URL}images/icons/brand/our-brand-ethos-bg.webp`
+              : `${API_URL}images/icons/brand/our-brand-ethos-bg.webp`
           }
           alt="mvn brand background image"
           className="brand_bg"
-          loading="lazy" />
-        </picture>
-        
+          loading="lazy"
+        />
       </LazyLoad>
 
       <LazyLoad>
-        <picture>
-          <source srcset={BACKEND_IMAGE_URL + image} />
-          <img src={BACKEND_IMAGE_URL + alternative_image}
-            alt="mvn brand background image"
-            className="brand_bg brand_bg-2"
-            loading="lazy" />
-        </picture>
+        <img
+          src={`${API_URL}images/icons/brand/our-brand-ethos-bg-2.webp`}
+          alt="mvn brand background image"
+          className="brand_bg brand_bg-2"
+          loading="lazy"
+        />
       </LazyLoad>
 
       <Container>
@@ -51,14 +62,14 @@ const OurBrand = React.memo(({ data }) => {
             loading="lazy"
           />
           <h4 ref={titleRef} className="title title_style1 text-center">
-           {heading}
+            Our Brand Ethos
           </h4>
         </div>
 
         <div className="brand_content">
           <Row>
             <div className="inner-ethos">
-              {blogData?.map((item, index) => (
+              {brandData?.map((item, index) => (
                 <div key={index} className="box">
                   <div
                     ref={(el) => (dataRefs.current[index] = el)}
@@ -66,15 +77,15 @@ const OurBrand = React.memo(({ data }) => {
                   >
                     <div className="icon">
                       <img
-                        src={BACKEND_IMAGE_URL + item.image}
-                        alt={item.alt}
+                        src={item.icon}
+                        alt="mvn brand icon"
                         className="img-fluid"
                         loading="lazy"
                       />
                     </div>
                     <div className="content">
-                      <h4 className="title">{item.heading}</h4>
-                      <p>{item.description}</p>
+                      <h4 className="title">{item.title}</h4>
+                      <p>{item.para}</p>
                     </div>
                   </div>
                 </div>
@@ -85,6 +96,6 @@ const OurBrand = React.memo(({ data }) => {
       </Container>
     </section>
   );
-});
+};
 
 export default OurBrand;

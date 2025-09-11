@@ -1,249 +1,297 @@
-import React, { useEffect, useRef, useMemo, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import lottie from "lottie-web";
-import { API_URL, BACKEND_IMAGE_URL } from "../../../config/config";
-import useFetchData from "../../utils/apiHelper";
+import Watermark from '../../../common/watermark/Index';
+import { API_URL } from "../../../config/config";
+import { useMatches } from "../../../theme/theme";
 
 const PlaneIcon = `${API_URL}images/icons/plane.png`;
+const typo1 = `${API_URL}images/typologies/270/1.webp`;
+const typo2 = `${API_URL}images/typologies/270/2.webp`;
+const typo3 = `${API_URL}images/typologies/270/3.webp`;
+
+const typo4 = `${API_URL}images/typologies/360/1.webp`;
+const typo5 = `${API_URL}images/typologies/360/2.webp`;
+const typo6 = `${API_URL}images/typologies/360/3.webp`;
+
+const typo7 = `${API_URL}images/typologies/penthouse/1.webp`;
+const typo8 = `${API_URL}images/typologies/penthouse/2.webp`;
+const typo9 = `${API_URL}images/typologies/penthouse/3.webp`;
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Typology = React.memo(({ onLoadComplete, data }) => {
-  const containerRefTypo = useRef(null);
-  const lottieRef = useRef(null);
-  const animationRef = useRef(null);
+const Typology = React.memo(({ onLoadComplete }) => {
+  const containerRef = useRef(null);
+  const frameRefs = useRef([]);
+  const isImagesLoaded = useRef(false);
   const contentRefs = useRef([]);
   const imageContentRefs = useRef([]);
-  const [loading, setLoading] = useState(true);
-  const [loadingComplete, setLoadingComplete] = useState(false);
-  const [totalFrames, setTotalFrames] = useState(0);
-  const [isLaptop, setIsLaptop] = useState(window.innerWidth <= 1400); // Dynamic resize handling
+  const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(true); // Loader state
+  const [loadingComplete, setLoadingComplete] = useState(false); // State to track when all images are loaded
+  const { isMobile } = useMatches();
+  const isLaptop = window.innerWidth <= 1400;
 
-  const { data: typologyData, loading: typologyLoading } = useFetchData(
-    `project/${data.project_id}/typologies`
-  );
+  let totalFrames = isMobile ? 327 : 327;
+  let segments = [
+    { contentIndex: 0, startFrame: 0, endFrame: 125 },
+    { contentIndex: 1, startFrame: 126, endFrame: 275 },
+    { contentIndex: 2, startFrame: 276, endFrame: 327 },
+  ];
 
-  const { heading, json } = data;
-
-  // Handle window resize for responsive behavior
   useEffect(() => {
-    const handleResize = () => setIsLaptop(window.innerWidth <= 1400);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    // Only preload images once totalFrames is set
+    if (totalFrames === 0 || isImagesLoaded.current) return;
+
+    // Preload images
+    const loadedImages = [];
+    let loadedCount = 0;
+
+    for (let i = 1; i <= totalFrames; i++) {
+      const img = new Image();
+      img.src = isMobile
+        ? `${API_URL}assets/micro/aeroone-gurgaon/mobiles/${i}.webp`
+        : `${API_URL}assets/micro/aeroone-gurgaon/mobiles/${i}.webp`;
+
+      // Track when each image loads
+      img.onload = () => {
+        loadedCount++;
+        if (loadedCount === totalFrames) {
+          setImages(loadedImages); // Set images after all are loaded
+          setLoading(false); // Hide loader
+          isImagesLoaded.current = true; // Mark as loaded
+          setLoadingComplete(true); // Mark loading as complete
+          onLoadComplete();
+        }
+      };
+
+      loadedImages.push(img);
+    }
   }, []);
 
-  // Load Lottie animation
   useEffect(() => {
-    animationRef.current = lottie.loadAnimation({
-      container: lottieRef.current,
-      renderer: "canvas", // Consider "svg" for better performance if needed
-      loop: false,
-      autoplay: false,
-      path: BACKEND_IMAGE_URL + json,
-    });
+    if (loading || !loadingComplete || images.length !== totalFrames) return;
 
-    animationRef.current.addEventListener("data_ready", () => {
-      console.log("Lottie loaded, totalFrames:", animationRef.current.totalFrames); // Debug
-      setTotalFrames(animationRef.current.totalFrames || 1);
-      setLoading(false);
-      setLoadingComplete(true);
-      onLoadComplete();
-    });
-
-    animationRef.current.addEventListener("data_failed", () => {
-      console.error("Failed to load Lottie animation");
-      setLoading(false);
-      onLoadComplete();
-    });
-
-    return () => {
-      if (animationRef.current) {
-        animationRef.current.destroy();
-      }
-    };
-  }, [onLoadComplete, json]);
-
-  // Calculate animation segments
-  const segments = useMemo(() => {
-    if (totalFrames === 0) return [];
-    const third = Math.floor(totalFrames / 3);
-    return [
-      { contentIndex: 0, startFrame: 0, endFrame: third },
-      { contentIndex: 1, startFrame: third + 1, endFrame: 2 * third },
-      { contentIndex: 2, startFrame: 2 * third + 1, endFrame: totalFrames - 1 },
-    ];
-  }, [totalFrames]);
-
-  // Refresh ScrollTrigger when section enters viewport
-  useEffect(() => {
-    if (loading || !loadingComplete || !typologyData) return;
-
-    const refreshTrigger = ScrollTrigger.create({
-      trigger: containerRefTypo.current,
-      start: "top top", // Adjusted for earlier refresh
-      once: true,
-      // markers: true, // Uncomment for debugging
-      onEnter: () => {
-        console.log("Typology section reached, refreshing ScrollTrigger"); // Debug
-        ScrollTrigger.refresh();
-      },
-    });
-
-    return () => {
-      refreshTrigger.kill();
-    };
-  }, [loading, loadingComplete, typologyData]);
-
-  // Main ScrollTrigger for animation
-  useEffect(() => {
-    if (loading || !loadingComplete || totalFrames === 0 || !typologyData) return;
-
-    // Initialize content visibility
-    contentRefs.current.forEach((el, i) => {
-      if (el) el.style.display = i === 0 ? "block" : "none";
-    });
-
-    imageContentRefs.current.forEach((el, i) => {
-      if (el) el.style.display = i === 0 ? "block" : "none";
-    });
-
-    console.log(containerRefTypo.current.offsetHeight)
-    const trigger = ScrollTrigger.create({
-      trigger: containerRefTypo.current,
+    ScrollTrigger.create({
+      trigger: containerRef.current,
       start: "top top",
-      end: () => `+=${containerRefTypo.current.offsetHeight * 2}`, // Dynamic end
+      end: `+=${window.innerHeight * 2}`,
       pin: true,
-      scrub: 0.5, // Reduced for smoother response
-      anticipatePin: 1, // Improves pinning smoothness
+      scrub: 0.2,
       onUpdate: (self) => {
         const segmentIndex = Math.min(
           Math.floor(self.progress * segments.length),
           segments.length - 1
         );
+      
         const segment = segments[segmentIndex];
         const segmentProgress =
           (self.progress - segmentIndex / segments.length) * segments.length;
         const frameIndex = Math.min(
           segment.startFrame +
-            Math.floor(segmentProgress * (segment.endFrame - segment.startFrame)),
+            Math.floor(
+              segmentProgress * (segment.endFrame - segment.startFrame)
+            ),
           totalFrames - 1
         );
-
-        if (animationRef.current) {
-          animationRef.current.goToAndStop(frameIndex, true);
-        }
-
+      
+        // ✅ Fix null errors by checking existence
+        frameRefs.current.forEach((img, index) => {
+          if (img) img.style.display = index === frameIndex ? "block" : "none";
+        });
+      
         contentRefs.current.forEach((el, i) => {
           if (el) el.style.display = i === segment.contentIndex ? "block" : "none";
         });
-
+      
         imageContentRefs.current.forEach((el, i) => {
           if (el) el.style.display = i === segment.contentIndex ? "block" : "none";
         });
-
+      
         const typologyArrow = document.querySelector(".typology_arrow");
         if (typologyArrow) {
-          const topValue = isLaptop
-            ? segmentIndex === 0
-              ? 65
-              : segmentIndex === 1
-              ? 215
-              : 260
-            : segmentIndex === 0
-            ? 70
-            : segmentIndex === 1
-            ? 220
-            : 265;
+          let topValue;
+          if (isLaptop) {
+            topValue = segmentIndex === 0 ? 65 : segmentIndex === 1 ? 215 : 260;
+          } else {
+            topValue = segmentIndex === 0 ? 70 : segmentIndex === 1 ? 220 : 265;
+          }
           typologyArrow.style.top = `${topValue}px`;
         }
-
-        // Debug scroll progress
-        // console.log(
-        //   "Scroll progress:",
-        //   self.progress,
-        //   "segment:",
-        //   segmentIndex,
-        //   "frame:",
-        //   frameIndex
-        // );
-      },
+      }
+      
     });
 
     return () => {
-      trigger.kill();
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, [loading, loadingComplete, totalFrames, segments, isLaptop, typologyData]);
+  }, [loading, images, totalFrames, loadingComplete]);
 
   return (
-    <section
-      ref={containerRefTypo}
-      className=" typology_section pb-0"
-      aria-label="Typology Section"
-    >
-      <div className="heading_div mb_60 mb_sm_30">
-        <h4 className="title title_style1 text-center">{data.heading}</h4>
-      </div>
-
-      <div className="images">
-        <div
-          ref={lottieRef}
-          className="frame"
-          style={{ height: "460px", maxHeight: "500px" }}
-        />
-        <div className="typology_arrow">
-          <div className="line"></div>
+    <>
+      <section ref={containerRef} className="section typology_section pb-0" aria-label="Typology Section">
+        <div className="heading_div mb_60 mb_sm_30">
+          <h4 className="title title_style1 text-center">Typologies</h4>
         </div>
-      </div>
-
-      <div className="typology_content">
-        <div className="typology-before-line">
-          <div className="diamond_img_strip">
+        {/* Images section */}
+        <div className="images">
+          {images.map((img, index) => (
             <img
-              src={PlaneIcon}
-              className="img-fluid"
-              alt="Plane image"
+              key={index}
+              ref={(el) => (frameRefs.current[index] = el)}
+              src={img.src}
+              alt={`Frame ${index}`}
+              className="frame"
+              style={{ display: index === 0 ? "block" : "none" }}
+            />
+          ))}
+
+          <div className="typology_arrow">
+            <div className="line"></div>
+          </div>
+        </div>
+
+        {/* Content boxes */}
+        <div className="typology_content">
+          <div className="typology-before-line">
+            <div className="diamond_img_strip">
+              <img
+                src={PlaneIcon}
+                className="img-fluid"
+                alt="Plane image"
+                loading="lazy"
+              />
+            </div>
+
+            <div
+              ref={(el) => (contentRefs.current[0] = el)}
+              className="content-box"
+              style={{ display: "block" }}
+            >
+              <h3 className="content_title">Penthouse</h3>
+              <p>
+                Elevate your lifestyle to new heights with these extraordinary
+                duplex residences, where two levels of unmatched luxury unfold
+                before you. With impeccable attention to detail and a focus on
+                privacy and exclusivity, these residences embody the pinnacle of
+                sophisticated living, where only the most discerning will
+                reside.
+              </p>
+            </div>
+
+            <div
+              ref={(el) => (contentRefs.current[1] = el)}
+              className="content-box"
+              style={{ display: "none" }}
+            >
+              <h3 className="content_title">360 degree Panoramic Apartment</h3>
+              <p>
+                At an impressive 12600 sq.ft., the simplex flats offer a
+                commanding 360-degree panoramic vista, presenting a boundless
+                world of elegance. This is where space, design, and nature
+                converge in perfect harmony.
+              </p>
+            </div>
+
+            <div
+              ref={(el) => (contentRefs.current[2] = el)}
+              className="content-box"
+              style={{ display: "none" }}
+            >
+              <h3 className="content_title">270 degree Panoramic Apartment</h3>
+              <p>
+                Spanning an expansive 6300 sq.ft., these exquisite residences
+                offer a captivating 270-degree panoramic view, seamlessly
+                blending breathtaking vistas with unmatched sophistication.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="desktop-view-typo-images">
+          <div
+            ref={(el) => (imageContentRefs.current[0] = el)}
+            className="typologies-images"
+            style={{ display: "block" }}
+          >
+            <span className="image-1">
+              <img
+                className="img-fluid"
+                src={typo1}
+                alt="mvn typology 1"
+                loading="lazy"
+              />
+              <Watermark />
+            </span>
+            <img
+              className="image-2"
+              src={typo2}
+              alt="mvn typology 2"
+              loading="lazy"
+            />
+            <img
+              className="image-3"
+              src={typo3}
+              alt="mvn typology 3"
               loading="lazy"
             />
           </div>
 
-          {typologyData?.map((item, index) => (
-            <div
-              key={item.id || index}
-              ref={(el) => (contentRefs.current[index] = el)}
-              className="content-box"
-              style={{ display: index === 0 ? "block" : "none" }}
-              aria-hidden={index !== 0} // Accessibility
-            >
-              <h3 className="content_title">{item.heading}</h3>
-              <p>{item.short_description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="desktop-view-typo-images">
-        {typologyData?.map((item, index) => (
           <div
-            key={item.id || index}
-            ref={(el) => (imageContentRefs.current[index] = el)}
+            ref={(el) => (imageContentRefs.current[1] = el)}
             className="typologies-images"
-            style={{ display: index === 0 ? "block" : "none" }}
-            aria-hidden={index !== 0} // Accessibility
+            style={{ display: "none" }}
           >
-            <picture>
-              <source srcSet={BACKEND_IMAGE_URL + item.image} />
+            <img
+              className="image-1"
+              src={typo4}
+              alt="mvn typology 1"
+              loading="lazy"
+            />
+            <img
+              className="image-2"
+              src={typo5}
+              alt="mvn typology 2"
+              loading="lazy"
+            />
+            <img
+              className="image-3"
+              src={typo6}
+              alt="mvn typology 3"
+              loading="lazy"
+            />
+          </div>
+
+          <div
+            ref={(el) => (imageContentRefs.current[2] = el)}
+            className="typologies-images"
+            style={{ display: "none" }}
+          >
+            <img
+              className="image-1 img-fluid"
+              src={typo7}
+              alt="mvn typology 1"
+              loading="lazy"
+            />
+            <span className="image-2">
               <img
                 className="img-fluid"
-                src={BACKEND_IMAGE_URL + item.alternative_image}
-                alt={item.alt}
+                src={typo8}
+                alt="mvn typology 2"
                 loading="lazy"
               />
-            </picture>
+              <Watermark className="left" />
+            </span>
+            <img
+              className="image-3"
+              src={typo9}
+              alt="mvn typology 3"
+              loading="lazy"
+            />
           </div>
-        ))}
-      </div>
-    </section>
+        </div>
+      </section>
+    </>
   );
 });
 

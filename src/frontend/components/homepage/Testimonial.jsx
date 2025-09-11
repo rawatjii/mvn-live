@@ -1,27 +1,49 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { Container } from "react-bootstrap";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
+
+import { API_URL } from "../../../config/config";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import { API_URL, BACKEND_IMAGE_URL } from "../../../config/config";
-import useFetchData from "../../utils/apiHelper";
+const testimonialData = [
+  {
+    image: `${API_URL}images/testimonials/naina.webp`,
+    title: "Going above and beyond",
+    msg: "I am so happy in my new MVN home! I would like to express gratitude on behalf of my husband and myself. From start to finish, everyone associated with MVN Infrastructure has gone above and beyond to make things happen for us.",
+    name: "~Naina Singhal",
+  },
+  {
+    image: `${API_URL}images/testimonials/prabhat.webp`,
+    title: "A sense of community",
+    msg: "MVN Athens is a beautiful society and, in all probability, the best in Sohna. The atmosphere over here is awesome and it simply feels great to be a part of this thriving community.",
+    name: "~Prabhat Mainik",
+  },
+  {
+    image: `${API_URL}images/testimonials/prashant.webp`,
+    title: "A heavenly experience",
+    msg: "My family and I will always be thankful to everyone at MVN who helped us create our dream home. It was a wonderful experience and we would highly recommend the MVN Athens project if you really are looking to experience heaven on earth!",
+    name: "~Prashant Kumar Singh",
+  },
+  {
+    image: `${API_URL}images/testimonials/vikas.webp`,
+    title: "A heartening experience",
+    msg: "It was our dream to have a home of our own. Today, we are happy to come home to a great environment, created with so much thoughtfulness and dedication. MVN ensured that everything was on schedule.",
+    name: "~Vikas Singhal",
+  },
+];
 
-const Testimonial = ({data}) => {
+const Testimonial = () => {
   const titleRef = useRef();
   const contentRef = useRef();
 
-  const {heading} = data;
-
-  const { data:testimonialData, loading } = useFetchData("testomonials");
-
-  if(loading) return <div className="text-center py-5"></div>;
-    if(!loading && testimonialData && testimonialData.length === 0) return <div className="text-center py-5">No records found</div>;
+  console.log('testimonial section');
+  
 
   return (
     <section
@@ -37,7 +59,7 @@ const Testimonial = ({data}) => {
             loading="lazy"
           />
           <h4 ref={titleRef} className="title title_style1 text-center">
-            {heading}
+            What Client Says!
           </h4>
         </div>
 
@@ -70,7 +92,7 @@ const Testimonial = ({data}) => {
             },
           }}
         >
-          {testimonialData?.map((item, index) => (
+          {testimonialData.map((item, index) => (
             <SwiperSlide key={index}>
               <div className="single">
                 <div className="content">
@@ -84,14 +106,16 @@ const Testimonial = ({data}) => {
                       />
                       <h5 className="title">{item.title}</h5>
                     </div>
-                    <p className="msg">{item.description}</p>
+                    <p className="msg">{item.msg}</p>
                   </div>
                   <div className="flex-name-pic">
-                    <picture className="w-100">
-                      <source srcset={BACKEND_IMAGE_URL + item.image} />
-                      <img src={BACKEND_IMAGE_URL + item.alternative_image} alt="mvn quotes icon" className="img-fluid testimonial-pic" loading="lazy" />
-                    </picture>
-                    <p className="testimonial-name w-100">~{item.name}</p>
+                    <img
+                      src={item.image}
+                      alt="mvn quotes icon"
+                      className="img-fluid testimonial-pic"
+                      loading="lazy"
+                    />
+                    <p className="testimonial-name">{item.name}</p>
                   </div>
                 </div>
               </div>
@@ -109,6 +133,7 @@ const Testimonial = ({data}) => {
           className="swiper-button-next"
           role="button"
           aria-label="next button"
+          tabIndex="0"
         ></div>
       </Container>
     </section>

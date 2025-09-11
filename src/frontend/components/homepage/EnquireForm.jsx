@@ -1,9 +1,8 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import Button from "../../../common/Button/Button";
 import { API_URL } from "../../../config/config";
-import { useParams, useLocation } from 'react-router-dom';
 
 const EnquireForm = ({ career, projectName }) => {
   const titleRef = useRef();
@@ -11,23 +10,6 @@ const EnquireForm = ({ career, projectName }) => {
 
   const [formDetails, setFormDetails] = useState({});
   const [loading, setLoading] = useState(false);
-
-  const { ...pathParams } = useParams(); // Fetching path parameters
-  const location = useLocation(); // Accessing current location for query parameters
-  const [queryParams, setQueryParams] = useState({});
-
-  useEffect(() => {
-    // Create an object to store query parameters
-    const params = new URLSearchParams(location.search);
-    const queryParamsObject = {};
-    
-    // Loop through all query parameters
-    params.forEach((value, key) => {
-      queryParamsObject[key] = value;
-    });
-
-    setQueryParams(queryParamsObject);
-  }, [location.search]); // Re-run if query params change
 
   const handleFormChange = useCallback((e) => {
     setFormDetails((prevDetails)=>({
@@ -41,12 +23,7 @@ const EnquireForm = ({ career, projectName }) => {
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
 
-    let apiUrl = `https://api2.gtftech.com/AjaxHelper/AgentInstantQuerySetter.aspx?qAgentID=4804&qSenderName=${formDetails.name}"&qMobileNo=${formDetails.number}&qEmailID=${formDetails.email}&qQueryMessage=${formDetails.message}&qProjectName=${projectName}&micrositeurl=${window.location.href}`;
-
-    Object.keys(queryParams).forEach((key) => {
-      apiUrl += `&${key}=${queryParams[key]}`;
-    });
-
+    const apiUrl = `https://api2.gtftech.com/AjaxHelper/AgentInstantQuerySetter.aspx?qAgentID=4804&qSenderName=${formDetails.name}"&qMobileNo=${formDetails.number}&qEmailID=${formDetails.email}&qQueryMessage=${formDetails.message}&qProjectName=${projectName}`;
     if (
       !formDetails.name ||
       !formDetails.email ||
@@ -64,6 +41,7 @@ const EnquireForm = ({ career, projectName }) => {
         // body: JSON.stringify(formDetails), // Convert the data to JSON string
       })
         .then((data) => {
+          // console.log("Success:", data); // Handle the response
           setFormDetails({});
           setLoading(false);
           alert("Enquiry Details Sent Successfully!");
@@ -110,6 +88,7 @@ const EnquireForm = ({ career, projectName }) => {
                 id="name"
                 type="text"
                 name="name"
+                className="input_style1"
                 placeholder="Your Name:"
                 value={formDetails.name ?? ""}
                 onChange={handleFormChange}
@@ -125,6 +104,7 @@ const EnquireForm = ({ career, projectName }) => {
                 id="email"
                 type="email"
                 name="email"
+                className="input_style1"
                 placeholder="Your E-Mail:"
                 value={formDetails.email ?? ""}
                 onChange={handleFormChange}
@@ -140,6 +120,7 @@ const EnquireForm = ({ career, projectName }) => {
                 id="number"
                 type="number"
                 name="number"
+                className="input_style1"
                 placeholder="Your Phone:"
                 value={formDetails.number ?? ""}
                 onChange={(e) => {
@@ -162,6 +143,7 @@ const EnquireForm = ({ career, projectName }) => {
                     id="designation"
                     type="text"
                     name="designation"
+                    className="input_style1"
                     placeholder="Designation"
                     onChange={handleFormChange}
                     autoComplete="off" 
@@ -176,6 +158,7 @@ const EnquireForm = ({ career, projectName }) => {
                     type="text"
                     name="experience"
                     placeholder="Experience"
+                    className="input_style1"
                     onChange={handleFormChange}
                     autoComplete="off" 
                   />
@@ -191,6 +174,7 @@ const EnquireForm = ({ career, projectName }) => {
                 id="message"
                 type="text"
                 name="message"
+                className="input_style1"
                 placeholder="Your Message:"
                 value={formDetails.message ?? ""}
                 onChange={handleFormChange}
@@ -208,6 +192,7 @@ const EnquireForm = ({ career, projectName }) => {
                     id="resume"
                     type="file"
                     name="resume"
+                    className="input_style1"
                     placeholder="Your Resume"
                     onChange={handleFormChange}
                     autoComplete="off" 

@@ -4,20 +4,23 @@ import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import LazyLoad from "react-lazyload";
 
-import { API_URL, BACKEND_IMAGE_URL } from "../../../config/config";
-import useFetchData from "../../utils/apiHelper";
+import { API_URL } from "../../../config/config";
 
 // Register ScrollTrigger plugin with GSAP
 gsap.registerPlugin(ScrollTrigger);
 
-const OurJourney = React.memo(({data}) => {
+const OurJourney = () => {
   const titleRef = useRef();
   const contentRef = useRef([]);
   const journeyRef = useRef();
-
-  const {heading} = data;
-
-  const { data:infraData, loading } = useFetchData("infrastructure");
+  const [journeyData] = useState([
+    { icon: `${API_URL}images/icons/journey/new-icons/Helmet-.gif`, title: "Years Experience", value: "40+" },
+    { icon: `${API_URL}images/icons/journey/new-icons/building.gif`, title: "Cities", value: "04" },
+    { icon: `${API_URL}images/icons/journey/new-icons/handshake.gif`, value: "09", title: "Completed Projects" },
+    { icon: `${API_URL}images/icons/journey/new-icons/crane.gif`, value: "04", title: "Ongoing Projects" },
+    { icon: `${API_URL}images/icons/journey/new-icons/ruler.gif`, title: "Million Square Feet", value: "7.2" },
+    { icon: `${API_URL}images/icons/journey/new-icons/calendar.gif`, title: "On-time Delivery", value: "100%" }, // Updated to include %
+  ]);
 
   // Function to initialize animations
   const initializeAnimations = useCallback(() => {
@@ -48,72 +51,62 @@ const OurJourney = React.memo(({data}) => {
     });
 
     // Counter animation with % handling
-    if(infraData && infraData.length > 0){
-      ScrollTrigger.create({
-        trigger: journeyRef.current,
-        start: "top 80%", // Start animation when section comes into view
-        onEnter: () => {
-          const items = document.querySelectorAll(".countVal");
-          gsap.fromTo(
-            items,
-            { innerText: 0 },
-            {
-              innerText: (i) => infraData?.[i]?.value || 0,
-              duration: 5,
-              ease: "power1.in",
-              snap: { innerText: 0.1 },
-              stagger: 0.1,
-              modifiers: {
-                innerText: (value) => {
-                  const numericValue = parseFloat(value);
-                  const isPercentage = infraData.some(
-                    (data) => data.value === value && data.value.includes("%")
-                  );
-  
-                  if (isPercentage) {
-                    // Append % if the value includes %
-                    return numericValue.toFixed(0) + "%";
-                  }
-  
-                  // Handle float or integer formatting
-                  return numericValue % 1 !== 0
-                    ? numericValue.toFixed(1)
-                    : numericValue.toString();
-                },
+    ScrollTrigger.create({
+      trigger: journeyRef.current,
+      start: "top 80%", // Start animation when section comes into view
+      onEnter: () => {
+        const items = document.querySelectorAll(".count");
+        gsap.fromTo(
+          items,
+          { innerText: 0 },
+          {
+            innerText: (i) => journeyData[i].value,
+            duration: 5,
+            ease: "power1.in",
+            snap: { innerText: 0.1 },
+            stagger: 0.1,
+            modifiers: {
+              innerText: (value) => {
+                const numericValue = parseFloat(value);
+                const isPercentage = journeyData.some(
+                  (data) => data.value === value && value.includes("%")
+                );
+
+                if (isPercentage) {
+                  // Append % if the value includes %
+                  return numericValue.toFixed(0) + "%";
+                }
+
+                // Handle float or integer formatting
+                return numericValue % 1 !== 0
+                  ? numericValue.toFixed(1)
+                  : numericValue.toString();
               },
-              onComplete: () => updateStaticValues(), // Static update after animation
-            }
-          );
-        },
-      });
-    }
-    
-  }, [infraData]);
+            },
+            onComplete: () => updateStaticValues(), // Static update after animation
+          }
+        );
+      },
+    });
+  }, []);
 
   // Function to statically update values
   const updateStaticValues = () => {
-    const items = document.querySelectorAll(".countVal");
+    const items = document.querySelectorAll(".count");
     items.forEach((item, index) => {
-      item.innerText = infraData?.[index]?.value;
+      item.innerText = journeyData[index].value;
     });
   };
 
   useEffect(() => {
-    if(!loading && infraData){
-      initializeAnimations();
-    }
+    initializeAnimations();
     const handleResize = () => {
       ScrollTrigger.refresh();
     };
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [loading, infraData]); // Initialize on mount
-
-  
-
-  if(loading) return <div className="text-center py-5"></div>;
-  if(!loading && infraData && infraData.length === 0) return <div className="text-center py-5">No records found</div>;
+  }, []); // Initialize on mount
 
   return (
     <section className="section journey_section pb-0" aria-label="Journey Section">
@@ -126,7 +119,7 @@ const OurJourney = React.memo(({data}) => {
           <img src={`${API_URL}images/icons/heading-icon-img.webp`} alt="mvn infrastructure heading icon" className="img-fluid title_plane1" />
           <h4 ref={titleRef} className="title title_style1 text-center">
             {/* <span>Our Infrastructure </span> */}
-            {heading}
+            Our Infrastructure Real Estate Journey
           </h4>
         </div>
 
@@ -138,7 +131,7 @@ const OurJourney = React.memo(({data}) => {
               className="img-fluid diamond_icon"
             />
           </li>
-          {infraData?.map((item, index) => (
+          {journeyData?.map((item, index) => (
             <li
               className={`single ${index % 2 !== 0 ? "right" : ""}`}
               key={index}
@@ -149,13 +142,13 @@ const OurJourney = React.memo(({data}) => {
               >
                 <div className="top">
                   <img
-                    src={BACKEND_IMAGE_URL + item.image}
+                    src={item.icon}
                     alt="mvn journey icon"
                     className="img-fluid icon"
                   />
-                  <p className="count"><span className="countVal">0</span>{item.symbol ? item.symbol : undefined}</p> {/* Start with 0 */}
+                  <p className="count">0</p> {/* Start with 0 */}
                 </div>
-                <p className="title">{item.heading}</p>
+                <p className="title">{item.title}</p>
               </div>
             </li>
           ))}
@@ -163,6 +156,6 @@ const OurJourney = React.memo(({data}) => {
       </Container>
     </section>
   );
-});
+};
 
 export default OurJourney;
