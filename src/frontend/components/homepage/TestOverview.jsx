@@ -17,7 +17,7 @@ const TestOverview = () => {
     gsap.set(images, { autoAlpha: 0 });
     gsap.set(images[0], { autoAlpha: 1 });
 
-    // Create a timeline for frame blending
+    // Create a timeline for frame blending 
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
