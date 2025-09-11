@@ -1,7 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Button, Container } from "react-bootstrap";
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
@@ -15,9 +13,7 @@ import CustomModal from "../../../common/Modal";
 import useFetchData from "../../utils/apiHelper";
 import { BACKEND_IMAGE_URL } from "../../../config/config";
 
-gsap.registerPlugin(ScrollTrigger);
-
-const MicroFloorPlan = React.memo(({ data }) => {
+const MicroFloorPlanAeroone = React.memo(({ data }) => {
   const titleRef = useRef();
   const [index, setIndex] = useState(-1);
   const [isShowModal, setIsShowModal] = useState(false);
@@ -26,7 +22,8 @@ const MicroFloorPlan = React.memo(({ data }) => {
   
   
   const { heading, project_id } = data;
-  const { data:floorPlanData, loading } = useFetchData(`project/${project_id}/floor-plan`);
+  const floorPlanData = data.data;
+  // const { data:floorPlanData, loading } = useFetchData(`project/${project_id}/floor-plan`);
 
   // Set all accordion items as active on mount
   useEffect(() => {
@@ -48,20 +45,6 @@ const MicroFloorPlan = React.memo(({ data }) => {
     const handleResize = () => setIsDesktop(window.innerWidth >= 768);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  // for animation
-  useEffect(() => {
-    gsap.from(titleRef.current, {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      scrollTrigger: {
-        trigger: titleRef.current,
-        start: "top 95%",
-      },
-    });
-
   }, []);
 
   return (
@@ -236,4 +219,4 @@ const MicroFloorPlan = React.memo(({ data }) => {
   );
 });
 
-export default MicroFloorPlan;
+export default MicroFloorPlanAeroone;

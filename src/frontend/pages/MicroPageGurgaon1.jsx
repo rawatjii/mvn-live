@@ -22,7 +22,7 @@ import YtIframeAeroone from "../components/MicroPage/YtIframeAeroone";
 import { API_URL, JSON_URL } from "../../config/config";
 import ImagesGallery from "../components/MicroPage/ImagesGallery";
 import MicroOverviewAeroone from "../components/MicroPage/OverviewAeroone";
-const ContactInfo = React.lazy(()=>import("../components/ContactInfo")) ;
+const ContactInfoAeroone = React.lazy(()=>import("../components/ContactInfoAeroone")) ;
 
 const MicroOverview = React.lazy(() =>
   import("../components/MicroPage/Overview")
@@ -30,12 +30,12 @@ const MicroOverview = React.lazy(() =>
 const DownloadBrochureAeroone = React.lazy(() =>
   import("../components/MicroPage/DownloadBrochureAeroone")
 );
-const ParallaxSection = React.lazy(() =>
-  import("../../common/ParallaxSection")
+const ParallaxSectionAeroone = React.lazy(() =>
+  import("../../common/ParallaxSectionAeroone")
 );
 
-const PeacockSection = React.lazy(() =>
-  import("../components/MicroPage/PeacockSection")
+const PeacockSectionAeroone = React.lazy(() =>
+  import("../components/MicroPage/PeacockSectionAeroone")
 );
 
 const PartyVideo = React.lazy(() =>
@@ -46,23 +46,23 @@ const MasterBedroom = React.lazy(() =>
   import("../components/MicroPage/MasterBedroom")
 );
 
-const Consultant = React.lazy(() =>
-  import("../components/MicroPage/Consultant")
+const ConsultantAeroone = React.lazy(() =>
+  import("../components/MicroPage/ConsultantAeroone")
 );
-const ImageGallery = React.lazy(() =>
-  import("../components/MicroPage/ImagesGallery")
+const ImagesGalleryAeroone = React.lazy(() =>
+  import("../components/MicroPage/ImagesGalleryAeroone")
 );
-const ConstructionTechnology = React.lazy(() =>
-  import("../components/MicroPage/ConstructionTechnology")
+const ConstructionTechnologyAeroone = React.lazy(() =>
+  import("../components/MicroPage/ConstructionTechnologyAeroone")
 );
-const Typology = React.lazy(() => import("../components/homepage/Typology"));
-const MicroFloorPlan = React.lazy(() =>
-  import("../components/MicroPage/FloorPlan")
+const TypologyAeroone = React.lazy(() => import("../components/homepage/TypologyAeroone"));
+const MicroFloorPlanAeroone = React.lazy(() =>
+  import("../components/MicroPage/FloorPlanAeroone")
 );
-const MicroLocationMap = React.lazy(() =>
-  import("../components/MicroPage/LocationMap")
+const MicroLocationMapAeroone = React.lazy(() =>
+  import("../components/MicroPage/LocationMapAeroone")
 );
-const MvnMall = React.lazy(() => import("../components/MicroPage/MvnMall"));
+const MvnMallAeroone = React.lazy(() => import("../components/MicroPage/MvnMallAeroone"));
 
 const Enquire = React.lazy(() => import("../components/homepage/Enquire"));
 const EnquireForm = React.lazy(() =>
@@ -149,19 +149,19 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
           <div id="dgm_sales">  
             <Suspense fallback={<p></p>}>
-              <ContactInfo white={true} />
+              <ContactInfoAeroone white={true} />
             </Suspense>
           </div>
 
           <div id="peacock">
             <Suspense fallback={<p></p>}>
-              <PeacockSection data={data.peacock_section} />
+              <PeacockSectionAeroone data={data.peacock_section} />
             </Suspense>
           </div>
 
           <div  id="party">
             <Suspense fallback={<p></p>}>
-              <PeacockSection
+              <PeacockSectionAeroone
                 data={data.party_video}
                 watermarkClass="style5"
                 desktop_img="assets/images/aeroone/party/desktop.webp"
@@ -172,7 +172,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
           <div id="master_bedroom">
           <Suspense fallback={<p></p>}>
-            <PeacockSection
+            <PeacockSectionAeroone
               data={data.masterBedroom}
               watermarkClass="style5"
               desktop_img="assets/images/aeroone/bedroom/desktop.webp"
@@ -183,49 +183,49 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
           <div id="about_architect">
             <Suspense fallback={<p></p>}>
-              <Consultant data={data.architect} />
+              <ConsultantAeroone data={data.architect} />
             </Suspense>
           </div>
 
             <div >
           <Suspense fallback="">
-              <ImageGallery data={data.landscape} />
+              <ImagesGalleryAeroone data={data.landscape} />
           </Suspense>
             </div>
 
             <div>
           <Suspense fallback="">
-              <ConstructionTechnology data={data.construction_technology} />
+              <ConstructionTechnologyAeroone data={data.construction_technology} />
           </Suspense>
             </div>
 
           <div id="amenities">
           <Suspense fallback="">
-            <ParallaxSection section_data={data.amenities} />
+            <ParallaxSectionAeroone section_data={data.amenities} />
             </Suspense>
           </div>
 
             <div>
           <Suspense fallback="">
-              <Typology data={data.typology} />
+              <TypologyAeroone data={data.typology} />
           </Suspense>
             </div>
 
             <div >
            <Suspense fallback="">
-              <MicroFloorPlan data={data.floorPlan} />
+              <MicroFloorPlanAeroone data={data.floorPlan} />
           </Suspense>
             </div>
 
             <div>
           <Suspense fallback="">
-              <MicroLocationMap data={data.locationAdvantage} projectName="aeroone-gurgaon"  />
+              <MicroLocationMapAeroone data={data.locationAdvantage} projectName="aeroone-gurgaon"  />
           </Suspense>
             </div>
 
           <Suspense fallback="">
             <div ref={(el) => (sectionRefs.current.MVNMALL = el)}>
-              <MvnMall data={data.mvnMall} />
+              <MvnMallAeroone data={data.mvnMall} />
             </div>
           </Suspense>
 

@@ -4,7 +4,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 
 import CustomCard from '../Card';
 
-export default function ConstructionTechnology({data}) {
+export default function ConstructionTechnologyAeroone({data}) {
 
   const {heading, video, sub_heading, description, short_description} = data;
 

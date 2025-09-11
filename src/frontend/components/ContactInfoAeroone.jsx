@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ContactInfo = ({white}) => {
+const ContactInfoAeroone = ({white}) => {
   return (
     <section className={`Contact-info contact-us-section ${!white && 'mobile'}`}>
         <div className="container">
@@ -42,4 +42,4 @@ const ContactInfo = ({white}) => {
   )
 }
 
-export default ContactInfo
+export default ContactInfoAeroone

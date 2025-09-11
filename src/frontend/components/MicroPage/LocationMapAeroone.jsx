@@ -19,7 +19,7 @@ import LocationSlider from "./bangalore/LocationSlider";
 import LocationAdvantes from "./LocationAdvantes";
 
 gsap.registerPlugin(ScrollTrigger);
-const MicroLocationMap = ({ data, projectName }) => {
+const MicroLocationMapAeroone = ({ data, projectName }) => {
   const titleRef = useRef();
   const typoRefs = useRef([]);
   const priceRefs = useRef([]);
@@ -207,4 +207,4 @@ const MicroLocationMap = ({ data, projectName }) => {
   );
 };
 
-export default MicroLocationMap;
+export default MicroLocationMapAeroone;

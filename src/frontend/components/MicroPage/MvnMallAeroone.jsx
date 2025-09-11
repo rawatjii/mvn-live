@@ -7,17 +7,18 @@ import { API_URL, BACKEND_IMAGE_URL } from "../../../config/config";
 import useFetchData from "../../utils/apiHelper";
 
 
-const MvnMall = ({ data }) => {
+const MvnMallAeroone = ({ data }) => {
   const imageRef = useRef(null);
   const iframeRef = useRef(null);
   const { isMobile } = useMatches();
   const [iframeVisible, setIframeVisible] = useState(false);
-  const { data: mallData, loading } = useFetchData(`project/${data?.project_id}/mvn-mall`);
+  const mallData = data.data;
+  // const { data: mallData, loading } = useFetchData(`project/${data?.project_id}/mvn-mall`);
 
   const { heading, description } = data;
 
-  if (loading) return <div className="text-center py-5"></div>;
-  if (!loading && mallData && mallData.length === 0) return <div className="text-center py-5">No records found</div>;
+  // if (loading) return <div className="text-center py-5"></div>;
+  // if (!loading && mallData && mallData.length === 0) return <div className="text-center py-5">No records found</div>;
 
   return (
     <section
@@ -149,4 +150,4 @@ const MvnMall = ({ data }) => {
   );
 };
 
-export default MvnMall;
+export default MvnMallAeroone;

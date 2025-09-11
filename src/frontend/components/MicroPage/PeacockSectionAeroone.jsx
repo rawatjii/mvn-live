@@ -7,7 +7,7 @@ import LottieAnimationSection from "./LottieAnimationSection";
 import Watermark from "../../../common/watermark/Index";
 import { BACKEND_IMAGE_URL } from "../../../config/config";
 
-const PeacockSection = React.memo(({ data, watermarkClass, json, mb_json, animation_speed=2, desktop_img, mobile_img }) => {
+const PeacockSectionAeroone = React.memo(({ data, watermarkClass, json, mb_json, animation_speed=2, desktop_img, mobile_img }) => {
   const { isMobile } = useMatches();
   let finalData;
 
@@ -87,4 +87,4 @@ const PeacockSection = React.memo(({ data, watermarkClass, json, mb_json, animat
   );
 });
 
-export default PeacockSection;
+export default PeacockSectionAeroone;
