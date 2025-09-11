@@ -32,7 +32,7 @@ const Enquire = () => {
 
       <Container>
         <h4 ref={titleRef} className="title_style1 hide_after text-center">Excited To Meet Us?</h4>
-        <p ref={contentRef}>Every query gets answered. You got questions, we got answers.</p>
+        <p ref={contentRef}>Every query gets answered. You got questions? we got answers!</p>
       </Container>
     </section>
   );

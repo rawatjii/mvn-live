@@ -1,110 +1,105 @@
-import React, { useRef, useState, useEffect, useCallback } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { API_URL } from "../../../config/config";
+import Player from '@vimeo/player';
 
-const Hero = React.memo(({ data }) => {
+const Hero = () => {
   const iframeRef = useRef(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false); // Track video playback
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false); // State to track video playback
+  const [vimeoPlayer, setVimeoPlayer] = useState(null);
 
-  const { heading, sub_heading, alt } = data;
+  // Handle window resize to update isMobile
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
 
-  const handleResize = useCallback(() => {
-    setIsMobile(window.innerWidth <= 768);
-    console.log('hero window resie');
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Handle window resize
+  // Initialize Vimeo Player and handle video playback events
   useEffect(() => {
-    const debounceResize = ()=>{
-      setTimeout(()=>{
-        handleResize();
-      }, 2000);
+    if (iframeRef.current && !vimeoPlayer) {
+      const player = new Player(iframeRef.current);
+      setVimeoPlayer(player);
+
+      // Listen for the 'play' event to confirm video playback has started
+      player.on('play', () => {
+        setIsVideoPlaying(true);
+      });
+
+      // Fallback: Use 'timeupdate' to confirm video is progressing
+      player.on('timeupdate', () => {
+        setIsVideoPlaying(true); // Ensure state is updated if play event is missed
+      });
+
+      // Handle errors to keep background image if video fails
+      player.on('error', () => {
+        console.error('Vimeo video failed to load or play');
+      });
+
+      // Attempt to autoplay the video
+      player.play().catch((error) => {
+        console.error('Autoplay failed:', error);
+      });
     }
 
-    window.addEventListener("resize", debounceResize);
-    return () => window.removeEventListener("resize", debounceResize);
-  }, []);
-
-  // Load YouTube IFrame API and set up player
-  useEffect(() => {
-    // Load YouTube IFrame API script
-    const tag = document.createElement("script");
-    tag.src = "https://www.youtube.com/iframe_api";
-    const firstScriptTag = document.getElementsByTagName("script")[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    // Initialize YouTube player when API is ready
-    let player;
-    window.onYouTubeIframeAPIReady = () => {
-      player = new window.YT.Player(iframeRef.current, {
-        events: {
-          onStateChange: (event) => {
-            if (event.data === window.YT.PlayerState.PLAYING) {
-              setIsVideoPlaying(true); // Video is playing, hide placeholder
-            }
-          },
-        },
-      });
-    };
-
+    // Cleanup event listeners on unmount
     return () => {
-      // Cleanup (optional)
-      if (player && player.destroy) {
-        player.destroy();
+      if (vimeoPlayer) {
+        vimeoPlayer.off('play');
+        vimeoPlayer.off('timeupdate');
+        vimeoPlayer.off('error');
       }
     };
-  }, []);
+  }, [vimeoPlayer]);
 
   return (
-    <div style={{ position: "relative" }}>
-      {/* Static placeholder image */}
-      {!isVideoPlaying && (
-        <img
-          className="w-100"
-          src={
-            isMobile
-              ? `${API_URL}images/homepage/hero/hero_img_sm.webp`
-              : `${API_URL}images/homepage/hero/hero_img.webp`
-          }
-          alt={alt || "Loading video..."}
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            zIndex: 1,
-          }}
-        />
-      )}
-      <div
-        style={{
-          position: "relative",
-          paddingBottom: isMobile ? "100%" : "56.25%",
-          overflow: "hidden",
-        }}
-      >
-        <iframe
-          ref={iframeRef}
-          src={`${isMobile ? sub_heading : heading}?enablejsapi=1&autoplay=1`} // Enable JS API and autoplay
-          frameBorder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowFullScreen
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            zIndex: 2,
-          }}
-          title="MVN Aero One Walkthrough"
-          loading="lazy"
-        />
+    <>
+      <div>
+        <div style={{ position: "relative", paddingBottom: isMobile ? '100%' : '56.25%', overflow: "hidden" }}>
+          {/* Background image displayed until video starts playing */}
+          {!isVideoPlaying && (
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                backgroundImage:  window.innerWidth > 768 ? `url(${API_URL}images/aero-gurgaon/hero/video_desktop_bg.webp)` : `url(${API_URL}images/aero-gurgaon/hero/video_sm_bg.webp)`, // Replace with your image path
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                zIndex: 1,
+              }}
+              aria-hidden="true"
+            />
+          )}
+          <iframe
+            ref={iframeRef}
+            src={isMobile
+              ? "https://player.vimeo.com/video/1078911802?background=1&autopause=0&title=0&byline=0&portrait=0"
+              : "https://player.vimeo.com/video/1078294218?background=1&autopause=0&title=0&byline=0&portrait=0"}
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              zIndex: 2, // Ensure iframe is above the background
+            }}
+            title="MVN Aero One Walkthrough"
+            loading="lazy"
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
-});
+};
 
 export default Hero;

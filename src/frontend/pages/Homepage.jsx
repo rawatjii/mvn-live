@@ -1,15 +1,11 @@
-import React, { useState, Suspense, useCallback, useEffect } from "react";
+import React, { useState, Suspense, useCallback } from "react";
 import { Helmet } from "react-helmet";
-
 import Layout from "../components/Layout";
 import Skeleton from "../../common/Loader/skeleton/Index";
-
 import Hero from "../components/homepage/Hero";
-const Intro = React.lazy(() => import("../components/homepage/Intro"));
-const Overview = React.lazy(() => import("../components/homepage/Overview"));
-const Banner1 = React.lazy(() => import("../components/homepage/Banner1"));
+import Overview from "../components/homepage/Overview";
 const Offer = React.lazy(() => import("../components/homepage/Offer"));
-const Projects = React.lazy(()=>import("../components/homepage/Projects")) ;
+const Projects = React.lazy(() => import("../components/homepage/Projects"));
 const OtherProjects = React.lazy(() =>
   import("../components/homepage/OtheProjects")
 );
@@ -27,31 +23,14 @@ const EnquireForm = React.lazy(() =>
 );
 const CustomModal = React.lazy(() => import("../../common/Modal"));
 const ClubOne = React.lazy(() => import("../components/homepage/ClubOne"));
-const WhatsappBtn = React.lazy(() => import("../components/Whatsapp"));
-// const Enquire = React.lazy(() =>
-//   new Promise((resolve) =>
-//     setTimeout(() => resolve(import("../components/homepage/Enquire")), 100000)
-//   )
-// );
-
-import "swiper/css";
-import "swiper/css/navigation";
-import useFetchData from "../utils/apiHelper";
-import { API_URL, BACKEND_IMAGE_URL } from "../../config/config";
+const MvnMall = React.lazy(() => import("../components/homepage/MvnMall"));
 import LazyLoadComponent from "../../common/LazyLoadComponent";
+import Strip from "../components/homepage/Strip";
+import Strip11 from "../components/homepage/Strip11";
 
 const Homepage = () => {
   const [isShowModal, setIsShowModal] = useState(false);
   const [isOffer, setIsOffer] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [pageMetaData, setPageMetaData] = useState(null);
-  const [metaDataArray, setMetaData] = useState([]);
-
-  const { data: homepageData, loading } = useFetchData(
-    `page/page-section/home`
-  );
-
-  const { data: metaData } = useFetchData(`get-page-meta/3`);
 
   const isHideModal = () => {
     setIsShowModal(false);
@@ -67,198 +46,132 @@ const Homepage = () => {
     }
   }, []);
 
-  useEffect(() => {
-    setPageMetaData(metaData?.[0]);
-  }, [metaData]);
-
-  useEffect(() => {
-    const headDataArray = pageMetaData?.head_data?.split("\n");
-
-    // Convert each string element to its appropriate type
-    const parsedArray = headDataArray?.map((item) => item);
-
-    parsedArray?.map((item) => {
-      setMetaData((prevState) => [...prevState, item]);
-    });
-  }, [pageMetaData]);
-
-  useEffect(() => {
-    var headDataContainer;
-    if (pageMetaData?.head_data) {
-      headDataContainer = document.createElement("div");
-      headDataContainer.innerHTML = pageMetaData.head_data;
-      Array.from(headDataContainer.children).forEach((child) => {
-        document.head.appendChild(child);
-      });
-    }
-
-    return () => {
-      if (headDataContainer) {
-        Array.from(headDataContainer.children).forEach((child) => {
-          document.head.removeChild(child);
-        });
-      }
-    };
-  }, [pageMetaData]);
-
-  if (loading)
-    return (
-      <div className="loading_screen" style={{ position: "relative" }}>
-        <img
-          src={
-            window.innerWidth < 768
-              ? API_URL + "loader/homepage_loading_sm.webp"
-              : API_URL + "loader/homepage_loading.webp"
-          }
-          alt="loading screen"
-          className="img-fluid w-100"
-          style={{ width: "100%" }}
-        />
-        <p
-          className="loading"
-          style={{
-            position: "fixed ",
-            top: "calc(100vh - 40px)",
-            width: "100%",
-            textAlign: "center",
-            textTransform: "uppercase",
-            fontSize: "14px",
-            letterSpacing: "3px",
-            textShadow: "0 0 10px #000",
-            fontWeight: 600,
-          }}
-        >
-          Loading Experience...
-        </p>
-      </div>
-    );
-  if (!loading && homepageData && homepageData.length === 0)
-    return <div className="text-center py-5">No records found</div>;
-
   return (
     <>
-      <Helmet>
-        {pageMetaData && pageMetaData.meta_title && (
-          <title>{pageMetaData.meta_title}</title>
-        )}
-        {pageMetaData && pageMetaData.meta_description && (
-          <meta name="description" content={pageMetaData.meta_description} />
-        )}
-        {pageMetaData && pageMetaData.meta_keywords && (
-          <meta name="keywords" content={pageMetaData.meta_keywords} />
-        )}
-        {pageMetaData && pageMetaData.head_data && (
-          <div dangerouslySetInnerHTML={{ __html: pageMetaData.head_data }} />
-        )}
-      </Helmet>
-
-      <WhatsappBtn />
+     <Helmet>
+  <title>MVN Infrastructure – 40+ Years of Real Estate Excellence</title>
+  <meta 
+    name="description" 
+    content="MVN Infrastructure has delivered trust, timely projects, and prime luxury locations, shaping India's skyline with quality and innovation." 
+  />
+  <meta 
+    name="keywords" 
+    content="MVN Infrastructure, MVN Gurgaon, MVN MALL Gurugram, MVN aero one, 5BHK in Gurgaon, Aero one, MVN Bangalore, mvn.in, MVN Developer." 
+  />
+  
+  <link rel="preload" as="image" href="/assets/images/logo_white.webp" />
+  <link rel="preload" as="image" href="/assets/images/homepage/hero/hero_img_sm.webp" />
+  
+  <link rel="canonical" href="https://www.mvn.in/" />
+  <meta name="distribution" content="Global" />
+  <meta name="language" content="English" />
+  <meta name="doc-type" content="Public" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="MVN Infrastructure" />
+  <meta name="googlebot" content="all, index, follow" />
+  <meta name="YahooSeeker" content="all, index, follow" />
+  <meta name="msnbot" content="all, index, follow" />
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="revisit-after" content="1 days" />
+  <meta name="rating" content="safe for kids" />
+  <meta name="expires" content="never" />
+  
+  <meta property="og:url" content="https://www.mvn.in/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="MVN Infrastructure – 40+ Years of Real Estate Excellence" />
+  <meta property="og:description" content="MVN Infrastructure has delivered trust, timely projects, and prime luxury locations, shaping India's skyline with quality and innovation." />
+  <meta property="og:site_name" content="MVN Infrastructure – 40+ Years of Real Estate Excellence" />
+  <meta property="og:image" content="https://mvnbackend.gtftechnologies.com/uploads/project/elevant-galleries/1748697415520.webp" />
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@MVNInfrastructure" />
+  <meta name="twitter:title" content="MVN Infrastructure – 40+ Years of Real Estate Excellence" />
+  <meta name="twitter:description" content="MVN Infrastructure has delivered trust, timely projects, and prime luxury locations, shaping India's skyline with quality and innovation." />
+  <meta name="twitter:creator" content="@MVNInfrastructure" />
+  <meta name="twitter:image" content="https://mvnbackend.gtftechnologies.com/uploads/project/elevant-galleries/1748697415520.webp" />
+  
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "MVN Infrastructure",
+      "url": "https://www.mvn.in/",
+      "logo": "https://img.websitedesigningcompany.co.in/public/assets/logo_white.webp",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "799 6000 196",
+        "contactType": "technical support",
+        "contactOption": "TollFree",
+        "areaServed": "IN",
+        "availableLanguage": ["en", "Hindi"]
+      },
+      "sameAs": [
+        "https://www.facebook.com/officialmvninfra/",
+        "https://www.instagram.com/mvn_infrastructure/",
+        "https://www.linkedin.com/company/mvn-infrastructure/",
+        "https://www.youtube.com/@MVNInfrastructures"
+      ]
+    })}
+  </script>
+</Helmet>
 
       <Layout>
-        {homepageData?.map((section, secIndex) => {
-          if (section.page_section == "home-banner")
-            return <Hero data={section} key={secIndex + section.id} />;
+        <Hero />
+        <Overview />
 
-          if (section.page_section == "home-area")
-            return (
-              <Suspense fallback={<p></p>}>
-                <Intro data={section} key={secIndex + section.id} />
-              </Suspense>
-            );
+        <LazyLoadComponent>
+          <ClubOne />
+        </LazyLoadComponent>
 
-          if (section.page_section == "home-introduction")
-            return (
-              <Suspense fallback={<p></p>}>
-                <Overview data={section} key={secIndex + section.id} />
-              </Suspense>
-            );
+        {/* <LazyLoadComponent>
+          <MvnMall />
+        </LazyLoadComponent> */}
 
-          if (section.page_section == "home-overview")
-            return (
-              <Suspense fallback={<p></p>}>
-                <ClubOne data={section} key={secIndex + section.id} />
-              </Suspense>
-            );
-        })}
+        {/* <LazyLoadComponent>
+          <Strip11 clickHandler={showCustomModal} />
+        </LazyLoadComponent> */}
 
-        {homepageData?.map((section, secIndex) => {
-          if (section.page_section == "home-video")
-            return (
-              <Suspense fallback={<p></p>}>
-                {" "}
-                <Offer
-                  data={section}
-                  clickHandler={showCustomModal}
-                  key={secIndex + section.id}
-                />
-              </Suspense>
-            );
+        <LazyLoadComponent>
+          <Offer clickHandler={showCustomModal} />
+        </LazyLoadComponent>
 
-          if (section.page_section == "home-project")
-            return (
-              <LazyLoadComponent margin="200px">
-                <Suspense fallback={<p></p>}>
-                  <Projects
-                    data={section}
-                    clickHandler={showCustomModal}
-                    key={secIndex + section.id}
-                  />
-                </Suspense>
-                
-              </LazyLoadComponent>
-            );
+        <LazyLoadComponent>
+          <Projects />
+        </LazyLoadComponent>
 
-          if (section.page_section == "home-verticals")
-            return (
-              <Suspense fallback={<p></p>}>
-                <OtherProjects data={section} key={secIndex + section.id} />
-              </Suspense>
-            );
+        <LazyLoadComponent>
+          <OtherProjects />
+        </LazyLoadComponent>
 
-          if (section.page_section == "home-infrastructure")
-            return (
-              <Suspense fallback={<p></p>}>
-                <OurJourney data={section} key={secIndex + section.id} />
-              </Suspense>
-            );
+        <LazyLoadComponent>
+          <OurJourney />
+        </LazyLoadComponent>
 
-          if (section.page_section == "home-people-behind")
-            return (
-              <Suspense fallback={<p></p>}>
-                <OurTeam data={section} key={secIndex + section.id} />
-              </Suspense>
-            );
+        <LazyLoadComponent>
+          <OurTeam />
+        </LazyLoadComponent>
 
-          if (section.page_section == "home-brand-ethos")
-            return (
-              <Suspense fallback={<p></p>}>
-                <OurBrand data={section} key={secIndex + section.id} />
-              </Suspense>
-            );
+        <LazyLoadComponent>
+          <OurBrand />
+        </LazyLoadComponent>
 
-          if (section.page_section == "home-client-says")
-            return (
-              <Suspense fallback={<p></p>}>
-                <Testimonial data={section} key={secIndex + section.id} />
-              </Suspense>
-            );
-        })}
+        <LazyLoadComponent>
+          <Testimonial />
+        </LazyLoadComponent>
 
-        <div className="flex-footer-form">
-          <Suspense fallback={<p></p>}>
+        <LazyLoadComponent>
+          <div className="flex-footer-form">
             <Enquire />
-          </Suspense>
-          <Suspense fallback={<p></p>}>
             <EnquireForm projectName={"MVN Infrastructure"} />
-          </Suspense>
-        </div>
+          </div>
+        </LazyLoadComponent>
 
-        <Suspense fallback={<div></div>}>
+        <Suspense fallback={<div>Loading...</div>}>
           <CustomModal
             hide={isHideModal}
             show={isShowModal}
             type="enquire"
-            projectName="MVN Aeroone"
+            projectName="MVN Infrastructure"
             isOffer={isOffer}
           />
         </Suspense>

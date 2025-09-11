@@ -1,13 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import { Container, Row } from "react-bootstrap";
-import { API_URL, BACKEND_IMAGE_URL } from "../../../config/config";
+import { API_URL } from "../../../config/config";
 
-const OurTeam = React.memo(({data}) => {
+const OurTeam = () => {
   const titleRef = useRef();
   const imageRef = useRef();
   const contentRef = useRef();
-
-  const {heading, short_description, image, alternative_image, alt, mb_image, mb_alternative_image} = data;
 
   return (
     <section className="section our_team_section" aria-label="Team Section">
@@ -21,26 +19,30 @@ const OurTeam = React.memo(({data}) => {
               loading="lazy"
             />
             <h4 ref={titleRef} className="title title_style1 text-center">
-              {heading}
+              People Behind
             </h4>
           </div>
         </Row>
       </Container>
 
-      <picture>
-        <source srcset={window.innerWidth < 768 ? BACKEND_IMAGE_URL + mb_image : BACKEND_IMAGE_URL + image} />
-        <img src={window.innerWidth < 768 ? BACKEND_IMAGE_URL + mb_alternative_image : BACKEND_IMAGE_URL + alternative_image} alt={alt} className="img-fluid team_img" loading="lazy" />
-      </picture>
+      <img
+        src={`${API_URL}images/team/team.webp`}
+        alt="mvn team image"
+        className="img-fluid team_img"
+        loading="lazy"
+      />
 
       <p ref={contentRef} className="des_style1 text-center">
-        {short_description}
+        MVN Infrastructure is backed up by a team of experienced professionals
+        who are committed to offering high standards of professional conduct in
+        real estate practices.
       </p>
 
       <div className="awards">
-            <img src={`${API_URL}mvn-offer-without-logo.webp`} alt="awards icon" />
+            <img src={`${API_URL}mvn-offer-without-logo.webp`} alt="mvn awards icon" />
           </div>
     </section>
   );
-});
+};
 
 export default OurTeam;

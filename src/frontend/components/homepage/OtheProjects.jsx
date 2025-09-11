@@ -5,23 +5,46 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
 
 import { useMatches } from "../../../theme/theme";
-import { API_URL, BACKEND_IMAGE_URL } from "../../../config/config";
-import useFetchData from "../../utils/apiHelper";
+import { API_URL } from "../../../config/config";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const otherProjects = [
+  {
+    name: "MVN School",
+    thumbnails: {
+      mobile: `${API_URL}images/other-projects/mvn-school.webp`,
+      desktop: `${API_URL}images/other-projects/mvn-school-desktop.webp`,
+    },
+    link: "https://www.mvneducation.com/sector-17/",
+  },
+  {
+    name: "MVN University",
+    thumbnails: {
+      mobile: `${API_URL}images/other-projects/mvn-university.webp`,
+      desktop: `${API_URL}images/other-projects/mvn-university-desktop.webp`,
+    },
+    link: "https://www.mvn.edu.in/",
+  },
+  {
+    name: "MVN Sports Academy",
+    thumbnails: {
+      mobile: `${API_URL}images/other-projects/mvn-sports-academy-desktop-2.webp`,
+      desktop: `${API_URL}images/other-projects/mvn-sports-academy-desktop-2.webp`,
+    },
+    link: "https://www.mvn88.com/exercise-sports-academy/",
+  },
+];
 
 const OtherProjects = React.memo(
   ({ data, title, subTitle, mobContent = 12 }) => {
     const titleRef = useRef();
     const imageDivRefs = useRef([]);
+    const { isMobile } = useMatches();
     const [imagesLoaded, setImagesLoaded] = useState(0);
 
-    const { heading } = data;
-
-    const { data: otherProjectsData, loading } = useFetchData("verticals");
-
     const initializeAnimations = useCallback(() => {
-      if (otherProjectsData.length > 0) {
+      if (otherProjects.length > 0) {
         gsap.from(titleRef.current, {
           y: 50,
           opacity: 1,
@@ -52,7 +75,7 @@ const OtherProjects = React.memo(
         ScrollTrigger.refresh();
       };
 
-      if (imagesLoaded === otherProjectsData?.length) {
+      if (imagesLoaded === otherProjects.length) {
         setTimeout(() => {
           initializeAnimations();
           ScrollTrigger.refresh();
@@ -63,13 +86,9 @@ const OtherProjects = React.memo(
       return () => window.removeEventListener("resize", handleResize);
     }, [imagesLoaded]);
 
-    const handleImageLoad = useCallback(() => {
+    const handleImageLoad = () => {
       setImagesLoaded((prev) => prev + 1);
-    }, []);
-
-    if (loading) return <div className="text-center py-5"></div>;
-    if (!loading && otherProjectsData && otherProjectsData?.length === 0)
-      return <div className="text-center py-5">No records found</div>;
+    };
 
     return (
       <section
@@ -82,25 +101,23 @@ const OtherProjects = React.memo(
               src={`${API_URL}images/icons/heading-icon-img.webp`}
               alt="mvn vertical icon"
               className="img-fluid title_plane1"
-              loading="lazy"
             />
             <h4 ref={titleRef} className="title title_style1 text-center">
-              {heading}
+              Other Verticals
             </h4>
           </div>
 
           <Row>
-            {otherProjectsData?.map((item, index) => (
+            {otherProjects?.map((item, index) => (
               <Col key={index} xs={12} md={4} lg={4} className="single_col">
                 <div className="single">
                   <div className="top">
-                    <h5 className="name">{item.heading}</h5>
-                    <Link to={item.links} target="_blank">
+                    <h5 className="name">{item.name}</h5>
+                    <Link to={item.link} target="_blank">
                       <img
                         src={`${API_URL}images/icons/arrow.png`}
                         alt="mvn arrow icon"
                         className="img-fluid icon"
-                        loading="lazy"
                       />
                     </Link>
                   </div>
@@ -111,16 +128,20 @@ const OtherProjects = React.memo(
                     </div>
                   )}
 
-                  <picture>
-                    <source srcset={BACKEND_IMAGE_URL + item.image} />
-                    <img
-                      src={BACKEND_IMAGE_URL + item.alternative_image}
-                      alt={item.alt}
-                      className="img-fluid other-project-img w-100"
-                      onLoad={handleImageLoad}
-                      loading="lazy"
-                    />
-                  </picture>
+                  <img
+                    src={
+                      isMobile
+                        ? item.thumbnails.mobile
+                        : item.thumbnails.desktop
+                    }
+                    alt="mvn projects image"
+                    className="img-fluid other-project-img"
+                    onLoad={handleImageLoad}
+                  />
+
+                  {/* <AnImage ref={(el) => (imageDivRefs.current[index] = el)}>
+                  
+                </AnImage> */}
                 </div>
               </Col>
             ))}
