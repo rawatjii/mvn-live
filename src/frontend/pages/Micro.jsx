@@ -124,8 +124,8 @@ const elevationData = [
   },
   {
     image: {
-      desktop: "assets/images/aeroone/jacuzzi/desktop.webp",
-      mobile: "assets/images/aeroone/jacuzzi/mobile.webp",
+      desktop: "https://img.websitedesigningcompany.co.in/public/assets/aeroone/elevationData/jacuzzi.webp",
+      mobile: "https://img.websitedesigningcompany.co.in/public/assets/aeroone/elevationData/jacuzzi_sm.webp",
     },
     title: "Soak in Serenity",
     desc: "Immerse in luxury with a private jacuzzi, offering relaxation and stunning vistas.",
