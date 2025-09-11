@@ -32,12 +32,12 @@ const Typology = React.memo(({ onLoadComplete }) => {
   const { isMobile } = useMatches();
   const isLaptop = window.innerWidth <= 1400;
 
-  let totalFrames = isMobile ? 327 : 327;
-  let segments = [
-    { contentIndex: 0, startFrame: 0, endFrame: 125 },
-    { contentIndex: 1, startFrame: 126, endFrame: 275 },
-    { contentIndex: 2, startFrame: 276, endFrame: 327 },
-  ];
+  const { data: typologyData, loading: typologyLoading } = useFetchData(`project/${data.project_id}/typologies`, {enabled:!data});
+
+  const finalTypologyData = data ?? typologyData;
+  const finalLoading = data ? false : typologyLoading;
+
+  console.log('finalTypologyData',finalTypologyData)
 
   useEffect(() => {
     // Only preload images once totalFrames is set
