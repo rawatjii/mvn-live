@@ -106,9 +106,8 @@ const MicroLocationMapAeroone = ({ data, projectName }) => {
         <div className="heading_div mb_60 mb_sm_30">
           <h4 className="title title_style1 text-center">{heading}</h4>
         </div>
-      </Container>
 
-      <div className="locationMapContent">
+        <div className="locationMapContent">
         <div className="row justify-content-center">
           <div className="col-sm-9">
             <div className="thumbnail">
@@ -161,6 +160,9 @@ const MicroLocationMapAeroone = ({ data, projectName }) => {
       </div>
 
       {(projectName.includes('mvn-athens-gurgaon-phase-2') || projectName.includes('mvn-athens-gurgaon-phase-1') || projectName.includes('mvn-athens-gurgaon-phase-3')|| projectName.includes('mvn-athens-faridabad')) && <LocationSlider project_id={project_id} projectName={projectName} />}
+      </Container>
+
+      
 
       <Container>
         <div className="about">

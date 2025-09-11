@@ -61,6 +61,7 @@ const Overview = ({className}) => {
       </div>
 
       <section className={`${className} overview_section`} aria-label="Overview Section"> 
+        <Container>
         <Row>
           <Col xs={12} md={12} className="about-content">
             <div className="home-about-content pb-0">
@@ -72,6 +73,8 @@ const Overview = ({className}) => {
             </div>
           </Col>
         </Row>
+        </Container>
+        
       </section>
     </>
   );

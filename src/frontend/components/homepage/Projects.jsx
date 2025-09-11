@@ -69,7 +69,7 @@ const Projects = () => {
     <>
       <section className="section projects_section_new pb-0" aria-label="Project Section">
         <Container>
-          <Row className="mx_-8">
+          <Row className="mx_-8 mx_sm_0">
             <div className="col-md-12 col-12 heading_div">
               <img
                 src={`${API_URL}images/icons/heading-icon-img.webp`}

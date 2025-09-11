@@ -17,8 +17,8 @@ import { athensGurgaonPhase1Data } from "./frontend/pages/micro/athens-gurgaon-p
 import { athensGurgaonPhase2Data } from "./frontend/pages/micro/athens-gurgaon-phase-2/Index.jsx";
 import { mvnMallData } from "./frontend/pages/micro/mvnMall/Index.jsx";
 import { PersistGate } from "redux-persist/integration/react";
-const Homepage = React.lazy(() => import("./frontend/pages/Homepage.jsx"));
-const AboutUs = React.lazy(() => import("./frontend/pages/AboutUs.jsx"));
+import Homepage from "./frontend/pages/Homepage.jsx";
+import AboutUs from "./frontend/pages/AboutUs.jsx";
 const MediaCenter = React.lazy(() =>
   import("./frontend/pages/MediaCenter.jsx")
 );
@@ -121,17 +121,14 @@ const router = createBrowserRouter([
       {
         path: "",
         element: (
-          <FrontendRoute loaderType="homepage">
-            <Homepage />
-          </FrontendRoute>
+          <Homepage />
+
         ),
       },
       {
         path: "about-us",
         element: (
-          <FrontendRoute loaderType="about-us">
             <AboutUs />
-          </FrontendRoute>
         ),
       },
       {

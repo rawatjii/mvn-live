@@ -10,7 +10,7 @@ const OurTeam = () => {
   return (
     <section className="section our_team_section" aria-label="Team Section">
       <Container>
-        <Row className="mx_-8">
+        <Row className="mx_-8 mx_sm_0">
           <div className="col-md-12 col-12 heading_div  mb_60 mb_sm_30">
             <img
               src={`${API_URL}images/icons/heading-icon-img.webp`}
@@ -28,7 +28,7 @@ const OurTeam = () => {
       <img
         src={`${API_URL}images/team/team.webp`}
         alt="mvn team image"
-        className="img-fluid team_img"
+        className="img-fluid team_img w-100"
         loading="lazy"
       />
 
