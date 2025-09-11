@@ -14,7 +14,6 @@ const HeroSection = ({ projectId, onBannerExit, isMainBanner, projectName }) => 
   const [vimeoPlayer, setVimeoPlayer] = useState(null);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [currentImage, setCurrentImage] = useState(null);
-  const [bannerData, setBannerData] = useState(null);
 
   const dispatch = useDispatch();
   const { banner, loading } = useSelector((state) => state.banner);
@@ -28,45 +27,11 @@ const HeroSection = ({ projectId, onBannerExit, isMainBanner, projectName }) => 
       ? "/assets/images/mvn_phase_2.webp"
       : undefined;
 
-  // Load cached banner data or fetch if missing
-  useEffect(() => {
-    let storageData = {};
-    try {
-      storageData = JSON.parse(localStorage.getItem("bannerData") || "{}");
-    } catch (error) {
-      console.error("Error parsing localStorage bannerData:", error);
-    }
-    const cachedData = storageData[projectId];
+      console.log(banner,"bannersada")
 
-    if (cachedData && cachedData.data?.length) {
-      console.log("Using cached data from localStorage:", cachedData);
-      setBannerData(cachedData);
-    } else {
-      console.log("No cached data, fetching from API for projectId:", projectId);
-      dispatch(fetchBanner(projectId));
-    }
+  useEffect(() => {
+         dispatch(fetchBanner(projectId));
   }, [dispatch, projectId]);
-
-  // Update localStorage and bannerData when banner changes
-  useEffect(() => {
-    if (banner?.data?.length) {
-      const updatedBanner = {
-        ...banner,
-        data: banner.data.map((item) => ({ ...item, project_id: projectId })),
-      };
-      setBannerData((prev) => {
-        if (JSON.stringify(prev) !== JSON.stringify(updatedBanner)) {
-          return updatedBanner;
-        }
-        return prev;
-      });
-      const storageData = JSON.parse(localStorage.getItem("bannerData") || "{}");
-      storageData[projectId] = updatedBanner;
-      localStorage.setItem("bannerData", JSON.stringify(storageData));
-    }
-  }, [banner, projectId]);
-
-  // Scroll handling
   useEffect(() => {
     if (!isMainBanner) return;
 
@@ -80,31 +45,29 @@ const HeroSection = ({ projectId, onBannerExit, isMainBanner, projectName }) => 
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isMainBanner, onBannerExit]);
 
-  // Initialize Vimeo Player
   useEffect(() => {
-    if (iframeRef.current && !vimeoPlayer && bannerData?.data?.[0]?.is_type === "iframe") {
+    if (iframeRef.current && !vimeoPlayer && banner?.data?.[0]?.is_type === "iframe") {
       const player = new Player(iframeRef.current, { autoplay: true });
       player.on("play", () => setIsVideoPlaying(true));
       setVimeoPlayer(player);
       return () => player.off("play");
     }
-  }, [vimeoPlayer, bannerData]);
+  }, [vimeoPlayer, banner]);
 
-  // Handle image transitions
   useEffect(() => {
-    if (bannerData?.data?.length && bannerRef.current) {
+    if (banner?.data?.length && bannerRef.current) {
       const newImage =
-        bannerData.data[0].is_type === "image" ? `${BACKEND_IMAGE_URL}${bannerData.data[0].image}` : null;
+        banner.data[0].is_type === "image" ? `${BACKEND_IMAGE_URL}${banner.data[0].image}` : null;
       if (newImage && newImage !== currentImage) {
         setCurrentImage(null);
         setTimeout(() => setCurrentImage(newImage), 500);
       }
     }
-  }, [bannerData, currentImage]);
+  }, [banner, currentImage]);
 
-  const renderLoadingScreen = useCallback(
-    () => (
-      <div className="loading_screen" style={{ position: "relative" }}>
+  const renderLoadingScreen=()=> {
+  
+  return <div className="loading_screen" style={{ position: "relative" }}>
         {loaderImage && (
           <>
             <img src={loaderImage} alt="loading screen" className="img-fluid w-100" />
@@ -127,15 +90,11 @@ const HeroSection = ({ projectId, onBannerExit, isMainBanner, projectName }) => 
           </>
         )}
       </div>
-    ),
-    [loaderImage, loading]
-  );
 
-  if (!bannerData) return renderLoadingScreen();
+}
 
-  const { is_type, alternative_image, alt, iframe } = bannerData?.data[0];
-  console.log(bannerData, "bannerData");
-
+  if (!banner?.data.length) return renderLoadingScreen();
+  const { is_type, alternative_image, alt, iframe } = banner?.data[0];
   return (
     <div className="section sliding_door_section py-0 mb-md-5 mb-2" ref={sectionRef}>
       {is_type === "image" ? (

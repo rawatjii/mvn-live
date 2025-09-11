@@ -505,7 +505,7 @@ const scrollToSection = (sectionKey) => {
     );
   };
 
-  if (loading || sectionLoading) return renderLoadingScreen();
+  if (sectionLoading) return renderLoadingScreen();
   if (!loading && project?.length === 0)
     return (
       <Suspense fallback={<p>Loading page not found...</p>}>

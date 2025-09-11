@@ -2,21 +2,29 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { FRONTEND_API_BASE_URL } from '../config/config';
 
-// Async thunk to fetch banner data with caching logic
+// Helper to read cache from localStorage
+const getLocalCache = () => {
+  const cached = localStorage.getItem('bannerCache');
+  return cached ? JSON.parse(cached) : {};
+};
+
+// Helper to save cache to localStorage
+const setLocalCache = (cache) => {
+  localStorage.setItem('bannerCache', JSON.stringify(cache));
+};
+
 export const fetchBanner = createAsyncThunk(
   'banner/fetchBanner',
-  async (projectId, { getState, rejectWithValue }) => {
+  async (projectId, { rejectWithValue }) => {
     try {
-      const state = getState();
-      const cached = state.banner.bannerCache[projectId];
+      const cached = getLocalCache()[projectId];
 
-      // Use cache if valid (5 minutes freshness)
+      // Use cache if valid (5 min freshness)
       if (cached && Date.now() - cached.timestamp < 5 * 60 * 1000) {
         return { projectId, data: cached.data, fromCache: true };
       }
 
       const response = await axios.get(`${FRONTEND_API_BASE_URL}project/${projectId}/banner`);
-      
       return { projectId, data: response.data, fromCache: false };
     } catch (error) {
       return rejectWithValue(error.response?.data || 'Failed to fetch banner');
@@ -27,8 +35,8 @@ export const fetchBanner = createAsyncThunk(
 const bannerSlice = createSlice({
   name: 'banner',
   initialState: {
-    banner: null,             // Current banner data
-    bannerCache: {},          // Cache: { [projectId]: { data, timestamp } }
+    banner: null,
+    bannerCache: getLocalCache(), // Initialize from localStorage
     loading: false,
     error: null,
   },
@@ -40,6 +48,7 @@ const bannerSlice = createSlice({
     },
     clearCache: (state) => {
       state.bannerCache = {};
+      localStorage.removeItem('bannerCache');
     }
   },
   extraReducers: (builder) => {
@@ -53,12 +62,14 @@ const bannerSlice = createSlice({
 
         const { projectId, data, fromCache } = action.payload;
 
-        // Only store in cache if data is freshly fetched
         if (!fromCache) {
           state.bannerCache[projectId] = {
             data,
             timestamp: Date.now()
           };
+
+          // Save updated cache to localStorage
+          setLocalCache(state.bannerCache);
         }
 
         state.banner = data;

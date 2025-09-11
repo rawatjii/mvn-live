@@ -2,13 +2,22 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { FRONTEND_API_BASE_URL } from '../config/config';
 
-// Async thunk for fetching section data by ID with caching logic
+// Helper to read cache from localStorage
+const getLocalSectionCache = () => {
+  const cached = localStorage.getItem('sectionCache');
+  return cached ? JSON.parse(cached) : {};
+};
+
+// Helper to save cache to localStorage
+const setLocalSectionCache = (cache) => {
+  localStorage.setItem('sectionCache', JSON.stringify(cache));
+};
+
 export const fetchSectionById = createAsyncThunk(
   'section/fetchSectionById',
-  async (sectionId, { getState, rejectWithValue }) => {
+  async (sectionId, { rejectWithValue }) => {
     try {
-      const state = getState();
-      const cached = state.section.sectionCache[sectionId];
+      const cached = getLocalSectionCache()[sectionId];
 
       // Use cache if fresh (5 minutes)
       if (cached && Date.now() - cached.timestamp < 5 * 60 * 1000) {
@@ -28,8 +37,8 @@ export const fetchSectionById = createAsyncThunk(
 const sectionSlice = createSlice({
   name: 'section',
   initialState: {
-    sectionData: null,       // Current section data
-    sectionCache: {},        // Cache: { [sectionId]: { data, timestamp } }
+    sectionData: null,
+    sectionCache: getLocalSectionCache(),  // Initialize from localStorage
     loading: false,
     error: null,
   },
@@ -41,6 +50,7 @@ const sectionSlice = createSlice({
     },
     clearSectionCache: (state) => {
       state.sectionCache = {};
+      localStorage.removeItem('sectionCache');
     }
   },
   extraReducers: (builder) => {
@@ -54,12 +64,14 @@ const sectionSlice = createSlice({
 
         const { sectionId, data, fromCache } = action.payload;
 
-        // Only store in cache if not from cache
         if (!fromCache) {
           state.sectionCache[sectionId] = {
             data,
             timestamp: Date.now()
           };
+
+          // Save updated cache to localStorage
+          setLocalSectionCache(state.sectionCache);
         }
 
         state.sectionData = data;
