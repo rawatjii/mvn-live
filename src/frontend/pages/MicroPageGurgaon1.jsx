@@ -87,14 +87,14 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
   const bannerRef = useRef(null);
+const scrollToSection = (sectionKey) => {
+    console.log(sectionKey)
 
-  const scrollToSection = (sectionKey) => {
-    const target = sectionRefs.current[sectionKey];
-    if (target && smootherRef.current) {
-      smootherRef.current.scrollTo(target, true);
-    }
-  };
-
+  const section = document.getElementById(sectionKey);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+};
   const show360Video = useCallback(() => {
     setIs360Show(true);
   }, [is360Show]);
@@ -107,7 +107,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
         isFixed={isHeaderFixed}
       />
 
-          <div>
+          <div >
             <LivingRoomVideoGurugramAeroone
               onBannerExit={setIsHeaderFixed} 
               isMainBanner={true}
@@ -116,10 +116,11 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
               isMobile={isMobile}
             />
           </div>
-
+        <div id="overview">
             <MicroOverviewAeroone data={data.overview} />
-
+</div>
             {/* elevationData */}
+            <div id="Walkthrough">
             {data?.elevationData?.map((item, index) => (
             <div key={index}>
               <div className="mt_80 mt_sm_30 mb-md-5">
@@ -127,8 +128,9 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
               </div>
             </div>
           ))}
+          </div>
 
-          <div>
+          <div id="">
            <LargeElevationSectionAeroone data={data.LargeElevationSection} />
           </div>
 
@@ -193,7 +195,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
           </Suspense>
             </div>
 
-            <div>
+            <div id="construction_technology">
           <Suspense fallback="">
               <ConstructionTechnology data={data.construction_technology} />
           </Suspense>
@@ -205,26 +207,26 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
             </Suspense>
           </div>
 
-            <div>
+            <div id="typologies">
           <Suspense fallback="">
               <Typology data={data.typology} />
           </Suspense>
             </div>
 
-            <div >
+            <div id="floor_plan">
            <Suspense fallback="">
               <MicroFloorPlan data={data.floorPlan} />
           </Suspense>
             </div>
 
-            <div>
+            <div id="location_map">
           <Suspense fallback="">
               <MicroLocationMap data={data.locationAdvantage} projectName="aeroone-gurgaon"  />
           </Suspense>
             </div>
 
           <Suspense fallback="">
-            <div ref={(el) => (sectionRefs.current.MVNMALL = el)}>
+            <div id="mvn_mall" ref={(el) => (sectionRefs.current.MVNMALL = el)}>
               <MvnMall data={data.mvnMall} />
             </div>
           </Suspense>

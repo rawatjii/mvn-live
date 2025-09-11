@@ -61,7 +61,7 @@ const Typology = React.memo(({ onLoadComplete }) => {
           setLoading(false); // Hide loader
           isImagesLoaded.current = true; // Mark as loaded
           setLoadingComplete(true); // Mark loading as complete
-          onLoadComplete();
+          // onLoadComplete();
         }
       };
 

@@ -188,12 +188,13 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                         <ul>
                         {/* {pathname.includes('mvn-mall') ? } */}
                           {menusSections &&
-                            menusSections?.map((section, index) => (
-                              <li key={index}>
+                            menusSections?.map((section, index) => {
+                             return <li key={index}>
                                 <NavLink
                                   className="new-launch"
                                   onClick={(e) => {
                                     e.preventDefault();
+                                  
                                     scrollToSection(section.section_type);
                                     toggleMenu("close");
                                   }}
@@ -202,7 +203,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                                   {section.section_name}
                                 </NavLink>
                               </li>
-                            ))}
+})}
                                
                                {pathname=="/mvn-athens-gurgaon-phase-3"&&<li>
                                <NavLink
