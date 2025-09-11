@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef, Suspense } from "react";
 import MicroOverview from "../components/MicroPage/Overview";
 import MicroAmenities from "../components/MicroPage/Amenities";
 import MicroLocationMap from "../components/MicroPage/LocationMap";
-import Enquire from "../components/homepage/Enquire";
 import EnquireForm from "../components/homepage/EnquireForm";
 import Footer from "../components/Footer";
 import DownloadBrochure from "../components/MicroPage/DownloadBrochure";

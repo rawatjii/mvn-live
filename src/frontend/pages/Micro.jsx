@@ -19,7 +19,7 @@ import { API_URL } from "../../config/config";
 import { setCommonState } from "../../redux/commonSlice";
 import { fetchProject, clearProject } from "../../redux/projectDataSlice";
 import { fetchSectionById, clearSection } from "../../redux/sectionDataSlice";
-
+import { useState } from "react";
 import WhatsappBtn from "../components/Whatsapp";
 const ContactInfo = React.lazy(() => import("../components/ContactInfo"));
 const PageNotFound = React.lazy(() =>
@@ -152,7 +152,7 @@ const MicroPage = () => {
   const { sectionData: projectSections, loading: sectionLoading } = useSelector(
     (state) => state.section
   );
-
+const [progress, setProgress] = useState(0);
   const project = useMemo(() => basicData?.data, [basicData]);
   const sections = useMemo(() => {
     if (!projectSections?.data) return [];
@@ -166,6 +166,31 @@ const scrollToSection = (sectionKey) => {
   }
 };
 
+useEffect(() => {
+    let interval;
+    if (sectionLoading) {
+      // Start progress from 0 and increment by 1% every 100ms
+      setProgress(0); // Reset progress when loading starts
+      interval = setInterval(() => {
+        setProgress((prev) => {
+          if (prev < 90) {
+            return prev + 1; // Increment by 1% for smoother animation
+          }
+          return prev;
+        });
+      }, 100); // Update every 100ms
+    } else {
+      // Ensure progress reaches 100% when loading is complete
+      setProgress(100);
+      // Clear interval if it exists
+      if (interval) clearInterval(interval);
+    }
+
+    // Cleanup interval on unmount or when sectionLoading changes
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [sectionLoading]);
   useEffect(() => {
     dispatch(setCommonState({ id: project?.id, isMicro: true }));
   }, [project?.id, projectName, sectionLoading, sections]);
@@ -237,8 +262,34 @@ const scrollToSection = (sectionKey) => {
     
     return  pathname.includes("aeroone-gurgaon") ?
     <div className="loading_screen aeroone_loading text-center d-flex flex-column items-center justify-content-center" style={{ position: "relative", height:'100vh' }}>
-      <img src="loaders/aeroone/main.webp" alt="aeroone loader" className="img-fluid mx-auto" width={60} />
-      <small className="mt-2 text-uppercase" style={{fontSize:'12px', letterSpacing:'1px'}}>Loading Experience...</small>
+      {/* <img src="assets/loader.gif" alt="aeroone loader" className="img-fluid mx-auto" width={60} />
+      <small className="mt-2 text-uppercase" style={{fontSize:'12px', letterSpacing:'1px'}}>Loading Experience...</small> */}
+
+      <div className="loading-container" style={{ textAlign: 'center' }}>
+          {/* Loading GIF */}
+          <img src={'assets/loader.gif'} alt="Loading..." style={{ width: '100px' }} />
+          {/* Progress Bar */}
+          <div style={{ marginTop: '10px' }}>
+            <p>Progress: {progress}%</p>
+            <div
+              style={{
+                width: '100%',
+                backgroundColor: '#e0e0e0',
+                borderRadius: '5px',
+                overflow: 'hidden',
+              }}
+            >
+              {/* <div
+                style={{
+                  width: `${progress}%`,
+                  height: '20px',
+                  backgroundColor: '#4caf50',
+                  transition: 'width 0.5s ease-in-out',
+                }}
+              /> */}
+            </div>
+          </div>
+        </div>
       </div>
     :<div className="loading_screen" style={{ position: "relative" }}>
         <img
