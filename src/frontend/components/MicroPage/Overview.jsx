@@ -2,8 +2,6 @@ import React, { useRef, useState, useEffect, useCallback } from "react";
 import { Container } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import { API_URL } from "../../../config/config";
-import CustomIframe from "./CustomIframe";
-import useFetchData from "../../utils/apiHelper";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
@@ -11,7 +9,7 @@ const diamondIMG = `${API_URL}images/icons/plane1.png`;
 
 gsap.registerPlugin(ScrollTrigger);
 
-const MicroOverview = React.memo(({ rera, data, setOverviewIframe, onBannerExit }) => {
+const MicroOverview = React.memo(({ data, setOverviewIframe, onBannerExit }) => {
   const [count1, setCount1] = useState(0);
   const [count2, setCount2] = useState(0);
   const [count3, setCount3] = useState(0);
@@ -38,6 +36,7 @@ const MicroOverview = React.memo(({ rera, data, setOverviewIframe, onBannerExit 
     alt,
     iframe,
     yt_url,
+    rera
   } = data;
 
   useEffect(()=>{

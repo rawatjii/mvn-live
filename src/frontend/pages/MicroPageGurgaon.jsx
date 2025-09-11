@@ -57,7 +57,7 @@ const MicroPageGurgaon = ({ data }) => {
         <>
 
           <MicroOverview data={data} /> {/*no isssue*/}
-          <LargeElevationSection data={data.LargeElevationSection} /> {/*no isssue*/}
+          <LargeElevationSection data={data.LargeElevationSection} />
           <PeacockSection data={data} /> {/*no isssue*/}
           {/*no isssue*/}
           {/* {<Video2 data={data} />}  */}

@@ -1,8 +1,8 @@
 import React from "react";
-import * as CONFIG from '../../../../config/config';
-const bgImgMB = `${CONFIG.API_URL}images/aero-gurgaon/largeBg1Sm.webp`
-const bgImgDesk = `${CONFIG.API_URL}images/aero-gurgaon/largeBg1.png`
-const absDesk = `${CONFIG.API_URL}images/aero-gurgaon/building_sm.webp`
+import * as CONFIG from "../../../../config/config";
+const bgImgMB = `${CONFIG.API_URL}images/aero-gurgaon/largeBg1Sm.webp`;
+const bgImgDesk = `${CONFIG.API_URL}images/aero-gurgaon/largeBg1.png`;
+const absDesk = `${CONFIG.API_URL}images/aero-gurgaon/building_sm.webp`;
 const building_sm = `${CONFIG.API_URL}images/aero-gurgaon/building_sm.webp`;
 const headerSidebarDesktopImg = `${CONFIG.API_URL}images/aero-gurgaon/header/sidebar.webp`;
 const peacockDesktopImg = `${CONFIG.API_URL}images/aero-gurgaon/Peacock/peacock.webp`;
@@ -86,7 +86,6 @@ const cinemaSm = `${CONFIG.API_URL}images/aero-gurgaon/no-pollution/cinema.webp`
 const locationMap = `${CONFIG.API_URL}images/aero-gurgaon/location/location_map.webp`;
 const locationMapSm = `${CONFIG.API_URL}images/aero-gurgaon/location/location-map_sm.webp`;
 
-
 // floor plan
 const penthouse = `${CONFIG.API_URL}images/aero-gurgaon/floorPlan/penthouse/1.webp`;
 const floor360 = `${CONFIG.API_URL}images/aero-gurgaon/floorPlan/360/1.webp`;
@@ -96,273 +95,309 @@ import "./aeroGuragaon.css";
 import MicroPageGurgaon1 from "../../MicroPageGurgaon1";
 
 export const data = {
-  header:{
-    sidebarAsset:{
-      desktop:headerSidebarDesktopImg,
-      mobile:headerSidebarDesktopImg,
+  header: {
+    sidebarAsset: {
+      desktop: headerSidebarDesktopImg,
+      mobile: headerSidebarDesktopImg,
     },
-    title:'MVN Aeroone, Gurugram',
-    sidebar_section:[
+    title: "MVN Aeroone Gurgaon",
+    sidebar_section: [
       {
-        section_title:'Overview',
-        link:'microOverview'
+        section_title: "Overview",
+        link: "overview",
       },
       {
-        section_title:'Walkthrough',
-        link:'Walkthrough'
+        section_title: "Walkthrough",
+        link: "Walkthrough",
       },
       {
-        section_title:'MVN ID Brochure',
-        link:'downloadBrochure'
+        section_title: "DGM Sales",
+        link: "dgm_sales",
       },
       {
-        section_title:'The Living Room',
-        link:'LIVINGROOM'
+        section_title: "About Architect",
+        link: "about_architect",
       },
       {
-        section_title:'Landscape',
-        link:'MicroLandscape'
+        section_title: "Landscape",
+        link: "landscape",
       },
       {
-        section_title:'Elevation',
-        link:'MicroElevation'
+        section_title: "Construction Technology",
+        link: "construction_technology",
       },
       {
-        section_title:'Apartment',
-        link:'MicroApartment'
+        section_title: "Amenities",
+        link: "amenities",
       },
       {
-        section_title:'Construction Technology',
-        link:'constructionTechnology'
+        section_title: "Typologies",
+        link: "typologies",
       },
       {
-        section_title:'Amenities',
-        link:'MicroAmenities'
+        section_title: "Floor plan",
+        link: "floor_plan",
       },
       {
-        section_title:'Typology',
-        link:'MicroTypology'
+        section_title: "Location Map",
+        link: "location_map",
       },
       {
-        section_title:'Floor Plans',
-        link:'MicroFloorPlan'
-      },
-      {
-        section_title:'Location Map',
-        link:'MicroLocationMap'
-      },
-      {
-        section_title:'MVN Mall',
-        link:'MVNMALL'
-      },
-      {
-        section_title:'Connections MVN Mall',
-        link:'NoPolutionZone'
+        section_title: "MVN Mall",
+        link: "mvn_mall",
       },
     ],
   },
   overview: {
-    title: "MVN AERO ONE LUXURY RESIDENCES",
-    extra: "AN EPITOME OF GLOBAL LUXURY NOW IN GURUGRAM",
-    desc: "Gurugram is set to redefine luxury living with the launch  of MVN ultra-luxurious 5.5 BHK apartments, offering unmatched opulence. Combining the grandeur of Dubai and New York, these residences feature cutting-edge designs, premium amenities, and breathtaking views. Experience an elite lifestyle with sophistication and comfort at its pinnacle, like never before!",
-    counterHeading:true,
-    showAwards:true,
-    rera:"RERA NO. RC/REP/HARERA/GGM/889/621/2024/116",
-    isDiscountAvailable:true,
-    discountUrl:`${CONFIG.API_URL}patch/discount.webp`
+    id: 7,
+    project_id: 4,
+    section_type: "overview",
+    seq: 1,
+    status: 1,
+    heading: "MVN Aero One Gurgaon Luxury Residences",
+    sub_heading: "AN EPITOME OF GLOBAL LUXURY NOW IN GURUGRAM",
+    alt: "5.5 BHK One of the Largest Apartments in Gurugram",
+    description:
+      "MVN Aero One Residence  Gurgaon is set to redefine luxury living with the launch of its ultra-luxury 5.5 BHK residences in Gurgaon. Inspired by the architectural brilliance of Dubai and New York, these opulent homes feature cutting-edge design, world-class amenities, and panoramic views. Designed for the discerning few, MVN Aero One offers a lifestyle where sophistication meets comfort—setting a new benchmark in elite urban living.",
+    short_description: "2% discount for Indian Armed Forces Personnel",
+    iframe: "13500, 12600, 6300",
+    image: null,
+    alternative_image: null,
+    mb_image: null,
+    mb_alternative_image: null,
+    json: null,
+    mb_json: null,
+    optional_images: null,
+    is_type: null,
+    video: null,
+    yt_url: "",
+    rera:'RC/REP/HARERA/GGM/889/621/2024/116'
   },
-  LargeElevationSection: {
-    title: ['Unseen', 'Unheard', 'Unimagined'],
-    isAllow: true,
-    path:{
-      mobile:{
-        bgImg:bgImgMB,
-        frontImg:building_sm,
+  elevationData: [
+    {
+      image: {
+        desktop: `${CONFIG.API_URL}assets/aeroone/elevationData/floors.webp`,
+        mobile: `${CONFIG.API_URL}assets/aeroone/elevationData/floors_sm.webp`,
       },
-      desktop:{
-        bgImg:bgImgDesk,
-        frontImg:absDesk,
-      }
+      title: "Villas in the Sky",
+      desc: "Experience elevated living with unmatched luxury above the clouds.",
     },
-    second_title:'ΑΝ ΕΡΙΤOME OF CONTEMPORARY ELEGANCE',
-    desc:'This architectural masterpiece seamlessly blends cutting-edge design with new-age sophistication. Every curve, every detail, is meticulously crafted to elevate your living experience. Embrace a  residence where innovation meets beauty, creating a landmark of luxurious urban living. Your new home awaits.',
+    {
+      image: {
+        desktop: `${CONFIG.API_URL}assets/aeroone/elevationData/jacuzzi.webp`,
+        mobile: `${CONFIG.API_URL}assets/aeroone/elevationData/jacuzzi_sm.webp`,
+      },
+      title: "Soak in Serenity",
+      desc: "Immerse in luxury with a private jacuzzi, offering relaxation and stunning vistas.",
+    },
+    {
+      image: {
+        desktop: "assets/images/aeroone/zen-garden/desktop.webp",
+        mobile: "assets/images/aeroone/zen-garden/mobile.webp",
+      },
+      title: "Embrace Tranquility",
+      desc: "Experience peace in a meticulously crafted Zen garden, a sanctuary of balance and beauty.",
+    },
+  ],
+  LargeElevationSection: {
+    section_type: "elevation",
+    heading: "Unseen Unheard Unimagined",
+    sub_heading: "ΑΝ ΕΡΙΤOME OF CONTEMPORARY ELEGANCE",
+    is_type: null,
+    image: "uploads/project-section/1757065308895.webp",
+    alternative_image: "uploads/project-section/1757065309214.webp",
+    mb_image: null,
+    mb_alternative_image: null,
+    alt: "ΑΝ ΕΡΙΤOME OF CONTEMPORARY ELEGANCE",
+    video: null,
+    iframe: null,
+    json: null,
+    yt_url: null,
+    short_description: null,
+    description:
+      "This architectural masterpiece seamlessly blends cutting-edge design with new-age sophistication. Every curve, every detail, is meticulously crafted to elevate your living experience. Embrace a residence where innovation meets beauty, creating a landmark of luxurious urban living. Your new home awaits.",
+    optional_images: "uploads/project-section/1757065309550.webp",
+    mb_json: null
   },
-  video1: {
-    title: "EXPERIENCE THE BLISS OF ENDLESS VISTAS",
-    desc:'Step into a living room where nature’s vibrant splendor enchants, blending elegance and serenity for both relaxation and gatherings.',
-    isVdo: true,
+  walkthrough: {
+    section_type: "walkthrough",
+    heading: " A GLIMPSE INTO A LIFE EXTRAORDINARY",
+    sub_heading: null,
+    is_type: null,
+    image: null,
+    alternative_image: null,
+    mb_image: null,
+    mb_alternative_image: null,
+    alt: null,
+    video: null,
+    iframe:
+      "https://www.youtube.com/embed/qanbwLmZt4s?loop=1&mute=1&playlist=qanbwLmZt4s",
+    json: null,
+    yt_url: null,
+    short_description: null,
+    description:
+      "Take a guided virtual tour through our stunning spaces with a walkthrough video that brings your future home to life. Every detail is showcased, allowing you to experience the design, luxury, and lifestyle that await you.",
+    optional_images: null,
+    mb_json: null
   },
-  video2: {
-    title: "ESCAPE TO EXCLUSIVITY",
-    desc: "Dive into your own private pool with a grand view, just a few steps away from your living room",
-    isVdo: true,
+  peacock_section: {
+    second_title:
+      "EXPERIENCE THE GRANDEUR OF THE LIVING ROOM WITH 360° PANORAMIC VIEWS",
+    desc: "Step into a living room where nature’s vibrant splendor enchants, blending elegance and serenity for both relaxation and gatherings.",
+    path: {
+      mobile: `${CONFIG.JSON_URL}aeroone-gurgaon1/Peacock/data.json`,
+      desktop: peacockDesktopImg,
+    },
   },
-  view360:{
-    title:'360° VIEW',
-    second_title:'Uninterrupted Horizon, unmatched grandeur, unforgettable vistas',
-    // desc:'Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambience, perfect for hosting unforgettable soirees and extravagant gatherings.',
-    path:{
-      mobile:`${CONFIG.API_URL}images/aero-gurgaon/360/mobile.json`,
-      desktop:`${CONFIG.API_URL}images/aero-gurgaon/360/desktop.json`,
-    }
-  },
-  peacock_section:{
-    second_title:'EXPERIENCE THE GRANDEUR OF THE LIVING ROOM WITH 360° PANORAMIC VIEWS',
-    desc:'Step into a living room where nature’s vibrant splendor enchants, blending elegance and serenity for both relaxation and gatherings.',
-    path:{
-      mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/Peacock/data.json`,
-      desktop:peacockDesktopImg,
-    }
-  },
-  living_room:{
-    Custom_height:"Custom_height",
+  living_room: {
+    Custom_height: "Custom_height",
     // second_title:'OPEN THE DOORS TO EXPANSIVE ELEGANCE AND SPACIOUS LUXURY',
     // desc:'Glide your way through the floor-to-ceiling sliding doors, and step on to the sprawling deck with breathtaking vistas and an air of tranquility.',
-    path:{
-      mobile:`${CONFIG.API_URL}videos/aeroone-gurgaon/living-room.mp4`,
-      desktop:`${CONFIG.API_URL}videos/aeroone-gurgaon/living-room.mp4`,
-    }
+    path: {
+      mobile: `${CONFIG.API_URL}videos/aeroone-gurgaon/living-room.mp4`,
+      desktop: `${CONFIG.API_URL}videos/aeroone-gurgaon/living-room.mp4`,
+    },
   },
-  party_video:{
-    second_title:'LIVE. LAUGH. LOUNGE',
-    desc:'Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambience, perfect for hosting unforgettable soirees and extravagant gatherings.',
-    path:{
-      mobile:`${CONFIG.JSON_URL}aeroone-gurgaon1/Party/Mobile/data.json`,
-      desktop:`${CONFIG.JSON_URL}aeroone-gurgaon1/Party/Desktop/data.json`,
-    }
+  party_video: {
+    second_title: "LIVE. LAUGH. LOUNGE",
+    desc: "Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambience, perfect for hosting unforgettable soirees and extravagant gatherings.",
+    path: {
+      mobile: `${CONFIG.JSON_URL}aeroone-gurgaon1/Party/Mobile/data.json`,
+      desktop: `${CONFIG.JSON_URL}aeroone-gurgaon1/Party/Desktop/data.json`,
+    },
   },
   masterBedroom: {
     second_title: "BEDROOM Platinum",
     desc: "Your own sphere of serenity crafted artfully for the ultimate retreat into blissful moments of privacy.",
-    path:{
-      mobile:CONFIG.API_URL + 'assets/Panther/Mobile/data.json',
-      desktop:CONFIG.API_URL + 'assets/Panther/Desktop/data.json'
+    path: {
+      mobile: CONFIG.API_URL + "assets/Panther/Mobile/data.json",
+      desktop: CONFIG.API_URL + "assets/Panther/Desktop/data.json",
     },
-    showAwards:true,
+    showAwards: true,
   },
-  landscape:{
-    title:'Landscape',
-    secondTitle:'REDEFINING ECO-LUXURY WITH ELEVATED LANDSCAPING',
-    desc:'Expansive lush green gardens landscaped for beauty and sustainability. Revel in this oasis of freshness and serenity exclusively for the residents.',
-    images:[
-          {
-            desktop: yogaDeck,
-            mobile: yogaDeckSm,
-            watermark: "right",
-            title: "Yoga Deck",
-          },
-          {
-            desktop: swimmingPool,
-            mobile: swimmingPoolSm,
-            watermark: "right",
-            title: "Swimming Pool",
-          },
-          {
-            desktop: pargola,
-            mobile: pargolaSm,
-            watermark: "right",
-            title: "Pergola View",
-          },
-          {
-            desktop: tennis,
-            mobile: tennisSm,
-            watermark: 'right',
-            title:'Lawn Tennis View',
-          },
-          {
-            desktop: landscape,
-            mobile: landscapeSm,
-            watermark: 'right',
-            title:'Landscape View',
-          }
-        ],
-  },
-  microElevation:{
-    title:'Elevation',
-    secondTitle:'Pinnacle of Sophisticated Luxury',
-    desc:'This architectural masterpiece seamlessly blends cutting-edge design with new-age sophistication. Every curve, every detail, is meticulously crafted to elevate your living experience. Embrace a residence where innovation meets beauty, creating a landmark of luxurious urban living. Your new home awaits.',
-    images:[
+  landscape: {
+    title: "Landscape",
+    secondTitle: "REDEFINING ECO-LUXURY WITH ELEVATED LANDSCAPING",
+    desc: "Expansive lush green gardens landscaped for beauty and sustainability. Revel in this oasis of freshness and serenity exclusively for the residents.",
+    images: [
       {
-        desktop:elevationImg1,
-        mobile:elevationImgSm1,
-        watermark: 'right'
+        desktop: yogaDeck,
+        mobile: yogaDeckSm,
+        watermark: "right",
+        title: "Yoga Deck",
       },
       {
-        desktop:elevationImg2,
-        mobile:elevationImgSm2,
-        watermark: 'right'
+        desktop: swimmingPool,
+        mobile: swimmingPoolSm,
+        watermark: "right",
+        title: "Swimming Pool",
       },
       {
-        desktop:elevationImg3,
-        mobile:elevationImgSm3,
-        watermark: 'right'
-      }
+        desktop: pargola,
+        mobile: pargolaSm,
+        watermark: "right",
+        title: "Pergola View",
+      },
+      {
+        desktop: tennis,
+        mobile: tennisSm,
+        watermark: "right",
+        title: "Lawn Tennis View",
+      },
+      {
+        desktop: landscape,
+        mobile: landscapeSm,
+        watermark: "right",
+        title: "Landscape View",
+      },
     ],
   },
-  microApartment:{
-    title:'Apartment',
-    secondTitle:'Every corner a symphony of style & opulence',
-    desc:`Experience ultra-luxury living in this exclusive apartment boasting plush interiors and bespoke design. The spacious layout includes a designer bathroom with premium fittings, a modern Cucina kitchen for culinary excellence, and a state-of-the-art home theatre for entertainment. A thoughtfully designed kids' room ensures comfort and fun, completing a perfect sanctuary for a sophisticated, family-friendly lifestyle.`,
-    images:[
-          {
-            desktop:apartmentImg5,
-            mobile:apartmentImgSm5,
-            watermark:'right',
-            title:'Panoramic Living Room',
-          },
-          {
-            desktop:apartmentImg7,
-            mobile:apartmentImgSm7,
-            watermark:'right',
-            title:'Living Room',
-          },
-          {
-            desktop:apartmentImg8,
-            mobile:apartmentImgSm8,
-            watermark:'right',
-            title:'Cucina Kitchen',
-          },  
-          {
-            desktop:apartmentImg6,
-            mobile:apartmentImgSm6,
-            watermark:'right',
-            title:'Master Bedroom – Platinum',
-          },  
-          {
-            desktop:apartmentImg9,
-            mobile:apartmentImgSm9,
-            watermark:'right',
-            title:'Master Bedroom – Platinum',
-          },
-          {
-            desktop:apartmentImg2,
-            mobile:apartmentImgSm2,
-            watermark:'right',
-            title:'Bathroom',
-          },
-          {
-            desktop:apartmentImg1,
-            mobile:apartmentImgSm1,
-            watermark:'right',
-            title:'Master Bedroom – Royale',
-          },
-          {
-            desktop:apartmentImg3,
-            mobile:apartmentImgSm3,
-            watermark:'right',
-            title:'Study Room',
-          },
-          {
-            desktop:apartmentImg4,
-            mobile:apartmentImgSm4,
-            watermark:'right',
-            title:'Kids\' Room',
-          },
-        ],
-    imageClassName:'apartment-section-img',
+  microElevation: {
+    title: "Elevation",
+    secondTitle: "Pinnacle of Sophisticated Luxury",
+    desc: "This architectural masterpiece seamlessly blends cutting-edge design with new-age sophistication. Every curve, every detail, is meticulously crafted to elevate your living experience. Embrace a residence where innovation meets beauty, creating a landmark of luxurious urban living. Your new home awaits.",
+    images: [
+      {
+        desktop: elevationImg1,
+        mobile: elevationImgSm1,
+        watermark: "right",
+      },
+      {
+        desktop: elevationImg2,
+        mobile: elevationImgSm2,
+        watermark: "right",
+      },
+      {
+        desktop: elevationImg3,
+        mobile: elevationImgSm3,
+        watermark: "right",
+      },
+    ],
   },
-  construction_technology:{
-    videoUrl:constructionTechnologyVideo,
+  microApartment: {
+    title: "Apartment",
+    secondTitle: "Every corner a symphony of style & opulence",
+    desc: `Experience ultra-luxury living in this exclusive apartment boasting plush interiors and bespoke design. The spacious layout includes a designer bathroom with premium fittings, a modern Cucina kitchen for culinary excellence, and a state-of-the-art home theatre for entertainment. A thoughtfully designed kids' room ensures comfort and fun, completing a perfect sanctuary for a sophisticated, family-friendly lifestyle.`,
+    images: [
+      {
+        desktop: apartmentImg5,
+        mobile: apartmentImgSm5,
+        watermark: "right",
+        title: "Panoramic Living Room",
+      },
+      {
+        desktop: apartmentImg7,
+        mobile: apartmentImgSm7,
+        watermark: "right",
+        title: "Living Room",
+      },
+      {
+        desktop: apartmentImg8,
+        mobile: apartmentImgSm8,
+        watermark: "right",
+        title: "Cucina Kitchen",
+      },
+      {
+        desktop: apartmentImg6,
+        mobile: apartmentImgSm6,
+        watermark: "right",
+        title: "Master Bedroom – Platinum",
+      },
+      {
+        desktop: apartmentImg9,
+        mobile: apartmentImgSm9,
+        watermark: "right",
+        title: "Master Bedroom – Platinum",
+      },
+      {
+        desktop: apartmentImg2,
+        mobile: apartmentImgSm2,
+        watermark: "right",
+        title: "Bathroom",
+      },
+      {
+        desktop: apartmentImg1,
+        mobile: apartmentImgSm1,
+        watermark: "right",
+        title: "Master Bedroom – Royale",
+      },
+      {
+        desktop: apartmentImg3,
+        mobile: apartmentImgSm3,
+        watermark: "right",
+        title: "Study Room",
+      },
+      {
+        desktop: apartmentImg4,
+        mobile: apartmentImgSm4,
+        watermark: "right",
+        title: "Kids' Room",
+      },
+    ],
+    imageClassName: "apartment-section-img",
+  },
+  construction_technology: {
+    videoUrl: constructionTechnologyVideo,
   },
   highlights: [
     "Power backup for common facilities.",
@@ -372,13 +407,7 @@ export const data = {
     "Split AC provision in living room and bedrooms.",
     "Premium emulsion paint finish.",
   ],
-  walkthrough: {
-    src: "https://www.youtube.com/embed/9CHcJAveejU?loop=1&mute=1&playlist=9CHcJAveejU",
-    // title: "Virtual Tour",
-    // title: "Walkthrough",
-    second_title:'A GLIMPSE INTO A LIFE EXTRAORDINARY',
-    desc: "Take a guided virtual tour through our stunning spaces with a walkthrough video that brings your future home to life. Every detail is showcased, allowing you to experience the design, luxury, and lifestyle that await you.",
-  },
+  
   // LargeElevationSection: {
   //   title: "an epitome of contemporary elegance",
   //   isAllow: true,
@@ -406,316 +435,360 @@ export const data = {
   //   }
   // ],
   renders: [
+    {
+      title: "Apartment",
+      data: [
+        {
+          content: {},
+          lg: apartmentImg1,
+          md: apartmentImgSm1,
+        },
+        {
+          content: {},
+          lg: apartmentImg2,
+          md: apartmentImgSm2,
+        },
+        {
+          content: {},
+          lg: apartmentImg3,
+          md: apartmentImgSm3,
+        },
+        {
+          content: {},
+          lg: apartmentImg4,
+          md: apartmentImgSm4,
+        },
+        {
+          content: {},
+          lg: apartmentImg5,
+          md: apartmentImgSm5,
+        },
+        {
+          content: {},
+          lg: apartmentImg6,
+          md: apartmentImgSm6,
+        },
+        {
+          content: {},
+          lg: apartmentImg7,
+          md: apartmentImgSm7,
+        },
+        {
+          content: {},
+          lg: apartmentImg8,
+          md: apartmentImgSm8,
+        },
+        {
+          content: {},
+          lg: apartmentImg9,
+          md: apartmentImgSm9,
+        },
+      ],
+    },
+    {
+      title: "Elevation",
+      data: [
+        {
+          content: {},
+          lg: elevationImg1,
+          md: elevationImgSm1,
+        },
+        {
+          content: {},
+          lg: elevationImg2,
+          md: elevationImgSm2,
+        },
+        {
+          content: {},
+          lg: elevationImg3,
+          md: elevationImgSm3,
+        },
+      ],
+    },
+    {
+      title: "Landscape",
+      data: [
+        {
+          content: {},
+          lg: landscape,
+          md: landscapeSm,
+        },
+      ],
+    },
+  ],
+  amenities: {
+    title: "Amenities",
+    data: [
       {
-        title: 'Apartment',
-        data:[
-          {
-            content:{},
-            lg: apartmentImg1,
-            md: apartmentImgSm1,
-          },
-          {
-            content:{},
-            lg: apartmentImg2,
-            md: apartmentImgSm2,
-          },
-          {
-            content:{},
-            lg: apartmentImg3,
-            md: apartmentImgSm3,
-          },
-          {
-            content:{},
-            lg: apartmentImg4,
-            md: apartmentImgSm4,
-          },
-          {
-            content:{},
-            lg: apartmentImg5,
-            md: apartmentImgSm5,
-          },
-          {
-            content:{},
-            lg: apartmentImg6,
-            md: apartmentImgSm6,
-          },
-          {
-            content:{},
-            lg: apartmentImg7,
-            md: apartmentImgSm7,
-          },
-          {
-            content:{},
-            lg: apartmentImg8,
-            md: apartmentImgSm8,
-          },
-          {
-            content:{},
-            lg: apartmentImg9,
-            md: apartmentImgSm9,
-          }
+        name: "Elevate Your Family Time At The Exclusive Clubhouse",
+        path: {
+          desktop: clubhouse,
+          mobile: clubhouseSm,
+        },
+        desc: "The ultra-luxury clubhouse offers residents an opulent retreat, featuring state-of-the-art amenities, a lavish spa, infinity pools, gourmet dining, private lounges, and exquisite interiors for unparalleled leisure and comfort for the whole family.",
+      },
+      {
+        name: "Business Centre",
+        path: {
+          desktop: business,
+          mobile: businessSm,
+        },
+        desc: "A sophisticated workspace designed for productivity and collaboration",
+      },
+      {
+        name: "Library",
+        path: {
+          desktop: library,
+          mobile: librarySm,
+        },
+        desc: "A tranquil haven for literary exploration and quiet contemplation",
+      },
+      {
+        name: "Sports Lounge",
+        path: {
+          desktop: lounge,
+          mobile: loungeSm,
+        },
+        desc: "An upscale space to unwind and enjoy sports events",
+      },
+      {
+        name: `Kids' Play Area`,
+        path: {
+          desktop: kids,
+          mobile: kidsSm,
+        },
+        desc: "A safe and imaginative space for children to explore",
+      },
+      {
+        name: "Fitness Centre",
+        path: {
+          desktop: gym,
+          mobile: gymSm,
+        },
+        desc: "State-of-the-art fitness facilities for ultimate wellness",
+      },
+      {
+        name: "Spa",
+        path: {
+          desktop: spa,
+          mobile: spaSm,
+        },
+        desc: "A luxurious retreat offering rejuvenation and tranquility",
+      },
+      {
+        name: `Mini Theatre`,
+        path: {
+          desktop: theater,
+          mobile: theaterSm,
+        },
+        desc: "Intimate screenings for cinematic experiences with friends",
+      },
+      {
+        name: `Central Green`,
+        path: {
+          desktop: centralGreen,
+          mobile: centralGreenSm,
+        },
+        desc: [
+          "An oasis of clean air and pure living. ",
+          "Advanced air purification systems create pollution-free zones, ensuring residents breathe clean, fresh air, promoting healthier living and well-being.",
         ],
       },
       {
-        title: 'Elevation',
-        data:[
-          {
-            content:{},
-            lg: elevationImg1,
-            md: elevationImgSm1,
-          },
-          {
-            content:{},
-            lg: elevationImg2,
-            md: elevationImgSm2,
-          },
-          {
-            content:{},
-            lg: elevationImg3,
-            md: elevationImgSm3,
-          }
-        ],
-      },  
-      {
-        title: 'Landscape',
-        data:[
-          {
-            content:{},
-            lg: landscape,
-            md: landscapeSm,
-          },
-        ],
-        
-      },  
+        name: "Exclusive entrance and exit for the residents",
+        path: {
+          desktop: entryexit,
+          mobile: entryexitSm,
+        },
+        desc: "Experience unparalleled privacy and convenience with exclusive entry and exit points designed for residents of MVN, ensuring seamless access and an elite living experience.",
+      },
     ],
- amenities : {
-     title:'Amenities',
-     data:[
-       { 
-         name: 'Elevate Your Family Time At The Exclusive Clubhouse',
-         path:{
-           desktop:clubhouse,
-           mobile:clubhouseSm,
-         },
-         desc:'The ultra-luxury clubhouse offers residents an opulent retreat, featuring state-of-the-art amenities, a lavish spa, infinity pools, gourmet dining, private lounges, and exquisite interiors for unparalleled leisure and comfort for the whole family.' 
-       },  
-       {
-         name: 'Business Centre',
-         path: {
-           desktop:business,
-           mobile:businessSm,
-         },
-         desc:'A sophisticated workspace designed for productivity and collaboration'
-       },
-       {
-         name: 'Library',
-         path: {
-           desktop:library,
-           mobile:librarySm,
-         },
-         desc:'A tranquil haven for literary exploration and quiet contemplation'
-       },
-       {
-         name: 'Sports Lounge',
-         path: {
-           desktop:lounge,
-           mobile:loungeSm,
-         },
-         desc:'An upscale space to unwind and enjoy sports events'
-       },
-       {
-         name: `Kids' Play Area`,
-         path: {
-           desktop:kids,
-           mobile:kidsSm,
-         },
-         desc:'A safe and imaginative space for children to explore'
-       },
-       {
-         name: 'Fitness Centre',
-         path: {
-           desktop:gym,
-           mobile:gymSm,
-         },
-         desc:'State-of-the-art fitness facilities for ultimate wellness'
-       },
-       {
-         name: 'Spa',
-         path: {
-           desktop:spa,
-           mobile:spaSm,
-         },
-         desc:'A luxurious retreat offering rejuvenation and tranquility'
-       },
-       {
-         name: `Mini Theatre`,
-         path: {
-           desktop:theater,
-           mobile:theaterSm,
-         },
-         desc:'Intimate screenings for cinematic experiences with friends'
-       },
-       {
-         name: `Central Green`,
-         path: {
-           desktop:centralGreen,
-           mobile:centralGreenSm,
-         },
-         desc:['An oasis of clean air and pure living. ','Advanced air purification systems create pollution-free zones, ensuring residents breathe clean, fresh air, promoting healthier living and well-being.']
-       },
-       {
-         name: 'Exclusive entrance and exit for the residents',
-         path: {
-           desktop:entryexit,
-           mobile:entryexitSm,
-         },
-         desc:'Experience unparalleled privacy and convenience with exclusive entry and exit points designed for residents of MVN, ensuring seamless access and an elite living experience.'
-       },
-     ],
     //  iframe:'https://www.youtube.com/embed/BqcxVd21m6Y?autoplay=1&loop=1&mute=1&playlist=BqcxVd21m6Y'
-   },
-  noPollutionZone:{
-      title:'Connections with MVN Mall',
-      data:[
-        { 
-          name: '0 km from all the urban needs 0km from your office',
-          path:{
-            desktop:office,
-            mobile:officeSm,
-          },
-          desc:'Now you don’t have to even walk to work. Take a ride on your exclusive elevator to work' 
-        },  
-        {
-          name: '0 km from luxury Shopping',
-          path:{
-            desktop:shopping,
-            mobile:shoppingSm,
-          },
-          desc:'All the best of luxury shopping and brands from the world over, right at your doorstep at MVN Mall'
+  },
+  noPollutionZone: {
+    title: "Connections with MVN Mall",
+    data: [
+      {
+        name: "0 km from all the urban needs 0km from your office",
+        path: {
+          desktop: office,
+          mobile: officeSm,
         },
-        {
-          name: '0 km from Global Entertainment',
-          path:{
-            desktop:entertainment,
-            mobile:entertainmentSm,
-          },
-          desc:'When it comes to best of entertainment, you won’t have to look far. Just step into your exclusive elevator and enter a whole world of global entertainment in the MVN mall'
+        desc: "Now you don’t have to even walk to work. Take a ride on your exclusive elevator to work",
+      },
+      {
+        name: "0 km from luxury Shopping",
+        path: {
+          desktop: shopping,
+          mobile: shoppingSm,
         },
-        {
-          name: '0 km from the Sports Club & Lounge',
-          path:{
-            desktop:sports,
-            mobile:sportsSm,
-          },
-          desc:'Make sports a regular part of your life. Participate in sports events and also follow your passion to play your favourite sports, at the exclusive Sports Lounge and Sports Club.'
+        desc: "All the best of luxury shopping and brands from the world over, right at your doorstep at MVN Mall",
+      },
+      {
+        name: "0 km from Global Entertainment",
+        path: {
+          desktop: entertainment,
+          mobile: entertainmentSm,
         },
-        {
-          name: `0 km cinema`,
-          path:{
-            desktop:cinema,
-            mobile:cinemaSm,
-          },
-          desc:'Have a blockbuster of a time, without ever missing a show due to traffic. Catch up with all the superhits at the theatres below in the MVN mall.'
+        desc: "When it comes to best of entertainment, you won’t have to look far. Just step into your exclusive elevator and enter a whole world of global entertainment in the MVN mall",
+      },
+      {
+        name: "0 km from the Sports Club & Lounge",
+        path: {
+          desktop: sports,
+          mobile: sportsSm,
         },
-      ],
-      
-    },
-  highlight:{
+        desc: "Make sports a regular part of your life. Participate in sports events and also follow your passion to play your favourite sports, at the exclusive Sports Lounge and Sports Club.",
+      },
+      {
+        name: `0 km cinema`,
+        path: {
+          desktop: cinema,
+          mobile: cinemaSm,
+        },
+        desc: "Have a blockbuster of a time, without ever missing a show due to traffic. Catch up with all the superhits at the theatres below in the MVN mall.",
+      },
+    ],
+  },
+  highlight: {
     isshow: true,
     title: "Highlight",
-    point:[
-      'Power backup for common facilities.',
-    'Italian/Imported Marble flooring.',
-    'Television points in living and bedrooms.',
-    'Telephone points in living and master bedroom.',
-    'Split AC provision in living and bedrooms.',
-    'Premium emulsion paint finish.',
-    ]
+    point: [
+      "Power backup for common facilities.",
+      "Italian/Imported Marble flooring.",
+      "Television points in living and bedrooms.",
+      "Telephone points in living and master bedroom.",
+      "Split AC provision in living and bedrooms.",
+      "Premium emulsion paint finish.",
+    ],
   },
   locationAdvantage: {
     isshow: true,
     title: "Location Advantages",
     mapIMG: {
-      desktop:locationMap,
-      mobile:locationMapSm
+      desktop: locationMap,
+      mobile: locationMapSm,
     },
     locationData: [
       {
-        distance: '0 km',
-        title: 'MVN Mall',
+        distance: "0 km",
+        title: "MVN Mall",
       },
       {
-        distance: '2.9 kms',
-        title: 'World global city',
+        distance: "2.9 kms",
+        title: "World global city",
       },
       {
-        distance: '10.5 kms',
-        title: 'Cyber City 2',
+        distance: "10.5 kms",
+        title: "Cyber City 2",
       },
       {
-        distance: '10.5 kms',
-        title: 'Gurgaon Railway station',
+        distance: "10.5 kms",
+        title: "Gurgaon Railway station",
       },
       {
-        distance: '18 kms',
-        title: 'Yasho Bhoomi',
+        distance: "18 kms",
+        title: "Yasho Bhoomi",
       },
       {
-        distance: '20 kms',
-        title: 'Diplomatic enclave 2',
+        distance: "20 kms",
+        title: "Diplomatic enclave 2",
       },
       {
-        distance: '29.7 kms',
-        title: 'IGI Airport',
+        distance: "29.7 kms",
+        title: "IGI Airport",
       },
     ],
-    second_title:'THE LOCATION AS INVITING AS ITS ALLURE',
-    desc:'Located at the prime 22km stone on Dwarka Expressway, Gurugram, MVN Aero One sits on the growth corridor at the first and only drop of the 23km elevated expressway. Strategically positioned at downtown Gurugram.'
+    second_title: "THE LOCATION AS INVITING AS ITS ALLURE",
+    desc: "Located at the prime 22km stone on Dwarka Expressway, Gurugram, MVN Aero One sits on the growth corridor at the first and only drop of the 23km elevated expressway. Strategically positioned at downtown Gurugram.",
   },
-  floorPlan:{
-      title:'Floor Plan',
-      floorPlanData : [
+  typology: {
+    data: [
         {
-          title:'Penthouse',
-          thumbnail:[
-            {
-              src:penthouse,
-              mobile:penthouse,
-            },
-          ]
+            "id": 2,
+            "project_id": 4,
+            "heading": "Penthouse 1",
+            "short_description": "Elevate your lifestyle to new heights with these extraordinary duplex residences, where two levels of unmatched luxury unfold before you. With impeccable attention to detail and a focus on privacy and exclusivity, these residences embody the pinnacle of sophisticated living, where only the most discerning will reside. 1",
+            "image": "uploads/project/elevant-galleries/1750421291427.webp",
+            "alternative_image": "uploads/project/elevant-galleries/1750421291675.png",
+            "alt": "penthouse",
+            "json": "uploads\\project\\elevant-galleries\\1748608818569.json",
+            "status": 1,
+            "created_at": "2025-05-30T12:40:18.000Z",
+            "updated_at": "2025-06-20T12:08:12.000Z"
         },
         {
-          title:'360 Panoramic Apartment (12600 sq.ft.)',
-          thumbnail:[
-            {
-              src:floor360,
-              mobile:floor360,
-            }
-          ]
+            "id": 3,
+            "project_id": 4,
+            "heading": "360 degree Panoramic Apartment",
+            "short_description": "At an impressive 12600 sq.ft., the simplex flats offer a commanding 360-degree panoramic vista, presenting a boundless world of elegance. This is where space, design, and nature converge in perfect harmony.\r\n\r\n",
+            "image": "uploads/project/elevant-galleries/1750421318801.webp",
+            "alternative_image": "uploads/project/elevant-galleries/1750421319081.png",
+            "alt": "Panoramic Apartment",
+            "json": null,
+            "status": 1,
+            "created_at": "2025-06-20T04:35:05.000Z",
+            "updated_at": "2025-06-20T12:08:40.000Z"
         },
         {
-          title:'270 Panoramic Apartment (6300 sq.ft.)',
-          thumbnail:[
-            {
-              src:floor270,
-              mobile:floor270,
-            },
-          ]
-        },
-      ]
+            "id": 4,
+            "project_id": 4,
+            "heading": "270 degree Panoramic Apartment",
+            "short_description": "Spanning an expansive 6300 sq.ft., these exquisite residences offer a captivating 270-degree panoramic view, seamlessly blending breathtaking vistas with unmatched sophistication.\r\n\r\n",
+            "image": "uploads/project/elevant-galleries/1750421332920.webp",
+            "alternative_image": "uploads/project/elevant-galleries/1750421333189.png",
+            "alt": "Panoramic Apartment",
+            "json": null,
+            "status": 1,
+            "created_at": "2025-06-20T04:35:57.000Z",
+            "updated_at": "2025-06-20T12:08:53.000Z"
+        }
+    ]
+  },
+  floorPlan: {
+    title: "Floor Plan",
+    floorPlanData: [
+      {
+        title: "Penthouse",
+        thumbnail: [
+          {
+            src: penthouse,
+            mobile: penthouse,
+          },
+        ],
+      },
+      {
+        title: "360 Panoramic Apartment (12600 sq.ft.)",
+        thumbnail: [
+          {
+            src: floor360,
+            mobile: floor360,
+          },
+        ],
+      },
+      {
+        title: "270 Panoramic Apartment (6300 sq.ft.)",
+        thumbnail: [
+          {
+            src: floor270,
+            mobile: floor270,
+          },
+        ],
+      },
+    ],
+  },
+  mvnMall: {
+    Custom_height: "Custom_height",
+    path: {
+      mobilePath: `${CONFIG.API_URL}assets/mvn-mall/mvn-mall/`,
+      desktopPath: `${CONFIG.API_URL}assets/mvn-mall/mvn-mall/`,
     },
-    mvnMall:{
-      Custom_height:"Custom_height",
-      path:{
-        mobilePath:`${CONFIG.API_URL}assets/mvn-mall/mvn-mall/`,
-        desktopPath:`${CONFIG.API_URL}assets/mvn-mall/mvn-mall/`,
-      },
-      frameCounts:{
-        mobileFrameCounts:102,
-        desktopFrameCounts:102,
-      },
-      // iframe:'https://www.youtube.com/embed/CbmkQBZuvTw?autoplay=1&loop=1&mute=1&playlist=CbmkQBZuvTw'
-    }
+    frameCounts: {
+      mobileFrameCounts: 102,
+      desktopFrameCounts: 102,
+    },
+    // iframe:'https://www.youtube.com/embed/CbmkQBZuvTw?autoplay=1&loop=1&mute=1&playlist=CbmkQBZuvTw'
+  },
 };
 
 const AeroOneGurgaon = () => {

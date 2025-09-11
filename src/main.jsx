@@ -135,6 +135,14 @@ const router = createBrowserRouter([
         ),
       },
       {
+          path: "aeroone-gurgaon1",
+          element: (
+            <FrontendRoute loaderType="aeroone-gurgaon">
+              <MicroPageGurgaon1 data={data} />
+            </FrontendRoute>
+          ),
+        },
+      {
         path: ":projectName",
         element: (
           <MicroPage />
@@ -142,14 +150,7 @@ const router = createBrowserRouter([
           // </FrontendRoute>
         ),
       },
-      // {
-      //   path: "aeroone-gurgaon",
-      //   element: (
-      //     <FrontendRoute loaderType="aeroone-gurgaon">
-      //       <MicroPageGurgaon1 data={data} />
-      //     </FrontendRoute>
-      //   ),
-      // },
+      // 
       // {
       //   path: "aeroone-bangalore",
       //   element: (
@@ -371,13 +372,16 @@ const router = createBrowserRouter([
   },
 ]);
 
-createRoot(document.getElementById("root")).render(
+// --- HMR-safe root singleton ---
+const container = document.getElementById("root");
+const root = window.__APP_ROOT__ || createRoot(container);
+window.__APP_ROOT__ = root;
+
+root.render(
   <Provider store={store}>
     <>
       <RouterProvider router={router}>
-{/* <PersistGate loading={<div></div>} persistor={persistor}>        */}
- <App />
-        {/* </PersistGate> */}
+        <App />
       </RouterProvider>
       <ToastContainer position="top-right" autoClose={3000} />
     </>

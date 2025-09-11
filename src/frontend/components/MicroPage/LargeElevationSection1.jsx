@@ -1,14 +1,7 @@
 import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
-
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CustomCard from "../Card";
 import { useMatches } from "../../../theme/theme";
-gsap.registerPlugin(ScrollTrigger);
-import * as CONFIG from "../../../config/config";
-const bgImgDesk1 = `${CONFIG.API_URL}images/aero-gurgaon/largeBg1.png`;
-const bgImgDesk1_sm = `${CONFIG.API_URL}images/aero-gurgaon/largeBg1Sm.webp`;
 
 function LargeElevation1({title="Villas in the Sky", desc="Experience elevated living with unmatched luxury above the clouds.", image}) {
   const { isMobile } = useMatches();
