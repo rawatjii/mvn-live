@@ -95,7 +95,7 @@ const Footer = () => {
                                   to={
                                     project.slug == 'aeroone-bangalore' ? 'https://www.mvnaeroone.com/' : import.meta.env.VITE_APP_FRONTEND_URL + project.slug
                                   }
-                                  target={project.slug == 'aeroone-bangalore' && '_blank'}
+                                  target={project.slug == 'aeroone-bangalore' ? '_blank' : ''}
                                 >
                                   {project.name}
                                 </NavLink>

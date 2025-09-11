@@ -241,13 +241,24 @@ export const data = {
     mb_json: null
   },
   peacock_section: {
-    second_title:
-      "EXPERIENCE THE GRANDEUR OF THE LIVING ROOM WITH 360° PANORAMIC VIEWS",
-    desc: "Step into a living room where nature’s vibrant splendor enchants, blending elegance and serenity for both relaxation and gatherings.",
-    path: {
-      mobile: `${CONFIG.JSON_URL}aeroone-gurgaon1/Peacock/data.json`,
-      desktop: peacockDesktopImg,
-    },
+    section_type: "Peacock",
+    heading: "EXPERIENCE THE GRANDEUR OF THE LIVING ROOM WITH 360° PANORAMIC VIEWS",
+    sub_heading: null,
+    is_type: null,
+    image: "uploads/project-section/1750312533516.webp",
+    alternative_image: "uploads/project-section/1750312533772.webp",
+    mb_image: null,
+    mb_alternative_image: null,
+    alt: null,
+    video: null,
+    iframe: null,
+    json: "uploads/project-section/1750312834878.json",
+    yt_url: null,
+    short_description: null,
+    description:
+      "Step into a living room where nature’s vibrant splendor enchants, blending elegance and serenity for both relaxation and gatherings.",
+    optional_images: null,
+    mb_json: null
   },
   living_room: {
     Custom_height: "Custom_height",
@@ -259,21 +270,63 @@ export const data = {
     },
   },
   party_video: {
-    second_title: "LIVE. LAUGH. LOUNGE",
-    desc: "Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambience, perfect for hosting unforgettable soirees and extravagant gatherings.",
-    path: {
-      mobile: `${CONFIG.JSON_URL}aeroone-gurgaon1/Party/Mobile/data.json`,
-      desktop: `${CONFIG.JSON_URL}aeroone-gurgaon1/Party/Desktop/data.json`,
-    },
+    section_type: "party",
+    heading: "LIVE. LAUGH. LOUNGE",
+    sub_heading: null,
+    is_type: null,
+    image: null,
+    alternative_image: null,
+    mb_image: null,
+    mb_alternative_image: null,
+    alt: null,
+    video: null,
+    iframe: null,
+    json: "uploads/project-section/1750312589925.json",
+    yt_url: null,
+    short_description: null,
+    description:
+      "Elegant chandeliers, marble floors, and floor-to-ceiling windows create a lavish ambience, perfect for hosting unforgettable soirees and extravagant gatherings.",
+    optional_images: null,
+    mb_json: "uploads/project-section/1755868324002.json"
   },
   masterBedroom: {
-    second_title: "BEDROOM Platinum",
-    desc: "Your own sphere of serenity crafted artfully for the ultimate retreat into blissful moments of privacy.",
-    path: {
-      mobile: CONFIG.API_URL + "assets/Panther/Mobile/data.json",
-      desktop: CONFIG.API_URL + "assets/Panther/Desktop/data.json",
-    },
-    showAwards: true,
+    section_type: "masterbedroom",
+    heading: "BEDROOM Platinum",
+    sub_heading: null,
+    is_type: null,
+    image: null,
+    alternative_image: null,
+    mb_image: null,
+    mb_alternative_image: null,
+    alt: null,
+    video: null,
+    iframe: null,
+    json: "uploads/project-section/1750313501677.json",
+    yt_url: null,
+    short_description: null,
+    description:
+      "Your own sphere of serenity crafted artfully for the ultimate retreat into blissful moments of privacy.",
+    optional_images: null,
+    mb_json: "uploads/project-section/1750313504197.json"
+  },
+  architect:{
+    heading: "About Architect ",
+    sub_heading: null,
+    is_type: null,
+    image: "uploads\\project-section\\1748326596038.webp",
+    alternative_image: "uploads\\project-section\\1748326596041.jpg",
+    mb_image: "uploads\\project-section\\1748326596038.webp",
+    mb_alternative_image: "uploads\\project-section\\1748326596041.jpg",
+    alt: "mvn hafeez image",
+    video: null,
+    iframe: null,
+    json: null,
+    yt_url: null,
+    short_description: null,
+    description:
+      "MVN Aero One Residence  is designed by one of the most celebrated architects in the world. Renowned for their innovative and iconic designs, this architecture company has crafted some of the world's most celebrated malls, blending aesthetic brilliance with functional excellence to create unparalleled shopping destinations globally.",
+    optional_images: "uploads\\project-section\\1748326596044.webp",
+    mb_json: null
   },
   landscape: {
     title: "Landscape",
@@ -397,43 +450,25 @@ export const data = {
     imageClassName: "apartment-section-img",
   },
   construction_technology: {
-    videoUrl: constructionTechnologyVideo,
+    section_type: "construction",
+    heading: "Construction Technology",
+    sub_heading: "Forging Future Foundations with Precision and Speed",
+    is_type: null,
+    image: null,
+    alternative_image: null,
+    mb_image: null,
+    mb_alternative_image: null,
+    alt: null,
+    video: "uploads\\project-section\\1748338194006.mp4",
+    iframe: null,
+    json: null,
+    yt_url: null,
+    short_description: "Features Of Aluminum Formwork",
+    description:
+      "In the fast-evolving world of construction, efficiency, durability, and adaptability are paramount. Aluminum Formwork emerges as a groundbreaking system, reshaping how residential and mass housing projects are constructed. This advanced technique, crafted from robust and lightweight aluminum components, offers unparalleled precision, rapid execution, and exceptional sustainability.",
+    optional_images: null,
+    mb_json: null
   },
-  highlights: [
-    "Power backup for common facilities.",
-    "Italian/Imported Marble flooring.",
-    "Television points in living room and bedrooms.",
-    "Telephone points in living room and master bedroom.",
-    "Split AC provision in living room and bedrooms.",
-    "Premium emulsion paint finish.",
-  ],
-  
-  // LargeElevationSection: {
-  //   title: "an epitome of contemporary elegance",
-  //   isAllow: true,
-  // },
-  // renders: [
-  //   {
-  //     src: CONFIG.IMAGE_URL + 'renders/1_desktop.webp',
-  //     mobile_thumb: CONFIG.IMAGE_URL + 'renders/1_mobile.webp',
-  //   },
-  //   {
-  //     src: CONFIG.IMAGE_URL + 'renders/2_desktop.webp',
-  //     mobile_thumb: CONFIG.IMAGE_URL + 'renders/2_mobile.webp',
-  //   },
-  //   {
-  //     src: CONFIG.IMAGE_URL + 'renders/3_desktop.webp',
-  //     mobile_thumb: CONFIG.IMAGE_URL + 'renders/3_mobile.webp',
-  //   },
-  //   {
-  //     src: CONFIG.IMAGE_URL + 'renders/4_desktop.webp',
-  //     mobile_thumb: CONFIG.IMAGE_URL + 'renders/4_mobile.webp',
-  //   },
-  //   {
-  //     src: CONFIG.IMAGE_URL + 'renders/5_desktop.webp',
-  //     mobile_thumb: CONFIG.IMAGE_URL + 'renders/5_mobile.webp',
-  //   }
-  // ],
   renders: [
     {
       title: "Apartment",
@@ -517,92 +552,168 @@ export const data = {
     },
   ],
   amenities: {
-    title: "Amenities",
+    section_type: "amenities",
+    heading: "Amenities",
     data: [
       {
-        name: "Elevate Your Family Time At The Exclusive Clubhouse",
-        path: {
-          desktop: clubhouse,
-          mobile: clubhouseSm,
-        },
-        desc: "The ultra-luxury clubhouse offers residents an opulent retreat, featuring state-of-the-art amenities, a lavish spa, infinity pools, gourmet dining, private lounges, and exquisite interiors for unparalleled leisure and comfort for the whole family.",
+        id: 8,
+        project_id: 4,
+        is_type: "amenities",
+        heading: "Elevate Your Family Time At The Exclusive Clubhouse",
+        short_description:
+          "The ultra-luxury clubhouse offers residents an opulent retreat, featuring state-of-the-art amenities, a lavish spa, infinity pools, gourmet dining, private lounges, and exquisite interiors for unparalleled leisure and comfort for the whole family.",
+        image: "uploads/project/amenities/1749896385657.webp",
+        alternative_image: "uploads/project/amenities/1749896386797.webp",
+        mb_image: "uploads/project/amenities/1750397318412.webp",
+        mb_alternative_image: "uploads/project/amenities/1750397318413.jpg",
+        alt: "Elevate Your Family Time At The Exclusive Clubhouse",
+        status: 1,
+        created_at: "2025-06-13T12:07:36.000Z",
+        updated_at: "2025-06-20T05:28:38.000Z"
       },
       {
-        name: "Business Centre",
-        path: {
-          desktop: business,
-          mobile: businessSm,
-        },
-        desc: "A sophisticated workspace designed for productivity and collaboration",
+        id: 9,
+        project_id: 4,
+        is_type: "amenities",
+        heading: "Business Centre",
+        short_description:
+          "A sophisticated workspace designed for productivity and collaboration\r\n",
+        image: "uploads/project/amenities/1749896331226.webp",
+        alternative_image: "uploads/project/amenities/1749896331489.webp",
+        mb_image: "uploads/project/amenities/1750397345158.webp",
+        mb_alternative_image: "uploads/project/amenities/1750397345411.jpg",
+        alt: "Business Centre",
+        status: 1,
+        created_at: "2025-06-13T12:08:54.000Z",
+        updated_at: "2025-06-20T05:29:06.000Z"
       },
       {
-        name: "Library",
-        path: {
-          desktop: library,
-          mobile: librarySm,
-        },
-        desc: "A tranquil haven for literary exploration and quiet contemplation",
+        id: 10,
+        project_id: 4,
+        is_type: "amenities",
+        heading: "Library",
+        short_description:
+          "A tranquil haven for literary exploration and quiet contemplation",
+        image: "uploads/project/amenities/1749896405777.webp",
+        alternative_image: "uploads/project/amenities/1749896406041.webp",
+        mb_image: "uploads/project/amenities/1750397373205.webp",
+        mb_alternative_image: "uploads/project/amenities/1750397373205.jpg",
+        alt: "Library",
+        status: 1,
+        created_at: "2025-06-13T12:11:24.000Z",
+        updated_at: "2025-06-20T05:29:33.000Z"
       },
       {
-        name: "Sports Lounge",
-        path: {
-          desktop: lounge,
-          mobile: loungeSm,
-        },
-        desc: "An upscale space to unwind and enjoy sports events",
+        id: 11,
+        project_id: 4,
+        is_type: "amenities",
+        heading: "Sports Lounge",
+        short_description: "An upscale space to unwind and enjoy sports events",
+        image: "uploads/project/amenities/1749896444705.webp",
+        alternative_image: "uploads/project/amenities/1749896444954.webp",
+        mb_image: "uploads/project/amenities/1750397390736.webp",
+        mb_alternative_image: "uploads/project/amenities/1750397390736.jpg",
+        alt: "Sports Lounge",
+        status: 1,
+        created_at: "2025-06-13T12:11:48.000Z",
+        updated_at: "2025-06-20T05:29:51.000Z"
       },
       {
-        name: `Kids' Play Area`,
-        path: {
-          desktop: kids,
-          mobile: kidsSm,
-        },
-        desc: "A safe and imaginative space for children to explore",
+        id: 12,
+        project_id: 4,
+        is_type: "amenities",
+        heading: "Kids' Play Area",
+        short_description: "A safe and imaginative space for children to explore",
+        image: "uploads/project/amenities/1749816734854.webp",
+        alternative_image: "uploads/project/amenities/1749816734873.webp",
+        mb_image: "uploads/project/amenities/1750397412124.webp",
+        mb_alternative_image: "uploads/project/amenities/1750397412124.jpg",
+        alt: "Kids' Play Area",
+        status: 1,
+        created_at: "2025-06-13T12:12:15.000Z",
+        updated_at: "2025-06-20T05:30:12.000Z"
       },
       {
-        name: "Fitness Centre",
-        path: {
-          desktop: gym,
-          mobile: gymSm,
-        },
-        desc: "State-of-the-art fitness facilities for ultimate wellness",
+        id: 13,
+        project_id: 4,
+        is_type: "amenities",
+        heading: "Fitness Centre",
+        short_description:
+          "State-of-the-art fitness facilities for ultimate wellness",
+        image: "uploads/project/amenities/1749896493238.webp",
+        alternative_image: "uploads/project/amenities/1749896493486.webp",
+        mb_image: "uploads/project/amenities/1750397426699.webp",
+        mb_alternative_image: "uploads/project/amenities/1750397426699.jpg",
+        alt: "Fitness Centre",
+        status: 1,
+        created_at: "2025-06-13T12:13:09.000Z",
+        updated_at: "2025-06-20T05:30:27.000Z"
       },
       {
-        name: "Spa",
-        path: {
-          desktop: spa,
-          mobile: spaSm,
-        },
-        desc: "A luxurious retreat offering rejuvenation and tranquility",
+        id: 14,
+        project_id: 4,
+        is_type: "amenities",
+        heading: "Spa",
+        short_description:
+          "A luxurious retreat offering rejuvenation and tranquility",
+        image: "uploads/project/amenities/1749896519799.webp",
+        alternative_image: "uploads/project/amenities/1749896519800.webp",
+        mb_image: "uploads/project/amenities/1750397440584.webp",
+        mb_alternative_image: "uploads/project/amenities/1750397440584.jpg",
+        alt: "Spa",
+        status: 1,
+        created_at: "2025-06-13T12:13:34.000Z",
+        updated_at: "2025-06-20T05:30:40.000Z"
       },
       {
-        name: `Mini Theatre`,
-        path: {
-          desktop: theater,
-          mobile: theaterSm,
-        },
-        desc: "Intimate screenings for cinematic experiences with friends",
+        id: 15,
+        project_id: 4,
+        is_type: "amenities",
+        heading: "Mini Theatre",
+        short_description:
+          "Intimate screenings for cinematic experiences with friends",
+        image: "uploads/project/amenities/1749896558435.webp",
+        alternative_image: "uploads/project/amenities/1749896558692.webp",
+        mb_image: "uploads/project/amenities/1750397454584.webp",
+        mb_alternative_image: "uploads/project/amenities/1750397454584.jpg",
+        alt: "Mini Theatre",
+        status: 1,
+        created_at: "2025-06-13T12:13:53.000Z",
+        updated_at: "2025-06-20T05:30:54.000Z"
       },
       {
-        name: `Central Green`,
-        path: {
-          desktop: centralGreen,
-          mobile: centralGreenSm,
-        },
-        desc: [
-          "An oasis of clean air and pure living. ",
-          "Advanced air purification systems create pollution-free zones, ensuring residents breathe clean, fresh air, promoting healthier living and well-being.",
-        ],
+        id: 16,
+        project_id: 4,
+        is_type: "amenities",
+        heading: "Central Green",
+        short_description:
+          "An oasis of clean air and pure living. Advanced air purification systems create pollution-free zones, ensuring residents breathe clean, fresh air, promoting healthier living and well-being.",
+        image: "uploads/project/amenities/1749896597515.webp",
+        alternative_image: "uploads/project/amenities/1749896598607.webp",
+        mb_image: "uploads/project/amenities/1750397469207.webp",
+        mb_alternative_image: "uploads/project/amenities/1750397469210.jpg",
+        alt: "Central Green",
+        status: 1,
+        created_at: "2025-06-13T12:14:24.000Z",
+        updated_at: "2025-06-20T05:31:09.000Z"
       },
       {
-        name: "Exclusive entrance and exit for the residents",
-        path: {
-          desktop: entryexit,
-          mobile: entryexitSm,
-        },
-        desc: "Experience unparalleled privacy and convenience with exclusive entry and exit points designed for residents of MVN, ensuring seamless access and an elite living experience.",
-      },
-    ],
+        id: 17,
+        project_id: 4,
+        is_type: "amenities",
+        heading: "Exclusive entrance and exit for the residents",
+        short_description:
+          "Experience unparalleled privacy and convenience with exclusive entry and exit points designed for residents of MVN, ensuring seamless access and an elite living experience.",
+        image: "uploads/project/amenities/1749896632456.webp",
+        alternative_image: "uploads/project/amenities/1749896632456.webp",
+        mb_image: "uploads/project/amenities/1750397483663.webp",
+        mb_alternative_image: "uploads/project/amenities/1750397483663.jpg",
+        alt: "Exclusive entrance and exit for the residents",
+        status: 1,
+        created_at: "2025-06-13T12:14:52.000Z",
+        updated_at: "2025-06-20T05:31:23.000Z"
+      }
+    ]
     //  iframe:'https://www.youtube.com/embed/BqcxVd21m6Y?autoplay=1&loop=1&mute=1&playlist=BqcxVd21m6Y'
   },
   noPollutionZone: {
@@ -662,132 +773,217 @@ export const data = {
       "Premium emulsion paint finish.",
     ],
   },
-  locationAdvantage: {
-    isshow: true,
-    title: "Location Advantages",
-    mapIMG: {
-      desktop: locationMap,
-      mobile: locationMapSm,
-    },
-    locationData: [
-      {
-        distance: "0 km",
-        title: "MVN Mall",
-      },
-      {
-        distance: "2.9 kms",
-        title: "World global city",
-      },
-      {
-        distance: "10.5 kms",
-        title: "Cyber City 2",
-      },
-      {
-        distance: "10.5 kms",
-        title: "Gurgaon Railway station",
-      },
-      {
-        distance: "18 kms",
-        title: "Yasho Bhoomi",
-      },
-      {
-        distance: "20 kms",
-        title: "Diplomatic enclave 2",
-      },
-      {
-        distance: "29.7 kms",
-        title: "IGI Airport",
-      },
-    ],
-    second_title: "THE LOCATION AS INVITING AS ITS ALLURE",
-    desc: "Located at the prime 22km stone on Dwarka Expressway, Gurugram, MVN Aero One sits on the growth corridor at the first and only drop of the 23km elevated expressway. Strategically positioned at downtown Gurugram.",
-  },
   typology: {
+    project_id: 4,
+    section_type: "typologies",
+    heading: "Typologies",
+    sub_heading: null,
+    is_type: null,
+    image: null,
+    alternative_image: null,
+    mb_image: null,
+    mb_alternative_image: null,
+    alt: null,
+    video: null,
+    iframe: null,
+    json: "uploads/project-section/1750309185695.json",
+    yt_url: null,
+    short_description: null,
+    description: null,
+    optional_images: null,
+    mb_json: null,
     data: [
-        {
-            "id": 2,
-            "project_id": 4,
-            "heading": "Penthouse 1",
-            "short_description": "Elevate your lifestyle to new heights with these extraordinary duplex residences, where two levels of unmatched luxury unfold before you. With impeccable attention to detail and a focus on privacy and exclusivity, these residences embody the pinnacle of sophisticated living, where only the most discerning will reside. 1",
-            "image": "uploads/project/elevant-galleries/1750421291427.webp",
-            "alternative_image": "uploads/project/elevant-galleries/1750421291675.png",
-            "alt": "penthouse",
-            "json": "uploads\\project\\elevant-galleries\\1748608818569.json",
-            "status": 1,
-            "created_at": "2025-05-30T12:40:18.000Z",
-            "updated_at": "2025-06-20T12:08:12.000Z"
-        },
-        {
-            "id": 3,
-            "project_id": 4,
-            "heading": "360 degree Panoramic Apartment",
-            "short_description": "At an impressive 12600 sq.ft., the simplex flats offer a commanding 360-degree panoramic vista, presenting a boundless world of elegance. This is where space, design, and nature converge in perfect harmony.\r\n\r\n",
-            "image": "uploads/project/elevant-galleries/1750421318801.webp",
-            "alternative_image": "uploads/project/elevant-galleries/1750421319081.png",
-            "alt": "Panoramic Apartment",
-            "json": null,
-            "status": 1,
-            "created_at": "2025-06-20T04:35:05.000Z",
-            "updated_at": "2025-06-20T12:08:40.000Z"
-        },
-        {
-            "id": 4,
-            "project_id": 4,
-            "heading": "270 degree Panoramic Apartment",
-            "short_description": "Spanning an expansive 6300 sq.ft., these exquisite residences offer a captivating 270-degree panoramic view, seamlessly blending breathtaking vistas with unmatched sophistication.\r\n\r\n",
-            "image": "uploads/project/elevant-galleries/1750421332920.webp",
-            "alternative_image": "uploads/project/elevant-galleries/1750421333189.png",
-            "alt": "Panoramic Apartment",
-            "json": null,
-            "status": 1,
-            "created_at": "2025-06-20T04:35:57.000Z",
-            "updated_at": "2025-06-20T12:08:53.000Z"
-        }
+      {
+        id: 2,
+        project_id: 4,
+        heading: "Penthouse 1",
+        short_description:
+          "Elevate your lifestyle to new heights with these extraordinary duplex residences, where two levels of unmatched luxury unfold before you. With impeccable attention to detail and a focus on privacy and exclusivity, these residences embody the pinnacle of sophisticated living, where only the most discerning will reside. 1",
+        image: "uploads/project/elevant-galleries/1750421291427.webp",
+        alternative_image: "uploads/project/elevant-galleries/1750421291675.png",
+        alt: "penthouse",
+        json: "uploads\\project\\elevant-galleries\\1748608818569.json",
+        status: 1,
+        created_at: "2025-05-30T12:40:18.000Z",
+        updated_at: "2025-06-20T12:08:12.000Z"
+      },
+      {
+        id: 3,
+        project_id: 4,
+        heading: "360 degree Panoramic Apartment",
+        short_description:
+          "At an impressive 12600 sq.ft., the simplex flats offer a commanding 360-degree panoramic vista, presenting a boundless world of elegance. This is where space, design, and nature converge in perfect harmony.",
+        image: "uploads/project/elevant-galleries/1750421318801.webp",
+        alternative_image: "uploads/project/elevant-galleries/1750421319081.png",
+        alt: "Panoramic Apartment",
+        json: null,
+        status: 1,
+        created_at: "2025-06-20T04:35:05.000Z",
+        updated_at: "2025-06-20T12:08:40.000Z"
+      },
+      {
+        id: 4,
+        project_id: 4,
+        heading: "270 degree Panoramic Apartment",
+        short_description:
+          "Spanning an expansive 6300 sq.ft., these exquisite residences offer a captivating 270-degree panoramic view, seamlessly blending breathtaking vistas with unmatched sophistication.",
+        image: "uploads/project/elevant-galleries/1750421332920.webp",
+        alternative_image: "uploads/project/elevant-galleries/1750421333189.png",
+        alt: "Panoramic Apartment",
+        json: null,
+        status: 1,
+        created_at: "2025-06-20T04:35:57.000Z",
+        updated_at: "2025-06-20T12:08:53.000Z"
+      }
     ]
   },
   floorPlan: {
-    title: "Floor Plan",
-    floorPlanData: [
+    section_type: "floor-plan",
+    heading: "Floor Plan",
+    sub_heading: null,
+    is_type: "video",
+    image: null,
+    alternative_image: null,
+    mb_image: null,
+    mb_alternative_image: null,
+    alt: null,
+    video: null,
+    iframe: null,
+    json: null,
+    yt_url: null,
+    short_description: null,
+    description: null,
+    optional_images: null,
+    mb_json: null,
+    data: [
       {
-        title: "Penthouse",
-        thumbnail: [
-          {
-            src: penthouse,
-            mobile: penthouse,
-          },
-        ],
+        id: 3,
+        project_id: 4,
+        unit_type: "TOWER C",
+        heading: "Penthouse",
+        area: null,
+        sizes: "",
+        image: "uploads/project/floorplan/1750854251747.webp",
+        alternative_image: "uploads/project/floorplan/1750854252015.jpg",
+        alt: "Penthouse Plan",
+        status: 1,
+        created_at: "2025-05-27T12:34:57.000Z",
+        updated_at: "2025-06-25T12:24:12.000Z"
       },
       {
-        title: "360 Panoramic Apartment (12600 sq.ft.)",
-        thumbnail: [
-          {
-            src: floor360,
-            mobile: floor360,
-          },
-        ],
+        id: 15,
+        project_id: 4,
+        unit_type: "0",
+        heading: "360 Panoramic Apartment (12600 sq.ft.)",
+        area: "0",
+        sizes: "0",
+        image: "uploads/project/floorplan/1750258823790.webp",
+        alternative_image: "uploads/project/floorplan/1750258823791.jpg",
+        alt: "mvn floor plan image",
+        status: 1,
+        created_at: "2025-06-18T15:00:24.000Z",
+        updated_at: null
       },
       {
-        title: "270 Panoramic Apartment (6300 sq.ft.)",
-        thumbnail: [
-          {
-            src: floor270,
-            mobile: floor270,
-          },
-        ],
-      },
-    ],
+        id: 16,
+        project_id: 4,
+        unit_type: "0",
+        heading: "270 Panoramic Apartment (6300 sq.ft.)",
+        area: "0",
+        sizes: "0",
+        image: "uploads/project/floorplan/1750258903301.webp",
+        alternative_image: "uploads/project/floorplan/1750258903302.jpg",
+        alt: "mvn floor plan image",
+        status: 1,
+        created_at: "2025-06-18T15:01:43.000Z",
+        updated_at: null
+      }
+    ]
+  },
+  locationAdvantage: {
+    project_id: 4,
+    section_type: "location-map",
+    heading: "Location Map",
+    sub_heading: "THE LOCATION AS INVITING AS ITS ALLURE",
+    is_type: null,
+    image: "uploads/project-section/1752737290084.webp",
+    alternative_image: "uploads/project-section/1752737290352.jpg",
+    mb_image: "uploads/project-section/1752737290084.webp",
+    mb_alternative_image: "uploads/project-section/1752737290352.jpg",
+    alt: "location map image",
+    video: null,
+    iframe: null,
+    json: null,
+    yt_url: null,
+    short_description: null,
+    description:
+      "Located at the prime 22km stone on Dwarka Expressway, Gurugram, MVN Aero One Residence sits on the growth corridor at the first and only drop of the 23km elevated expressway. Strategically positioned at downtown Gurugram.",
+    optional_images: null,
+    mb_json: null
   },
   mvnMall: {
-    Custom_height: "Custom_height",
-    path: {
-      mobilePath: `${CONFIG.API_URL}assets/mvn-mall/mvn-mall/`,
-      desktopPath: `${CONFIG.API_URL}assets/mvn-mall/mvn-mall/`,
-    },
-    frameCounts: {
-      mobileFrameCounts: 102,
-      desktopFrameCounts: 102,
-    },
-    // iframe:'https://www.youtube.com/embed/CbmkQBZuvTw?autoplay=1&loop=1&mute=1&playlist=CbmkQBZuvTw'
+    section_type: "mvn-mall",
+    heading: "MVN Mall",
+    sub_heading: null,
+    is_type: null,
+    image: null,
+    alternative_image: null,
+    mb_image: null,
+    mb_alternative_image: null,
+    alt: null,
+    video: null,
+    iframe: null,
+    json: null,
+    yt_url: null,
+    short_description: null,
+    description:
+      "Experience a pollution-free haven at MVN's iconic masterpiece, where every breath you take is purified by advanced air filtration systems. Nestled above MVN mall, everything you need—from gourmet dining to designer boutiques and private cinemas—is just an elevator ride away. This is a sanctuary where luxury and convenience come together, offering you everything at your doorstep, so you never need to leave.",
+    optional_images: null,
+    mb_json: null,
+    data: [
+      {
+        id: 4,
+        project_id: 4,
+        is_type: "mall_galleries",
+        sm_image: "uploads\\project\\elevant-galleries\\1748697415527.jpg",
+        image: "uploads\\project\\elevant-galleries\\1748697415520.webp",
+        sm_alternative_image: "uploads\\project\\elevant-galleries\\1748697415525.webp",
+        alternative_image: "uploads\\project\\elevant-galleries\\1748697415522.jpg",
+        alt: "mvn mall icon ",
+        status: 1,
+        seq: 1,
+        created_at: "2025-05-31T13:16:55.000Z",
+        updated_at: "2025-06-14T06:18:10.000Z"
+      },
+      {
+        id: 5,
+        project_id: 4,
+        is_type: "mall_galleries",
+        sm_image: "uploads/project/elevant-galleries/1749881819448.webp",
+        image: "uploads/project/elevant-galleries/1749881818404.webp",
+        sm_alternative_image: "uploads/project/elevant-galleries/1749881819185.webp",
+        alternative_image: "uploads/project/elevant-galleries/1749881818940.webp",
+        alt: "mvn mall animation",
+        status: 1,
+        seq: 1,
+        created_at: "2025-06-14T06:16:59.000Z",
+        updated_at: null
+      },
+      {
+        id: 6,
+        project_id: 4,
+        is_type: "mall_galleries",
+        sm_image: "uploads/project/elevant-galleries/1749882123759.webp",
+        image: "uploads/project/elevant-galleries/1749882122719.webp",
+        sm_alternative_image: "uploads/project/elevant-galleries/1749882123754.webp",
+        alternative_image: "uploads/project/elevant-galleries/1749882123494.webp",
+        alt: "mvn mall animation 1",
+        status: 1,
+        seq: 1,
+        created_at: "2025-06-14T06:22:04.000Z",
+        updated_at: null
+      }
+    ]
   },
 };
 

@@ -19,6 +19,9 @@ import MicroHeaderStatic from "../components/MicroHeadeStatic";
 import Walkthrough from "../components/MicroPage/Walkthrough";
 import LargeElevationSection from "../components/MicroPage/LargeElevationSection";
 import YtIframe from "../components/MicroPage/YtIframe";
+import { API_URL, JSON_URL } from "../../config/config";
+import ImagesGallery from "../components/MicroPage/ImagesGallery";
+const ContactInfo = React.lazy(()=>import("../components/ContactInfo")) ;
 
 const MicroOverview = React.lazy(() =>
   import("../components/MicroPage/Overview")
@@ -137,118 +140,93 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
           <div>
             <Suspense fallback="">
               <DownloadBrochure
-                is360Available={false}
-                show360Video={show360Video}
-                showAwards={true}
+                showAwards={API_URL+'assets/aeroone/awards.webp'}
+                name={"MVN Aero One Residence "}
               />
             </Suspense>
           </div>
 
-          {/* <Suspense fallback="">
-          {is360Show ? (
-            <View360
-              data={data.view360}
-              onLoadComplete={() => ScrollTrigger.refresh()}
-              isMobile={isMobile}
-            />
-          ) : null}
-          </Suspense>
-          
+          <div id="dgm_sales">  
+            <Suspense fallback={<p></p>}>
+              <ContactInfo white={true} />
+            </Suspense>
+          </div>
 
-          <div ref={(el) => (sectionRefs.current.LIVINGROOM = el)}>
-            <Suspense fallback="">
+          <div id="peacock">
+            <Suspense fallback={<p></p>}>
+              <PeacockSection data={data.peacock_section} />
+            </Suspense>
+          </div>
+
+          <div  id="party">
+            <Suspense fallback={<p></p>}>
               <PeacockSection
-                data={data.peacock_section}
-                onLoadComplete={() => setPeacockLoaded(true)}
-                isMobile={isMobile}
+                data={data.party_video}
+                watermarkClass="style5"
+                desktop_img="assets/images/aeroone/party/desktop.webp"
+                mobile_img="assets/images/aeroone/party/mobile.webp"
               />
             </Suspense>
           </div>
 
-          <Suspense fallback="">
-            <div>
-              <PartyVideo
-                data={data.party_video}
-                onLoadComplete={() => setPartyLoaded(true)}
-                isMobile={isMobile}
-              />
-            </div>
+          <div id="master_bedroom">
+          <Suspense fallback={<p></p>}>
+            <PeacockSection
+              data={data.masterBedroom}
+              watermarkClass="style5"
+              desktop_img="assets/images/aeroone/bedroom/desktop.webp"
+              mobile_img="assets/images/aeroone/bedroom/mobile.webp"
+            />
           </Suspense>
+        </div>
 
-          <Suspense fallback="">
-            <div>
-              <MasterBedroom
-                data={data.masterBedroom}
-                onLoadComplete={() => setMasterBedroomLoaded(true)}
-                isMobile={isMobile}
-                showAwards={true}
-              />
-            </div>
-          </Suspense>
-
-          <Suspense fallback="">
-            <div ref={(el) => (sectionRefs.current.consultant = el)}>
-              <Consultant data={data.consultant} />
-            </div>
-          </Suspense>
-
-          <Suspense fallback="">
-            <div ref={(el) => (sectionRefs.current.MicroLandscape = el)}>
-              <ImageGallery data={data.landscape} />
-            </div>
-          </Suspense>
-
-          <Suspense fallback="">
-            <div ref={(el) => (sectionRefs.current.MicroElevation = el)}>
-              <ImageGallery data={data.microElevation} />
-            </div>
-          </Suspense>
-
-          <Suspense fallback="">
-            <div ref={(el) => (sectionRefs.current.MicroApartment = el)}>
-              <ImageGallery data={data.microApartment} />
-            </div>
-          </Suspense>
-
-          <Suspense fallback="">
-            <div
-              ref={(el) => (sectionRefs.current.constructionTechnology = el)}
-            >
-              <ConstructionTechnology data={data.construction_technology} />
-            </div>
-          </Suspense>
-
-          <div ref={(el) => (sectionRefs.current.MicroAmenities = el)}>
-            <ParallaxSection section_data={data.amenities} />
+          <div id="about_architect">
+            <Suspense fallback={<p></p>}>
+              <Consultant data={data.architect} />
+            </Suspense>
           </div>
 
+            <div >
           <Suspense fallback="">
-            <div ref={(el) => (sectionRefs.current.MicroTypology = el)}>
-              <Typology onLoadComplete={() => setTypologyLoaded(true)} data={data.typology} />
-            </div>
+              <ImageGallery data={data.landscape} />
           </Suspense>
+            </div>
 
+            <div>
           <Suspense fallback="">
-            <div ref={(el) => (sectionRefs.current.MicroFloorPlan = el)}>
+              <ConstructionTechnology data={data.construction_technology} />
+          </Suspense>
+            </div>
+
+          <div id="amenities">
+          <Suspense fallback="">
+            <ParallaxSection section_data={data.amenities} />
+            </Suspense>
+          </div>
+
+            <div>
+          <Suspense fallback="">
+              <Typology data={data.typology} />
+          </Suspense>
+            </div>
+
+            <div >
+           <Suspense fallback="">
               <MicroFloorPlan data={data.floorPlan} />
-            </div>
           </Suspense>
+            </div>
 
+            <div>
           <Suspense fallback="">
-            <div ref={(el) => (sectionRefs.current.MicroLocationMap = el)}>
               <MicroLocationMap data={data.locationAdvantage} projectName="aeroone-gurgaon"  />
-            </div>
           </Suspense>
+            </div>
 
           <Suspense fallback="">
             <div ref={(el) => (sectionRefs.current.MVNMALL = el)}>
               <MvnMall data={data.mvnMall} />
             </div>
           </Suspense>
-
-          <div ref={(el) => (sectionRefs.current.NoPolutionZone = el)}>
-            <ParallaxSection section_data={data.noPollutionZone} />
-          </div>
 
           <div
             className="container-fluid micro_footer"
@@ -270,7 +248,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
           <Suspense fallback="">
             <Footer />
-          </Suspense> */}
+          </Suspense>
 
       {/* <ScrollTop /> */}
     </>

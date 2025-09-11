@@ -34,7 +34,7 @@ const DownloadBrochure = React.memo(
           {showAwards ? (
             <div className="awards">
               <img
-                src={`${BACKEND_IMAGE_URL+showAwards}`}
+                src={`${showAwards}`}
                 alt="awards icon"
                 height={"150"}
                 className="mb-5"

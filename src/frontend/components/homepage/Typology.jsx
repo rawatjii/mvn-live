@@ -20,7 +20,9 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
   const [totalFrames, setTotalFrames] = useState(0);
   const [isLaptop, setIsLaptop] = useState(window.innerWidth <= 1400); // Dynamic resize handling
 
-  const { data: typologyData, loading: typologyLoading } = useFetchData(`project/${data.project_id}/typologies`, {enabled:!data});
+  // const { data: typologyData, loading: typologyLoading } = useFetchData(`project/${data.project_id}/typologies`, {enabled:!data});
+
+  const typologyData = data.data
 
   const finalTypologyData = data ?? typologyData;
   const finalLoading = data ? false : typologyLoading;
