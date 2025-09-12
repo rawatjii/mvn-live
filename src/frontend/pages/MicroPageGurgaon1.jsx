@@ -55,6 +55,11 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
   const sectionRefs = useRef({});
   const { isMobile } = useMatches();
 
+  
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page when the component is mounted
+  }, []);
+
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
   const scrollToSection = (sectionKey) => {
     console.log(sectionKey);

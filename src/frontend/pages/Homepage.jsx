@@ -20,6 +20,10 @@ const Homepage = () => {
   const [isShowModal, setIsShowModal] = useState(false);
   const [isOffer, setIsOffer] = useState(false);
 
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page when the component is mounted
+  }, []);
+
   const isHideModal = () => {
     setIsShowModal(false);
     setIsOffer(false);

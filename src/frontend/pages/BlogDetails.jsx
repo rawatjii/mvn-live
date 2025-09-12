@@ -23,6 +23,10 @@ function BlogDetails() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page when the component is mounted
+  }, []);
+
   const queryParams = new URLSearchParams(location.search);
 
   const breadcrumbs = {

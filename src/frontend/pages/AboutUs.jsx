@@ -16,11 +16,15 @@ import { API_URL } from "../../config/config";
 import { Helmet } from "react-helmet";
 
 const AboutUs = () => {
-  window.scrollTo(0, 0);
 
   const [microBg, setMicroBg] = useState(
     `${API_URL}images/about/about-head-bg-desktop.webp`
   );
+
+  
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page when the component is mounted
+  }, []);
 
   const breadcrumbs = {
     title: "About Us",

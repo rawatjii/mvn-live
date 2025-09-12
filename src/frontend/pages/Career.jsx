@@ -16,6 +16,10 @@ function Career() {
     Number(localStorage.getItem("count"))
   );
 
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page when the component is mounted
+  }, []);
+
   const { data: metaData } = useFetchData(`get-page-meta/6`);
 
   const breadcrumbs = {

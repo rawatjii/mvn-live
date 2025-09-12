@@ -33,6 +33,11 @@ const MicroPageGurgaonPhase3 = ({ data, loadingCount, setLoadingCount }) => {
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
   const bannerRef = useRef(null);
 
+  
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page when the component is mounted
+  }, []);
+
   const scrollToSection = (sectionKey) => {
     const target = sectionRefs.current[sectionKey];
   };

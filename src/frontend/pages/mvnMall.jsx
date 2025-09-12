@@ -20,6 +20,10 @@ const MvnMall1 = ({ data }) => {
 
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
   const bannerRef = useRef(null);
+  
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page when the component is mounted
+  }, []);
 
 const scrollToSection = (sectionKey) => {
   const section = document.getElementById(sectionKey);
