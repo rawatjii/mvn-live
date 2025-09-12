@@ -58,9 +58,8 @@ const MicroPageGurgaonPhase2 = ({ data, loadingCount, setLoadingCount }) => {
             />
           </div>
 
-          {/*<div ref={(el) => (sectionRefs.current.microOverview = el)}>
+          <div ref={(el) => (sectionRefs.current.microOverview = el)}>
             <MicroOverview data={data.overview} heroLoadedStatus={heroLoaded} />{" "}
-            /~no isssue~/
           </div>
           <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
             <DownloadBrochure
@@ -68,10 +67,7 @@ const MicroPageGurgaonPhase2 = ({ data, loadingCount, setLoadingCount }) => {
               projectName="MVN Athens Gurgaon PH-2"
             />
           </div>
-          <div ref={(el) => (sectionRefs.current.gallery = el)}>
-            <ImagesGallery data={data.gallery} />
-          </div>
-          <div ref={(el) => (sectionRefs.current.features = el)}>
+           <div ref={(el) => (sectionRefs.current.features = el)}>
             <Suspense>
               <FeatureSection data={data.features} />
             </Suspense>
@@ -92,7 +88,7 @@ const MicroPageGurgaonPhase2 = ({ data, loadingCount, setLoadingCount }) => {
 
           <div ref={(el) => (sectionRefs.current.MicroLocationMap = el)}>
             <MicroLocationMap data={data.locationAdvantage} />
-          </div>*/}
+          </div>
 
           <div
             className="container-fluid micro_footer"
