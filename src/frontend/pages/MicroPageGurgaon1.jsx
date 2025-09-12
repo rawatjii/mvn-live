@@ -35,6 +35,7 @@ import MicroLocationMapAeroone from "../components/MicroPage/LocationMapAeroone"
 import MvnMallAeroone from "../components/MicroPage/MvnMallAeroone";
 import Enquire from "../components/homepage/Enquire";
 import EnquireForm from "../components/homepage/EnquireForm";
+import MetaComponents from "../components/MetaComponents";
 
 const MicroOverview = React.lazy(() =>
   import("../components/MicroPage/Overview")
@@ -66,6 +67,8 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
   return (
     <>
+    <MetaComponents/>
+    
       <MicroHeaderStatic
         scrollToSection={scrollToSection}
         data={data.header}

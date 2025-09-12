@@ -1,11 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
-
 import Watermark from "../../../common/watermark/Index";
 import { useMatches } from "../../../theme/theme";
-import { API_URL, BACKEND_IMAGE_URL } from "../../../config/config";
-import useFetchData from "../../utils/apiHelper";
-
+import { BACKEND_IMAGE_URL } from "../../../config/config";
 
 const MvnMallAeroone = ({ data }) => {
   const imageRef = useRef(null);
@@ -21,6 +18,8 @@ const MvnMallAeroone = ({ data }) => {
   // if (!loading && mallData && mallData.length === 0) return <div className="text-center py-5">No records found</div>;
 
   return (
+    <>
+ 
     <section
       className="section mvn_mall_section micro_design1 pb-0 mb-md-5"
       aria-label="MVN Mall Section"
@@ -147,6 +146,7 @@ const MvnMallAeroone = ({ data }) => {
         </Container>
       )}
     </section>
+    </>
   );
 };
 

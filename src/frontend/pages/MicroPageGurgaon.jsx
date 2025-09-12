@@ -43,6 +43,7 @@ const MicroPageGurgaon = ({ data }) => {
 
   return (
     <>
+    
       {/* Show Loader until hero section is loaded */}
       {!heroLoaded && (
         <GurgaonLoader />
