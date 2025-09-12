@@ -1,6 +1,6 @@
 import React from "react";
 import MicroPageGurgaonPhase2 from "../../MicroPageGurgaonPhase2";
-import { API_URL } from "../../../../config/config";
+import { API_URL, BACKEND_IMAGE_URL } from "../../../../config/config";
 
 
 const headerSidebarImg = `${API_URL}images/athens-ph2/header/sidebar.webp`
@@ -294,8 +294,8 @@ export const athensGurgaonPhase2Data = {
         heading: "TOWER A1",
         area: "0",
         sizes: "0",
-        image: "uploads/project/floorplan/1750176699819.webp",
-        alternative_image: "uploads/project/floorplan/1750176699820.jpg",
+        image: `${BACKEND_IMAGE_URL}uploads/project/floorplan/1750176699819.webp`,
+        alternative_image: `${BACKEND_IMAGE_URL}uploads/project/floorplan/1750176699820.jpg`,
         alt: "mvn athens gurgaon ph2 floor plan",
         status: 1,
         created_at: "2025-06-17T16:11:40.000Z",
@@ -308,8 +308,8 @@ export const athensGurgaonPhase2Data = {
         heading: "TOWER A2",
         area: "0",
         sizes: "0",
-        image: "uploads/project/floorplan/1750176753403.webp",
-        alternative_image: "uploads/project/floorplan/1750176753673.jpg",
+        image: `${BACKEND_IMAGE_URL}uploads/project/floorplan/1750176753403.webp`,
+        alternative_image: `${BACKEND_IMAGE_URL}uploads/project/floorplan/1750176753673.jpg`,
         alt: "mvn athens gurgaon phase 2 floor plan",
         status: 1,
         created_at: "2025-06-17T16:12:33.000Z",
@@ -322,8 +322,8 @@ export const athensGurgaonPhase2Data = {
         heading: "TOWER B1",
         area: "0",
         sizes: "0",
-        image: "uploads/project/floorplan/1750176796048.webp",
-        alternative_image: "uploads/project/floorplan/1750176796309.jpg",
+        image: `${BACKEND_IMAGE_URL}uploads/project/floorplan/1750176796048.webp`,
+        alternative_image: `${BACKEND_IMAGE_URL}uploads/project/floorplan/1750176796309.jpg`,
         alt: "mvn athens gurgaon phase 2 floor plan",
         status: 1,
         created_at: "2025-06-17T16:13:16.000Z",
@@ -336,8 +336,8 @@ export const athensGurgaonPhase2Data = {
         heading: "TOWER B2",
         area: "0",
         sizes: "0",
-        image: "uploads/project/floorplan/1750176826334.webp",
-        alternative_image: "uploads/project/floorplan/1750176826334.jpg",
+        image: `${BACKEND_IMAGE_URL}uploads/project/floorplan/1750176826334.webp`,
+        alternative_image: `${BACKEND_IMAGE_URL}uploads/project/floorplan/1750176826334.jpg`,
         alt: "mvn athens gurgaon ph2 floor plan",
         status: 1,
         created_at: "2025-06-17T16:13:46.000Z",
@@ -350,8 +350,8 @@ export const athensGurgaonPhase2Data = {
         heading: "TOWER B3,B5,B7",
         area: "0",
         sizes: "0",
-        image: "uploads/project/floorplan/1750176853241.webp",
-        alternative_image: "uploads/project/floorplan/1750176853241.jpg",
+        image: `${BACKEND_IMAGE_URL}uploads/project/floorplan/1750176853241.webp`,
+        alternative_image: `${BACKEND_IMAGE_URL}uploads/project/floorplan/1750176853241.jpg`,
         alt: "mvn athens gurgaon ph2 floor plan",
         status: 1,
         created_at: "2025-06-17T16:14:13.000Z",
