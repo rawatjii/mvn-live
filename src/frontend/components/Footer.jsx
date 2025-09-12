@@ -1,213 +1,187 @@
-import React, { useEffect, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import { Link, NavLink, useLocation } from "react-router-dom";
-import LazyLoad from "react-lazyload";
-import * as CONFIG from "../../config/config";
+import { NavLink } from "react-router-dom";
 
-import {
-  otherProjects,
-  otherPages,
-  otherDetails,
-  socialMedia,
-} from "../../data/headerdata";
-import useFetchData from "../utils/apiHelper";
 
-// import twitterIcon from '../assets/images/icons/social/twitter.png';
-// import linkedinIcon from '../assets/images/icons/social/linkedin.png';
-// import fbIcon from '../assets/images/icons/social/fb.png';
-// import instaIcon from '../assets/images/icons/social/instagram.png';
-// import YoutubeIcon from '../assets/images/icons/social/youtube.png';
-
-const subscribeBtn = `${CONFIG.API_URL}images/icons/subscribe_btn.webp`;
 
 const Footer = () => {
-  const [isBangaloreProject, setIsBangaloreProject] = useState(false);
-  const [contactData, setContactData] = useState(null);      // New state to store the contact data
-  const [contactLoaded, setContactLoaded] = useState(false);
-  const [pageLinks, setPageLinks] = useState(null)
-  const { pathname } = useLocation();
-
-  // const { data: pageLinks, loading } = useFetchData("platter-project");
-  // const { data: contactData } = useFetchData(`page/page-section/contact-us`);
-
-  const channelUrl = CONFIG.YOUTUBE_URL;
-  const baseUrl = CONFIG.FRONTEND_URL;
-
-  useEffect(() => {
-    if (pathname.includes("aeroone-bangalore")) {
-      setIsBangaloreProject(true);
-    }
-  }, [pathname]);
-
-  // Fetch contact data only when the footer is rendered for the first time
-  useEffect(()=>{
-    const fetchContactData  = async()=>{
-      try{
-        if(!contactLoaded){
-          const response = await fetch(`${CONFIG.FRONTEND_API_BASE_URL}page/page-section/contact-us`);
-          const platterResponse = await fetch(`${CONFIG.FRONTEND_API_BASE_URL}platter-project`);
-          const {data} = await response.json();
-          const {data:pageLinksData} = await platterResponse.json();
-          setContactData(data);
-          setPageLinks(pageLinksData);
-          setContactLoaded(true);
-        }
-      }
-      catch(err){
-        console.error("contact-us fetch failed", e);
-        setContactLoaded(true);
-      }
-      
-    }
-    fetchContactData()
-  }, [contactLoaded])
-
   return (
     <footer>
-      <Container>
+      <div className="container">
         <div className="footer-mid">
           <div className="inner-mid">
             <div className="center">
               <div className="f-logo reveal">
                 <img
-                  src={CONFIG.API_URL + "assets/logo_white.webp"}
+                  src="https://img.websitedesigningcompany.co.in/public/assets/logo_white.webp"
                   width="100%"
                   alt="mvn logo image"
                 />
               </div>
             </div>
-
             <div className="right">
               <div className="links">
                 <div className="box">
                   <h4>Projects</h4>
                   <ul>
-                    {pageLinks &&
-                      Object.entries(pageLinks).length > 0 &&
-                      Object.entries(pageLinks).map(([key, value], index) => (
-                        <li key={index}>
-                          {value.length > 0 && (
-                            <>
-                              <span>{key}</span>
-                              {value.map((project, idx) => (
-                                <NavLink
-                                  key={idx}
-                                  to={
-                                    project.slug == 'aeroone-bangalore' ? 'https://www.mvnaeroone.com/' : import.meta.env.VITE_APP_FRONTEND_URL + project.slug
-                                  }
-                                  target={project.slug == 'aeroone-bangalore' ? '_blank' : ''}
-                                >
-                                  {project.name}
-                                </NavLink>
-                              ))}
-                            </>
-                          )}
-                        </li>
-                      ))}
-                    {/* {otherProjects && otherProjects.map((singleProject, index)=>(
-                      <li key={index}>
-                        <span >{singleProject.location}</span>
-                        {
-                            singleProject.projects && singleProject.projects.map((singleNav, index1) => {
-                              const target = singleNav.target_blank ? "_blank" : undefined;
-
-                              return (
-                                <NavLink key={index1} to={singleNav.link} target={target}>
-                                  {singleNav.name}
-                                </NavLink>
-                              );
-                            })
-                          }
-                      </li>
-                    ))} */}
+                    <li>
+                      <span>Gurugram</span>
+                      <NavLink to="/aeroone-gurgaon">
+                        MVN Aero One Residence
+                      </NavLink>
+                      <NavLink to="/mvn-mall">
+                        MVN Mall
+                      </NavLink>
+                    </li>
+                    <li>
+                      <span>Bangalore</span>
+                      <NavLink
+                        to="https://www.mvnaeroone.com/"
+                        target="_blank"
+                      >
+                        MVN
+                      </NavLink>
+                    </li>
+                    <li>
+                      <span>Sohna</span>
+                      <NavLink to="/mvn-athens-gurgaon-phase-1">
+                        MVN Athens
+                      </NavLink>
+                      <NavLink
+                        to="/mvn-athens-gurgaon-phase-2"
+                        activeClassName="active"
+                        aria-current="page"
+                      >
+                        MVN Athens PH-2
+                      </NavLink>
+                      <NavLink to="/mvn-athens-gurgaon-phase-3">
+                        MVN Athens PH-3
+                      </NavLink>
+                    </li>
+                    <li>
+                      <span>Faridabad</span>
+                      <NavLink to="/mvn-athens-faridabad">
+                        MVN Athens
+                      </NavLink>
+                    </li>
                   </ul>
                 </div>
-
                 <div className="box">
                   <h4>Important Links</h4>
                   <ul>
                     <li>
-                      <NavLink to={baseUrl}>Home</NavLink>
+                      <NavLink to="/">
+                        Home
+                      </NavLink>
                     </li>
-                    {otherPages &&
-                      otherPages.map((singlePage, pageIndex) => (
-                        <li key={pageIndex}>
-                          <NavLink to={`${baseUrl}${singlePage.link}`}>
-                            {singlePage.name}
-                          </NavLink>
-                        </li>
-                      ))}
+                    <li>
+                      <NavLink to="/about-us">
+                        About Us
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/media-centre">
+                        Media Centre
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/blogs">
+                        Blogs
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/career">
+                        Career
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/contact-us">
+                        Contact Us
+                      </NavLink>
+                    </li>
                   </ul>
                 </div>
               </div>
             </div>
-
             <div className="left">
               <h4>Contact Details</h4>
-              {isBangaloreProject ? (
-                <>
-                  <p className="address-details">
-                    <span>Meet:</span>MVN Group, 2nd Floor, Above McDonald's,
-                    Jansons Mall, Downtown Park II, Menakunte, Sadahalli Gate,
-                    Bangalore – 562157
-                  </p>
-                  <p className="address-details">
-                    <span>MVN Aero One Project:</span>Brigade Orchards Spinal
-                    Rd, Bychapura, Karnataka 562110
-                  </p>
-                </>
-              ) : (
-                <>
-                  <p className="address-details">
-                    <span>Meet:</span>
-                    {contactData?.[2]?.short_description}
-                  </p>
-                </>
-              )}
-
+              <p className="address-details">
+                <span>Meet:</span>GS 301A–GS 301F, Third Floor, DLF Grand Mall,
+                M.G. Road, Gurgaon, Haryana – 122002 | CIN:ACA-4678 |
+                PAN:ABWFM8415E
+              </p>
               <p className="phone-details">
-                <span>Talk:</span> {contactData?.[2]?.sub_heading}
+                <span>Talk:</span> (+91) 799 6000 196
               </p>
               <p className="mail-details">
-                <span>Write:</span> {contactData?.[2]?.heading}
+                <span>Write:</span> info@mvngroup.in
               </p>
-
-              
-
               <div className="footer-top">
                 <div className="social-media">
                   <div className="left-b">
                     <div className="icons">
                       <ul>
-                        {socialMedia &&
-                          socialMedia.map((singleLink, socialIndex) => (
-                            <li key={socialIndex}>
-                              <Link
-                                to={singleLink.link}
-                                target="_blank"
-                                className={`icon ${singleLink.className}`}
-                              >
-                                <img
-                                  src={singleLink.imgUrl}
-                                  alt={singleLink.alt}
-                                  className={`img-fluid`}
-                                />
-                              </Link>
-                            </li>
-                          ))}
+                        <li>
+                          <NavLink
+                            className="icon fb_icon"
+                            to="https://www.facebook.com/officialmvninfra/"
+                            target="_blank"
+                          >
+                            <img
+                              src="https://img.websitedesigningcompany.co.in/public/assets/icons/social/fb.png"
+                              alt="mvn-facebook-icon"
+                              className="img-fluid"
+                            />
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink
+                            className="icon insta_icon"
+                            to="https://www.instagram.com/mvn_infrastructure/"
+                            target="_blank"
+                          >
+                            <img
+                              src="https://img.websitedesigningcompany.co.in/public/assets/icons/social/instagram.png"
+                              alt="mvn-instagram-icon"
+                              className="img-fluid"
+                            />
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink
+                            className="icon linkedin_icon"
+                            to="https://www.linkedin.com/company/mvn-infrastructure/"
+                            target="_blank"
+                          >
+                            <img
+                              src="https://img.websitedesigningcompany.co.in/public/assets/icons/social/linkedin.png"
+                              alt="mvn-linkedin-icon"
+                              className="img-fluid"
+                            />
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink
+                            className="icon yt_icon"
+                            to="https://www.youtube.com/@MVNInfrastructures"
+                            target="_blank"
+                          >
+                            <img
+                              src="https://img.websitedesigningcompany.co.in/public/assets/icons/social/youtube.png"
+                              alt="mvn-youtube-icon"
+                              className="img-fluid"
+                            />
+                          </NavLink>
+                        </li>
                       </ul>
                     </div>
                   </div>
-
                   <div className="right-b">
                     <div className="box">
                       <span>
                         <img
-                          src={subscribeBtn}
+                          src="https://img.websitedesigningcompany.co.in/public/images/icons/subscribe_btn.webp"
                           alt="subscribe button"
                           role="button"
                           className="subscribe_btn"
-                          onClick={() => window.open(channelUrl, "_blank")}
                         />
                       </span>
                     </div>
@@ -217,47 +191,44 @@ const Footer = () => {
             </div>
           </div>
         </div>
-
         <div className="footer-bottom">
           <div className="box-b">
             <div className="left">
               <ul>
                 <li>
-                  <NavLink to={`${import.meta.env.VITE_APP_URL}privacy-policy`}>
+                  <NavLink to="/privacy-policy">
                     Privacy Policy |
                   </NavLink>
-                </li>{" "}
+                </li>
                 <li>
-                  <NavLink to={`${import.meta.env.VITE_APP_URL}disclaimer`}>
+                  <NavLink to="/disclaimer">
                     {" "}
                     Disclaimer |
                   </NavLink>
-                </li>{" "}
+                </li>
                 <li>
-                  <a
-                    href={`${import.meta.env.VITE_APP_URL}sitemap.xml`}
+                  <NavLink
+                    to="/sitemap.xml"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     Sitemap
-                  </a>
+                  </NavLink>
                 </li>
               </ul>
             </div>
             <div className="right">
               <ul>
                 <li>
-                  {/* <p className="main-pera">© Copyright 2024 - MVN Group. All Right Reserved. | */}
-                  <Link to="http://gtftechnologies.com/" target="_blank">
+                  <NavLink to="http://gtftechnologies.com/" target="_blank">
                     Curated by: GTF Technologies
-                  </Link>
-                  {/* </p> */}
+                  </NavLink>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-      </Container>
+      </div>
     </footer>
   );
 };
