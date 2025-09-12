@@ -1,6 +1,6 @@
 import React from "react";
 import MicroPageGurgaonPhase2 from "../../MicroPageGurgaonPhase2";
-import { API_URL } from "../../../../config/config";
+import { API_URL, BACKEND_IMAGE_URL } from "../../../../config/config";
 
 
 const headerSidebarImg = `${API_URL}images/athens-ph2/header/sidebar.webp`
