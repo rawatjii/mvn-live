@@ -34,9 +34,7 @@ const PageNotFound = React.lazy(() =>
 );
 // const Gallery = React.lazy(() => import('./frontend/pages/Gallery.jsx'));
 // const Csr = React.lazy(() => import('./frontend/pages/Csr.jsx'));
-const MicroPageGurgaon1 = React.lazy(() =>
-  import("./frontend/pages/MicroPageGurgaon1.jsx")
-);
+import MicroPageGurgaon1 from "./frontend/pages/MicroPageGurgaon1.jsx";
 const MicroPageBangalore = React.lazy(() =>
   import("./frontend/pages/MicroPageBangalore.jsx")
 );
@@ -152,14 +150,14 @@ const router = createBrowserRouter([
             <MicroPageFaridabad data={faridabadData} />
         ),
       },
-      {
-        path: ":projectName",
-        element: (
-          <MicroPage />
-          // <FrontendRoute>
-          // </FrontendRoute>
-        ),
-      },
+      // {
+      //   path: ":projectName",
+      //   element: (
+      //     <MicroPage />
+      //     // <FrontendRoute>
+      //     // </FrontendRoute>
+      //   ),
+      // },
 
       //
       // {

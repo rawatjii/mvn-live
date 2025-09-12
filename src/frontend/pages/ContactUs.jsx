@@ -13,12 +13,15 @@ const MobilebannerBg = `${API_URL}images/contact/head-banner_bg.webp`;
 const DesktopbannerBg = `${API_URL}images/contact/head-banner_bg-2.webp`;
 
 const ContactUs = () => {
-  window.scrollTo(0, 0);
   const [pageMetaData, setPageMetaData] = useState(null);
   const [metaDataArray, setMetaData] = useState([])
   const [bannerBg, setBannerBg] = useState(DesktopbannerBg);
   const [newLoadingCount, setNewLoadingCount] = useState(Number(localStorage.getItem('count')));
   const { data: metaData } = useFetchData(`get-page-meta/7`);
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page when the component is mounted
+  }, []);
 
   const breadcrumbs = {
     title: 'Contact Us',

@@ -18,7 +18,6 @@ import { Helmet } from "react-helmet";
 import Compliances from "../components/Compliances";
 
 function MediaCenter() {
-  window.scrollTo(0, 0);
   const [newLoadingCount, setNewLoadingCount] = useState(Number(localStorage.getItem('count')));
   const [pageMetaData, setPageMetaData] = useState(null);
   const [metaDataArray, setMetaData] = useState([])
@@ -29,6 +28,11 @@ function MediaCenter() {
 
   const { data:galleryData, loading } = useFetchData("media-center/gallery");
   const { data: metaData } = useFetchData(`get-page-meta/4`);
+
+  
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page when the component is mounted
+  }, []);
 
   const breadcrumbs = {
     title: "Media Centre",

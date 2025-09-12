@@ -11,7 +11,6 @@ import { Helmet } from "react-helmet";
 const headingIconImg = `${API_URL}images/icons/heading-icon-img.webp`;
 
 function Blog() {
-  window.scrollTo(0, 0);
   const [pageMetaData, setPageMetaData] = useState(null);
   const [metaDataArray, setMetaData] = useState([]) 
   const [newLoadingCount, setNewLoadingCount] = useState(
@@ -19,6 +18,10 @@ function Blog() {
   );
   const { data, loading } = useFetchData("page/page-section/blog");
   const { data: metaData } = useFetchData(`get-page-meta/5`);
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page when the component is mounted
+  }, []);
 
   const dispatch = useDispatch();
   const titleRef = useRef();

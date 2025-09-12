@@ -55,6 +55,11 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
   const sectionRefs = useRef({});
   const { isMobile } = useMatches();
 
+  
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page when the component is mounted
+  }, []);
+
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
   const scrollToSection = (sectionKey) => {
     const section = document.getElementById(sectionKey);
@@ -86,7 +91,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
         <MicroOverviewAeroone data={data.overview} />
       </div>
       {/* elevationData */}
-      <div id="Walkthrough">
+      <div>
         {data?.elevationData?.map((item, index) => (
           <div key={index}>
             <div className="mt_80 mt_sm_30 mb-md-5">
@@ -100,7 +105,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
         <LargeElevationSectionAeroone data={data.LargeElevationSection} />
       </div>
 
-      <div>
+      <div id="Walkthrough">
         <YtIframeAeroone data={data.walkthrough} subs_btn={true} />
       </div>
 
