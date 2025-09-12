@@ -8,8 +8,6 @@ import Footer from "../components/Footer";
 import DownloadBrochure from "../components/MicroPage/DownloadBrochure";
 import { Helmet } from "react-helmet";
 import MicroHeader from "../components/MicroHeader";
-import ImagesGallery from "../components/MicroPage/ImagesGallery";
-import SliderTypology from "../components/MicroPage/bangalore/SliderTypology";
 import AthensBanner from "../components/MicroPage/athens/AthensBanner";
 import CustomIframe from "../components/MicroPage/CustomIframe";
 import Strip from "../components/homepage/Strip11";
@@ -22,10 +20,12 @@ const MvnMall1 = ({ data }) => {
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
   const bannerRef = useRef(null);
 
-  const scrollToSection = (sectionKey) => {
-    const target = sectionRefs.current[sectionKey];
-  };
-
+const scrollToSection = (sectionKey) => {
+  const section = document.getElementById(sectionKey);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+};
   return (
     <>
       <Helmet>
@@ -105,31 +105,32 @@ const MvnMall1 = ({ data }) => {
         <Strip />
       </div>
 
-      <div>
+      <div id="microOverview">
         <MicroOverview data={data.overview} heroLoadedStatus={heroLoaded} />
       </div>
 
-      <div>
+      <div id="downloadBrochure">
         <DownloadBrochure
           projectName="MVN Mall Dwarka Expressway"
           showAwards={true}
         />
       </div>
-
+        <div  id="landscape">
       <CustomIframe data={data.mvnMallVideo} />
+      </div>
 
-      <div>
+      <div id="gallery">
         <ParallaxSection section_data={data.amenities} />
       </div>
 
-      <div>
+      <div id="MicroLocationMap">
         <MicroLocationMap data={data.locationAdvantage} />
       </div>
       <div
         className="container-fluid micro_footer"
         ref={(el) => (sectionRefs.current.Enuqiry = el)}
       >
-        <div className="row ">
+        <div className="row">
           <div className="col-sm-6 px-0">
             <Enquire />
           </div>
