@@ -6364,3 +6364,5 @@ div input:focus {
     width: 12px;
   }
 }
+.parallax1 .card {border: none;border-radius: 0;}
+.micro_footer{margin-top:50px}

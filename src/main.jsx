@@ -39,9 +39,7 @@ const MicroPageGurgaon1 = React.lazy(() =>
 const MicroPageBangalore = React.lazy(() =>
   import("./frontend/pages/MicroPageBangalore.jsx")
 );
-const MicroPageFaridabad = React.lazy(() =>
-  import("./frontend/pages/MicroPageFaridabad.jsx")
-);
+import MicroPageFaridabad from "./frontend/pages/MicroPageFaridabad.jsx";
 import MicroPageGurgaonPhase1 from "./frontend/pages/MicroPageGurgaonPhase1.jsx";
 import MicroPageGurgaonPhase2 from "./frontend/pages/MicroPageGurgaonPhase2.jsx";
 import MvnMall1 from "./frontend/pages/mvnMall.jsx";
@@ -141,6 +139,12 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "mvn-athens-faridabad",
+        element: (
+            <MicroPageFaridabad data={faridabadData} />
+        ),
+      },
+      {
         path: ":projectName",
         element: (
           <MicroPage />
@@ -159,13 +163,7 @@ const router = createBrowserRouter([
       //   ),
       // },
       // {
-      //   path: "mvn-athens-faridabad",
-      //   element: (
-      //     <FrontendRoute loaderType="mvn-athens-faridabad">
-      //       <MicroPageFaridabad data={faridabadData} />
-      //     </FrontendRoute>
-      //   ),
-      // },
+      
       // {
       //   path: "mvn-athens-gurgaon-phase-1",
       //   element: (
