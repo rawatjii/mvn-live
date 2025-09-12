@@ -6,23 +6,22 @@ import Enquire from "../components/homepage/Enquire";
 import EnquireForm from "../components/homepage/EnquireForm";
 import Footer from "../components/Footer";
 import DownloadBrochure from "../components/MicroPage/DownloadBrochure";
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import ScrollSmoother from "gsap/ScrollSmoother";
 import { Helmet } from "react-helmet";
 import MicroHeader from "../components/MicroHeader";
 import ImagesGallery from "../components/MicroPage/ImagesGallery";
 import SliderTypology from "../components/MicroPage/bangalore/SliderTypology";
 import AthensBanner from "../components/MicroPage/athens/AthensBanner";
-const FeatureSection = React.lazy(() => import("../components/MicroPage/athens/FeatureSection"));
-const ParallaxSection = React.lazy(() => import("../../common/ParallaxSection"));
+const FeatureSection = React.lazy(() =>
+  import("../components/MicroPage/athens/FeatureSection")
+);
+const ParallaxSection = React.lazy(() =>
+  import("../../common/ParallaxSection")
+);
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
- 
 const MicroPageGurgaonPhase2 = ({ data, loadingCount, setLoadingCount }) => {
   const [heroLoaded, setHeroLoaded] = useState(true);
   const [newLoadingCount, setNewLoadingCount] = useState(
-    Math.floor(localStorage.getItem('count') || 0)
+    Math.floor(localStorage.getItem("count") || 0)
   );
   const [isPageLoaded, setIsPageLoaded] = useState(false);
   const [peacockLoaded, setPeacockLoaded] = useState(false);
@@ -32,41 +31,17 @@ const MicroPageGurgaonPhase2 = ({ data, loadingCount, setLoadingCount }) => {
   const [typologyLoaded, setTypologyLoaded] = useState(false);
   const smootherRef = useRef(null);
   const sectionRefs = useRef({});
-  const {pageSections, projectName} = data;
-
+  const { pageSections, projectName } = data;
 
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
   const bannerRef = useRef(null);
 
   const scrollToSection = (sectionKey) => {
     const target = sectionRefs.current[sectionKey];
-    if (target && smootherRef.current) {
-      smootherRef.current.scrollTo(target, true);
-    }
   };
-
-  useEffect(() => {
-    if (heroLoaded) {
-      smootherRef.current = ScrollSmoother.create({
-        wrapper: "#smooth-wrapper",
-        content: "#smooth-content",
-        smooth: 1.5,
-        effects: true,
-        smoothTouch: 1.4,
-      });
-    }
-    return () => {
-      if (smootherRef.current) {
-        smootherRef.current.kill();
-        smootherRef.current = null;
-      }
-    };
-  }, [heroLoaded]);
 
   return (
     <>
-
-      
       <Helmet>
         <script>
           {`
@@ -89,7 +64,10 @@ const MicroPageGurgaonPhase2 = ({ data, loadingCount, setLoadingCount }) => {
 
         {/* Google tag (gtag.js) */}
 
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-T7YNXS59XR"></script>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-T7YNXS59XR"
+        ></script>
 
         <script>
           {`
@@ -101,7 +79,10 @@ const MicroPageGurgaonPhase2 = ({ data, loadingCount, setLoadingCount }) => {
 
         {/* conversion code */}
 
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11490416244"></script>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-11490416244"
+        ></script>
 
         <script>
           {`
@@ -128,27 +109,30 @@ const MicroPageGurgaonPhase2 = ({ data, loadingCount, setLoadingCount }) => {
             fbq('init', '562105226581202');
             fbq('track', 'PageView');
             `}
-          </script>
+        </script>
 
-          <noscript>
-            {`
+        <noscript>
+          {`
               <img  alt="facebook" height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=562105226581202&ev=PageView&noscript=1" />
             `}
-          </noscript>
+        </noscript>
 
-          <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11490416244"></script>
-          <script>
-            {`
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-11490416244"
+        ></script>
+        <script>
+          {`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
 
               gtag('config', 'AW-11490416244');
             `}
-          </script>
+        </script>
 
-          <script>
-              {`
+        <script>
+          {`
                 <script type='text/javascript'>
                 window._tfa = window._tfa || [];
                 window._tfa.push({notify: 'event', name: 'page_view', id: 1787600});
@@ -162,84 +146,63 @@ const MicroPageGurgaonPhase2 = ({ data, loadingCount, setLoadingCount }) => {
                 'tb_tfa_script');
               </script>
               `}
-          </script>
+        </script>
 
-          <script>
-            {`
+        <script>
+          {`
               (function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"187169642", enableAutoSpaTracking: true};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");
             `}
-          </script>
-
+        </script>
       </Helmet>
 
-      <MicroHeader scrollToSection={scrollToSection} data={data.header} isFixed={ isHeaderFixed }/>
-      <div id="smooth-wrapper">
-        <div id="smooth-content">
-
-        <div ref={bannerRef}
-          >
-          <AthensBanner data={data.banner}
-            onBannerExit={setIsHeaderFixed} 
-            isMainBanner={true}/>
-          </div>
-          
-          <div
-            ref={(el) =>
-              (sectionRefs.current.microOverview = el)
-            }
-          >
-          <MicroOverview data={data.overview} heroLoadedStatus={heroLoaded} /> {/*no isssue*/}
-          </div>
-          <div
-            ref={(el) =>
-              (sectionRefs.current.downloadBrochure = el)
-            }
-          >
-            <DownloadBrochure name="DOWNLOAD MVN ATHENS ID BROCHURE" projectName="MVN Athens Gurgaon PH-2" />
-          </div>
-          <div
-            ref={(el) =>
-              (sectionRefs.current.gallery = el)
-            }
-          >
-            <ImagesGallery data={data.gallery}/>
-          </div>
-          <div
-            ref={(el) =>
-              (sectionRefs.current.features = el)
-            }
-          >
-          <Suspense>
-            <FeatureSection data={data.features}/>
-          </Suspense>
-          </div>
-
-          <div
-            ref={(el) =>
-              (sectionRefs.current.MicroAmenities = el)
-            }>
-              <Suspense>
-                <ParallaxSection section_data={data.amenities} />
-              </Suspense>
-          </div>
-
-          <div
-            ref={(el) =>
-              (sectionRefs.current.MicroTypology = el)
-            }
-          >
-            <SliderTypology data={data.typologies} onLoadComplete={() => setTypologyLoaded(true)} />
-          </div>
-
-          <div
-            ref={(el) =>
-              (sectionRefs.current.MicroLocationMap = el)
-            }
-          >
-            <MicroLocationMap
-              data={data.locationAdvantage}
+      <MicroHeader
+        scrollToSection={scrollToSection}
+        data={data.header}
+        isFixed={isHeaderFixed}
+      />
+          <div ref={bannerRef}>
+            <AthensBanner
+              data={data.banner}
+              onBannerExit={setIsHeaderFixed}
+              isMainBanner={true}
             />
           </div>
+
+          {/*<div ref={(el) => (sectionRefs.current.microOverview = el)}>
+            <MicroOverview data={data.overview} heroLoadedStatus={heroLoaded} />{" "}
+            /~no isssue~/
+          </div>
+          <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
+            <DownloadBrochure
+              name="DOWNLOAD MVN ATHENS ID BROCHURE"
+              projectName="MVN Athens Gurgaon PH-2"
+            />
+          </div>
+          <div ref={(el) => (sectionRefs.current.gallery = el)}>
+            <ImagesGallery data={data.gallery} />
+          </div>
+          <div ref={(el) => (sectionRefs.current.features = el)}>
+            <Suspense>
+              <FeatureSection data={data.features} />
+            </Suspense>
+          </div>
+
+          <div ref={(el) => (sectionRefs.current.MicroAmenities = el)}>
+            <Suspense>
+              <ParallaxSection section_data={data.amenities} />
+            </Suspense>
+          </div>
+
+          <div ref={(el) => (sectionRefs.current.MicroTypology = el)}>
+            <SliderTypology
+              data={data.typologies}
+              onLoadComplete={() => setTypologyLoaded(true)}
+            />
+          </div>
+
+          <div ref={(el) => (sectionRefs.current.MicroLocationMap = el)}>
+            <MicroLocationMap data={data.locationAdvantage} />
+          </div>*/}
 
           <div
             className="container-fluid micro_footer"
@@ -250,16 +213,12 @@ const MicroPageGurgaonPhase2 = ({ data, loadingCount, setLoadingCount }) => {
                 <Enquire />
               </div>
               <div className="col-sm-6 px-0">
-                <EnquireForm
-                  projectName={"MVN Athens Gurgaon PH-2"}
-                />
+                <EnquireForm projectName={"MVN Athens Gurgaon PH-2"} />
               </div>
             </div>
           </div>
 
           <Footer />
-        </div>
-      </div>
 
       {/* <ScrollTop /> */}
     </>
