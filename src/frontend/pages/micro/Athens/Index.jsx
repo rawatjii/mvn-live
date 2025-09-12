@@ -1,6 +1,6 @@
 import React from "react";
 import MicroPageFaridabad from "../../MicroPageFaridabad";
-import { API_URL } from "../../../../config/config";
+import { API_URL, BACKEND_IMAGE_URL } from "../../../../config/config";
 
 
 const headerSidebarDesktopImg = `${API_URL}images/athens-faridabad/header/athens.webp`
