@@ -6,8 +6,7 @@ import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 import LazyLoad from "react-lazyload";
-import { API_URL, BACKEND_IMAGE_URL } from "../../../config/config";
-import useFetchData from "../../utils/apiHelper";
+import { API_URL } from "../../../config/config";
 
 const data = [
   {
@@ -102,7 +101,7 @@ const data = [
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Timeline = ({data}) => {
+const Timeline = () => {
   const titleRef = useRef();
   const contentRefs = useRef([]);
   const imageRefs = useRef([]);
@@ -110,10 +109,6 @@ const Timeline = ({data}) => {
   const timelineRef = useRef();
 
   const [imagesLoaded, setImagesLoaded] = useState(0);
-
-  const {heading} = data;
-
-  const { data:timelineData, loading } = useFetchData("timeline");
 
   const initializeAnimations = () => {
     // Title animation
@@ -203,7 +198,7 @@ const Timeline = ({data}) => {
   };
 
   useEffect(() => {
-    if (imagesLoaded === timelineData?.length) {
+    if (imagesLoaded === data.length) {
       setTimeout(() => {
         initializeAnimations();
         ScrollTrigger.refresh();
@@ -241,7 +236,7 @@ const Timeline = ({data}) => {
             loading="lazy"
           />
           <h4 ref={titleRef} className="title title_style1 text-center">
-            {heading}
+            Our Timeline
           </h4>
         </div>
         <ul ref={timelineRef} className="timeline_content">
@@ -253,7 +248,7 @@ const Timeline = ({data}) => {
               loading="lazy"
             />
           </li>
-          {timelineData?.map((item, index) => (
+          {data.map((item, index) => (
             <li
               key={index}
               className={`single ${index % 2 !== 0 ? "right" : ""}`}
@@ -263,8 +258,8 @@ const Timeline = ({data}) => {
                 className="thumbnail"
               >
                 <img
-                  src={BACKEND_IMAGE_URL + item.image}
-                  alt={item.alt}
+                  src={item.img}
+                  alt="mvn timeline image"
                   className="img-fluid"
                   onLoad={handleImageLoad}
                   loading="lazy"
@@ -275,8 +270,8 @@ const Timeline = ({data}) => {
                 className="content"
               >
                 <p className="year">{item.year}</p>
-                <p className="title">{item.name}</p>
-                <p className="location">{item.address}</p>
+                <p className="title">{item.title}</p>
+                <p className="location">{item.location}</p>
               </div>
             </li>
           ))}

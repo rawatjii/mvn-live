@@ -4,20 +4,14 @@ import SecTitle from "../../../common/SecTitle/Index";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-import { API_URL, BACKEND_IMAGE_URL } from "../../../config/config";
-import useFetchData from "../../utils/apiHelper";
+import { API_URL } from "../../../config/config";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Philosophy = ({data}) => {
+const Philosophy = () => {
   const titleRef = useRef();
   const miniTitleRefs = useRef([]);
   const desRefs = useRef([]);
-
-  const {heading} = data;
-
-  const { data:sectionsData } = useFetchData("page/page-section/about");
-  const { data:valuesData, loading } = useFetchData("our-value");
 
   useEffect(() => {
     // Title animation
@@ -88,38 +82,60 @@ const Philosophy = ({data}) => {
             loading="lazy"
           />
           <h4 ref={titleRef} className="title title_style1 text-center">
-            {heading}
+            Our Philosophy
           </h4>
         </div>
 
         <div className="content">
           <div className="flex-li-row-1">
-            {sectionsData?.map((sectionItem, sectionIndex)=>{
-              if(sectionItem.page_section == 'about-vision' || sectionItem.page_section == 'about-mission'){
-                return (
-                  <ul>
-                    <li>
-                      <h4
-                        ref={(el) => (miniTitleRefs.current[0] = el)}
-                        className="title"
-                      >
-                        <img
-                          src={`${API_URL}images/icons/plane1.png`}
-                          alt="mvn plan icon"
-                          className="img-fluid icon"
-                          loading="lazy"
-                        />
-                        {sectionItem.heading}
-                      </h4>
-                      <p ref={(el) => (desRefs.current[0] = el)}>
-                        {sectionItem.short_description}
-                      </p>
-                    </li>
-                  </ul>
-                )
-              }
-            })}
-            
+            <ul>
+              <li>
+                <h4
+                  ref={(el) => (miniTitleRefs.current[0] = el)}
+                  className="title"
+                >
+                  <img
+                    src={`${API_URL}images/icons/plane1.png`}
+                    alt="mvn plan icon"
+                    className="img-fluid icon"
+                    loading="lazy"
+                  />
+                  Our Vision
+                </h4>
+                <p ref={(el) => (desRefs.current[0] = el)}>
+                  We craft exceptional ecosystems that drive India’s growth,
+                  blending sustainability with global standards. From
+                  universities to urban spaces, we shape aspirations and
+                  achievements across India, from Khambi to Bengaluru.
+                </p>
+              </li>
+            </ul>
+
+            <ul>
+              <li>
+                <h4
+                  ref={(el) => (miniTitleRefs.current[1] = el)}
+                  className="title"
+                >
+                  <img
+                    src={`${API_URL}images/icons/plane1.png`}
+                    alt="mvn plan icon"
+                    className="img-fluid icon"
+                    loading="lazy"
+                  />
+                  Our Mission
+                </h4>
+                <p ref={(el) => (desRefs.current[1] = el)}>
+                  We build exceptional ecosystems that serve India’s high-growth
+                  ambitions. As part of our mission, we are creating a legacy of
+                  world-class real estate offerings that are locally relevant
+                  and sustainable yet meet global standards. We are building
+                  universities, urban infrastructure, hotels, and homes with
+                  equal zest across ‘aspiring’ to ‘arrived’ India – from Khambi
+                  to Bengaluru.
+                </p>
+              </li>
+            </ul>
           </div>
           <div className="flex-li-row-2">
             <ul>
@@ -136,24 +152,46 @@ const Philosophy = ({data}) => {
                   />
                   Our Values
                 </h4>
-
-
                 <ul
                   ref={(el) => (desRefs.current[2] = el)}
                   className="our-values-ul-icon"
                 >
-                    {valuesData?.map((el, index)=>(
-                        <li key={index}>
-                          <img
-                            src={BACKEND_IMAGE_URL + el.image}
-                            alt="mvn Enrich lives"
-                            className="img-fluid values-ul-icon"
-                            loading="lazy"
-                          />
-                          {el.heading}
-                        </li>
-                    ))}
-                  
+                  <li>
+                    <img
+                      src={`${API_URL}images/about/growth.gif`}
+                      alt="mvn Enrich lives"
+                      className="img-fluid values-ul-icon"
+                      loading="lazy"
+                    />
+                    Enrich lives
+                  </li>
+                  <li>
+                    <img
+                      src={`${API_URL}images/about/growth-2.gif`}
+                      alt="mvn Empower ambitions"
+                      className="img-fluid values-ul-icon"
+                      loading="lazy"
+                    />
+                    Empower ambitions
+                  </li>
+                  <li>
+                    <img
+                      src={`${API_URL}images/about/Idea.gif`}
+                      alt="mvn Drive innovation"
+                      className="img-fluid values-ul-icon"
+                      loading="lazy"
+                    />
+                    Drive innovation
+                  </li>
+                  <li>
+                    <img
+                      src={`${API_URL}images/about/Verified.gif`}
+                      alt="mvn Inspire quality"
+                      className="img-fluid values-ul-icon"
+                      loading="lazy"
+                    />
+                    Inspire quality
+                  </li>
                 </ul>
               </li>
             </ul>
