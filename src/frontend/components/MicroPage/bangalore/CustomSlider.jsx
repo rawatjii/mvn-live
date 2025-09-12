@@ -54,7 +54,7 @@ const CustomSlider = ({ slides, className }) => {
                       <img
                       className={slide.heading=='Layout Plan'&& 'layout_plan'}
                         // data-speed="clamp(0.9)"
-                        src={BACKEND_IMAGE_URL + slide.image}
+                        src={slide.image}
                         alt={`Slide ${index + 1}`}
                         onClick={() => setIndex(index)}
                       />
@@ -86,7 +86,7 @@ const CustomSlider = ({ slides, className }) => {
       <Lightbox
         index={index} // Current index
         slides={slides.map((slide) => ({
-          src: BACKEND_IMAGE_URL + slide.image, // The image source
+          src: slide.image, // The image source
         }))} // Map slides to Lightbox format with additional data
         open={index >= 0} // Open Lightbox when an image is clicked
         close={() => setIndex(-1)} // Close Lightbox

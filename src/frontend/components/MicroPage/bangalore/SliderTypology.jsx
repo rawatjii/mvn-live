@@ -3,10 +3,8 @@ import { Tabs, Tab, Container } from "react-bootstrap";
 import CustomCard from "../../Card";
 import CustomSlider from "./CustomSlider";
 import "./slidertypology.css";
-import useFetchData from "../../../utils/apiHelper";
 
 const SliderTypology = ({ data }) => {
-  const { data:floorPlanData, loading } = useFetchData(`project/${data.project_id}/floor-plan`);
   const {heading, description} = data;
 
   return (
@@ -16,9 +14,9 @@ const SliderTypology = ({ data }) => {
       </div>
       <Container>
         <Tabs defaultActiveKey="0" id="typology-tabs" className="mb-3 pb-0">
-          {floorPlanData?.filter((item, index, self)=> index == self.findIndex(t=>t.unit_type == item.unit_type)).map((key, index) => (
+          {data?.data?.filter((item, index, self)=> index == self.findIndex(t=>t.unit_type == item.unit_type)).map((key, index) => (
             <Tab eventKey={index} title={key.unit_type} key={key}>
-              <CustomSlider className="typology_slider" slides={floorPlanData?.filter((item)=>item.unit_type == key.unit_type)} />
+              <CustomSlider className="typology_slider" slides={data?.data?.filter((item)=>item.unit_type == key.unit_type)} />
             </Tab>
           ))}
         </Tabs>

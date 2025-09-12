@@ -1,15 +1,11 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./feature_section.css";
-import { BACKEND_IMAGE_URL } from '../../../../config/config';
-import useFetchData from '../../../utils/apiHelper';
 
 const FeatureSection = ({ data }) => {
-  const { heading, sub_heading, image, alternative_image, alt, optional_images, project_id } = data;
-  const { data:keyHighlightsData, loading } = useFetchData(`project/${project_id}/key-highlight`);
-
+  const { title, desc, src, list, bgImg, isTwoColumn } = data;
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -54,32 +50,38 @@ const FeatureSection = ({ data }) => {
     <section className="feature" aria-label="Feature Section">
       <div className="row">
         <div className="col-lg-6">
-
-          <div className="box-title m-v">
-            <h2 className="main-title">{heading}</h2>
-            <p className="main-pera">{sub_heading}</p>
+          <div class="box-title m-v">
+            <h4 class="main-title">{title}</h4>
+            <p class="main-pera">{desc}</p>
           </div>
-          <picture className='d-v'>
-            <source srcset={BACKEND_IMAGE_URL + alternative_image} />
-            <img className="d-v elevation reveal" src={BACKEND_IMAGE_URL + image} alt="Elevation feature" />
-          </picture>
-          
-          <div className="m-v overlap" >
-            <img className="elevation bg-elevation" src={BACKEND_IMAGE_URL + optional_images} alt="elevation background image" />
-            <img className="elevation fr-elevation" src={BACKEND_IMAGE_URL + image} alt='elevation front image' />
+          <img
+            className="d-v elevation reveal"
+            src={src}
+            alt="Elevation feature"
+          />
+          <div class="m-v overlap">
+            <img
+              class="elevation bg-elevation"
+              src={bgImg}
+              alt="elevation background image"
+            />
+            <img
+              class="elevation fr-elevation"
+              src={src}
+              alt="elevation front image"
+            />
           </div>
         </div>
         <div className="col-lg-6">
           <div className="elevation-content">
             <div className="container">
               <div className="inner-box" data-speed="clamp(0.9)">
-                <h3 className="main-title d-v">{heading}</h3>
-                <p className="main-pera d-v">{sub_heading}</p>
+                <h4 className="main-title d-v">{title}</h4>
+                <p className="main-pera d-v">{desc}</p>
 
-
-                <ul className={keyHighlightsData?.length>10&&"two_column"}>
-                  {keyHighlightsData?.map((feature, index) => (
-                    <li key={index}>{feature.heading}</li>
+                <ul className={isTwoColumn ? "two_column" : ""}>
+                  {list.map((feature, index) => (
+                    <li key={index}>{feature}</li>
                   ))}
                 </ul>
               </div>
@@ -87,8 +89,6 @@ const FeatureSection = ({ data }) => {
           </div>
         </div>
       </div>
-
-
     </section>
   );
 };
@@ -102,5 +102,4 @@ FeatureSection.propTypes = {
   }).isRequired,
 };
 
-
-export default FeatureSection
+export default FeatureSection;

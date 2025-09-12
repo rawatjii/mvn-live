@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -6,27 +6,17 @@ import "swiper/css/navigation";
 import "./location_slider.css";
 import { Container } from "react-bootstrap";
 import { API_URL } from "../../../../config/config";
-import useFetchData from "../../../utils/apiHelper";
 
 const locationIcon = `${API_URL}bangalore/icon/location.png`;
 
-const LocationSlider = ({project_id, projectName}) => {
-  
-  const { data, loading:projectLoading } = useFetchData(`project/${project_id}/location-advantage`);
-  const [chunks, setChunks] = useState(3);
-
-  useEffect(()=>{
-    if(projectName.includes('mvn-athens-faridabad')){
-      setChunks(1)
-    }
-  }, [projectName])
+const LocationSlider = ({ data }) => {
+  const { sliderItems, chunks } = data;
 
   // Function to chunk the array into groups of 5
   const chunkedItems = [];
-  for (let i = 0; i < data?.length; i += chunks) {
-    chunkedItems.push(data.slice(i, i + chunks));
+  for (let i = 0; i < sliderItems.length; i += chunks) {
+    chunkedItems.push(sliderItems.slice(i, i + chunks));
   }
-
   return (
     <Container>
       <div className="LocationSlider">
@@ -47,11 +37,8 @@ const LocationSlider = ({project_id, projectName}) => {
             },
           }}
         >
-          {chunkedItems?.map((chunk, index) => (
-         
-            
+          {chunkedItems.map((chunk, index) => (
             <SwiperSlide key={index}>
-                 {console.log(chunk,"chunkchunkchunkchunkchunkchunk")}
               <div
                 className={`SliderContain ${
                   chunks < 4 ? (chunks === 3 ? "height_183" : "fit_height") : ""
@@ -65,9 +52,10 @@ const LocationSlider = ({project_id, projectName}) => {
                         alt="location img"
                         className="LocationImg"
                       />
-                      {item.designation}
+                      {item.title}
                     </p>
-                    <p>{item.distance}</p>
+                    {item.desc && <p>{item.desc}</p>}
+                    
                   </div>
                 ))}
               </div>

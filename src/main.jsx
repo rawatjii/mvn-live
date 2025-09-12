@@ -42,9 +42,7 @@ const MicroPageBangalore = React.lazy(() =>
 const MicroPageFaridabad = React.lazy(() =>
   import("./frontend/pages/MicroPageFaridabad.jsx")
 );
-const MicroPageGurgaonPhase1 = React.lazy(() =>
-  import("./frontend/pages/MicroPageGurgaonPhase1.jsx")
-);
+import MicroPageGurgaonPhase1 from "./frontend/pages/MicroPageGurgaonPhase1.jsx";
 const MicroPageGurgaonPhase2 = React.lazy(() =>
   import("./frontend/pages/MicroPageGurgaonPhase2.jsx")
 );
@@ -120,29 +118,32 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: (
-          <Homepage />
-
-        ),
+        element: <Homepage />,
       },
       {
         path: "about-us",
-        element: (
-            <AboutUs />
-        ),
+        element: <AboutUs />,
       },
       {
-          path: "aeroone-gurgaon",
-          element: (
-              <MicroPageGurgaon1 data={data} />
-          ),
-        },
-        {
-          path: "mvn-mall",
-          element: (
-              <MvnMall1 data={mvnMallData}/>
-          ),
-        },
+        path: "aeroone-gurgaon",
+        element: <MicroPageGurgaon1 data={data} />,
+      },
+      {
+        path: "mvn-mall",
+        element: <MvnMall1 data={mvnMallData} />,
+      },
+      {
+        path: "mvn-athens-gurgaon-phase-1",
+        element: <MicroPageGurgaonPhase1 data={athensGurgaonPhase1Data} />,
+      },
+      {
+        path: "mvn-athens-gurgaon-phase-2",
+        element: (
+          <FrontendRoute loaderType="mvn-athens-gurgaon-phase-2">
+            <MicroPageGurgaonPhase2 data={athensGurgaonPhase2Data} />
+          </FrontendRoute>
+        ),
+      },
       {
         path: ":projectName",
         element: (
@@ -151,8 +152,8 @@ const router = createBrowserRouter([
           // </FrontendRoute>
         ),
       },
-      
-      // 
+
+      //
       // {
       //   path: "aeroone-bangalore",
       //   element: (
@@ -177,14 +178,7 @@ const router = createBrowserRouter([
       //     </FrontendRoute>
       //   ),
       // },
-      // {
-      //   path: "mvn-athens-gurgaon-phase-2",
-      //   element: (
-      //     <FrontendRoute loaderType="mvn-athens-gurgaon-phase-2">
-      //       <MicroPageGurgaonPhase2 data={athensGurgaonPhase2Data} />
-      //     </FrontendRoute>
-      //   ),
-      // },
+
       {
         path: "media-centre",
         element: (
@@ -238,7 +232,7 @@ const router = createBrowserRouter([
           </FrontendRoute>
         ),
       },
-      
+
       {
         path: "disclaimer",
         element: (
