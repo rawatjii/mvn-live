@@ -1,4 +1,4 @@
-import React, { useState, Suspense, useCallback } from "react";
+import React, { useState, Suspense, useCallback, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import Layout from "../components/Layout";
 import Skeleton from "../../common/Loader/skeleton/Index";
