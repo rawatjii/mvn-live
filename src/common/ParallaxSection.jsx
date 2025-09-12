@@ -1,15 +1,11 @@
 import React, { useEffect, useRef, useCallback, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Watermark from "../common/watermark/Index";
+import Watermark from "./watermark/Index";
 import { useMatches } from "../theme/theme";
 import { Container } from "react-bootstrap";
 import CustomCard from "../frontend/components/Card";
 import * as CONFIG from "../config/config";
 import { useLocation } from "react-router-dom";
-import useFetchData from "../frontend/utils/apiHelper";
 
-gsap.registerPlugin(ScrollTrigger);
 
 function ParallaxSection({ section_data }) {
   const { isMobile } = useMatches();
@@ -24,13 +20,7 @@ function ParallaxSection({ section_data }) {
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const [imageUrls, setImageUrls] = useState([]);
 
-  const { data: projectData, loading: projectLoading } = useFetchData(`project/${project_id}/${section_type}`);
-
-  const getRatio = (el,innerHeight) => {
-    if (!el) return 0;
-    const ratio = innerHeight / (innerHeight + el.offsetHeight);
-    return ratio;
-  }
+  const projectData = section_data.data
 
   useEffect(() => {
     if (projectData) {
@@ -55,7 +45,6 @@ function ParallaxSection({ section_data }) {
       loadedCount++;
       if (loadedCount === totalImages) {
         setImagesLoaded(true);
-        ScrollTrigger.refresh();
       }
     };
 
@@ -64,7 +53,6 @@ function ParallaxSection({ section_data }) {
       loadedCount++;
       if (loadedCount === totalImages) {
         setImagesLoaded(true);
-        ScrollTrigger.refresh();
       }
     };
 
@@ -83,75 +71,6 @@ function ParallaxSection({ section_data }) {
       loadedCount = totalImages;
     };
   }, [imageUrls]);
-
-    const setupAnimations = () => {  
-      Array.from(document.querySelectorAll(".parallax")).map((section, i) => {
-        let windowInnerHeight=window.innerHeight;
-        let ratio=getRatio(section,windowInnerHeight);    
-
-          const bg = section.querySelector(".bg");
-          ScrollTrigger.create({
-            trigger: section,
-            start: i === 0 ? "top top" : "top 100%",
-            end: "bottom top",
-            scrub: true,
-            invalidateOnRefresh: true,
-            animation: gsap.fromTo(
-              bg,
-              { backgroundPosition:  i === 0 ? "50% 0" : `50% ${-windowInnerHeight * ratio }px` },
-              {
-                backgroundPosition: `50% ${ windowInnerHeight * (1 - ratio)}px`,
-                ease: "none",
-              }
-            ),
-            markers: false, 
-          });
-        });
-      }
-useEffect(() => {
-  if (!projectData || !imagesLoaded) return;
-
-  const parallaxSections = document.querySelectorAll(".parallax_section");
-  const triggers = Array.from(parallaxSections).map(section => 
-    ScrollTrigger.create({
-      trigger: section,
-      start: "top 80%",
-      once: true,
-      onEnter: () => {
-        setupAnimations(section);
-      },
-    })
-  );
-
-  return () => {
-    triggers.forEach(trigger => trigger.kill());
-  };
-}, [projectData, imagesLoaded]);
-
-  useEffect(() => {
-    if (!iframe || !containerRef.current || iframeLoaded) return;
-
-    const walkthroughEl = containerRef.current.querySelector(".walkthrough");
-
-    if (!walkthroughEl) return;
-
-    const trigger = ScrollTrigger.create({  
-      trigger: walkthroughEl,
-      start: "top bottom",
-      onEnter: () => {
-        if (iframeRef.current && !iframeLoaded) {
-          const autoplaySrc = iframe;
-          iframeRef.current.src = autoplaySrc;
-          setIframeLoaded(true);
-        }
-      },
-      once: true,
-    });
-
-    return () => {
-      trigger.kill();
-    };
-  }, [iframe, iframeLoaded, imagesLoaded]);
 
   const renderMobileView = () => (
     <div className="section amenities_section main_am bottom_content parallax_section pb-0">
@@ -183,8 +102,8 @@ useEffect(() => {
           <div key={index} className="col-sm-12 col-lg-4">
             <div className="card center">
               <picture>
-                <source srcSet={CONFIG.BACKEND_IMAGE_URL + single.mb_image} media="(max-width:768px)" />
-                <img src={CONFIG.BACKEND_IMAGE_URL + single.mb_image} className="img-fluid" alt={single.alt} />
+                <source srcSet={single.mb_image} media="(max-width:768px)" />
+                <img src={single.mb_image} className="img-fluid" alt={single.alt} />
               </picture>
               <Watermark />
             </div>
@@ -241,8 +160,8 @@ useEffect(() => {
         >
           <div className="card center">
             <picture>
-              <source srcSet={CONFIG.BACKEND_IMAGE_URL + amenity.image} media="(max-width:768px)" />
-              <img src={CONFIG.BACKEND_IMAGE_URL + amenity.image} className="img-fluid w-100" alt={amenity.alt} />
+              <source srcSet={amenity.image} media="(max-width:768px)" />
+              <img src={amenity.image} className="img-fluid w-100" alt={amenity.alt} />
             </picture>
             <Watermark className="left" />
           </div>

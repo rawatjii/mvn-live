@@ -48,7 +48,7 @@ const MicroPageGurgaonPhase1 = React.lazy(() =>
 const MicroPageGurgaonPhase2 = React.lazy(() =>
   import("./frontend/pages/MicroPageGurgaonPhase2.jsx")
 );
-const MvnMall1 = React.lazy(() => import("./frontend/pages/mvnMall.jsx"));
+import MvnMall1 from "./frontend/pages/mvnMall.jsx";
 // const MicroPageGurgaon1 = React.lazy(() =>
 //   new Promise((resolve) =>
 //     setTimeout(() => resolve(import("./frontend/pages/MicroPageGurgaon1.jsx")), 100000)
@@ -134,9 +134,13 @@ const router = createBrowserRouter([
       {
           path: "aeroone-gurgaon",
           element: (
-            <FrontendRoute loaderType="aeroone-gurgaon">
               <MicroPageGurgaon1 data={data} />
-            </FrontendRoute>
+          ),
+        },
+        {
+          path: "mvn-mall",
+          element: (
+              <MvnMall1 data={mvnMallData}/>
           ),
         },
       {
@@ -147,6 +151,7 @@ const router = createBrowserRouter([
           // </FrontendRoute>
         ),
       },
+      
       // 
       // {
       //   path: "aeroone-bangalore",
@@ -233,14 +238,7 @@ const router = createBrowserRouter([
           </FrontendRoute>
         ),
       },
-      // {
-      //   path: "mvn-mall",
-      //   element: (
-      //     <FrontendRoute  loaderType="mvn-mall-1">
-      //     <MvnMall1 data={mvnMallData}/>
-      //     </FrontendRoute>
-      //   ),
-      // },
+      
       {
         path: "disclaimer",
         element: (
