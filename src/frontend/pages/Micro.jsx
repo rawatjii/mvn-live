@@ -160,8 +160,6 @@ const MicroPage = () => {
   }, [projectSections]);
 
 const scrollToSection = (sectionKey) => {
-    console.log(sectionKey)
-
   const section = document.getElementById(sectionKey);
   if (section) {
     section.scrollIntoView({ behavior: 'smooth' });
