@@ -94,7 +94,6 @@ const Hero = () => {
               zIndex: 2, // Ensure iframe is above the background
             }}
             title="MVN Aero One Walkthrough"
-            loading="lazy"
           />
         </div>
       </div>
