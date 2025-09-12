@@ -13,7 +13,7 @@ const headingIconImg = `${API_URL}images/icons/heading-icon-img.webp`;
 function Blog() {
   window.scrollTo(0, 0);
   const [pageMetaData, setPageMetaData] = useState(null);
-  const [metaDataArray, setMetaData] = useState([])
+  const [metaDataArray, setMetaData] = useState([]) 
   const [newLoadingCount, setNewLoadingCount] = useState(
     Number(localStorage.getItem("count"))
   );
@@ -44,7 +44,7 @@ function Blog() {
   };
 
   useEffect(()=>{
-    setPageMetaData(metaData?.[0])
+    setPageMetaData(metaData?.[0]);
   }, [metaData])
 
   useEffect(()=>{
