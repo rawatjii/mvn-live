@@ -93,7 +93,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
         <MicroOverviewAeroone data={data.overview} />
       </div>
       {/* elevationData */}
-      <div id="Walkthrough">
+      <div>
         {data?.elevationData?.map((item, index) => (
           <div key={index}>
             <div className="mt_80 mt_sm_30 mb-md-5">
@@ -107,7 +107,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
         <LargeElevationSectionAeroone data={data.LargeElevationSection} />
       </div>
 
-      <div>
+      <div id="Walkthrough">
         <YtIframeAeroone data={data.walkthrough} subs_btn={true} />
       </div>
 
