@@ -1,7 +1,5 @@
 import React, { useEffect, useState, useRef, Suspense } from "react";
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import ScrollSmoother from "gsap/ScrollSmoother";
+
 import { Helmet } from "react-helmet";
 
 import MicroHeader from "../../components/MicroHeader";
@@ -53,7 +51,6 @@ const EnquireForm = React.lazy(() =>
 );
 const Footer = React.lazy(() => import("../../components/Footer"));
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 const MicroPageLayout = ({ data, loadingCount, setLoadingCount })=>{
   const [heroLoaded, setHeroLoaded] = useState(true);
@@ -78,24 +75,6 @@ const MicroPageLayout = ({ data, loadingCount, setLoadingCount })=>{
     }
   };
 
-  useEffect(() => {
-    if (heroLoaded) {
-      smootherRef.current = ScrollSmoother.create({
-        wrapper: "#smooth-wrapper",
-        content: "#smooth-content",
-        smooth: 1.5,
-        effects: true,
-        smoothTouch: 1.4,
-      });
-    }
-    return () => {
-      if (smootherRef.current) {
-        smootherRef.current.kill();
-        smootherRef.current = null;
-      }
-    };
-  }, [heroLoaded]);
-
   return (
     <>
 
@@ -106,8 +85,6 @@ const MicroPageLayout = ({ data, loadingCount, setLoadingCount })=>{
         isFixed={ isHeaderFixed }
       />
 
-      <div id="smooth-wrapper">
-        <div id="smooth-content">
           <div ref={bannerRef}>
             <MicroHero 
             onBannerExit={setIsHeaderFixed} 
@@ -268,8 +245,6 @@ const MicroPageLayout = ({ data, loadingCount, setLoadingCount })=>{
           <Suspense fallback="">
             <Footer />
           </Suspense>
-        </div>
-      </div>
 
       {/* <ScrollTop /> */}
     </>

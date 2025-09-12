@@ -2525,6 +2525,8 @@ footer {
 }
 
 .typology_section {
+  overflow: hidden;
+  
   .images {
     position: relative;
     width: 240px;

@@ -131,21 +131,7 @@ const Header = () => {
     const [images, setImages] = useState([]);
     const totalFrames = 200;
     const frameRefs = useRef([]);
-  
-    // for animation
-  
-    // useEffect(() => {
-    //   gsap.from(titleRef.current, {
-    //     y: 50,
-    //     opacity: 0,
-    //     duration: 1,
-  
-    //     scrollTrigger: {
-    //       trigger: titleRef.current,
-    //       start: "top 95%",
-    //     },
-    //   });
-    // }, []);
+
   
     useEffect(() => {
       // Preload images

@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 import SecTitle from "../../../common/SecTitle/Index";
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 import Modal from "react-bootstrap/Modal";
 
 import Lightbox from "yet-another-react-lightbox";
@@ -17,7 +15,6 @@ import "yet-another-react-lightbox/styles.css";
 import CustomCard from "../Card";
 import LocationSlider from "./bangalore/LocationSlider";
 
-gsap.registerPlugin(ScrollTrigger);
 const MicroLocationMap = ({ data }) => {
   const titleRef = useRef();
   const typoRefs = useRef([]);
@@ -36,65 +33,6 @@ const MicroLocationMap = ({ data }) => {
 
   const handleShow = () => setShowModal(true);
 
-  // for animation
-
-  useEffect(() => {
-    gsap.from(titleRef.current, {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-
-      scrollTrigger: {
-        trigger: titleRef.current,
-        start: "top 95%",
-      },
-    });
-
-    typoRefs.current.forEach((singleRef, index) => {
-      if (singleRef) {
-        gsap.from(singleRef, {
-          y: 20,
-          opacity: 0,
-          duration: 0.5,
-
-          scrollTrigger: {
-            trigger: singleRef,
-            start: "top 95%", // When the top of the element reaches 80% of the viewport
-          },
-        });
-      }
-    });
-
-    priceRefs.current.forEach((singleRef, index) => {
-      if (singleRef) {
-        gsap.from(singleRef, {
-          y: 20,
-          opacity: 0,
-          duration: 0.5,
-
-          scrollTrigger: {
-            trigger: singleRef,
-            start: "top 95%", // When the top of the element reaches 80% of the viewport
-          },
-        });
-      }
-    });
-
-    sizeRefs.current.forEach((singleRef, index) => {
-      if (singleRef) {
-        gsap.from(singleRef, {
-          y: 10,
-          opacity: 0,
-          duration: 0.5,
-
-          scrollTrigger: {
-            trigger: singleRef,
-            start: "top 95%", // When the top of the element reaches 80% of the viewport
-          },
-        });
-      }
-    });
-  }, []);
 
   return (
     <section
@@ -105,9 +43,7 @@ const MicroLocationMap = ({ data }) => {
         <div className="heading_div mb_60 mb_sm_30">
           <h4 className="title title_style1 text-center">Location Map</h4>
         </div>
-      </Container>
-
-      <div className="locationMapContent">
+        <div className="locationMapContent">
         <div className="row justify-content-center">
           <div className="col-sm-9">
             <div className="thumbnail">
@@ -167,6 +103,10 @@ const MicroLocationMap = ({ data }) => {
         </Container>
       </div>
       {locationSlider && <LocationSlider data={data} />}
+
+      </Container>
+
+      
 
       <Container>
         <div className="about">

@@ -19,9 +19,7 @@ import Footer from "../components/Footer";
 import Typology from "../components/homepage/Typology";
 import DownloadBrochure from "../components/MicroPage/DownloadBrochure";
 import InitialLoading from "../skeleton/Initial/Index";
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import ScrollSmoother from "gsap/ScrollSmoother";
+
 import GurgaonLoader1 from "../../common/Loader/micro/gurgaon1/Index";
 import { Helmet } from "react-helmet";
 import MicroHeader from "../components/MicroHeader";
@@ -40,7 +38,6 @@ import Consultant from "../components/MicroPage/Consultant";
 import ConstructionTechnology from "../components/MicroPage/ConstructionTechnology";
 import ScrollTop from "../../common/ScrollToTop/Index";
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 const MvnMallGurgaon = ({ data}) => {
   const [heroLoaded, setHeroLoaded] = useState(false);
@@ -63,23 +60,6 @@ const MvnMallGurgaon = ({ data}) => {
     }
   };
 
-  useEffect(() => {
-    if (heroLoaded) {
-      smootherRef.current = ScrollSmoother.create({
-        wrapper: "#smooth-wrapper",
-        content: "#smooth-content",
-        smooth: 1.5,
-        effects: true,
-        smoothTouch: 1.4,
-      });
-    }
-    return () => {
-      if (smootherRef.current) {
-        smootherRef.current.kill();
-        smootherRef.current = null;
-      }
-    };
-  }, [heroLoaded]);
 
   useEffect(() => {
     // && peacockLoaded && livingRoomLoaded && partyLoaded
@@ -214,10 +194,7 @@ const MvnMallGurgaon = ({ data}) => {
       </Helmet>
 
       {/* <MicroHeader scrollToSection={scrollToSection} /> */}
-      <div id="smooth-wrapper">
-        <div id="smooth-content">
-          
-
+      
           <div ref={(el) => (sectionRefs.current.microOverview = el)}>
             <MicroHero  data={data} onLoadComplete={() => setHeroLoaded(true)} />
           </div>
@@ -227,8 +204,6 @@ const MvnMallGurgaon = ({ data}) => {
           <MicroOverview data={data} heroLoadedStatus={heroLoaded} />
           <LargeElevationSection data={data.LargeElevationSection} />
           
-        </div>
-      </div>
 
       {/* <ScrollTop /> */}
     </>

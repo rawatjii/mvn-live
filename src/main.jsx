@@ -15,6 +15,7 @@ import { bangaloreData } from "./frontend/pages/micro/mvn-aeroone-bangalore/Inde
 import { faridabadData } from "./frontend/pages/micro/Athens/Index.jsx";
 import { athensGurgaonPhase1Data } from "./frontend/pages/micro/athens-gurgaon-phase-1/Index.jsx";
 import { athensGurgaonPhase2Data } from "./frontend/pages/micro/athens-gurgaon-phase-2/Index.jsx";
+import { athensGurgaonPhase3Data } from "./frontend/pages/micro/athens-gurgaon-phase-3/Index.jsx";
 import { mvnMallData } from "./frontend/pages/micro/mvnMall/Index.jsx";
 import { PersistGate } from "redux-persist/integration/react";
 import Homepage from "./frontend/pages/Homepage.jsx";
@@ -107,6 +108,7 @@ import Team from "./admin/components/aboutus/Team.jsx";
 import Sizes from "./admin/components/dashboard/microsite/Sizes.jsx";
 import KeyHighlights from "./admin/components/dashboard/microsite/KeyHighlights.jsx";
 import PagesMeta from "./admin/components/PagesMeta.jsx";
+import MicroPageGurgaonPhase3 from "./frontend/pages/MicroPageGurgaonPhase3.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -136,6 +138,12 @@ const router = createBrowserRouter([
         path: "mvn-athens-gurgaon-phase-2",
         element: (
             <MicroPageGurgaonPhase2 data={athensGurgaonPhase2Data} />
+        ),
+      },
+      {
+        path: "mvn-athens-gurgaon-phase-3",
+        element: (
+            <MicroPageGurgaonPhase3 data={athensGurgaonPhase3Data} />
         ),
       },
       {

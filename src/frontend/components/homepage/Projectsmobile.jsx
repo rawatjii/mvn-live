@@ -3,8 +3,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "../../../common/Button/Button";
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+
 import AnImage from "../../../common/animations/Image/Index";
 
 import mvnMallImg from "../../assets/images/projects/mvn-mall.webp";
@@ -24,7 +23,6 @@ import * as CONFIG from '../../../config/config'
 import { Link } from "react-router-dom";
 import LazyLoad from "react-lazyload";
 
-gsap.registerPlugin(ScrollTrigger);
 
 const projectsData = [
 
@@ -72,45 +70,6 @@ const Projects = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  const initializeAnimations = () => {
-    gsap.from(titleRef.current, {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      scrollTrigger: {
-        trigger: titleRef.current,
-        start: "top 95%",
-        once: true,
-      },
-    });
-
-    imageDivRefs.current.forEach((imagediv) => {
-      if (imagediv) {
-        gsap.to(imagediv, {
-          scrollTrigger: {
-            trigger: imagediv,
-            start: "top 95%",
-            once: true,
-            onEnter: () => imagediv.classList.add("active"),
-          },
-          clearProps: "all",
-        });
-      }
-    });
-  };
-
-  useEffect(() => {
-    if (imagesLoaded === projectsData.length) {
-      setTimeout(() => {
-        initializeAnimations();
-        ScrollTrigger.refresh();
-      }, 300);
-    }
-
-    window.addEventListener("resize", ScrollTrigger.refresh);
-    return () => window.removeEventListener("resize", ScrollTrigger.refresh);
-  }, [imagesLoaded]);
 
   const handleImageLoad = () => {
     setImagesLoaded((prev) => prev + 1);

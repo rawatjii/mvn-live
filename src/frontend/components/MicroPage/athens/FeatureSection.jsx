@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./feature_section.css";
+import { Container } from "react-bootstrap";
 
 const FeatureSection = ({ data }) => {
   const { title, desc, src, list, bgImg, isTwoColumn } = data;
@@ -48,6 +49,7 @@ const FeatureSection = ({ data }) => {
 
   return (
     <section className="feature" aria-label="Feature Section">
+      <Container>
       <div className="row">
         <div className="col-lg-6">
           <div class="box-title m-v">
@@ -89,6 +91,8 @@ const FeatureSection = ({ data }) => {
           </div>
         </div>
       </div>
+      </Container>
+      
     </section>
   );
 };

@@ -1,13 +1,10 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+
 import { Link } from "react-router-dom";
 
 import { useMatches } from "../../../theme/theme";
 import { API_URL } from "../../../config/config";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const otherProjects = [
   {
@@ -42,49 +39,6 @@ const OtherProjects = React.memo(
     const imageDivRefs = useRef([]);
     const { isMobile } = useMatches();
     const [imagesLoaded, setImagesLoaded] = useState(0);
-
-    const initializeAnimations = useCallback(() => {
-      if (otherProjects.length > 0) {
-        gsap.from(titleRef.current, {
-          y: 50,
-          opacity: 1,
-          duration: 1,
-          scrollTrigger: {
-            trigger: titleRef.current,
-            start: "top 95%",
-          },
-        });
-
-        imageDivRefs.current.forEach((imagediv, index) => {
-          if (imagediv) {
-            gsap.to(imagediv, {
-              scrollTrigger: {
-                trigger: imagediv,
-                start: "top 95%",
-                onEnter: () => imagediv.classList.add("active"),
-                once: true,
-              },
-            });
-          }
-        });
-      }
-    }, []);
-
-    useEffect(() => {
-      const handleResize = () => {
-        ScrollTrigger.refresh();
-      };
-
-      if (imagesLoaded === otherProjects.length) {
-        setTimeout(() => {
-          initializeAnimations();
-          ScrollTrigger.refresh();
-        }, 300);
-      }
-
-      window.addEventListener("resize", handleResize);
-      return () => window.removeEventListener("resize", handleResize);
-    }, [imagesLoaded]);
 
     const handleImageLoad = () => {
       setImagesLoaded((prev) => prev + 1);

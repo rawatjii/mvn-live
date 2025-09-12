@@ -1,15 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Container, Breadcrumb } from "react-bootstrap";
 import LazyLoad from "react-lazyload";
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+
 
 import './microBanner.css';
 import useFetchData from "../../utils/apiHelper";
 import { BACKEND_IMAGE_URL } from "../../../config/config";
 import { useLocation } from "react-router-dom";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const MicroBanner = ({page_section, page, data, type})=>{
   const titleRef = useRef();
@@ -31,27 +28,6 @@ const MicroBanner = ({page_section, page, data, type})=>{
     }
   }, [bannerData])
 
-  useEffect(() => {
-    // breadcrumb animation
-    const breadcrumbTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: linksRef.current,
-        start: "top 95%",
-      },
-    });
-
-    // Add animation to the timeline with a delay
-
-    breadcrumbTimeline.from(
-      linksRef.current,
-      {
-        y: 15,
-        opacity: 0, 
-        duration: 0.7, 
-      },
-      "+=0.5"
-    );
-  }, []);
   
 
   return (

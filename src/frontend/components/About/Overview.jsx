@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 import SecTitle from "../../../common/SecTitle/Index";
-import { gsap } from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+
 import LazyLoad from "react-lazyload";
 
 import AnImage from "../../../common/animations/Image/Index";
@@ -10,60 +9,12 @@ import { useMatches } from "../../../theme/theme";
 import { API_URL } from "../../../config/config";
 
 
-gsap.registerPlugin(ScrollTrigger);
 
 const Overview = () => {
   const titleRef = useRef();
   const desRefs = useRef([]);
   const imageRef = useRef();
  const { isMobile } = useMatches(); 
-
-  useEffect(() => {
-    // Title animation
-    gsap.from(titleRef.current, {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      scrollTrigger: {
-        trigger: titleRef.current,
-        start: "top 95%",
-        toggleActions: "play none none reverse",
-      },
-    });
-
-    // Description animations
-    desRefs.current.forEach((desRef, index) => {
-      gsap.from(desRef, {
-        y: 50,
-        opacity: 0,
-        duration: 0.8,
-        delay: index * 0.2, // Staggered effect
-        scrollTrigger: {
-          trigger: desRef,
-          start: "top 95%",
-          toggleActions: "play none none reverse",
-        },
-      });
-    });
-
-    // Image animation with class addition
-    gsap.to(imageRef.current, {
-      scrollTrigger: {
-        trigger: imageRef.current,
-        start: "top 90%",
-        onEnter: () => {
-          if (imageRef.current) {
-            imageRef.current.classList.add("active");
-          }
-        },
-        once: true,
-      },
-    });
-
-    // Refresh ScrollTrigger on resize for layout consistency
-    window.addEventListener("resize", ScrollTrigger.refresh);
-    return () => window.removeEventListener("resize", ScrollTrigger.refresh);
-  }, []);
 
   return (
 
