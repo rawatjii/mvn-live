@@ -35,12 +35,11 @@ const MicroPageFaridabad = ({ data, loadingCount, setLoadingCount }) => {
 
 
   const scrollToSection = (sectionKey) => {
-    const target = sectionRefs.current[sectionKey];
-    if (target && smootherRef.current) {
-      smootherRef.current.scrollTo(target, true);
+    const section = document.getElementById(sectionKey);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
     }
   };
-
 
   return (
     <>
@@ -58,6 +57,7 @@ const MicroPageFaridabad = ({ data, loadingCount, setLoadingCount }) => {
           </div>
 
           <div
+          id="microOverview"
             ref={(el) =>
               (sectionRefs.current.microOverview = el)
             }
@@ -65,6 +65,7 @@ const MicroPageFaridabad = ({ data, loadingCount, setLoadingCount }) => {
           <MicroOverview data={data.overview} heroLoadedStatus={heroLoaded} /> {/*no isssue*/}
           </div>
           <div
+          id="downloadBrochure"
             ref={(el) =>
               (sectionRefs.current.downloadBrochure = el)
             }
@@ -72,6 +73,7 @@ const MicroPageFaridabad = ({ data, loadingCount, setLoadingCount }) => {
             <DownloadBrochure name="DOWNLOAD MVN ATHENS ID BROCHURE" projectName="MVN Athens Faridabad" />
           </div>
           <div
+          id="gallery"
             ref={(el) =>
               (sectionRefs.current.gallery = el)
             }
@@ -80,6 +82,7 @@ const MicroPageFaridabad = ({ data, loadingCount, setLoadingCount }) => {
           </div>
 
           <div
+          id="MicroAmenities"
             ref={(el) =>
               (sectionRefs.current.MicroAmenities = el)
             }>
@@ -87,6 +90,7 @@ const MicroPageFaridabad = ({ data, loadingCount, setLoadingCount }) => {
           </div>
 
           <div
+          id="MicroTypology"
             ref={(el) =>
               (sectionRefs.current.MicroTypology = el)
             }
@@ -95,6 +99,7 @@ const MicroPageFaridabad = ({ data, loadingCount, setLoadingCount }) => {
           </div>
 
           <div
+          id="MicroLocationMap"
             ref={(el) =>
               (sectionRefs.current.MicroLocationMap = el)
             }

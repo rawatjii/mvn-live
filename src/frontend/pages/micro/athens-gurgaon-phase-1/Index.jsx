@@ -59,10 +59,10 @@ export const athensGurgaonPhase1Data = {
         section_title:'MVN Athens ID Brochure',
         link:'downloadBrochure'
       },
-      {
-        section_title:'Gallery',
-        link:'gallery'
-      },
+      // {
+      //   section_title:'Gallery',
+      //   link:'gallery'
+      // },
       {
         section_title:'Features',
         link:'features'

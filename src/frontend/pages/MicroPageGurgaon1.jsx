@@ -57,8 +57,6 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
 
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
   const scrollToSection = (sectionKey) => {
-    console.log(sectionKey);
-
     const section = document.getElementById(sectionKey);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });

@@ -37,8 +37,11 @@ const MicroPageGurgaonPhase2 = ({ data, loadingCount, setLoadingCount }) => {
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
   const bannerRef = useRef(null);
 
-  const scrollToSection = (sectionKey) => {
-    const target = sectionRefs.current[sectionKey];
+const scrollToSection = (sectionKey) => {
+    const section = document.getElementById(sectionKey);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -58,35 +61,35 @@ const MicroPageGurgaonPhase2 = ({ data, loadingCount, setLoadingCount }) => {
             />
           </div>
 
-          <div ref={(el) => (sectionRefs.current.microOverview = el)}>
+          <div id="microOverview" ref={(el) => (sectionRefs.current.microOverview = el)}>
             <MicroOverview data={data.overview} heroLoadedStatus={heroLoaded} />{" "}
           </div>
-          <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
+          <div id="downloadBrochure" ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
             <DownloadBrochure
               name="DOWNLOAD MVN ATHENS ID BROCHURE"
               projectName="MVN Athens Gurgaon PH-2"
             />
           </div>
-           <div ref={(el) => (sectionRefs.current.features = el)}>
+           <div id="features" ref={(el) => (sectionRefs.current.features = el)}>
             <Suspense>
               <FeatureSection data={data.features} />
             </Suspense>
           </div>
 
-          <div ref={(el) => (sectionRefs.current.MicroAmenities = el)}>
+          <div id="MicroAmenities" ref={(el) => (sectionRefs.current.MicroAmenities = el)}>
             <Suspense>
               <ParallaxSection section_data={data.amenities} />
             </Suspense>
           </div>
 
-          <div ref={(el) => (sectionRefs.current.MicroTypology = el)}>
+          <div id="MicroTypology" ref={(el) => (sectionRefs.current.MicroTypology = el)}>
             <SliderTypology
               data={data.typologies}
               onLoadComplete={() => setTypologyLoaded(true)}
             />
           </div>
 
-          <div ref={(el) => (sectionRefs.current.MicroLocationMap = el)}>
+          <div id="MicroLocationMap" ref={(el) => (sectionRefs.current.MicroLocationMap = el)}>
             <MicroLocationMap data={data.locationAdvantage} />
           </div>
 

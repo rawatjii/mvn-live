@@ -33,9 +33,12 @@ const MicroPageGurgaonPhase1 = ({ data, loadingCount, setLoadingCount }) => {
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
   const bannerRef = useRef(null);
 
-  const scrollToSection = (sectionKey) => {
-    const target = sectionRefs.current[sectionKey];
-    
+const scrollToSection = (sectionKey) => {
+    const section = document.getElementById(sectionKey);
+    console.log(sectionKey)
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -54,33 +57,33 @@ const MicroPageGurgaonPhase1 = ({ data, loadingCount, setLoadingCount }) => {
               isMainBanner={true}
             />
           </div>
-          <div ref={(el) => (sectionRefs.current.microOverview = el)}>
+          <div  id="microOverview" ref={(el) => (sectionRefs.current.microOverview = el)}>
             <MicroOverview data={data.overview} heroLoadedStatus={heroLoaded} />{" "}
           </div>
 
-          <div>
+          <div id="downloadBrochure">
             <DownloadBrochure
               name="DOWNLOAD MVN ATHENS ID BROCHURE"
               projectName="MVN Athens Gurgaon PH-1"
             />
           </div>
 
-          <div>
+          <div id="features" >
               <FeatureSection data={data.features} />
           </div>
 
-          <div >
+          <div id="MicroAmenities">
               <ParallaxSection section_data={data.amenities} />
           </div>
 
-          <div>
+          <div id="MicroTypology">
             <SliderTypology
               data={data.typologies}
               onLoadComplete={() => setTypologyLoaded(true)}
             />
           </div>
 
-          <div>
+          <div id="MicroLocationMap">
             <MicroLocationMap data={data.locationAdvantage} />
           </div>
 

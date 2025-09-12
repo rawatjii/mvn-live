@@ -14,6 +14,7 @@ import AthensBanner from "../components/MicroPage/athens/AthensBanner";
 import FeatureSection from "../components/MicroPage/athens/FeatureSection";
 import ParallaxSection from "../../common/ParallaxSection";
 import Construction from "./Construction";
+import MetaComponents from "../components/MetaComponents";
 
 const MicroPageGurgaonPhase3 = ({ data, loadingCount, setLoadingCount }) => {
   const [heroLoaded, setHeroLoaded] = useState(true);
@@ -33,124 +34,16 @@ const MicroPageGurgaonPhase3 = ({ data, loadingCount, setLoadingCount }) => {
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
   const bannerRef = useRef(null);
 
-  const scrollToSection = (sectionKey) => {
-    const target = sectionRefs.current[sectionKey];
+const scrollToSection = (sectionKey) => {
+    const section = document.getElementById(sectionKey);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
     <>
-      <Helmet>
-        <script>
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-          `}
-        </script>
-
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-P7MQ5KWWGL"
-        ></script>
-
-        <script>
-          {`
-            gtag('js', new Date());
-            gtag('config', 'G-P7MQ5KWWGL');
-          `}
-        </script>
-
-        {/* Google tag (gtag.js) */}
-
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-T7YNXS59XR"
-        ></script>
-
-        <script>
-          {`
-            gtag('js', new Date());
-
-            gtag('config', 'G-T7YNXS59XR');
-          `}
-        </script>
-
-        {/* conversion code */}
-
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-11490416244"
-        ></script>
-
-        <script>
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'AW-11490416244');
-          `}
-        </script>
-
-        {/* Meta Pixel Code */}
-
-        <script>
-          {`
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '562105226581202');
-            fbq('track', 'PageView');
-            `}
-        </script>
-
-        <noscript>
-          {`
-              <img  alt="facebook" height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=562105226581202&ev=PageView&noscript=1" />
-            `}
-        </noscript>
-
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-11490416244"
-        ></script>
-        <script>
-          {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-
-              gtag('config', 'AW-11490416244');
-            `}
-        </script>
-
-        <script>
-          {`
-                <script type='text/javascript'>
-                window._tfa = window._tfa || [];
-                window._tfa.push({notify: 'event', name: 'page_view', id: 1787600});
-                !function (t, f, a, x) {
-                      if (!document.getElementById(x)) {
-                          t.async = 1;t.src = a;t.id=x;f.parentNode.insertBefore(t, f);
-                      }
-                }(document.createElement('script'),
-                document.getElementsByTagName('script')[0],
-                '//cdn.taboola.com/libtrc/unip/1787600/tfa.js',
-                'tb_tfa_script');
-              </script>
-              `}
-        </script>
-
-        <script>
-          {`
-              (function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"187169642", enableAutoSpaTracking: true};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");
-            `}
-        </script>
-      </Helmet>
+    <MetaComponents/>
 
       <MicroHeader
         scrollToSection={scrollToSection}
@@ -165,31 +58,31 @@ const MicroPageGurgaonPhase3 = ({ data, loadingCount, setLoadingCount }) => {
             />
           </div>
 
-          <div ref={(el) => (sectionRefs.current.microOverview = el)}>
+          <div id="microOverview" ref={(el) => (sectionRefs.current.microOverview = el)}>
             <MicroOverview data={data.overview} heroLoadedStatus={heroLoaded} />{" "}
           </div>
-          <div ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
+          <div id="downloadBrochure" ref={(el) => (sectionRefs.current.downloadBrochure = el)}>
             <DownloadBrochure
               name="DOWNLOAD MVN ATHENS ID BROCHURE"
               projectName="MVN Athens Gurgaon PH-2"
             />
           </div>
-           <div ref={(el) => (sectionRefs.current.features = el)}>
+           <div  id="features" ref={(el) => (sectionRefs.current.features = el)}>
               <FeatureSection data={data.features} />
           </div>
 
-          <div ref={(el) => (sectionRefs.current.MicroAmenities = el)}>
+          <div id="MicroAmenities" ref={(el) => (sectionRefs.current.MicroAmenities = el)}>
               <ParallaxSection section_data={data.amenities} />
           </div>
 
-          <div ref={(el) => (sectionRefs.current.MicroTypology = el)}>
+          <div id="MicroTypology" ref={(el) => (sectionRefs.current.MicroTypology = el)}>
             <SliderTypology
               data={data.typologies}
               onLoadComplete={() => setTypologyLoaded(true)}
             />
           </div>
 
-          <div ref={(el) => (sectionRefs.current.MicroLocationMap = el)}>
+          <div id="MicroLocationMap" ref={(el) => (sectionRefs.current.MicroLocationMap = el)}>
             <MicroLocationMap data={data.locationAdvantage} />
           </div>
 
