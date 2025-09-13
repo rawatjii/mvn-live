@@ -66,7 +66,7 @@ const CustomIframe = ({ data }) => {
           }}
           title="YouTube video player"
           frameBorder="0"
-          allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allow="fullscreen; accelerometer; autoplay; cl ipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
           allowFullScreen
           width="100%"

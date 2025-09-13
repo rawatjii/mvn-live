@@ -188,7 +188,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                                     return (
                                       <li
                                         className={
-                                          project.status ? "new_launch" : ""
+                                          project.status ? "new_launch " : ""
                                         }
                                         key={project.name + idx}
                                       >
@@ -199,13 +199,15 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                                               ? "_self"
                                               : "_blank"
                                           }
+                                          className={'d-flex justify-content-between align-items-center w-100'}
                                           onClick={() => toggleMenu("close")}
                                         >
                                           {project.name}
-                                        </NavLink>
-                                        {project.status && (
+                                           {project.status && (
                                           <span>{project.status}</span>
                                         )}
+                                        </NavLink>
+                                       
                                       </li>
                                     );
                                   })}
