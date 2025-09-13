@@ -11,7 +11,7 @@ const Footer = () => {
             <div className="center">
               <div className="f-logo reveal">
                 <img
-                  src="https://img.websitedesigningcompany.co.in/public/assets/logo_white.webp"
+                  src="https://img.websitedesigningcompany.co.in/public/assets/logo_white_new.webp"
                   width="100%"
                   alt="mvn logo image"
                 />
