@@ -57,11 +57,6 @@ const LifeAtMvn = () => {
                     <source srcset={BACKEND_IMAGE_URL+data?.[1].image} type="image/webp" />
                     <img className="blank-img w-100" src={BACKEND_IMAGE_URL+data?.[1].alternative_image} alt="Development image"/>
                   </picture>
-                    {/* <img
-                      src={peopleDevelopmentImg}
-                      alt="Development image"
-                      width="100%"
-                    /> */}
                   </div>
                 </div>
               </div>
