@@ -175,7 +175,7 @@ const Projects = () => {
                         className="pro_img"
                         height={100}
                       >
-                        <Link to={item.otherPage ? item.link : import.meta.env.VITE_APP_URL + item.link}>
+                        <Link target="_blank" to="https://www.mvnaeroone.com/">
                           <img
                             src={isDesktop ? item.mobile : item.desktop}
                             alt={item.name}
