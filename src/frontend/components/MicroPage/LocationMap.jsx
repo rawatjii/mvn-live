@@ -7,7 +7,7 @@ import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 
 import * as CONFIG from "../../../config/config";
-
+import { useLocation } from "react-router-dom";
 // Import Swiper styles
 import "swiper/css";
 import "yet-another-react-lightbox/styles.css";
@@ -28,6 +28,7 @@ const MicroLocationMap = ({ data }) => {
   const locationMapImg = [
     { src: data.mapIMG.desktop, asset: data.mapIMG.desktop },
   ];
+  const {pathname}=useLocation();
 
   const handleClose = () => setShowModal(false);
 
@@ -47,7 +48,7 @@ const MicroLocationMap = ({ data }) => {
         <div className="row justify-content-center">
           <div className="col-sm-9">
             <div className="thumbnail">
-              <button
+              {pathname.includes("mvn-mall")&&<button
                 type="button"
                 role="button"
                 tabIndex="0"
@@ -60,7 +61,7 @@ const MicroLocationMap = ({ data }) => {
                   className="img-fluid yt_icon"
                 />
                 Location Video
-              </button>
+              </button>}
 
               <div onClick={() => setIsLocationMapOpen(true)}>
                 <img

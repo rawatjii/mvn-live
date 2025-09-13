@@ -128,8 +128,9 @@ const Projects = () => {
                         )}
                       </AnImage>
                       <div className="text d-flex">
+                        
                         <span className="pro_name text-uppercase">{item.name}</span>
-                        <Link className="pro_link text-capitalize" to={item.link}>
+                        <Link className="pro_link text-capitalize" target={item.link=="aeroone-gurgaon"&&"_blank" } to={item.link}>
                           view detail
                           <img
                             src={`${API_URL}images/icons/arrow.png`}
@@ -185,7 +186,7 @@ const Projects = () => {
                       </AnImage>
                       <div className="text d-flex">
                         <span className="pro_name text-uppercase">{item.name}</span>
-                        <Link className="pro_link text-capitalize" to={item.link}>
+                        <Link className="pro_link text-capitalize" target="_blank"  to="https://www.mvnaeroone.com/">
                           view detail
                           <img
                             src={`${API_URL}images/icons/arrow.png`}
