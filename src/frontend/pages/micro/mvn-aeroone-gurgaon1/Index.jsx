@@ -185,7 +185,7 @@ export const data = {
       desc: "Experience peace in a meticulously crafted Zen garden, a sanctuary of balance and beauty.",
     },
   ],
-  LargeElevationSection: {
+  LargeElevationSection: { 
     section_type: "elevation",
     heading: "Unseen Unheard Unimagined",
     sub_heading: "ΑΝ ΕΡΙΤOME OF CONTEMPORARY ELEGANCE",
