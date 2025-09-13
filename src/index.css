@@ -720,7 +720,7 @@ a {
     margin: 0;
 
     img {
-      max-width: 70px;
+      max-width: 100px;
       transition: all 0.3s ease-in-out;
     }
   }
@@ -730,7 +730,7 @@ a {
 
     .navbar-brand {
       img {
-        max-width: 50px;
+        max-width: 80px;
       }
     }
 

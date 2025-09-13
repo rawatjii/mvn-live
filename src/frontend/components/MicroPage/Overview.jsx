@@ -107,7 +107,7 @@ const MicroOverview = React.memo(({ data }) => {
 
           {counterHeading && 
             <>
-          <p className="counter-heading">5.5 BHK One of the Largest Apartments in Gurugram</p>
+          <p className="counter-heading">{counterHeading}</p>
 
           <div className="counter-flex-box">
             <div className="flex-box" ref={ref1}>

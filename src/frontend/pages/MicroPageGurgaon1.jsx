@@ -14,10 +14,10 @@ import MicroAmenities from "../components/MicroPage/Amenities";
 import NoPolutionZone from "../components/MicroPage/NoPolutionZone";
 import View360 from "../components/MicroPage/360";
 import LivingRoomVideoGurugramAeroone from "../components/MicroPage/LivingRoomVideoGurugramAeroone";
-import LargeElevationSection1Aeroone from "../components/MicroPage/LargeElevationSection1Aeroone";
+import LargeElevationSection1 from "../components/MicroPage/LargeElevationSection1";
 import MicroHeaderStatic from "../components/MicroHeadeStatic";
 import Walkthrough from "../components/MicroPage/Walkthrough";
-import LargeElevationSectionAeroone from "../components/MicroPage/LargeElevationSectionAeroone";
+import LargeElevationSection from "../components/MicroPage/LargeElevationSection";
 import YtIframeAeroone from "../components/MicroPage/YtIframeAeroone";
 import { API_URL, JSON_URL } from "../../config/config";
 import ImagesGallery from "../components/MicroPage/ImagesGallery";
@@ -36,10 +36,7 @@ import MvnMallAeroone from "../components/MicroPage/MvnMallAeroone";
 import Enquire from "../components/homepage/Enquire";
 import EnquireForm from "../components/homepage/EnquireForm";
 import MetaComponents from "../components/MetaComponents";
-
-const MicroOverview = React.lazy(() =>
-  import("../components/MicroPage/Overview")
-);
+import MicroOverview from "../components/MicroPage/Overview";
 
 const PartyVideo = React.lazy(() =>
   import("../components/MicroPage/PartyVideo")
@@ -72,7 +69,7 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
     <>
     <MetaComponents/>
     
-      <MicroHeaderStatic
+      <MicroHeader
         scrollToSection={scrollToSection}
         data={data.header}
         isFixed={isHeaderFixed}
@@ -88,21 +85,21 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
         />
       </div>
       <div id="overview">
-        <MicroOverviewAeroone data={data.overview} />
+        <MicroOverview data={data.overview} />
       </div>
       {/* elevationData */}
       <div>
         {data?.elevationData?.map((item, index) => (
           <div key={index}>
             <div className="mt_80 mt_sm_30 mb-md-5">
-              <LargeElevationSection1Aeroone {...item} />
+              <LargeElevationSection1 {...item} />
             </div>
           </div>
         ))}
       </div>
 
       <div id="">
-        <LargeElevationSectionAeroone data={data.LargeElevationSection} />
+        <LargeElevationSection data={data.LargeElevationSection} />
       </div>
 
       <div id="Walkthrough">

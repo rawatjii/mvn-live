@@ -149,29 +149,15 @@ export const data = {
     ],
   },
   overview: {
-    id: 7,
-    project_id: 4,
-    section_type: "overview",
-    seq: 1,
-    status: 1,
-    heading: "MVN Aero One Gurgaon Luxury Residences",
-    sub_heading: "AN EPITOME OF GLOBAL LUXURY NOW IN GURUGRAM",
-    alt: "5.5 BHK One of the Largest Apartments in Gurugram",
-    description:
+    title: "MVN Aero One Gurgaon Luxury Residences",
+    extra: "AN EPITOME OF GLOBAL LUXURY NOW IN GURUGRAM",
+    counterHeading: "5.5 BHK One of the Largest Apartments in Gurugram",
+    desc:
       "MVN Aero One Residence  Gurgaon is set to redefine luxury living with the launch of its ultra-luxury 5.5 BHK residences in Gurgaon. Inspired by the architectural brilliance of Dubai and New York, these opulent homes feature cutting-edge design, world-class amenities, and panoramic views. Designed for the discerning few, MVN Aero One offers a lifestyle where sophistication meets comfort—setting a new benchmark in elite urban living.",
     short_description: "2% discount for Indian Armed Forces Personnel",
     iframe: "13500, 12600, 6300",
-    image: null,
-    alternative_image: null,
-    mb_image: null,
-    mb_alternative_image: null,
-    json: null,
-    mb_json: null,
-    optional_images: null,
-    is_type: null,
-    video: null,
-    yt_url: "",
-    rera:'RC/REP/HARERA/GGM/889/621/2024/116'
+    rera:'RERA NO. RC/REP/HARERA/GGM/889/621/2024/116',
+    isDiscountAvailable:true,
   },
   elevationData: [
     {
@@ -192,8 +178,8 @@ export const data = {
     },
     {
       image: {
-        desktop: "assets/images/aeroone/zen-garden/desktop.webp",
-        mobile: "assets/images/aeroone/zen-garden/mobile.webp",
+        desktop: `${CONFIG.API_URL}assets/aeroone/elevationData/zen_garden.webp`,
+        mobile: `${CONFIG.API_URL}assets/aeroone/elevationData/zen_garden_sm.webp`,
       },
       title: "Embrace Tranquility",
       desc: "Experience peace in a meticulously crafted Zen garden, a sanctuary of balance and beauty.",
@@ -216,7 +202,7 @@ export const data = {
     short_description: null,
     description:
       "This architectural masterpiece seamlessly blends cutting-edge design with new-age sophistication. Every curve, every detail, is meticulously crafted to elevate your living experience. Embrace a residence where innovation meets beauty, creating a landmark of luxurious urban living. Your new home awaits.",
-    optional_images: "uploads/project-section/1757065309550.webp",
+    optional_images: `${CONFIG.API_URL}/images/aero-gurgaon/building.webp`,
     mb_json: null
   },
   walkthrough: {

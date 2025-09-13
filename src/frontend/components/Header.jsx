@@ -5,7 +5,12 @@ import Nav from "react-bootstrap/Nav";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import * as CONFIG from "root/config/config";
 import { useEffect, useRef, useState } from "react";
-import { otherProjects, otherPages, otherDetails, socialMedia } from "../../data/headerdata";
+import {
+  otherProjects,
+  otherPages,
+  otherDetails,
+  socialMedia,
+} from "../../data/headerdata";
 import "./Header.css";
 
 import { API_URL } from "../../config/config";
@@ -17,7 +22,7 @@ const subscribeBtn = `${API_URL}images/icons/subscribe_btn.webp`;
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isMicro, setIsMicro] = useState(false);
-  const channelUrl =  CONFIG.YOUTUBE_URL;
+  const channelUrl = CONFIG.YOUTUBE_URL;
 
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
   const [otherProjectsOpen, setOtherProjectsOpen] = useState(false);
@@ -84,15 +89,18 @@ const Header = () => {
       >
         <Container>
           <Navbar.Brand className="logo">
-            <Link onClick={() => toggleMenu("close")} to={import.meta.env.VITE_APP_URL}>
+            <Link
+              onClick={() => toggleMenu("close")}
+              to={import.meta.env.VITE_APP_URL}
+            >
               <img
-                src={`${API_URL}assets/logo_white.webp`}
+                src={`${API_URL}assets/logo_white_new.webp`}
                 alt="mvn logo"
                 className="img-fluid d-none d-md-block"
                 fetchpriority="high"
               />
               <img
-                src={`${API_URL}assets/logo_white.webp`}
+                src={`${API_URL}assets/logo_white_new.webp`}
                 alt="mvn logo"
                 className="img-fluid d-md-none"
                 fetchpriority="high"
@@ -102,10 +110,12 @@ const Header = () => {
 
           <div className="right">
             <a href="tel:+917996000196" className="call_btn">
-              <img src={`${API_URL}images/icons/call.png`} alt="mvn call icon" />
+              <img
+                src={`${API_URL}images/icons/call.png`}
+                alt="mvn call icon"
+              />
             </a>
             <Navbar.Toggle
-             
               aria-controls="basic-navbar-nav"
               onClick={() => toggleMenu("show")}
             >
@@ -118,8 +128,12 @@ const Header = () => {
               <div className="inner-overlay">
                 {window.innerWidth > 767 && (
                   <div className="video-area">
-                    <video autoPlay muted  loop>
-                      <source src={MenuSideVideo} type="video/mp4" className="img-fluid videoMenu"/>
+                    <video autoPlay muted loop>
+                      <source
+                        src={MenuSideVideo}
+                        type="video/mp4"
+                        className="img-fluid videoMenu"
+                      />
                     </video>
                   </div>
                 )}
@@ -127,55 +141,93 @@ const Header = () => {
                 <div className="menu-area">
                   <div>
                     <div className="top_head">
-                      <Link
-                        onClick={() => toggleMenu("close")}
-                      >
-                        <img src={`${API_URL}assets/logo_white.webp`} width="50" alt="mvn logo" />
+                      <Link onClick={() => toggleMenu("close")}>
+                        <img
+                          src={`${API_URL}assets/logo_white_new.webp`}
+                          width="80"
+                          alt="mvn logo"
+                        />
                       </Link>
 
-                      <span className="close d-md-none"onClick={() => toggleMenu("close")}>&times;</span>
+                      <span
+                        className="close d-md-none"
+                        onClick={() => toggleMenu("close")}
+                      >
+                        &times;
+                      </span>
                     </div>
                     <div className="inner-menu">
-
                       <div className="bottom-area">
                         <div className="inner-bottom-area">
                           <div className="left">
+                            {otherProjects &&
+                              otherProjects.map((singleProject, index) => (
+                                <React.Fragment key={index}>
+                                  <h4 className={index === 0 ? "" : ""}>
+                                    {singleProject.location}
+                                  </h4>
 
-                            {otherProjects && otherProjects.map((singleProject, index) => (
-                              <React.Fragment key={index}>
-                                <h4 className={index === 0 ? '' : ''}>{singleProject.location}</h4>
-    
-                                <ul>
-                                  {singleProject.projects && singleProject.projects.map((project, idx) => (
-                                    <li className={project.status ? 'new_launch' : ''} key={project.name + idx}>
-                                      <NavLink to={project.link} target={project.target_blank === false ? "_self" : "_blank"} onClick={() => toggleMenu("close")}>
-                                        {project.name}
-                                      </NavLink>
-                                      {project.status && <span>{project.status}</span>}
-                                    </li>
-                                  ))}
-                                </ul>
-                              </React.Fragment>
-                            ))}
+                                  <ul>
+                                    {singleProject.projects &&
+                                      singleProject.projects.map(
+                                        (project, idx) => (
+                                          <li
+                                            className={
+                                              project.status ? "new_launch" : ""
+                                            }
+                                            key={project.name + idx}
+                                          >
+                                            <NavLink
+                                              to={project.link}
+                                              target={
+                                                project.target_blank === false
+                                                  ? "_self"
+                                                  : "_blank"
+                                              }
+                                              onClick={() =>
+                                                toggleMenu("close")
+                                              }
+                                            >
+                                              {project.name}
+                                            </NavLink>
+                                            {project.status && (
+                                              <span>{project.status}</span>
+                                            )}
+                                          </li>
+                                        )
+                                      )}
+                                  </ul>
+                                </React.Fragment>
+                              ))}
                           </div>
 
                           <div className="right top">
                             <ul>
                               <li>
-                                <NavLink to={import.meta.env.VITE_APP_URL} onClick={() => toggleMenu("close")}>
+                                <NavLink
+                                  to={import.meta.env.VITE_APP_URL}
+                                  onClick={() => toggleMenu("close")}
+                                >
                                   Home
                                 </NavLink>
                               </li>
                               {/* otherPages */}
                               {window.innerWidth > 768 ? (
                                 <>
-                                  {otherPages && otherPages.map((singleLink, index)=>(
-                                    <li key={index}>
-                                      <NavLink to={import.meta.env.VITE_APP_URL + singleLink.link} onClick={() => toggleMenu("close")}>
-                                      {singleLink.name}
-                                      </NavLink>
-                                    </li>
-                                  ))}
+                                  {otherPages &&
+                                    otherPages.map((singleLink, index) => (
+                                      <li key={index}>
+                                        <NavLink
+                                          to={
+                                            import.meta.env.VITE_APP_URL +
+                                            singleLink.link
+                                          }
+                                          onClick={() => toggleMenu("close")}
+                                        >
+                                          {singleLink.name}
+                                        </NavLink>
+                                      </li>
+                                    ))}
                                 </>
                               ) : null}
                             </ul>
@@ -183,57 +235,94 @@ const Header = () => {
 
                           <div className="right bottom d-md-none">
                             <ul>
-                              {otherPages && otherPages.map((singleLink, index)=>(
-                                <li key={index}>
-                                  <NavLink to={import.meta.env.VITE_APP_URL + singleLink.link} onClick={() => toggleMenu("close")}>
-                                    {singleLink.name}
-                                  </NavLink>
-                                </li>
-                              ))}
-
+                              {otherPages &&
+                                otherPages.map((singleLink, index) => (
+                                  <li key={index}>
+                                    <NavLink
+                                      to={
+                                        import.meta.env.VITE_APP_URL +
+                                        singleLink.link
+                                      }
+                                      onClick={() => toggleMenu("close")}
+                                    >
+                                      {singleLink.name}
+                                    </NavLink>
+                                  </li>
+                                ))}
                             </ul>
                           </div>
                         </div>
                       </div>
 
                       <div className="top-area">
-                        
                         <div className="inner-logo d-none d-md-block">
-                          <p><span>Office:</span> {otherDetails.address}</p>
-                          <p><span>Talk:</span> <Link to={`tel:${otherDetails.contact}`}>{otherDetails.contact}</Link> </p>
+                          <p>
+                            <span>Office:</span> {otherDetails.address}
+                          </p>
+                          <p>
+                            <span>Talk:</span>{" "}
+                            <Link to={`tel:${otherDetails.contact}`}>
+                              {otherDetails.contact}
+                            </Link>{" "}
+                          </p>
                         </div>
 
                         <ul className="sub_menu">
-                            <li>
-                              <span htmlFor="school" className=" d-block w-100">Social Media</span>
-                              <ul className="social_links ">
-                                {socialMedia.map((socialIcon, index) => (
-                                  <li key={index}>
-                                    <Link to={socialIcon.link} target="_blank" onClick={() => toggleMenu("close")}>
-                                      <img src={`${socialIcon.imgUrl}`} alt={socialIcon.alt} />
-                                    </Link>
-                                  </li>
-                                ))}
-
-                              </ul>
-                            </li>
-                            <li>
-                              <img src={subscribeBtn} alt="subscribe button image" role="button" tabIndex="0" className="subscribe_btn" onClick={() => window.open(channelUrl, "_blank")} />
-                            </li>
+                          <li>
+                            <span htmlFor="school" className=" d-block w-100">
+                              Social Media
+                            </span>
+                            <ul className="social_links ">
+                              {socialMedia.map((socialIcon, index) => (
+                                <li key={index}>
+                                  <Link
+                                    to={socialIcon.link}
+                                    target="_blank"
+                                    onClick={() => toggleMenu("close")}
+                                  >
+                                    <img
+                                      src={`${socialIcon.imgUrl}`}
+                                      alt={socialIcon.alt}
+                                    />
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </li>
+                          <li>
+                            <img
+                              src={subscribeBtn}
+                              alt="subscribe button image"
+                              role="button"
+                              tabIndex="0"
+                              className="subscribe_btn"
+                              onClick={() => window.open(channelUrl, "_blank")}
+                            />
+                          </li>
                         </ul>
                       </div>
                     </div>
                   </div>
                 </div>
 
-
-                <div className="closebtn-area d-none d-md-grid" onClick={() => toggleMenu("close")}>
-                <button
-    className="closebtn"
-    onClick={(e) => {
-      e.stopPropagation(); 
-      toggleMenu("close");
-    }}><img src={CloseBtnimg} alt="mvn close icon"  className="img-fluid close-img"/>  Close</button>
+                <div
+                  className="closebtn-area d-none d-md-grid"
+                  onClick={() => toggleMenu("close")}
+                >
+                  <button
+                    className="closebtn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleMenu("close");
+                    }}
+                  >
+                    <img
+                      src={CloseBtnimg}
+                      alt="mvn close icon"
+                      className="img-fluid close-img"
+                    />{" "}
+                    Close
+                  </button>
                 </div>
               </div>
             </div>
