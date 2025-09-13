@@ -67,6 +67,9 @@ const OtherProjects = React.memo(
                 <div className="single">
                   <div className="top">
                     <h5 className="name">{item.name}</h5>
+                    {
+                      index!=otherProjects.length-1 &&
+                    
                     <Link to={item.link} target="_blank">
                       <img
                         src={`${API_URL}images/icons/arrow.png`}
@@ -74,6 +77,7 @@ const OtherProjects = React.memo(
                         className="img-fluid icon"
                       />
                     </Link>
+                    }
                   </div>
                   {title && (
                     <div className="content">

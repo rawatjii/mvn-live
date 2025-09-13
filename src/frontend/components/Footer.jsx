@@ -1,8 +1,9 @@
 import { NavLink } from "react-router-dom";
-
+import * as CONFIG from "root/config/config";
 
 
 const Footer = () => {
+  const channelUrl = CONFIG.YOUTUBE_URL;
   return (
     <footer>
       <div className="container">
@@ -182,6 +183,7 @@ const Footer = () => {
                           alt="subscribe button"
                           role="button"
                           className="subscribe_btn"
+                          onClick={() => window.open(channelUrl, "_blank")}
                         />
                       </span>
                     </div>

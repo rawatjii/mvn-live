@@ -28,6 +28,29 @@ const CustomIframe = ({ data }) => {
       observer.disconnect();
     };
   }, []);
+  
+
+    useEffect(() => {
+      const iframe = iframeRef.current;
+      
+      const handleIframeClick = (e) => {
+        // Prevent any default scroll behavior
+        e.preventDefault();
+        e.stopPropagation();
+      };
+  
+      if (iframe) {
+        iframe.addEventListener('click', handleIframeClick);
+        iframe.addEventListener('touchstart', handleIframeClick);
+      }
+  
+      return () => {
+        if (iframe) {
+          iframe.removeEventListener('click', handleIframeClick);
+          iframe.removeEventListener('touchstart', handleIframeClick);
+        }
+      };
+    }, []);
 
   if (!data) return null;
 
@@ -37,6 +60,10 @@ const CustomIframe = ({ data }) => {
         <iframe
           ref={iframeRef}
           src={data}
+          style={{
+               pointerEvents: 'auto',
+              userSelect: 'none'
+          }}
           title="YouTube video player"
           frameBorder="0"
           allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -46,6 +73,8 @@ const CustomIframe = ({ data }) => {
           height="100%"
           playsInline
           className="mb-4"
+          
+          loading="lazy"
         ></iframe>
       )}
       <hr />

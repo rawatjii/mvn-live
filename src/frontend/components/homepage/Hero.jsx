@@ -60,7 +60,6 @@ const Hero = () => {
     <>
       <div>
         <div style={{ position: "relative", paddingBottom: isMobile ? '100%' : '56.25%', overflow: "hidden" }}>
-          {/* Background image displayed until video starts playing */}
           {!isVideoPlaying && (
             <div
               style={{
@@ -91,7 +90,7 @@ const Hero = () => {
               left: 0,
               width: "100%",
               height: "100%",
-              zIndex: 2, // Ensure iframe is above the background
+              zIndex: 2, 
             }}
             title="MVN Aero One Walkthrough"
           />
