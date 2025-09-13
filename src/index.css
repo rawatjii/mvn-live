@@ -5770,8 +5770,8 @@ table.bg_transparent {
     font-size: 20px;
   } 
 
-  .Contact-info {
-    margin: 50px 0px 0px !important;
+  .contact-info-p {
+    padding: 50px 0px 0px !important;
   }
 
   .threeSixtyBtn{
@@ -6214,8 +6214,11 @@ div input:focus {
 /* new css for input */
 
 /* microsite contact info section style start */
+.contact-info-p{
+   padding: 100px 0px 50px;
+}
 .Contact-info {
-  margin: 100px 0px 50px;
+ 
   /* background: linear-gradient(rgba(0, 0, 0, 0.804), rgba(0, 0, 0, 0.804)), url("/contact-info.webp"); */
   background-size: cover; /* Makes the image cover the section */
   background-position: center; /* Centers the image */

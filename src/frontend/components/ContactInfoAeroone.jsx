@@ -2,7 +2,8 @@ import React from 'react'
 
 const ContactInfoAeroone = ({white}) => {
   return (
-    <section className={`Contact-info contact-us-section ${!white && 'mobile'}`}>
+    <section className='contact-info-p'>
+    <div className={`Contact-info contact-us-section ${!white && 'mobile'}`}>
         <div className="container">
 
     <div className='row gy-3 d-flex justify-content-center'>
@@ -36,6 +37,7 @@ const ContactInfoAeroone = ({white}) => {
             </div>
         </div>
       
+    </div>
     </div>
     </div>
     </section>
