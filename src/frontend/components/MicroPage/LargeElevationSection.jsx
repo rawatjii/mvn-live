@@ -80,7 +80,7 @@ function LargeElevation({ data }) {
         <div className="full_img">
           <img
             src={
-              isMobile ? BACKEND_IMAGE_URL + image : BACKEND_IMAGE_URL + image
+              isMobile ? image : image
             }
             alt={heading}
             className={`img-fluid img_in ${isMobile ? " " : "d_lg_block"}`}
@@ -94,8 +94,8 @@ function LargeElevation({ data }) {
           <img
             src={
               isMobile
-                ? BACKEND_IMAGE_URL + optional_images
-                : BACKEND_IMAGE_URL + optional_images
+                ? optional_images
+                : optional_images
             }
             alt={heading}
             className={`img-fluid abs_img_in ${isMobile ? " " : "d_lg_block"}`}

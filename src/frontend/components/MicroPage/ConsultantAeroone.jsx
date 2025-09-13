@@ -19,9 +19,9 @@ const ConsultantAeroone = ({data})=>{
             <Col md={12} className="px_40 px_sm_15">
               <div className="user_img">
                 <picture>
-                  <source srcSet={CONFIG.BACKEND_IMAGE_URL + image} />
+                  <source srcSet={image} />
                   <img
-                    src={CONFIG.BACKEND_IMAGE_URL + alternative_image}
+                    src={alternative_image}
                     alt={alt}
                     className="img-fluid w-100"
                     loading="lazy"
@@ -35,7 +35,7 @@ const ConsultantAeroone = ({data})=>{
 
               <ul className="logos justify-content-center">
                 <li>
-                  <img src={CONFIG.BACKEND_IMAGE_URL + optional_images} alt="mvn consultant logo 1" className="img-fluid logo" loading="lazy" />
+                  <img src={optional_images} alt="mvn consultant logo 1" className="img-fluid logo" loading="lazy" />
                 </li>
               </ul>
             </Col>

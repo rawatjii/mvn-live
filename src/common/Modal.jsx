@@ -119,6 +119,7 @@ const CustomModal = React.memo(
                   top: 0,
                   right: 10,
                   fontSize: 30,
+                  color:"#fff"
                 }}
               >
                 &times;
@@ -161,6 +162,7 @@ const CustomModal = React.memo(
                     top: 0,
                     right: 10,
                     fontSize: 30,
+                    color:"#fff"
                   }}
                 >
                   &times;
@@ -268,7 +270,7 @@ const CustomModal = React.memo(
             <span
               className="close"
               onClick={hide}
-              style={{ position: "absolute", top: 0, right: 10, fontSize: 30 }}
+              style={{ position: "absolute", top: 0, right: 10, fontSize: 30, color:"#fff" }}
             >
               &times;
             </span>

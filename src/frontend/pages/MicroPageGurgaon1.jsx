@@ -125,8 +125,6 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
         <PeacockSectionAeroone
           data={data.party_video}
           watermarkClass="style5"
-          desktop_img="assets/images/aeroone/party/desktop.webp"
-          mobile_img="assets/images/aeroone/party/mobile.webp"
         />
       </div>
 
@@ -134,8 +132,6 @@ const MicroPageGurgaon1 = ({ data, loadingCount, setLoadingCount }) => {
         <PeacockSectionAeroone
           data={data.masterBedroom}
           watermarkClass="style5"
-          desktop_img="assets/images/aeroone/bedroom/desktop.webp"
-          mobile_img="assets/images/aeroone/bedroom/mobile.webp"
         />
       </div>
 

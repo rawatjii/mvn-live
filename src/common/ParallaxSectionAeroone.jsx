@@ -102,8 +102,8 @@ function ParallaxSectionAeroone({ section_data }) {
           <div key={index} className="col-sm-12 col-lg-4">
             <div className="card center">
               <picture>
-                <source srcSet={CONFIG.BACKEND_IMAGE_URL + single.mb_image} media="(max-width:768px)" />
-                <img src={CONFIG.BACKEND_IMAGE_URL + single.mb_image} className="img-fluid" alt={single.alt} />
+                <source srcSet={single.mb_image} media="(max-width:768px)" />
+                <img src={single.mb_image} className="img-fluid" alt={single.alt} />
               </picture>
               <Watermark />
             </div>
@@ -160,8 +160,8 @@ function ParallaxSectionAeroone({ section_data }) {
         >
           <div className="card center">
             <picture>
-              <source srcSet={CONFIG.BACKEND_IMAGE_URL + amenity.image} media="(max-width:768px)" />
-              <img src={CONFIG.BACKEND_IMAGE_URL + amenity.image} className="img-fluid w-100" alt={amenity.alt} />
+              <source srcSet={amenity.image} media="(max-width:768px)" />
+              <img src={amenity.image} className="img-fluid w-100" alt={amenity.alt} />
             </picture>
             <Watermark className="left" />
           </div>

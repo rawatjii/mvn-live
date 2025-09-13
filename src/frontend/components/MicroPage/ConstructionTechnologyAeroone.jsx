@@ -15,7 +15,7 @@ export default function ConstructionTechnologyAeroone({data}) {
           <h4 className="title title_style1 text-center">{heading}</h4>
         </div>
         
-        <video src={CONFIG.BACKEND_IMAGE_URL + video} autoPlay  muted playsInline loop controls  className='img-fluid' />
+        <video src={video} autoPlay  muted playsInline loop controls  className='img-fluid' />
 
         <div className='about'>
           <CustomCard

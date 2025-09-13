@@ -11,7 +11,7 @@ const PeacockSectionAeroone = React.memo(({ data, watermarkClass, json, mb_json,
   const { isMobile } = useMatches();
   let finalData;
 
-  const { heading, description, image, alternative_image } = data;
+  const { heading, description, image, mb_image } = data;
 
   if(json && mb_json){
     finalData={
@@ -31,7 +31,7 @@ const PeacockSectionAeroone = React.memo(({ data, watermarkClass, json, mb_json,
   }
   
   const displayImage = desktop_img || image;
-  const displayMobileImage = mobile_img || image
+  const displayMobileImage = mobile_img || mb_image
 
   return (
     <>
@@ -59,9 +59,9 @@ const PeacockSectionAeroone = React.memo(({ data, watermarkClass, json, mb_json,
                   type="style1"
                 />
                 <picture className="img-fluid peacock_img">
-                  <source srcSet={isMobile ? BACKEND_IMAGE_URL + displayMobileImage : BACKEND_IMAGE_URL + displayImage} />
+                  <source srcSet={isMobile ? displayMobileImage : displayImage} />
                   <img
-                    src={isMobile ? BACKEND_IMAGE_URL + displayMobileImage : BACKEND_IMAGE_URL + displayImage}
+                    src={isMobile ? displayMobileImage : displayImage}
                     alt="Peacock image"
                     className="img-fluid peacock_img w-100"
                   />
