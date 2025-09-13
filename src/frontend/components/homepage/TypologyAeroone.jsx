@@ -18,7 +18,7 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
   const [loading, setLoading] = useState(true);
   const [loadingComplete, setLoadingComplete] = useState(false);
   const [totalFrames, setTotalFrames] = useState(0);
-  const [isLaptop, setIsLaptop] = useState(window.innerWidth <= 1400); // Dynamic resize handling
+  const [isLaptop, setIsLaptop] = useState(window.innerWidth <= 1400); 
 
   const { data: typologyData, loading: typologyLoading } = useFetchData(
     `project/${data.project_id}/typologies`
@@ -26,25 +26,23 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
 
   const { heading, json } = data;
 
-  // Handle window resize for responsive behavior
   useEffect(() => {
     const handleResize = () => setIsLaptop(window.innerWidth <= 1400);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Load Lottie animation
   useEffect(() => {
     animationRef.current = lottie.loadAnimation({
       container: lottieRef.current,
-      renderer: "canvas", // Consider "svg" for better performance if needed
+      renderer: "canvas", 
       loop: false,
       autoplay: false,
       path: BACKEND_IMAGE_URL + json,
     });
 
     animationRef.current.addEventListener("data_ready", () => {
-      console.log("Lottie loaded, totalFrames:", animationRef.current.totalFrames); // Debug
+      console.log("Lottie loaded, totalFrames:", animationRef.current.totalFrames); 
       setTotalFrames(animationRef.current.totalFrames || 1);
       setLoading(false);
       setLoadingComplete(true);
@@ -64,7 +62,6 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
     };
   }, [onLoadComplete, json]);
 
-  // Calculate animation segments
   const segments = useMemo(() => {
     if (totalFrames === 0) return [];
     const third = Math.floor(totalFrames / 3);
@@ -75,7 +72,6 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
     ];
   }, [totalFrames]);
 
-  // Refresh ScrollTrigger when section enters viewport
   useEffect(() => {
     if (loading || !loadingComplete || !typologyData) return;
 
@@ -95,11 +91,8 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
     };
   }, [loading, loadingComplete, typologyData]);
 
-  // Main ScrollTrigger for animation
   useEffect(() => {
     if (loading || !loadingComplete || totalFrames === 0 || !typologyData) return;
-
-    // Initialize content visibility
     contentRefs.current.forEach((el, i) => {
       if (el) el.style.display = i === 0 ? "block" : "none";
     });
@@ -112,10 +105,10 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
     const trigger = ScrollTrigger.create({
       trigger: containerRefTypo.current,
       start: "top top",
-      end: () => `+=${containerRefTypo.current.offsetHeight * 2}`, // Dynamic end
+      end: () => `+=${containerRefTypo.current.offsetHeight * 2}`, 
       pin: true,
-      scrub: 0.5, // Reduced for smoother response
-      anticipatePin: 1, // Improves pinning smoothness
+      scrub: 0.5, 
+      anticipatePin: 1,
       onUpdate: (self) => {
         const segmentIndex = Math.min(
           Math.floor(self.progress * segments.length),
@@ -133,15 +126,12 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
         if (animationRef.current) {
           animationRef.current.goToAndStop(frameIndex, true);
         }
-
         contentRefs.current.forEach((el, i) => {
           if (el) el.style.display = i === segment.contentIndex ? "block" : "none";
         });
-
         imageContentRefs.current.forEach((el, i) => {
           if (el) el.style.display = i === segment.contentIndex ? "block" : "none";
         });
-
         const typologyArrow = document.querySelector(".typology_arrow");
         if (typologyArrow) {
           const topValue = isLaptop
@@ -157,16 +147,6 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
             : 265;
           typologyArrow.style.top = `${topValue}px`;
         }
-
-        // Debug scroll progress
-        // console.log(
-        //   "Scroll progress:",
-        //   self.progress,
-        //   "segment:",
-        //   segmentIndex,
-        //   "frame:",
-        //   frameIndex
-        // );
       },
     });
 
@@ -229,7 +209,7 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
             ref={(el) => (imageContentRefs.current[index] = el)}
             className="typologies-images"
             style={{ display: index === 0 ? "block" : "none" }}
-            aria-hidden={index !== 0} // Accessibility
+            aria-hidden={index !== 0} 
           >
             <picture>
               <source srcSet={BACKEND_IMAGE_URL + item.image} />
