@@ -192,7 +192,7 @@ const MicroHeader = ({ scrollToSection, data, isFixed }) => {
                                         }
                                         key={project.name + idx}
                                       >
-                                        <NavLink
+                                           <NavLink
                                           to={project.link}
                                           target={
                                             project.target_blank === false

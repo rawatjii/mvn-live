@@ -177,22 +177,22 @@ const Header = () => {
                                             }
                                             key={project.name + idx}
                                           >
-                                            <NavLink
-                                              to={project.link}
-                                              target={
-                                                project.target_blank === false
-                                                  ? "_self"
-                                                  : "_blank"
-                                              }
-                                              onClick={() =>
-                                                toggleMenu("close")
-                                              }
-                                            >
-                                              {project.name}
-                                            </NavLink>
-                                            {project.status && (
-                                              <span>{project.status}</span>
-                                            )}
+                                           <NavLink
+                                            to={project.link}
+                                            target={
+                                              project.target_blank === false
+                                                ? "_self"
+                                                : "_blank"
+                                            }
+                                            className={'d-flex justify-content-between align-items-center w-100'}
+                                            onClick={() => toggleMenu("close")}
+                                          >
+                                            {project.name}
+                                              {project.status && (
+                                            <span>{project.status}</span>
+                                          )}
+                                          </NavLink>
+                                          
                                           </li>
                                         )
                                       )}
