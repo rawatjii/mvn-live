@@ -100,7 +100,6 @@ const LivingRoomVideoGurugramAeroone = React.memo(
             title="MVN Aero One Walkthrough"
           />
 
-          {/* Responsive poster overlay — hidden the moment the video is actually playing */}
           {showPoster && (
             <div
               onClick={handleManualPlay}

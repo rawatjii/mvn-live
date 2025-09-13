@@ -95,11 +95,9 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
     };
   }, [loading, loadingComplete, typologyData]);
 
-  // Main ScrollTrigger for animation
   useEffect(() => {
     if (loading || !loadingComplete || totalFrames === 0 || !typologyData) return;
 
-    // Initialize content visibility
     contentRefs.current.forEach((el, i) => {
       if (el) el.style.display = i === 0 ? "block" : "none";
     });
@@ -108,14 +106,13 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
       if (el) el.style.display = i === 0 ? "block" : "none";
     });
 
-    console.log(containerRefTypo.current.offsetHeight)
     const trigger = ScrollTrigger.create({
       trigger: containerRefTypo.current,
       start: "top top",
       end: () => `+=${containerRefTypo.current.offsetHeight * 2}`, // Dynamic end
       pin: true,
-      scrub: 0.5, // Reduced for smoother response
-      anticipatePin: 1, // Improves pinning smoothness
+      scrub: 0.5, 
+      anticipatePin: 1, 
       onUpdate: (self) => {
         const segmentIndex = Math.min(
           Math.floor(self.progress * segments.length),
