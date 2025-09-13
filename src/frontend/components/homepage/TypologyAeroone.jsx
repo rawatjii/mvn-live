@@ -158,7 +158,7 @@ const Typology = React.memo(({ onLoadComplete, data }) => {
   return (
     <section
       ref={containerRefTypo}
-      className=" typology_section pb-0"
+      className=" typology_section typology_section_micro pb-0 "
       aria-label="Typology Section"
     >
       <div className="heading_div mb_60 mb_sm_30">
